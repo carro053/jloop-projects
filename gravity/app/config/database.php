@@ -77,9 +77,9 @@ class DATABASE_CONFIG {
 		'driver' => 'mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'user',
-		'password' => 'password',
-		'database' => 'database_name',
+		'login' => 'gravity',
+		'password' => 'a4d6s5',
+		'database' => 'gravity',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
