@@ -306,12 +306,11 @@ class CupcakeHelper extends AppHelper {
 				9 => '9',
 				10 => '10 ('. __d('forum', 'Administrator', true) .')'
 			);*/
-			ClassRegistry::init('AccessLevel');
 			if ($guest) {
-				$access_levels = $this->AccessLevel->find('all',array('order'=>'AccessLevel.level ASC'));
+				$access_levels = ClassRegistry::init("AccessLevel")->find('all',array('order'=>'AccessLevel.level ASC'));
 				//array_unshift($options, '0 ('. __d('forum', 'Guest', true) .')');
 			}else{
-				$access_levels = $this->AccessLevel->find('all',array('conditions'=>'AccessLevel.level > 0','order'=>'AccessLevel.level ASC'));
+				$access_levels = ClassRegistry::init("AccessLevel")->find('all',array('conditions'=>'AccessLevel.level > 0','order'=>'AccessLevel.level ASC'));
 			}
 			$options = array();
 			foreach($access_levels as $access_level):
