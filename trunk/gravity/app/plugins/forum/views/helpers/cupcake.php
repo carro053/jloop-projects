@@ -294,7 +294,7 @@ class CupcakeHelper extends AppHelper {
 		} else if ($type == 3) {
 			$options = array(0 => __d('forum', 'Visible', true), 1 => __d('forum', 'Hidden', true));
 		} else if ($type == 4) {
-			$options = array(
+			/*$options = array(
 				1 => '1 ('. __d('forum', 'Member', true) .')',
 				2 => '2',
 				3 => '3',
@@ -305,11 +305,18 @@ class CupcakeHelper extends AppHelper {
 				8 => '8',
 				9 => '9',
 				10 => '10 ('. __d('forum', 'Administrator', true) .')'
-			);
+			);*/
 			
 			if ($guest) {
-				array_unshift($options, '0 ('. __d('forum', 'Guest', true) .')');
+				$access_levels = $this->AccessLevel->find('all',array('order'=>'AccessLevel.level ASC'));
+				//array_unshift($options, '0 ('. __d('forum', 'Guest', true) .')');
+			}else{
+				$access_levels = $this->AccessLevel->find('all',array('conditions'=>'AccessLevel.level > 0','order'=>'AccessLevel.level ASC'));
 			}
+			$options = array();
+			foreach($access_levels as $access_level):
+				$options[$access_level['AccessLevel']['level']] = $access_level['AccessLevel']['title'];
+			endforeach;
 		} else if ($type == 5) {
 			$options = array(0 => __d('forum', 'Active', true), 1 => __d('forum', 'Banned', true));
 		}
