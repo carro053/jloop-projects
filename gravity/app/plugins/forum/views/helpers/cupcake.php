@@ -19,6 +19,7 @@ class CupcakeHelper extends AppHelper {
 	 * @var array
 	 */
 	public $helpers = array('Html', 'Session');
+	public $uses = array('AccessLevel');
 
 	/**
 	 * Array of current gravatars to try and limit HTTP requests.
