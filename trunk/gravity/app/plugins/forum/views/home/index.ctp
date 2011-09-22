@@ -33,12 +33,6 @@ if (!empty($forums)) {
         <td>
             <strong><?php echo $this->Html->link($category['title'], array('controller' => 'categories', 'action' => 'view', $category['slug'])); ?></strong><br />
             <?php echo $category['description']; ?>
-            
-            <?php if (!empty($subForums)) { ?>
-            <div class="subForums">
-                <span class="gray"><?php __d('forum', 'Sub-Forums'); ?>:</span> <?php echo implode(', ', $subForums); ?>
-            </div>     
-            <?php } ?>
         </td>
         <td class="ac"><?php echo number_format($category['topic_count']); ?></td>
         <td class="ac"><?php echo number_format($category['post_count']); ?></td>
