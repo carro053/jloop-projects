@@ -19,7 +19,6 @@ class CupcakeHelper extends AppHelper {
 	 * @var array
 	 */
 	public $helpers = array('Html', 'Session');
-	public $uses = array('AccessLevel');
 
 	/**
 	 * Array of current gravatars to try and limit HTTP requests.
@@ -307,7 +306,7 @@ class CupcakeHelper extends AppHelper {
 				9 => '9',
 				10 => '10 ('. __d('forum', 'Administrator', true) .')'
 			);*/
-			
+			ClassRegistry::init('AccessLevel');
 			if ($guest) {
 				$access_levels = $this->AccessLevel->find('all',array('order'=>'AccessLevel.level ASC'));
 				//array_unshift($options, '0 ('. __d('forum', 'Guest', true) .')');
