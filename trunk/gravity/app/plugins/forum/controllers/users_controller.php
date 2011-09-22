@@ -227,7 +227,6 @@ class UsersController extends ForumAppController {
 					// Send email
 					$message  = sprintf(__d('forum', 'Thank you for signing up on %s, your information is listed below', true), $this->Toolbar->settings['site_name']) .":\n\n";
 					$message .= __d('forum', 'Username', true) .": ". $this->data['User']['username'] ."\n";
-					$message .= __d('forum', 'Password', true) .": ". $this->data['User']['newPassword'] ."\n\n";
 					$message .= __d('forum', 'Enjoy!', true);
 					
 					$this->Email->to = $this->data['User']['email'];
