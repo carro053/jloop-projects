@@ -294,21 +294,8 @@ class CupcakeHelper extends AppHelper {
 		} else if ($type == 3) {
 			$options = array(0 => __d('forum', 'Visible', true), 1 => __d('forum', 'Hidden', true));
 		} else if ($type == 4) {
-			/*$options = array(
-				1 => '1 ('. __d('forum', 'Member', true) .')',
-				2 => '2',
-				3 => '3',
-				4 => '4 ('. __d('forum', 'Moderator', true) .')',
-				5 => '5',
-				6 => '6',
-				7 => '7 ('. __d('forum', 'Super Moderator', true) .')',
-				8 => '8',
-				9 => '9',
-				10 => '10 ('. __d('forum', 'Administrator', true) .')'
-			);*/
 			if ($guest) {
 				$access_levels = ClassRegistry::init("AccessLevel")->find('all',array('order'=>'AccessLevel.level ASC'));
-				//array_unshift($options, '0 ('. __d('forum', 'Guest', true) .')');
 			}else{
 				$access_levels = ClassRegistry::init("AccessLevel")->find('all',array('conditions'=>'AccessLevel.level > 0','order'=>'AccessLevel.level ASC'));
 			}
