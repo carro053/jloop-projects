@@ -6,9 +6,9 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <title><?php echo $title_for_layout; ?></title>
-<?php echo $html->css('/forum/css/style.css');
-//echo $javascript->link('/forum/js/script.js'); ?>
+<link rel="stylesheet" href="/forum/css/style.css" type="text/css" media="all" />
 <link rel="stylesheet" href="/css/main.css" type="text/css" media="all" />
+<script type="text/javascript" src="/forum/js/script.js"></script>
 </head>
 
 <body>
@@ -18,6 +18,7 @@
 	Planets for Todd
 	</div>
     <div id="main">
+    	<?php echo $this->element('navigation'); ?>
     	<?php echo $content_for_layout; ?>
     	Test
     </div><!-- end #main -->
