@@ -1,0 +1,48 @@
+@charset "UTF-8";
+/* CSS Document  */
+
+/*
+
+Organized by:
+
+Layout
+Misc.
+
+*/
+
+
+/* Layout.
+------------------------------------------------------------------------------ */
+body {
+	color: #646245;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 100%;
+	line-height: 1.125em;
+	margin: 0; 
+	background: #cecfd1
+	}
+
+#container {
+	background: #cecfd1;
+	width: 840px;
+	margin: 42px auto 76px auto;
+	}
+	
+#main {
+	float: left;
+	width: 840px;
+	background-color: #FFF;
+	border-left: 1px solid #FFF;
+	border-right: 1px solid #FFF;
+	padding-left: 7px;
+	padding-right: 7px;
+	}
+
+/* Misc.
+------------------------------------------------------------------------------ */
+
+.left { float: left; }
+
+.right { float: right; }
+
+.inline { display: inline; }
