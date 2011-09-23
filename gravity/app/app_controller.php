@@ -1,4 +1,9 @@
 <?php
+App::import(array(
+	'type' => 'File', 
+	'name' => 'Forum.ForumConfig', 
+	'file' => 'config'. DS .'core.php'
+));
 
 class AppController extends Controller {
 
@@ -16,7 +21,7 @@ class AppController extends Controller {
 	 * @access public
 	 * @var array
 	 */
-	public $components = array('RequestHandler', 'Session', 'Security', 'Cookie');
+	public $components = array('RequestHandler', 'Session', 'Security', 'Cookie', 'Forum.Toolbar');
 	
 	/**
 	 * Helpers.
@@ -24,7 +29,7 @@ class AppController extends Controller {
 	 * @access public
 	 * @var array
 	 */
-	public $helpers = array('Html', 'Session', 'Form', 'Time', 'Text');
+	public $helpers = array('Html', 'Session', 'Form', 'Time', 'Text', 'Forum.Cupcake', 'Forum.Decoda' => array());
 	public $layout = 'main';
 	/**
 	 * Run auto login logic.
