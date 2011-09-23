@@ -19,11 +19,11 @@ body {
 	font-size: 100%;
 	line-height: 1.125em;
 	margin: 0; 
-	background: #cecfd1
+	background: #000000
 	}
 
 #container {
-	background: #cecfd1;
+	background: #000000;
 	width: 840px;
 	margin: 42px auto 76px auto;
 	}
