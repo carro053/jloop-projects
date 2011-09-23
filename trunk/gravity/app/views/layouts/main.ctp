@@ -6,6 +6,7 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <title><?php echo $title_for_layout; ?></title>
+<link rel="stylesheet" href="/css/main.css" type="text/css" media="all" />
 </head>
 
 <body>
