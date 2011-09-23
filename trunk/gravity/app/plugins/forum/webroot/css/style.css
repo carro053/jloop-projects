@@ -4,11 +4,6 @@ body, div, img, form, fieldset, ul, ol, li, h1, h2, h3, h4 {
 	padding: 0;
 	border: none; }
 	
-body {
-	background: #003d4c;
-	color: #fff;
-	font: normal 90% 'lucida grande',verdana,helvetica,arial,sans-serif; }
-	
 p { margin: 0 0 15px 0; }
 	
 a {
