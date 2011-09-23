@@ -24,7 +24,7 @@
 	</ul>
 	</div>
     <div id="main">
-    	<?php echo $this->element('navigation'); ?>
+    	<?php if (!empty($this->_crumbs)) echo $this->element('navigation'); ?>
     	<?php echo $content_for_layout; ?>
     </div><!-- end #main -->
     <div style="clear:both;">&nbsp;</div>
