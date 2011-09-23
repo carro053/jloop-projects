@@ -85,7 +85,7 @@ class PagesController extends AppController {
 	
 	function home()
 	{
-		
+		$this->layout = 'main';
 	}
 }
 
