@@ -40,10 +40,8 @@ body {
 #header {
 	float: left;
 	width: 840px;
-	border-left: 1px solid #FFF;
-	border-right: 1px solid #FFF;
-	padding-left: 7px;
-	padding-right: 7px;
+	padding-left: 8px;
+	padding-right: 8px;
 	}
 	
 #nav {
