@@ -16,7 +16,7 @@ class AppController extends Controller {
 	 * @access public
 	 * @var array
 	 */
-	public $components = array('RequestHandler', 'Session', 'Security', 'Cookie', 'Forum.Toolbar');
+	public $components = array('RequestHandler', 'Session', 'Security', 'Cookie');
 	
 	/**
 	 * Helpers.
@@ -24,7 +24,7 @@ class AppController extends Controller {
 	 * @access public
 	 * @var array
 	 */
-	public $helpers = array('Html', 'Session', 'Form', 'Time', 'Text', 'Forum.Cupcake', 'Forum.Decoda' => array());
+	public $helpers = array('Html', 'Session', 'Form', 'Time', 'Text');
 	public $layout = 'main';
 	/**
 	 * Run auto login logic.
