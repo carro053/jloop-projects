@@ -39,7 +39,7 @@ class ForumAppController extends AppController {
 	 * @var array
 	 */
 	public $helpers = array('Html', 'Session', 'Form', 'Time', 'Text', 'Forum.Cupcake', 'Forum.Decoda' => array());
-
+	public $layout = 'main';
 	/**
 	 * Run auto login logic.
 	 *
