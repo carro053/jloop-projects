@@ -61,6 +61,17 @@ class PagesController extends AppController {
  * @param mixed What page to display
  * @access public
  */
+ 	public function beforeFilter() {
+		parent::beforeFilter();
+		
+		$this->Auth->allow('*');
+		
+		if (isset($this->params['admin'])) {
+			$this->Toolbar->verifyAdmin();
+			$this->layout = 'admin';
+		}
+	}
+ 
 	function display() {
 		$path = func_get_args();
 
