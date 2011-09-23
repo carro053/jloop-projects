@@ -37,6 +37,10 @@ body {
 	padding-left: 7px;
 	padding-right: 7px;
 	}
+#header {
+	float: left;
+	width: 840px;
+	}
 
 /* Misc.
 ------------------------------------------------------------------------------ */
