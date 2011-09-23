@@ -12,6 +12,9 @@
 <body>
 
 <div id="container">
+	<div id="header">
+	Planets for Todd
+	</div>
     <div id="main">
     	<?php echo $content_for_layout; ?>
     	Test
