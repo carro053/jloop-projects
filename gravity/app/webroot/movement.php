@@ -149,7 +149,6 @@
 			{
 				contextBack.fillRect(level[n].x, level[n].y, level[n].w, level[n].h);
 			}
-			walkFrame = walkRight.getFrame();
 		}
 
 		function gameLoop()
