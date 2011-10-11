@@ -124,6 +124,7 @@
 			canvasFront.height = window.innerHeight;
 			canvasBack.width = window.innerWidth;
 			canvasBack.height = window.innerHeight;
+			canvasBack.style.backgroundColor = '#000000';
 			
 			canvasFront.onclick = function(e) {
 				target.x = e.clientX - this.offsetLeft - player.xOffset;
