@@ -122,9 +122,6 @@
 			contextFront = canvasFront.getContext('2d');
 			canvasFront.width = window.innerWidth;
 			canvasFront.height = window.innerHeight;
-			canvasBack.width = window.innerWidth;
-			canvasBack.height = window.innerHeight;
-			canvasBack.style.backgroundColor = '#000000';
 			
 			canvasFront.onclick = function(e) {
 				target.x = e.clientX - this.offsetLeft - player.xOffset;
@@ -133,6 +130,8 @@
 			
 			canvasBack = document.getElementById('canvasBack');
 			contextBack = canvasBack.getContext('2d');
+			canvasBack.width = window.innerWidth;
+			canvasBack.height = window.innerHeight;
 			
 			furyImage.onload = initialize();
 		};
