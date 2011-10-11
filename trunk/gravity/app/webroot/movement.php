@@ -185,13 +185,32 @@
 			var distance = Math.sqrt(Math.pow(target.x - player.x, 2) + Math.pow(target.y - player.y, 2));
 			if(distance > 1)
 			{
-				var d = Math.atan2(target.y - player.y,target.x - player.x) * 180 / Math.PI + 90;
-				if(d < 0) d += 360;
-				d = Math.round(d);
-				if(d == 360) d = 0;
-				//alert(d + ' degrees');
-				if(d != player.angle)
+				//target angle
+				var ta = Math.atan2(target.y - player.y,target.x - player.x) * 180 / Math.PI + 90;
+				if(ta < 0) d += 360;
+				if(ta != player.angle)
 				{
+					//angle diff
+					var ad = ta - player.angle;
+					//change angle by this
+					var ca = 0;
+					if(ad < -180) ad += 360;
+					
+					if(ad < 0)//turn left
+					{
+						ca =  -player.angular_speed * timer.getSeconds();
+					}else{//turn right
+						ca = player.angular_speed * timer.getSeconds();
+					}
+					if(ca > ad)
+					{
+						player.angle = ta;
+					}else{
+						player.angle += ca;
+						if(player.angle < 0) player.angle += 360;
+						if(player.angle >= 360) player.angle -= 360;
+					}
+					alert(player.angle);
 					player.x += (target.x - player.x) / distance * player.speed * timer.getSeconds();
 					player.y += (target.y - player.y) / distance * player.speed * timer.getSeconds();
 					
