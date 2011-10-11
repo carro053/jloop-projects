@@ -70,9 +70,9 @@
 		player.w = player.h = 38;
 		player.xOffset = 19;
 		player.yOffset = 19;
-		player.speed = 50;
+		player.speed = 150;
 		player.angular_speed = 150;
-		player.angle = 200;
+		player.angle = 90;
 		
 		var level = [
 			//{x: 100, y: 100, w: 50, h: 100},
