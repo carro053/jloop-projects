@@ -71,6 +71,7 @@
 		player.xOffset = 8;
 		player.yOffset = 12;
 		player.speed = 50;
+		player.angular_speed = 1;
 		player.angle = 90;
 		
 		var level = [
@@ -186,9 +187,18 @@
 			{
 				var d = Math.atan2(target.y - player.y,target.x - player.x) * 180 / Math.PI + 90;
 				if(d < 0) d += 360;
-				alert(d + ' degrees');
-				player.x += (target.x - player.x) / distance * player.speed * timer.getSeconds();
-				player.y += (target.y - player.y) / distance * player.speed * timer.getSeconds();
+				d = round(d);
+				if(d == 360) d = 0;
+				//alert(d + ' degrees');
+				if(d != player.angle)
+				{
+					player.x += (target.x - player.x) / distance * player.speed * timer.getSeconds();
+					player.y += (target.y - player.y) / distance * player.speed * timer.getSeconds();
+					
+				}else{
+					player.x += (target.x - player.x) / distance * player.speed * timer.getSeconds();
+					player.y += (target.y - player.y) / distance * player.speed * timer.getSeconds();
+				}
 				if(Math.abs(player.x - target.x) > Math.abs(player.y - target.y))
 				{
 					if(player.x > target.x)
