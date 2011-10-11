@@ -219,9 +219,9 @@
 		function drawObjects()
 		{
 			var si = Math.floor(player.angle / 15) * 15;
-			var sprite = fury.getSprite(0);
+			var sprite = fury.getSprite(si);
 			contextFront.drawImage(furyImage, sprite.x, sprite.y, sprite.w, sprite.h, player.x, player.y, sprite.w, sprite.h);
-			contextFront.rotate(player.angle * Math.PI / 180);
+			//contextFront.rotate(player.angle * Math.PI / 180);
 		}
 		
 		/*
