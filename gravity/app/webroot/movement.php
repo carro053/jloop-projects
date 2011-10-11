@@ -184,9 +184,8 @@
 			var distance = Math.sqrt(Math.pow(target.x - player.x, 2) + Math.pow(target.y - player.y, 2));
 			if(distance > 1)
 			{
-				var r = Math.atan2(target.y - player.y,target.x - player.x);
-				alert(r + ' radians');
-				var d = r *180 / Math.PI;
+				var d = Math.atan2(target.y - player.y,target.x - player.x) * 180 / Math.PI + 90;
+				if(d < 0) d += 360;
 				alert(d + ' degrees');
 				player.x += (target.x - player.x) / distance * player.speed * timer.getSeconds();
 				player.y += (target.y - player.y) / distance * player.speed * timer.getSeconds();
