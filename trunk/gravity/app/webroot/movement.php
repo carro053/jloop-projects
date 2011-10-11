@@ -67,9 +67,9 @@
 		var target = new Object;
 		var player = new Object;
 		player.x = player.y = target.x = target.y = 300;
-		player.w = player.h = 16;
-		player.xOffset = 8;
-		player.yOffset = 12;
+		player.w = player.h = 38;
+		player.xOffset = 19;
+		player.yOffset = 19;
 		player.speed = 50;
 		player.angular_speed = 75;
 		player.angle = 90;
@@ -80,55 +80,37 @@
 			//{x: 200, y: 200, w: 160, h: 20}
 		];
 		
-		var whiteMage = new SpriteSheet(
+		var fury = new SpriteSheet(
 			[
-				{id: 1, x: 0, y: 32, w: 16, h: 16},
-				{id: 2, x: 16, y: 32, w: 16, h: 16},
-				{id: 3, x: 32, y: 32, w: 16, h: 16},
-				{id: 4, x: 48, y: 32, w: 16, h: 16},
-				{id: 5, x: 0, y: 48, w: 16, h: 16},
-				{id: 6, x: 16, y: 48, w: 16, h: 16},
-				{id: 7, x: 32, y: 48, w: 16, h: 16},
-				{id: 8, x: 48, y: 48, w: 16, h: 16}
+				{id: 0, x: 0, y: 0, w: 38, h: 38},
+				{id: 15, x: 152, y: 0, w: 38, h: 38},
+				{id: 30, x: 114, y: 76, w: 38, h: 38},
+				{id: 45, x: 76, y: 114, w: 38, h: 38},
+				{id: 60, x: 114, y: 114, w: 38, h: 38},
+				{id: 75, x: 152, y: 114, w: 38, h: 38},
+				{id: 90, x: 190, y: 114, w: 38, h: 38},
+				{id: 105, x: 38, y: 0, w: 38, h: 38},
+				{id: 120, x: 76, y: 0, w: 38, h: 38},
+				{id: 135, x: 114, y: 0, w: 38, h: 38},
+				{id: 150, x: 190, y: 0, w: 38, h: 38},
+				{id: 165, x: 0, y: 38, w: 38, h: 38},
+				{id: 180, x: 38, y: 38, w: 38, h: 38},
+				{id: 195, x: 76, y: 38, w: 38, h: 38},
+				{id: 210, x: 114, y: 38, w: 38, h: 38},
+				{id: 225, x: 152, y: 38, w: 38, h: 38},
+				{id: 240, x: 190, y: 38, w: 38, h: 38},
+				{id: 255, x: 0, y: 76, w: 38, h: 38},
+				{id: 270, x: 38, y: 76, w: 38, h: 38},
+				{id: 285, x: 76, y: 76, w: 38, h: 38},
+				{id: 300, x: 152, y: 76, w: 38, h: 38},
+				{id: 315, x: 190, y: 76, w: 38, h: 38},
+				{id: 330, x: 0, y: 114, w: 38, h: 38},
+				{id: 345, x: 38, y: 114, w: 38, h: 38},
 			]
 		);
 		
-		var walkLeft = new SpriteSequence(
-			[
-				{id: 1, t: 0.2},
-				{id: 5, t: 0.2},
-			],
-			whiteMage
-		);
-		
-		var walkRight = new SpriteSequence(
-			[
-				{id: 2, t: 0.2},
-				{id: 6, t: 0.2},
-			],
-			whiteMage
-		);
-		
-		var walkDown = new SpriteSequence(
-			[
-				{id: 3, t: 0.2},
-				{id: 7, t: 0.2},
-			],
-			whiteMage
-		);
-		
-		var walkUp = new SpriteSequence(
-			[
-				{id: 4, t: 0.2},
-				{id: 8, t: 0.2},
-			],
-			whiteMage
-		);
-		
-		var walkFrame = new Object();
-		
-		var whiteMageImage = new Image();
-		whiteMageImage.src = 'whiteMage.png';
+		var furyImage = new Image();
+		furyImage.src = 'fury.png';
 		
 		var canvasFront = new Object();
 		var contextFront = new Object();
@@ -147,7 +129,7 @@
 			canvasBack = document.getElementById('canvasBack');
 			contextBack = canvasBack.getContext('2d');
 			
-			whiteMageImage.onload = initialize();
+			furyImage.onload = initialize();
 		};
 		
 		function initialize()
@@ -214,23 +196,6 @@
 				}
 				player.x += Math.cos((player.angle - 90) *(Math.PI/180)) * player.speed * timer.getSeconds();
 				player.y += Math.sin((player.angle - 90) *(Math.PI/180)) * player.speed * timer.getSeconds();
-				if(player.angle >= 45 && player.angle < 135)
-				{
-					walkRight.animate(timer.getSeconds());
-					walkFrame = walkRight.getFrame();
-				}else if(player.angle >= 135 && player.angle < 225)
-				{
-					walkDown.animate(timer.getSeconds());
-					walkFrame = walkDown.getFrame();
-				}else if(player.angle >= 225 && player.angle < 315)
-				{
-					walkLeft.animate(timer.getSeconds());
-					walkFrame = walkLeft.getFrame();
-				}else if(player.angle >= 315 || player.angle < 45)
-				{
-					walkUp.animate(timer.getSeconds());
-					walkFrame = walkUp.getFrame();
-				}
 			}
 			for(var n in level)
 			{
@@ -254,24 +219,26 @@
 
 		function drawObjects()
 		{
-			contextFront.drawImage(whiteMageImage, walkFrame.x, walkFrame.y, walkFrame.w, walkFrame.h, player.x, player.y, walkFrame.w, walkFrame.h);
+			var si = Math.floor(player.angle / 15) * 15;
+			var sprite = fury.getSprite(si);
+			contextFront.drawImage(furyImage, sprite.x, sprite.y, sprite.w, sprite.h, player.x, player.y, sprite.w, sprite.h);
 		}
 		
 		/*
-		var sprite = whiteMage.getSprite(1);
-		contextFront.drawImage(whiteMageImage, sprite.x, sprite.y, sprite.w, sprite.h, 10, 50, sprite.w, sprite.h);
+		var sprite = fury.getSprite(1);
+		contextFront.drawImage(furyImage, sprite.x, sprite.y, sprite.w, sprite.h, 10, 50, sprite.w, sprite.h);
 		
-		var sprite = whiteMage.getSprite(2);
-		contextFront.drawImage(whiteMageImage, sprite.x, sprite.y, sprite.w, sprite.h, 30, 50, sprite.w, sprite.h);
+		var sprite = fury.getSprite(2);
+		contextFront.drawImage(furyImage, sprite.x, sprite.y, sprite.w, sprite.h, 30, 50, sprite.w, sprite.h);
 		
-		var sprite = whiteMage.getSprite(3);
-		contextFront.drawImage(whiteMageImage, sprite.x, sprite.y, sprite.w, sprite.h, 50, 50, sprite.w, sprite.h);
+		var sprite = fury.getSprite(3);
+		contextFront.drawImage(furyImage, sprite.x, sprite.y, sprite.w, sprite.h, 50, 50, sprite.w, sprite.h);
 		
-		var sprite = whiteMage.getSprite(4);
-		contextFront.drawImage(whiteMageImage, sprite.x, sprite.y, sprite.w, sprite.h, 70, 50, sprite.w, sprite.h);
+		var sprite = fury.getSprite(4);
+		contextFront.drawImage(furyImage, sprite.x, sprite.y, sprite.w, sprite.h, 70, 50, sprite.w, sprite.h);
 		
-		var sprite = whiteMage.getSprite(5);
-		contextFront.drawImage(whiteMageImage, sprite.x, sprite.y, sprite.w, sprite.h, 90, 50, sprite.w, sprite.h);
+		var sprite = fury.getSprite(5);
+		contextFront.drawImage(furyImage, sprite.x, sprite.y, sprite.w, sprite.h, 90, 50, sprite.w, sprite.h);
 		*/
 	</script>
 	<canvas id="canvasBack" width="600" height="400" style="position:absolute;"></canvas>
