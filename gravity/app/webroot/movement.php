@@ -184,9 +184,12 @@
 			var distance = Math.sqrt(Math.pow(target.x - player.x, 2) + Math.pow(target.y - player.y, 2));
 			if(distance > 1)
 			{
+				var r = Math.atan2(target.x - player.x,target.y - player.y);
+				alert(r + ' radians');
+				var d = r *180 / Math.PI;
+				alert(d + ' degrees');
 				player.x += (target.x - player.x) / distance * player.speed * timer.getSeconds();
 				player.y += (target.y - player.y) / distance * player.speed * timer.getSeconds();
-				alert(player.x +" "+player.y);
 				if(Math.abs(player.x - target.x) > Math.abs(player.y - target.y))
 				{
 					if(player.x > target.x)
