@@ -188,6 +188,7 @@
 				//target angle
 				var ta = Math.atan2(target.y - player.y,target.x - player.x) * 180 / Math.PI + 90;
 				if(ta < 0) ta += 360;
+				alert(ta);
 				if(ta != player.angle)
 				{
 					//angle diff
