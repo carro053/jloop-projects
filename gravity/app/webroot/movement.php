@@ -231,7 +231,7 @@
 				{
 					walkLeft.animate(timer.getSeconds());
 					walkFrame = walkLeft.getFrame();
-				}else if(player.angle >= 315 && player.angle < 45)
+				}else if(player.angle >= 315 || player.angle < 45)
 				{
 					walkUp.animate(timer.getSeconds());
 					walkFrame = walkUp.getFrame();
