@@ -71,7 +71,7 @@
 		player.xOffset = 8;
 		player.yOffset = 12;
 		player.speed = 50;
-		player.angular_speed = 25;
+		player.angular_speed = 75;
 		player.angle = 90;
 		
 		var level = [
