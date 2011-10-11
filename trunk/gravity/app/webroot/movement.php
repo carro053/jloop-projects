@@ -141,7 +141,7 @@
 		
 		function drawBackground()
 		{
-			contextBack.fillStyle =  '#ffb040';
+			contextBack.fillStyle =  '#000000';
 			contextBack.fillRect(0, 0, canvasBack.width, canvasBack.height);
 			
 			contextBack.fillStyle =  '#26537c';
