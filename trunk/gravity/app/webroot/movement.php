@@ -238,10 +238,8 @@
 						walkFrame = walkDown.getFrame();
 					}
 				}
-			}else{
-				alert(player.angle);
 			}
-			
+			console.log(player.angle);
 			for(var n in level)
 			{
 				if(
