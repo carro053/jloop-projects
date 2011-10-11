@@ -66,7 +66,7 @@
 		
 		var target = new Object;
 		var player = new Object;
-		player.x = player.y = target.x = target.y = 0;
+		player.x = player.y = target.x = target.y = 200;
 		player.w = player.h = 16;
 		player.xOffset = 8;
 		player.yOffset = 12;
