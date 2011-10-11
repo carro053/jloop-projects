@@ -67,9 +67,10 @@
 		var target = new Object;
 		var player = new Object;
 		player.x = player.y = target.x = target.y = 300;
-		player.w = player.h = 38;
-		player.xOffset = 19;
-		player.yOffset = 19;
+		player.w = 39;
+		player.h = 40;
+		player.xOffset = 20;
+		player.yOffset = 20;
 		player.speed = 150;
 		player.angular_speed = 150;
 		player.angle = 90;
@@ -82,7 +83,7 @@
 		
 		var fury = new SpriteSheet(
 			[
-				{id: 0, x: 0, y: 0, w: 38, h: 38},
+				{id: 0, x: 0, y: 0, w: 39, h: 40},
 				{id: 15, x: 152, y: 0, w: 38, h: 38},
 				{id: 30, x: 114, y: 76, w: 38, h: 38},
 				{id: 45, x: 76, y: 114, w: 38, h: 38},
@@ -110,7 +111,7 @@
 		);
 		
 		var furyImage = new Image();
-		furyImage.src = 'fury.png';
+		furyImage.src = 'small_fury.png';
 		
 		var canvasFront = new Object();
 		var contextFront = new Object();
@@ -223,7 +224,7 @@
 		function drawObjects()
 		{
 			var si = Math.floor(player.angle / 15) * 15;
-			var sprite = fury.getSprite(si);
+			var sprite = fury.getSprite(0);
 			contextFront.drawImage(furyImage, sprite.x, sprite.y, sprite.w, sprite.h, player.x, player.y, sprite.w, sprite.h);
 			//contextFront.rotate(player.angle * Math.PI / 180);
 		}
