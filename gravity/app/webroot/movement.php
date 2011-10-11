@@ -210,9 +210,8 @@
 						if(player.angle < 0) player.angle += 360;
 						if(player.angle >= 360) player.angle -= 360;
 					}
-					alert(player.angle);
-					player.x += (target.x - player.x) / distance * player.speed * timer.getSeconds();
-					player.y += (target.y - player.y) / distance * player.speed * timer.getSeconds();
+					player.x += Math.cos((player.angle - 90) *(Math.PI/180)) * player.speed * timer.getSeconds() ;
+					player.y += Math.sin((player.angle - 90) *(Math.PI/180)) * player.speed * timer.getSeconds();
 					
 				}else{
 					player.x += (target.x - player.x) / distance * player.speed * timer.getSeconds();
