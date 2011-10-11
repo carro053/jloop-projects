@@ -198,11 +198,11 @@
 					
 					if(ad < 0)//turn left
 					{
-						ca =  -player.angular_speed * timer.getSeconds();
+						ca = -player.angular_speed * timer.getSeconds();
 					}else{//turn right
 						ca = player.angular_speed * timer.getSeconds();
 					}
-					if(ca > ad)
+					if(Math.abs(ca) > Math.abs(ad))
 					{
 						player.angle = ta;
 					}else{
