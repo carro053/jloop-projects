@@ -75,9 +75,9 @@
 		player.angle = 90;
 		
 		var level = [
-			{x: 100, y: 100, w: 50, h: 100},
-			{x: 100, y: 20, w: 10, h: 10},
-			{x: 200, y: 200, w: 160, h: 20}
+			//{x: 100, y: 100, w: 50, h: 100},
+			//{x: 100, y: 20, w: 10, h: 10},
+			//{x: 200, y: 200, w: 160, h: 20}
 		];
 		
 		var whiteMage = new SpriteSheet(
