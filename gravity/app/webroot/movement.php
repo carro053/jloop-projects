@@ -71,6 +71,7 @@
 		player.xOffset = 8;
 		player.yOffset = 12;
 		player.speed = 50;
+		player.angle = 90;
 		
 		var level = [
 			{x: 100, y: 100, w: 50, h: 100},
@@ -185,7 +186,7 @@
 			{
 				player.x += (target.x - player.x) / distance * player.speed * timer.getSeconds();
 				player.y += (target.y - player.y) / distance * player.speed * timer.getSeconds();
-				
+				alert(player.x +" "+player.y);
 				if(Math.abs(player.x - target.x) > Math.abs(player.y - target.y))
 				{
 					if(player.x > target.x)
