@@ -227,7 +227,7 @@
 			var sprite = fury.getSprite(0);
 			contextFront.translate(player.x, player.y);
 			contextFront.rotate(player.angle * Math.PI / 180);
-			contextFront.drawImage(furyImage, sprite.x, sprite.y, sprite.w, sprite.h, player.x, player.y, sprite.w, sprite.h);
+			contextFront.drawImage(furyImage, sprite.x, sprite.y, sprite.w, sprite.h, 0, 0, sprite.w, sprite.h);
 			contextFront.rotate(-player.angle * Math.PI / 180);
 			contextFront.translate(-player.x, -player.y);
 			//contextFront.rotate(player.angle * Math.PI / 180);
