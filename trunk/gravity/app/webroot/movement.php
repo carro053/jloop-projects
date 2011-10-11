@@ -169,7 +169,7 @@
 			var lastX = player.x;
 			var lastY = player.y;
 			var distance = Math.sqrt(Math.pow(target.x - player.x, 2) + Math.pow(target.y - player.y, 2));
-			if(distance > 1)
+			if(distance > 2)
 			{
 				//target angle
 				var ta = Math.atan2(target.y - player.y,target.x - player.x) * 180 / Math.PI + 90;
