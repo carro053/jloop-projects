@@ -219,25 +219,22 @@
 					player.x += (target.x - player.x) / distance * player.speed * timer.getSeconds();
 					player.y += (target.y - player.y) / distance * player.speed * timer.getSeconds();
 				}
-				if(Math.abs(player.x - target.x) > Math.abs(player.y - target.y))
+				if(player.angle >= 45 && player.angle < 135)
 				{
-					if(player.x > target.x)
-					{
-						walkLeft.animate(timer.getSeconds());
-						walkFrame = walkLeft.getFrame();
-					}else{
-						walkRight.animate(timer.getSeconds());
-						walkFrame = walkRight.getFrame();
-					}
-				}else{
-					if(player.y > target.y)
-					{
-						walkUp.animate(timer.getSeconds());
-						walkFrame = walkUp.getFrame();
-					}else{
-						walkDown.animate(timer.getSeconds());
-						walkFrame = walkDown.getFrame();
-					}
+					walkRight.animate(timer.getSeconds());
+					walkFrame = walkRight.getFrame();
+				}else if(player.angle >= 135 && player.angle < 225)
+				{
+					walkDown.animate(timer.getSeconds());
+					walkFrame = walkDown.getFrame();
+				}else if(player.angle >= 225 && player.angle < 315)
+				{
+					walkLeft.animate(timer.getSeconds());
+					walkFrame = walkLeft.getFrame();
+				}else if(player.angle >= 315 && player.angle < 45)
+				{
+					walkUp.animate(timer.getSeconds());
+					walkFrame = walkUp.getFrame();
 				}
 			}
 			console.log(player.angle);
