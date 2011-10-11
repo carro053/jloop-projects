@@ -237,7 +237,6 @@
 					walkFrame = walkUp.getFrame();
 				}
 			}
-			console.log(player.angle);
 			for(var n in level)
 			{
 				if(
