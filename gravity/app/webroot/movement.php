@@ -187,7 +187,7 @@
 			{
 				var d = Math.atan2(target.y - player.y,target.x - player.x) * 180 / Math.PI + 90;
 				if(d < 0) d += 360;
-				d = round(d);
+				d = Math.round(d);
 				if(d == 360) d = 0;
 				//alert(d + ' degrees');
 				if(d != player.angle)
