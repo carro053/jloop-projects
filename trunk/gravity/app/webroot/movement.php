@@ -120,6 +120,10 @@
 		window.onload = function() {
 			canvasFront = document.getElementById('canvasFront');
 			contextFront = canvasFront.getContext('2d');
+			canvasFront.width = window.innerWidth;
+			canvasFront.height = window.innerHeight;
+			canvasBack.width = window.innerWidth;
+			canvasBack.height = window.innerHeight;
 			
 			canvasFront.onclick = function(e) {
 				target.x = e.clientX - this.offsetLeft - player.xOffset;
@@ -241,7 +245,7 @@
 		contextFront.drawImage(furyImage, sprite.x, sprite.y, sprite.w, sprite.h, 90, 50, sprite.w, sprite.h);
 		*/
 	</script>
-	<canvas id="canvasBack" width="600" height="400" style="position:absolute;"></canvas>
-	<canvas id="canvasFront" width="600" height="400" style="position:absolute;"></canvas>
+	<canvas id="canvasBack" style="position:absolute;"></canvas>
+	<canvas id="canvasFront" style="position:absolute;"></canvas>
 </body>
 </html>
