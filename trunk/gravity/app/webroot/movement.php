@@ -353,8 +353,14 @@
 					{
 						if(lasers[l].x < player.data.x + player.data.w / 2 && lasers[l].x > player.data.x - player.data.w / 2 && lasers[l].y < player.data.y + player.data.h / 2 && lasers[l].y > player.data.y - player.data.h / 2)
 						{
-							console.log("I am hit");
-							lasers.splice(l, 1);
+							var imgd = contextFront.getImageData(lasers[l].x, lasers[l].y, 1, 1);
+							var pix = imgd.data;
+							for (var i = 0, n = pix.length; i < n; i += 4) {
+								console.log(pix[i+3]);
+							    // i+3 is alpha (the fourth element)
+							}
+							//console.log("I am hit");
+							//lasers.splice(l, 1);
 						}
 					}
 				}
