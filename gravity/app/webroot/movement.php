@@ -83,6 +83,12 @@
 		player.yLeftLaser = -15;
 		player.laser_color = 'rgb(0,255,0)';
 		
+		var ships = new Array();
+		
+		
+		
+		
+		
 		var level = [
 			//{x: 100, y: 100, w: 50, h: 100},
 			//{x: 100, y: 20, w: 10, h: 10},
@@ -219,6 +225,29 @@
 						lasers.push(
 							{x: x, y: y, angle: angle, color: color}
 						);
+						break;
+					case 58:
+						laser_side = 0;
+						var x = window.innerWidth / 2;
+						var y = window.innerHeight / 2;
+						var w = 39;
+						var h = 40;
+						var xOffset = 20;
+						var yOffset = 20;
+						var speed = 150;
+						var angular_speed = 150;
+						var angle = Math.floor(Math.random()*360);
+						var xRightLaser = 5;
+						var yRightLaser = -15;
+						var xLeftLaser = -6;
+						var yLeftLaser = -15;
+						var laser_color = 'rgb(0,255,0)';
+						var sImage = new Image();
+						sImage.src = 'small_fury.png';
+						ships.push(
+							{x: x, y: y, w: w, h: h, xOffset: xOffset, yOffset: yOffset, speed: speed, angular_speed: angular_speed, angle: angle, xRightLaser: xRightLaser, yRightLaser: yRightLaser, xLeftLaser: xLeftLaser, yLeftLaser: yLeftLaser, laser_color: laser_color, sImage: sImage}
+						);
+						break;
 					default:
 						break;
 				}
@@ -322,11 +351,9 @@
 
 		function drawObjects()
 		{
-			var si = Math.floor(player.angle / 15) * 15;
-			var sprite = fury.getSprite(0);
 			contextFront.translate(player.x, player.y);
 			contextFront.rotate(player.angle * Math.PI / 180);
-			contextFront.drawImage(shipImage, sprite.x, sprite.y, sprite.w, sprite.h, -player.xOffset, -player.yOffset, sprite.w, sprite.h);
+			contextFront.drawImage(shipImage, 0, 0, player.w, player.h, -player.xOffset, -player.yOffset, player.w, player.h);
 			contextFront.rotate(-player.angle * Math.PI / 180);
 			contextFront.translate(-player.x, -player.y);
 			for(var l in lasers)
@@ -337,6 +364,15 @@
 				contextFront.closePath();
 				contextFront.strokeStyle = lasers[l].color;
 				contextFront.stroke();
+			}
+			for(var s in ships)
+			{
+				var sprite = fury.getSprite(0);
+				contextFront.translate(ships[s].x, ships[s].y);
+				contextFront.rotate(ships[s].angle * Math.PI / 180);
+				contextFront.drawImage(ships[s].sImage, 0, 0, ships[s].w, ships[s].h, -ships[s].xOffset, -ships[s].yOffset, ships[s].w, ships[s].h);
+				contextFront.rotate(-ships[s].angle * Math.PI / 180);
+				contextFront.translate(-ships[s].x, -ships[s].y);
 			}
 			
 		}
