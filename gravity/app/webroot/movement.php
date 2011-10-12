@@ -349,7 +349,7 @@
 					//target angle
 					var ta = Math.atan2(player.y - ships[s].y,player.x - ships[s].x) * 180 / Math.PI + 90;
 					if(ta < 0) ta += 360;
-					if(distance > 1000 && Math.round(ta) != Math.round(ships[s].angle))
+					if(distance > 400 && Math.round(ta) != Math.round(ships[s].angle))
 					{
 						console.log(distance);
 						//angle diff
