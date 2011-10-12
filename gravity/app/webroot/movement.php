@@ -248,6 +248,8 @@
 					target.y = player.y = lastY;
 				}
 			}
+			var lasers_to_remove = new Array;
+			lasers_to_remove.length = 0;
 			for(var l in lasers)
 			{
 				
@@ -255,9 +257,13 @@
 				lasers[l].y += Math.sin((lasers[l].angle - 90) *(Math.PI/180)) * 50 * timer.getSeconds();
 				if(lasers[l].x < 0 || lasers[l].y < 0 || lasers[l].x > canvasFront.width || lasers[l].y > canvasFront.height)
 				{
-					lasers.splice(l, 1);
+					lasers_to_remove[] = l;
 					alert('gone');
 				}
+			}
+			for(var l in lasers_to_remove)
+			{
+				lasers.splice(l,1);
 			}
 			
 		}
