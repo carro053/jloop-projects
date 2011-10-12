@@ -219,7 +219,7 @@
 			
 			window.onkeypress = function(e) {
 				//console.log('e.which = ' + e.which + ', e.keyCode = ' + e.keyCode);
-				switch(e.which) {
+				/*switch(e.which) {
 					case 49:				
 						player.data.ship = 1;
 						player.data.xRightLaser = 5;
@@ -280,7 +280,7 @@
 						break;
 					default:
 						break;
-				}
+				}*/
 			}
 		};
 		function initialize()
@@ -371,7 +371,7 @@
 					lasers.splice(l, 1);
 				}
 			}
-			if(Math.floor(gameTime / 5) + 2 > ships.length) addEnemy(-50,-50);			
+			if(Math.floor(gameTime / 10) + 1 > ships.length) addEnemy(-50,-50);			
 		}
 
 		function clearCanvas()
