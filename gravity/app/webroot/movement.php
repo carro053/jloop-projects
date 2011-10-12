@@ -251,12 +251,15 @@
 			for(var l in lasers)
 			{
 				//alert(lasers[l].x);
-				contextFront.strokeStyle = lasers[l].color;
-				contextFront.beginPath();  
+				
+				contextFront.strokeStyle = "#00FF00";
+				contextFront.fillStyle = "#FFFF00";
+				contextFront.beginPath();
 				contextFront.moveTo(lasers[l].x,lasers[l].y);  
-				contextFront.lineTo(lasers[l].x + 5,lasers[l].y);    
-				contextFront.closePath();  
-				contextFront.stroke(); 
+				contextFront.lineTo(lasers[l].x + 5,lasers[l].y); 
+				contextFront.closePath();
+				contextFront.stroke();
+				contextFront.fill();
 				lasers[l].x += player.speed * timer.getSeconds();
 			}
 			
