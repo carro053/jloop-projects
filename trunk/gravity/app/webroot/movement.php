@@ -248,13 +248,6 @@
 					target.y = player.y = lastY;
 				}
 			}
-			for(var l in lasers)
-			{
-				//alert(lasers[l].x);
-				
-				
-				lasers[l].x += player.speed * timer.getSeconds();
-			}
 			
 		}
 
