@@ -212,29 +212,7 @@
 						player.laser_color = 'rgb(255,0,0)';
 						break;
 					case 102:
-						if(player.last_fired > 1 / lps)
-						{
-							player.last_fired = 0;
-							var cos = Math.cos((player.angle + 90) * (Math.PI/180));
-							var sin = Math.sin((player.angle + 90) * (Math.PI/180));
-							var x;
-							var y;
-							if(player.laser_side == 1)
-							{
-								player.laser_side = 0;
-								x = player.x + sin * player.xRightLaser + cos * player.yRightLaser;
-								y = player.y + sin * player.yRightLaser - cos * player.xRightLaser;
-							}else{
-								player.laser_side = 1;
-								x = player.x + sin * player.xLeftLaser + cos * player.yLeftLaser;
-								y = player.y + sin * player.yLeftLaser - cos * player.xLeftLaser;
-							}
-							var angle = player.angle;
-							var color = player.laser_color;
-							lasers.push(
-								{x: x, y: y, angle: angle, color: color}
-							);
-						}
+						fire_laser(player);
 						break;
 					case 56:
 						var x = window.innerWidth / 2;
@@ -357,6 +335,7 @@
 			
 			for(var s in ships)
 			{
+				ships[s].last_fire += timer.getSeconds();
 				var distance = Math.sqrt(Math.pow(player.x - ships[s].x, 2) + Math.pow(player.y - ships[s].y, 2));
 				if(distance > 1)
 				{
@@ -389,25 +368,7 @@
 							if(ships[s].angle >= 360) ships[s].angle -= 360;
 						}
 					}else if(Math.round(ta) == Math.round(ships[s].angle)){
-						var cos = Math.cos((ships[s].angle + 90) * (Math.PI/180));
-						var sin = Math.sin((ships[s].angle + 90) * (Math.PI/180));
-						var x;
-						var y;
-						if(ships[s].laser_side == 1)
-						{
-							ships[s].laser_side = 0;
-							x = ships[s].x + sin * ships[s].xRightLaser + cos * ships[s].yRightLaser;
-							y = ships[s].y + sin * ships[s].yRightLaser - cos * ships[s].xRightLaser;
-						}else{
-							ships[s].laser_side = 1;
-							x = ships[s].x + sin * ships[s].xLeftLaser + cos * ships[s].yLeftLaser;
-							y = ships[s].y + sin * ships[s].yLeftLaser - cos * ships[s].xLeftLaser;
-						}
-						var angle = ships[s].angle;
-						var color = ships[s].laser_color;
-						lasers.push(
-							{x: x, y: y, angle: angle, color: color}
-						);
+						fire_laser(ships[s]);
 					}
 				}
 				ships[s].x += Math.cos((ships[s].angle - 90) *(Math.PI/180)) * ships[s].speed * timer.getSeconds();
