@@ -309,6 +309,7 @@
 		function drawUI()
 		{
 			contextUI.clearRect(0, 0, canvasUI.width, canvasUI.height);
+			contextUI.font = '40pt Arial';
 			contextUI.fillStyle =  '#FFFFFF';
 			contextUI.fillText('Score: '+score+' Shields: '+player.data.shields,20,canvasUI.height - 40);
 		}
