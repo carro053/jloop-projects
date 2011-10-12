@@ -263,7 +263,7 @@
 			}
 			for(var l in lasers_to_remove)
 			{
-				lasers.splice(l,1);
+				lasers.splice(lasers_to_remove[l],1);
 			}
 			
 		}
