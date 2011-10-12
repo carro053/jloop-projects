@@ -156,19 +156,19 @@
 						break;
 					case 50:
 						shipImage.src = 'phantom_small.png';						
-						player.xRightLaser = 14;
+						player.xRightLaser = 12;
 						player.yRightLaser = 5;
-						player.xLeftLaser = -14;
+						player.xLeftLaser = -12;
 						player.yLeftLaser = 5;
 						player.laser_color = 'rgb(0,255,0)';
 						
 						break;
 					case 51:
 						shipImage.src = 'mantis_small.png';						
-						player.xRightLaser = 5;
-						player.yRightLaser = -15;
-						player.xLeftLaser = -6;
-						player.yLeftLaser = -15;
+						player.xRightLaser = 12;
+						player.yRightLaser = 0;
+						player.xLeftLaser = -12;
+						player.yLeftLaser = 0;
 						player.laser_color = 'rgb(0,255,0)';
 						
 						break;
