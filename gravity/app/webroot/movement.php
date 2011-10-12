@@ -280,7 +280,6 @@
 			contextFront.closePath();
 			contextFront.stroke();
 			contextFront.fill();
-			//contextFront.rotate(player.angle * Math.PI / 180);
 		}
 		
 		/*
