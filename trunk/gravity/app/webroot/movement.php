@@ -61,6 +61,7 @@
 					}
 					var angle = this.data.angle;
 					var color = this.data.laser_color;
+					var side
 					lasers.push(
 						{x: x, y: y, angle: angle, color: color}
 					);
@@ -216,7 +217,7 @@
 			
 			window.onkeypress = function(e) {
 				//console.log('e.which = ' + e.which + ', e.keyCode = ' + e.keyCode);
-				switch(e.keyCode) {
+				switch(e.which) {
 					case 49:				
 						player.data.ship = 1;
 						player.data.xRightLaser = 5;
