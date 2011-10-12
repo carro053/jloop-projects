@@ -236,6 +236,7 @@
 						var speed = 150;
 						var angular_speed = 150;
 						var angle = Math.floor(Math.random()*360);
+						var tracking_distance = Math.floor(Math.random()*200) + 200;
 						var xRightLaser = 5;
 						var yRightLaser = -15;
 						var xLeftLaser = -6;
@@ -245,7 +246,7 @@
 						var sImage = new Image();
 						sImage.src = 'small_fury.png';
 						ships.push(
-							{x: x, y: y, w: w, h: h, xOffset: xOffset, yOffset: yOffset, speed: speed, angular_speed: angular_speed, angle: angle, xRightLaser: xRightLaser, yRightLaser: yRightLaser, xLeftLaser: xLeftLaser, yLeftLaser: yLeftLaser, laser_color: laser_color, laser_side: laser_side, sImage: sImage}
+							{x: x, y: y, w: w, h: h, xOffset: xOffset, yOffset: yOffset, speed: speed, angular_speed: angular_speed, angle: angle, tracking_distance: tracking_distance, xRightLaser: xRightLaser, yRightLaser: yRightLaser, xLeftLaser: xLeftLaser, yLeftLaser: yLeftLaser, laser_color: laser_color, laser_side: laser_side, sImage: sImage}
 						);
 						break;
 					default:
@@ -349,7 +350,8 @@
 					//target angle
 					var ta = Math.atan2(player.y - ships[s].y,player.x - ships[s].x) * 180 / Math.PI + 90;
 					if(ta < 0) ta += 360;
-					if(distance > 250 && Math.round(ta) != Math.round(ships[s].angle))
+					
+					if(distance > ships[s].tracking_distance && Math.round(ta) != Math.round(ships[s].angle))
 					{
 						console.log(distance);
 						//angle diff
