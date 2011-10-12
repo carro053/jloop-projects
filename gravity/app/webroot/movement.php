@@ -252,14 +252,7 @@
 			{
 				//alert(lasers[l].x);
 				
-				contextFront.strokeStyle = "#00FF00";
-				contextFront.fillStyle = "#FFFF00";
-				contextFront.beginPath();
-				contextFront.moveTo(lasers[l].x,lasers[l].y);  
-				contextFront.lineTo(lasers[l].x + 5,lasers[l].y); 
-				contextFront.closePath();
-				contextFront.stroke();
-				contextFront.fill();
+				
 				lasers[l].x += player.speed * timer.getSeconds();
 			}
 			
@@ -279,6 +272,14 @@
 			contextFront.drawImage(shipImage, sprite.x, sprite.y, sprite.w, sprite.h, 0, 0, sprite.w, sprite.h);
 			contextFront.rotate(-player.angle * Math.PI / 180);
 			contextFront.translate(-player.x, -player.y);
+			contextFront.strokeStyle = "#00FF00";
+			contextFront.fillStyle = "#FFFF00";
+			contextFront.beginPath();
+			contextFront.moveTo(lasers[l].x,lasers[l].y);  
+			contextFront.lineTo(lasers[l].x + 5,lasers[l].y); 
+			contextFront.closePath();
+			contextFront.stroke();
+			contextFront.fill();
 			//contextFront.rotate(player.angle * Math.PI / 180);
 		}
 		
