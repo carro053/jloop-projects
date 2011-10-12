@@ -407,6 +407,7 @@
 		}
 		function getShipData(ship_type)
 		{
+			shipData = New Object;
 			switch(ship_type) {
 				case 1:				
 					shipData.ship = 1;
