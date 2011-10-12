@@ -67,6 +67,7 @@
 		var lasers = new Array();
 		var target = new Object;
 		var player = new Object;
+		var laser_side = 0;
 		player.x = player.y = target.x = target.y = 0;
 		player.w = 39;
 		player.h = 40;
@@ -169,10 +170,19 @@
 					case 55:
 						var cos = Math.cos((player.angle + 90) * (Math.PI/180));
 						var sin = Math.sin((player.angle + 90) * (Math.PI/180));
-						var x = player.x + sin * player.xRightLaser + cos * player.yRightLaser;
-						var y = player.y + sin * player.yRightLaser - cos * player.xRightLaser;
+						var x;
+						var y;
+						if(laser_side == 1)
+						{
+							laser_side = 0;
+							x = player.x + sin * player.xRightLaser + cos * player.yRightLaser;
+							y = player.y + sin * player.yRightLaser - cos * player.xRightLaser;
+						}else{
+							laser_side = 1;
+							x = player.x + sin * player.xLeftLaser + cos * player.yLeftLaser;
+							y = player.y + sin * player.yLeftLaser - cos * player.xLeftLaser;
+						}
 						var angle = player.angle;
-						console.log(sin * player.xRightLaser+"|"+cos * player.yRightLaser+" "+-cos * player.xRightLaser+"|"+sin * player.yRightLaser);
 						lasers.push(
 							{x: x, y: y, angle: angle}
 						);
