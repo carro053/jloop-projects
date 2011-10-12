@@ -41,7 +41,7 @@
 		}
 		
 		StarShip.prototype = {
-			fire_lasers: function() {
+			fire_laser: function() {
 				if(this.last_fired > 1 / lps)
 				{
 					this.last_fired = 0;
