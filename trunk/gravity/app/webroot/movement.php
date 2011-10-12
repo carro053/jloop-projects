@@ -358,8 +358,12 @@
 							for (var i = 0, n = pix.length; i < n; i += 4) {
 								if(pix[i+3] > 0)
 								{
-									console.log("I am hit");
 									lasers.splice(l, 1);
+									player.data.shields -= 1;
+									if(player.data.shields == 0)
+									{
+										alert('You are dead.');
+									}
 								}
 							}
 						}
@@ -373,8 +377,12 @@
 								for (var i = 0, n = pix.length; i < n; i += 4) {
 									if(pix[i+3] > 0)
 									{
-										console.log("I hit one!");
 										lasers.splice(l, 1);
+										ships[s].data.shields -= 1;
+										if(ships[s].data.shields == 0)
+										{
+											ships.splice(s, 1);
+										}
 									}
 								}
 							}
