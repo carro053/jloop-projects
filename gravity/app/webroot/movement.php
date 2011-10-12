@@ -42,32 +42,67 @@
 		
 		StarShip.prototype = {
 			fire_laser: function() {
-				if(this.last_fired > 1 / lps)
+				if(this.data.last_fired > 1 / lps)
 				{
-					this.last_fired = 0;
-					var cos = Math.cos((this.angle + 90) * (Math.PI/180));
-					var sin = Math.sin((this.angle + 90) * (Math.PI/180));
+					this.data.last_fired = 0;
+					var cos = Math.cos((this.data.angle + 90) * (Math.PI/180));
+					var sin = Math.sin((this.data.angle + 90) * (Math.PI/180));
 					var x;
 					var y;
-					if(this.laser_side == 1)
+					if(this.data.laser_side == 1)
 					{
-						this.laser_side = 0;
-						x = this.x + sin * this.xRightLaser + cos * this.yRightLaser;
-						y = this.y + sin * this.yRightLaser - cos * this.xRightLaser;
+						this.data.laser_side = 0;
+						x = this.data.x + sin * this.data.xRightLaser + cos * this.data.yRightLaser;
+						y = this.data.y + sin * this.data.yRightLaser - cos * this.data.xRightLaser;
 					}else{
 						this.laser_side = 1;
-						x = this.x + sin * this.xLeftLaser + cos * this.yLeftLaser;
-						y = this.y + sin * this.yLeftLaser - cos * this.xLeftLaser;
+						x = this.data.x + sin * this.data.xLeftLaser + cos * this.data.yLeftLaser;
+						y = this.data.y + sin * this.data.yLeftLaser - cos * this.data.xLeftLaser;
 					}
-					var angle = this.angle;
-					var color = this.laser_color;
+					var angle = this.data.angle;
+					var color = this.data.laser_color;
 					lasers.push(
 						{x: x, y: y, angle: angle, color: color}
 					);
 				}
 			},
-			update_ship: function() {
-				
+			update: function() {
+				this.data.last_fired += timer.getSeconds();
+				var distance = Math.sqrt(Math.pow(this.data.target.x - this.data.x, 2) + Math.pow(this.data.target.y - this.data.y, 2));
+				if(distance > 1)
+				{
+					//target angle
+					var ta = Math.atan2(this.data.target.y - this.data.y,this.data.target.x - this.data.x) * 180 / Math.PI + 90;
+					if(ta < 0) ta += 360;
+					if(distance > this.data.tracking_distance && Math.round(ta) != Math.round(this.data.angle))
+					{
+						//angle diff
+						var ad = ta - this.data.angle;
+						//change angle by this
+						var ca = 0;
+						if(ad < -180) ad += 360;
+						if(ad > 180) ad -= 360;
+						
+						if(ad < 0)//turn left
+						{
+							ca = -this.data.angular_speed * timer.getSeconds();
+						}else{//turn right
+							ca = this.data.angular_speed * timer.getSeconds();
+						}
+						if(Math.abs(ca) > Math.abs(ad))
+						{
+							this.data.angle = ta;
+						}else{
+							this.data.angle += ca;
+							if(this.data.angle < 0) this.data.angle += 360;
+							if(this.data.angle >= 360) this.data.angle -= 360;
+						}
+					}else if(this.data.tracking_distance != 0 && Math.round(ta) == Math.round(ships[s].angle)){
+						this.fire_laser();
+					}
+				}
+				this.data.x += Math.cos((this.data.angle - 90) *(Math.PI/180)) * this.data.speed * timer.getSeconds();
+				this.data.y += Math.sin((this.data.angle - 90) *(Math.PI/180)) * this.data.speed * timer.getSeconds();
 			
 			}
 		}
@@ -312,42 +347,7 @@
 
 		function updateObjects()
 		{
-			player.last_fired += timer.getSeconds();
-			var lastX = player.x;
-			var lastY = player.y;
-			var distance = Math.sqrt(Math.pow(target.x - player.x, 2) + Math.pow(target.y - player.y, 2));
-			if(distance > 1)
-			{
-				//target angle
-				var ta = Math.atan2(target.y - player.y,target.x - player.x) * 180 / Math.PI + 90;
-				if(ta < 0) ta += 360;
-				if(ta != player.angle)
-				{
-					//angle diff
-					var ad = ta - player.angle;
-					//change angle by this
-					var ca = 0;
-					if(ad < -180) ad += 360;
-					if(ad > 180) ad -= 360;
-					
-					if(ad < 0)//turn left
-					{
-						ca = -player.angular_speed * timer.getSeconds();
-					}else{//turn right
-						ca = player.angular_speed * timer.getSeconds();
-					}
-					if(Math.abs(ca) > Math.abs(ad))
-					{
-						player.angle = ta;
-					}else{
-						player.angle += ca;
-						if(player.angle < 0) player.angle += 360;
-						if(player.angle >= 360) player.angle -= 360;
-					}
-				}
-			}
-			player.x += Math.cos((player.angle - 90) *(Math.PI/180)) * player.speed * timer.getSeconds();
-			player.y += Math.sin((player.angle - 90) *(Math.PI/180)) * player.speed * timer.getSeconds();
+			player.update();
 			for(var n in level)
 			{
 				if(
@@ -422,11 +422,11 @@
 
 		function drawObjects()
 		{
-			contextFront.translate(player.x, player.y);
-			contextFront.rotate(player.angle * Math.PI / 180);
-			contextFront.drawImage(shipImage, 0, 0, player.w, player.h, -player.xOffset, -player.yOffset, player.w, player.h);
-			contextFront.rotate(-player.angle * Math.PI / 180);
-			contextFront.translate(-player.x, -player.y);
+			contextFront.translate(player.data.x, player.data.y);
+			contextFront.rotate(player.data.angle * Math.PI / 180);
+			contextFront.drawImage(shipImage, 0, 0, player.data.w, player.data.h, -player.data.xOffset, -player.data.yOffset, player.data.w, player.data.h);
+			contextFront.rotate(-player.data.angle * Math.PI / 180);
+			contextFront.translate(-player.data.x, -player.data.y);
 			for(var l in lasers)
 			{
 				contextFront.beginPath();
