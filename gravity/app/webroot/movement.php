@@ -219,7 +219,7 @@
 			
 			window.onkeypress = function(e) {
 				//console.log('e.which = ' + e.which + ', e.keyCode = ' + e.keyCode);
-				/*switch(e.which) {
+				switch(e.which) {
 					case 49:				
 						player.data.ship = 1;
 						player.data.xRightLaser = 5;
@@ -280,7 +280,7 @@
 						break;
 					default:
 						break;
-				}*/
+				}
 			}
 		};
 		function initialize()
