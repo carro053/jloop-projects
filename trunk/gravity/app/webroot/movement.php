@@ -55,7 +55,7 @@
 						x = this.data.x + sin * this.data.xRightLaser + cos * this.data.yRightLaser;
 						y = this.data.y + sin * this.data.yRightLaser - cos * this.data.xRightLaser;
 					}else{
-						this.laser_side = 1;
+						this.data.laser_side = 1;
 						x = this.data.x + sin * this.data.xLeftLaser + cos * this.data.yLeftLaser;
 						y = this.data.y + sin * this.data.yLeftLaser - cos * this.data.xLeftLaser;
 					}
@@ -287,7 +287,7 @@
 						player.laser_color = 'rgb(255,0,0)';
 						break;
 					case 102:
-						fire_laser(player);
+						player.fire_laser();
 						break;
 					case 56:
 						var x = window.innerWidth / 2;
