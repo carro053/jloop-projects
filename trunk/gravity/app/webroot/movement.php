@@ -323,16 +323,14 @@
 						{
 							var imgd = contextFront.getImageData(lasers[l].x, lasers[l].y, 1, 1);
 							var pix = imgd.data;
-							for (var i = 0, n = pix.length; i < n; i += 4) {
-								if(pix[i+3] > 0)
+							for (var i = 0, n = pix.length; i < n; i += 4) if(pix[i+3] > 0) hit = 1;
+							if(hit == 1)
+							{								
+								player.data.shields -= 1;
+								console.log(player.data.shields);
+								if(player.data.shields == 0)
 								{
-									hit = 1;
-									player.data.shields -= 1;
-									console.log(player.data.shields);
-									if(player.data.shields == 0)
-									{
-										alert('You are dead.');
-									}
+									alert('You are dead.');
 								}
 							}
 						}
