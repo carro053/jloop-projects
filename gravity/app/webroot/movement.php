@@ -363,6 +363,22 @@
 								}
 							}
 						}
+					}else{
+						for(var s in ships)
+						{
+							if(lasers[l].x < ships[s].data.x + ships[s].data.w / 2 && lasers[l].x > ships[s].data.x - ships[s].data.w / 2 && lasers[l].y < ships[s].data.y + ships[s].data.h / 2 && lasers[l].y > ships[s].data.y - ships[s].data.h / 2)
+							{
+								var imgd = contextFront.getImageData(lasers[l].x, lasers[l].y, 1, 1);
+								var pix = imgd.data;
+								for (var i = 0, n = pix.length; i < n; i += 4) {
+									if(pix[i+3] > 0)
+									{
+										console.log("I hit one!");
+										lasers.splice(l, 1);
+									}
+								}
+							}
+						}
 					}
 				}
 			}
