@@ -159,10 +159,11 @@
 					{x: x, y: y, angle: angle, color: color}
 				);
 			};
+			
 			canvasFront.onmousemove = function(e) {
 				target.x = e.clientX - this.offsetLeft;
 				target.y = e.clientY - this.offsetTop;
-			}
+			};
 			
 			canvasBack = document.getElementById('canvasBack');
 			contextBack = canvasBack.getContext('2d');
