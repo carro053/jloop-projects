@@ -63,7 +63,7 @@
 <body>
 	<script type="text/javascript">
 		var timer = new Timer();
-		
+		var lasers = new Array;
 		var target = new Object;
 		var player = new Object;
 		player.x = player.y = target.x = target.y = 300;
@@ -74,7 +74,12 @@
 		player.speed = 150;
 		player.angular_speed = 150;
 		player.angle = 90;
-		
+		var laser = new Object;
+		laser.x = 100;
+		laser.y = 100;
+		laser.angle = 45;
+		laser.color = 'rgb(0,200,0)';
+		lasers.push = laser;
 		var level = [
 			//{x: 100, y: 100, w: 50, h: 100},
 			//{x: 100, y: 20, w: 10, h: 10},
@@ -243,6 +248,17 @@
 					target.y = player.y = lastY;
 				}
 			}
+			for(var l in lasers)
+			{
+				contextFront.strokeStyle = lasers[l].color;
+				contextFront.beginPath();  
+				contextFront.moveTo(lasers[l].x,lasers[l].y);  
+				contextFront.lineTo(lasers[l].x + 5,lasers[l].y);    
+				contextFront.closePath();  
+				contextFront.stroke(); 
+				lasers[l].x += player.speed * timer.getSeconds();
+			}
+			
 		}
 
 		function clearCanvas()
