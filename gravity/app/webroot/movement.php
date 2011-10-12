@@ -110,8 +110,8 @@
 			]
 		);
 		
-		var furyImage = new Image();
-		furyImage.src = 'small_fury.png';
+		var shipImage = new Image();
+		shipImage.src = 'small_fury.png';
 		
 		var canvasFront = new Object();
 		var contextFront = new Object();
@@ -134,9 +134,37 @@
 			canvasBack.width = window.innerWidth;
 			canvasBack.height = window.innerHeight;
 			
-			furyImage.onload = initialize();
+			shipImage.onload = initialize();
+			
+			window.onkeypress = function(e) {
+				switch(e.which) {
+					case 49:
+						shipImage.src = 'fury_small.png';
+						break;
+					case 50:
+						shipImage.src = 'phantom_small.png';
+						
+						break;
+					case 51:
+						shipImage.src = 'mantis_small.png';
+						
+						break;
+					case 52:
+						shipImage.src = 'defender_small.png';
+						
+						break;
+					case 53:
+						shipImage.src = 'freighter_small.png';
+						
+						break;
+					case 54:
+						shipImage.src = 'thunderclap_small.png';
+						break;
+					default:
+						break;
+				}
+			}
 		};
-		
 		function initialize()
 		{
 			drawBackground();
@@ -227,7 +255,7 @@
 			var sprite = fury.getSprite(0);
 			contextFront.translate(player.x, player.y);
 			contextFront.rotate(player.angle * Math.PI / 180);
-			contextFront.drawImage(furyImage, sprite.x, sprite.y, sprite.w, sprite.h, 0, 0, sprite.w, sprite.h);
+			contextFront.drawImage(shipImage, sprite.x, sprite.y, sprite.w, sprite.h, 0, 0, sprite.w, sprite.h);
 			contextFront.rotate(-player.angle * Math.PI / 180);
 			contextFront.translate(-player.x, -player.y);
 			//contextFront.rotate(player.angle * Math.PI / 180);
@@ -235,19 +263,19 @@
 		
 		/*
 		var sprite = fury.getSprite(1);
-		contextFront.drawImage(furyImage, sprite.x, sprite.y, sprite.w, sprite.h, 10, 50, sprite.w, sprite.h);
+		contextFront.drawImage(shipImage, sprite.x, sprite.y, sprite.w, sprite.h, 10, 50, sprite.w, sprite.h);
 		
 		var sprite = fury.getSprite(2);
-		contextFront.drawImage(furyImage, sprite.x, sprite.y, sprite.w, sprite.h, 30, 50, sprite.w, sprite.h);
+		contextFront.drawImage(shipImage, sprite.x, sprite.y, sprite.w, sprite.h, 30, 50, sprite.w, sprite.h);
 		
 		var sprite = fury.getSprite(3);
-		contextFront.drawImage(furyImage, sprite.x, sprite.y, sprite.w, sprite.h, 50, 50, sprite.w, sprite.h);
+		contextFront.drawImage(shipImage, sprite.x, sprite.y, sprite.w, sprite.h, 50, 50, sprite.w, sprite.h);
 		
 		var sprite = fury.getSprite(4);
-		contextFront.drawImage(furyImage, sprite.x, sprite.y, sprite.w, sprite.h, 70, 50, sprite.w, sprite.h);
+		contextFront.drawImage(shipImage, sprite.x, sprite.y, sprite.w, sprite.h, 70, 50, sprite.w, sprite.h);
 		
 		var sprite = fury.getSprite(5);
-		contextFront.drawImage(furyImage, sprite.x, sprite.y, sprite.w, sprite.h, 90, 50, sprite.w, sprite.h);
+		contextFront.drawImage(shipImage, sprite.x, sprite.y, sprite.w, sprite.h, 90, 50, sprite.w, sprite.h);
 		*/
 	</script>
 	<canvas id="canvasBack" style="position:absolute;"></canvas>
