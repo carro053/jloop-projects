@@ -306,8 +306,9 @@
 		
 		function drawUI()
 		{
+			contextUI.clearRect(0, 0, canvasUI.width, canvasUI.height);
 			contextUI.fillStyle =  '#FFFFFF';
-			contextUI.fillText('Score: 0 Shields: 10',20,canvasUI.height - 40);
+			contextUI.fillText('Score: '+score+' Shields: '+player.data.shields,20,canvasUI.height - 40);
 		}
 
 		function gameLoop()
