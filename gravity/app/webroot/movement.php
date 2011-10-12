@@ -69,6 +69,7 @@
 			update: function() {
 				this.data.last_fired += timer.getSeconds();
 				var distance = Math.sqrt(Math.pow(this.data.target.x - this.data.x, 2) + Math.pow(this.data.target.y - this.data.y, 2));
+				console.log("Target X:"+this.data.target.x);
 				if(distance > 1)
 				{
 					//target angle
