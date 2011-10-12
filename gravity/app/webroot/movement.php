@@ -194,6 +194,8 @@
 		var contextFront = new Object();
 		var canvasBack = new Object();
 		var contextBack = new Object();
+		var canvasUI = new Object();
+		var contextUI = new Object();
 		
 		window.onload = function() {
 			canvasFront = document.getElementById('canvasFront');
@@ -214,6 +216,11 @@
 			contextBack = canvasBack.getContext('2d');
 			canvasBack.width = window.innerWidth;
 			canvasBack.height = window.innerHeight;
+			
+			canvasUI = document.getElementById('canvasUI');
+			contextUI = canvasUI.getContext('2d');
+			canvasUI.width = window.innerWidth;
+			canvasUI.height = window.innerHeight;
 			
 			shipSprites.onload = initialize();
 			
@@ -294,6 +301,11 @@
 		{
 			contextBack.fillStyle =  '#000000';
 			contextBack.fillRect(0, 0, canvasBack.width, canvasBack.height);
+		}
+		
+		function drawUI()
+		{
+			contextUI.fillText('Score: 0 Shields: 10',20,canvasUI.height - 40);
 		}
 
 		function gameLoop()
@@ -547,5 +559,6 @@
 	</script>
 	<canvas id="canvasBack" style="position:absolute;"></canvas>
 	<canvas id="canvasFront" style="position:absolute;"></canvas>
+	<canvas id="canvasUI" style="position:absolute;"></canvas>
 </body>
 </html>
