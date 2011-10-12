@@ -561,6 +561,7 @@
 					target: target
 				}
 			);
+			drawUI();
 		}
 	</script>
 	<canvas id="canvasBack" style="position:absolute;"></canvas>
