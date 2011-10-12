@@ -80,6 +80,7 @@
 		player.yRightLaser = -15;
 		player.xLeftLaser = -6;
 		player.yLeftLaser = -15;
+		player.laser_color = 'rgb(0,255,0)';
 		
 		var level = [
 			//{x: 100, y: 100, w: 50, h: 100},
@@ -183,8 +184,9 @@
 							y = player.y + sin * player.yLeftLaser - cos * player.xLeftLaser;
 						}
 						var angle = player.angle;
+						var color = player.laser_color;
 						lasers.push(
-							{x: x, y: y, angle: angle}
+							{x: x, y: y, angle: angle, color: color}
 						);
 					default:
 						break;
@@ -302,7 +304,7 @@
 				contextFront.moveTo(lasers[l].x,lasers[l].y);
 				contextFront.lineTo(lasers[l].x + 10 * Math.cos((lasers[l].angle - 90) *(Math.PI/180)),lasers[l].y + 10 * Math.sin((lasers[l].angle - 90) *(Math.PI/180)));
 				contextFront.closePath();
-				contextFront.strokeStyle = "#00FF00";
+				contextFront.strokeStyle = lasers[l].color;
 				contextFront.stroke();
 			}
 			
