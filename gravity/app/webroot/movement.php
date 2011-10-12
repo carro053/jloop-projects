@@ -295,6 +295,7 @@
 
 		function updateObjects()
 		{
+			player.last_fired += timer.getSeconds();
 			var lastX = player.x;
 			var lastY = player.y;
 			var distance = Math.sqrt(Math.pow(target.x - player.x, 2) + Math.pow(target.y - player.y, 2));
