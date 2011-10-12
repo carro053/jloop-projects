@@ -321,7 +321,7 @@
 			}
 			for(var l in lasers)
 			{
-				
+				var hit = 0;
 				lasers[l].x += Math.cos((lasers[l].angle - 90) *(Math.PI/180)) * 500 * timer.getSeconds();
 				lasers[l].y += Math.sin((lasers[l].angle - 90) *(Math.PI/180)) * 500 * timer.getSeconds();
 				if(lasers[l].x < 0 || lasers[l].y < 0 || lasers[l].x > canvasFront.width || lasers[l].y > canvasFront.height)
@@ -337,7 +337,7 @@
 							for (var i = 0, n = pix.length; i < n; i += 4) {
 								if(pix[i+3] > 0)
 								{
-									lasers.splice(l, 1);
+									hit = 1;
 									player.data.shields -= 1;
 									if(player.data.shields == 0)
 									{
@@ -353,11 +353,9 @@
 							{
 								var imgd = contextFront.getImageData(lasers[l].x, lasers[l].y, 1, 1);
 								var pix = imgd.data;
-								var hit = 0;
 								for (var i = 0, n = pix.length; i < n; i += 4) if(pix[i+3] > 0) hit = 1;
 								if(hit == 1)
 								{
-									lasers.splice(l, 1);
 									ships[s].data.shields -= 1;
 									if(ships[s].data.shields == 0)
 									{
@@ -367,6 +365,10 @@
 							}
 						}
 					}
+				}
+				if(hit == 1)
+				{
+					lasers.splice(l, 1);
 				}
 			}
 			
