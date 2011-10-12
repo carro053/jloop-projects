@@ -506,6 +506,40 @@
 			);
 			ships.push(ship);
 		}
+		
+		function reset_game()
+		{
+			var gameInterval;
+			lasers.length = 0;
+			ships.length = 0;
+			score = 0;
+			ship_type = Math.floor(Math.random()*3) + 1;
+			shipData = getShipData(ship_type);
+			player  = new StarShip(
+				{
+					x: target.data.x = window.innerWidth / 2,
+					y: target.data.y = window.innerHeight / 2,
+					w: 39,
+					h: 40,
+					xOffset: 20,
+					yOffset: 20,
+					speed: 200,
+					angular_speed: 200,
+					angle: 0,
+					tracking_distance: 0,
+					ship: ship_type,
+					xRightLaser: shipData.xRightLaser,
+					yRightLaser: shipData.yRightLaser,
+					xLeftLaser: shipData.xLeftLaser,
+					yLeftLaser: shipData.yLeftLaser,
+					laserColor: shipData.laserColor,
+					laser_side: 0,
+					shields: 10,
+					last_fired: 0,
+					target: target
+				}
+			);
+		}
 	</script>
 	<canvas id="canvasBack" style="position:absolute;"></canvas>
 	<canvas id="canvasFront" style="position:absolute;"></canvas>
