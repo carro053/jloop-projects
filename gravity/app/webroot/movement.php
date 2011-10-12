@@ -139,9 +139,30 @@
 			canvasFront.height = window.innerHeight;
 			
 			canvasFront.onclick = function(e) {
+				var cos = Math.cos((player.angle + 90) * (Math.PI/180));
+				var sin = Math.sin((player.angle + 90) * (Math.PI/180));
+				var x;
+				var y;
+				if(laser_side == 1)
+				{
+					laser_side = 0;
+					x = player.x + sin * player.xRightLaser + cos * player.yRightLaser;
+					y = player.y + sin * player.yRightLaser - cos * player.xRightLaser;
+				}else{
+					laser_side = 1;
+					x = player.x + sin * player.xLeftLaser + cos * player.yLeftLaser;
+					y = player.y + sin * player.yLeftLaser - cos * player.xLeftLaser;
+				}
+				var angle = player.angle;
+				var color = player.laser_color;
+				lasers.push(
+					{x: x, y: y, angle: angle, color: color}
+				);
+			};
+			canvasFront.onmousemove = function(e) {
 				target.x = e.clientX - this.offsetLeft;
 				target.y = e.clientY - this.offsetTop;
-			};
+			}
 			
 			canvasBack = document.getElementById('canvasBack');
 			contextBack = canvasBack.getContext('2d');
@@ -206,25 +227,6 @@
 						player.laser_color = 'rgb(255,0,0)';
 						break;
 					case 55:
-						var cos = Math.cos((player.angle + 90) * (Math.PI/180));
-						var sin = Math.sin((player.angle + 90) * (Math.PI/180));
-						var x;
-						var y;
-						if(laser_side == 1)
-						{
-							laser_side = 0;
-							x = player.x + sin * player.xRightLaser + cos * player.yRightLaser;
-							y = player.y + sin * player.yRightLaser - cos * player.xRightLaser;
-						}else{
-							laser_side = 1;
-							x = player.x + sin * player.xLeftLaser + cos * player.yLeftLaser;
-							y = player.y + sin * player.yLeftLaser - cos * player.xLeftLaser;
-						}
-						var angle = player.angle;
-						var color = player.laser_color;
-						lasers.push(
-							{x: x, y: y, angle: angle, color: color}
-						);
 						break;
 					case 56:
 						var x = window.innerWidth / 2;
