@@ -61,9 +61,13 @@
 					}
 					var angle = this.data.angle;
 					var color = this.data.laser_color;
-					var side
+					var side = 0;
+					if(this.data.tracking_distance > 0)
+					{
+						side = 1;
+					}
 					lasers.push(
-						{x: x, y: y, angle: angle, color: color}
+						{x: x, y: y, angle: angle, color: color, side: side }
 					);
 				}
 			},
@@ -344,6 +348,14 @@
 				if(lasers[l].x < 0 || lasers[l].y < 0 || lasers[l].x > canvasFront.width || lasers[l].y > canvasFront.height)
 				{
 					lasers.splice(l, 1);
+				}else{
+					if(lasers[l].side == 1)
+					{
+						if(lasers[l].x < player.data.x + player.data.w / 2 && lasers[l].x > player.data.x - player.data.w / 2 && lasers[l].y < player.data.y + player.data.h / 2 && lasers[l].y > player.data.y - player.data.h / 2)
+						{
+							console.log("I am hit");
+						}
+					}
 				}
 			}
 			
