@@ -272,12 +272,17 @@
 			contextFront.drawImage(shipImage, sprite.x, sprite.y, sprite.w, sprite.h, 0, 0, sprite.w, sprite.h);
 			contextFront.rotate(-player.angle * Math.PI / 180);
 			contextFront.translate(-player.x, -player.y);
-			contextFront.strokeStyle = "#00FF00";
-			contextFront.fillStyle = "#FFFF00";
-			contextFront.moveTo(10,10);
-			contextFront.lineTo(150,50);
-			contextFront.lineTo(10,50);
-			contextFront.stroke();
+			for(var l in lasers)
+			{
+				contextFront.strokeStyle = "#00FF00";
+				contextFront.fillStyle = "#FFFF00";
+				contextFront.moveTo(10,10);
+				contextFront.lineTo(150,50);
+				contextFront.lineTo(10,50);
+				contextFront.stroke();
+				lasers[l].x += player.speed * timer.getSeconds();
+			}
+			
 		}
 		
 		/*
