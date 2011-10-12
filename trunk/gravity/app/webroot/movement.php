@@ -82,6 +82,7 @@
 		player.xLeftLaser = -6;
 		player.yLeftLaser = -15;
 		player.laser_color = 'rgb(0,255,0)';
+		player.shields = 10;
 		
 		var ships = new Array();
 		
@@ -178,53 +179,53 @@
 					case 49:
 						shipImage.src = 'fury_small.png';						
 						player.xRightLaser = 5;
-						player.yRightLaser = -15;
+						player.yRightLaser = -25;
 						player.xLeftLaser = -6;
-						player.yLeftLaser = -15;
+						player.yLeftLaser = -25;
 						player.laser_color = 'rgb(0,255,0)';
 						break;
 					case 50:
 						shipImage.src = 'phantom_small.png';						
 						player.xRightLaser = 12;
-						player.yRightLaser = 5;
+						player.yRightLaser = -5;
 						player.xLeftLaser = -12;
-						player.yLeftLaser = 5;
+						player.yLeftLaser = -5;
 						player.laser_color = 'rgb(0,255,0)';
 						
 						break;
 					case 51:
 						shipImage.src = 'mantis_small.png';						
 						player.xRightLaser = 13;
-						player.yRightLaser = -2;
+						player.yRightLaser = -12;
 						player.xLeftLaser = -14;
-						player.yLeftLaser = -2;
+						player.yLeftLaser = -12;
 						player.laser_color = 'rgb(0,255,0)';
 						
 						break;
 					case 52:
 						shipImage.src = 'defender_small.png';						
 						player.xRightLaser = 10;
-						player.yRightLaser = -13;
+						player.yRightLaser = -23;
 						player.xLeftLaser = -10;
-						player.yLeftLaser = -13;
+						player.yLeftLaser = -23;
 						player.laser_color = 'rgb(255,0,0)';
 						
 						break;
 					case 53:
 						shipImage.src = 'freighter_small.png';						
 						player.xRightLaser = 1;
-						player.yRightLaser = 0;
+						player.yRightLaser = -10;
 						player.xLeftLaser = -1;
-						player.yLeftLaser = 0;
+						player.yLeftLaser = -10;
 						player.laser_color = 'rgb(255,0,0)';
 						
 						break;
 					case 54:
 						shipImage.src = 'thunderclap_small.png';						
 						player.xRightLaser = 16;
-						player.yRightLaser = -5;
+						player.yRightLaser = -15;
 						player.xLeftLaser = -14;
-						player.yLeftLaser = 0;
+						player.yLeftLaser = -10;
 						player.laser_color = 'rgb(255,0,0)';
 						break;
 					case 55:
@@ -239,17 +240,18 @@
 						var speed = 150;
 						var angular_speed = 150;
 						var angle = Math.floor(Math.random()*360);
-						var tracking_distance = Math.floor(Math.random()*200) + 200;
+						var tracking_distance = Math.floor(Math.random()*200) + 100;
 						var xRightLaser = 5;
-						var yRightLaser = -15;
+						var yRightLaser = -25;
 						var xLeftLaser = -6;
-						var yLeftLaser = -15;
+						var yLeftLaser = -25;
 						var laser_color = 'rgb(0,255,0)';
 						var laser_side = 0;
 						var sImage = new Image();
 						sImage.src = 'small_fury.png';
+						var shields = 3;
 						ships.push(
-							{x: x, y: y, w: w, h: h, xOffset: xOffset, yOffset: yOffset, speed: speed, angular_speed: angular_speed, angle: angle, tracking_distance: tracking_distance, xRightLaser: xRightLaser, yRightLaser: yRightLaser, xLeftLaser: xLeftLaser, yLeftLaser: yLeftLaser, laser_color: laser_color, laser_side: laser_side, sImage: sImage}
+							{x: x, y: y, w: w, h: h, xOffset: xOffset, yOffset: yOffset, speed: speed, angular_speed: angular_speed, angle: angle, tracking_distance: tracking_distance, xRightLaser: xRightLaser, yRightLaser: yRightLaser, xLeftLaser: xLeftLaser, yLeftLaser: yLeftLaser, laser_color: laser_color, laser_side: laser_side, sImage: sImage, shields: shields}
 						);
 						break;
 					default:
@@ -421,8 +423,8 @@
 			for(var l in lasers)
 			{
 				contextFront.beginPath();
-				contextFront.moveTo(lasers[l].x,lasers[l].y);
-				contextFront.lineTo(lasers[l].x + 10 * Math.cos((lasers[l].angle - 90) *(Math.PI/180)),lasers[l].y + 10 * Math.sin((lasers[l].angle - 90) *(Math.PI/180)));
+				contextFront.moveTo(lasers[l].x - 10 * Math.cos((lasers[l].angle - 90) *(Math.PI/180)),lasers[l].y - 10 * Math.sin((lasers[l].angle - 90) *(Math.PI/180)));
+				contextFront.lineTo(lasers[l].x,lasers[l].y);
 				contextFront.closePath();
 				contextFront.strokeStyle = lasers[l].color;
 				contextFront.stroke();
