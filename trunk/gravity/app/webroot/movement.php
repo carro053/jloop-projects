@@ -373,7 +373,7 @@
 							if(ships[s].angle < 0) ships[s].angle += 360;
 							if(ships[s].angle >= 360) ships[s].angle -= 360;
 						}
-					}else{
+					}else if(Math.round(ta) != Math.round(ships[s].angle)){
 						var cos = Math.cos((ships[s].angle + 90) * (Math.PI/180));
 						var sin = Math.sin((ships[s].angle + 90) * (Math.PI/180));
 						var x;
