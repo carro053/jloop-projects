@@ -68,12 +68,12 @@
 			},
 			update: function() {
 				this.data.last_fired += timer.getSeconds();
-				var distance = Math.sqrt(Math.pow(this.data.target.x - this.data.x, 2) + Math.pow(this.data.target.y - this.data.y, 2));
-				console.log("Target X:"+this.data.target.x);
+				var distance = Math.sqrt(Math.pow(this.data.target.data.x - this.data.x, 2) + Math.pow(this.data.target.data.y - this.data.y, 2));
+				console.log("Target X:"+this.data.target.data.x);
 				if(distance > 1)
 				{
 					//target angle
-					var ta = Math.atan2(this.data.target.y - this.data.y,this.data.target.x - this.data.x) * 180 / Math.PI + 90;
+					var ta = Math.atan2(this.data.target.data.y - this.data.y,this.data.target.data.x - this.data.x) * 180 / Math.PI + 90;
 					if(ta < 0) ta += 360;
 					if(distance > this.data.tracking_distance && Math.round(ta) != Math.round(this.data.angle))
 					{
@@ -141,8 +141,8 @@
 		var player = new Object;
 		var ships = new Array();
 		var lps = 10;
-		player.x = target.x = window.innerWidth / 2;
-		player.y = target.y = window.innerHeight / 2;
+		player.x = target.data.x = window.innerWidth / 2;
+		player.y = target.data.y = window.innerHeight / 2;
 		player.w = 39;
 		player.h = 40;
 		player.xOffset = 20;
