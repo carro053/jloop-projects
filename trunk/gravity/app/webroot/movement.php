@@ -170,7 +170,7 @@
 						var x = player.x + player.xRightLaser + player.xRightLaser;
 						var y = player.y + player.xRightLaser + player.xRightLaser;
 						var angle = player.angle;
-						alert(xRightLaser + " " +x+" "+y);
+						alert(x+" "+y);
 						lasers.push(
 							{x: x, y: y, angle: angle}
 						);
