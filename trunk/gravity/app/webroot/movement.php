@@ -68,7 +68,7 @@
 		var target = new Object;
 		var player = new Object;
 		var ships = new Array();
-		var lps = 5;
+		var lps = 15;
 		player.x = target.x = window.innerWidth / 2;
 		player.y = target.y = window.innerHeight / 2;
 		player.w = 39;
