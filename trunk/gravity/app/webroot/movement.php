@@ -37,7 +37,7 @@
 		};
 		
 		var StarShip = function(ship) {
-			this = ship;
+			this.data = ship;
 		}
 		
 		StarShip.prototype = {
@@ -447,22 +447,6 @@
 			}
 			
 		}
-		/*
-		var sprite = fury.getSprite(1);
-		contextFront.drawImage(shipImage, sprite.x, sprite.y, sprite.w, sprite.h, 10, 50, sprite.w, sprite.h);
-		
-		var sprite = fury.getSprite(2);
-		contextFront.drawImage(shipImage, sprite.x, sprite.y, sprite.w, sprite.h, 30, 50, sprite.w, sprite.h);
-		
-		var sprite = fury.getSprite(3);
-		contextFront.drawImage(shipImage, sprite.x, sprite.y, sprite.w, sprite.h, 50, 50, sprite.w, sprite.h);
-		
-		var sprite = fury.getSprite(4);
-		contextFront.drawImage(shipImage, sprite.x, sprite.y, sprite.w, sprite.h, 70, 50, sprite.w, sprite.h);
-		
-		var sprite = fury.getSprite(5);
-		contextFront.drawImage(shipImage, sprite.x, sprite.y, sprite.w, sprite.h, 90, 50, sprite.w, sprite.h);
-		*/
 	</script>
 	<canvas id="canvasBack" style="position:absolute;"></canvas>
 	<canvas id="canvasFront" style="position:absolute;"></canvas>
