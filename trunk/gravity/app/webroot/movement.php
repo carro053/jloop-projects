@@ -289,13 +289,11 @@
 						var yLeftLaser = -25;
 						var laser_color = 'rgb(0,255,0)';
 						var laser_side = 0;
-						var sImage = new Image();
-						sImage.src = 'small_fury.png';
 						var shields = 3;
 						var last_fired = 0;
 						var mytarget = player;
 						var ship_type = 1;
-						var ship  = new StarShip({x: x, y: y, w: w, h: h, xOffset: xOffset, yOffset: yOffset, speed: speed, angular_speed: angular_speed, angle: angle, tracking_distance: tracking_distance, xRightLaser: xRightLaser, yRightLaser: yRightLaser, xLeftLaser: xLeftLaser, yLeftLaser: yLeftLaser, laser_color: laser_color, laser_side: laser_side, sImage: sImage, shields: shields, last_fired: last_fired, target: mytarget, ship: ship_type });
+						var ship  = new StarShip({x: x, y: y, w: w, h: h, xOffset: xOffset, yOffset: yOffset, speed: speed, angular_speed: angular_speed, angle: angle, tracking_distance: tracking_distance, xRightLaser: xRightLaser, yRightLaser: yRightLaser, xLeftLaser: xLeftLaser, yLeftLaser: yLeftLaser, laser_color: laser_color, laser_side: laser_side, shields: shields, last_fired: last_fired, target: mytarget, ship: ship_type });
 						ships.push(ship);
 						break;
 					default:
