@@ -158,7 +158,12 @@
 						
 						break;
 					case 52:
-						shipImage.src = 'defender_small.png';
+						shipImage.src = 'defender_small.png';						
+						player.xRightLaser = 5;
+						player.yRightLaser = -15;
+						player.xLeftLaser = -6;
+						player.yLeftLaser = -15;
+						player.laser_color = 'rgb(255,0,0)';
 						
 						break;
 					case 53:
