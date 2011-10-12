@@ -86,35 +86,6 @@
 			//{x: 200, y: 200, w: 160, h: 20}
 		];
 		
-		var fury = new SpriteSheet(
-			[
-				{id: 0, x: 0, y: 0, w: 39, h: 40},
-				{id: 15, x: 152, y: 0, w: 38, h: 38},
-				{id: 30, x: 114, y: 76, w: 38, h: 38},
-				{id: 45, x: 76, y: 114, w: 38, h: 38},
-				{id: 60, x: 114, y: 114, w: 38, h: 38},
-				{id: 75, x: 152, y: 114, w: 38, h: 38},
-				{id: 90, x: 190, y: 114, w: 38, h: 38},
-				{id: 105, x: 38, y: 0, w: 38, h: 38},
-				{id: 120, x: 76, y: 0, w: 38, h: 38},
-				{id: 135, x: 114, y: 0, w: 38, h: 38},
-				{id: 150, x: 190, y: 0, w: 38, h: 38},
-				{id: 165, x: 0, y: 38, w: 38, h: 38},
-				{id: 180, x: 38, y: 38, w: 38, h: 38},
-				{id: 195, x: 76, y: 38, w: 38, h: 38},
-				{id: 210, x: 114, y: 38, w: 38, h: 38},
-				{id: 225, x: 152, y: 38, w: 38, h: 38},
-				{id: 240, x: 190, y: 38, w: 38, h: 38},
-				{id: 255, x: 0, y: 76, w: 38, h: 38},
-				{id: 270, x: 38, y: 76, w: 38, h: 38},
-				{id: 285, x: 76, y: 76, w: 38, h: 38},
-				{id: 300, x: 152, y: 76, w: 38, h: 38},
-				{id: 315, x: 190, y: 76, w: 38, h: 38},
-				{id: 330, x: 0, y: 114, w: 38, h: 38},
-				{id: 345, x: 38, y: 114, w: 38, h: 38},
-			]
-		);
-		
 		var shipImage = new Image();
 		shipImage.src = 'small_fury.png';
 		
@@ -169,10 +140,10 @@
 					case 55:
 						var cos = Math.cos((player.angle - 90) * (Math.PI/180));
 						var sin = Math.sin((player.angle - 90) * (Math.PI/180));
-						var x = player.x - sin * player.xRightLaser - cos * player.yRightLaser;
-						var y = player.y - sin * player.yRightLaser - cos * player.xRightLaser;
+						var x = player.x + sin * player.xRightLaser + cos * player.yRightLaser;
+						var y = player.y + sin * player.yRightLaser + cos * player.xRightLaser;
 						var angle = player.angle;
-						alert(sin * player.xRightLaser+"-"+sin * player.yRightLaser+" "+cos * player.xRightLaser+"-"+cos * player.yRightLaser);
+						alert(sin * player.xRightLaser+"|"+sin * player.yRightLaser+" "+cos * player.xRightLaser+"|"+cos * player.yRightLaser);
 						lasers.push(
 							{x: x, y: y, angle: angle}
 						);
