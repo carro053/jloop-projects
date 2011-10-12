@@ -139,6 +139,7 @@
 </head>
 <body>
 	<script type="text/javascript">
+		var gameInterval;
 		var timer = new Timer();
 		var lasers = new Array();
 		var target = new Object;
@@ -285,7 +286,7 @@
 		{
 			drawBackground();
 			timer.tick();
-			setInterval(gameLoop, 20);
+			gameInterval = setInterval(gameLoop, 20);
 		}
 		
 		function drawBackground()
@@ -331,11 +332,13 @@
 								console.log(player.data.shields);
 								if(player.data.shields == 0)
 								{
-									if(score == 1)
+									var ship_text = 'ships';
+									if(score == 1) ship_text = 'ship';
+									if(confirm('You have died. You destroyed '+score+' '+ship_text+'.'))
 									{
-										alert('You have died. You destroyed '+score+' ship.');
+										window.location.reload();
 									}else{
-										alert('You have died. You destroyed '+score+' ships.');
+										clearInterval(gameInterval);
 									}
 								}
 							}
