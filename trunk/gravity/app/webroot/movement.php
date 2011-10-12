@@ -277,9 +277,10 @@
 				contextFront.strokeStyle = "#00FF00";
 				contextFront.fillStyle = "#FFFF00";
 				contextFront.moveTo(laser.x,laser.y);
-				contextFront.lineTo(laser.x + 5,laser.y);
+				contextFront.lineTo(laser.x + 5 * Math.cos((player.angle - 90) *(Math.PI/180)),laser.y + 5 * Math.sin((player.angle - 90) *(Math.PI/180)));
 				contextFront.stroke();
-				lasers[l].x += player.speed * timer.getSeconds();
+				lasers[l].x += Math.cos((player.angle - 90) *(Math.PI/180)) * player.speed * timer.getSeconds();
+				lasers[l].y += Math.sin((player.angle - 90) *(Math.PI/180)) * player.speed * timer.getSeconds();
 			}
 			
 		}
