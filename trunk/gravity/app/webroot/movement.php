@@ -175,18 +175,18 @@
 					case 52:
 						shipImage.src = 'defender_small.png';						
 						player.xRightLaser = 10;
-						player.yRightLaser = -18;
+						player.yRightLaser = -13;
 						player.xLeftLaser = -10;
-						player.yLeftLaser = -18;
+						player.yLeftLaser = -13;
 						player.laser_color = 'rgb(255,0,0)';
 						
 						break;
 					case 53:
 						shipImage.src = 'freighter_small.png';						
-						player.xRightLaser = 5;
-						player.yRightLaser = -15;
-						player.xLeftLaser = -6;
-						player.yLeftLaser = -15;
+						player.xRightLaser = 1;
+						player.yRightLaser = 0;
+						player.xLeftLaser = -1;
+						player.yLeftLaser = 0;
 						player.laser_color = 'rgb(255,0,0)';
 						
 						break;
