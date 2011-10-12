@@ -138,6 +138,7 @@
 		var timer = new Timer();
 		var lasers = new Array();
 		var target = new Object;
+		target.data = new Object;
 		var player = new Object;
 		var ships = new Array();
 		var lps = 10;
