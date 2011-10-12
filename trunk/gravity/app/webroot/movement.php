@@ -248,6 +248,13 @@
 					target.y = player.y = lastY;
 				}
 			}
+			for(var l in lasers)
+			{
+				
+				lasers[l].x += Math.cos((lasers[l].angle - 90) *(Math.PI/180)) * 50 * timer.getSeconds();
+				lasers[l].y += Math.sin((lasers[l].angle - 90) *(Math.PI/180)) * 50 * timer.getSeconds();
+				if(lasers[l].x < 0 || lasers[l].y < 0 || lasers[l].x > canvasFront.width || lasers[l].y > canvasFront.height) lasers.splice(l, 1);
+			}
 			
 		}
 
@@ -272,8 +279,6 @@
 				contextFront.moveTo(laser.x,laser.y);
 				contextFront.lineTo(laser.x + 10 * Math.cos((lasers[l].angle - 90) *(Math.PI/180)),laser.y + 10 * Math.sin((lasers[l].angle - 90) *(Math.PI/180)));
 				contextFront.stroke();
-				lasers[l].x += Math.cos((lasers[l].angle - 90) *(Math.PI/180)) * 50 * timer.getSeconds();
-				lasers[l].y += Math.sin((lasers[l].angle - 90) *(Math.PI/180)) * 50 * timer.getSeconds();
 			}
 			
 		}
