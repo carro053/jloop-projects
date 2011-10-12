@@ -76,7 +76,7 @@
 		player.angular_speed = 150;
 		player.angle = 0;
 		player.xRightLaser = 7;
-		player.YRightLaser = -20;
+		player.yRightLaser = 20;
 		
 		var level = [
 			//{x: 100, y: 100, w: 50, h: 100},
@@ -167,8 +167,8 @@
 					case 55:
 						var cos = Math.cos((player.angle - 90) * (Math.PI/180));
 						var sin = Math.sin((player.angle - 90) * (Math.PI/180));
-						var x = player.x + cos * player.xRightLaser + sin * player.xRightLaser;
-						var y = player.y + cos * player.xRightLaser + sin * player.xRightLaser;
+						var x = player.x + cos * player.xRightLaser + sin * player.yRightLaser;
+						var y = player.y + cos * player.yRightLaser + sin * player.xRightLaser;
 						var angle = player.angle;
 						alert(sin+" 1 "+cos+" 2 "+x+" 3 "+y);
 						lasers.push(
