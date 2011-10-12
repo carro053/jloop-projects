@@ -334,9 +334,9 @@
 								{
 									var ship_text = 'ships';
 									if(score == 1) ship_text = 'ship';
-									if(confirm('You have died. You destroyed '+score+' '+ship_text+'.'))
+									if(confirm('You have died. You destroyed '+score+' '+ship_text+'. Press OK to play again.'))
 									{
-										window.location.reload();
+										reset_game();
 									}else{
 										clearInterval(gameInterval);
 									}
