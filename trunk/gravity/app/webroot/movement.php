@@ -67,7 +67,6 @@
 		var lasers = new Array();
 		var target = new Object;
 		var player = new Object;
-		var laser_side = 0;
 		player.x = target.x = window.innerWidth / 2;
 		player.y = target.y = window.innerHeight / 2;
 		player.w = 39;
@@ -83,7 +82,7 @@
 		player.yLeftLaser = -15;
 		player.laser_color = 'rgb(0,255,0)';
 		player.shields = 10;
-		
+		player.laser_side = 0;
 		var ships = new Array();
 		
 		
@@ -144,13 +143,13 @@
 				var sin = Math.sin((player.angle + 90) * (Math.PI/180));
 				var x;
 				var y;
-				if(laser_side == 1)
+				if(player.laser_side == 1)
 				{
-					laser_side = 0;
+					player.laser_side = 0;
 					x = player.x + sin * player.xRightLaser + cos * player.yRightLaser;
 					y = player.y + sin * player.yRightLaser - cos * player.xRightLaser;
 				}else{
-					laser_side = 1;
+					player.laser_side = 1;
 					x = player.x + sin * player.xLeftLaser + cos * player.yLeftLaser;
 					y = player.y + sin * player.yLeftLaser - cos * player.xLeftLaser;
 				}
@@ -233,13 +232,13 @@
 						var sin = Math.sin((player.angle + 90) * (Math.PI/180));
 						var x;
 						var y;
-						if(laser_side == 1)
+						if(player.laser_side == 1)
 						{
-							laser_side = 0;
+							player.laser_side = 0;
 							x = player.x + sin * player.xRightLaser + cos * player.yRightLaser;
 							y = player.y + sin * player.yRightLaser - cos * player.xRightLaser;
 						}else{
-							laser_side = 1;
+							player.laser_side = 1;
 							x = player.x + sin * player.xLeftLaser + cos * player.yLeftLaser;
 							y = player.y + sin * player.yLeftLaser - cos * player.xLeftLaser;
 						}
