@@ -170,9 +170,9 @@
 						var cos = Math.cos((player.angle + 90) * (Math.PI/180));
 						var sin = Math.sin((player.angle + 90) * (Math.PI/180));
 						var x = player.x + sin * player.xRightLaser + cos * player.yRightLaser;
-						var y = player.y - sin * player.yRightLaser + cos * player.xRightLaser;
+						var y = player.y + sin * player.yRightLaser - cos * player.xRightLaser;
 						var angle = player.angle;
-						console.log(sin * player.xRightLaser+"|"+cos * player.yRightLaser+" "+cos * player.xRightLaser+"|"+-sin * player.yRightLaser);
+						console.log(sin * player.xRightLaser+"|"+cos * player.yRightLaser+" "+-cos * player.xRightLaser+"|"+sin * player.yRightLaser);
 						lasers.push(
 							{x: x, y: y, angle: angle}
 						);
