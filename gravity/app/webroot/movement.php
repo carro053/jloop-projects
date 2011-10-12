@@ -356,11 +356,12 @@
 							var imgd = contextFront.getImageData(lasers[l].x, lasers[l].y, 1, 1);
 							var pix = imgd.data;
 							for (var i = 0, n = pix.length; i < n; i += 4) {
-								console.log(pix[i+3]);
-							    // i+3 is alpha (the fourth element)
+								if(pix[i+3] > 0)
+								{
+									console.log("I am hit");
+									lasers.splice(l, 1);
+								}
 							}
-							//console.log("I am hit");
-							//lasers.splice(l, 1);
 						}
 					}
 				}
