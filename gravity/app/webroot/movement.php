@@ -287,8 +287,8 @@
 			for(var l in lasers)
 			{
 				contextFront.beginPath();
-				contextFront.moveTo(laser.x,laser.y);
-				contextFront.lineTo(laser.x + 10 * Math.cos((lasers[l].angle - 90) *(Math.PI/180)),laser.y + 10 * Math.sin((lasers[l].angle - 90) *(Math.PI/180)));
+				contextFront.moveTo(lasers[l].x,lasers[l].y);
+				contextFront.lineTo(lasers[l].x + 10 * Math.cos((lasers[l].angle - 90) *(Math.PI/180)),lasers[l].y + 10 * Math.sin((lasers[l].angle - 90) *(Math.PI/180)));
 				contextFront.closePath();
 				contextFront.strokeStyle = "#00FF00";
 				contextFront.stroke();
