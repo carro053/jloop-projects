@@ -160,7 +160,7 @@
 		player.last_fired = 0;
 		player.target = target;
 		player.tracking_distance = 0;
-		
+		player.ship = 1;
 		player = new StarShip(player);
 		
 		
@@ -173,37 +173,19 @@
 			//{x: 200, y: 200, w: 160, h: 20}
 		];
 		
-		var fury = new SpriteSheet(
+		var shipSpritesheet = new SpriteSheet(
 			[
-				{id: 0, x: 0, y: 0, w: 39, h: 40},
-				{id: 15, x: 152, y: 0, w: 38, h: 38},
-				{id: 30, x: 114, y: 76, w: 38, h: 38},
-				{id: 45, x: 76, y: 114, w: 38, h: 38},
-				{id: 60, x: 114, y: 114, w: 38, h: 38},
-				{id: 75, x: 152, y: 114, w: 38, h: 38},
-				{id: 90, x: 190, y: 114, w: 38, h: 38},
-				{id: 105, x: 38, y: 0, w: 38, h: 38},
-				{id: 120, x: 76, y: 0, w: 38, h: 38},
-				{id: 135, x: 114, y: 0, w: 38, h: 38},
-				{id: 150, x: 190, y: 0, w: 38, h: 38},
-				{id: 165, x: 0, y: 38, w: 38, h: 38},
-				{id: 180, x: 38, y: 38, w: 38, h: 38},
-				{id: 195, x: 76, y: 38, w: 38, h: 38},
-				{id: 210, x: 114, y: 38, w: 38, h: 38},
-				{id: 225, x: 152, y: 38, w: 38, h: 38},
-				{id: 240, x: 190, y: 38, w: 38, h: 38},
-				{id: 255, x: 0, y: 76, w: 38, h: 38},
-				{id: 270, x: 38, y: 76, w: 38, h: 38},
-				{id: 285, x: 76, y: 76, w: 38, h: 38},
-				{id: 300, x: 152, y: 76, w: 38, h: 38},
-				{id: 315, x: 190, y: 76, w: 38, h: 38},
-				{id: 330, x: 0, y: 114, w: 38, h: 38},
-				{id: 345, x: 38, y: 114, w: 38, h: 38},
+				{id: 1, x:  0, y:  0, w: 39, h: 40},
+				{id: 2, x: 39, y:  0, w: 39, h: 40},
+				{id: 3, x: 78, y:  0, w: 39, h: 40},
+				{id: 4, x:  0, y: 40, w: 39, h: 40},
+				{id: 5, x: 39, y: 40, w: 39, h: 40},
+				{id: 6, x: 78, y: 40, w: 39, h: 40},
 			]
 		);
 		
-		var shipImage = new Image();
-		shipImage.src = 'small_fury.png';
+		var shipSprites = new Image();
+		shipSprites.src = 'ship_sprites.png';
 		
 		var canvasFront = new Object();
 		var contextFront = new Object();
@@ -230,21 +212,21 @@
 			canvasBack.width = window.innerWidth;
 			canvasBack.height = window.innerHeight;
 			
-			shipImage.onload = initialize();
+			shipSprites.onload = initialize();
 			
 			window.onkeypress = function(e) {
 				//console.log('e.which = ' + e.which + ', e.keyCode = ' + e.keyCode);
 				switch(e.keyCode) {
-					case 49:
-						shipImage.src = 'fury_small.png';						
-						player.xRightLaser = 5;
-						player.yRightLaser = -25;
-						player.xLeftLaser = -6;
-						player.yLeftLaser = -25;
-						player.laser_color = 'rgb(0,255,0)';
+					case 49:				
+						player.data.ship = 1;
+						player.data.xRightLaser = 5;
+						player.data.yRightLaser = -25;
+						player.data.xLeftLaser = -6;
+						player.data.yLeftLaser = -25;
+						player.data.laser_color = 'rgb(0,255,0)';
 						break;
 					case 50:
-						shipImage.src = 'phantom_small.png';						
+						player.data.ship = 2;						
 						player.xRightLaser = 12;
 						player.yRightLaser = -5;
 						player.xLeftLaser = -12;
@@ -253,7 +235,7 @@
 						
 						break;
 					case 51:
-						shipImage.src = 'mantis_small.png';						
+						player.data.ship = 3;						
 						player.xRightLaser = 13;
 						player.yRightLaser = -12;
 						player.xLeftLaser = -14;
@@ -262,7 +244,7 @@
 						
 						break;
 					case 52:
-						shipImage.src = 'defender_small.png';						
+						player.data.ship = 4;					
 						player.xRightLaser = 10;
 						player.yRightLaser = -23;
 						player.xLeftLaser = -10;
@@ -271,7 +253,7 @@
 						
 						break;
 					case 53:
-						shipImage.src = 'freighter_small.png';						
+						player.data.ship = 5;						
 						player.xRightLaser = 1;
 						player.yRightLaser = -10;
 						player.xLeftLaser = -1;
@@ -280,7 +262,7 @@
 						
 						break;
 					case 54:
-						shipImage.src = 'thunderclap_small.png';						
+						player.data.ship = 6;					
 						player.xRightLaser = 16;
 						player.yRightLaser = -15;
 						player.xLeftLaser = -14;
@@ -312,7 +294,8 @@
 						var shields = 3;
 						var last_fired = 0;
 						var mytarget = player;
-						var ship  = new StarShip({x: x, y: y, w: w, h: h, xOffset: xOffset, yOffset: yOffset, speed: speed, angular_speed: angular_speed, angle: angle, tracking_distance: tracking_distance, xRightLaser: xRightLaser, yRightLaser: yRightLaser, xLeftLaser: xLeftLaser, yLeftLaser: yLeftLaser, laser_color: laser_color, laser_side: laser_side, sImage: sImage, shields: shields, last_fired: last_fired, target: mytarget });
+						var ship_type = 1;
+						var ship  = new StarShip({x: x, y: y, w: w, h: h, xOffset: xOffset, yOffset: yOffset, speed: speed, angular_speed: angular_speed, angle: angle, tracking_distance: tracking_distance, xRightLaser: xRightLaser, yRightLaser: yRightLaser, xLeftLaser: xLeftLaser, yLeftLaser: yLeftLaser, laser_color: laser_color, laser_side: laser_side, sImage: sImage, shields: shields, last_fired: last_fired, target: mytarget, ship: ship_type });
 						ships.push(ship);
 						break;
 					default:
@@ -374,9 +357,10 @@
 
 		function drawObjects()
 		{
+			var sprite = shipSpritesheet.getSprite(player.data.ship);
 			contextFront.translate(player.data.x, player.data.y);
-			contextFront.rotate(player.data.angle * Math.PI / 180);
-			contextFront.drawImage(shipImage, 0, 0, player.data.w, player.data.h, -player.data.xOffset, -player.data.yOffset, player.data.w, player.data.h);
+			contextFront.rotate(player.data.angle * Math.PI / 180);sprite.x, sprite.y, sprite.w, sprite.h, 10, 50, sprite.w, sprite.h
+			contextFront.drawImage(shipSprites, sprite.x, sprite.y, sprite.w, sprite.h, -player.data.xOffset, -player.data.yOffset, sprite.w, sprite.h);
 			contextFront.rotate(-player.data.angle * Math.PI / 180);
 			contextFront.translate(-player.data.x, -player.data.y);
 			for(var l in lasers)
@@ -390,10 +374,10 @@
 			}
 			for(var s in ships)
 			{
-				var sprite = fury.getSprite(0);
+				var sprite = shipSpritesheet.getSprite(ships[s].data.ship);
 				contextFront.translate(ships[s].data.x, ships[s].data.y);
 				contextFront.rotate(ships[s].data.angle * Math.PI / 180);
-				contextFront.drawImage(ships[s].data.sImage, 0, 0, ships[s].data.w, ships[s].data.h, -ships[s].data.xOffset, -ships[s].data.yOffset, ships[s].data.w, ships[s].data.h);
+				contextFront.drawImage(shipSprites, sprite.x, sprite.y, sprite.w, sprite.h, -ships[s].data.xOffset, -ships[s].data.yOffset, sprite.w, sprite.h);
 				contextFront.rotate(-ships[s].data.angle * Math.PI / 180);
 				contextFront.translate(-ships[s].data.x, -ships[s].data.y);
 			}
