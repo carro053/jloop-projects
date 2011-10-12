@@ -76,7 +76,7 @@
 		player.speed = 150;
 		player.angular_speed = 150;
 		player.angle = 0;
-		player.xRightLaser = 6;
+		player.xRightLaser = 5;
 		player.yRightLaser = -15;
 		player.xLeftLaser = -6;
 		player.yLeftLaser = -15;
