@@ -227,47 +227,47 @@
 						break;
 					case 50:
 						player.data.ship = 2;						
-						player.xRightLaser = 12;
-						player.yRightLaser = -5;
-						player.xLeftLaser = -12;
-						player.yLeftLaser = -5;
-						player.laser_color = 'rgb(0,255,0)';
+						player.data.xRightLaser = 12;
+						player.data.yRightLaser = -5;
+						player.data.xLeftLaser = -12;
+						player.data.yLeftLaser = -5;
+						player.data.laser_color = 'rgb(0,255,0)';
 						
 						break;
 					case 51:
 						player.data.ship = 3;						
-						player.xRightLaser = 13;
-						player.yRightLaser = -12;
-						player.xLeftLaser = -14;
-						player.yLeftLaser = -12;
-						player.laser_color = 'rgb(0,255,0)';
+						player.data.xRightLaser = 13;
+						player.data.yRightLaser = -12;
+						player.data.xLeftLaser = -14;
+						player.data.yLeftLaser = -12;
+						player.data.laser_color = 'rgb(0,255,0)';
 						
 						break;
 					case 52:
 						player.data.ship = 4;					
-						player.xRightLaser = 10;
-						player.yRightLaser = -23;
-						player.xLeftLaser = -10;
-						player.yLeftLaser = -23;
-						player.laser_color = 'rgb(255,0,0)';
+						player.data.xRightLaser = 10;
+						player.data.yRightLaser = -23;
+						player.data.xLeftLaser = -10;
+						player.data.yLeftLaser = -23;
+						player.data.laser_color = 'rgb(255,0,0)';
 						
 						break;
 					case 53:
 						player.data.ship = 5;						
-						player.xRightLaser = 1;
-						player.yRightLaser = -10;
-						player.xLeftLaser = -1;
-						player.yLeftLaser = -10;
-						player.laser_color = 'rgb(255,0,0)';
+						player.data.xRightLaser = 1;
+						player.data.yRightLaser = -10;
+						player.data.xLeftLaser = -1;
+						player.data.yLeftLaser = -10;
+						player.data.laser_color = 'rgb(255,0,0)';
 						
 						break;
 					case 54:
 						player.data.ship = 6;					
-						player.xRightLaser = 16;
-						player.yRightLaser = -15;
-						player.xLeftLaser = -14;
-						player.yLeftLaser = -10;
-						player.laser_color = 'rgb(255,0,0)';
+						player.data.xRightLaser = 16;
+						player.data.yRightLaser = -15;
+						player.data.xLeftLaser = -14;
+						player.data.yLeftLaser = -10;
+						player.data.laser_color = 'rgb(255,0,0)';
 						break;
 					case 102:
 						player.fire_laser();
@@ -292,7 +292,7 @@
 						var shields = 3;
 						var last_fired = 0;
 						var mytarget = player;
-						var ship_type = 2;
+						var ship_type = 1;
 						var ship  = new StarShip({x: x, y: y, w: w, h: h, xOffset: xOffset, yOffset: yOffset, speed: speed, angular_speed: angular_speed, angle: angle, tracking_distance: tracking_distance, xRightLaser: xRightLaser, yRightLaser: yRightLaser, xLeftLaser: xLeftLaser, yLeftLaser: yLeftLaser, laser_color: laser_color, laser_side: laser_side, shields: shields, last_fired: last_fired, target: mytarget, ship: ship_type });
 						ships.push(ship);
 						break;
