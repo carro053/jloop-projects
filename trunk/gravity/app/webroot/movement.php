@@ -158,6 +158,7 @@
 		player.laser_side = 0;
 		player.last_fired = 0;
 		player.target = target;
+		player.tracking_distance = 0;
 		
 		player = new StarShip(player);
 		
