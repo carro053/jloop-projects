@@ -354,6 +354,7 @@
 						if(lasers[l].x < player.data.x + player.data.w / 2 && lasers[l].x > player.data.x - player.data.w / 2 && lasers[l].y < player.data.y + player.data.h / 2 && lasers[l].y > player.data.y - player.data.h / 2)
 						{
 							console.log("I am hit");
+							lasers.splice(l, 1);
 						}
 					}
 				}
