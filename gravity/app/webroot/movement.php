@@ -198,10 +198,22 @@
 		var contextUI = new Object();
 		
 		window.onload = function() {
+			
+			canvasBack = document.getElementById('canvasBack');
+			contextBack = canvasBack.getContext('2d');
+			canvasBack.width = window.innerWidth;
+			canvasBack.height = window.innerHeight;
+			
 			canvasFront = document.getElementById('canvasFront');
 			contextFront = canvasFront.getContext('2d');
 			canvasFront.width = window.innerWidth;
 			canvasFront.height = window.innerHeight;
+			
+			
+			canvasUI = document.getElementById('canvasUI');
+			contextUI = canvasUI.getContext('2d');
+			canvasUI.width = window.innerWidth;
+			canvasUI.height = window.innerHeight;
 			
 			canvasUI.onmousedown = function(e) {
 				player.fire_laser();
@@ -211,16 +223,6 @@
 				target.data.x = e.clientX - this.offsetLeft;
 				target.data.y = e.clientY - this.offsetTop;
 			};
-			
-			canvasBack = document.getElementById('canvasBack');
-			contextBack = canvasBack.getContext('2d');
-			canvasBack.width = window.innerWidth;
-			canvasBack.height = window.innerHeight;
-			
-			canvasUI = document.getElementById('canvasUI');
-			contextUI = canvasUI.getContext('2d');
-			canvasUI.width = window.innerWidth;
-			canvasUI.height = window.innerHeight;
 			
 			shipSprites.onload = initialize();
 			
