@@ -242,10 +242,11 @@
 						var xLeftLaser = -6;
 						var yLeftLaser = -15;
 						var laser_color = 'rgb(0,255,0)';
+						var laser_side = 0;
 						var sImage = new Image();
 						sImage.src = 'small_fury.png';
 						ships.push(
-							{x: x, y: y, w: w, h: h, xOffset: xOffset, yOffset: yOffset, speed: speed, angular_speed: angular_speed, angle: angle, xRightLaser: xRightLaser, yRightLaser: yRightLaser, xLeftLaser: xLeftLaser, yLeftLaser: yLeftLaser, laser_color: laser_color, sImage: sImage}
+							{x: x, y: y, w: w, h: h, xOffset: xOffset, yOffset: yOffset, speed: speed, angular_speed: angular_speed, angle: angle, xRightLaser: xRightLaser, yRightLaser: yRightLaser, xLeftLaser: xLeftLaser, yLeftLaser: yLeftLaser, laser_color: laser_color, laser_side: laser_side, sImage: sImage}
 						);
 						break;
 					default:
@@ -372,6 +373,26 @@
 							if(ships[s].angle < 0) ships[s].angle += 360;
 							if(ships[s].angle >= 360) ships[s].angle -= 360;
 						}
+					}else{
+						var cos = Math.cos((ships[s].angle + 90) * (Math.PI/180));
+						var sin = Math.sin((ships[s].angle + 90) * (Math.PI/180));
+						var x;
+						var y;
+						if(ships[s].laser_side == 1)
+						{
+							ships[s].laser_side = 0;
+							x = ships[s].x + sin * ships[s].xRightLaser + cos * ships[s].yRightLaser;
+							y = ships[s].y + sin * ships[s].yRightLaser - cos * ships[s].xRightLaser;
+						}else{
+							ships[s].laser_side = 1;
+							x = ships[s].x + sin * ships[s].xLeftLaser + cos * ships[s].yLeftLaser;
+							y = ships[s].y + sin * ships[s].yLeftLaser - cos * ships[s].xLeftLaser;
+						}
+						var angle = ships[s].angle;
+						var color = ships[s].laser_color;
+						lasers.push(
+							{x: x, y: y, angle: angle, color: color}
+						);
 					}
 				}
 				ships[s].x += Math.cos((ships[s].angle - 90) *(Math.PI/180)) * ships[s].speed * timer.getSeconds();
