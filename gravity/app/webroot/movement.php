@@ -75,10 +75,10 @@
 		player.speed = 150;
 		player.angular_speed = 150;
 		player.angle = 0;
-		player.xRightLaser = -7;
-		player.yRightLaser = 20;
+		player.xRightLaser = 7;
+		player.yRightLaser = -20;
 		player.xLeftLaser = -7;
-		player.yLeftLaser = 20;
+		player.yLeftLaser = -20;
 		
 		var level = [
 			//{x: 100, y: 100, w: 50, h: 100},
