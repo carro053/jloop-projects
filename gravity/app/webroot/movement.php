@@ -346,7 +346,7 @@
 							if(hit == 1)
 							{								
 								player.data.shields -= 1;
-								console.log(player.data.shields);
+								drawUI();
 								if(player.data.shields == 0)
 								{
 									var ship_text = 'ships';
@@ -374,6 +374,7 @@
 									if(ships[s].data.shields == 0)
 									{
 										score++;
+										drawUI();
 										ships.splice(s, 1);
 									}
 								}
