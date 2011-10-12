@@ -156,10 +156,10 @@
 						break;
 					case 50:
 						shipImage.src = 'phantom_small.png';						
-						player.xRightLaser = 10;
-						player.yRightLaser = 0;
-						player.xLeftLaser = -11;
-						player.yLeftLaser = 0;
+						player.xRightLaser = 14;
+						player.yRightLaser = 5;
+						player.xLeftLaser = -14;
+						player.yLeftLaser = 5;
 						player.laser_color = 'rgb(0,255,0)';
 						
 						break;
