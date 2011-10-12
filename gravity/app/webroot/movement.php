@@ -137,6 +137,7 @@
 			shipImage.onload = initialize();
 			
 			window.onkeypress = function(e) {
+				console.log('e.which = ' + e.which + ', e.keyCode = ' + e.keyCode);
 				switch(e.which) {
 					case 49:
 						shipImage.src = 'fury_small.png';
