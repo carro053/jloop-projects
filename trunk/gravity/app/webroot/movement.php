@@ -65,6 +65,10 @@
 						{x: x, y: y, angle: angle, color: color}
 					);
 				}
+			},
+			update_ship: function() {
+				
+			
 			}
 		}
 		
@@ -118,6 +122,9 @@
 		player.shields = 10;
 		player.laser_side = 0;
 		player.last_fired = 0;
+		player.target = target;
+		
+		player = new StarShip(player);
 		
 		
 		
@@ -173,7 +180,7 @@
 			canvasFront.height = window.innerHeight;
 			
 			canvasFront.onmousedown = function(e) {
-				fire_laser(player);
+				player.fire_laser();
 			};
 			
 			canvasFront.onmousemove = function(e) {
@@ -267,9 +274,9 @@
 						sImage.src = 'small_fury.png';
 						var shields = 3;
 						var last_fired = 0;
-						ships.push(
-							{x: x, y: y, w: w, h: h, xOffset: xOffset, yOffset: yOffset, speed: speed, angular_speed: angular_speed, angle: angle, tracking_distance: tracking_distance, xRightLaser: xRightLaser, yRightLaser: yRightLaser, xLeftLaser: xLeftLaser, yLeftLaser: yLeftLaser, laser_color: laser_color, laser_side: laser_side, sImage: sImage, shields: shields, last_fired: last_fired }
-						);
+						var target = player;
+						var ship  = new StarShip({x: x, y: y, w: w, h: h, xOffset: xOffset, yOffset: yOffset, speed: speed, angular_speed: angular_speed, angle: angle, tracking_distance: tracking_distance, xRightLaser: xRightLaser, yRightLaser: yRightLaser, xLeftLaser: xLeftLaser, yLeftLaser: yLeftLaser, laser_color: laser_color, laser_side: laser_side, sImage: sImage, shields: shields, last_fired: last_fired, target: target });
+						ships.push(ship);
 						break;
 					default:
 						break;
@@ -399,7 +406,7 @@
 							if(ships[s].angle >= 360) ships[s].angle -= 360;
 						}
 					}else if(Math.round(ta) == Math.round(ships[s].angle)){
-						fire_laser(ships[s]);
+						ships[s].fire_laser();
 					}
 				}
 				ships[s].x += Math.cos((ships[s].angle - 90) *(Math.PI/180)) * ships[s].speed * timer.getSeconds();
