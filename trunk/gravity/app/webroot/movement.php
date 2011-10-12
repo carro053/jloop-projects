@@ -138,7 +138,7 @@
 			canvasFront.width = window.innerWidth;
 			canvasFront.height = window.innerHeight;
 			
-			canvasFront.onclick = function(e) {
+			canvasFront.onmousedown = function(e) {
 				var cos = Math.cos((player.angle + 90) * (Math.PI/180));
 				var sin = Math.sin((player.angle + 90) * (Math.PI/180));
 				var x;
