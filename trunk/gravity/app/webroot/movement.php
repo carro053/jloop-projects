@@ -145,38 +145,32 @@
 		target.data = new Object;
 		var player = new Object;
 		var ships = new Array();
-		var lps = 10;
-		player.x = target.data.x = window.innerWidth / 2;
-		player.y = target.data.y = window.innerHeight / 2;
-		player.w = 39;
-		player.h = 40;
-		player.xOffset = 20;
-		player.yOffset = 20;
-		player.speed = 200;
-		player.angular_speed = 200;
-		player.angle = 0;
-		player.xRightLaser = 5;
-		player.yRightLaser = -15;
-		player.xLeftLaser = -6;
-		player.yLeftLaser = -15;
-		player.laserColor = 'rgb(0,255,0)';
-		player.shields = 10;
-		player.laser_side = 0;
-		player.last_fired = 0;
-		player.target = target;
-		player.tracking_distance = 0;
-		player.ship = 1;
-		player = new StarShip(player);
-		
-		
-		
-		
-		
-		var level = [
-			//{x: 100, y: 100, w: 50, h: 100},
-			//{x: 100, y: 20, w: 10, h: 10},
-			//{x: 200, y: 200, w: 160, h: 20}
-		];
+		var ship_type = Math.floor(Math.random()*3) + 1;
+		var shipData = getShipData(ship_type);
+		player  = new StarShip(
+			{
+				x: target.data.x = window.innerWidth / 2,
+				y: target.data.y = window.innerHeight / 2,
+				w: 39,
+				h: 40,
+				xOffset: 20,
+				yOffset: 20,
+				speed: 200,
+				angular_speed: 200,
+				angle: 0,
+				tracking_distance: 0,
+				ship: ship_type,
+				xRightLaser: shipData.xRightLaser,
+				yRightLaser: shipData.yRightLaser,
+				xLeftLaser: shipData.xLeftLaser,
+				yLeftLaser: shipData.yLeftLaser,
+				laserColor: shipData.laserColor,
+				laser_side: 0,
+				shields: 10,
+				last_fired: 0,
+				target: target
+			}
+		);
 		
 		var shipSpritesheet = new SpriteSheet(
 			[
@@ -296,12 +290,6 @@
 		{
 			contextBack.fillStyle =  '#000000';
 			contextBack.fillRect(0, 0, canvasBack.width, canvasBack.height);
-			
-			contextBack.fillStyle =  '#26537c';
-			for(var n in level)
-			{
-				contextBack.fillRect(level[n].x, level[n].y, level[n].w, level[n].h);
-			}
 		}
 
 		function gameLoop()
