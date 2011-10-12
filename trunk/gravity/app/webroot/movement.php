@@ -250,7 +250,7 @@
 			}
 			for(var l in lasers)
 			{
-				alert(lasers[l].x);
+				//alert(lasers[l].x);
 				contextFront.strokeStyle = lasers[l].color;
 				contextFront.beginPath();  
 				contextFront.moveTo(lasers[l].x,lasers[l].y);  
