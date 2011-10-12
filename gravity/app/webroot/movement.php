@@ -69,7 +69,6 @@
 			update: function() {
 				this.data.last_fired += timer.getSeconds();
 				var distance = Math.sqrt(Math.pow(this.data.target.data.x - this.data.x, 2) + Math.pow(this.data.target.data.y - this.data.y, 2));
-				console.log("Target X:"+this.data.target.data.x);
 				if(distance > 1)
 				{
 					//target angle
@@ -98,7 +97,7 @@
 							if(this.data.angle < 0) this.data.angle += 360;
 							if(this.data.angle >= 360) this.data.angle -= 360;
 						}
-					}else if(this.data.tracking_distance != 0 && Math.round(ta) == Math.round(ships[s].angle)){
+					}else if(this.data.tracking_distance != 0 && Math.round(ta) == Math.round(this.data.angle)){
 						this.fire_laser();
 					}
 				}
