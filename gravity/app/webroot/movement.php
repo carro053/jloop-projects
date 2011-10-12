@@ -341,6 +341,42 @@
 				}
 			}
 			
+			for(var s in ships)
+			{
+				var distance = Math.sqrt(Math.pow(player.x - ships[s].x, 2) + Math.pow(player.y - ships[s].y, 2));
+				if(distance > 1)
+				{
+					//target angle
+					var ta = Math.atan2(player.y - ships[s].y,player.x - ships[s].x) * 180 / Math.PI + 90;
+					if(ta < 0) ta += 360;
+					if(ta != ships[s].angle)
+					{
+						//angle diff
+						var ad = ta - ships[s].angle;
+						//change angle by this
+						var ca = 0;
+						if(ad < -180) ad += 360;
+						if(ad > 180) ad -= 360;
+						
+						if(ad < 0)//turn left
+						{
+							ca = -ships[s].angular_speed * timer.getSeconds();
+						}else{//turn right
+							ca = ships[s].angular_speed * timer.getSeconds();
+						}
+						if(Math.abs(ca) > Math.abs(ad))
+						{
+							ships[s].angle = ta;
+						}else{
+							ships[s].angle += ca;
+							if(ships[s].angle < 0) ships[s].angle += 360;
+							if(ships[s].angle >= 360) ships[s].angle -= 360;
+						}
+					}
+				}
+				ships[s].x += Math.cos((ships[s].angle - 90) *(Math.PI/180)) * ships[s].speed * timer.getSeconds();
+				ships[s].y += Math.sin((ships[s].angle - 90) *(Math.PI/180)) * ships[s].speed * timer.getSeconds();
+			}
 			
 		}
 
