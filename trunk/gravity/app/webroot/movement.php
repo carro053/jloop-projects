@@ -405,7 +405,7 @@
 			}
 			
 		}
-		function shipData(ship_type)
+		function getShipData(ship_type)
 		{
 			switch(ship_type) {
 				case 1:				
@@ -474,7 +474,7 @@
 			var angle = Math.floor(Math.random()*360);
 			var tracking_distance = Math.floor(Math.random()*200) + 100;
 			var ship_type = Math.floor(Math.random()*3) + 4;
-			var shipData = shipData(ship_type);
+			var shipData = getShipData(ship_type);
 			var laser_side = 0;
 			var shields = 3;
 			var last_fired = 0;
