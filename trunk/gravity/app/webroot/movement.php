@@ -102,7 +102,7 @@
 							if(this.data.angle < 0) this.data.angle += 360;
 							if(this.data.angle >= 360) this.data.angle -= 360;
 						}
-					}else if(this.data.tracking_distance != 0 && Math.round(ta) == Math.round(this.data.angle)){
+					}else if(this.data.tracking_distance != 0 && distance < 500 Math.round(ta) == Math.round(this.data.angle)){
 						this.fire_laser();
 					}
 				}
