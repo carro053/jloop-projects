@@ -63,7 +63,7 @@
 <body>
 	<script type="text/javascript">
 		var timer = new Timer();
-		var lasers = new Array;
+		var lasers = new Array();
 		var target = new Object;
 		var player = new Object;
 		player.x = player.y = target.x = target.y = 300;
@@ -74,12 +74,7 @@
 		player.speed = 150;
 		player.angular_speed = 150;
 		player.angle = 90;
-		var laser = new Object;
-		laser.x = 100;
-		laser.y = 100;
-		laser.angle = 45;
-		laser.color = 'rgb(0,200,0)';
-		lasers.push = laser;
+		
 		var level = [
 			//{x: 100, y: 100, w: 50, h: 100},
 			//{x: 100, y: 20, w: 10, h: 10},
@@ -132,6 +127,18 @@
 			canvasFront.onclick = function(e) {
 				target.x = e.clientX - this.offsetLeft - player.xOffset;
 				target.y = e.clientY - this.offsetTop - player.yOffset;
+				var x = player.x + player.xOffset;
+				var y = player.y + player.yOffset;
+				var angle = player.angle;
+			
+				lasers.push(
+					{x: x, y: y, angle: angle}
+				);
+				
+				
+				
+				
+				
 			};
 			
 			canvasBack = document.getElementById('canvasBack');
@@ -248,8 +255,6 @@
 					target.y = player.y = lastY;
 				}
 			}
-			var lasers_to_remove = new Array;
-			lasers_to_remove.length = 0;
 			for(var l in lasers)
 			{
 				
@@ -257,15 +262,11 @@
 				lasers[l].y += Math.sin((lasers[l].angle - 90) *(Math.PI/180)) * 50 * timer.getSeconds();
 				if(lasers[l].x < 0 || lasers[l].y < 0 || lasers[l].x > canvasFront.width || lasers[l].y > canvasFront.height)
 				{
-					lasers_to_remove.push = l;
+					lasers.splice(l, 1);
 					alert('gone');
 				}
 			}
-			for(var l in lasers_to_remove)
-			{
-				alert('test');
-				lasers.splice(lasers_to_remove[l],1);
-			}
+			
 			
 		}
 
@@ -285,10 +286,11 @@
 			contextFront.translate(-player.x, -player.y);
 			for(var l in lasers)
 			{
-				contextFront.strokeStyle = "#00FF00";
-				contextFront.fillStyle = "#FFFF00";
+				contextFront.beginPath();
 				contextFront.moveTo(laser.x,laser.y);
 				contextFront.lineTo(laser.x + 10 * Math.cos((lasers[l].angle - 90) *(Math.PI/180)),laser.y + 10 * Math.sin((lasers[l].angle - 90) *(Math.PI/180)));
+				contextFront.closePath();
+				contextFront.strokeStyle = "#00FF00";
 				contextFront.stroke();
 			}
 			
