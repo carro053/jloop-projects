@@ -404,11 +404,11 @@
 			for(var s in ships)
 			{
 				var sprite = fury.getSprite(0);
-				contextFront.translate(ships[s].x, ships[s].y);
-				contextFront.rotate(ships[s].angle * Math.PI / 180);
-				contextFront.drawImage(ships[s].sImage, 0, 0, ships[s].w, ships[s].h, -ships[s].xOffset, -ships[s].yOffset, ships[s].w, ships[s].h);
-				contextFront.rotate(-ships[s].angle * Math.PI / 180);
-				contextFront.translate(-ships[s].x, -ships[s].y);
+				contextFront.translate(ships[s].data.x, ships[s].data.data.y);
+				contextFront.rotate(ships[s].data.angle * Math.PI / 180);
+				contextFront.drawImage(ships[s].data.sImage, 0, 0, ships[s].data.w, ships[s].data.h, -ships[s].data.xOffset, -ships[s].data.yOffset, ships[s].data.w, ships[s].data.h);
+				contextFront.rotate(-ships[s].data.angle * Math.PI / 180);
+				contextFront.translate(-ships[s].data.x, -ships[s].data.y);
 			}
 			
 		}
