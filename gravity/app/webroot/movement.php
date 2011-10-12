@@ -145,6 +145,7 @@
 		target.data = new Object;
 		var player = new Object;
 		var ships = new Array();
+		var lps = 10;
 		var ship_type = Math.floor(Math.random()*3) + 1;
 		var shipData = getShipData(ship_type);
 		player  = new StarShip(
