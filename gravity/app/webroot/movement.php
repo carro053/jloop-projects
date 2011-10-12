@@ -234,8 +234,8 @@
 						var h = 40;
 						var xOffset = 20;
 						var yOffset = 20;
-						var speed = 150;
-						var angular_speed = 150;
+						var speed = 100;
+						var angular_speed = 100;
 						var angle = Math.floor(Math.random()*360);
 						var xRightLaser = 5;
 						var yRightLaser = -15;
