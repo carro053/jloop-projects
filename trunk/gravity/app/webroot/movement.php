@@ -349,18 +349,9 @@
 		function updateObjects()
 		{
 			player.update();
-			for(var n in level)
+			for(var s in ships)
 			{
-				if(
-					(player.x > level[n].x || player.x + player.w > level[n].x) && 
-					(player.x < level[n].x + level[n].w || player.x + player.w < level[n].x + level[n].w ) && 
-					(player.y > level[n].y || player.y + player.h > level[n].y) && 
-					(player.y < level[n].y + level[n].h || player.y + player.h < level[n].y + level[n].h)
-				)
-				{
-					target.x = player.x = lastX;
-					target.y = player.y = lastY;
-				}
+				ships[s].update();
 			}
 			for(var l in lasers)
 			{
@@ -371,11 +362,6 @@
 				{
 					lasers.splice(l, 1);
 				}
-			}
-			
-			for(var s in ships)
-			{
-				ships[s].update();
 			}
 			
 		}
