@@ -221,8 +221,8 @@
 			};
 			
 			canvasFront.onmousemove = function(e) {
-				target.x = e.clientX - this.offsetLeft;
-				target.y = e.clientY - this.offsetTop;
+				target.data.x = e.clientX - this.offsetLeft;
+				target.data.y = e.clientY - this.offsetTop;
 			};
 			
 			canvasBack = document.getElementById('canvasBack');
