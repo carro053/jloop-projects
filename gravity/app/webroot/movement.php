@@ -257,7 +257,7 @@
 				lasers[l].y += Math.sin((lasers[l].angle - 90) *(Math.PI/180)) * 50 * timer.getSeconds();
 				if(lasers[l].x < 0 || lasers[l].y < 0 || lasers[l].x > canvasFront.width || lasers[l].y > canvasFront.height)
 				{
-					lasers_to_remove[] = l;
+					lasers_to_remove.push = l;
 					alert('gone');
 				}
 			}
