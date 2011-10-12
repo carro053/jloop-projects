@@ -167,10 +167,10 @@
 					case 55:
 						var cos = Math.cos((player.angle - 90) * (Math.PI/180));
 						var sin = Math.sin((player.angle - 90) * (Math.PI/180));
-						var x = player.x + player.xRightLaser + player.yRightLaser;
-						var y = player.y + player.yRightLaser + player.xRightLaser;
+						var x = player.x + player.xRightLaser + player.xRightLaser;
+						var y = player.y + player.xRightLaser + player.xRightLaser;
 						var angle = player.angle;
-						alert(x+" "+y);
+						alert(xRightLaser + " " +x+" "+y);
 						lasers.push(
 							{x: x, y: y, angle: angle}
 						);
