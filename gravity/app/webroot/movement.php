@@ -234,7 +234,7 @@
 						var sImage = new Image();
 						sImage.src = 'small_fury.png';
 						var shields = 3;
-						var last_fired = timer.getTime();
+						var last_fired = 0;
 						ships.push(
 							{x: x, y: y, w: w, h: h, xOffset: xOffset, yOffset: yOffset, speed: speed, angular_speed: angular_speed, angle: angle, tracking_distance: tracking_distance, xRightLaser: xRightLaser, yRightLaser: yRightLaser, xLeftLaser: xLeftLaser, yLeftLaser: yLeftLaser, laser_color: laser_color, laser_side: laser_side, sImage: sImage, shields: shields}
 						);
