@@ -1,4 +1,5 @@
 
+
 <!doctype html>
 <html>
 <head>
@@ -66,14 +67,16 @@
 		var lasers = new Array();
 		var target = new Object;
 		var player = new Object;
-		player.x = player.y = target.x = target.y = 300;
+		player.x = player.y = target.x = target.y = 0;
 		player.w = 39;
 		player.h = 40;
 		player.xOffset = 20;
 		player.yOffset = 20;
 		player.speed = 150;
 		player.angular_speed = 150;
-		player.angle = 90;
+		player.angle = 0;
+		player.xRightLaser = 7;
+		player.YRightLaser = -20;
 		
 		var level = [
 			//{x: 100, y: 100, w: 50, h: 100},
@@ -125,20 +128,8 @@
 			canvasFront.height = window.innerHeight;
 			
 			canvasFront.onclick = function(e) {
-				target.x = e.clientX - this.offsetLeft - player.xOffset;
-				target.y = e.clientY - this.offsetTop - player.yOffset;
-				var x = player.x + player.xOffset;
-				var y = player.y + player.yOffset;
-				var angle = player.angle;
-			
-				lasers.push(
-					{x: x, y: y, angle: angle}
-				);
-				
-				
-				
-				
-				
+				target.x = e.clientX - this.offsetLeft;
+				target.y = e.clientY - this.offsetTop;
 			};
 			
 			canvasBack = document.getElementById('canvasBack');
@@ -173,6 +164,16 @@
 					case 54:
 						shipImage.src = 'thunderclap_small.png';
 						break;
+					case 55:
+						var cos = Math.cos((player.angle - 90) * (Math.PI/180));
+						var sin = Math.sin((player.angle - 90) * (Math.PI/180));
+						var x = player.x + player.xRightLaser + player.yRightLaser;
+						var y = player.y + player.yRightLaser + player.xRightLaser;
+						var angle = player.angle;
+						alert(x+" "+y);
+						lasers.push(
+							{x: x, y: y, angle: angle}
+						);
 					default:
 						break;
 				}
@@ -280,7 +281,7 @@
 			var sprite = fury.getSprite(0);
 			contextFront.translate(player.x, player.y);
 			contextFront.rotate(player.angle * Math.PI / 180);
-			contextFront.drawImage(shipImage, sprite.x, sprite.y, sprite.w, sprite.h, 0, 0, sprite.w, sprite.h);
+			contextFront.drawImage(shipImage, sprite.x, sprite.y, sprite.w, sprite.h, -player.xOffset, -player.yOffset, sprite.w, sprite.h);
 			contextFront.rotate(-player.angle * Math.PI / 180);
 			contextFront.translate(-player.x, -player.y);
 			for(var l in lasers)
@@ -315,4 +316,4 @@
 	<canvas id="canvasBack" style="position:absolute;"></canvas>
 	<canvas id="canvasFront" style="position:absolute;"></canvas>
 </body>
-</html>
+</html>s
