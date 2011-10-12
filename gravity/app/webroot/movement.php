@@ -74,8 +74,8 @@
 		player.h = 40;
 		player.xOffset = 20;
 		player.yOffset = 20;
-		player.speed = 250;
-		player.angular_speed = 250;
+		player.speed = 200;
+		player.angular_speed = 200;
 		player.angle = 0;
 		player.xRightLaser = 5;
 		player.yRightLaser = -15;
