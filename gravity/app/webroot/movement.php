@@ -74,7 +74,7 @@
 		player.h = 40;
 		player.xOffset = 20;
 		player.yOffset = 20;
-		player.speed = 300;
+		player.speed = 250;
 		player.angular_speed = 250;
 		player.angle = 0;
 		player.xRightLaser = 5;
@@ -351,6 +351,7 @@
 					if(ta < 0) ta += 360;
 					if(distance > 1000 && Math.round(ta) != Math.round(ships[s].angle))
 					{
+						console.log(distance);
 						//angle diff
 						var ad = ta - ships[s].angle;
 						//change angle by this
