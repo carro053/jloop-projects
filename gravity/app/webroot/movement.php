@@ -227,7 +227,6 @@
 						);
 						break;
 					case 56:
-						laser_side = 0;
 						var x = window.innerWidth / 2;
 						var y = window.innerHeight / 2;
 						var w = 39;
