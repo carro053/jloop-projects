@@ -255,7 +255,7 @@
 			var lastX = player.x;
 			var lastY = player.y;
 			var distance = Math.sqrt(Math.pow(target.x - player.x, 2) + Math.pow(target.y - player.y, 2));
-			if(distance > 2)
+			if(distance > 1)
 			{
 				//target angle
 				var ta = Math.atan2(target.y - player.y,target.x - player.x) * 180 / Math.PI + 90;
@@ -284,9 +284,9 @@
 						if(player.angle >= 360) player.angle -= 360;
 					}
 				}
-				player.x += Math.cos((player.angle - 90) *(Math.PI/180)) * player.speed * timer.getSeconds();
-				player.y += Math.sin((player.angle - 90) *(Math.PI/180)) * player.speed * timer.getSeconds();
 			}
+			player.x += Math.cos((player.angle - 90) *(Math.PI/180)) * player.speed * timer.getSeconds();
+			player.y += Math.sin((player.angle - 90) *(Math.PI/180)) * player.speed * timer.getSeconds();
 			for(var n in level)
 			{
 				if(
