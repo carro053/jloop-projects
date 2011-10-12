@@ -76,9 +76,9 @@
 		player.speed = 150;
 		player.angular_speed = 150;
 		player.angle = 0;
-		player.xRightLaser = 7;
+		player.xRightLaser = 6;
 		player.yRightLaser = -15;
-		player.xLeftLaser = -7;
+		player.xLeftLaser = -6;
 		player.yLeftLaser = -15;
 		
 		var level = [
