@@ -423,7 +423,7 @@
 					x = object.x + sin * object.xRightLaser + cos * object.yRightLaser;
 					y = object.y + sin * object.yRightLaser - cos * object.xRightLaser;
 				}else{
-					player.laser_side = 1;
+					object.laser_side = 1;
 					x = object.x + sin * object.xLeftLaser + cos * object.yLeftLaser;
 					y = object.y + sin * object.yLeftLaser - cos * object.xLeftLaser;
 				}
