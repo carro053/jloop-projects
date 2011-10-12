@@ -68,7 +68,8 @@
 		var target = new Object;
 		var player = new Object;
 		var laser_side = 0;
-		player.x = player.y = target.x = target.y = 0;
+		player.x = target.x = window.innerWidth / 2;
+		player.y = target.y = window.innerHeight / 2;
 		player.w = 39;
 		player.h = 40;
 		player.xOffset = 20;
