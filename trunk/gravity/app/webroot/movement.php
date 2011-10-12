@@ -170,7 +170,7 @@
 						var x = player.x - sin * player.xRightLaser + cos * player.yRightLaser;
 						var y = player.y + sin * player.yRightLaser - cos * player.xRightLaser;
 						var angle = player.angle;
-						//alert(sin+" 1 "+cos+" 2 "+x+" 3 "+y);
+						alert(player.x+"-"+x+" "+player.y+"-"+y);
 						lasers.push(
 							{x: x, y: y, angle: angle}
 						);
