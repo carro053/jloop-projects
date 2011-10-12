@@ -147,14 +147,29 @@
 				console.log('e.which = ' + e.which + ', e.keyCode = ' + e.keyCode);
 				switch(e.which) {
 					case 49:
-						shipImage.src = 'fury_small.png';
+						shipImage.src = 'fury_small.png';						
+						player.xRightLaser = 5;
+						player.yRightLaser = -15;
+						player.xLeftLaser = -6;
+						player.yLeftLaser = -15;
+						player.laser_color = 'rgb(0,255,0)';
 						break;
 					case 50:
-						shipImage.src = 'phantom_small.png';
+						shipImage.src = 'phantom_small.png';						
+						player.xRightLaser = 5;
+						player.yRightLaser = -15;
+						player.xLeftLaser = -6;
+						player.yLeftLaser = -15;
+						player.laser_color = 'rgb(0,255,0)';
 						
 						break;
 					case 51:
-						shipImage.src = 'mantis_small.png';
+						shipImage.src = 'mantis_small.png';						
+						player.xRightLaser = 5;
+						player.yRightLaser = -15;
+						player.xLeftLaser = -6;
+						player.yLeftLaser = -15;
+						player.laser_color = 'rgb(0,255,0)';
 						
 						break;
 					case 52:
@@ -167,11 +182,21 @@
 						
 						break;
 					case 53:
-						shipImage.src = 'freighter_small.png';
+						shipImage.src = 'freighter_small.png';						
+						player.xRightLaser = 5;
+						player.yRightLaser = -15;
+						player.xLeftLaser = -6;
+						player.yLeftLaser = -15;
+						player.laser_color = 'rgb(255,0,0)';
 						
 						break;
 					case 54:
-						shipImage.src = 'thunderclap_small.png';
+						shipImage.src = 'thunderclap_small.png';						
+						player.xRightLaser = 5;
+						player.yRightLaser = -15;
+						player.xLeftLaser = -6;
+						player.yLeftLaser = -15;
+						player.laser_color = 'rgb(255,0,0)';
 						break;
 					case 55:
 						var cos = Math.cos((player.angle + 90) * (Math.PI/180));
