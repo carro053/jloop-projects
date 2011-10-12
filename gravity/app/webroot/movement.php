@@ -74,8 +74,8 @@
 		player.h = 40;
 		player.xOffset = 20;
 		player.yOffset = 20;
-		player.speed = 150;
-		player.angular_speed = 150;
+		player.speed = 300;
+		player.angular_speed = 250;
 		player.angle = 0;
 		player.xRightLaser = 5;
 		player.yRightLaser = -15;
@@ -234,8 +234,8 @@
 						var h = 40;
 						var xOffset = 20;
 						var yOffset = 20;
-						var speed = 100;
-						var angular_speed = 100;
+						var speed = 150;
+						var angular_speed = 150;
 						var angle = Math.floor(Math.random()*360);
 						var xRightLaser = 5;
 						var yRightLaser = -15;
