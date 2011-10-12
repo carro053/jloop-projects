@@ -331,7 +331,12 @@
 								console.log(player.data.shields);
 								if(player.data.shields == 0)
 								{
-									alert('You have died. You destroyed '+score+' ships.');
+									if(score == 1)
+									{
+										alert('You have died. You destroyed '+score+' ship.');
+									}else{
+										alert('You have died. You destroyed '+score+' ships.');
+									}
 								}
 							}
 						}
