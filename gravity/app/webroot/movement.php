@@ -335,7 +335,7 @@
 			
 			for(var s in ships)
 			{
-				ships[s].last_fire += timer.getSeconds();
+				ships[s].last_fired += timer.getSeconds();
 				var distance = Math.sqrt(Math.pow(player.x - ships[s].x, 2) + Math.pow(player.y - ships[s].y, 2));
 				if(distance > 1)
 				{
@@ -345,7 +345,6 @@
 					
 					if(distance > ships[s].tracking_distance && Math.round(ta) != Math.round(ships[s].angle))
 					{
-						console.log(distance);
 						//angle diff
 						var ad = ta - ships[s].angle;
 						//change angle by this
