@@ -67,6 +67,8 @@
 		var lasers = new Array();
 		var target = new Object;
 		var player = new Object;
+		var ships = new Array();
+		var lps = 5;
 		player.x = target.x = window.innerWidth / 2;
 		player.y = target.y = window.innerHeight / 2;
 		player.w = 39;
@@ -83,7 +85,7 @@
 		player.laser_color = 'rgb(0,255,0)';
 		player.shields = 10;
 		player.laser_side = 0;
-		var ships = new Array();
+		player.last_fired = 0;
 		
 		
 		
@@ -139,25 +141,7 @@
 			canvasFront.height = window.innerHeight;
 			
 			canvasFront.onmousedown = function(e) {
-				var cos = Math.cos((player.angle + 90) * (Math.PI/180));
-				var sin = Math.sin((player.angle + 90) * (Math.PI/180));
-				var x;
-				var y;
-				if(player.laser_side == 1)
-				{
-					player.laser_side = 0;
-					x = player.x + sin * player.xRightLaser + cos * player.yRightLaser;
-					y = player.y + sin * player.yRightLaser - cos * player.xRightLaser;
-				}else{
-					player.laser_side = 1;
-					x = player.x + sin * player.xLeftLaser + cos * player.yLeftLaser;
-					y = player.y + sin * player.yLeftLaser - cos * player.xLeftLaser;
-				}
-				var angle = player.angle;
-				var color = player.laser_color;
-				lasers.push(
-					{x: x, y: y, angle: angle, color: color}
-				);
+				fire_laser(player);
 			};
 			
 			canvasFront.onmousemove = function(e) {
@@ -228,25 +212,29 @@
 						player.laser_color = 'rgb(255,0,0)';
 						break;
 					case 102:
-						var cos = Math.cos((player.angle + 90) * (Math.PI/180));
-						var sin = Math.sin((player.angle + 90) * (Math.PI/180));
-						var x;
-						var y;
-						if(player.laser_side == 1)
+						if(player.last_fired > 1 / lps)
 						{
-							player.laser_side = 0;
-							x = player.x + sin * player.xRightLaser + cos * player.yRightLaser;
-							y = player.y + sin * player.yRightLaser - cos * player.xRightLaser;
-						}else{
-							player.laser_side = 1;
-							x = player.x + sin * player.xLeftLaser + cos * player.yLeftLaser;
-							y = player.y + sin * player.yLeftLaser - cos * player.xLeftLaser;
+							player.last_fired = 0;
+							var cos = Math.cos((player.angle + 90) * (Math.PI/180));
+							var sin = Math.sin((player.angle + 90) * (Math.PI/180));
+							var x;
+							var y;
+							if(player.laser_side == 1)
+							{
+								player.laser_side = 0;
+								x = player.x + sin * player.xRightLaser + cos * player.yRightLaser;
+								y = player.y + sin * player.yRightLaser - cos * player.xRightLaser;
+							}else{
+								player.laser_side = 1;
+								x = player.x + sin * player.xLeftLaser + cos * player.yLeftLaser;
+								y = player.y + sin * player.yLeftLaser - cos * player.xLeftLaser;
+							}
+							var angle = player.angle;
+							var color = player.laser_color;
+							lasers.push(
+								{x: x, y: y, angle: angle, color: color}
+							);
 						}
-						var angle = player.angle;
-						var color = player.laser_color;
-						lasers.push(
-							{x: x, y: y, angle: angle, color: color}
-						);
 						break;
 					case 56:
 						var x = window.innerWidth / 2;
@@ -268,6 +256,7 @@
 						var sImage = new Image();
 						sImage.src = 'small_fury.png';
 						var shields = 3;
+						var last_fired = timer.getTime();
 						ships.push(
 							{x: x, y: y, w: w, h: h, xOffset: xOffset, yOffset: yOffset, speed: speed, angular_speed: angular_speed, angle: angle, tracking_distance: tracking_distance, xRightLaser: xRightLaser, yRightLaser: yRightLaser, xLeftLaser: xLeftLaser, yLeftLaser: yLeftLaser, laser_color: laser_color, laser_side: laser_side, sImage: sImage, shields: shields}
 						);
@@ -458,7 +447,32 @@
 			}
 			
 		}
-		
+		function fire_laser(object)
+		{
+			if(object.last_fired > 1 / lps)
+			{
+				object.last_fired = 0;
+				var cos = Math.cos((object.angle + 90) * (Math.PI/180));
+				var sin = Math.sin((object.angle + 90) * (Math.PI/180));
+				var x;
+				var y;
+				if(object.laser_side == 1)
+				{
+					object.laser_side = 0;
+					x = object.x + sin * object.xRightLaser + cos * object.yRightLaser;
+					y = object.y + sin * object.yRightLaser - cos * object.xRightLaser;
+				}else{
+					player.laser_side = 1;
+					x = object.x + sin * object.xLeftLaser + cos * object.yLeftLaser;
+					y = object.y + sin * object.yLeftLaser - cos * object.xLeftLaser;
+				}
+				var angle = object.angle;
+				var color = object.laser_color;
+				lasers.push(
+					{x: x, y: y, angle: angle, color: color}
+				);
+			}
+		}
 		/*
 		var sprite = fury.getSprite(1);
 		contextFront.drawImage(shipImage, sprite.x, sprite.y, sprite.w, sprite.h, 10, 50, sprite.w, sprite.h);
