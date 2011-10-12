@@ -203,11 +203,11 @@
 			canvasFront.width = window.innerWidth;
 			canvasFront.height = window.innerHeight;
 			
-			canvasFront.onmousedown = function(e) {
+			window.onmousedown = function(e) {
 				player.fire_laser();
 			};
 			
-			canvasFront.onmousemove = function(e) {
+			window.onmousemove = function(e) {
 				target.data.x = e.clientX - this.offsetLeft;
 				target.data.y = e.clientY - this.offsetTop;
 			};
