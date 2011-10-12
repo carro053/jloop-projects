@@ -293,6 +293,7 @@
 		function initialize()
 		{
 			drawBackground();
+			drawUI();
 			timer.tick();
 			gameInterval = setInterval(gameLoop, 20);
 		}
