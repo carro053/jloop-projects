@@ -140,6 +140,7 @@
 <body>
 	<script type="text/javascript">
 		var gameInterval;
+		var gameTime = 0;
 		var timer = new Timer();
 		var lasers = new Array();
 		var target = new Object;
@@ -305,6 +306,7 @@
 
 		function updateObjects()
 		{
+			gameTime += timer.getSeconds();
 			player.update();
 			for(var s in ships)
 			{
@@ -369,7 +371,7 @@
 					lasers.splice(l, 1);
 				}
 			}
-			
+			if(floor(gameTimer / 5) + 2 > ships.length) addEnemy(-50,-50);			
 		}
 
 		function clearCanvas()
@@ -509,7 +511,7 @@
 		
 		function reset_game()
 		{
-			var gameInterval;
+			gameTime = 0;
 			lasers.length = 0;
 			ships.length = 0;
 			score = 0;
