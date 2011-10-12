@@ -68,7 +68,7 @@
 		var target = new Object;
 		var player = new Object;
 		var ships = new Array();
-		var lps = 15;
+		var lps = 10;
 		player.x = target.x = window.innerWidth / 2;
 		player.y = target.y = window.innerHeight / 2;
 		player.w = 39;
@@ -157,7 +157,7 @@
 			shipImage.onload = initialize();
 			
 			window.onkeypress = function(e) {
-				console.log('e.which = ' + e.which + ', e.keyCode = ' + e.keyCode);
+				//console.log('e.which = ' + e.which + ', e.keyCode = ' + e.keyCode);
 				switch(e.keyCode) {
 					case 49:
 						shipImage.src = 'fury_small.png';						
