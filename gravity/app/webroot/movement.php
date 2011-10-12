@@ -79,7 +79,7 @@
 					//target angle
 					var ta = Math.atan2(this.data.target.data.y - this.data.y,this.data.target.data.x - this.data.x) * 180 / Math.PI + 90;
 					if(ta < 0) ta += 360;
-					if(distance > this.data.tracking_distance && ta != this.data.angle)
+					if(distance > this.data.tracking_distance && Math.round(ta) != Math.round(this.data.angle))
 					{
 						//angle diff
 						var ad = ta - this.data.angle;
@@ -102,7 +102,7 @@
 							if(this.data.angle < 0) this.data.angle += 360;
 							if(this.data.angle >= 360) this.data.angle -= 360;
 						}
-					}else if(this.data.tracking_distance != 0 && ta == this.data.angle){
+					}else if(this.data.tracking_distance != 0 && Math.round(ta) == Math.round(this.data.angle)){
 						this.fire_laser();
 					}
 				}
