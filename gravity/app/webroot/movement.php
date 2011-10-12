@@ -276,9 +276,8 @@
 			{
 				contextFront.strokeStyle = "#00FF00";
 				contextFront.fillStyle = "#FFFF00";
-				contextFront.moveTo(10,10);
-				contextFront.lineTo(150,50);
-				contextFront.lineTo(10,50);
+				contextFront.moveTo(laser.x,laser.y);
+				contextFront.lineTo(laser.x + 5,laser.y);
 				contextFront.stroke();
 				lasers[l].x += player.speed * timer.getSeconds();
 			}
