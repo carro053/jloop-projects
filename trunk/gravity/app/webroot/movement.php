@@ -79,7 +79,7 @@
 		laser.y = 100;
 		laser.angle = 45;
 		laser.color = 'rgb(0,200,0)';
-		lasers.push = laser;
+		lasers[] = laser;
 		var level = [
 			//{x: 100, y: 100, w: 50, h: 100},
 			//{x: 100, y: 20, w: 10, h: 10},
