@@ -328,6 +328,7 @@
 								{
 									hit = 1;
 									player.data.shields -= 1;
+									console.log(player.data.shields);
 									if(player.data.shields == 0)
 									{
 										alert('You are dead.');
