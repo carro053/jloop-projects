@@ -165,10 +165,10 @@
 						break;
 					case 51:
 						shipImage.src = 'mantis_small.png';						
-						player.xRightLaser = 12;
-						player.yRightLaser = 0;
-						player.xLeftLaser = -12;
-						player.yLeftLaser = 0;
+						player.xRightLaser = 13;
+						player.yRightLaser = -1;
+						player.xLeftLaser = -13;
+						player.yLeftLaser = -1;
 						player.laser_color = 'rgb(0,255,0)';
 						
 						break;
