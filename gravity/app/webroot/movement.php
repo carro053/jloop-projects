@@ -306,6 +306,7 @@
 		
 		function drawUI()
 		{
+			contextUI.fillStyle =  '#FFFFFF';
 			contextUI.fillText('Score: 0 Shields: 10',20,canvasUI.height - 40);
 		}
 
