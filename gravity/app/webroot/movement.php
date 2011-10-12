@@ -226,7 +226,7 @@
 							{x: x, y: y, angle: angle, color: color}
 						);
 						break;
-					case 58:
+					case 56:
 						laser_side = 0;
 						var x = window.innerWidth / 2;
 						var y = window.innerHeight / 2;
