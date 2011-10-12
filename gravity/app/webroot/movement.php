@@ -192,10 +192,10 @@
 						break;
 					case 54:
 						shipImage.src = 'thunderclap_small.png';						
-						player.xRightLaser = 5;
-						player.yRightLaser = -15;
-						player.xLeftLaser = -6;
-						player.yLeftLaser = -15;
+						player.xRightLaser = 13;
+						player.yRightLaser = -5;
+						player.xLeftLaser = -12;
+						player.yLeftLaser = 0;
 						player.laser_color = 'rgb(255,0,0)';
 						break;
 					case 55:
