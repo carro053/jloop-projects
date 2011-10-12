@@ -36,6 +36,38 @@
 			}
 		};
 		
+		var StarShip = function(ship) {
+			this = ship;
+		}
+		
+		StarShip.prototype = {
+			fire_lasers: function() {
+				if(this.last_fired > 1 / lps)
+				{
+					this.last_fired = 0;
+					var cos = Math.cos((this.angle + 90) * (Math.PI/180));
+					var sin = Math.sin((this.angle + 90) * (Math.PI/180));
+					var x;
+					var y;
+					if(this.laser_side == 1)
+					{
+						this.laser_side = 0;
+						x = this.x + sin * this.xRightLaser + cos * this.yRightLaser;
+						y = this.y + sin * this.yRightLaser - cos * this.xRightLaser;
+					}else{
+						this.laser_side = 1;
+						x = this.x + sin * this.xLeftLaser + cos * this.yLeftLaser;
+						y = this.y + sin * this.yLeftLaser - cos * this.xLeftLaser;
+					}
+					var angle = this.angle;
+					var color = this.laser_color;
+					lasers.push(
+						{x: x, y: y, angle: angle, color: color}
+					);
+				}
+			}
+		}
+		
 		var SpriteSequence = function(frames, sprites) {
 			this.frames = frames;
 			this.sprites = sprites;
@@ -407,32 +439,6 @@
 				contextFront.translate(-ships[s].x, -ships[s].y);
 			}
 			
-		}
-		function fire_laser(object)
-		{
-			if(object.last_fired > 1 / lps)
-			{
-				object.last_fired = 0;
-				var cos = Math.cos((object.angle + 90) * (Math.PI/180));
-				var sin = Math.sin((object.angle + 90) * (Math.PI/180));
-				var x;
-				var y;
-				if(object.laser_side == 1)
-				{
-					object.laser_side = 0;
-					x = object.x + sin * object.xRightLaser + cos * object.yRightLaser;
-					y = object.y + sin * object.yRightLaser - cos * object.xRightLaser;
-				}else{
-					object.laser_side = 1;
-					x = object.x + sin * object.xLeftLaser + cos * object.yLeftLaser;
-					y = object.y + sin * object.yLeftLaser - cos * object.xLeftLaser;
-				}
-				var angle = object.angle;
-				var color = object.laser_color;
-				lasers.push(
-					{x: x, y: y, angle: angle, color: color}
-				);
-			}
 		}
 		/*
 		var sprite = fury.getSprite(1);
