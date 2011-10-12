@@ -511,6 +511,7 @@
 		
 		function reset_game()
 		{
+			timer.previousTime = new Date().getTime();
 			gameTime = 0;
 			lasers.length = 0;
 			ships.length = 0;
