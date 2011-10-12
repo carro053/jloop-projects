@@ -371,7 +371,7 @@
 					lasers.splice(l, 1);
 				}
 			}
-			if(Math.floor(gameTime / 10) + 1 > ships.length) addEnemy(-50,-50);			
+			if(Math.floor(gameTime / 20) + 1 > ships.length) addEnemy(-50,-50);			
 		}
 
 		function clearCanvas()
