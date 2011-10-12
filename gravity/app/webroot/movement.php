@@ -274,12 +274,10 @@
 			contextFront.translate(-player.x, -player.y);
 			contextFront.strokeStyle = "#00FF00";
 			contextFront.fillStyle = "#FFFF00";
-			contextFront.beginPath();
-			contextFront.moveTo(lasers[l].x,lasers[l].y);  
-			contextFront.lineTo(lasers[l].x + 5,lasers[l].y); 
-			contextFront.closePath();
+			contextFront.moveTo(10,10);
+			contextFront.lineTo(150,50);
+			contextFront.lineTo(10,50);
 			contextFront.stroke();
-			contextFront.fill();
 		}
 		
 		/*
