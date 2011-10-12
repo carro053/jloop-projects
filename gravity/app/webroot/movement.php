@@ -146,6 +146,7 @@
 		var player = new Object;
 		var ships = new Array();
 		var lps = 10;
+		var score = 0;
 		var ship_type = Math.floor(Math.random()*3) + 1;
 		var shipData = getShipData(ship_type);
 		player  = new StarShip(
@@ -330,7 +331,7 @@
 								console.log(player.data.shields);
 								if(player.data.shields == 0)
 								{
-									alert('You are dead.');
+									alert('You have died. You destroyed '+score+' ships.');
 								}
 							}
 						}
@@ -347,6 +348,7 @@
 									ships[s].data.shields -= 1;
 									if(ships[s].data.shields == 0)
 									{
+										score++;
 										ships.splice(s, 1);
 									}
 								}
