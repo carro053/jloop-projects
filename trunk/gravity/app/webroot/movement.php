@@ -167,8 +167,8 @@
 						shipImage.src = 'thunderclap_small.png';
 						break;
 					case 55:
-						var cos = Math.cos((player.angle - 90) * (Math.PI/180));
-						var sin = Math.sin((player.angle - 90) * (Math.PI/180));
+						var cos = Math.cos((player.angle + 90) * (Math.PI/180));
+						var sin = Math.sin((player.angle + 90) * (Math.PI/180));
 						var x = player.x + sin * player.xRightLaser + cos * player.yRightLaser;
 						var y = player.y + sin * player.yRightLaser + cos * player.xRightLaser;
 						var angle = player.angle;
