@@ -576,8 +576,8 @@
 					shipData.xLeftLaser = -1;
 					shipData.yLeftLaser = -10;
 					shipData.laserColor = 'rgb(255,0,0)';
-					shipData.speed = 150;
-					shipData.angular_speed = 150;
+					shipData.speed = 250;
+					shipData.angular_speed = 250;
 					
 					break;
 				case 6:
@@ -668,6 +668,7 @@
 		{
 			if(level == 1)
 			{
+				addEnemy(-50,-50,5);
 				addEnemy(-50,-50,6);
 			}else if(level == 2)
 			{
@@ -681,6 +682,9 @@
 				addSquad(4,3);
 				addEnemy(-150,-50,6);
 				addEnemy(-50,-150,6);
+			}else if(level == 3)
+			{
+				addEnemy(-50,-50,5);
 			}
 		}
 		function reset_game()
