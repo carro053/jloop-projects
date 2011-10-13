@@ -689,8 +689,7 @@
 			}else if(level == 5)
 			{
 				addEnemy(-50,-50,5);
-			}else if(level == 6)
-			{
+			}else{
 				addSquad(5,7);
 			}
 		}
