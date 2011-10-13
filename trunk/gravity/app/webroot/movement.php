@@ -547,7 +547,7 @@
 		{
 			for(var s in stars)
 			{
-				stars[s].x += 60 * timer.getSeconds();
+				stars[s].x += 30 * timer.getSeconds();
 				contextBack.beginPath();
 				contextBack.arc(stars[s].x, stars[s].y, stars[s].r, 0, Math.PI*2, true); 
 				contextBack.closePath();
