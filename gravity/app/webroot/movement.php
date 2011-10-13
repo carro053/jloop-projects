@@ -444,6 +444,7 @@
 			updateObjects();
 			clearCanvas();
 			drawObjects();
+			hyperspace();
 			timer.tick();
 		}
 
@@ -545,14 +546,6 @@
 
 		function drawObjects()
 		{
-			for(var s in stars)
-			{
-				stars[s].x += 30 * timer.getSeconds();
-				contextBack.beginPath();
-				contextBack.arc(stars[s].x, stars[s].y, stars[s].r, 0, Math.PI*2, true); 
-				contextBack.closePath();
-				contextBack.fill();
-			}
 			var sprite = shipSpritesheet.getSprite(player.data.ship);
 			contextFront.translate(player.data.x, player.data.y);
 			contextFront.rotate(player.data.angle * Math.PI / 180);sprite.x, sprite.y, sprite.w, sprite.h, 10, 50, sprite.w, sprite.h
@@ -578,6 +571,19 @@
 				contextFront.translate(-ships[s].data.x, -ships[s].data.y);
 			}
 			
+		}
+		
+		function hyperspace()
+		{
+			for(var s in stars)
+			{
+			    contextBack.lineWidth = 1+i;
+			    contextBack.beginPath();
+			    contextBack.moveTo(stars[s].x,stars[s].y);
+			    stars[s].x += 120 * timer.getSeconds();
+			    contextBack.lineTo(stars[s].x,stars[s].y);
+			    contextBack.stroke();
+			}
 		}
 		function getShipData(ship_type)
 		{
