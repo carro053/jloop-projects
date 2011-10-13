@@ -210,6 +210,7 @@
 	<script type="text/javascript">
 		var gameInterval;
 		var gameTime = 0;
+		var level = 1;
 		var timer = new Timer();
 		var lasers = new Array();
 		var target = new Object;
@@ -382,7 +383,7 @@
 			contextUI.clearRect(0, 0, canvasUI.width, canvasUI.height);
 			contextUI.font = '40pt Arial';
 			contextUI.fillStyle =  '#FFFFFF';
-			contextUI.fillText('Score: '+score+' Shields: '+player.data.shields,20,canvasUI.height - 40);
+			contextUI.fillText('Level: '+level+' Score: '+score+' Shields: '+player.data.shields,20,canvasUI.height - 40);
 		}
 
 		function gameLoop()
@@ -449,12 +450,10 @@
 									{
 										if(ships[s].data.squad_number != null && ships[s].data.squad_leader == null)
 										{
-											console.log('leader down');
 											for(var q in ships)
 											{
 												if(q != s && ships[q].data.squad_number == ships[s].data.squad_number)
 												{
-													console.log('ship freed');
 													ships[q].data.squad_leader = null;
 													ships[q].data.squad_position = null;
 													ships[q].data.squad_number = null;
@@ -633,6 +632,7 @@
 			timer.previousTime = new Date().getTime();
 			timer.currentTime = new Date().getTime();
 			gameTime = 0;
+			level = 1;
 			lasers.length = 0;
 			ships.length = 0;
 			squads.length = 0;
