@@ -807,7 +807,7 @@
 		{
 			if(level == 1)
 			{
-				addEnemy(-50,-50,6);
+				//addEnemy(-50,-50,6);
 				addEnemy(-50,-50,5);
 			}else if(level == 2)
 			{
