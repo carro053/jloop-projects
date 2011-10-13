@@ -445,7 +445,6 @@
 			updateObjects();
 			clearCanvas();
 			drawObjects();
-			hyperspace();
 			timer.tick();
 		}
 
@@ -533,9 +532,8 @@
 			}
 			if(ships.length == 0)
 			{
-				level++;
-				drawUI();
-				nextLevel();
+				clearInterval(gameInterval);
+				gameInterval = setInterval(hyperspaceLoop, 20);
 			}
 			//if(Math.floor(gameTime / 20) + 1 > ships.length) addEnemy(-50,-50);			
 		}
@@ -574,7 +572,14 @@
 			
 		}
 		
-		function hyperspace()
+		function hyperspaceLoop()
+		{
+			hypserspace_ship();
+			clearCanvas();
+			drawObjects();
+			timer.tick();
+		}
+		function hyperspace_stars()
 		{
 			for(var s in stars)
 			{
@@ -585,6 +590,47 @@
 			    stars[s].x += 120 * timer.getSeconds();
 			    contextBack.lineTo(stars[s].x,stars[s].y);
 			    contextBack.stroke();
+			}
+		}
+		function hyperspace_ship();
+		{
+			if(player.data.angle != 270)
+			{
+				var ta = 270;
+				var ad = ta - player.data.angle;
+				//change angle by this
+				var ca = 0;
+				if(ad < -180) ad += 360;
+				if(ad > 180) ad -= 360;
+				if(ad < 0)//turn left
+				{
+					ca = -20 * timer.getSeconds();
+				}else{//turn right
+					ca = 20 * timer.getSeconds();
+				}
+				if(Math.abs(ca) > Math.abs(ad))
+				{
+					player.data.angle = ta;
+				}else{
+					player.data.angle += ca;
+					if(player.data.angle < 0) player.data.angle += 360;
+					if(player.data.angle >= 360) player.data.angle -= 360;
+				}
+			}else if(player.data.x > -150)
+			{
+				hyperspace_stars();
+				player.data.x += Math.cos((player.data.angle - 90) *(Math.PI/180)) * 120 * timer.getSeconds();
+				player.data.y += Math.sin((player.data.angle - 90) *(Math.PI/180)) * 120 * timer.getSeconds();
+			}else{
+				contextFront.clearRect(0, 0, canvasFront.width, canvasFront.height);
+				stars.length = 0;
+				drawBackground();
+				player.data.x = canvasFront.width + 150;
+				level++;
+				drawUI();
+				clearInterval(gameInterval);
+				gameInterval = setInterval(gameLoop, 20);
+				nextLevel();
 			}
 		}
 		function getShipData(ship_type)
