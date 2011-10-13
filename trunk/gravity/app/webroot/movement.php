@@ -216,6 +216,7 @@
 		var stars = new Array();
 		var arrived = 0;
 		var hyperspaceCharge = 0;
+		var jumpTime = 0;
 		var gameInterval;
 		var gameTime = 0;
 		var level = 0;
@@ -593,7 +594,7 @@
 			    contextBack.lineWidth = stars[s].r;
 			    contextBack.beginPath();
 			    contextBack.moveTo(stars[s].x,stars[s].y);
-			    stars[s].x += 120 * timer.getSeconds();
+			    stars[s].x += Math,pow(1 + jumpTime, 2) * 120 * timer.getSeconds();
 			    contextBack.lineTo(stars[s].x,stars[s].y);
 			    contextBack.stroke();
 			}
@@ -629,9 +630,10 @@
 				hyperspaceCharge += timer.getSeconds();
 			}else if(arrived == 0 && player.data.x > -150)
 			{
+				jumpTime != timer.getSeconds();
 				hyperspace_stars();
-				player.data.x += Math.cos((player.data.angle - 90) *(Math.PI/180)) * 1200 * timer.getSeconds();
-				player.data.y += Math.sin((player.data.angle - 90) *(Math.PI/180)) * 1200 * timer.getSeconds();
+				player.data.x += Math.cos((player.data.angle - 90) *(Math.PI/180)) * Math,pow(1 + jumpTime, 2) * 1200 * timer.getSeconds();
+				player.data.y += Math.sin((player.data.angle - 90) *(Math.PI/180)) * Math,pow(1 + jumpTime, 2) * 1200 * timer.getSeconds();
 			}else if(arrived == 0)
 			{
 				contextFront.clearRect(0, 0, canvasFront.width, canvasFront.height);
@@ -646,6 +648,7 @@
 			}else{
 				arrived = 0;
 				hyperspaceCharge = 0;
+				jumpTime = 0;
 				level++;
 				drawUI();
 				clearInterval(gameInterval);
