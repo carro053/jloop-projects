@@ -324,10 +324,7 @@
 			canvasUI.height = window.innerHeight;
 			
 			canvasUI.onmousedown = function(e) {
-				if(ship_targeted == 1)
-				{
-					player.fire_missile();
-				}
+				player.fire_laser();
 			};
 			
 			canvasUI.onmousemove = function(e) {
@@ -420,6 +417,7 @@
 				}
 			}
 			window.onkeyup = function(e) {	
+				console.log(e.which);
 				switch(e.which) {
 					case 87:			
 						player.data.speed = normalSpeed;
