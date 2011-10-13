@@ -577,6 +577,7 @@
 		{
 			for(var s in stars)
 			{
+				console.log('test');
 			    contextBack.lineWidth = stars[s].r;
 			    contextBack.beginPath();
 			    contextBack.moveTo(stars[s].x,stars[s].y);
