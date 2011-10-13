@@ -229,6 +229,7 @@
 		var slowSpeed = 125;
 		var fastSpeed = 200;
 		var squad_separation = 30;
+		var arrived = 0;
 		var ship_type = Math.floor(Math.random()*3) + 1;
 		var shipData = getShipData(ship_type);
 		player  = new StarShip(
@@ -594,7 +595,7 @@
 		}
 		function hyperspace_ship()
 		{
-			if(player.data.angle != 270)
+			if(arrived == 0 && player.data.angle != 270)
 			{
 				var ta = 270;
 				var ad = ta - player.data.angle;
@@ -616,16 +617,24 @@
 					if(player.data.angle < 0) player.data.angle += 360;
 					if(player.data.angle >= 360) player.data.angle -= 360;
 				}
-			}else if(player.data.x > -150)
+			}else if(arrived == 0 && player.data.x > -150)
 			{
 				hyperspace_stars();
 				player.data.x += Math.cos((player.data.angle - 90) *(Math.PI/180)) * 600 * timer.getSeconds();
 				player.data.y += Math.sin((player.data.angle - 90) *(Math.PI/180)) * 600 * timer.getSeconds();
-			}else{
+			}else if(arrived == 0)
+			{
 				contextFront.clearRect(0, 0, canvasFront.width, canvasFront.height);
 				stars.length = 0;
 				drawBackground();
 				player.data.x = canvasFront.width + 150;
+				arrived = 1;
+			}else if(player.data.x > canvasFront.width / 2)
+			{
+				player.data.x += Math.cos((player.data.angle - 90) *(Math.PI/180)) * player.data.speed * timer.getSeconds();
+				player.data.y += Math.sin((player.data.angle - 90) *(Math.PI/180)) * player.data.speed * timer.getSeconds();
+			}else{
+				arrived = 0;
 				level++;
 				drawUI();
 				clearInterval(gameInterval);
