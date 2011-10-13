@@ -375,6 +375,7 @@
 				}
 			}
 			window.onkeydown = function(e) {
+					console.log(e.which);
 				switch(e.which) {
 					case 115:
 						console.log('down');
@@ -383,7 +384,7 @@
 				}
 			}
 			window.onkeyup = function(e) {
-					console.log('up');	
+					console.log(e.which);	
 				switch(e.which) {
 					case 115:			
 						player.data.speed = fastSpeed;
