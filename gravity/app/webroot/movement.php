@@ -586,7 +586,7 @@
 				var cos = Math.cos((ships[squadLeader].data.angle + 90) * (Math.PI/180));
 				var sin = Math.sin((ships[squadLeader].data.angle + 90) * (Math.PI/180));
 				var position = Math.ceil(i / 2);
-				if(this.data.squad_position%2 == 0)
+				if(i%2 == 0)
 				{
 					squadX = x - position * squad_separation * sin + position * squad_separation * cos;
 					squadY = y + position * squad_separation * sin + position * squad_separation * cos;
