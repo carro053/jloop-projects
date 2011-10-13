@@ -90,7 +90,7 @@
 					}
 					var squad_distance = Math.sqrt(Math.pow(squadX - this.data.x, 2) + Math.pow(squadY - this.data.y, 2));
 					
-					if(squad_distance > 1)
+					if(squad_distance > 2)
 					{
 						var ta = this.data.squad_leader.data.angle;
 						var ad = ta - this.data.angle;
