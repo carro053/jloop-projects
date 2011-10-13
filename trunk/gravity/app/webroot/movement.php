@@ -321,8 +321,8 @@
 			};
 			
 			canvasUI.onmousemove = function(e) {
-				target.data.x = e.clientX - this.offsetLeft;
-				target.data.y = e.clientY - this.offsetTop;
+				target.data.x = e.clientX - this.offsetLeft + 10;
+				target.data.y = e.clientY - this.offsetTop + 10;
 			};
 			
 			shipSprites.onload = initialize();
