@@ -80,11 +80,11 @@
 					var squadY;
 					if(this.data.squad_position%2 == 0)
 					{
-						squadX = this.data.squad_leader.data.x + 30;
-						squadY = this.data.squad_leader.data.y + 30;
+						squadX = this.data.squad_leader.data.x + 5;
+						squadY = this.data.squad_leader.data.y + 5;
 					}else{
-						squadX = this.data.squad_leader.data.x - 30;
-						squadY = this.data.squad_leader.data.y - 30;
+						squadX = this.data.squad_leader.data.x - 5;
+						squadY = this.data.squad_leader.data.y - 5;
 					}
 					var squad_distance = Math.sqrt(Math.pow(squadX - this.data.x, 2) + Math.pow(squadY - this.data.y, 2));
 					var ta = this.data.squad_leader.data.angle;
@@ -110,41 +110,42 @@
 					}
 					this.data.x += (squadX - this.data.x) / squad_distance * this.data.speed * timer.getSeconds();
 					this.data.y += (squadX - this.data.y) / squad_distance * this.data.speed * timer.getSeconds();
-				}else if(distance > 1)
-				{
-					//target angle
-					var ta = Math.atan2(this.data.target.data.y - this.data.y,this.data.target.data.x - this.data.x) * 180 / Math.PI + 90;
-					if(ta < 0) ta += 360;
-					if(distance > this.data.tracking_distance && Math.round(ta) != Math.round(this.data.angle))
+				}else{
+					if(distance > 1)
 					{
-						//angle diff
-						var ad = ta - this.data.angle;
-						//change angle by this
-						var ca = 0;
-						if(ad < -180) ad += 360;
-						if(ad > 180) ad -= 360;
-						
-						if(ad < 0)//turn left
+						//target angle
+						var ta = Math.atan2(this.data.target.data.y - this.data.y,this.data.target.data.x - this.data.x) * 180 / Math.PI + 90;
+						if(ta < 0) ta += 360;
+						if(distance > this.data.tracking_distance && Math.round(ta) != Math.round(this.data.angle))
 						{
-							ca = -this.data.angular_speed * timer.getSeconds();
-						}else{//turn right
-							ca = this.data.angular_speed * timer.getSeconds();
+							//angle diff
+							var ad = ta - this.data.angle;
+							//change angle by this
+							var ca = 0;
+							if(ad < -180) ad += 360;
+							if(ad > 180) ad -= 360;
+							
+							if(ad < 0)//turn left
+							{
+								ca = -this.data.angular_speed * timer.getSeconds();
+							}else{//turn right
+								ca = this.data.angular_speed * timer.getSeconds();
+							}
+							if(Math.abs(ca) > Math.abs(ad))
+							{
+								this.data.angle = ta;
+							}else{
+								this.data.angle += ca;
+								if(this.data.angle < 0) this.data.angle += 360;
+								if(this.data.angle >= 360) this.data.angle -= 360;
+							}
+						}else if(this.data.tracking_distance != 0 && distance < 500 && Math.round(ta) == Math.round(this.data.angle)){
+							this.fire_laser();
 						}
-						if(Math.abs(ca) > Math.abs(ad))
-						{
-							this.data.angle = ta;
-						}else{
-							this.data.angle += ca;
-							if(this.data.angle < 0) this.data.angle += 360;
-							if(this.data.angle >= 360) this.data.angle -= 360;
-						}
-					}else if(this.data.tracking_distance != 0 && distance < 500 && Math.round(ta) == Math.round(this.data.angle)){
-						this.fire_laser();
 					}
-				}
-				this.data.x += Math.cos((this.data.angle - 90) *(Math.PI/180)) * this.data.speed * timer.getSeconds();
-				this.data.y += Math.sin((this.data.angle - 90) *(Math.PI/180)) * this.data.speed * timer.getSeconds();
-			
+					this.data.x += Math.cos((this.data.angle - 90) *(Math.PI/180)) * this.data.speed * timer.getSeconds();
+					this.data.y += Math.sin((this.data.angle - 90) *(Math.PI/180)) * this.data.speed * timer.getSeconds();
+				}			
 			}
 		}
 		
