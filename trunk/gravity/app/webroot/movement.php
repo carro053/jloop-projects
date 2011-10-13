@@ -307,7 +307,7 @@
 			shipSprites.onload = initialize();
 			
 			window.onkeypress = function(e) {
-				console.log('e.which = ' + e.which + ', e.keyCode = ' + e.keyCode);
+				//console.log('e.which = ' + e.which + ', e.keyCode = ' + e.keyCode);
 				switch(e.which) {
 					case 49:				
 						player.data.ship = 1;
@@ -376,14 +376,16 @@
 			}
 			window.onkeydown = function(e) {
 				switch(e.which) {
-					case 115:				
+					case 115:
+						console('down');
 						player.data.speed = slowSpeed;
 						break;
 				}
 			}
 			window.onkeyup = function(e) {
 				switch(e.which) {
-					case 115:				
+					console('up');	
+					case 115:			
 						player.data.speed = fastSpeed;
 						break;
 				}
