@@ -211,7 +211,7 @@
 	<script type="text/javascript">
 		var gameInterval;
 		var gameTime = 0;
-		var level = 1;
+		var level = 0;
 		var timer = new Timer();
 		var lasers = new Array();
 		var target = new Object;
@@ -480,6 +480,12 @@
 					lasers.splice(l, 1);
 				}
 			}
+			if(ships.length == 0)
+			{
+				level++;
+				drawUI();
+				nextLevel();
+			}
 			//if(Math.floor(gameTime / 20) + 1 > ships.length) addEnemy(-50,-50);			
 		}
 
@@ -527,6 +533,8 @@
 					shipData.xLeftLaser = -6;
 					shipData.yLeftLaser = -25;
 					shipData.laserColor = 'rgb(0,255,0)';
+					shipData.speed = 150;
+					shipData.angular_speed = 150;
 					break;
 				case 2:
 					shipData.ship = 2;						
@@ -535,6 +543,8 @@
 					shipData.xLeftLaser = -12;
 					shipData.yLeftLaser = -5;
 					shipData.laserColor = 'rgb(0,255,0)';
+					shipData.speed = 150;
+					shipData.angular_speed = 150;
 					
 					break;
 				case 3:
@@ -544,6 +554,8 @@
 					shipData.xLeftLaser = -14;
 					shipData.yLeftLaser = -12;
 					shipData.laserColor = 'rgb(0,255,0)';
+					shipData.speed = 150;
+					shipData.angular_speed = 150;
 					
 					break;
 				case 4:
@@ -553,6 +565,8 @@
 					shipData.xLeftLaser = -10;
 					shipData.yLeftLaser = -23;
 					shipData.laserColor = 'rgb(255,0,0)';
+					shipData.speed = 150;
+					shipData.angular_speed = 150;
 					
 					break;
 				case 5:
@@ -562,6 +576,8 @@
 					shipData.xLeftLaser = -1;
 					shipData.yLeftLaser = -10;
 					shipData.laserColor = 'rgb(255,0,0)';
+					shipData.speed = 150;
+					shipData.angular_speed = 150;
 					
 					break;
 				case 6:
@@ -571,6 +587,8 @@
 					shipData.xLeftLaser = -14;
 					shipData.yLeftLaser = -10;
 					shipData.laserColor = 'rgb(255,0,0)';
+					shipData.speed = 150;
+					shipData.angular_speed = 150;
 					break;
 			}
 			return shipData;
@@ -581,7 +599,7 @@
 			var squad_number = squads.length;
 			var x = -50;
 			var y = -50;
-			addEnemy(-50,-50,null,null,ship_type,squad_number);
+			addEnemy(-50,-50,ship_type,null,null,squad_number);
 			var squadLeader = ships.length - 1;
 			for(var i=1;i < amount;i++)
 			{
@@ -598,18 +616,16 @@
 					squadX = x + position * squad_separation * sin + position * squad_separation * cos;
 					squadY = y + position * squad_separation * sin - position * squad_separation * cos;
 				}
-				addEnemy(squadX,squadY,ships[squadLeader],i,ship_type,squad_number);
+				addEnemy(squadX,squadY,ship_type,ships[squadLeader],i,squad_number);
 			}
 		}
 		
-		function addEnemy(x,y,squad_leader,squad_position,set_ship_type,squad_number)
+		function addEnemy(x,y,set_ship_type,squad_leader,squad_position,squad_number)
 		{
 			var w = 39;
 			var h = 40;
 			var xOffset = 20;
 			var yOffset = 20;
-			var speed = 150;
-			var angular_speed = 150;
 			var angle = 90;
 			var tracking_distance = Math.floor(Math.random()*200) + 100;
 			var ship_type = Math.floor(Math.random()*3) + 4;
@@ -627,8 +643,6 @@
 					h: h,
 					xOffset: xOffset,
 					yOffset: yOffset,
-					speed: speed,
-					angular_speed: angular_speed,
 					angle: angle,
 					tracking_distance: tracking_distance,
 					ship: ship_type,
@@ -637,6 +651,8 @@
 					xLeftLaser: shipData.xLeftLaser,
 					yLeftLaser: shipData.yLeftLaser,
 					laserColor: shipData.laserColor,
+					speed: shipData.speed,
+					angular_speed: shipData.angular_speed,
 					laser_side: laser_side,
 					shields: shields,
 					last_fired: last_fired,
@@ -648,13 +664,31 @@
 			);
 			ships.push(ship);
 		}
-		
+		function nextLevel()
+		{
+			if(level == 1)
+			{
+				addEnemy(-50,-50,6);
+			}else if(level == 2)
+			{
+				addEnemy(-150,-150,4);
+				addEnemy(-50,-50,6);
+			}else if(level == 3)
+			{
+				addSquad(6,3);
+			}else if(level == 3)
+			{
+				addSquad(4,3);
+				addEnemy(-150,-50,6);
+				addEnemy(-50,-150,6);
+			}
+		}
 		function reset_game()
 		{
 			timer.previousTime = new Date().getTime();
 			timer.currentTime = new Date().getTime();
 			gameTime = 0;
-			level = 1;
+			level = 0;
 			lasers.length = 0;
 			ships.length = 0;
 			squads.length = 0;
