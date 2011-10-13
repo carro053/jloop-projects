@@ -93,7 +93,7 @@
 					var pix = imgd.data;
 					for (var i = 0, n = pix.length; i < n; i += 4) if(pix[i+3] > 0) on = 1;
 					if(on == 1)
-					{						
+					{							
 						ship_targeted = 1;
 						ship_target = this;
 					}
@@ -499,16 +499,16 @@
 			gameTime += timer.getSeconds();
 			player.update();
 			ship_targeted = 0;
-			var o = document.getElementById("canvasUI");
-			o.style.cursor="url(red_reticle.png),auto";		
 			for(var s in ships)
 			{
 				ships[s].update();
 			}
+			var o = document.getElementById("canvasUI");
 			if(ship_targeted)
 			{
 				o.style.cursor="url(green_reticle.png),auto";
-			}else{	
+			}else{
+				o.style.cursor="url(red_reticle.png),auto";			
 			}
 			updateLasers();
 			updateMissiles();
