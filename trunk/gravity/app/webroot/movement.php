@@ -334,9 +334,32 @@
 			
 			shipSprites.onload = initialize();
 			
-			window.onkeypress = function(e) {
-				//console.log('e.which = ' + e.which + ', e.keyCode = ' + e.keyCode);
+			window.onkeydown = function(e) {
+				console.log(e.which);
 				switch(e.which) {
+					case 87:
+						player.data.speed = fastSpeed;
+						break;
+					case 83:
+						player.data.speed = slowSpeed;
+						break;
+					case 68:
+						player.fire_laser();
+						break;
+				}
+			}
+			window.onkeyup = function(e) {	
+				console.log(e.which);
+				switch(e.which) {
+					case 87:			
+						player.data.speed = normalSpeed;
+						break;
+					case 83:			
+						player.data.speed = normalSpeed;
+						break;
+					case 69:			
+						player.fire_missile();
+						break;
 					case 49:				
 						player.data.ship = 1;
 						player.data.xRightLaser = 5;
@@ -388,42 +411,6 @@
 						player.data.xLeftLaser = -14;
 						player.data.yLeftLaser = -10;
 						player.data.laserColor = 'rgb(255,0,0)';
-						break;
-					case 102:
-						player.fire_laser();
-						break;
-					case 56:
-						addSquad(4,7);
-						break;
-					case 57:
-						addEnemy(-50,-50);
-						break;
-					default:
-						break;
-				}
-			}
-			window.onkeydown = function(e) {
-				console.log(e.which);
-				switch(e.which) {
-					case 87:
-						player.data.speed = fastSpeed;
-						break;
-					case 83:
-						player.data.speed = slowSpeed;
-						break;
-					case 70:
-						player.fire_laser();
-						break;
-				}
-			}
-			window.onkeyup = function(e) {	
-				console.log(e.which);
-				switch(e.which) {
-					case 87:			
-						player.data.speed = normalSpeed;
-						break;
-					case 83:			
-						player.data.speed = normalSpeed;
 						break;
 				}
 			}
