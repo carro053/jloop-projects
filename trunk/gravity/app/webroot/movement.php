@@ -582,7 +582,6 @@
 			    contextBack.moveTo(stars[s].x,stars[s].y);
 			    stars[s].x += 120 * timer.getSeconds();
 			    contextBack.lineTo(stars[s].x,stars[s].y);
-			    contextBack.closePath();
 			    contextBack.stroke();
 			}
 		}
