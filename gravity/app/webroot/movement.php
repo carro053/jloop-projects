@@ -665,10 +665,10 @@
 			for(var m in missiles)
 			{
 				contextFront.fillStyle =  '#FFFB00';
-				contextBack.beginPath();
-				contextBack.arc(missiles[m].x, missiles[m].y, 2, 0, Math.PI*2, true); 
-				contextBack.closePath();
-				contextBack.fill();
+				contextFront.beginPath();
+				contextFront.arc(missiles[m].x, missiles[m].y, 2, 0, Math.PI*2, true); 
+				contextFront.closePath();
+				contextFront.fill();
 			}
 			for(var s in ships)
 			{
