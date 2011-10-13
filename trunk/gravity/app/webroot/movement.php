@@ -225,6 +225,8 @@
 		var squads = new Array();
 		var lps = 10;
 		var score = 0;
+		var slowSpeed = 125;
+		var fastSpeed = 250;
 		var squad_separation = 30;
 		var ship_type = Math.floor(Math.random()*3) + 1;
 		var shipData = getShipData(ship_type);
@@ -236,7 +238,7 @@
 				h: 40,
 				xOffset: 20,
 				yOffset: 20,
-				speed: 250,
+				speed: fastSpeed,
 				angular_speed: 200,
 				angle: 0,
 				tracking_distance: 0,
@@ -369,6 +371,20 @@
 						addEnemy(-50,-50);
 						break;
 					default:
+						break;
+				}
+			}
+			window.onkeydown = function(e) {
+				switch(e.which) {
+					case 115:				
+						player.data.speed = slowSpeed;
+						break;
+				}
+			}
+			window.onkeyup = function(e) {
+				switch(e.which) {
+					case 115:				
+						player.data.speed = fastSpeed;
 						break;
 				}
 			}
