@@ -221,6 +221,7 @@
 		var squads = new Array();
 		var lps = 10;
 		var score = 0;
+		var squad_separation = 30;
 		var ship_type = Math.floor(Math.random()*3) + 1;
 		var shipData = getShipData(ship_type);
 		player  = new StarShip(
@@ -577,7 +578,6 @@
 			var squad_number = squads.length;
 			var x = -50;
 			var y = -50;
-			var squad_separation = 30;
 			addEnemy(-50,-50,null,null,ship_type,squad_number);
 			var squadLeader = ships.length - 1;
 			for(var i=1;i < amount;i++)
