@@ -808,7 +808,6 @@
 			if(level == 1)
 			{
 				addEnemy(-50,-50,6);
-				addSquad(6,7,window.innerWidth / 2, -150);
 			}else if(level == 2)
 			{
 				addEnemy(window.innerWidth / 2,-150,4);
