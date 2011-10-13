@@ -592,7 +592,7 @@
 			    contextBack.stroke();
 			}
 		}
-		function hyperspace_ship();
+		function hyperspace_ship()
 		{
 			if(player.data.angle != 270)
 			{
