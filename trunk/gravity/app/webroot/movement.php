@@ -575,7 +575,7 @@
 					break;
 				case 5:
 					shipData.ship = 5;	
-					shipData.trackingDistance = Math.floor(Math.random()*50) + 50;					
+					shipData.trackingDistance = Math.floor(Math.random()*150);					
 					shipData.xRightLaser = 1;
 					shipData.yRightLaser = -10;
 					shipData.xLeftLaser = -1;
