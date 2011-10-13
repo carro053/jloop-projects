@@ -225,7 +225,7 @@
 				laser_side: 0,
 				shields: 10,
 				last_fired: 0,
-				target: target
+				target: target,
 				squad_leader: null
 			}
 		);
