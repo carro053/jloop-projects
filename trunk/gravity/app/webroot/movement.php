@@ -214,6 +214,7 @@
 <body>
 	<script type="text/javascript">
 		var stars = new Array();
+		var arrived = 0;
 		var hyperspaceCharge = 0;
 		var gameInterval;
 		var gameTime = 0;
@@ -230,7 +231,6 @@
 		var slowSpeed = 125;
 		var fastSpeed = 200;
 		var squad_separation = 30;
-		var arrived = 0;
 		var ship_type = Math.floor(Math.random()*3) + 1;
 		var shipData = getShipData(ship_type);
 		player  = new StarShip(
@@ -837,6 +837,8 @@
 			lasers.length = 0;
 			ships.length = 0;
 			squads.length = 0;
+			arrived = 0;
+			hyperspaceCharge = 0;
 			score = 0;
 			ship_type = Math.floor(Math.random()*3) + 1;
 			shipData = getShipData(ship_type);
