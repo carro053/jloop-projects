@@ -380,6 +380,9 @@
 					case 83:
 						player.data.speed = slowSpeed;
 						break;
+					case 70:
+						player.fire_laser();
+						break;
 				}
 			}
 			window.onkeyup = function(e) {	
