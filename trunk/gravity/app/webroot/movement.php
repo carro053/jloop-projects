@@ -76,10 +76,10 @@
 				var distance = Math.sqrt(Math.pow(this.data.target.data.x - this.data.x, 2) + Math.pow(this.data.target.data.y - this.data.y, 2));
 				if(this.data.squad_leader && distance > 300)
 				{
-					var squadX = squad_leader.data.x + 30 * this.data.squad_position;
-					var squadY = squad_leader.data.y + 30 * this.data.squad_position;
+					var squadX = this.data.squad_leader.data.x + 30 * this.data.squad_position;
+					var squadY = this.data.squad_leader.data.y + 30 * this.data.squad_position;
 					var squad_distance = Math.sqrt(Math.pow(squadX - this.data.x, 2) + Math.pow(squadY - this.data.y, 2));
-					var ta = squad_leader.data.angle;
+					var ta = this.data.squad_leader.data.angle;
 					if(squad_distance < 50)
 					{
 						var ad = ta - this.data.angle;
