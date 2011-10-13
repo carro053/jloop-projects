@@ -93,7 +93,7 @@
 				}
 				this.data.last_fired += timer.getSeconds();
 				var distance = Math.sqrt(Math.pow(this.data.target.data.x - this.data.x, 2) + Math.pow(this.data.target.data.y - this.data.y, 2));
-				if(this.data.squad_leader != null && distance > 500)
+				if(this.data.squad_leader != null && this.data.squad_leader.data.dead == 0 && distance > 500)
 				{
 					var squadX;
 					var squadY;
@@ -530,19 +530,7 @@
 							for (var i = 0, n = pix.length; i < n; i += 4) if(pix[i+3] > 0) hit = 1;
 							if(hit == 1)
 							{
-								ships[s].data.shields = 0
-								if(ships[s].data.squad_number != null && ships[s].data.squad_leader == null)
-								{
-									for(var q in ships)
-									{
-										if(q != s && ships[q].data.squad_number == ships[s].data.squad_number)
-										{
-											ships[q].data.squad_leader = null;
-											ships[q].data.squad_position = null;
-											ships[q].data.squad_number = null;
-										}
-									}
-								}
+								ships[s].data.shields = 0;
 								score++;
 								if(player.data.shields < 10) player.data.shields++;
 								drawUI();
@@ -637,20 +625,7 @@
 								{
 									ships[s].data.shields -= 1;
 									if(ships[s].data.shields == 0)
-									{
-										if(ships[s].data.squad_number != null && ships[s].data.squad_leader == null)
-										{
-											for(var q in ships)
-											{
-												if(q != s && ships[q].data.squad_number == ships[s].data.squad_number)
-												{
-													ships[q].data.squad_leader = null;
-													ships[q].data.squad_position = null;
-													ships[q].data.squad_number = null;
-												}
-											}
-										}
-										
+									{										
 										score++;
 										if(player.data.shields < 10) player.data.shields++;
 										drawUI();
@@ -714,6 +689,7 @@
 		{
 			hyperspace_ship();
 			updateLasers();
+			updateMissiles();
 			clearCanvas();
 			drawObjects();
 			timer.tick();
@@ -938,7 +914,6 @@
 			if(level == 1)
 			{
 				addEnemy(-50,-50,6);
-				addSquad(6,3,window.innerWidth + 150,window.innerHeight / 2);
 			}else if(level == 2)
 			{
 				addEnemy(window.innerWidth / 2,-150,4);
