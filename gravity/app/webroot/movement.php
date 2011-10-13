@@ -441,6 +441,7 @@
 			contextUI.font = '40pt Arial';
 			contextUI.fillStyle =  '#FFFFFF';
 			contextUI.fillText('Level: '+level+' Score: '+score+' Shields: '+player.data.shields,20,canvasUI.height - 40);
+			contextUI.font = '24pt Arial';
 			contextUI.fillText('Ship follows the Mouse. F to shoot. S to slow down.',canvasUI.width / 2,canvasUI.height - 40);
 		}
 
