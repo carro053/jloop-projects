@@ -526,8 +526,9 @@
 		{
 			shipData = new Object;
 			switch(ship_type) {
-				case 1:				
+				case 1:	
 					shipData.ship = 1;
+					shipData.trackingDistance = Math.floor(Math.random()*200) + 100;
 					shipData.xRightLaser = 5;
 					shipData.yRightLaser = -25;
 					shipData.xLeftLaser = -6;
@@ -537,7 +538,8 @@
 					shipData.angular_speed = 150;
 					break;
 				case 2:
-					shipData.ship = 2;						
+					shipData.ship = 2;
+					shipData.trackingDistance = Math.floor(Math.random()*200) + 100;						
 					shipData.xRightLaser = 12;
 					shipData.yRightLaser = -5;
 					shipData.xLeftLaser = -12;
@@ -548,7 +550,8 @@
 					
 					break;
 				case 3:
-					shipData.ship = 3;						
+					shipData.ship = 3;	
+					shipData.trackingDistance = Math.floor(Math.random()*200) + 100;					
 					shipData.xRightLaser = 13;
 					shipData.yRightLaser = -12;
 					shipData.xLeftLaser = -14;
@@ -559,7 +562,8 @@
 					
 					break;
 				case 4:
-					shipData.ship = 4;					
+					shipData.ship = 4;
+					shipData.trackingDistance = Math.floor(Math.random()*200) + 100;					
 					shipData.xRightLaser = 10;
 					shipData.yRightLaser = -23;
 					shipData.xLeftLaser = -10;
@@ -570,7 +574,8 @@
 					
 					break;
 				case 5:
-					shipData.ship = 5;						
+					shipData.ship = 5;	
+					shipData.trackingDistance = Math.floor(Math.random()*50) + 50;					
 					shipData.xRightLaser = 1;
 					shipData.yRightLaser = -10;
 					shipData.xLeftLaser = -1;
@@ -582,6 +587,7 @@
 					break;
 				case 6:
 					shipData.ship = 6;					
+					shipData.trackingDistance = Math.floor(Math.random()*200) + 100;
 					shipData.xRightLaser = 16;
 					shipData.yRightLaser = -15;
 					shipData.xLeftLaser = -14;
@@ -627,7 +633,6 @@
 			var xOffset = 20;
 			var yOffset = 20;
 			var angle = 90;
-			var tracking_distance = Math.floor(Math.random()*200) + 100;
 			var ship_type = Math.floor(Math.random()*3) + 4;
 			if(set_ship_type) ship_type = set_ship_type;
 			var shipData = getShipData(ship_type);
@@ -644,8 +649,8 @@
 					xOffset: xOffset,
 					yOffset: yOffset,
 					angle: angle,
-					tracking_distance: tracking_distance,
 					ship: ship_type,
+					tracking_distance: shipData.trackingDistance,
 					xRightLaser: shipData.xRightLaser,
 					yRightLaser: shipData.yRightLaser,
 					xLeftLaser: shipData.xLeftLaser,
