@@ -339,7 +339,7 @@
 						player.fire_laser();
 						break;
 					case 56:
-						addEnemy(-50,-50);
+						addSquad();
 						break;
 					default:
 						break;
