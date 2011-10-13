@@ -226,7 +226,7 @@
 		var lps = 10;
 		var score = 0;
 		var slowSpeed = 125;
-		var fastSpeed = 250;
+		var fastSpeed = 200;
 		var squad_separation = 30;
 		var ship_type = Math.floor(Math.random()*3) + 1;
 		var shipData = getShipData(ship_type);
