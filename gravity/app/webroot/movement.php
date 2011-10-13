@@ -610,9 +610,9 @@
 				if(ad > 180) ad -= 360;
 				if(ad < 0)//turn left
 				{
-					ca = -player.data.angular_speed * Math.abs(ad) / 180 * timer.getSeconds();
+					ca = -player.data.angular_speed * (Math.abs(ad) + 18) / 180 * timer.getSeconds();
 				}else{//turn right
-					ca = player.data.angular_speed * Math.abs(ad) / 180 * timer.getSeconds();
+					ca = player.data.angular_speed * (Math.abs(ad) + 18) / 180 * timer.getSeconds();
 				}
 				if(Math.abs(ca) > Math.abs(ad))
 				{
