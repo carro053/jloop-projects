@@ -949,6 +949,7 @@
 			gameTime = 0;
 			level = 0;
 			lasers.length = 0;
+			missiles.length = 0;
 			ships.length = 0;
 			squads.length = 0;
 			arrived = 0;
