@@ -673,7 +673,6 @@
 		{
 			if(level == 1)
 			{
-				addEnemy(-50,-50,5);
 				addEnemy(-50,-50,6);
 			}else if(level == 2)
 			{
@@ -682,14 +681,17 @@
 			}else if(level == 3)
 			{
 				addSquad(6,3);
-			}else if(level == 3)
+			}else if(level == 4)
 			{
 				addSquad(4,3);
 				addEnemy(-150,-50,6);
 				addEnemy(-50,-150,6);
-			}else if(level == 3)
+			}else if(level == 5)
 			{
 				addEnemy(-50,-50,5);
+			}else if(level == 6)
+			{
+				addSquad(5,7);
 			}
 		}
 		function reset_game()
