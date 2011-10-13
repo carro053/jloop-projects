@@ -452,7 +452,7 @@
 											console.log('leader down');
 											for(var q in ships)
 											{
-												if(ships[q].data.squad_number == ships[s].data.squad_number)
+												if(q != s && ships[q].data.squad_number == ships[s].data.squad_number)
 												{
 													console.log('ship freed');
 													ships[q].data.squad_leader = null;
