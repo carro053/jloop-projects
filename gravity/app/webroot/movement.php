@@ -481,8 +481,8 @@
 			for(var l in lasers)
 			{
 				var hit = 0;
-				lasers[l].x += Math.cos((lasers[l].angle - 90) *(Math.PI/180)) * 500 * timer.getSeconds();
-				lasers[l].y += Math.sin((lasers[l].angle - 90) *(Math.PI/180)) * 500 * timer.getSeconds();
+				lasers[l].x += Math.cos((lasers[l].angle - 90) *(Math.PI/180)) * 600 * timer.getSeconds();
+				lasers[l].y += Math.sin((lasers[l].angle - 90) *(Math.PI/180)) * 600 * timer.getSeconds();
 				if(lasers[l].x < 0 || lasers[l].y < 0 || lasers[l].x > canvasFront.width || lasers[l].y > canvasFront.height)
 				{
 					lasers.splice(l, 1);
