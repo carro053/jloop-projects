@@ -149,7 +149,11 @@
 						//target angle
 						var ta = Math.atan2(this.data.target.data.y - this.data.y,this.data.target.data.x - this.data.x) * 180 / Math.PI + 90;
 						if(ta < 0) ta += 360;
-						if(distance > this.data.tracking_distance && Math.round(ta) != Math.round(this.data.angle))
+						
+						var firing_angle_tolerance = 30 * (200 - distance) / 200;
+						if(firing_angle_tolerance < 0) firing_angle_tolerance = 0;
+						
+						if(distance > this.data.tracking_distance && Math.abs(Math.round(ta) - Math.round(this.data.angle)) < firing_angle_tolerance)
 						{
 							//angle diff
 							var ad = ta - this.data.angle;
@@ -690,7 +694,7 @@
 			{
 				addEnemy(-50,-50,5);
 			}else{
-				addSquad(5,7);
+				addSquad(6,7);
 			}
 		}
 		function reset_game()
