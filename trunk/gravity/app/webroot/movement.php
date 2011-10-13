@@ -627,7 +627,7 @@
 		{
 			squads.push = 1;
 			var squad_number = squads.length;
-			addEnemy(-50,-50,ship_type,null,null,squad_number);
+			addEnemy(x,y,ship_type,null,null,squad_number);
 			var squadLeader = ships.length - 1;
 			for(var i=1;i < amount;i++)
 			{
