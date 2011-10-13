@@ -357,7 +357,7 @@
 						player.fire_laser();
 						break;
 					case 56:
-						addSquad();
+						addSquad(4,3);
 						break;
 					default:
 						break;
@@ -570,14 +570,32 @@
 			}
 			return shipData;
 		}
-		function addSquad()
+		function addSquad(ship_type,amount)
 		{
 			squads.push = 1;
 			var squad_number = squads.length;
-			addEnemy(-50,-50,null,null,null,squad_number);
+			var x = -50;
+			var y = -50;
+			var squad_separation = 30;
+			addEnemy(-50,-50,null,null,ship_type,squad_number);
 			var squadLeader = ships.length - 1;
-			addEnemy(-80,-20,ships[squadLeader],1,ships[squadLeader].data.ship,squad_number);
-			addEnemy(-80,-80,ships[squadLeader],2,ships[squadLeader].data.ship,squad_number);
+			for(var i=1;i < amount;i++)
+			{
+				var squadX;
+				var squadY;
+				var cos = Math.cos((ships[squadLeader].data.angle + 90) * (Math.PI/180));
+				var sin = Math.sin((ships[squadLeader].data.angle + 90) * (Math.PI/180));
+				var position = Math.ceil(i / 2);
+				if(this.data.squad_position%2 == 0)
+				{
+					squadX = x - position * squad_separation * sin + position * squad_separation * cos;
+					squadY = y + position * squad_separation * sin + position * squad_separation * cos;
+				}else{
+					squadX = x + position * squad_separation * sin + position * squad_separation * cos;
+					squadY = y + position * squad_separation * sin - position * squad_separation * cos;
+				}
+				addEnemy(squadX,squadY,ships[squadLeader],i,ship_type,squad_number);
+			}
 		}
 		
 		function addEnemy(x,y,squad_leader,squad_position,set_ship_type,squad_number)
