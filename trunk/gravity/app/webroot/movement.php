@@ -90,7 +90,7 @@
 					}
 					var squad_distance = Math.sqrt(Math.pow(squadX - this.data.x, 2) + Math.pow(squadY - this.data.y, 2));
 					
-					if(squad_distance > 15)
+					if(squad_distance > 5)
 					{
 						var bonus_speed = squad_distance * 2;
 						if(bonus_speed > 100) bonus_speed = 100;
@@ -140,11 +140,12 @@
 							if(this.data.angle < 0) this.data.angle += 360;
 							if(this.data.angle >= 360) this.data.angle -= 360;
 						}
-						this.data.x += Math.cos((this.data.squad_leader.data.angle - 90) *(Math.PI/180)) * this.data.speed * timer.getSeconds();
-						this.data.y += Math.sin((this.data.squad_leader.data.angle - 90) *(Math.PI/180)) * this.data.speed * timer.getSeconds();
+						//this.data.x += Math.cos((this.data.squad_leader.data.angle - 90) *(Math.PI/180)) * this.data.speed * timer.getSeconds();
+						//this.data.y += Math.sin((this.data.squad_leader.data.angle - 90) *(Math.PI/180)) * this.data.speed * timer.getSeconds();
+						
+						this.data.x = squadX;
+						this.data.y = squadY;
 					}
-					//this.data.x = squadX;
-					//this.data.y = squadY;
 				}else{
 					if(distance > 1)
 					{
