@@ -357,8 +357,8 @@
 					case 83:			
 						player.data.speed = normalSpeed;
 						break;
-					case 69:			
-						player.fire_missile();
+					case 69:
+						if(ship_targeted) player.fire_missile();
 						break;
 					case 49:				
 						player.data.ship = 1;
