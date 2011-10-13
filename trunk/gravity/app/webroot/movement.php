@@ -624,7 +624,7 @@
 				}
 			}else if(arrived == 0 && hyperspaceCharge < 3)
 			{
-				hyperspsaceCharge += timer.getSeconds();
+				hyperspaceCharge += timer.getSeconds();
 			}else if(arrived == 0 && player.data.x > -150)
 			{
 				hyperspace_stars();
