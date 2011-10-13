@@ -698,16 +698,16 @@
 				addEnemy(-50,-50,6);
 			}else if(level == 2)
 			{
-				addEnemy(-150,-150,4);
-				addEnemy(-50,-50,6);
+				addEnemy(window.innerWidth / 2,-150,4);
+				addEnemy(window.innerWidth / 2,window.innerHeight + 150,6);
 			}else if(level == 3)
 			{
 				addSquad(6,3,window.innerWidth + 150,window.innerHeight / 2);
 			}else if(level == 4)
 			{
 				addSquad(4,3,window.innerWidth / 2, -150);
-				addEnemy(-150,-50,6);
-				addEnemy(-50,-150,6);
+				addEnemy(-150,window.innerHeight / 2,6);
+				addEnemy(innerWidth + 150,window.innerHeight / 2,6);
 			}else if(level == 5)
 			{
 				addEnemy(-50,-50,5);
