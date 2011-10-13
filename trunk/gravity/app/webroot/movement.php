@@ -90,7 +90,7 @@
 					}
 					var squad_distance = Math.sqrt(Math.pow(squadX - this.data.x, 2) + Math.pow(squadY - this.data.y, 2));
 					
-					if(squad_distance > 4)
+					if(squad_distance > 5)
 					{
 						var ta = Math.atan2(squadY - this.data.y,squadX - this.data.x) * 180 / Math.PI + 90;
 						if(ta < 0) ta += 360;
@@ -230,7 +230,7 @@
 				h: 40,
 				xOffset: 20,
 				yOffset: 20,
-				speed: 200,
+				speed: 250,
 				angular_speed: 200,
 				angle: 0,
 				tracking_distance: 0,
