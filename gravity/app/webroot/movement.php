@@ -501,7 +501,7 @@
 				var hit = 0;
 				for(var s in ships)
 				{
-					if(missiles[m].x < ships[s].data.x + missiles[m].data.w / 2 && missiles[m].x > ships[s].data.x - ships[s].data.w / 2 && missiles[m].y < ships[s].data.y + ships[s].data.h / 2 && missiles[m].y > ships[s].data.y - ships[s].data.h / 2)
+					if(missiles[m].x < ships[s].data.x + ships[s].data.w / 2 && missiles[m].x > ships[s].data.x - ships[s].data.w / 2 && missiles[m].y < ships[s].data.y + ships[s].data.h / 2 && missiles[m].y > ships[s].data.y - ships[s].data.h / 2)
 					{
 						var imgd = contextFront.getImageData(missiles[m].x, missiles[m].y, 1, 1);
 						var pix = imgd.data;
@@ -694,7 +694,6 @@
 		{
 			for(var s in stars)
 			{
-				console.log('test');
 			    contextBack.lineWidth = 2 * stars[s].r;
 			    contextBack.beginPath();
 			    contextBack.moveTo(stars[s].x,stars[s].y);
