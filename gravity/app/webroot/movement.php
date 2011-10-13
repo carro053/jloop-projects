@@ -628,8 +628,8 @@
 			}else if(arrived == 0 && player.data.x > -150)
 			{
 				hyperspace_stars();
-				player.data.x += Math.cos((player.data.angle - 90) *(Math.PI/180)) * 600 * timer.getSeconds();
-				player.data.y += Math.sin((player.data.angle - 90) *(Math.PI/180)) * 600 * timer.getSeconds();
+				player.data.x += Math.cos((player.data.angle - 90) *(Math.PI/180)) * 1200 * timer.getSeconds();
+				player.data.y += Math.sin((player.data.angle - 90) *(Math.PI/180)) * 1200 * timer.getSeconds();
 			}else if(arrived == 0)
 			{
 				contextFront.clearRect(0, 0, canvasFront.width, canvasFront.height);
