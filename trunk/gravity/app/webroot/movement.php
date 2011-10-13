@@ -82,11 +82,11 @@
 					var position = Math.ceil(this.data.squad_position / 2);
 					if(this.data.squad_position % 2 == 0)
 					{
-						squadX = x - position * squad_separation * sin + position * squad_separation * cos;
-						squadY = y + position * squad_separation * sin + position * squad_separation * cos;
+						squadX = this.data.squad_leader.data.x - position * squad_separation * sin + position * squad_separation * cos;
+						squadY = this.data.squad_leader.data.y + position * squad_separation * sin + position * squad_separation * cos;
 					}else{
-						squadX = x + position * squad_separation * sin + position * squad_separation * cos;
-						squadY = y + position * squad_separation * sin - position * squad_separation * cos;
+						squadX = this.data.squad_leader.data.x + position * squad_separation * sin + position * squad_separation * cos;
+						squadY = this.data.squad_leader.data.y + position * squad_separation * sin - position * squad_separation * cos;
 					}
 					var squad_distance = Math.sqrt(Math.pow(squadX - this.data.x, 2) + Math.pow(squadY - this.data.y, 2));
 					var bonus_speed = squad_distance * 2;
