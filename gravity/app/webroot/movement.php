@@ -91,7 +91,7 @@
 					var squad_distance = Math.sqrt(Math.pow(squadX - this.data.x, 2) + Math.pow(squadY - this.data.y, 2));
 					var bonus_speed = squad_distance * 2;
 					if(bonus_speed > 100) bonus_speed = 100;
-					if(squad_distance > 5)
+					if(squad_distance > 10)
 					{
 						var ta = Math.atan2(squadY - this.data.y,squadX - this.data.x) * 180 / Math.PI + 90;
 						if(ta < 0) ta += 360;
