@@ -457,6 +457,16 @@
 			{
 				ships[s].update();
 			}
+			updateLasers();
+			if(ships.length == 0)
+			{
+				clearInterval(gameInterval);
+				gameInterval = setInterval(hyperspaceLoop, 20);
+			}
+			//if(Math.floor(gameTime / 20) + 1 > ships.length) addEnemy(-50,-50);			
+		}
+		function updateLasers()
+		{
 			for(var l in lasers)
 			{
 				var hit = 0;
@@ -531,14 +541,7 @@
 					lasers.splice(l, 1);
 				}
 			}
-			if(ships.length == 0)
-			{
-				clearInterval(gameInterval);
-				gameInterval = setInterval(hyperspaceLoop, 20);
-			}
-			//if(Math.floor(gameTime / 20) + 1 > ships.length) addEnemy(-50,-50);			
 		}
-
 		function clearCanvas()
 		{
 			contextFront.clearRect(0, 0, canvasFront.width, canvasFront.height);
@@ -576,6 +579,7 @@
 		function hyperspaceLoop()
 		{
 			hyperspace_ship();
+			updateLasers();
 			clearCanvas();
 			drawObjects();
 			timer.tick();
@@ -605,9 +609,9 @@
 				if(ad > 180) ad -= 360;
 				if(ad < 0)//turn left
 				{
-					ca = -20 * timer.getSeconds();
+					ca = -60 * timer.getSeconds();
 				}else{//turn right
-					ca = 20 * timer.getSeconds();
+					ca = 60 * timer.getSeconds();
 				}
 				if(Math.abs(ca) > Math.abs(ad))
 				{
