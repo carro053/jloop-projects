@@ -603,8 +603,7 @@
 					last_fired: last_fired,
 					target: mytarget,
 					squad_leader: squad_leader,
-					squad_position: squad_position,
-					squad_number:
+					squad_position: squad_position
 				}
 			);
 			ships.push(ship);
