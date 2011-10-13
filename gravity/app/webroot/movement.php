@@ -446,6 +446,19 @@
 									ships[s].data.shields -= 1;
 									if(ships[s].data.shields == 0)
 									{
+										if(ships[s].data.squad_number && !ships[s].data.squad_leader)
+										{
+											for(var q in ships)
+											{
+												if(ships[q].data.squad_number == ships[s].data.squad_number)
+												{
+													ships[q].data.squad_leader = null;
+													ships[q].data.squad_position = null;
+													ships[q].data.squad_number = null;
+												}
+											}
+										}
+										
 										score++;
 										drawUI();
 										ships.splice(s, 1);
@@ -557,13 +570,15 @@
 		}
 		function addSquad()
 		{
-			addEnemy(-50,-50,null,null);
+			squads.push = 1;
+			var squad_number = squads.length;
+			addEnemy(-50,-50,null,null,null,squad_number);
 			var squadLeader = ships.length - 1;
-			addEnemy(-80,-20,ships[squadLeader],1,ships[squadLeader].data.ship);
-			addEnemy(-80,-80,ships[squadLeader],2,ships[squadLeader].data.ship);
+			addEnemy(-80,-20,ships[squadLeader],1,ships[squadLeader].data.ship,squad_number);
+			addEnemy(-80,-80,ships[squadLeader],2,ships[squadLeader].data.ship,squad_number);
 		}
 		
-		function addEnemy(x,y,squad_leader,squad_position,set_ship_type)
+		function addEnemy(x,y,squad_leader,squad_position,set_ship_type,squad_number)
 		{
 			var w = 39;
 			var h = 40;
@@ -603,7 +618,8 @@
 					last_fired: last_fired,
 					target: mytarget,
 					squad_leader: squad_leader,
-					squad_position: squad_position
+					squad_position: squad_position,
+					squad_number:squad_number
 				}
 			);
 			ships.push(ship);
@@ -616,6 +632,7 @@
 			gameTime = 0;
 			lasers.length = 0;
 			ships.length = 0;
+			squads.length = 0;
 			score = 0;
 			ship_type = Math.floor(Math.random()*3) + 1;
 			shipData = getShipData(ship_type);
