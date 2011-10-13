@@ -375,18 +375,15 @@
 				}
 			}
 			window.onkeydown = function(e) {
-					console.log(e.which);
 				switch(e.which) {
-					case 115:
-						console.log('down');
+					case 83:
 						player.data.speed = slowSpeed;
 						break;
 				}
 			}
-			window.onkeyup = function(e) {
-					console.log(e.which);	
+			window.onkeyup = function(e) {	
 				switch(e.which) {
-					case 115:			
+					case 83:			
 						player.data.speed = fastSpeed;
 						break;
 				}
