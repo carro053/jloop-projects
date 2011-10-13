@@ -562,11 +562,11 @@
 		{
 			addEnemy(-50,-50,null,null);
 			var squadLeader = ships.length - 1;
-			addEnemy(-80,-20,ships[squadLeader],1);
-			addEnemy(-80,-80,ships[squadLeader],2);
+			addEnemy(-80,-20,ships[squadLeader],1,ships[squadLeader].data.ship_type);
+			addEnemy(-80,-80,ships[squadLeader],2ships[squadLeader].data.ship_type);
 		}
 		
-		function addEnemy(x,y,squad_leader,squad_position)
+		function addEnemy(x,y,squad_leader,squad_position,set_ship_type)
 		{
 			var w = 39;
 			var h = 40;
@@ -577,6 +577,7 @@
 			var angle = 90;
 			var tracking_distance = Math.floor(Math.random()*200) + 100;
 			var ship_type = Math.floor(Math.random()*3) + 4;
+			if(set_ship_type) ship_type = set_ship_type;
 			var shipData = getShipData(ship_type);
 			var laser_side = 0;
 			var shields = 3;
