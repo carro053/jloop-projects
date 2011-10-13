@@ -414,7 +414,7 @@
 			{
 				var x = Math.floor(Math.random() * canvasBack.width);
 				var y = Math.floor(Math.random() * canvasBack.height);
-				var r = 1;
+				var r = 0.5;
 				stars.push({ x: x, y: y, r: r });
 				contextBack.beginPath();
 				contextBack.arc(x, y, r, 0, Math.PI*2, true); 
@@ -425,7 +425,7 @@
 			{
 				var x = Math.floor(Math.random() * canvasBack.width);
 				var y = Math.floor(Math.random() * canvasBack.height);
-				var r = Math.floor(Math.random() * 2) + 1;
+				var r = (Math.floor(Math.random() * 2) + 1) / 2;
 				stars.push({ x: x, y: y, r: r });
 				contextBack.beginPath();
 				contextBack.arc(x, y, r, 0, Math.PI*2, true); 
@@ -593,7 +593,7 @@
 			for(var s in stars)
 			{
 				console.log('test');
-			    contextBack.lineWidth = stars[s].r;
+			    contextBack.lineWidth = 2 * stars[s].r;
 			    contextBack.beginPath();
 			    contextBack.moveTo(stars[s].x,stars[s].y);
 			    stars[s].x += Math.pow(1 + jumpTime, 2) * 120 * timer.getSeconds();
