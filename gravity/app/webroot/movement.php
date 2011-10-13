@@ -79,13 +79,14 @@
 					var squadY;
 					var cos = Math.cos((this.data.squad_leader.data.angle + 90) * (Math.PI/180));
 					var sin = Math.sin((this.data.squad_leader.data.angle + 90) * (Math.PI/180));
-					if(this.data.squad_position%2 == 0)
+					var position = Math.ceil(this.data.squad_position / 2);
+					if(this.data.squad_position % 2 == 0)
 					{
-						squadX = this.data.squad_leader.data.x - 30 * sin + 30 * cos;
-						squadY = this.data.squad_leader.data.y + 30 * sin + 30 * cos;
+						squadX = x - position * squad_separation * sin + position * squad_separation * cos;
+						squadY = y + position * squad_separation * sin + position * squad_separation * cos;
 					}else{
-						squadX = this.data.squad_leader.data.x + 30 * sin + 30 * cos;
-						squadY = this.data.squad_leader.data.y + 30 * sin - 30 * cos;
+						squadX = x + position * squad_separation * sin + position * squad_separation * cos;
+						squadY = y + position * squad_separation * sin - position * squad_separation * cos;
 					}
 					var squad_distance = Math.sqrt(Math.pow(squadX - this.data.x, 2) + Math.pow(squadY - this.data.y, 2));
 					var bonus_speed = squad_distance * 2;
