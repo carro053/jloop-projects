@@ -74,7 +74,7 @@
 			update: function() {
 				this.data.last_fired += timer.getSeconds();
 				var distance = Math.sqrt(Math.pow(this.data.target.data.x - this.data.x, 2) + Math.pow(this.data.target.data.y - this.data.y, 2));
-				if(this.data.squad_leader && distance > 300)
+				if(this.data.squad_leader && distance > 100)
 				{
 					var squadX;
 					var squadY;
