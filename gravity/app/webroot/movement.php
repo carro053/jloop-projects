@@ -545,9 +545,9 @@
 						
 						if(ad < 0)//turn left
 						{
-							ca = -300 * timer.getSeconds();
+							ca = -50 * timer.getSeconds();
 						}else{//turn right
-							ca = 300 * timer.getSeconds();
+							ca = 50 * timer.getSeconds();
 						}
 						if(Math.abs(ca) > Math.abs(ad))
 						{
