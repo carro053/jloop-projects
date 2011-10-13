@@ -406,7 +406,17 @@
 			contextBack.fillRect(0, 0, canvasBack.width, canvasBack.height);
 			
 			contextBack.fillStyle =  '#FFFFFF';
-			for(var i = 0; i < 1000; i++)
+			for(var i = 0; i < 500; i++)
+			{
+				var x = Math.floor(Math.random() * canvasBack.width);
+				var y = Math.floor(Math.random() * canvasBack.height);
+				var r = 1;
+				contextBack.beginPath();
+				contextBack.arc(x, y, r, 0, Math.PI*2, true); 
+				contextBack.closePath();
+				contextBack.fill();
+			}
+			for(var i = 0; i < 500; i++)
 			{
 				var x = Math.floor(Math.random() * canvasBack.width);
 				var y = Math.floor(Math.random() * canvasBack.height);
