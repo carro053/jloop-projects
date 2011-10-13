@@ -86,7 +86,7 @@
 				}
 			},
 			update: function() {
-				if(this.data.tracking_distance > 0 && target.data.x < this.data.x + this.data.w / 2 && target.data.x > this.data.x - this.data.w / 2 && target.data.y < this.data.y + this.data.h / 2 && target.data.y > this.data.y - this.data.h / 2)
+				if(this.data.tracking_distance > 0 && target.data.x < this.data.x + this.data.w && target.data.x > this.data.x - this.data.w && target.data.y < this.data.y + this.data.h && target.data.y > this.data.y - this.data.h)
 				{					
 					ship_targeted = 1;
 					ship_target = this;
