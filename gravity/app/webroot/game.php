@@ -40,6 +40,21 @@
 		}
 		
 		StarShip.prototype = {
+			fire_missile: function() {
+				if(missile_count > 0)
+				{
+					missile_count--;
+					var cos = Math.cos((this.data.angle + 90) * (Math.PI/180));
+					var sin = Math.sin((this.data.angle + 90) * (Math.PI/180));
+					var x = this.data.x - cos * this.data.h / 2;
+					var y = this.data.y - sin * this.data.h / 2;
+					var angle = this.data.angle;
+					var target = ship_target;
+					missiles.push(
+						{ x: x, y: y, angle: angle, target: target }
+					);
+				}
+			},
 			fire_laser: function() {
 				if(this.data.last_fired > 1 / lps)
 				{
@@ -71,9 +86,14 @@
 				}
 			},
 			update: function() {
+				if(this.data.tracking_distance > 0 && target.data.x < this.data.x + this.data.w && target.data.x > this.data.x - this.data.w && target.data.y < this.data.y + this.data.h && target.data.y > this.data.y - this.data.h)
+				{					
+					ship_targeted = 1;
+					ship_target = this;
+				}
 				this.data.last_fired += timer.getSeconds();
 				var distance = Math.sqrt(Math.pow(this.data.target.data.x - this.data.x, 2) + Math.pow(this.data.target.data.y - this.data.y, 2));
-				if(this.data.squad_leader != null && distance > 500)
+				if(this.data.squad_leader != null && this.data.squad_leader.data.dead == 0 && distance > 500)
 				{
 					var squadX;
 					var squadY;
@@ -182,7 +202,7 @@
 					}
 					this.data.x += Math.cos((this.data.angle - 90) *(Math.PI/180)) * this.data.speed * timer.getSeconds();
 					this.data.y += Math.sin((this.data.angle - 90) *(Math.PI/180)) * this.data.speed * timer.getSeconds();
-				}			
+				}
 			}
 		}
 		
@@ -214,6 +234,8 @@
 <body style="margin:0;overflow:hidden;">
 	<script type="text/javascript">
 		var stars = new Array();
+		var ship_targeted = 0;
+		var ship_target = new Object;
 		var arrived = 0;
 		var hyperspaceCharge = 0;
 		var jumpTime = 0;
@@ -222,6 +244,8 @@
 		var level = 0;
 		var timer = new Timer();
 		var lasers = new Array();
+		var missiles = new Array();
+		var missile_count = 10;
 		var target = new Object;
 		target.data = new Object;
 		var player = new Object;
@@ -230,7 +254,8 @@
 		var lps = 10;
 		var score = 0;
 		var slowSpeed = 125;
-		var fastSpeed = 250;
+		var normalSpeed = 250;
+		var fastSpeed = 375;
 		var squad_separation = 30;
 		var ship_type = Math.floor(Math.random()*3) + 1;
 		var shipData = getShipData(ship_type);
@@ -242,7 +267,7 @@
 				h: 40,
 				xOffset: 20,
 				yOffset: 20,
-				speed: fastSpeed,
+				speed: normalSpeed,
 				angular_speed: 200,
 				angle: 0,
 				tracking_distance: 0,
@@ -299,12 +324,15 @@
 			canvasUI.height = window.innerHeight;
 			
 			canvasUI.onmousedown = function(e) {
-				player.fire_laser();
+				if(ship_targeted == 1)
+				{
+					player.fire_missile();
+				}
 			};
 			
 			canvasUI.onmousemove = function(e) {
-				target.data.x = e.clientX - this.offsetLeft;
-				target.data.y = e.clientY - this.offsetTop;
+				target.data.x = e.clientX - this.offsetLeft + 9;
+				target.data.y = e.clientY - this.offsetTop + 9;
 			};
 			
 			shipSprites.onload = initialize();
@@ -380,6 +408,9 @@
 			window.onkeydown = function(e) {
 				console.log(e.which);
 				switch(e.which) {
+					case 87:
+						player.data.speed = fastSpeed;
+						break;
 					case 83:
 						player.data.speed = slowSpeed;
 						break;
@@ -390,8 +421,11 @@
 			}
 			window.onkeyup = function(e) {	
 				switch(e.which) {
+					case 87:			
+						player.data.speed = normalSpeed;
+						break;
 					case 83:			
-						player.data.speed = fastSpeed;
+						player.data.speed = normalSpeed;
 						break;
 				}
 			}
@@ -457,11 +491,20 @@
 		{
 			gameTime += timer.getSeconds();
 			player.update();
+			ship_targeted = 0;
 			for(var s in ships)
 			{
 				ships[s].update();
 			}
+			var o = document.getElementById("canvasUI");
+			if(ship_targeted)
+			{
+				o.style.cursor="url(green_reticle.png),auto";
+			}else{
+				o.style.cursor="url(red_reticle.png),auto";			
+			}
 			updateLasers();
+			updateMissiles();
 			if(ships.length == 0)
 			{
 				clearInterval(gameInterval);
@@ -469,13 +512,79 @@
 			}
 			//if(Math.floor(gameTime / 20) + 1 > ships.length) addEnemy(-50,-50);			
 		}
+		function updateMissiles()
+		{
+			for(var m in missiles)
+			{
+				if(missiles[m].target.data.dead == 1 && (missiles[m].x < 0 || missiles[m].y < 0 || missiles[m].x > canvasFront.width || missiles[m].y > canvasFront.height))
+				{
+					missiles.splice(m, 1);
+				}else{
+					var hit = 0;
+					for(var s in ships)
+					{
+						if(missiles[m].x < ships[s].data.x + ships[s].data.w / 2 && missiles[m].x > ships[s].data.x - ships[s].data.w / 2 && missiles[m].y < ships[s].data.y + ships[s].data.h / 2 && missiles[m].y > ships[s].data.y - ships[s].data.h / 2)
+						{
+							var imgd = contextFront.getImageData(missiles[m].x, missiles[m].y, 1, 1);
+							var pix = imgd.data;
+							for (var i = 0, n = pix.length; i < n; i += 4) if(pix[i+3] > 0) hit = 1;
+							if(hit == 1)
+							{
+								ships[s].data.shields = 0;
+								score++;
+								if(player.data.shields < 10) player.data.shields++;
+								drawUI();
+								ships[s].data.dead = 1;
+								ships.splice(s, 1);
+							}
+						}
+					}
+					if(hit == 1)
+					{
+						missiles.splice(m, 1);
+					}else{
+						if(missiles[m].target.data.dead == 0)
+						{
+							var ta = Math.atan2(missiles[m].target.data.y - missiles[m].y,missiles[m].target.data.x - missiles[m].x) * 180 / Math.PI + 90;
+							if(ta < 0) ta += 360;
+							if(Math.round(ta) != Math.round(missiles[m].angle))
+							{
+								//angle diff
+								var ad = ta - missiles[m].angle;
+								//change angle by this
+								var ca = 0;
+								if(ad < -180) ad += 360;
+								if(ad > 180) ad -= 360;
+								
+								if(ad < 0)//turn left
+								{
+									ca = -100 * timer.getSeconds();
+								}else{//turn right
+									ca = 100 * timer.getSeconds();
+								}
+								if(Math.abs(ca) > Math.abs(ad))
+								{
+									missiles[m].angle = ta;
+								}else{
+									missiles[m].angle += ca;
+									if(missiles[m].angle < 0) missiles[m].angle += 360;
+									if(missiles[m].angle >= 360) missiles[m].angle -= 360;
+								}
+							}
+						}
+						missiles[m].x += Math.cos((missiles[m].angle - 90) *(Math.PI/180)) * 300 * timer.getSeconds();
+						missiles[m].y += Math.sin((missiles[m].angle - 90) *(Math.PI/180)) * 300 * timer.getSeconds();
+					}
+				}
+			}
+		}
 		function updateLasers()
 		{
 			for(var l in lasers)
 			{
 				var hit = 0;
-				lasers[l].x += Math.cos((lasers[l].angle - 90) *(Math.PI/180)) * 500 * timer.getSeconds();
-				lasers[l].y += Math.sin((lasers[l].angle - 90) *(Math.PI/180)) * 500 * timer.getSeconds();
+				lasers[l].x += Math.cos((lasers[l].angle - 90) *(Math.PI/180)) * 600 * timer.getSeconds();
+				lasers[l].y += Math.sin((lasers[l].angle - 90) *(Math.PI/180)) * 600 * timer.getSeconds();
 				if(lasers[l].x < 0 || lasers[l].y < 0 || lasers[l].x > canvasFront.width || lasers[l].y > canvasFront.height)
 				{
 					lasers.splice(l, 1);
@@ -516,23 +625,11 @@
 								{
 									ships[s].data.shields -= 1;
 									if(ships[s].data.shields == 0)
-									{
-										if(ships[s].data.squad_number != null && ships[s].data.squad_leader == null)
-										{
-											for(var q in ships)
-											{
-												if(q != s && ships[q].data.squad_number == ships[s].data.squad_number)
-												{
-													ships[q].data.squad_leader = null;
-													ships[q].data.squad_position = null;
-													ships[q].data.squad_number = null;
-												}
-											}
-										}
-										
+									{										
 										score++;
 										if(player.data.shields < 10) player.data.shields++;
 										drawUI();
+										ships[s].data.dead = 1;
 										ships.splice(s, 1);
 									}
 								}
@@ -568,6 +665,14 @@
 				contextFront.strokeStyle = lasers[l].color;
 				contextFront.stroke();
 			}
+			for(var m in missiles)
+			{
+				contextFront.fillStyle =  '#FFFB00';
+				contextFront.beginPath();
+				contextFront.arc(missiles[m].x, missiles[m].y, 2, 0, Math.PI*2, true); 
+				contextFront.closePath();
+				contextFront.fill();
+			}
 			for(var s in ships)
 			{
 				var sprite = shipSpritesheet.getSprite(ships[s].data.ship);
@@ -584,6 +689,7 @@
 		{
 			hyperspace_ship();
 			updateLasers();
+			updateMissiles();
 			clearCanvas();
 			drawObjects();
 			timer.tick();
@@ -592,7 +698,6 @@
 		{
 			for(var s in stars)
 			{
-				console.log('test');
 			    contextBack.lineWidth = 2 * stars[s].r;
 			    contextBack.beginPath();
 			    contextBack.moveTo(stars[s].x,stars[s].y);
@@ -798,7 +903,8 @@
 					target: mytarget,
 					squad_leader: squad_leader,
 					squad_position: squad_position,
-					squad_number:squad_number
+					squad_number:squad_number,
+					dead: 0
 				}
 			);
 			ships.push(ship);
@@ -843,6 +949,8 @@
 			gameTime = 0;
 			level = 0;
 			lasers.length = 0;
+			missiles.length = 0;
+			missile_count = 10;
 			ships.length = 0;
 			squads.length = 0;
 			arrived = 0;
@@ -873,7 +981,8 @@
 					last_fired: 0,
 					target: target,
 					squad_leader: null,
-					squad_position: null
+					squad_position: null,
+					dead: 0
 				}
 			);
 			drawUI();
@@ -881,6 +990,6 @@
 	</script>
 	<canvas id="canvasBack" style="position:absolute;"></canvas>
 	<canvas id="canvasFront" style="position:absolute;"></canvas>
-	<canvas id="canvasUI" style="position:absolute;"></canvas>
+	<canvas id="canvasUI" style="position:absolute;cursor:url(red_reticle.png),auto;"></canvas>
 </body>
 </html>
