@@ -212,7 +212,7 @@
 				h: 40,
 				xOffset: 20,
 				yOffset: 20,
-				speed: 200,
+				speed: 400,
 				angular_speed: 200,
 				angle: 0,
 				tracking_distance: 0,
