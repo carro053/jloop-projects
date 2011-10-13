@@ -358,7 +358,7 @@
 						player.fire_laser();
 						break;
 					case 56:
-						addSquad(4,3);
+						addSquad(4,7);
 						break;
 					default:
 						break;
