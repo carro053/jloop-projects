@@ -574,7 +574,7 @@
 		
 		function hyperspaceLoop()
 		{
-			hypserspace_ship();
+			hyperspace_ship();
 			clearCanvas();
 			drawObjects();
 			timer.tick();
