@@ -622,6 +622,8 @@
 					if(player.data.angle < 0) player.data.angle += 360;
 					if(player.data.angle >= 360) player.data.angle -= 360;
 				}
+				player.data.x += Math.cos((player.data.angle - 90) *(Math.PI/180)) * player.data.speed * timer.getSeconds();
+				player.data.y += Math.sin((player.data.angle - 90) *(Math.PI/180)) * player.data.speed * timer.getSeconds();
 			}else if(arrived == 0 && hyperspaceCharge < 3)
 			{
 				hyperspaceCharge += timer.getSeconds();
