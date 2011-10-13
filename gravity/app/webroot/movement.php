@@ -230,6 +230,7 @@
 		var lps = 10;
 		var score = 0;
 		var slowSpeed = 125;
+		var normalSpeed = 250;
 		var fastSpeed = 250;
 		var squad_separation = 30;
 		var ship_type = Math.floor(Math.random()*3) + 1;
@@ -242,7 +243,7 @@
 				h: 40,
 				xOffset: 20,
 				yOffset: 20,
-				speed: fastSpeed,
+				speed: normalSpeed,
 				angular_speed: 200,
 				angle: 0,
 				tracking_distance: 0,
@@ -380,6 +381,9 @@
 			window.onkeydown = function(e) {
 				console.log(e.which);
 				switch(e.which) {
+					case 84:
+						player.data.speed = fastSpeed;
+						break;
 					case 83:
 						player.data.speed = slowSpeed;
 						break;
@@ -390,8 +394,11 @@
 			}
 			window.onkeyup = function(e) {	
 				switch(e.which) {
+					case 84:			
+						player.data.speed = normalSpeed;
+						break;
 					case 83:			
-						player.data.speed = fastSpeed;
+						player.data.speed = normalSpeed;
 						break;
 				}
 			}
