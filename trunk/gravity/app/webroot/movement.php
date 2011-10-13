@@ -213,6 +213,7 @@
 </head>
 <body>
 	<script type="text/javascript">
+		var stars = new Array();
 		var gameInterval;
 		var gameTime = 0;
 		var level = 0;
@@ -411,6 +412,7 @@
 				var x = Math.floor(Math.random() * canvasBack.width);
 				var y = Math.floor(Math.random() * canvasBack.height);
 				var r = 1;
+				stars.push({ x: x, y: y, r: r });
 				contextBack.beginPath();
 				contextBack.arc(x, y, r, 0, Math.PI*2, true); 
 				contextBack.closePath();
@@ -421,6 +423,7 @@
 				var x = Math.floor(Math.random() * canvasBack.width);
 				var y = Math.floor(Math.random() * canvasBack.height);
 				var r = Math.floor(Math.random() * 2) + 1;
+				stars.push({ x: x, y: y, r: r });
 				contextBack.beginPath();
 				contextBack.arc(x, y, r, 0, Math.PI*2, true); 
 				contextBack.closePath();
@@ -542,6 +545,14 @@
 
 		function drawObjects()
 		{
+			for(var s in stars)
+			{
+				stars[s].x += 60 * timer.getSeconds();
+				contextBack.beginPath();
+				contextBack.arc(stars[s].x, stars[s].y, stars[s].r, 0, Math.PI*2, true); 
+				contextBack.closePath();
+				contextBack.fill();
+			}
 			var sprite = shipSpritesheet.getSprite(player.data.ship);
 			contextFront.translate(player.data.x, player.data.y);
 			contextFront.rotate(player.data.angle * Math.PI / 180);sprite.x, sprite.y, sprite.w, sprite.h, 10, 50, sprite.w, sprite.h
