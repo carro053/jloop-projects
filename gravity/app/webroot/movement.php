@@ -449,10 +449,12 @@
 									{
 										if(ships[s].data.squad_number != null && ships[s].data.squad_leader == null)
 										{
+											console.log('leader down');
 											for(var q in ships)
 											{
 												if(ships[q].data.squad_number == ships[s].data.squad_number)
 												{
+													console.log('ship freed');
 													ships[q].data.squad_leader = null;
 													ships[q].data.squad_position = null;
 													ships[q].data.squad_number = null;
