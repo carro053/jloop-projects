@@ -516,6 +516,7 @@
 		{
 			for(var m in missiles)
 			{
+				if(missiles[m].target.data.dead == 1) alert('my target is dead');
 				var hit = 0;
 				for(var s in ships)
 				{
@@ -542,6 +543,7 @@
 							score++;
 							if(player.data.shields < 10) player.data.shields++;
 							drawUI();
+							ships[s].data.dead = 1;
 							ships.splice(s, 1);
 						}
 					}
@@ -917,7 +919,8 @@
 					target: mytarget,
 					squad_leader: squad_leader,
 					squad_position: squad_position,
-					squad_number:squad_number
+					squad_number:squad_number,
+					dead: 0
 				}
 			);
 			ships.push(ship);
@@ -993,7 +996,8 @@
 					last_fired: 0,
 					target: target,
 					squad_leader: null,
-					squad_position: null
+					squad_position: null,
+					dead: 0
 				}
 			);
 			drawUI();
