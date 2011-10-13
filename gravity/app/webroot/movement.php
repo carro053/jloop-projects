@@ -40,6 +40,21 @@
 		}
 		
 		StarShip.prototype = {
+			fire_missile: function() {
+				if(missile_count > 0)
+				{
+					missile_count--;
+					var cos = Math.cos((this.data.angle + 90) * (Math.PI/180));
+					var sin = Math.sin((this.data.angle + 90) * (Math.PI/180));
+					var x = this.data.x - cos * this.data.h / 2;
+					var y = this.data.y - sin * this.data.h / 2;
+					var angle = this.data.angle;
+					var target = ships[0];
+					missiles.push(
+						{ x: x, y: y, angle: angle, target: target }
+					);
+				}
+			},
 			fire_laser: function() {
 				if(this.data.last_fired > 1 / lps)
 				{
@@ -222,6 +237,8 @@
 		var level = 0;
 		var timer = new Timer();
 		var lasers = new Array();
+		var missiles = new Array();
+		var missile_count = 10;
 		var target = new Object;
 		target.data = new Object;
 		var player = new Object;
@@ -300,7 +317,7 @@
 			canvasUI.height = window.innerHeight;
 			
 			canvasUI.onmousedown = function(e) {
-				player.fire_laser();
+				player.fire_missile();
 			};
 			
 			canvasUI.onmousemove = function(e) {
