@@ -214,6 +214,7 @@
 <body>
 	<script type="text/javascript">
 		var stars = new Array();
+		var hyperspaceCharge = 0;
 		var gameInterval;
 		var gameTime = 0;
 		var level = 0;
@@ -609,9 +610,9 @@
 				if(ad > 180) ad -= 360;
 				if(ad < 0)//turn left
 				{
-					ca = -60 * timer.getSeconds();
+					ca = -player.data.anglular_speed * timer.getSeconds();
 				}else{//turn right
-					ca = 60 * timer.getSeconds();
+					ca = player.data.anglular_speed * timer.getSeconds();
 				}
 				if(Math.abs(ca) > Math.abs(ad))
 				{
@@ -621,6 +622,9 @@
 					if(player.data.angle < 0) player.data.angle += 360;
 					if(player.data.angle >= 360) player.data.angle -= 360;
 				}
+			}else if(arrived == 0 && hyperspaceCharge < 3)
+			{
+				hyperspsaceCharge += timer.getSeconds();
 			}else if(arrived == 0 && player.data.x > -150)
 			{
 				hyperspace_stars();
@@ -633,12 +637,13 @@
 				drawBackground();
 				player.data.x = canvasFront.width + 150;
 				arrived = 1;
-			}else if(player.data.x > canvasFront.width / 2)
+			}else if(player.data.x > canvasFront.width * 4 / 5)
 			{
 				player.data.x += Math.cos((player.data.angle - 90) *(Math.PI/180)) * player.data.speed * timer.getSeconds();
 				player.data.y += Math.sin((player.data.angle - 90) *(Math.PI/180)) * player.data.speed * timer.getSeconds();
 			}else{
 				arrived = 0;
+				hyperspaceCharge = 0;
 				level++;
 				drawUI();
 				clearInterval(gameInterval);
