@@ -361,6 +361,9 @@
 					case 56:
 						addSquad(4,7);
 						break;
+					case 57:
+						addEnemy(-50,-50);
+						break;
 					default:
 						break;
 				}
