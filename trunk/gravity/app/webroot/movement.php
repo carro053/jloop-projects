@@ -537,7 +537,7 @@
 					if(Math.round(ta) != Math.round(missiles[m].angle))
 					{
 						//angle diff
-						var ad = ta - this.data.angle;
+						var ad = ta - missiles[m].angle;
 						//change angle by this
 						var ca = 0;
 						if(ad < -180) ad += 360;
