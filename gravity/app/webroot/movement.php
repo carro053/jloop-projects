@@ -594,7 +594,7 @@
 			    contextBack.lineWidth = stars[s].r;
 			    contextBack.beginPath();
 			    contextBack.moveTo(stars[s].x,stars[s].y);
-			    stars[s].x += Math,pow(1 + jumpTime, 2) * 120 * timer.getSeconds();
+			    stars[s].x += Math.pow(1 + jumpTime, 2) * 120 * timer.getSeconds();
 			    contextBack.lineTo(stars[s].x,stars[s].y);
 			    contextBack.stroke();
 			}
@@ -632,8 +632,8 @@
 			{
 				jumpTime != timer.getSeconds();
 				hyperspace_stars();
-				player.data.x += Math.cos((player.data.angle - 90) *(Math.PI/180)) * Math,pow(1 + jumpTime, 2) * 1200 * timer.getSeconds();
-				player.data.y += Math.sin((player.data.angle - 90) *(Math.PI/180)) * Math,pow(1 + jumpTime, 2) * 1200 * timer.getSeconds();
+				player.data.x += Math.cos((player.data.angle - 90) *(Math.PI/180)) * Math.pow(1 + jumpTime, 2) * 1200 * timer.getSeconds();
+				player.data.y += Math.sin((player.data.angle - 90) *(Math.PI/180)) * Math.pow(1 + jumpTime, 2) * 1200 * timer.getSeconds();
 			}else if(arrived == 0)
 			{
 				contextFront.clearRect(0, 0, canvasFront.width, canvasFront.height);
