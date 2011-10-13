@@ -516,7 +516,7 @@
 		{
 			for(var m in missiles)
 			{
-				if(missiles[m].x < 0 || missiles[m].y < 0 || missiles[m].x > canvasFront.width || missiles[m].y > canvasFront.height)
+				if(missiles[m].target.data.dead == 1 && (missiles[m].x < 0 || missiles[m].y < 0 || missiles[m].x > canvasFront.width || missiles[m].y > canvasFront.height))
 				{
 					missiles.splice(m, 1);
 				}else{
@@ -950,6 +950,7 @@
 			level = 0;
 			lasers.length = 0;
 			missiles.length = 0;
+			missile_count = 10;
 			ships.length = 0;
 			squads.length = 0;
 			arrived = 0;
