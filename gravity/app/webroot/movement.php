@@ -134,6 +134,7 @@
 						{
 							this.data.angle = ta;
 						}else{
+							console.log(ca+"|"+ta+"|"+this.data.angle);
 							this.data.angle += ca;
 							if(this.data.angle < 0) this.data.angle += 360;
 							if(this.data.angle >= 360) this.data.angle -= 360;
@@ -168,7 +169,6 @@
 							{
 								this.data.angle = ta;
 							}else{
-								console.log(ca+"|"+ta+"|"+this.data.angle);
 								this.data.angle += ca;
 								if(this.data.angle < 0) this.data.angle += 360;
 								if(this.data.angle >= 360) this.data.angle -= 360;
