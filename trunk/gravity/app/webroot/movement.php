@@ -92,7 +92,8 @@
 					
 					if(squad_distance > 4)
 					{
-						var ta = this.data.squad_leader.data.angle;
+						var ta = Math.atan2(squadY - this.data.y,squadX - this.data.x) * 180 / Math.PI + 90;
+						if(ta < 0) ta += 360;
 						var ad = ta - this.data.angle;
 						//change angle by this
 						var ca = 0;
