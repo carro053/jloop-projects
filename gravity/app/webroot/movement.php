@@ -600,9 +600,9 @@
 		}
 		function hyperspace_ship()
 		{
-			console.log('test');
 			if(arrived == 0 && player.data.angle != 270)
 			{
+				console.log('test');
 				var ta = 270;
 				var ad = ta - player.data.angle;
 				//change angle by this
