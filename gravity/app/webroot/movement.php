@@ -118,7 +118,6 @@
 						this.data.y += Math.sin((this.data.angle - 90) *(Math.PI/180)) * (this.data.speed + 200) * timer.getSeconds();
 					}else{
 						var ta = this.data.squad_leader.angle;
-						if(ta < 0) ta += 360;
 						var ad = ta - this.data.angle;
 						//change angle by this
 						var ca = 0;
