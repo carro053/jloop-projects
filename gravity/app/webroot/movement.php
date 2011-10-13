@@ -86,6 +86,18 @@
 				}
 			},
 			update: function() {
+				if(this.data.tracking_distance > 0 && target.data.x < this.data.x + this.data.w / 2 && target.data.x > this.data.x - this.data.w / 2 && target.data.y < this.data.y + this.data.h / 2 && target.data.y > this.data.y - this.data.h / 2)
+				{
+					var on = 0;
+					var imgd = contextFront.getImageData(target.data.x, target.data.y, 1, 1);
+					var pix = imgd.data;
+					for (var i = 0, n = pix.length; i < n; i += 4) if(pix[i+3] > 0) on = 1;
+					if(on == 1)
+					{						
+						ship_targeted = 1;
+						ship_target = this;
+					}
+				}
 				this.data.last_fired += timer.getSeconds();
 				var distance = Math.sqrt(Math.pow(this.data.target.data.x - this.data.x, 2) + Math.pow(this.data.target.data.y - this.data.y, 2));
 				if(this.data.squad_leader != null && distance > 500)
@@ -197,20 +209,6 @@
 					}
 					this.data.x += Math.cos((this.data.angle - 90) *(Math.PI/180)) * this.data.speed * timer.getSeconds();
 					this.data.y += Math.sin((this.data.angle - 90) *(Math.PI/180)) * this.data.speed * timer.getSeconds();
-				}
-				if(this.data.tracking_distance > 0 && target.x < this.data.x + this.data.w / 2 && target.x > this.data.x - this.data.w / 2 && target.y < this.data.y + this.data.h / 2 && target.y > this.data.y - this.data.h / 2)
-				{
-					console.log('in box');
-					var on = 0;
-					var imgd = contextFront.getImageData(target.x, target.y, 1, 1);
-					var pix = imgd.data;
-					for (var i = 0, n = pix.length; i < n; i += 4) if(pix[i+3] > 0) on = 1;
-					if(on == 1)
-					{	
-						console.log('in ship');							
-						ship_targeted = 1;
-						ship_target = this;
-					}
 				}
 			}
 		}
