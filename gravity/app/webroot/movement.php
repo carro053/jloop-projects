@@ -269,7 +269,8 @@
 		
 		var shipSprites = new Image();
 		shipSprites.src = 'ship_sprites.png';
-		
+		var starDestroyer = new Image();
+		starDestroyer.src = 'star_destroyer.png';
 		var canvasFront = new Object();
 		var contextFront = new Object();
 		var canvasBack = new Object();
