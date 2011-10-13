@@ -808,6 +808,7 @@
 			if(level == 1)
 			{
 				addEnemy(-50,-50,6);
+				addEnemy(-50,-50,5);
 			}else if(level == 2)
 			{
 				addEnemy(window.innerWidth / 2,-150,4);
