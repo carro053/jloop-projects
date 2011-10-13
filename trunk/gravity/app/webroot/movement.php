@@ -491,6 +491,7 @@
 										}
 										
 										score++;
+										if(player.data.shields < 10) player.data.shields++;
 										drawUI();
 										ships.splice(s, 1);
 									}
