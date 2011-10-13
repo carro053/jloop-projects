@@ -429,6 +429,7 @@
 				contextBack.closePath();
 				contextBack.fill();
 			}
+			contextBack.strokeStyle =  '#FFFFFF';
 		}
 		
 		function drawUI()
