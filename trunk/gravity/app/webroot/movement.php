@@ -522,6 +522,7 @@
 
 		function drawObjects()
 		{
+			contextFront.drawImage(starDestroyer,300,300);
 			var sprite = shipSpritesheet.getSprite(player.data.ship);
 			contextFront.translate(player.data.x, player.data.y);
 			contextFront.rotate(player.data.angle * Math.PI / 180);sprite.x, sprite.y, sprite.w, sprite.h, 10, 50, sprite.w, sprite.h
