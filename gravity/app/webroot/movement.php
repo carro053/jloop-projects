@@ -216,6 +216,7 @@
 		target.data = new Object;
 		var player = new Object;
 		var ships = new Array();
+		var squads = new Array();
 		var lps = 10;
 		var score = 0;
 		var ship_type = Math.floor(Math.random()*3) + 1;
