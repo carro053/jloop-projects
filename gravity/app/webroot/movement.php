@@ -516,70 +516,77 @@
 		{
 			for(var m in missiles)
 			{
-				if(missiles[m].target.data.dead == 1) alert('my target is dead');
-				var hit = 0;
-				for(var s in ships)
-				{
-					if(missiles[m].x < ships[s].data.x + ships[s].data.w / 2 && missiles[m].x > ships[s].data.x - ships[s].data.w / 2 && missiles[m].y < ships[s].data.y + ships[s].data.h / 2 && missiles[m].y > ships[s].data.y - ships[s].data.h / 2)
-					{
-						var imgd = contextFront.getImageData(missiles[m].x, missiles[m].y, 1, 1);
-						var pix = imgd.data;
-						for (var i = 0, n = pix.length; i < n; i += 4) if(pix[i+3] > 0) hit = 1;
-						if(hit == 1)
-						{
-							ships[s].data.shields = 0
-							if(ships[s].data.squad_number != null && ships[s].data.squad_leader == null)
-							{
-								for(var q in ships)
-								{
-									if(q != s && ships[q].data.squad_number == ships[s].data.squad_number)
-									{
-										ships[q].data.squad_leader = null;
-										ships[q].data.squad_position = null;
-										ships[q].data.squad_number = null;
-									}
-								}
-							}
-							score++;
-							if(player.data.shields < 10) player.data.shields++;
-							drawUI();
-							ships[s].data.dead = 1;
-							ships.splice(s, 1);
-						}
-					}
-				}
-				if(hit == 1)
+				if(missiles[m].x < 0 || missiles[m].y < 0 || missiles[m].x > canvasFront.width || missiles[m].y > canvasFront.height)
 				{
 					missiles.splice(m, 1);
 				}else{
-					var ta = Math.atan2(missiles[m].target.data.y - missiles[m].y,missiles[m].target.data.x - missiles[m].x) * 180 / Math.PI + 90;
-					if(ta < 0) ta += 360;
-					if(Math.round(ta) != Math.round(missiles[m].angle))
+					var hit = 0;
+					for(var s in ships)
 					{
-						//angle diff
-						var ad = ta - missiles[m].angle;
-						//change angle by this
-						var ca = 0;
-						if(ad < -180) ad += 360;
-						if(ad > 180) ad -= 360;
-						
-						if(ad < 0)//turn left
+						if(missiles[m].x < ships[s].data.x + ships[s].data.w / 2 && missiles[m].x > ships[s].data.x - ships[s].data.w / 2 && missiles[m].y < ships[s].data.y + ships[s].data.h / 2 && missiles[m].y > ships[s].data.y - ships[s].data.h / 2)
 						{
-							ca = -100 * timer.getSeconds();
-						}else{//turn right
-							ca = 100 * timer.getSeconds();
-						}
-						if(Math.abs(ca) > Math.abs(ad))
-						{
-							missiles[m].angle = ta;
-						}else{
-							missiles[m].angle += ca;
-							if(missiles[m].angle < 0) missiles[m].angle += 360;
-							if(missiles[m].angle >= 360) missiles[m].angle -= 360;
+							var imgd = contextFront.getImageData(missiles[m].x, missiles[m].y, 1, 1);
+							var pix = imgd.data;
+							for (var i = 0, n = pix.length; i < n; i += 4) if(pix[i+3] > 0) hit = 1;
+							if(hit == 1)
+							{
+								ships[s].data.shields = 0
+								if(ships[s].data.squad_number != null && ships[s].data.squad_leader == null)
+								{
+									for(var q in ships)
+									{
+										if(q != s && ships[q].data.squad_number == ships[s].data.squad_number)
+										{
+											ships[q].data.squad_leader = null;
+											ships[q].data.squad_position = null;
+											ships[q].data.squad_number = null;
+										}
+									}
+								}
+								score++;
+								if(player.data.shields < 10) player.data.shields++;
+								drawUI();
+								ships[s].data.dead = 1;
+								ships.splice(s, 1);
+							}
 						}
 					}
-					missiles[m].x += Math.cos((missiles[m].angle - 90) *(Math.PI/180)) * 300 * timer.getSeconds();
-					missiles[m].y += Math.sin((missiles[m].angle - 90) *(Math.PI/180)) * 300 * timer.getSeconds();
+					if(hit == 1)
+					{
+						missiles.splice(m, 1);
+					}else{
+						if(missiles[m].target.data.dead == 0)
+						{
+							var ta = Math.atan2(missiles[m].target.data.y - missiles[m].y,missiles[m].target.data.x - missiles[m].x) * 180 / Math.PI + 90;
+							if(ta < 0) ta += 360;
+							if(Math.round(ta) != Math.round(missiles[m].angle))
+							{
+								//angle diff
+								var ad = ta - missiles[m].angle;
+								//change angle by this
+								var ca = 0;
+								if(ad < -180) ad += 360;
+								if(ad > 180) ad -= 360;
+								
+								if(ad < 0)//turn left
+								{
+									ca = -100 * timer.getSeconds();
+								}else{//turn right
+									ca = 100 * timer.getSeconds();
+								}
+								if(Math.abs(ca) > Math.abs(ad))
+								{
+									missiles[m].angle = ta;
+								}else{
+									missiles[m].angle += ca;
+									if(missiles[m].angle < 0) missiles[m].angle += 360;
+									if(missiles[m].angle >= 360) missiles[m].angle -= 360;
+								}
+							}
+						}
+						missiles[m].x += Math.cos((missiles[m].angle - 90) *(Math.PI/180)) * 300 * timer.getSeconds();
+						missiles[m].y += Math.sin((missiles[m].angle - 90) *(Math.PI/180)) * 300 * timer.getSeconds();
+					}
 				}
 			}
 		}
@@ -647,6 +654,7 @@
 										score++;
 										if(player.data.shields < 10) player.data.shields++;
 										drawUI();
+										ships[s].data.dead = 1;
 										ships.splice(s, 1);
 									}
 								}
