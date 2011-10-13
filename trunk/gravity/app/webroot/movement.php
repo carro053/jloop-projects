@@ -577,7 +577,7 @@
 		{
 			for(var s in stars)
 			{
-			    contextBack.lineWidth = 1+i;
+			    contextBack.lineWidth = stars[s].r;
 			    contextBack.beginPath();
 			    contextBack.moveTo(stars[s].x,stars[s].y);
 			    stars[s].x += 120 * timer.getSeconds();
