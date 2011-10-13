@@ -982,6 +982,6 @@
 	</script>
 	<canvas id="canvasBack" style="position:absolute;"></canvas>
 	<canvas id="canvasFront" style="position:absolute;"></canvas>
-	<canvas id="canvasUI" style="position:absolute;"></canvas>
+	<canvas id="canvasUI" style="position:absolute;cursor:url(red_reticle.png),auto;"></canvas>
 </body>
 </html>
