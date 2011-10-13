@@ -447,7 +447,6 @@
 									ships[s].data.shields -= 1;
 									if(ships[s].data.shields == 0)
 									{
-										console.log(ships[s].data.squad_number + "|"+ships[s].data.squad_leader.data.x);
 										if(ships[s].data.squad_number != null && ships[s].data.squad_leader.data.x == null)
 										{
 											for(var q in ships)
