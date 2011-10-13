@@ -89,11 +89,10 @@
 						squadY = this.data.squad_leader.data.y + 30 * sin - 30 * cos;
 					}
 					var squad_distance = Math.sqrt(Math.pow(squadX - this.data.x, 2) + Math.pow(squadY - this.data.y, 2));
-					
+					var bonus_speed = squad_distance * 2;
+					if(bonus_speed > 100) bonus_speed = 100;
 					if(squad_distance > 5)
 					{
-						var bonus_speed = squad_distance * 2;
-						if(bonus_speed > 100) bonus_speed = 100;
 						var ta = Math.atan2(squadY - this.data.y,squadX - this.data.x) * 180 / Math.PI + 90;
 						if(ta < 0) ta += 360;
 						var ad = ta - this.data.angle;
@@ -128,9 +127,9 @@
 						
 						if(ad < 0)//turn left
 						{
-							ca = -(this.data.angular_speed + 50) * timer.getSeconds();
+							ca = -(this.data.angular_speed + bonus_speed) * timer.getSeconds();
 						}else{//turn right
-							ca = (this.data.angular_speed + 50) * timer.getSeconds();
+							ca = (this.data.angular_speed + bonus_speed) * timer.getSeconds();
 						}
 						if(Math.abs(ca) > Math.abs(ad))
 						{
