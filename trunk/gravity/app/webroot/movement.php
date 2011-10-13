@@ -88,15 +88,15 @@
 			update: function() {
 				if(this.data.tracking_distance > 0 && target.data.x < this.data.x + this.data.w / 2 && target.data.x > this.data.x - this.data.w / 2 && target.data.y < this.data.y + this.data.h / 2 && target.data.y > this.data.y - this.data.h / 2)
 				{
-					var on = 0;
-					var imgd = contextFront.getImageData(target.data.x, target.data.y, 1, 1);
-					var pix = imgd.data;
-					for (var i = 0, n = pix.length; i < n; i += 4) if(pix[i+3] > 0) on = 1;
-					if(on == 1)
-					{						
+					//var on = 0;
+					//var imgd = contextFront.getImageData(target.data.x, target.data.y, 1, 1);
+					//var pix = imgd.data;
+					//for (var i = 0, n = pix.length; i < n; i += 4) if(pix[i+3] > 0) on = 1;
+					//if(on == 1)
+					//{						
 						ship_targeted = 1;
 						ship_target = this;
-					}
+					//}
 				}
 				this.data.last_fired += timer.getSeconds();
 				var distance = Math.sqrt(Math.pow(this.data.target.data.x - this.data.x, 2) + Math.pow(this.data.target.data.y - this.data.y, 2));
