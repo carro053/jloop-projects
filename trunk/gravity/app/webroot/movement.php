@@ -406,7 +406,7 @@
 			contextBack.fillStyle =  '#000000';
 			contextBack.fillRect(0, 0, canvasBack.width, canvasBack.height);
 			
-			contextBack.fillStyle =  '#FFFEA8';
+			contextBack.fillStyle =  '#FFFFFF';
 			for(var i = 0; i < canvasBack.width * canvasBack.height / 10000; i++)
 			{
 				var x = Math.floor(Math.random() * canvasBack.width);
