@@ -383,8 +383,8 @@
 				}
 			}
 			window.onkeyup = function(e) {
-				switch(e.which) {
 					console.log('up');	
+				switch(e.which) {
 					case 115:			
 						player.data.speed = fastSpeed;
 						break;
