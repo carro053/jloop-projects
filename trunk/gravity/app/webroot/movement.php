@@ -605,7 +605,7 @@
 					shipData.xLeftLaser = -1;
 					shipData.yLeftLaser = -10;
 					shipData.laserColor = 'rgb(255,0,0)';
-					shipData.speed = 250;
+					shipData.speed = 200;
 					shipData.angular_speed = 250;
 					
 					break;
@@ -623,12 +623,10 @@
 			}
 			return shipData;
 		}
-		function addSquad(ship_type,amount)
+		function addSquad(ship_type,amount,x,y)
 		{
 			squads.push = 1;
 			var squad_number = squads.length;
-			var x = -50;
-			var y = -50;
 			addEnemy(-50,-50,ship_type,null,null,squad_number);
 			var squadLeader = ships.length - 1;
 			for(var i=1;i < amount;i++)
@@ -704,17 +702,25 @@
 				addEnemy(-50,-50,6);
 			}else if(level == 3)
 			{
-				addSquad(6,3);
+				addSquad(6,3,window.innerWidth + 150,window.innerHeight / 2);
 			}else if(level == 4)
 			{
-				addSquad(4,3);
+				addSquad(4,3,window.innerWidth / 2, -150);
 				addEnemy(-150,-50,6);
 				addEnemy(-50,-150,6);
 			}else if(level == 5)
 			{
 				addEnemy(-50,-50,5);
+			}else if(level == 6)
+			{
+				addSquad(6,3,window.innerWidth / 2, -150);
+				addSquad(6,3,window.innerWidth / 2, window.innerHeight + 150);
+				addSquad(5,3,-150,window.innerWidth / 2);
+				addSquad(5,3,window.innerWidth + 150,window.innerWidth / 2);
+			}else if(level == 7)
+			{
+				addSquad(6,7,window.innerWidth / 2, -150);
 			}else{
-				addSquad(6,7);
 			}
 		}
 		function reset_game()
