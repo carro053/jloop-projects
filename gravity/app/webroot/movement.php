@@ -211,7 +211,7 @@
 		};
 	</script>
 </head>
-<body>
+<body style="margin:0;">
 	<script type="text/javascript">
 		var stars = new Array();
 		var arrived = 0;
