@@ -109,7 +109,7 @@
 						if(this.data.angle >= 360) this.data.angle -= 360;
 					}
 					this.data.x += (squadX - this.data.x) / squad_distance * this.data.speed * timer.getSeconds();
-					this.data.y += (squady - this.data.y) / squad_distance * this.data.speed * timer.getSeconds();
+					this.data.y += (squadY - this.data.y) / squad_distance * this.data.speed * timer.getSeconds();
 				}else{
 					if(distance > 1)
 					{
