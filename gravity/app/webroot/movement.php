@@ -98,9 +98,9 @@
 					
 					if(ad < 0)//turn left
 					{
-						ca = -this.data.angular_speed * timer.getSeconds();
+						ca = -(this.data.angular_speed + 50) * timer.getSeconds();
 					}else{//turn right
-						ca = this.data.angular_speed * timer.getSeconds();
+						ca = (this.data.angular_speed + 50) * timer.getSeconds();
 					}
 					if(Math.abs(ca) > Math.abs(ad))
 					{
