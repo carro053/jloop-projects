@@ -231,7 +231,7 @@
 		var score = 0;
 		var slowSpeed = 125;
 		var normalSpeed = 250;
-		var fastSpeed = 250;
+		var fastSpeed = 375;
 		var squad_separation = 30;
 		var ship_type = Math.floor(Math.random()*3) + 1;
 		var shipData = getShipData(ship_type);
@@ -381,7 +381,7 @@
 			window.onkeydown = function(e) {
 				console.log(e.which);
 				switch(e.which) {
-					case 84:
+					case 87:
 						player.data.speed = fastSpeed;
 						break;
 					case 83:
@@ -394,7 +394,7 @@
 			}
 			window.onkeyup = function(e) {	
 				switch(e.which) {
-					case 84:			
+					case 87:			
 						player.data.speed = normalSpeed;
 						break;
 					case 83:			
