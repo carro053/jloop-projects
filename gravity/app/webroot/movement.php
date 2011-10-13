@@ -335,7 +335,6 @@
 			shipSprites.onload = initialize();
 			
 			window.onkeydown = function(e) {
-				console.log(e.which);
 				switch(e.which) {
 					case 87:
 						player.data.speed = fastSpeed;
@@ -348,8 +347,7 @@
 						break;
 				}
 			}
-			window.onkeyup = function(e) {	
-				console.log(e.which);
+			window.onkeyup = function(e) {
 				switch(e.which) {
 					case 87:			
 						player.data.speed = normalSpeed;
