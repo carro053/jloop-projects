@@ -486,12 +486,82 @@
 				ships[s].update();
 			}
 			updateLasers();
+			updateMissiles();
 			if(ships.length == 0)
 			{
 				clearInterval(gameInterval);
 				gameInterval = setInterval(hyperspaceLoop, 20);
 			}
 			//if(Math.floor(gameTime / 20) + 1 > ships.length) addEnemy(-50,-50);			
+		}
+		function updateMissiles()
+		{
+			for(var m in missiles)
+			{
+				var hit = 0;
+				for(var s in ships)
+				{
+					if(missiles[m].x < ships[s].data.x + missiles[m].data.w / 2 && missiles[m].x > ships[s].data.x - ships[s].data.w / 2 && missiles[m].y < ships[s].data.y + ships[s].data.h / 2 && missiles[m].y > ships[s].data.y - ships[s].data.h / 2)
+					{
+						var imgd = contextFront.getImageData(missiles[m].x, missiles[m].y, 1, 1);
+						var pix = imgd.data;
+						for (var i = 0, n = pix.length; i < n; i += 4) if(pix[i+3] > 0) hit = 1;
+						if(hit == 1)
+						{
+							ships[s].data.shields = 0
+							if(ships[s].data.squad_number != null && ships[s].data.squad_leader == null)
+							{
+								for(var q in ships)
+								{
+									if(q != s && ships[q].data.squad_number == ships[s].data.squad_number)
+									{
+										ships[q].data.squad_leader = null;
+										ships[q].data.squad_position = null;
+										ships[q].data.squad_number = null;
+									}
+								}
+							}
+							score++;
+							if(player.data.shields < 10) player.data.shields++;
+							drawUI();
+							ships.splice(s, 1);
+						}
+					}
+				}
+				if(hit == 1)
+				{
+					missiles.splice(m, 1);
+				}else{
+					var ta = Math.atan2(missiles[m].target.data.y - missiles[m].y,missiles[m].target.data.x - missiles[m].x) * 180 / Math.PI + 90;
+					if(ta < 0) ta += 360;
+					if(Math.round(ta) != Math.round(missiles[m].angle))
+					{
+						//angle diff
+						var ad = ta - this.data.angle;
+						//change angle by this
+						var ca = 0;
+						if(ad < -180) ad += 360;
+						if(ad > 180) ad -= 360;
+						
+						if(ad < 0)//turn left
+						{
+							ca = -300 * timer.getSeconds();
+						}else{//turn right
+							ca = 300 * timer.getSeconds();
+						}
+						if(Math.abs(ca) > Math.abs(ad))
+						{
+							missiles[m].angle = ta;
+						}else{
+							missiles[m].angle += ca;
+							if(missiles[m].angle < 0) missiles[m].angle += 360;
+							if(missiles[m].angle >= 360) missiles[m].angle -= 360;
+						}
+					}
+					missiles[m].x += Math.cos((missiles[m].angle - 90) *(Math.PI/180)) * 300 * timer.getSeconds();
+					missiles[m].y += Math.sin((missiles[m].angle - 90) *(Math.PI/180)) * 300 * timer.getSeconds();
+				}
+			}
 		}
 		function updateLasers()
 		{
@@ -591,6 +661,14 @@
 				contextFront.closePath();
 				contextFront.strokeStyle = lasers[l].color;
 				contextFront.stroke();
+			}
+			for(var m in missiles)
+			{
+				contextFront.fillStyle =  '#FFFB00';
+				contextBack.beginPath();
+				contextBack.arc(missiles[m].x, missiles[m].y, 2, 0, Math.PI*2, true); 
+				contextBack.closePath();
+				contextBack.fill();
 			}
 			for(var s in ships)
 			{
