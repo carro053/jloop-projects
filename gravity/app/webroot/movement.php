@@ -716,8 +716,8 @@
 			{
 				addSquad(6,3,window.innerWidth / 2, -150);
 				addSquad(6,3,window.innerWidth / 2, window.innerHeight + 150);
-				addSquad(5,3,-150,window.innerWidth / 2);
-				addSquad(5,3,window.innerWidth + 150,window.innerWidth / 2);
+				addSquad(4,3,-150,window.innerWidth / 2);
+				addSquad(4,3,window.innerWidth + 150,window.innerWidth / 2);
 			}else if(level == 7)
 			{
 				addSquad(6,7,window.innerWidth / 2, -150);
