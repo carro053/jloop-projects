@@ -375,6 +375,7 @@
 				}
 			}
 			window.onkeydown = function(e) {
+				console.log(e.which);
 				switch(e.which) {
 					case 83:
 						player.data.speed = slowSpeed;
