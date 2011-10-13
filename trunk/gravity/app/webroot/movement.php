@@ -619,8 +619,8 @@
 			}else if(player.data.x > -150)
 			{
 				hyperspace_stars();
-				player.data.x += Math.cos((player.data.angle - 90) *(Math.PI/180)) * 120 * timer.getSeconds();
-				player.data.y += Math.sin((player.data.angle - 90) *(Math.PI/180)) * 120 * timer.getSeconds();
+				player.data.x += Math.cos((player.data.angle - 90) *(Math.PI/180)) * 600 * timer.getSeconds();
+				player.data.y += Math.sin((player.data.angle - 90) *(Math.PI/180)) * 600 * timer.getSeconds();
 			}else{
 				contextFront.clearRect(0, 0, canvasFront.width, canvasFront.height);
 				stars.length = 0;
