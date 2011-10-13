@@ -563,7 +563,7 @@
 			addEnemy(-50,-50,null,null);
 			var squadLeader = ships.length - 1;
 			addEnemy(-80,-20,ships[squadLeader],1,ships[squadLeader].data.ship_type);
-			addEnemy(-80,-80,ships[squadLeader],2ships[squadLeader].data.ship_type);
+			addEnemy(-80,-80,ships[squadLeader],2,ships[squadLeader].data.ship_type);
 		}
 		
 		function addEnemy(x,y,squad_leader,squad_position,set_ship_type)
