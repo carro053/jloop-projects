@@ -200,12 +200,14 @@
 				}
 				if(this.data.tracking_distance > 0 && target.x < this.data.x + this.data.w / 2 && target.x > this.data.x - this.data.w / 2 && target.y < this.data.y + this.data.h / 2 && target.y > this.data.y - this.data.h / 2)
 				{
+					console.log('in box');
 					var on = 0;
 					var imgd = contextFront.getImageData(target.x, target.y, 1, 1);
 					var pix = imgd.data;
 					for (var i = 0, n = pix.length; i < n; i += 4) if(pix[i+3] > 0) on = 1;
 					if(on == 1)
-					{								
+					{	
+						console.log('in ship');							
 						ship_targeted = 1;
 						ship_target = this;
 					}
