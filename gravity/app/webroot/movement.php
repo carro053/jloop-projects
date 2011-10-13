@@ -807,12 +807,11 @@
 		{
 			if(level == 1)
 			{
-				//addEnemy(-50,-50,6);
-				addEnemy(-50,-50,5);
+				addEnemy(-50,-50,6);
 			}else if(level == 2)
 			{
 				addEnemy(window.innerWidth / 2,-150,4);
-				addEnemy(window.innerWidth / 2,window.innerHeight + 150,6);
+				addEnemy(window.innerWidth / 2,window.innerHeight + 150,4);
 			}else if(level == 3)
 			{
 				addSquad(6,3,window.innerWidth + 150,window.innerHeight / 2);
