@@ -406,7 +406,7 @@
 			contextBack.fillRect(0, 0, canvasBack.width, canvasBack.height);
 			
 			contextBack.fillStyle =  '#FFFEA8';
-			for(var i = 0; i < canvasBack.width * canvasBack.height / 400; i++)
+			for(var i = 0; i < canvasBack.width * canvasBack.height / 2000; i++)
 			{
 				var x = Math.floor(Math.random() * canvasBack.width);
 				var y = Math.floor(Math.random() * canvasBack.height);
@@ -416,7 +416,7 @@
 				contextBack.closePath();
 				contextBack.fill();
 			}
-			for(var i = 0; i < canvasBack.width * canvasBack.height / 400; i++)
+			for(var i = 0; i < canvasBack.width * canvasBack.height / 2000; i++)
 			{
 				var x = Math.floor(Math.random() * canvasBack.width);
 				var y = Math.floor(Math.random() * canvasBack.height);
