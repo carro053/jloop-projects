@@ -717,8 +717,8 @@
 					shipData.xLeftLaser = -1;
 					shipData.yLeftLaser = -10;
 					shipData.laserColor = 'rgb(255,0,0)';
-					shipData.speed = 200;
-					shipData.angular_speed = 250;
+					shipData.speed = 250;
+					shipData.angular_speed = 150;
 					
 					break;
 				case 6:
