@@ -377,14 +377,14 @@
 			window.onkeydown = function(e) {
 				switch(e.which) {
 					case 115:
-						console('down');
+						console.log('down');
 						player.data.speed = slowSpeed;
 						break;
 				}
 			}
 			window.onkeyup = function(e) {
 				switch(e.which) {
-					console('up');	
+					console.log('up');	
 					case 115:			
 						player.data.speed = fastSpeed;
 						break;
