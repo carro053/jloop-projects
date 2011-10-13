@@ -35,7 +35,6 @@
 				return null;
 			}
 		};
-		
 		var StarShip = function(ship) {
 			this.data = ship;
 		}
@@ -139,8 +138,6 @@
 							if(this.data.angle < 0) this.data.angle += 360;
 							if(this.data.angle >= 360) this.data.angle -= 360;
 						}
-						//this.data.x += Math.cos((this.data.squad_leader.data.angle - 90) *(Math.PI/180)) * this.data.speed * timer.getSeconds();
-						//this.data.y += Math.sin((this.data.squad_leader.data.angle - 90) *(Math.PI/180)) * this.data.speed * timer.getSeconds();
 						
 						this.data.x = squadX;
 						this.data.y = squadY;
@@ -606,7 +603,8 @@
 					last_fired: last_fired,
 					target: mytarget,
 					squad_leader: squad_leader,
-					squad_position: squad_position
+					squad_position: squad_position,
+					squad_number:
 				}
 			);
 			ships.push(ship);
