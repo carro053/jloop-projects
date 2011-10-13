@@ -153,7 +153,7 @@
 						var firing_angle_tolerance = 30 * (200 - distance) / 200;
 						if(firing_angle_tolerance < 0) firing_angle_tolerance = 0;
 						
-						if(distance > this.data.tracking_distance && Math.abs(Math.round(ta) - Math.round(this.data.angle)) < firing_angle_tolerance)
+						if(distance > this.data.tracking_distance && Math.round(ta) != Math.round(this.data.angle))
 						{
 							//angle diff
 							var ad = ta - this.data.angle;
@@ -176,7 +176,7 @@
 								if(this.data.angle < 0) this.data.angle += 360;
 								if(this.data.angle >= 360) this.data.angle -= 360;
 							}
-						}else if(this.data.tracking_distance != 0 && distance < 500 && Math.round(ta) == Math.round(this.data.angle)){
+						}else if(this.data.tracking_distance != 0 && distance < 500 && Math.abs(Math.round(ta) - Math.round(this.data.angle)) < firing_angle_tolerance){
 							this.fire_laser();
 						}
 					}
