@@ -230,7 +230,7 @@
 		var lps = 10;
 		var score = 0;
 		var slowSpeed = 125;
-		var fastSpeed = 200;
+		var fastSpeed = 250;
 		var squad_separation = 30;
 		var ship_type = Math.floor(Math.random()*3) + 1;
 		var shipData = getShipData(ship_type);
@@ -717,7 +717,7 @@
 					shipData.xLeftLaser = -1;
 					shipData.yLeftLaser = -10;
 					shipData.laserColor = 'rgb(255,0,0)';
-					shipData.speed = 250;
+					shipData.speed = 300;
 					shipData.angular_speed = 150;
 					
 					break;
