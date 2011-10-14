@@ -499,7 +499,7 @@
 			}else{
 				o.style.cursor="url(red_reticle.png),auto";			
 			}
-			heat_level -= 1000 * timer.getSeconds();
+			heat_level -= 3000 * timer.getSeconds();
 			if(heat_level < 0) heat_level = 0;
 			updateLasers();
 			updateMissiles();
