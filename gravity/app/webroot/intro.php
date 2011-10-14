@@ -85,7 +85,7 @@
 	var gameInterval;
     var canvas_width = 400;
     var canvas_height = 800;
-    var intro_time = 10;
+    var intro_time = 30;
     var demod = null;
     var t = 0, rx = 0, ry = 0, rz = 0, oldpoints;
     function runDemo() {
