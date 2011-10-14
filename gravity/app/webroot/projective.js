@@ -100,7 +100,7 @@ update = function () {
   ctx.lineTo(pbl[0], pbl[1]);
   ctx.closePath();
   ctx.clip();
-  divide(0, 0, 1, 1, ptl, ptr, pbl, pbr);
+  divide(0, 0, 100, 100, ptl, ptr, pbl, pbr);
 
 }
 
