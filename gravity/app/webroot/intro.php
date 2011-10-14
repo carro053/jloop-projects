@@ -85,12 +85,13 @@
 	var gameInterval;
     var canvas_width = 800;
     var canvas_height = 800;
-    var intro_time = 1;
+    var intro_time = 10;
     var t = 0, rx = 0, ry = 0, rz = 0, oldpoints;
     function runDemo() {
       oldpoints = [].concat(points);
       $('div.handle').hide();
       t=0;
+	timer.tick();
       gameInterval = setInterval(demoTick, 20);
       $('#demo-button').html('Stop demo');
     }
