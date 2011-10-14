@@ -76,7 +76,7 @@ function init() {
   });
 
   // Create canvas and load image.
-  canvas = createCanvas(0, 0, 1, 1);
+  canvas = createCanvas(0, 0, 800, 800);
   
   refresh();
 
@@ -104,8 +104,8 @@ update = function () {
   // Reshape canvas.
   canvas.style.left = minX +'px';
   canvas.style.top = minY +'px';
-  canvas.width = width;
-  canvas.height = height;
+  //canvas.width = width;
+  //canvas.height = height;
   
   // Measure texture.
   iw = image.width;
