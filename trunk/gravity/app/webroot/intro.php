@@ -267,14 +267,14 @@
 		{
 			drawBackground();
 			
-			contextIntro.font = '50px arial,sans-serif' ;
+			contextIntro.font = '100px arial,sans-serif' ;
 			contextIntro.fillStyle = 'green' ;
 			var cs = Math.cos(0), sn = Math.sin(0);
 			var h = Math.cos(45*(Math.PI/180));
 			var a = 100*cs, b = -100*sn, c = 200;
 			var d = h*100*sn, e = h*100*cs, f = 200;
 			contextIntro.setTransform(a, d, b, e, c, f);
-			contextIntro.fillText ('your text', 100, 100) ;
+			contextIntro.fillText ('your text', 300, 300) ;
 			contextIntro.setTransform (1, 0, 0, 1, 0, 0);
 			//timer.tick();
 			//introInterval = setInterval(introLoop, 20);
