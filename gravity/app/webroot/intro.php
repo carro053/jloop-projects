@@ -94,12 +94,12 @@
       oldpoints = [].concat(points);
       $('div.handle').hide();
       t=0;
-		timer.tick();
       gameInterval = setInterval(demoTick, 20);
       $('#demo-button').html('Stop demo');
     }
     function demoTick() {
       t += timer.getSeconds();
+	timer.tick();
       console.log(t);
       var behind_t = 2 * t - intro_time;
       if(t >= intro_time) stopDemo();
