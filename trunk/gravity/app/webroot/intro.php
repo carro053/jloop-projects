@@ -15,10 +15,11 @@
     }
     function demoTick() {
       t += 0.01;
-      points[0] = [50, 10];
-      points[1] = [100, 10];
-      points[2] = [10, 400];
-      points[3] = [140, 400];
+      
+      points[0] = [Math.round(t * 20), 500 - Math.round(t * 100)];
+      points[1] = [200 - Math.round(t * 20), 500 - Math.round(t * 100)];
+      points[2] = [Math.round(t * 20), 600 - Math.round(t * 100)];
+      points[3] = [200 - Math.round(t * 20), 600 - Math.round(t * 100)];
 
       update();
 
