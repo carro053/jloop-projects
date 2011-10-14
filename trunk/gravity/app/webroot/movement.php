@@ -497,11 +497,11 @@
 			if(heat_level < 0) heat_level = 0;
 			updateLasers();
 			updateMissiles();
-			/*if(ships.length == 0)
+			if(ships.length == 0)
 			{
 				clearInterval(gameInterval);
 				gameInterval = setInterval(hyperspaceLoop, 20);
-			}*/			
+			}			
 		}
 		function updateMissiles()
 		{
