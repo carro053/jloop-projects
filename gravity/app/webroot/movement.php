@@ -506,6 +506,7 @@
 			updateMissiles();
 			if(ships.length == 0)
 			{
+				ship_targeted = 0;
 				clearInterval(gameInterval);
 				gameInterval = setInterval(hyperspaceLoop, 20);
 			}			
