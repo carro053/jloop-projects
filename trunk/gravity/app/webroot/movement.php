@@ -264,9 +264,8 @@
 		var squads = new Array();
 		var lps = 10;
 		var score = 0;
-		var slowSpeed = 125;
 		var normalSpeed = 250;
-		var fastSpeed = 375;
+		var speedChange = 125;
 		var squad_separation = 30;
 		var ship_type = Math.floor(Math.random()*3) + 1;
 		var shipData = getShipData(ship_type);
@@ -348,10 +347,10 @@
 			window.onkeypress = function(e) {
 				switch(e.which) {
 					case 119:
-						player.data.speed = fastSpeed;
+						player.data.speed = normalSpeed - speedChange;
 						break;
 					case 115:
-						player.data.speed = slowSpeed;
+						player.data.speed = normalSpeed - speedChange;
 						break;
 					case 100:
 						fire_lasers = 1;
@@ -452,11 +451,17 @@
 			contextUI.fillStyle =  '#FFFFFF';
     		contextUI.textAlign = "center";
 			contextUI.fillText('Fury Class',canvasFront.width / 3,canvasFront.height / 2 + 40);
-			contextUI.fillText('Speed: 300',canvasFront.width / 3,canvasFront.height / 2 + 70);
+			contextUI.fillText('Speed: 250',canvasFront.width / 3,canvasFront.height / 2 + 70);
 			contextUI.fillText('Shields: 15',canvasFront.width / 3,canvasFront.height / 2 + 100);
 			contextUI.fillText('Missiles: 10',canvasFront.width / 3,canvasFront.height / 2 + 130);
-contextUI.fillText('Phantom Class Speed: 300 Shields: 10 Missiles: 10',canvasFront.width / 2,canvasFront.height / 2 - 40);
-contextUI.fillText('Fury class Speed: 250 Shields: 10 Missiles: 15',canvasFront.width * 2 / 3,canvasFront.height / 2 - 40);
+			contextUI.fillText('Phantom Class',canvasFront.width / 2,canvasFront.height / 2 + 40);
+			contextUI.fillText('Speed: 300',canvasFront.width / 2,canvasFront.height / 2 + 70);
+			contextUI.fillText('Shields: 10',canvasFront.width / 2,canvasFront.height / 2 + 100);
+			contextUI.fillText('Missiles: 10',canvasFront.width / 2,canvasFront.height / 2 + 130);
+			contextUI.fillText('Manta Class',canvasFront.width * 2 / 3,canvasFront.height / 2 + 40);
+			contextUI.fillText('Speed: 250',canvasFront.width * 2 / 3,canvasFront.height / 2 + 70);
+			contextUI.fillText('Shields: 10',canvasFront.width * 2 / 3,canvasFront.height / 2 + 100);
+			contextUI.fillText('Missiles: 15',canvasFront.width * 2 / 3,canvasFront.height / 2 + 130);
 		}
 		
 		function startGame()
