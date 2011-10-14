@@ -432,11 +432,31 @@
 		function initialize()
 		{
 			drawBackground();
+			shipSelect();
+		}
+		function shipSelect()
+		{
+			addEnemy(canvasFront.width / 3,canvasFront.height / 2,1);
+			addEnemy(canvasFront.width / 2,canvasFront.height / 2,2);
+			addEnemy(canvasFront.width * 2 / 3,canvasFront.height / 2,3);
+			for(var s in ships)
+			{
+				var sprite = shipSpritesheet.getSprite(ships[s].data.ship);
+				contextFront.translate(ships[s].data.x, ships[s].data.y);
+				contextFront.rotate(ships[s].data.angle * Math.PI / 180);
+				contextFront.drawImage(shipSprites, sprite.x, sprite.y, sprite.w, sprite.h, -ships[s].data.xOffset, -ships[s].data.yOffset, sprite.w, sprite.h);
+				contextFront.rotate(-ships[s].data.angle * Math.PI / 180);
+				contextFront.translate(-ships[s].data.x, -ships[s].data.y);
+			}
+		}
+		
+		function startGame()
+		{
+			reset_game();
 			drawUI();
 			timer.tick();
 			gameInterval = setInterval(gameLoop, 20);
 		}
-		
 		function drawBackground()
 		{
 			contextBack.fillStyle =  '#000000';
