@@ -467,9 +467,9 @@
 			}
 			contextBack.strokeStyle =  '#FFFFFF';
 			
-			var planet = new Image();
-			planet.src = 'planet_6.png';
-			contextBack.drawImage(planet,canvasBack.width / 2 - 100,200);
+			//var planet = new Image();
+			//planet.src = 'planet_6.png';
+			//contextBack.drawImage(planet,canvasBack.width / 2 - 100,200);
 		}
 		
 		function drawUI()
