@@ -448,7 +448,7 @@
 				contextFront.rotate(-ships[s].data.angle * Math.PI / 180);
 				contextFront.translate(-ships[s].data.x, -ships[s].data.y);
 			}
-			contextFront.font = '30px Arial';
+			contextFront.font = '40px Arial';
 			contextUI.fillStyle =  '#FFFFFF';
     		contextUI.textAlign = "center";
 			contextUI.fillText('Fury Class',canvasFront.width / 3,canvasFront.height / 2 + 40);
