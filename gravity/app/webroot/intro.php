@@ -53,7 +53,7 @@
 <body>
   <h2>Projective texturing using Canvas and JavaScript</h2>
   <div id="demo">
-    <div id="canvas"><canvas width="800" height="1000"></canvas></div>
+    <div id="canvas"><canvas id="introcanvas" width="800" height="1000"></canvas></div>
   </div>
 </body>
 </html>

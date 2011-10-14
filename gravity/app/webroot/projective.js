@@ -44,6 +44,7 @@ refresh = function () {
 function init() {
 
   // Create canvas and load image.
+  canvas = document.getElementById('introcanvas');
   refresh();
   // Render image.
   update();
