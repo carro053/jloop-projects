@@ -246,6 +246,7 @@
 		var lasers = new Array();
 		var missiles = new Array();
 		var missile_count = 10;
+		var heat_level = 0;
 		var target = new Object;
 		target.data = new Object;
 		var player = new Object;
@@ -460,6 +461,8 @@
 			contextUI.fillText('Level: '+level+' Score: '+score+' Shields: '+player.data.shields,20,canvasUI.height - 40);
 			contextUI.font = '24pt Arial';
 			contextUI.fillText('Ship follows the Mouse. F to shoot. S to slow down.',canvasUI.width / 2,canvasUI.height - 40);
+			contextUI.fillStyle =  'rgba('+(255*heat_level)/100+','+(255*(100-heat_level))/100+',0,1)';
+			contextUI.fillRect(20,canvasUI.height - 200,20,20);
 		}
 
 		function gameLoop()
