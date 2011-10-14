@@ -11,12 +11,7 @@
     var t = 0, rx = 0, ry = 0, rz = 0, oldpoints;
 	var intro_time = 10;
   	var canvas;
-    var points = [
-	  [0, canvas.innerHeight],
-	  [canvas.innerWidth, canvas.innerHeight],
-	  [0, canvas.innerHeight + 800],
-	  [canvas.innerWidth, canvas.innerHeight + 800]
-	];
+    var points;
     function runDemo() {
       oldpoints = [].concat(points);
       timer = setTimeout(demoTick, 20);
