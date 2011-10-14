@@ -463,7 +463,7 @@
 			contextUI.fillText('Level: '+level+' Score: '+score+' Shields: '+player.data.shields,20,canvasUI.height - 40);
 			contextUI.font = '24pt Arial';
 			contextUI.fillText('Ship follows the Mouse. F to shoot. S to slow down.',canvasUI.width / 2,canvasUI.height - 40);
-			contextUI.fillStyle =  'rgba('+(255*heat_level)/10000+','+(255*(10000-heat_level))/10000+',0,1)';
+			contextUI.fillStyle =  'rgba('+Math.round((255*heat_level)/10000)+','+Math.round((255*(10000-heat_level))/10000)+',0,1)';
 			contextUI.fillRect(20,canvasUI.height - 200,20,20);
 		}
 
