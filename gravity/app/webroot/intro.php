@@ -9,17 +9,26 @@
 <script type="text/javascript" charset="utf-8">
     var timer = null;
     var t = 0, rx = 0, ry = 0, rz = 0, oldpoints;
+	var intro_time = 10;
+  	var canvas = document.getElementById('introcanvas');
+    var points = [
+	  [0, canvas.innerHeight],
+	  [canvas.innerWidth, canvas.innerHeight],
+	  [0, canvas.innerHeight + 800],
+	  [canvas.innerWidth, canvas.innerHeight + 800]
+	];
     function runDemo() {
       oldpoints = [].concat(points);
       timer = setTimeout(demoTick, 20);
     }
     function demoTick() {
       t += 0.01;
-      
-      points[0] = [Math.round(t * 20) + 20, 500 - Math.round(t * 100)];
-      points[1] = [180 - Math.round(t * 20), 500 - Math.round(t * 100)];
-      points[2] = [Math.round(t * 21), 600 - Math.round(t * 120)];
-      points[3] = [200 - Math.round(t * 21), 600 - Math.round(t * 120)];
+      var behind_t = t - intro_time * (intro_time - t) / intro_time);
+      points[0] = [0 + canvas.innerWidth / 2 * Math.round(t / intro_time), canvas.innerHeight - canvas.innerHeight / 4 * Math.round(t / intro_time)];
+
+      points[2] = [0 + canvas.innerWidth / 2 * Math.round(behind_t / intro_time), canvas.innerHeight - canvas.innerHeight / 4 * Math.round(behind_t / intro_time)];
+      points[1] = [canvas.innerWidth - canvas.innerWidth / 2 * Math.round(t / intro_time), canvas.innerHeight - canvas.innerHeight / 4 * Math.round(t / intro_time)];
+      points[3] = [canvas.innerWidth - canvas.innerWidth / 2 * Math.round(behind_t / intro_time), canvas.innerHeight - canvas.innerHeight / 4 * Math.round(behind_t / intro_time)];
 
       update();
 
