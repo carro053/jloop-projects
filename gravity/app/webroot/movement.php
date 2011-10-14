@@ -338,6 +338,8 @@
 				if(scene == 'level' && ship_targeted)
 				{
 					scene = 'game';
+					player.data = ship_target.data
+					player.data.tracking_distance = 0;
 					clearInterval(gameInterval);
 					gameInterval = setInterval(gameLoop, 20);
 				}else if(scene == 'game' && heat_level < max_heat)
