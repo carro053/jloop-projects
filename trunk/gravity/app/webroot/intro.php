@@ -21,12 +21,11 @@
     function demoTick() {
       t += 0.01;
       var behind_t = t - intro_time * (intro_time - t) / intro_time;
-      points[0] = [0 + canvas_width / 2 * Math.round(t / intro_time), canvas_height - canvas_height / 4 * Math.round(t / intro_time)];
+      points[0] = [0 + Math.round(canvas_width / 2 * t / intro_time), canvas_height - Math.round(canvas_height / 4 * t / intro_time)];
 
-      points[2] = [0 + canvas_width / 2 * Math.round(behind_t / intro_time), canvas_height - canvas_height / 4 * Math.round(behind_t / intro_time)];
-      points[1] = [canvas_width - canvas_width / 2 * Math.round(t / intro_time), canvas_height - canvas_height / 4 * Math.round(t / intro_time)];
-      points[3] = [canvas_width - canvas_width / 2 * Math.round(behind_t / intro_time), canvas_height - canvas_height / 4 * Math.round(behind_t / intro_time)];
-console.log(t+" "+(0 + canvas_width / 2 * Math.round(t / intro_time)) +" "+(canvas_height - canvas_height / 4 * Math.round(t / intro_time)));
+      points[2] = [0 + Math.round(canvas_width / 2 * behind_t / intro_time), canvas_height - Math.round(canvas_height / 4 * behind_t / intro_time)];
+      points[1] = [canvas_width - Math.round(canvas_width / 2 * t / intro_time), canvas_height - Math.round(canvas_height / 4 * t / intro_time)];
+      points[3] = [canvas_width - Math.round(canvas_width / 2 * behind_t / intro_time), canvas_height - Math.round(canvas_height / 4 * behind_t / intro_time)];
       update();
 
       if (timer) {
