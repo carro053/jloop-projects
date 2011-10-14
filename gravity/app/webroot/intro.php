@@ -100,6 +100,7 @@
     }
     function demoTick() {
       t += timer.getSeconds();
+      console.log(t);
       var behind_t = 2 * t - intro_time;
       if(t >= intro_time) stopDemo();
       points[0] = [0 + Math.round(canvas_width / 2 * t / intro_time), canvas_height - Math.round(canvas_height * 3 / 4 * t / intro_time)];
