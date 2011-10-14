@@ -14,6 +14,7 @@
       timer = setTimeout(demoTick, 20);
     }
     function demoTick() {
+    console.log('tick');
       t += 0.01;
       
       var cx = Math.cos(rx), sx = Math.sin(rx), cy = Math.cos(ry), sy = Math.sin(ry), cz = Math.cos(rz), sz = Math.sin(rz);
