@@ -270,7 +270,7 @@
 			contextIntro.font = '100px arial,sans-serif' ;
 			contextIntro.fillStyle = 'green' ;
 			var cs = Math.cos(0), sn = Math.sin(0);
-			var h = Math.cos(0*(Math.PI/180));
+			var h = Math.cos(45*(Math.PI/180));
 			var a = 100*cs, b = -100*sn, c = 0;
 			var d = h*100*sn, e = h*1*cs, f = 0;
 			contextIntro.setTransform(a, d, b, e, c, f);
