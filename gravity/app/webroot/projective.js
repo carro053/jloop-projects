@@ -48,6 +48,7 @@ function init() {
   refresh();
   // Render image.
   update();
+  runDemo();
 }
 
 /**
