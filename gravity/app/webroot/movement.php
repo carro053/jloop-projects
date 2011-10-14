@@ -962,15 +962,15 @@
 				addEnemy(-50,-50,5);
 			}else if(level == 6)
 			{
-				addSquad(6,3,window.innerWidth / 2, -150);
-				addSquad(6,3,window.innerWidth / 2, window.innerHeight + 150);
 				addSquad(4,3,-150,window.innerWidth / 2);
-				addSquad(4,3,window.innerWidth + 150,window.innerWidth / 2);
+				addSquad(4,3,window.innerWidth + 150,window.innerHeight / 2);
 			}else if(level == 7)
 			{
-				addSquad(6,7,window.innerWidth / 2, -150);
+				addSquad(6,5,window.innerWidth / 2, -150);
 			}else{
-				addSquad(6,7,window.innerWidth / 2, -150);
+				addEnemy(-50,-50,5);
+				addEnemy(window.innerWidth / 2,window.innerHeight + 150,5);
+				addEnemy(window.innerWidth + 50,-50,5);
 			}
 		}
 		function reset_game()
