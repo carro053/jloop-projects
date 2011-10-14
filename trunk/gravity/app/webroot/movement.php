@@ -251,6 +251,7 @@
 		var level = 0;
 		var timer = new Timer();
 		var lasers = new Array();
+		var fire_lasers = 0;
 		var missiles = new Array();
 		var missile_count = 10;
 		var heat_level = 0;
@@ -343,7 +344,7 @@
 			
 			shipSprites.onload = initialize();
 			
-			window.onkeydown = function(e) {
+			window.onkeypress = function(e) {
 				switch(e.which) {
 					case 87:
 						player.data.speed = fastSpeed;
@@ -352,7 +353,7 @@
 						player.data.speed = slowSpeed;
 						break;
 					case 68:
-						if(heat_level < max_heat) player.fire_laser();
+						fire_lasers = 1;
 						break;
 				}
 			}
@@ -363,6 +364,9 @@
 						break;
 					case 83:			
 						player.data.speed = normalSpeed;
+						break;
+					case 68:
+						fire_lasers = 0;
 						break;
 					case 69:
 						if(ship_targeted) player.fire_missile();
@@ -485,11 +489,23 @@
 		function updateObjects()
 		{
 			gameTime += timer.getSeconds();
-			if(player.data.speed != normalSpeed && heat_level < max_heat)
+			if(player.data.speed != normalSpeed)
 			{
-				heat_level += 5000 * timer.getSeconds();
-			}else{
-				player.data.speed = normalSpeed;
+				if(heat_level < max_heat)
+				{
+					heat_level += 5000 * timer.getSeconds();
+				}else{
+					player.data.speed = normalSpeed;
+				}
+			}
+			if(fire_lasers == 1)
+			{
+				if(heat_level < max_heat)
+				{
+					player.fire_laser();
+				}else{
+					fire_lasers = 0;
+				}
 			}
 			player.update();
 			ship_targeted = 0;
