@@ -58,6 +58,7 @@
 			fire_laser: function() {
 				if(this.data.last_fired > 1 / lps)
 				{
+					heat_level += 10;
 					this.data.last_fired = 0;
 					var cos = Math.cos((this.data.angle + 90) * (Math.PI/180));
 					var sin = Math.sin((this.data.angle + 90) * (Math.PI/180));
@@ -461,7 +462,7 @@
 			contextUI.fillText('Level: '+level+' Score: '+score+' Shields: '+player.data.shields,20,canvasUI.height - 40);
 			contextUI.font = '24pt Arial';
 			contextUI.fillText('Ship follows the Mouse. F to shoot. S to slow down.',canvasUI.width / 2,canvasUI.height - 40);
-			contextUI.fillStyle =  'rgba('+(255*heat_level)/100+','+(255*(100-heat_level))/100+',0,1)';
+			contextUI.fillStyle =  'rgba('+(255*heat_level)/10000+','+(255*(10000-heat_level))/10000+',0,1)';
 			contextUI.fillRect(20,canvasUI.height - 200,20,20);
 		}
 
