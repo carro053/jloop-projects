@@ -23,7 +23,7 @@
     }
     function demoTick() {
       t += 0.01;
-      var behind_t = t - intro_time * (intro_time - t) / intro_time);
+      var behind_t = t - intro_time * (intro_time - t) / intro_time;
       points[0] = [0 + canvas.innerWidth / 2 * Math.round(t / intro_time), canvas.innerHeight - canvas.innerHeight / 4 * Math.round(t / intro_time)];
 
       points[2] = [0 + canvas.innerWidth / 2 * Math.round(behind_t / intro_time), canvas.innerHeight - canvas.innerHeight / 4 * Math.round(behind_t / intro_time)];
