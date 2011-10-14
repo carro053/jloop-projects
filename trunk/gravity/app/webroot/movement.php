@@ -472,6 +472,7 @@
 			updateObjects();
 			clearCanvas();
 			drawObjects();
+			drawUI();
 			timer.tick();
 		}
 
@@ -523,7 +524,6 @@
 								ships[s].data.shields = 0;
 								score++;
 								if(player.data.shields < 10) player.data.shields++;
-								drawUI();
 								ships[s].data.dead = 1;
 								ships.splice(s, 1);
 							}
@@ -589,7 +589,6 @@
 							if(hit == 1)
 							{								
 								player.data.shields -= 1;
-								drawUI();
 								if(player.data.shields == 0)
 								{
 									var ship_text = 'ships';
@@ -618,7 +617,6 @@
 									{										
 										score++;
 										if(player.data.shields < 10) player.data.shields++;
-										drawUI();
 										ships[s].data.dead = 1;
 										ships.splice(s, 1);
 									}
@@ -748,7 +746,6 @@
 				jumpTime = 0;
 				heat_level = 0;
 				level++;
-				drawUI();
 				clearInterval(gameInterval);
 				gameInterval = setInterval(gameLoop, 20);
 				nextLevel();
