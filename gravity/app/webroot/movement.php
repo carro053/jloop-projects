@@ -1017,7 +1017,6 @@
 					dead: 0
 				}
 			);
-			drawUI();
 		}
 		
 	</script>
