@@ -248,7 +248,7 @@
 		var jumpTime = 0;
 		var gameInterval;
 		var gameTime = 0;
-		var level = 8;
+		var level = 0;
 		var timer = new Timer();
 		var lasers = new Array();
 		var fire_lasers = 0;
