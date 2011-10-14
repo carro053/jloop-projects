@@ -340,7 +340,9 @@
 				{
 					console.log('down');
 					scene = 'game';
-					player.data = ship_target.data
+					player.data.x = ship_target.data.x;
+					player.data.y = ship_target.data.y;
+					player.data.angle = ship_target.data.angle;
 					player.data.tracking_distance = 0;
 					clearInterval(gameInterval);
 					reset_game();
