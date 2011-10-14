@@ -273,7 +273,7 @@
 			var h = Math.cos(45*(Math.PI/180));
 			var a = 100*cs, b = -100*sn, c = 0;
 			var d = h*100*sn, e = h*1*cs, f = 0;
-			contextIntro.setTransform(a, d, b, e, c, f);
+			//contextIntro.setTransform(a, d, b, e, c, f);
 			contextIntro.fillText ('your text', 300, 300) ;
 			contextIntro.setTransform (1, 0, 0, 1, 0, 0);
 			//timer.tick();
