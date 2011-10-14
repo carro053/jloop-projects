@@ -91,8 +91,8 @@
       oldpoints = [].concat(points);
       $('div.handle').hide();
       t=0;
-	timer.tick();
-      gameInterval = setInterval(demoTick, 20);
+		timer.tick();
+      //gameInterval = setInterval(demoTick, 20);
       $('#demo-button').html('Stop demo');
     }
     function demoTick() {
