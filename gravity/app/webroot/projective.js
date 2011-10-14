@@ -61,7 +61,7 @@ update = function () {
     maxX = Math.max(maxX, Math.ceil(points[p][0]));
     minY = Math.min(minY, Math.floor(points[p][1]));
     maxY = Math.max(maxY, Math.ceil(points[p][1]));
-  });
+  }
   
   minX--; minY--; maxX++; maxY++;
   var width = maxX - minX;
