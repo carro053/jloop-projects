@@ -469,7 +469,7 @@
 			
 			var planet = new Image();
 			planet.src = 'planet_6.png';
-			planet.onload = function () { contextBack.drawImage(planet,canvasBack.width - 100,canvasBack.height / 2 + 200); };
+			contextBack.drawImage(planet,canvasBack.width - 100,canvasBack.height / 2 + 200);
 		}
 		
 		function drawUI()
