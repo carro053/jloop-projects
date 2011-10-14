@@ -492,6 +492,7 @@
 			gameTime += timer.getSeconds();
 			if(player.data.speed != normalSpeed)
 			{
+				console.log(player.data.speed);
 				if(heat_level < max_heat)
 				{
 					heat_level += 5000 * timer.getSeconds();
@@ -528,9 +529,9 @@
 			updateMissiles();
 			if(ships.length == 0)
 			{
-				ship_targeted = 0;
-				clearInterval(gameInterval);
-				gameInterval = setInterval(hyperspaceLoop, 20);
+				//ship_targeted = 0;
+				//clearInterval(gameInterval);
+				//gameInterval = setInterval(hyperspaceLoop, 20);
 			}			
 		}
 		function updateMissiles()
