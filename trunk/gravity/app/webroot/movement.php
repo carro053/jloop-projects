@@ -478,6 +478,7 @@
 		function updateObjects()
 		{
 			gameTime += timer.getSeconds();
+			
 			player.update();
 			ship_targeted = 0;
 			for(var s in ships)
@@ -491,6 +492,7 @@
 			}else{
 				o.style.cursor="url(red_reticle.png),auto";			
 			}
+			heat_level -= 1000 * timer.getSeconds();
 			updateLasers();
 			updateMissiles();
 			if(ships.length == 0)
@@ -744,6 +746,7 @@
 				arrived = 0;
 				hyperspaceCharge = 0;
 				jumpTime = 0;
+				heat_level = 0;
 				level++;
 				drawUI();
 				clearInterval(gameInterval);
