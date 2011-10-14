@@ -493,7 +493,6 @@
 			gameTime += timer.getSeconds();
 			if(player.data.speed != normalSpeed)
 			{
-				console.log(player.data.speed);
 				if(heat_level < max_heat)
 				{
 					heat_level += 5000 * timer.getSeconds();
@@ -505,7 +504,6 @@
 			{
 				if(heat_level < max_heat)
 				{
-					console.log('fired laser');
 					player.fire_laser();
 				}else{
 					fire_lasers = 0;
@@ -525,7 +523,6 @@
 			}else{
 				o.style.cursor="url(red_reticle.png),auto";			
 			}
-			console.log(heat_level);
 			heat_level -= 3000 * timer.getSeconds();
 			if(heat_level < 0) heat_level = 0;
 			updateLasers();
