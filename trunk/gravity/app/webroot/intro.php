@@ -10,8 +10,8 @@
     var timer = null;
     var t = 0, rx = 0, ry = 0, rz = 0, oldpoints;
 	var intro_time = 10;
-  	var canvas;
-    var points;
+  	var canvas = new Object;
+    var points = new Object;
     function runDemo() {
       oldpoints = [].concat(points);
       timer = setTimeout(demoTick, 20);
@@ -42,7 +42,7 @@
 <body style="background-color:#000000;">
   <h2>Projective texturing using Canvas and JavaScript</h2>
   <div id="demo">
-    <div id="canvas"><canvas id="introcanvas" width="800" height="1000"></canvas></div>
+    <div id="canvas"><canvas id="introcanvas" width="800" height="800"></canvas></div>
   </div>
 </body>
 </html>
