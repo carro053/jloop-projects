@@ -255,7 +255,7 @@
 		var missiles = new Array();
 		var missile_count = 10;
 		var heat_level = 0;
-		var max_heat = 10000;
+		var max_heat = 20000;
 		var speed_change = 1;
 		var target = new Object;
 		target.data = new Object;
