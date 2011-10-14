@@ -58,7 +58,7 @@
 			fire_laser: function() {
 				if(this.data.last_fired > 1 / lps)
 				{
-					if(this.data.tracking_distance == 0) heat_level += 500;
+					if(this.data.tracking_distance == 0) heat_level += 1000;
 					this.data.last_fired = 0;
 					var cos = Math.cos((this.data.angle + 90) * (Math.PI/180));
 					var sin = Math.sin((this.data.angle + 90) * (Math.PI/180));
