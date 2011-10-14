@@ -88,10 +88,15 @@
 				}
 			},
 			update: function() {
-				if(this.data.tracking_distance > 0 && target.data.x < this.data.x + this.data.w && target.data.x > this.data.x - this.data.w && target.data.y < this.data.y + this.data.h && target.data.y > this.data.y - this.data.h)
-				{					
-					ship_targeted = 1;
-					ship_target = this;
+				if(this.data.tracking_distance > 0)
+				{
+					var mouse_distance = Math.sqrt(Math.pow(target.data.x - this.data.x, 2) + Math.pow(target.data.y - this.data.y, 2));
+					if(mouse_distance < 100 && mouse_distance < closest_ship)
+					{
+						closest_ship = mouse_distance;
+						ship_targeted = 1;
+						ship_target = this;
+					}
 				}
 				this.data.last_fired += timer.getSeconds();
 				var distance = Math.sqrt(Math.pow(this.data.target.data.x - this.data.x, 2) + Math.pow(this.data.target.data.y - this.data.y, 2));
@@ -238,6 +243,7 @@
 		var stars = new Array();
 		var ship_targeted = 0;
 		var ship_target = new Object;
+		var closest_ship;
 		var arrived = 0;
 		var hyperspaceCharge = 0;
 		var jumpTime = 0;
@@ -482,6 +488,7 @@
 			
 			player.update();
 			ship_targeted = 0;
+			closest_ship = 100;
 			for(var s in ships)
 			{
 				ships[s].update();
@@ -664,6 +671,16 @@
 			for(var s in ships)
 			{
 				var sprite = shipSpritesheet.getSprite(ships[s].data.ship);
+				contextFront.translate(ships[s].data.x, ships[s].data.y);
+				contextFront.rotate(ships[s].data.angle * Math.PI / 180);
+				contextFront.drawImage(shipSprites, sprite.x, sprite.y, sprite.w, sprite.h, -ships[s].data.xOffset, -ships[s].data.yOffset, sprite.w, sprite.h);
+				contextFront.rotate(-ships[s].data.angle * Math.PI / 180);
+				contextFront.translate(-ships[s].data.x, -ships[s].data.y);
+			}
+			if(ship_targeted)
+			{
+				var targeted = new Image();
+				targeted.src = 'targeted.png';
 				contextFront.translate(ships[s].data.x, ships[s].data.y);
 				contextFront.rotate(ships[s].data.angle * Math.PI / 180);
 				contextFront.drawImage(shipSprites, sprite.x, sprite.y, sprite.w, sprite.h, -ships[s].data.xOffset, -ships[s].data.yOffset, sprite.w, sprite.h);
