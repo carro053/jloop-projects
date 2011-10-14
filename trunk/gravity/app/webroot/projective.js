@@ -140,7 +140,7 @@ update = function () {
  */
 function divide(u1, v1, u4, v4, p1, p2, p3, p4, limit) {
   // See if we can still divide.
-  /*if (limit) {
+  if (limit) {
     // Measure patch non-affinity.
     var d1 = [p2[0] + p3[0] - 2 * p1[0], p2[1] + p3[1] - 2 * p1[1]];
     var d2 = [p2[0] + p3[0] - 2 * p4[0], p2[1] + p3[1] - 2 * p4[1]];
@@ -172,7 +172,7 @@ function divide(u1, v1, u4, v4, p1, p2, p3, p4, limit) {
       divide(umid, vmid, u4, v4, pmid, pr, pb, p4, limit);
       return;
     }
-  }*/
+  }
 
   // Render this patch.
   ctx.save();
