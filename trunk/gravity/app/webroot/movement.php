@@ -558,11 +558,14 @@
 							for (var i = 0, n = pix.length; i < n; i += 4) if(pix[i+3] > 0) hit = 1;
 							if(hit == 1)
 							{
-								ships[s].data.shields = 0;
-								score++;
-								if(player.data.shields < 10) player.data.shields++;
-								ships[s].data.dead = 1;
-								ships.splice(s, 1);
+								ships[s].data.shields -= 4;
+								if(ships[s].data.shields <= 0)
+								{										
+									score++;
+									if(player.data.shields < 10) player.data.shields++;
+									ships[s].data.dead = 1;
+									ships.splice(s, 1);
+								}
 							}
 						}
 					}
@@ -626,7 +629,7 @@
 							if(hit == 1)
 							{								
 								player.data.shields -= 1;
-								if(player.data.shields == 0)
+								if(player.data.shields <= 0)
 								{
 									var ship_text = 'ships';
 									if(score == 1) ship_text = 'ship';
@@ -650,7 +653,7 @@
 								if(hit == 1)
 								{
 									ships[s].data.shields -= 1;
-									if(ships[s].data.shields == 0)
+									if(ships[s].data.shields <= 0)
 									{										
 										score++;
 										if(player.data.shields < 10) player.data.shields++;
