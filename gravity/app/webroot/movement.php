@@ -347,13 +347,13 @@
 			window.onkeypress = function(e) {
 				console.log(e.which);
 				switch(e.which) {
-					case 87:
+					case 119:
 						player.data.speed = fastSpeed;
 						break;
-					case 83:
+					case 115:
 						player.data.speed = slowSpeed;
 						break;
-					case 68:
+					case 100:
 						fire_lasers = 1;
 						break;
 				}
