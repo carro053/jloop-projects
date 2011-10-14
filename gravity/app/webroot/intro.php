@@ -86,13 +86,16 @@
     var canvas_width = 800;
     var canvas_height = 800;
     var intro_time = 10;
+    var demod = null;
     var t = 0, rx = 0, ry = 0, rz = 0, oldpoints;
     function runDemo() {
+    	
+    demod = 1;
       oldpoints = [].concat(points);
       $('div.handle').hide();
       t=0;
 		timer.tick();
-      //gameInterval = setInterval(demoTick, 20);
+      gameInterval = setInterval(demoTick, 20);
       $('#demo-button').html('Stop demo');
     }
     function demoTick() {
@@ -107,6 +110,7 @@
       update();
     }
     function stopDemo() {
+    demod = null;
       $('#demo-button').html('Run demo');
       $('div.handle').show();
       clearInterval(gameInterval);
@@ -133,7 +137,7 @@
   <p><small>By Steven Wittens. For more information, see the related <a href="http://acko.net/blog/projective-texturing-with-canvas">blog post</a>. Tested on Safari and Firefox 3.</small></p>
   
   <form>
-  <div><button onclick="changeImage(); return false;">Change image</button><button onclick="if (!timer) runDemo(); else stopDemo(); return false;" id="demo-button">Run Demo</button></div>
+  <div><button onclick="changeImage(); return false;">Change image</button><button onclick="if (!demod) runDemo(); else stopDemo(); return false;" id="demo-button">Run Demo</button></div>
   <div><label><input type="checkbox" value="1" checked="checked" onchange="options.wireframe = this.checked; update();"> Show subdivision wireframe</label></div>
   <div><label><strong>Patch size</strong>: <input type="text" size="3" value="64" onkeyup="options.patchSize = this.value; update()"> pixels</label></div>
   <div><label><strong>Subdivision limit</strong>: <input type="text" size="3" value="5" onkeyup="options.subdivisionLimit = this.value; update()"> steps</label></div>
