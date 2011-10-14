@@ -681,11 +681,11 @@
 			{
 				var targeted = new Image();
 				targeted.src = 'targeted.png';
-				contextFront.translate(ships[s].data.x, ships[s].data.y);
-				contextFront.rotate(ships[s].data.angle * Math.PI / 180);
-				contextFront.drawImage(shipSprites, sprite.x, sprite.y, sprite.w, sprite.h, -ships[s].data.xOffset, -ships[s].data.yOffset, sprite.w, sprite.h);
-				contextFront.rotate(-ships[s].data.angle * Math.PI / 180);
-				contextFront.translate(-ships[s].data.x, -ships[s].data.y);
+				contextFront.translate(ship_target.data.x, ship_target.data.y);
+				contextFront.rotate(ship_target.data.angle * Math.PI / 180);
+				contextFront.drawImage(targeted,-20,-20);
+				contextFront.rotate(-ship_target.data.angle * Math.PI / 180);
+				contextFront.translate(-ship_target.data.x, -ship_target.data.y);
 			}
 			
 		}
