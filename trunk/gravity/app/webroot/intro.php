@@ -18,8 +18,8 @@
       
       points[0] = [Math.round(t * 20), 500 - Math.round(t * 100)];
       points[1] = [200 - Math.round(t * 20), 500 - Math.round(t * 100)];
-      points[2] = [Math.round(t * 20), 600 - Math.round(t * 100)];
-      points[3] = [200 - Math.round(t * 20), 600 - Math.round(t * 100)];
+      points[2] = [Math.round(t * 20), 600 - Math.round(t * 110)];
+      points[3] = [200 - Math.round(t * 20), 600 - Math.round(t * 110)];
 
       update();
 
