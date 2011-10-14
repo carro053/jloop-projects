@@ -522,6 +522,7 @@
 			}else{
 				o.style.cursor="url(red_reticle.png),auto";			
 			}
+			console.log(heat_level);
 			heat_level -= 3000 * timer.getSeconds();
 			if(heat_level < 0) heat_level = 0;
 			updateLasers();
