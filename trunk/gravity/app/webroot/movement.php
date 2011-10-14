@@ -364,7 +364,8 @@
 					case 87:			
 						player.data.speed = normalSpeed;
 						break;
-					case 83:			
+					case 83:
+						slowed_down = 0;	
 						player.data.speed = normalSpeed;
 						break;
 					case 68:
@@ -493,10 +494,11 @@
 			gameTime += timer.getSeconds();
 			if(player.data.speed != normalSpeed)
 			{
-				if(heat_level < max_heat)
+				if(heat_level < max_heat && slowed_down == 0)
 				{
 					heat_level += 5000 * timer.getSeconds();
 				}else{
+					slowed_down = 1;
 					player.data.speed = normalSpeed;
 				}
 			}
