@@ -359,7 +359,6 @@
 				}
 			}
 			window.onkeyup = function(e) {
-				console.log(e.which);
 				switch(e.which) {
 					case 87:
 						speed_change = 1;
