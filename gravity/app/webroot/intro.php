@@ -66,6 +66,9 @@
     }
     
     var timer = null;
+    var canvas_width = 800;
+    var canvas_height = 800;
+    var intro_time = 10;
     var t = 0, rx = 0, ry = 0, rz = 0, oldpoints;
     function runDemo() {
       oldpoints = [].concat(points);
@@ -75,29 +78,12 @@
     }
     function demoTick() {
       t += 0.01;
-      rx += (Math.sin(t) + Math.sin(t * .332) + 1) * .1;
-      ry += (Math.cos(t *.841) + Math.sin(t * .632) + .8) * .031;
-      rz += (Math.cos(3 + t *.767) + Math.sin(-t * 1.132) - .8) * .011;
-      
-      var cx = Math.cos(rx), sx = Math.sin(rx), cy = Math.cos(ry), sy = Math.sin(ry), cz = Math.cos(rz), sz = Math.sin(rz);
-      
-      var pts = [[1, 0, 0], [0, 1, 0], [0, -1, 0], [-1, 0, 0]];
-      for (i in pts) {
-        var x1 = pts[i][0], y1 = pts[i][1], z1 = pts[i][2];
-        var x2 = x1 * cy - z1 * sy,
-            y2 = y1,
-            z2 = x1 * sy + z1 * cy;
+      var behind_t = 2 * t - intro_time;
+      points[0] = [0 + Math.round(canvas_width / 2 * t / intro_time), canvas_height - Math.round(canvas_height / 4 * t / intro_time)];
 
-        var x3 = x2,
-            y3 = y2 * cx - z2 * sx,
-            z3 = y2 * sx + z2 * cx;
-
-        var x4 = y3 * sz + x3 * cz,
-            y4 = y3 * cz - x3 * sz,
-            z4 = z3;
-          
-        points[i] = [x4 / (z4 + 2) * 300 + 300, y4 / (z4 + 2) * 300 + 300];
-      }
+      points[2] = [0 + Math.round(canvas_width / 2 * behind_t / intro_time), canvas_height - Math.round(canvas_height / 4 * behind_t / intro_time)];
+      points[1] = [canvas_width - Math.round(canvas_width / 2 * t / intro_time), canvas_height - Math.round(canvas_height / 4 * t / intro_time)];
+      points[3] = [canvas_width - Math.round(canvas_width / 2 * behind_t / intro_time), canvas_height - Math.round(canvas_height / 4 * behind_t / intro_time)];
 
       update();
 
