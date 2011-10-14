@@ -56,7 +56,24 @@
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="matrix.js"></script>
   <script type="text/javascript" src="projective.js"></script>
-  
+  <script type="text/javascript">
+		var Timer = function() {
+			this.previousTime = new Date().getTime();
+			this.currentTime = new Date().getTime();
+		};
+
+		Timer.prototype = {
+			getSeconds: function() {
+				return (this.currentTime - this.previousTime) / 1000;
+			},
+
+			tick: function() {
+				this.previousTime = this.currentTime;
+				this.currentTime = new Date().getTime();
+				return null;
+			}
+		};
+	</script>
   <script type="text/javascript" charset="utf-8">
     var imageCnt = 0;
     function changeImage() {      
@@ -64,8 +81,8 @@
       options.image = 'image'+ (imageCnt + 1) +'.jpg';
       refresh();
     }
-    
-    var timer = null;
+    var timer = new Timer();
+	var gameInterval;
     var canvas_width = 800;
     var canvas_height = 800;
     var intro_time = 1;
@@ -73,11 +90,12 @@
     function runDemo() {
       oldpoints = [].concat(points);
       $('div.handle').hide();
-      timer = setTimeout(demoTick, 20);
+      t=0;
+      gameInterval = setInterval(demoTick, 20);
       $('#demo-button').html('Stop demo');
     }
     function demoTick() {
-      t += 0.01;
+      t += timer.getSeconds();
       var behind_t = 2 * t - intro_time;
       if(t >= intro_time) stopDemo();
       points[0] = [0 + Math.round(canvas_width / 2 * t / intro_time), canvas_height - Math.round(canvas_height * 3 / 4 * t / intro_time)];
@@ -85,21 +103,12 @@
       points[2] = [0 + Math.round(canvas_width / 2 * behind_t / intro_time), canvas_height - Math.round(canvas_height * 3 / 4 * behind_t / intro_time)];
       points[1] = [canvas_width - Math.round(canvas_width / 2 * t / intro_time), canvas_height - Math.round(canvas_height * 3 / 4 * t / intro_time)];
       points[3] = [canvas_width - Math.round(canvas_width / 2 * behind_t / intro_time), canvas_height - Math.round(canvas_height * 3 / 4 * behind_t / intro_time)];
-
       update();
-
-      if (timer) {
-        timer = setTimeout(demoTick, 20);        
-      }
-      else {
-        points = oldpoints;
-        update();        
-      }
     }
     function stopDemo() {
       $('#demo-button').html('Run demo');
       $('div.handle').show();
-      timer = null;
+      clearInterval(gameInterval);
     }
   </script>
 
