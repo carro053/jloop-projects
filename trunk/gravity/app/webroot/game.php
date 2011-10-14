@@ -58,6 +58,7 @@
 			fire_laser: function() {
 				if(this.data.last_fired > 1 / lps)
 				{
+					if(this.data.tracking_distance == 0) heat_level += 1000;
 					this.data.last_fired = 0;
 					var cos = Math.cos((this.data.angle + 90) * (Math.PI/180));
 					var sin = Math.sin((this.data.angle + 90) * (Math.PI/180));
@@ -86,10 +87,15 @@
 				}
 			},
 			update: function() {
-				if(this.data.tracking_distance > 0 && target.data.x < this.data.x + this.data.w && target.data.x > this.data.x - this.data.w && target.data.y < this.data.y + this.data.h && target.data.y > this.data.y - this.data.h)
-				{					
-					ship_targeted = 1;
-					ship_target = this;
+				if(this.data.tracking_distance > 0)
+				{
+					var mouse_distance = Math.sqrt(Math.pow(target.data.x - this.data.x, 2) + Math.pow(target.data.y - this.data.y, 2));
+					if(mouse_distance < 100 && mouse_distance < closest_ship)
+					{
+						closest_ship = mouse_distance;
+						ship_targeted = 1;
+						ship_target = this;
+					}
 				}
 				this.data.last_fired += timer.getSeconds();
 				var distance = Math.sqrt(Math.pow(this.data.target.data.x - this.data.x, 2) + Math.pow(this.data.target.data.y - this.data.y, 2));
@@ -236,6 +242,7 @@
 		var stars = new Array();
 		var ship_targeted = 0;
 		var ship_target = new Object;
+		var closest_ship;
 		var arrived = 0;
 		var hyperspaceCharge = 0;
 		var jumpTime = 0;
@@ -244,8 +251,11 @@
 		var level = 0;
 		var timer = new Timer();
 		var lasers = new Array();
+		var fire_lasers = 0;
 		var missiles = new Array();
 		var missile_count = 10;
+		var heat_level = 0;
+		var max_heat = 10000;
 		var target = new Object;
 		target.data = new Object;
 		var player = new Object;
@@ -324,10 +334,7 @@
 			canvasUI.height = window.innerHeight;
 			
 			canvasUI.onmousedown = function(e) {
-				if(ship_targeted == 1)
-				{
-					player.fire_missile();
-				}
+				if(heat_level < max_heat) player.fire_laser();
 			};
 			
 			canvasUI.onmousemove = function(e) {
@@ -338,8 +345,32 @@
 			shipSprites.onload = initialize();
 			
 			window.onkeypress = function(e) {
-				//console.log('e.which = ' + e.which + ', e.keyCode = ' + e.keyCode);
 				switch(e.which) {
+					case 119:
+						player.data.speed = fastSpeed;
+						break;
+					case 115:
+						player.data.speed = slowSpeed;
+						break;
+					case 100:
+						fire_lasers = 1;
+						break;
+				}
+			}
+			window.onkeyup = function(e) {
+				switch(e.which) {
+					case 87:			
+						player.data.speed = normalSpeed;
+						break;
+					case 83:			
+						player.data.speed = normalSpeed;
+						break;
+					case 68:
+						fire_lasers = 0;
+						break;
+					case 69:
+						if(ship_targeted) player.fire_missile();
+						break;
 					case 49:				
 						player.data.ship = 1;
 						player.data.xRightLaser = 5;
@@ -392,41 +423,6 @@
 						player.data.yLeftLaser = -10;
 						player.data.laserColor = 'rgb(255,0,0)';
 						break;
-					case 102:
-						player.fire_laser();
-						break;
-					case 56:
-						addSquad(4,7);
-						break;
-					case 57:
-						addEnemy(-50,-50);
-						break;
-					default:
-						break;
-				}
-			}
-			window.onkeydown = function(e) {
-				console.log(e.which);
-				switch(e.which) {
-					case 87:
-						player.data.speed = fastSpeed;
-						break;
-					case 83:
-						player.data.speed = slowSpeed;
-						break;
-					case 70:
-						player.fire_laser();
-						break;
-				}
-			}
-			window.onkeyup = function(e) {	
-				switch(e.which) {
-					case 87:			
-						player.data.speed = normalSpeed;
-						break;
-					case 83:			
-						player.data.speed = normalSpeed;
-						break;
 				}
 			}
 		};
@@ -477,6 +473,8 @@
 			contextUI.fillText('Level: '+level+' Score: '+score+' Shields: '+player.data.shields,20,canvasUI.height - 40);
 			contextUI.font = '24pt Arial';
 			contextUI.fillText('Ship follows the Mouse. F to shoot. S to slow down.',canvasUI.width / 2,canvasUI.height - 40);
+			contextUI.fillStyle =  'rgba('+Math.round((255*heat_level)/max_heat)+','+Math.round((255*(max_heat-heat_level))/max_heat)+',0,1)';
+			contextUI.fillRect(20,canvasUI.height - 200,20,20);
 		}
 
 		function gameLoop()
@@ -484,14 +482,36 @@
 			updateObjects();
 			clearCanvas();
 			drawObjects();
+			drawUI();
 			timer.tick();
 		}
 
 		function updateObjects()
 		{
 			gameTime += timer.getSeconds();
+			if(player.data.speed != normalSpeed)
+			{
+				console.log(player.data.speed);
+				if(heat_level < max_heat)
+				{
+					heat_level += 5000 * timer.getSeconds();
+				}else{
+					player.data.speed = normalSpeed;
+				}
+			}
+			if(fire_lasers == 1)
+			{
+				if(heat_level < max_heat)
+				{
+					console.log('fired laser');
+					player.fire_laser();
+				}else{
+					fire_lasers = 0;
+				}
+			}
 			player.update();
 			ship_targeted = 0;
+			closest_ship = 100;
 			for(var s in ships)
 			{
 				ships[s].update();
@@ -503,14 +523,17 @@
 			}else{
 				o.style.cursor="url(red_reticle.png),auto";			
 			}
+			console.log(heat_level);
+			heat_level -= 3000 * timer.getSeconds();
+			if(heat_level < 0) heat_level = 0;
 			updateLasers();
 			updateMissiles();
 			if(ships.length == 0)
 			{
+				ship_targeted = 0;
 				clearInterval(gameInterval);
 				gameInterval = setInterval(hyperspaceLoop, 20);
-			}
-			//if(Math.floor(gameTime / 20) + 1 > ships.length) addEnemy(-50,-50);			
+			}			
 		}
 		function updateMissiles()
 		{
@@ -533,7 +556,6 @@
 								ships[s].data.shields = 0;
 								score++;
 								if(player.data.shields < 10) player.data.shields++;
-								drawUI();
 								ships[s].data.dead = 1;
 								ships.splice(s, 1);
 							}
@@ -599,7 +621,6 @@
 							if(hit == 1)
 							{								
 								player.data.shields -= 1;
-								drawUI();
 								if(player.data.shields == 0)
 								{
 									var ship_text = 'ships';
@@ -628,7 +649,6 @@
 									{										
 										score++;
 										if(player.data.shields < 10) player.data.shields++;
-										drawUI();
 										ships[s].data.dead = 1;
 										ships.splice(s, 1);
 									}
@@ -681,6 +701,16 @@
 				contextFront.drawImage(shipSprites, sprite.x, sprite.y, sprite.w, sprite.h, -ships[s].data.xOffset, -ships[s].data.yOffset, sprite.w, sprite.h);
 				contextFront.rotate(-ships[s].data.angle * Math.PI / 180);
 				contextFront.translate(-ships[s].data.x, -ships[s].data.y);
+			}
+			if(ship_targeted)
+			{
+				var targeted = new Image();
+				targeted.src = 'targeted.png';
+				contextFront.translate(ship_target.data.x, ship_target.data.y);
+				contextFront.rotate(ship_target.data.angle * Math.PI / 180);
+				contextFront.drawImage(targeted,-20,-20);
+				contextFront.rotate(-ship_target.data.angle * Math.PI / 180);
+				contextFront.translate(-ship_target.data.x, -ship_target.data.y);
 			}
 			
 		}
@@ -756,8 +786,8 @@
 				arrived = 0;
 				hyperspaceCharge = 0;
 				jumpTime = 0;
+				heat_level = 0;
 				level++;
-				drawUI();
 				clearInterval(gameInterval);
 				gameInterval = setInterval(gameLoop, 20);
 				nextLevel();
@@ -987,6 +1017,7 @@
 			);
 			drawUI();
 		}
+		
 	</script>
 	<canvas id="canvasBack" style="position:absolute;"></canvas>
 	<canvas id="canvasFront" style="position:absolute;"></canvas>
