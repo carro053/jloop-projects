@@ -343,6 +343,8 @@
 					player.data = ship_target.data
 					player.data.tracking_distance = 0;
 					clearInterval(gameInterval);
+					reset_game();
+					timer.tick();
 					gameInterval = setInterval(gameLoop, 20);
 				}else if(scene == 'game' && heat_level < max_heat)
 				{
