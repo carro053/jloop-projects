@@ -466,6 +466,9 @@
 				contextBack.fill();
 			}
 			contextBack.strokeStyle =  '#FFFFFF';
+			var planet = new Image();
+			planet.src = 'targeted.png';
+			contextBack.drawImage(planet,canvasBack.width - 100,canvasBack.height / 2 + 2000);
 		}
 		
 		function drawUI()
