@@ -476,7 +476,7 @@
 				{
 					closest_ship = mouse_distance;
 					ship_targeted = 1;
-					ship_target = this;
+					ship_target = ships[s];
 				}
 			}
 			if(ship_targeted)
