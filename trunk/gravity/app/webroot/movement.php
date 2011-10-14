@@ -503,6 +503,7 @@
 			{
 				if(heat_level < max_heat)
 				{
+					console.log('fired laser');
 					player.fire_laser();
 				}else{
 					fire_lasers = 0;
