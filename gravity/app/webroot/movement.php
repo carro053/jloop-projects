@@ -336,7 +336,7 @@
 			
 			canvasUI.onmousedown = function(e) {
 				console.log('touch');
-				if(scene == 'level' && ship_targeted)
+				if(scene == 'select' && ship_targeted)
 				{
 					console.log('down');
 					scene = 'game';
