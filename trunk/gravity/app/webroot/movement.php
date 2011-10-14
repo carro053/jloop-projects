@@ -254,6 +254,7 @@
 		var missiles = new Array();
 		var missile_count = 10;
 		var heat_level = 0;
+		var max_heat = 10000;
 		var target = new Object;
 		target.data = new Object;
 		var player = new Object;
@@ -332,7 +333,7 @@
 			canvasUI.height = window.innerHeight;
 			
 			canvasUI.onmousedown = function(e) {
-				if(heat_level < 10000) player.fire_laser();
+				if(heat_level < max_heat) player.fire_laser();
 			};
 			
 			canvasUI.onmousemove = function(e) {
@@ -345,13 +346,25 @@
 			window.onkeydown = function(e) {
 				switch(e.which) {
 					case 87:
-						player.data.speed = fastSpeed;
+						if(heat_level < max_heat)
+						{
+							heat_level += 4000 * timer.getSeconds();
+							player.data.speed = fastSpeed;
+						}else{
+							player.data.speed = normalSpeed;
+						}
 						break;
 					case 83:
-						player.data.speed = slowSpeed;
+						if(heat_level < max_heat)
+						{
+							heat_level += 4000 * timer.getSeconds();
+							player.data.speed = slowSpeed;
+						}else{
+							player.data.speed = normalSpeed;
+						}
 						break;
 					case 68:
-						if(heat_level < 10000) player.fire_laser();
+						if(heat_level < max_heat) player.fire_laser();
 						break;
 				}
 			}
@@ -468,7 +481,7 @@
 			contextUI.fillText('Level: '+level+' Score: '+score+' Shields: '+player.data.shields,20,canvasUI.height - 40);
 			contextUI.font = '24pt Arial';
 			contextUI.fillText('Ship follows the Mouse. F to shoot. S to slow down.',canvasUI.width / 2,canvasUI.height - 40);
-			contextUI.fillStyle =  'rgba('+Math.round((255*heat_level)/10000)+','+Math.round((255*(10000-heat_level))/10000)+',0,1)';
+			contextUI.fillStyle =  'rgba('+Math.round((255*heat_level)/max_heat)+','+Math.round((255*(max_heat-heat_level))/max_heat)+',0,1)';
 			contextUI.fillRect(20,canvasUI.height - 200,20,20);
 		}
 
