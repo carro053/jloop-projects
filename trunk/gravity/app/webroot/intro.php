@@ -9,7 +9,7 @@
 <script type="text/javascript" charset="utf-8">
     var timer = null;
     var t = 0, rx = 0, ry = 0, rz = 0, oldpoints;
-	var intro_time = 10;
+	var intro_time = 2;
   	var canvas = new Object;
     var points = new Object;
     function runDemo() {
