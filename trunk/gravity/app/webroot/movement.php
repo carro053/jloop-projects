@@ -58,7 +58,7 @@
 			fire_laser: function() {
 				if(this.data.last_fired > 1 / lps)
 				{
-					heat_level += 10;
+					heat_level += 100;
 					drawUI();
 					this.data.last_fired = 0;
 					var cos = Math.cos((this.data.angle + 90) * (Math.PI/180));
