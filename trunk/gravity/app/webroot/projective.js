@@ -35,7 +35,7 @@ window.onload = function () {
 refresh = function () {
   image = new Image();
   image.onload = update;
-  image.src = options.image;
+  image.src = 'intro_text.png';
 }
 
 /**
