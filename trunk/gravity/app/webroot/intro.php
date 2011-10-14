@@ -269,7 +269,7 @@
 			
 			contextIntro.font = '50px arial,sans-serif' ;
 			contextIntro.fillStyle = 'green' ;
-			contextIntro.setTransform (1, 0, 0, 0.8, 0, 0.2);
+			contextIntro.setTransform (1, 0, 0, 0.8, 0, 1);
 			contextIntro.fillText ('your text', 100, 100) ;
 			contextIntro.setTransform (1, 0, 0, 1, 0, 0);
 			//timer.tick();
