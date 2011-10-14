@@ -441,11 +441,11 @@
 			for(var s in ships)
 			{
 				var sprite = shipSpritesheet.getSprite(ships[s].data.ship);
-				contextFront.translate(ships[s].data.x, ships[s].data.y);
-				contextFront.rotate(ships[s].data.angle * Math.PI / 180);
-				contextFront.drawImage(shipSprites, sprite.x, sprite.y, sprite.w, sprite.h, -ships[s].data.xOffset, -ships[s].data.yOffset, sprite.w, sprite.h);
-				contextFront.rotate(-ships[s].data.angle * Math.PI / 180);
-				contextFront.translate(-ships[s].data.x, -ships[s].data.y);
+				contextUI.translate(ships[s].data.x, ships[s].data.y);
+				contextUI.rotate(ships[s].data.angle * Math.PI / 180);
+				contextUI.drawImage(shipSprites, sprite.x, sprite.y, sprite.w, sprite.h, -ships[s].data.xOffset, -ships[s].data.yOffset, sprite.w, sprite.h);
+				contextUI.rotate(-ships[s].data.angle * Math.PI / 180);
+				contextUI.translate(-ships[s].data.x, -ships[s].data.y);
 			}
 			contextUI.font = '20px Arial';
 			contextUI.fillStyle =  '#FFFFFF';
@@ -462,6 +462,33 @@
 			contextUI.fillText('Speed: 250',canvasFront.width * 2 / 3,canvasFront.height / 2 + 70);
 			contextUI.fillText('Shields: 10',canvasFront.width * 2 / 3,canvasFront.height / 2 + 100);
 			contextUI.fillText('Missiles: 15',canvasFront.width * 2 / 3,canvasFront.height / 2 + 130);
+			gameInterval = setInterval(selectLoop, 20);
+		}
+		function selectLoop()
+		{
+			contextFront.clearRect(0, 0, canvasUI.width, canvasUI.height);
+			ship_targeted = 0;
+			closest_ship = 100;
+			for(var s in ships)
+			{
+				var mouse_distance = Math.sqrt(Math.pow(target.data.x - ships[s].data.x, 2) + Math.pow(target.data.y - ships[s].data.y, 2));
+				if(mouse_distance < 100 && mouse_distance < closest_ship)
+				{
+					closest_ship = mouse_distance;
+					ship_targeted = 1;
+					ship_target = this;
+				}
+			}
+			if(ship_targeted)
+			{
+				var targeted = new Image();
+				targeted.src = 'targeted.png';
+				contextFront.translate(ship_target.data.x, ship_target.data.y);
+				contextFront.rotate(ship_target.data.angle * Math.PI / 180);
+				contextFront.drawImage(targeted,-20,-20);
+				contextFront.rotate(-ship_target.data.angle * Math.PI / 180);
+				contextFront.translate(-ship_target.data.x, -ship_target.data.y);
+			}
 		}
 		
 		function startGame()
