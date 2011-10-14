@@ -343,6 +343,7 @@
 					player.data.x = ship_target.data.x;
 					player.data.y = ship_target.data.y;
 					player.data.angle = ship_target.data.angle;
+					player.data.ship = ship_target.data.ship;
 					player.data.tracking_distance = 0;
 					clearInterval(gameInterval);
 					reset_game();
