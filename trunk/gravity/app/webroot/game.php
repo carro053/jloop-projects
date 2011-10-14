@@ -255,7 +255,8 @@
 		var missiles = new Array();
 		var missile_count = 10;
 		var heat_level = 0;
-		var max_heat = 10000;
+		var max_heat = 25000;
+		var speed_change = 1;
 		var target = new Object;
 		target.data = new Object;
 		var player = new Object;
@@ -359,10 +360,12 @@
 			}
 			window.onkeyup = function(e) {
 				switch(e.which) {
-					case 87:			
+					case 87:
+						speed_change = 1;
 						player.data.speed = normalSpeed;
 						break;
-					case 83:			
+					case 83:
+						speed_change = 1;	
 						player.data.speed = normalSpeed;
 						break;
 					case 68:
@@ -491,11 +494,11 @@
 			gameTime += timer.getSeconds();
 			if(player.data.speed != normalSpeed)
 			{
-				console.log(player.data.speed);
-				if(heat_level < max_heat)
+				if(heat_level < max_heat && speed_change == 1)
 				{
 					heat_level += 5000 * timer.getSeconds();
 				}else{
+					speed_change = 0;
 					player.data.speed = normalSpeed;
 				}
 			}
@@ -503,7 +506,6 @@
 			{
 				if(heat_level < max_heat)
 				{
-					console.log('fired laser');
 					player.fire_laser();
 				}else{
 					fire_lasers = 0;
@@ -523,7 +525,6 @@
 			}else{
 				o.style.cursor="url(red_reticle.png),auto";			
 			}
-			console.log(heat_level);
 			heat_level -= 3000 * timer.getSeconds();
 			if(heat_level < 0) heat_level = 0;
 			updateLasers();
@@ -1015,7 +1016,6 @@
 					dead: 0
 				}
 			);
-			drawUI();
 		}
 		
 	</script>
