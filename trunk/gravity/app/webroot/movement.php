@@ -59,6 +59,7 @@
 				if(this.data.last_fired > 1 / lps)
 				{
 					heat_level += 10;
+					drawUI();
 					this.data.last_fired = 0;
 					var cos = Math.cos((this.data.angle + 90) * (Math.PI/180));
 					var sin = Math.sin((this.data.angle + 90) * (Math.PI/180));
