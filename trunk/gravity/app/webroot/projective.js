@@ -5,12 +5,7 @@
  * http://www.acko.net/
  */
 
-var points = [
-  [1000, 1000],
-  [2000 + Math.random() * 2000, 1000],
-  [1000, 2000 + Math.random() * 2000],
-  [2000 + Math.random() * 2000, 2000 + Math.random() * 2000]
-];
+
 
 var options = {
   image: 'intro_text.png'
@@ -44,7 +39,6 @@ refresh = function () {
 function init() {
 
   // Create canvas and load image.
-  canvas = document.getElementById('introcanvas');
   refresh();
   // Render image.
   update();
