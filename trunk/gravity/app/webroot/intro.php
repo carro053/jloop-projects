@@ -80,11 +80,11 @@
       t += 0.01;
       var behind_t = 2 * t - intro_time;
       if(t >= intro_time) stopDemo();
-      points[0] = [0 + Math.round(canvas_width / 2 * t / intro_time), canvas_height - Math.round(canvas_height / 4 * t / intro_time)];
+      points[0] = [0 + Math.round(canvas_width / 2 * t / intro_time), canvas_height - Math.round(canvas_height * 3 / 4 * t / intro_time)];
 
-      points[2] = [0 + Math.round(canvas_width / 2 * behind_t / intro_time), canvas_height - Math.round(canvas_height / 4 * behind_t / intro_time)];
-      points[1] = [canvas_width - Math.round(canvas_width / 2 * t / intro_time), canvas_height - Math.round(canvas_height / 4 * t / intro_time)];
-      points[3] = [canvas_width - Math.round(canvas_width / 2 * behind_t / intro_time), canvas_height - Math.round(canvas_height / 4 * behind_t / intro_time)];
+      points[2] = [0 + Math.round(canvas_width / 2 * behind_t / intro_time), canvas_height - Math.round(canvas_height * 3 / 4 * behind_t / intro_time)];
+      points[1] = [canvas_width - Math.round(canvas_width / 2 * t / intro_time), canvas_height - Math.round(canvas_height * 3 / 4 * t / intro_time)];
+      points[3] = [canvas_width - Math.round(canvas_width / 2 * behind_t / intro_time), canvas_height - Math.round(canvas_height * 3 / 4 * behind_t / intro_time)];
 
       update();
 
