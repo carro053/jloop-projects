@@ -12,6 +12,8 @@
 	var intro_time = 2;
   	var canvas = new Object;
     var points = new Object;
+    var canvas_width = 800;
+    var canvas_height = 800;
     function runDemo() {
       oldpoints = [].concat(points);
       timer = setTimeout(demoTick, 20);
@@ -19,12 +21,12 @@
     function demoTick() {
       t += 0.01;
       var behind_t = t - intro_time * (intro_time - t) / intro_time;
-      points[0] = [0 + canvas.innerWidth / 2 * Math.round(t / intro_time), canvas.innerHeight - canvas.innerHeight / 4 * Math.round(t / intro_time)];
+      points[0] = [0 + canvas_width / 2 * Math.round(t / intro_time), canvas_height - canvas_height / 4 * Math.round(t / intro_time)];
 
-      points[2] = [0 + canvas.innerWidth / 2 * Math.round(behind_t / intro_time), canvas.innerHeight - canvas.innerHeight / 4 * Math.round(behind_t / intro_time)];
-      points[1] = [canvas.innerWidth - canvas.innerWidth / 2 * Math.round(t / intro_time), canvas.innerHeight - canvas.innerHeight / 4 * Math.round(t / intro_time)];
-      points[3] = [canvas.innerWidth - canvas.innerWidth / 2 * Math.round(behind_t / intro_time), canvas.innerHeight - canvas.innerHeight / 4 * Math.round(behind_t / intro_time)];
-console.log((0 + canvas.innerWidth / 2 * Math.round(t / intro_time)) +" "+(canvas.innerHeight - canvas.innerHeight / 4 * Math.round(t / intro_time)));
+      points[2] = [0 + canvas_width / 2 * Math.round(behind_t / intro_time), canvas_height - canvas_height / 4 * Math.round(behind_t / intro_time)];
+      points[1] = [canvas_width - canvas_width / 2 * Math.round(t / intro_time), canvas_height - canvas_height / 4 * Math.round(t / intro_time)];
+      points[3] = [canvas_width - canvas_width / 2 * Math.round(behind_t / intro_time), canvas_height - canvas_height / 4 * Math.round(behind_t / intro_time)];
+console.log((0 + canvas_width / 2 * Math.round(t / intro_time)) +" "+(canvas_height - canvas_height / 4 * Math.round(t / intro_time)));
       update();
 
       if (timer) {
