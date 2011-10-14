@@ -256,7 +256,7 @@
 		var missile_count = 10;
 		var heat_level = 0;
 		var max_heat = 10000;
-		var slowed_down = 0;
+		var speed_change = 1;
 		var target = new Object;
 		target.data = new Object;
 		var player = new Object;
@@ -361,11 +361,12 @@
 			window.onkeyup = function(e) {
 				console.log(e.which);
 				switch(e.which) {
-					case 87:			
+					case 87:
+						speed_change = 1;
 						player.data.speed = normalSpeed;
 						break;
 					case 83:
-						slowed_down = 0;	
+						speed_change = 1;	
 						player.data.speed = normalSpeed;
 						break;
 					case 68:
@@ -494,11 +495,11 @@
 			gameTime += timer.getSeconds();
 			if(player.data.speed != normalSpeed)
 			{
-				if(heat_level < max_heat && slowed_down == 0)
+				if(heat_level < max_heat && speed_change == 1)
 				{
 					heat_level += 5000 * timer.getSeconds();
 				}else{
-					slowed_down = 1;
+					speed_change = 0;
 					player.data.speed = normalSpeed;
 				}
 			}
