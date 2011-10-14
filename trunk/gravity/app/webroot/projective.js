@@ -13,7 +13,6 @@ var points = [
 ];
 
 var options = {
-  wireframe: true,
   image: 'intro_text.png',
   subdivisionLimit: 5,
   patchSize: 64
@@ -134,17 +133,6 @@ update = function () {
   ctx.clip();
 
   divide(0, 0, 1, 1, ptl, ptr, pbl, pbr, options.subdivisionLimit);
-
-  if (options.wireframe) {
-    ctx.beginPath();
-    ctx.moveTo(ptl[0], ptl[1]);
-    ctx.lineTo(ptr[0], ptr[1]);
-    ctx.lineTo(pbr[0], pbr[1]);
-    ctx.lineTo(pbl[0], pbl[1]);
-    ctx.closePath();
-    ctx.stroke();
-  }
-
 }
 
 /**
@@ -152,7 +140,7 @@ update = function () {
  */
 function divide(u1, v1, u4, v4, p1, p2, p3, p4, limit) {
   // See if we can still divide.
-  if (limit) {
+  /*if (limit) {
     // Measure patch non-affinity.
     var d1 = [p2[0] + p3[0] - 2 * p1[0], p2[1] + p3[1] - 2 * p1[1]];
     var d2 = [p2[0] + p3[0] - 2 * p4[0], p2[1] + p3[1] - 2 * p4[1]];
@@ -182,22 +170,9 @@ function divide(u1, v1, u4, v4, p1, p2, p3, p4, limit) {
       divide(umid, v1, u4, vmid, pt, p2, pmid, pr, limit);
       divide(u1, vmid, umid, v4, pl, pmid, p3, pb, limit);
       divide(umid, vmid, u4, v4, pmid, pr, pb, p4, limit);
-
-      if (options.wireframe) {
-        ctx.beginPath();
-        ctx.moveTo(pt[0], pt[1]);
-        ctx.lineTo(pb[0], pb[1]);
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.moveTo(pl[0], pl[1]);
-        ctx.lineTo(pr[0], pr[1]);
-        ctx.stroke();
-      }
-
       return;
     }
-  }
+  }*/
 
   // Render this patch.
   ctx.save();

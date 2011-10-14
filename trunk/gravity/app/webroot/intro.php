@@ -139,7 +139,6 @@
   
   <form>
   <div><button onclick="changeImage(); return false;">Change image</button><button onclick="if (!demod) runDemo(); else stopDemo(); return false;" id="demo-button">Run Demo</button></div>
-  <div><label><input type="checkbox" value="1" checked="checked" onchange="options.wireframe = this.checked; update();"> Show subdivision wireframe</label></div>
   <div><label><strong>Patch size</strong>: <input type="text" size="3" value="64" onkeyup="options.patchSize = this.value; update()"> pixels</label></div>
   <div><label><strong>Subdivision limit</strong>: <input type="text" size="3" value="5" onkeyup="options.subdivisionLimit = this.value; update()"> steps</label></div>
   </form>
