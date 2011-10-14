@@ -956,7 +956,6 @@
 			{
 				addSquad(4,3,window.innerWidth / 2, -150);
 				addEnemy(-150,window.innerHeight / 2,6);
-				addEnemy(innerWidth + 150,window.innerHeight / 2,6);
 			}else if(level == 5)
 			{
 				addEnemy(-50,-50,5);
