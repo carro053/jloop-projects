@@ -269,7 +269,11 @@
 			
 			contextIntro.font = '50px arial,sans-serif' ;
 			contextIntro.fillStyle = 'green' ;
-			contextIntro.setTransform (1, 0, 0, 0.1, 0, 0);
+			var cs = Math.cos(angle1), sn = Math.sin(angle1);
+			var h = Math.cos(angle2);
+			var a = 100*cs, b = -100*sn, c = 200;
+			var d = h*100*sn, e = h*100*cs, f = 200;
+			contextIntro.setTransform(a, d, b, e, c, f);
 			contextIntro.fillText ('your text', 100, 100) ;
 			contextIntro.setTransform (1, 0, 0, 1, 0, 0);
 			//timer.tick();
