@@ -100,14 +100,14 @@ update = function () {
   ctx.lineTo(pbl[0], pbl[1]);
   ctx.closePath();
   ctx.clip();
-  divide(0, 0, 1, 1, ptl, ptr, pbl, pbr, options.subdivisionLimit);
+  divide(0, 0, 1, 1, ptl, ptr, pbl, pbr);
 
 }
 
 /**
  * Render a projective patch.
  */
-function divide(u1, v1, u4, v4, p1, p2, p3, p4, limit) {
+function divide(u1, v1, u4, v4, p1, p2, p3, p4) {
 
   // Render this patch.
   ctx.save();
