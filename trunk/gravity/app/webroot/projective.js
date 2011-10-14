@@ -100,7 +100,89 @@ update = function () {
   ctx.lineTo(pbl[0], pbl[1]);
   ctx.closePath();
   ctx.clip();
+  divide(0, 0, 1, 1, ptl, ptr, pbl, pbr, options.subdivisionLimit);
 
+}
+
+/**
+ * Render a projective patch.
+ */
+function divide(u1, v1, u4, v4, p1, p2, p3, p4, limit) {
+
+  // Render this patch.
+  ctx.save();
+
+  // Set clipping path.
+  ctx.beginPath();
+  ctx.moveTo(p1[0], p1[1]);
+  ctx.lineTo(p2[0], p2[1]);
+  ctx.lineTo(p4[0], p4[1]);
+  ctx.lineTo(p3[0], p3[1]);
+  ctx.closePath();
+  //ctx.clip();
+  
+  // Get patch edge vectors.
+  var d12 = [p2[0] - p1[0], p2[1] - p1[1]];
+  var d24 = [p4[0] - p2[0], p4[1] - p2[1]];
+  var d43 = [p3[0] - p4[0], p3[1] - p4[1]];
+  var d31 = [p1[0] - p3[0], p1[1] - p3[1]];
+  
+  // Find the corner that encloses the most area
+  var a1 = Math.abs(d12[0] * d31[1] - d12[1] * d31[0]);
+  var a2 = Math.abs(d24[0] * d12[1] - d24[1] * d12[0]);
+  var a4 = Math.abs(d43[0] * d24[1] - d43[1] * d24[0]);
+  var a3 = Math.abs(d31[0] * d43[1] - d31[1] * d43[0]);
+  var amax = Math.max(Math.max(a1, a2), Math.max(a3, a4));
+  var dx = 0, dy = 0, padx = 0, pady = 0;
+  
+  // Align the transform along this corner.
+  switch (amax) {
+    case a1:
+      ctx.transform(d12[0], d12[1], -d31[0], -d31[1], p1[0], p1[1]);
+      // Calculate 1.05 pixel padding on vector basis.
+      if (u4 != 1) padx = 1.05 / Math.sqrt(d12[0] * d12[0] + d12[1] * d12[1]);
+      if (v4 != 1) pady = 1.05 / Math.sqrt(d31[0] * d31[0] + d31[1] * d31[1]);
+      break;
+    case a2:
+      ctx.transform(d12[0], d12[1],  d24[0],  d24[1], p2[0], p2[1]);
+      // Calculate 1.05 pixel padding on vector basis.
+      if (u4 != 1) padx = 1.05 / Math.sqrt(d12[0] * d12[0] + d12[1] * d12[1]);
+      if (v4 != 1) pady = 1.05 / Math.sqrt(d24[0] * d24[0] + d24[1] * d24[1]);
+      dx = -1;
+      break;
+    case a4:
+      ctx.transform(-d43[0], -d43[1], d24[0], d24[1], p4[0], p4[1]);
+      // Calculate 1.05 pixel padding on vector basis.
+      if (u4 != 1) padx = 1.05 / Math.sqrt(d43[0] * d43[0] + d43[1] * d43[1]);
+      if (v4 != 1) pady = 1.05 / Math.sqrt(d24[0] * d24[0] + d24[1] * d24[1]);
+      dx = -1;
+      dy = -1;
+      break;
+    case a3:
+      // Calculate 1.05 pixel padding on vector basis.
+      ctx.transform(-d43[0], -d43[1], -d31[0], -d31[1], p3[0], p3[1]);
+      if (u4 != 1) padx = 1.05 / Math.sqrt(d43[0] * d43[0] + d43[1] * d43[1]);
+      if (v4 != 1) pady = 1.05 / Math.sqrt(d31[0] * d31[0] + d31[1] * d31[1]);
+      dy = -1;
+      break;
+  }
+  
+  // Calculate image padding to match.
+  var du = (u4 - u1);
+  var dv = (v4 - v1);
+  var padu = padx * du;
+  var padv = pady * dv;
+  
+  ctx.drawImage(
+    image,
+    u1 * iw,
+    v1 * ih,
+    Math.min(u4 - u1 + padu, 1) * iw,
+    Math.min(v4 - v1 + padv, 1) * ih,
+    dx, dy,
+    1 + padx, 1 + pady
+  );
+  ctx.restore();
 }
 
 /**
