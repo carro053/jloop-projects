@@ -450,18 +450,9 @@
 			}
 			contextFront.font = '24pt Arial';
 			contextUI.fillStyle =  '#FFFFFF';
-			contextUI.fillText('Fury Class
-Speed: 250
-Shields: 15
-Missiles: 10',canvasFront.width / 3,canvasFront.height / 2 - 40);
-contextUI.fillText('Phantom Class
-Speed: 300
-Shields: 10
-Missiles: 10',canvasFront.width / 2,canvasFront.height / 2 - 40);
-contextUI.fillText('Fury class
-Speed: 250
-Shields: 10
-Missiles: 15',canvasFront.width * 2 / 3,canvasFront.height / 2 - 40);
+			contextUI.fillText('Fury Class Speed: 250 Shields: 15 Missiles: 10',canvasFront.width / 3,canvasFront.height / 2 - 40);
+contextUI.fillText('Phantom Class Speed: 300 Shields: 10 Missiles: 10',canvasFront.width / 2,canvasFront.height / 2 - 40);
+contextUI.fillText('Fury class Speed: 250 Shields: 10 Missiles: 15',canvasFront.width * 2 / 3,canvasFront.height / 2 - 40);
 		}
 		
 		function startGame()
