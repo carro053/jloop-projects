@@ -241,6 +241,7 @@
 	<script type="text/javascript">
 		var introInterval;
 		var timer = new Timer();
+		var stars = new Array();
 		var canvasIntro = new Object();
 		var contextIntro = new Object();
 		var canvasBack = new Object();
