@@ -38,6 +38,12 @@ refresh = function () {
  */
 function init() {
  canvas = document.getElementById('introcanvas');
+ points = [
+	  [0, canvas.innerHeight],
+	  [canvas.innerWidth, canvas.innerHeight],
+	  [0, canvas.innerHeight + 800],
+	  [canvas.innerWidth, canvas.innerHeight + 800]
+	];
   // Create canvas and load image.
   refresh();
   // Render image.
