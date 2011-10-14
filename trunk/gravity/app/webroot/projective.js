@@ -37,7 +37,7 @@ refresh = function () {
  * Initialize the handles and canvas.
  */
 function init() {
-
+ canvas = document.getElementById('introcanvas');
   // Create canvas and load image.
   refresh();
   // Render image.
