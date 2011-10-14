@@ -256,6 +256,7 @@
 		var missile_count = 10;
 		var heat_level = 0;
 		var max_heat = 10000;
+		var slowed_down = 0;
 		var target = new Object;
 		target.data = new Object;
 		var player = new Object;
@@ -358,6 +359,7 @@
 				}
 			}
 			window.onkeyup = function(e) {
+				console.log(e.which);
 				switch(e.which) {
 					case 87:			
 						player.data.speed = normalSpeed;
@@ -530,9 +532,9 @@
 			updateMissiles();
 			if(ships.length == 0)
 			{
-				ship_targeted = 0;
-				clearInterval(gameInterval);
-				gameInterval = setInterval(hyperspaceLoop, 20);
+				//ship_targeted = 0;
+				//clearInterval(gameInterval);
+				//gameInterval = setInterval(hyperspaceLoop, 20);
 			}			
 		}
 		function updateMissiles()
