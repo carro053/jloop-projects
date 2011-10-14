@@ -14,7 +14,7 @@ var points = [
 
 var options = {
   image: 'intro_text.png',
-  subdivisionLimit: 5,
+  subdivisionLimit: 2,
   patchSize: 64
 };
 
