@@ -83,8 +83,8 @@
     }
     var timer = new Timer();
 	var gameInterval;
-    var canvas_width = 800;
-    var canvas_height = 1600;
+    var canvas_width = 400;
+    var canvas_height = 400;
     var intro_time = 30;
     var demod = null;
     var t = 0, rx = 0, ry = 0, rz = 0, oldpoints;
