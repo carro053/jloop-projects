@@ -253,7 +253,7 @@
 		var lasers = new Array();
 		var fire_lasers = 0;
 		var missiles = new Array();
-		var missile_count = 100;
+		var missile_count = 10;
 		var heat_level = 0;
 		var max_heat = 25000;
 		var speed_change = 1;
