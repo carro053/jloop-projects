@@ -345,6 +345,7 @@
 			shipSprites.onload = initialize();
 			
 			window.onkeypress = function(e) {
+				console.log(e.which);
 				switch(e.which) {
 					case 87:
 						player.data.speed = fastSpeed;
