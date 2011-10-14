@@ -265,8 +265,14 @@
 		function initialize()
 		{
 			drawBackground();
-			timer.tick();
-			introInterval = setInterval(introLoop, 20);
+			
+			contextIntro.font = '20px arial,sans-serif' ;
+			contextIntro.fillStyle = 'black' ;
+			contextIntro.setTransform (1, -0.2, 0, 1, 0, 0);
+			contextIntro.fillText ('your text', 10, 10) ;
+			contextIntro.setTransform (1, 0, 0, 1, 0, 0);
+			//timer.tick();
+			//introInterval = setInterval(introLoop, 20);
 		}
 		
 		function drawBackground()
