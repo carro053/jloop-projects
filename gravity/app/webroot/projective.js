@@ -104,8 +104,8 @@ update = function () {
   // Reshape canvas.
   canvas.style.left = minX +'px';
   canvas.style.top = minY +'px';
-  //canvas.width = width;
-  //canvas.height = height;
+  canvas.width = width;
+  canvas.height = height;
   
   // Measure texture.
   iw = image.width;
