@@ -6,10 +6,10 @@
  */
 
 var points = [
-  [100, 100],
-  [200 + Math.random() * 200, 100],
-  [100, 200 + Math.random() * 200],
-  [200 + Math.random() * 200, 200 + Math.random() * 200]
+  [1000, 1000],
+  [2000 + Math.random() * 2000, 1000],
+  [1000, 2000 + Math.random() * 2000],
+  [2000 + Math.random() * 2000, 2000 + Math.random() * 2000]
 ];
 
 var options = {
