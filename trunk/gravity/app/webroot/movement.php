@@ -346,22 +346,10 @@
 			window.onkeydown = function(e) {
 				switch(e.which) {
 					case 87:
-						if(heat_level < max_heat)
-						{
-							heat_level += 4000 * timer.getSeconds();
-							player.data.speed = fastSpeed;
-						}else{
-							player.data.speed = normalSpeed;
-						}
+						player.data.speed = fastSpeed;
 						break;
 					case 83:
-						if(heat_level < max_heat)
-						{
-							heat_level += 4000 * timer.getSeconds();
-							player.data.speed = slowSpeed;
-						}else{
-							player.data.speed = normalSpeed;
-						}
+						player.data.speed = slowSpeed;
 						break;
 					case 68:
 						if(heat_level < max_heat) player.fire_laser();
@@ -497,7 +485,12 @@
 		function updateObjects()
 		{
 			gameTime += timer.getSeconds();
-			
+			if(player.data.speed != normalSpeed && heat_level < max_heat)
+			{
+				heat_level += 5000 * timer.getSeconds();
+			}else{
+				player.data.speed = normalSpeed;
+			}
 			player.update();
 			ship_targeted = 0;
 			closest_ship = 100;
