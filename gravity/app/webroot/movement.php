@@ -239,6 +239,7 @@
 </head>
 <body style="margin:0;overflow:hidden;">
 	<script type="text/javascript">
+		var scene = 'select';
 		var stars = new Array();
 		var ship_targeted = 0;
 		var ship_target = new Object;
@@ -334,7 +335,15 @@
 			canvasUI.height = window.innerHeight;
 			
 			canvasUI.onmousedown = function(e) {
-				if(heat_level < max_heat) player.fire_laser();
+				if(scene == 'level' && ship_targeted)
+				{
+					scene = 'game';
+					clearInterval(gameInterval);
+					gameInterval = setInterval(gameLoop, 20);
+				}else if(scene == 'game' && heat_level < max_heat)
+				{
+					player.fire_laser();
+				}
 			};
 			
 			canvasUI.onmousemove = function(e) {
