@@ -58,6 +58,7 @@
 			fire_laser: function() {
 				if(this.data.last_fired > 1 / lps)
 				{
+					if(this.data.tracking_distance == 0) heat_level += 500;
 					this.data.last_fired = 0;
 					var cos = Math.cos((this.data.angle + 90) * (Math.PI/180));
 					var sin = Math.sin((this.data.angle + 90) * (Math.PI/180));
@@ -331,11 +332,7 @@
 			canvasUI.height = window.innerHeight;
 			
 			canvasUI.onmousedown = function(e) {
-				if(heat_level < 10000)
-				{
-					heat_level += 300;
-					player.fire_laser();
-				}
+				if(heat_level < 10000) player.fire_laser();
 			};
 			
 			canvasUI.onmousemove = function(e) {
@@ -354,11 +351,7 @@
 						player.data.speed = slowSpeed;
 						break;
 					case 68:
-						if(heat_level < 10000)
-						{
-							player.fire_laser();
-							heat_level += 300;
-						}
+						if(heat_level < 10000) player.fire_laser();
 						break;
 				}
 			}
