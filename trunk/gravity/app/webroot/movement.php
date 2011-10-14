@@ -331,8 +331,11 @@
 			canvasUI.height = window.innerHeight;
 			
 			canvasUI.onmousedown = function(e) {
-				heat_level += 500;
-				player.fire_laser();
+				if(heat_level < 10000)
+				{
+					heat_level += 500;
+					player.fire_laser();
+				}
 			};
 			
 			canvasUI.onmousemove = function(e) {
@@ -351,8 +354,11 @@
 						player.data.speed = slowSpeed;
 						break;
 					case 68:
-						player.fire_laser();
-						heat_level += 500;
+						if(heat_level < 10000)
+						{
+							player.fire_laser();
+							heat_level += 500;
+						}
 						break;
 				}
 			}
