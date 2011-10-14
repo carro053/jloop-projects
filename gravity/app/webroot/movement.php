@@ -333,7 +333,7 @@
 			canvasUI.onmousedown = function(e) {
 				if(heat_level < 10000)
 				{
-					heat_level += 500;
+					heat_level += 300;
 					player.fire_laser();
 				}
 			};
@@ -357,7 +357,7 @@
 						if(heat_level < 10000)
 						{
 							player.fire_laser();
-							heat_level += 500;
+							heat_level += 300;
 						}
 						break;
 				}
