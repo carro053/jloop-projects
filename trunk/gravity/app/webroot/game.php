@@ -466,6 +466,10 @@
 				contextBack.fill();
 			}
 			contextBack.strokeStyle =  '#FFFFFF';
+			
+			//var planet = new Image();
+			//planet.src = 'planet_6.png';
+			//contextBack.drawImage(planet,canvasBack.width / 2 - 100,200);
 		}
 		
 		function drawUI()
@@ -554,11 +558,14 @@
 							for (var i = 0, n = pix.length; i < n; i += 4) if(pix[i+3] > 0) hit = 1;
 							if(hit == 1)
 							{
-								ships[s].data.shields = 0;
-								score++;
-								if(player.data.shields < 10) player.data.shields++;
-								ships[s].data.dead = 1;
-								ships.splice(s, 1);
+								ships[s].data.shields -= 4;
+								if(ships[s].data.shields <= 0)
+								{										
+									score++;
+									if(player.data.shields < 10) player.data.shields++;
+									ships[s].data.dead = 1;
+									ships.splice(s, 1);
+								}
 							}
 						}
 					}
@@ -622,7 +629,7 @@
 							if(hit == 1)
 							{								
 								player.data.shields -= 1;
-								if(player.data.shields == 0)
+								if(player.data.shields <= 0)
 								{
 									var ship_text = 'ships';
 									if(score == 1) ship_text = 'ship';
@@ -646,7 +653,7 @@
 								if(hit == 1)
 								{
 									ships[s].data.shields -= 1;
-									if(ships[s].data.shields == 0)
+									if(ships[s].data.shields <= 0)
 									{										
 										score++;
 										if(player.data.shields < 10) player.data.shields++;
@@ -798,7 +805,8 @@
 		{
 			shipData = new Object;
 			switch(ship_type) {
-				case 1:	
+				case 1:
+					//fury
 					shipData.ship = 1;
 					shipData.trackingDistance = Math.floor(Math.random()*200) + 100;
 					shipData.xRightLaser = 5;
@@ -808,8 +816,10 @@
 					shipData.laserColor = 'rgb(0,255,0)';
 					shipData.speed = 150;
 					shipData.angular_speed = 150;
+					shipData.shields = 3;
 					break;
 				case 2:
+					//phantom
 					shipData.ship = 2;
 					shipData.trackingDistance = Math.floor(Math.random()*200) + 100;						
 					shipData.xRightLaser = 12;
@@ -819,9 +829,11 @@
 					shipData.laserColor = 'rgb(0,255,0)';
 					shipData.speed = 150;
 					shipData.angular_speed = 150;
+					shipData.shields = 3;
 					
 					break;
 				case 3:
+					//mantis
 					shipData.ship = 3;	
 					shipData.trackingDistance = Math.floor(Math.random()*200) + 100;					
 					shipData.xRightLaser = 13;
@@ -831,11 +843,13 @@
 					shipData.laserColor = 'rgb(0,255,0)';
 					shipData.speed = 150;
 					shipData.angular_speed = 150;
+					shipData.shields = 3;
 					
 					break;
 				case 4:
+					//defender
 					shipData.ship = 4;
-					shipData.trackingDistance = Math.floor(Math.random()*200) + 100;					
+					shipData.trackingDistance = Math.floor(Math.random()*150) + 100;					
 					shipData.xRightLaser = 10;
 					shipData.yRightLaser = -23;
 					shipData.xLeftLaser = -10;
@@ -843,9 +857,11 @@
 					shipData.laserColor = 'rgb(255,0,0)';
 					shipData.speed = 150;
 					shipData.angular_speed = 150;
+					shipData.shields = 4;
 					
 					break;
 				case 5:
+					//freighter
 					shipData.ship = 5;	
 					shipData.trackingDistance = Math.floor(Math.random()*150);					
 					shipData.xRightLaser = 1;
@@ -855,9 +871,11 @@
 					shipData.laserColor = 'rgb(255,0,0)';
 					shipData.speed = 300;
 					shipData.angular_speed = 150;
+					shipData.shields = 9;
 					
 					break;
 				case 6:
+					//thunderclap
 					shipData.ship = 6;					
 					shipData.trackingDistance = Math.floor(Math.random()*200) + 100;
 					shipData.xRightLaser = 16;
@@ -867,6 +885,7 @@
 					shipData.laserColor = 'rgb(255,0,0)';
 					shipData.speed = 150;
 					shipData.angular_speed = 150;
+					shipData.shields = 3;
 					break;
 			}
 			return shipData;
@@ -907,7 +926,6 @@
 			if(set_ship_type) ship_type = set_ship_type;
 			var shipData = getShipData(ship_type);
 			var laser_side = 0;
-			var shields = 3;
 			var last_fired = 0;
 			var mytarget = player;
 			var ship  = new StarShip(
@@ -928,8 +946,8 @@
 					laserColor: shipData.laserColor,
 					speed: shipData.speed,
 					angular_speed: shipData.angular_speed,
+					shields: shipData.shields,
 					laser_side: laser_side,
-					shields: shields,
 					last_fired: last_fired,
 					target: mytarget,
 					squad_leader: squad_leader,
@@ -944,7 +962,7 @@
 		{
 			if(level == 1)
 			{
-				addEnemy(-50,-50,6);
+				addEnemy(-150,-150,6);
 			}else if(level == 2)
 			{
 				addEnemy(window.innerWidth / 2,-150,4);
@@ -958,14 +976,27 @@
 				addEnemy(-150,window.innerHeight / 2,6);
 			}else if(level == 5)
 			{
-				addEnemy(-50,-50,5);
+				addEnemy(-150,-150,5);
 			}else if(level == 6)
 			{
 				addSquad(4,3,-150,window.innerWidth / 2);
 				addSquad(4,3,window.innerWidth + 150,window.innerHeight / 2);
 			}else if(level == 7)
 			{
-				addSquad(6,5,window.innerWidth / 2, -150);
+				addSquad(6,5,-150,window.innerHeight / 2);
+			}else if(level == 8)
+			{
+				addEnemy(-150,-150,5);
+				addEnemy(window.innerWidth / 2,window.innerHeight + 150,5);
+				addEnemy(window.innerWidth + 150,-150,5);
+			}else if(level == 9)
+			{
+				addEnemy(-150,-150,4);
+				addEnemy(window.innerWidth / 2,-150,4);
+				addEnemy(window.innerWidth + 150,-150,4);
+				addEnemy(-150,window.innerHeight + 150,4);
+				addEnemy(window.innerWidth / 2,window.innerHeight + 150,4);
+				addEnemy(window.innerWidth + 150,window.innerHeight + 150,4);
 			}else{
 				addEnemy(-50,-50,5);
 				addEnemy(window.innerWidth / 2,window.innerHeight + 150,5);
