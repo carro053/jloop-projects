@@ -335,8 +335,10 @@
 			canvasUI.height = window.innerHeight;
 			
 			canvasUI.onmousedown = function(e) {
+				console.log('touch');
 				if(scene == 'level' && ship_targeted)
 				{
+					console.log('down');
 					scene = 'game';
 					player.data = ship_target.data
 					player.data.tracking_distance = 0;
