@@ -497,12 +497,11 @@
 			if(heat_level < 0) heat_level = 0;
 			updateLasers();
 			updateMissiles();
-			if(ships.length == 0)
+			/*if(ships.length == 0)
 			{
 				clearInterval(gameInterval);
 				gameInterval = setInterval(hyperspaceLoop, 20);
-			}
-			//if(Math.floor(gameTime / 20) + 1 > ships.length) addEnemy(-50,-50);			
+			}*/			
 		}
 		function updateMissiles()
 		{
@@ -976,6 +975,7 @@
 			);
 			drawUI();
 		}
+		
 	</script>
 	<canvas id="canvasBack" style="position:absolute;"></canvas>
 	<canvas id="canvasFront" style="position:absolute;"></canvas>
