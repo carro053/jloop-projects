@@ -1091,6 +1091,7 @@
 		}
 		function reset_game()
 		{
+			console.log(player.data.x);
 			timer.previousTime = new Date().getTime();
 			timer.currentTime = new Date().getTime();
 			gameTime = 0;
