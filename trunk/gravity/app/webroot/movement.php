@@ -316,9 +316,7 @@
 					player.data.ship = ship_target.data.ship;
 					player.data.tracking_distance = 0;
 					clearInterval(gameInterval);
-					reset_game();
-					timer.tick();
-					gameInterval = setInterval(gameLoop, 20);
+					startGame();
 				}else if(scene == 'game' && heat_level < max_heat)
 				{
 					player.fire_laser();
@@ -418,6 +416,7 @@
 		};
 		function initialize()
 		{
+			scene = 'select';
 			drawBackground();
 			shipSelect();
 		}
@@ -681,7 +680,7 @@
 									if(confirm('You have died. You destroyed '+score+' '+ship_text+'. Press OK to play again.'))
 									{
 										clearInterval(gameInterval);
-										shipSelect();
+										initialize();
 									}else{
 										clearInterval(gameInterval);
 									}
