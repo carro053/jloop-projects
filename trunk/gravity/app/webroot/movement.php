@@ -334,10 +334,8 @@
 			canvasUI.height = window.innerHeight;
 			
 			canvasUI.onmousedown = function(e) {
-				console.log('touch');
 				if(scene == 'select' && ship_targeted)
 				{
-					console.log('down');
 					scene = 'game';
 					player.data.x = ship_target.data.x;
 					player.data.y = ship_target.data.y;
@@ -1107,6 +1105,7 @@
 			normalSpeed = shipData.speed;
 			player.data.shields = shipData.shields;
 			missile_count = shipData.missiles;
+			console.log(player.data.x);
 		}
 		
 	</script>
