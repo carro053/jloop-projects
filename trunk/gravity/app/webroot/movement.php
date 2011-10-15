@@ -261,6 +261,7 @@
 		var target = new Object;
 		target.data = new Object;
 		var player = new Object;
+		player.data = new Object;
 		var ships = new Array();
 		var squads = new Array();
 		var lps = 10;
