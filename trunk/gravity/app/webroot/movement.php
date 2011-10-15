@@ -559,7 +559,7 @@
 			contextUI.fillText('Shields: '+player.data.shields,20,canvasUI.height - 100);
 			contextUI.fillText('Missiles: '+missile_count,20,canvasUI.height - 70);
 			contextUI.fillText('Heat Level:',20,canvasUI.height - 40);
-			contextUI.fillRect(100,canvasUI.height - 40,20,20);
+			contextUI.fillRect(150,canvasUI.height - 50,20,20);
 		}
 
 		function gameLoop()
