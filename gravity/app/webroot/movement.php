@@ -1106,8 +1106,8 @@
 				player.data.speed = 300;
 			}else if(player.data.ship == 2)
 			{
-				missile_count = 10;
-				player.data.shields = 15;
+				missile_count = 15;
+				player.data.shields = 10;
 				player.data.speed = 250;
 			}
 		}
