@@ -262,6 +262,7 @@
 		target.data = new Object;
 		var player = new Object;
 		player.data = new Object;
+		player.data.ship = 1;
 		var ships = new Array();
 		var squads = new Array();
 		var lps = 10;
@@ -417,6 +418,9 @@
 		function initialize()
 		{
 			scene = 'select';
+			reset_level();
+			contextUI.clearRect(0, 0, canvasUI.width, canvasUI.height);
+			contextFront.clearRect(0, 0, canvasUI.width, canvasUI.height);
 			drawBackground();
 			shipSelect();
 		}
