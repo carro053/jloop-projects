@@ -564,6 +564,8 @@
 
 		function gameLoop()
 		{
+			
+			console.log(player.data.x);
 			updateObjects();
 			clearCanvas();
 			drawObjects();
