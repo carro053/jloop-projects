@@ -680,7 +680,8 @@
 									if(score == 1) ship_text = 'ship';
 									if(confirm('You have died. You destroyed '+score+' '+ship_text+'. Press OK to play again.'))
 									{
-										reset_game();
+										clearInterval(gameInterval);
+										shipSelect();
 									}else{
 										clearInterval(gameInterval);
 									}
