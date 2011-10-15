@@ -262,6 +262,7 @@
 		target.data = new Object;
 		var player = new Object;
 		player.data = new Object;
+		player.data.ship = 1;
 		var ships = new Array();
 		var squads = new Array();
 		var lps = 10;
@@ -316,9 +317,7 @@
 					player.data.ship = ship_target.data.ship;
 					player.data.tracking_distance = 0;
 					clearInterval(gameInterval);
-					reset_game();
-					timer.tick();
-					gameInterval = setInterval(gameLoop, 20);
+					startGame();
 				}else if(scene == 'game' && heat_level < max_heat)
 				{
 					player.fire_laser();
@@ -418,6 +417,10 @@
 		};
 		function initialize()
 		{
+			scene = 'select';
+			reset_game();
+			contextUI.clearRect(0, 0, canvasUI.width, canvasUI.height);
+			contextFront.clearRect(0, 0, canvasUI.width, canvasUI.height);
 			drawBackground();
 			shipSelect();
 		}
@@ -543,6 +546,18 @@
 			drawObjects();
 			drawUI();
 			timer.tick();
+			if(player.data.shields <= 0)
+			{
+				var ship_text = 'ships';
+				if(score == 1) ship_text = 'ship';
+				if(confirm('You have died. You destroyed '+score+' '+ship_text+'. Press OK to play again.'))
+				{
+					clearInterval(gameInterval);
+					initialize();
+				}else{
+					clearInterval(gameInterval);
+				}
+			}
 		}
 
 		function updateObjects()
@@ -674,17 +689,6 @@
 							if(hit == 1)
 							{								
 								player.data.shields -= 1;
-								if(player.data.shields <= 0)
-								{
-									var ship_text = 'ships';
-									if(score == 1) ship_text = 'ship';
-									if(confirm('You have died. You destroyed '+score+' '+ship_text+'. Press OK to play again.'))
-									{
-										reset_game();
-									}else{
-										clearInterval(gameInterval);
-									}
-								}
 							}
 						}
 					}else{
