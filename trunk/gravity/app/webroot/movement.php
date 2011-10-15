@@ -272,8 +272,8 @@
 		var shipData = getShipData(ship_type);
 		player  = new StarShip(
 			{
-				x: target.data.x = window.innerWidth / 2,
-				y: target.data.y = window.innerHeight / 2,
+				x: window.innerWidth / 2,
+				y: window.innerHeight / 2,
 				w: 39,
 				h: 40,
 				xOffset: 20,
