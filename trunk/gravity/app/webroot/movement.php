@@ -553,13 +553,15 @@
 		function drawUI()
 		{
 			contextUI.clearRect(0, 0, canvasUI.width, canvasUI.height);
-			contextUI.font = '40pt Arial';
+			contextUI.font = '24px Arial';
 			contextUI.fillStyle =  '#FFFFFF';
-			contextUI.fillText('Level: '+level+' Score: '+score+' Shields: '+player.data.shields,20,canvasUI.height - 40);
-			contextUI.font = '24pt Arial';
-			contextUI.fillText('Ship follows the Mouse. F to shoot. S to slow down.',canvasUI.width / 2,canvasUI.height - 40);
-			contextUI.fillStyle =  'rgba('+Math.round((255*heat_level)/max_heat)+','+Math.round((255*(max_heat-heat_level))/max_heat)+',0,1)';
-			contextUI.fillRect(20,canvasUI.height - 200,20,20);
+    		contextUI.textAlign = "left";
+			contextUI.fillText('Level: '+level,20,canvasUI.height - 160);
+			contextUI.fillText('Score: '+score,20,canvasUI.height - 130);
+			contextUI.fillText('Shields: '+player.data.shields,20,canvasUI.height - 100);
+			contextUI.fillText('Missiles: '+missile_count,20,canvasUI.height - 70);
+			contextUI.fillText('Heat Level:',20,canvasUI.height - 40);
+			contextUI.fillRect(100,canvasUI.height - 40,20,20);
 		}
 
 		function gameLoop()
