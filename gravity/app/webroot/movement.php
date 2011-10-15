@@ -559,6 +559,7 @@
 			contextUI.fillText('Shields: '+player.data.shields,20,canvasUI.height - 100);
 			contextUI.fillText('Missiles: '+missile_count,20,canvasUI.height - 70);
 			contextUI.fillText('Heat Level:',20,canvasUI.height - 40);
+			contextUI.fillStyle =  'rgba('+Math.round((255*heat_level)/max_heat)+','+Math.round((255*(max_heat-heat_level))/max_heat)+',0,1)';
 			contextUI.fillRect(150,canvasUI.height - 50,20,20);
 		}
 
