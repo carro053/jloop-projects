@@ -265,7 +265,7 @@
 		var squads = new Array();
 		var lps = 10;
 		var score = 0;
-		var normalSpeed = 250;
+		var normalSpeed;
 		var squad_separation = 30;
 		var ship_type = Math.floor(Math.random()*3) + 1;
 		var shipData = getShipData(ship_type);
@@ -892,9 +892,10 @@
 					shipData.xLeftLaser = -6;
 					shipData.yLeftLaser = -25;
 					shipData.laserColor = 'rgb(0,255,0)';
-					shipData.speed = 150;
-					shipData.angular_speed = 150;
-					shipData.shields = 3;
+					shipData.speed = 250;
+					shipData.angular_speed = 200;
+					shipData.shields = 15;
+					shipData.missiles = 10;
 					break;
 				case 2:
 					//phantom
@@ -905,9 +906,10 @@
 					shipData.xLeftLaser = -12;
 					shipData.yLeftLaser = -5;
 					shipData.laserColor = 'rgb(0,255,0)';
-					shipData.speed = 150;
-					shipData.angular_speed = 150;
-					shipData.shields = 3;
+					shipData.speed = 300;
+					shipData.angular_speed = 200;
+					shipData.shields = 10;
+					shipData.missiles = 10;
 					
 					break;
 				case 3:
@@ -919,9 +921,10 @@
 					shipData.xLeftLaser = -14;
 					shipData.yLeftLaser = -12;
 					shipData.laserColor = 'rgb(0,255,0)';
-					shipData.speed = 150;
-					shipData.angular_speed = 150;
-					shipData.shields = 3;
+					shipData.speed = 250;
+					shipData.angular_speed = 200;
+					shipData.shields = 10;
+					shipData.missiles = 15;
 					
 					break;
 				case 4:
@@ -936,6 +939,7 @@
 					shipData.speed = 150;
 					shipData.angular_speed = 150;
 					shipData.shields = 4;
+					shipData.missiles = 10;
 					
 					break;
 				case 5:
@@ -950,6 +954,7 @@
 					shipData.speed = 300;
 					shipData.angular_speed = 150;
 					shipData.shields = 9;
+					shipData.missiles = 10;
 					
 					break;
 				case 6:
@@ -964,6 +969,7 @@
 					shipData.speed = 150;
 					shipData.angular_speed = 150;
 					shipData.shields = 3;
+					shipData.missiles = 10;
 					break;
 			}
 			return shipData;
@@ -1094,22 +1100,10 @@
 			arrived = 0;
 			hyperspaceCharge = 0;
 			score = 0;
-			if(player.data.ship == 1)
-			{
-				missile_count = 10;
-				player.data.shields = 15;
-				player.data.speed = 250;
-			}else if(player.data.ship == 2)
-			{
-				missile_count = 10;
-				player.data.shields = 10;
-				player.data.speed = 300;
-			}else if(player.data.ship == 2)
-			{
-				missile_count = 15;
-				player.data.shields = 10;
-				player.data.speed = 250;
-			}
+			shipData = getShipData(player.data.ship);
+			normalSpeed = shipData.speed;
+			player.data.shields = shipData.shields;
+			missile_count = shipData.missiles;
 		}
 		
 	</script>
