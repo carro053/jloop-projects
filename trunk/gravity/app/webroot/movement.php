@@ -441,9 +441,9 @@
 			contextUI.fillStyle =  '#FFFFFF';
     		contextUI.textAlign = "center";
 			contextUI.font = '40px Arial';
-			contextUI.fillText('Gravity',canvasFront.width / 23,canvasFront.height / 2 - 150);
+			contextUI.fillText('Gravity',canvasFront.width / 2,canvasFront.height / 2 - 150);
 			contextUI.font = '20px Arial';
-			contextUI.fillText('D: Lasers E Missiles W: Speed Up S: Slow Down',canvasFront.width / 23,canvasFront.height / 2 - 100);
+			contextUI.fillText('D: Lasers E Missiles W: Speed Up S: Slow Down',canvasFront.width / 2,canvasFront.height / 2 - 100);
 			contextUI.font = '20px Arial';
 			contextUI.fillText('Fury Class',canvasFront.width / 3,canvasFront.height / 2 + 40);
 			contextUI.fillText('Speed: 270',canvasFront.width / 3,canvasFront.height / 2 + 70);
