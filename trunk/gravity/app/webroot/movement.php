@@ -1079,15 +1079,15 @@
 			missile_count = shipData.missiles;
 			player  = new StarShip(
 				{
-					x: window.innerWidth / 2,
-					y: window.innerHeight / 2,
+					x: player.data.x,
+					y: player.data.y,
 					w: 39,
 					h: 40,
 					xOffset: 20,
 					yOffset: 20,
 					speed: normalSpeed,
 					angular_speed: 200,
-					angle: 0,
+					angle: player.data.angle,
 					tracking_distance: 0,
 					ship: player.data.ship,
 					xRightLaser: shipData.xRightLaser,
