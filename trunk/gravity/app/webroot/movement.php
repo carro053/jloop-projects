@@ -565,8 +565,6 @@
 
 		function gameLoop()
 		{
-			
-			console.log(player.data.x);
 			updateObjects();
 			clearCanvas();
 			drawObjects();
@@ -827,6 +825,7 @@
 		}
 		function hyperspace_ship()
 		{
+			console.log(player.data.x);
 			if(arrived == 0 && player.data.angle != 270)
 			{
 				var ta = 270;
@@ -1092,7 +1091,6 @@
 		}
 		function reset_game()
 		{
-			console.log(player.data.x);
 			timer.previousTime = new Date().getTime();
 			timer.currentTime = new Date().getTime();
 			gameTime = 0;
@@ -1108,7 +1106,6 @@
 			normalSpeed = shipData.speed;
 			player.data.shields = shipData.shields;
 			missile_count = shipData.missiles;
-			console.log(player.data.x);
 		}
 		
 	</script>
