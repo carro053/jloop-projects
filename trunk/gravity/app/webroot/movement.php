@@ -439,17 +439,17 @@
 			contextUI.fillStyle =  '#FFFFFF';
     		contextUI.textAlign = "center";
 			contextUI.fillText('Fury Class',canvasFront.width / 3,canvasFront.height / 2 + 40);
-			contextUI.fillText('Speed: 250',canvasFront.width / 3,canvasFront.height / 2 + 70);
+			contextUI.fillText('Speed: 270',canvasFront.width / 3,canvasFront.height / 2 + 70);
 			contextUI.fillText('Shields: 15',canvasFront.width / 3,canvasFront.height / 2 + 100);
 			contextUI.fillText('Missiles: 10',canvasFront.width / 3,canvasFront.height / 2 + 130);
 			contextUI.fillText('Phantom Class',canvasFront.width / 2,canvasFront.height / 2 + 40);
-			contextUI.fillText('Speed: 300',canvasFront.width / 2,canvasFront.height / 2 + 70);
-			contextUI.fillText('Shields: 10',canvasFront.width / 2,canvasFront.height / 2 + 100);
-			contextUI.fillText('Missiles: 10',canvasFront.width / 2,canvasFront.height / 2 + 130);
+			contextUI.fillText('Speed: 260',canvasFront.width / 2,canvasFront.height / 2 + 70);
+			contextUI.fillText('Shields: 12',canvasFront.width / 2,canvasFront.height / 2 + 100);
+			contextUI.fillText('Missiles: 15',canvasFront.width / 2,canvasFront.height / 2 + 130);
 			contextUI.fillText('Manta Class',canvasFront.width * 2 / 3,canvasFront.height / 2 + 40);
 			contextUI.fillText('Speed: 250',canvasFront.width * 2 / 3,canvasFront.height / 2 + 70);
 			contextUI.fillText('Shields: 10',canvasFront.width * 2 / 3,canvasFront.height / 2 + 100);
-			contextUI.fillText('Missiles: 15',canvasFront.width * 2 / 3,canvasFront.height / 2 + 130);
+			contextUI.fillText('Missiles: 20',canvasFront.width * 2 / 3,canvasFront.height / 2 + 130);
 			gameInterval = setInterval(selectLoop, 20);
 		}
 		function selectLoop()
