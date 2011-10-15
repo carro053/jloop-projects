@@ -542,6 +542,18 @@
 			drawObjects();
 			drawUI();
 			timer.tick();
+			if(player.data.shields <= 0)
+			{
+				var ship_text = 'ships';
+				if(score == 1) ship_text = 'ship';
+				if(confirm('You have died. You destroyed '+score+' '+ship_text+'. Press OK to play again.'))
+				{
+					clearInterval(gameInterval);
+					initialize();
+				}else{
+					clearInterval(gameInterval);
+				}
+			}
 		}
 
 		function updateObjects()
@@ -673,18 +685,6 @@
 							if(hit == 1)
 							{								
 								player.data.shields -= 1;
-								if(player.data.shields <= 0)
-								{
-									var ship_text = 'ships';
-									if(score == 1) ship_text = 'ship';
-									if(confirm('You have died. You destroyed '+score+' '+ship_text+'. Press OK to play again.'))
-									{
-										clearInterval(gameInterval);
-										initialize();
-									}else{
-										clearInterval(gameInterval);
-									}
-								}
 							}
 						}
 					}else{
