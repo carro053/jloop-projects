@@ -266,7 +266,6 @@
 		var lps = 10;
 		var score = 0;
 		var normalSpeed = 250;
-		var speedChange = 125;
 		var squad_separation = 30;
 		var ship_type = Math.floor(Math.random()*3) + 1;
 		var shipData = getShipData(ship_type);
@@ -365,10 +364,10 @@
 			window.onkeypress = function(e) {
 				switch(e.which) {
 					case 119:
-						player.data.speed = normalSpeed - speedChange;
+						player.data.speed = normalSpeed * 3 / 2;
 						break;
 					case 115:
-						player.data.speed = normalSpeed - speedChange;
+						player.data.speed = normalSpeed / 2;
 						break;
 					case 100:
 						fire_lasers = 1;
@@ -1090,12 +1089,27 @@
 			level = 0;
 			lasers.length = 0;
 			missiles.length = 0;
-			missile_count = 10;
 			ships.length = 0;
 			squads.length = 0;
 			arrived = 0;
 			hyperspaceCharge = 0;
 			score = 0;
+			if(player.data.ship == 1)
+			{
+				missile_count = 10;
+				player.data.shields = 15;
+				player.data.speed = 250;
+			}else if(player.data.ship == 2)
+			{
+				missile_count = 10;
+				player.data.shields = 10;
+				player.data.speed = 300;
+			}else if(player.data.ship == 2)
+			{
+				missile_count = 10;
+				player.data.shields = 15;
+				player.data.speed = 250;
+			}
 		}
 		
 	</script>
