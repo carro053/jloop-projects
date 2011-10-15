@@ -1089,7 +1089,7 @@
 					angular_speed: 200,
 					angle: 0,
 					tracking_distance: 0,
-					ship: ship_type,
+					ship: player.data.ship,
 					xRightLaser: shipData.xRightLaser,
 					yRightLaser: shipData.yRightLaser,
 					xLeftLaser: shipData.xLeftLaser,
