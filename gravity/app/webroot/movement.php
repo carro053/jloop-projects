@@ -859,7 +859,7 @@
 					shipData.xLeftLaser = -6;
 					shipData.yLeftLaser = -25;
 					shipData.laserColor = 'rgb(0,255,0)';
-					shipData.speed = 250;
+					shipData.speed = 270;
 					shipData.angular_speed = 200;
 					shipData.shields = 15;
 					shipData.missiles = 10;
@@ -873,10 +873,10 @@
 					shipData.xLeftLaser = -12;
 					shipData.yLeftLaser = -5;
 					shipData.laserColor = 'rgb(0,255,0)';
-					shipData.speed = 300;
+					shipData.speed = 260;
 					shipData.angular_speed = 200;
-					shipData.shields = 10;
-					shipData.missiles = 10;
+					shipData.shields = 12;
+					shipData.missiles = 15;
 					
 					break;
 				case 3:
@@ -891,7 +891,7 @@
 					shipData.speed = 250;
 					shipData.angular_speed = 200;
 					shipData.shields = 10;
-					shipData.missiles = 15;
+					shipData.missiles = 20;
 					
 					break;
 				case 4:
