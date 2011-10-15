@@ -239,6 +239,7 @@
 </head>
 <body style="margin:0;overflow:hidden;">
 	<script type="text/javascript">
+		var scene = 'select';
 		var stars = new Array();
 		var ship_targeted = 0;
 		var ship_target = new Object;
@@ -260,42 +261,13 @@
 		var target = new Object;
 		target.data = new Object;
 		var player = new Object;
+		player.data = new Object;
 		var ships = new Array();
 		var squads = new Array();
 		var lps = 10;
 		var score = 0;
-		var slowSpeed = 125;
-		var normalSpeed = 250;
-		var fastSpeed = 375;
-		var squad_separation = 30;
-		var ship_type = Math.floor(Math.random()*3) + 1;
-		var shipData = getShipData(ship_type);
-		player  = new StarShip(
-			{
-				x: target.data.x = window.innerWidth / 2,
-				y: target.data.y = window.innerHeight / 2,
-				w: 39,
-				h: 40,
-				xOffset: 20,
-				yOffset: 20,
-				speed: normalSpeed,
-				angular_speed: 200,
-				angle: 0,
-				tracking_distance: 0,
-				ship: ship_type,
-				xRightLaser: shipData.xRightLaser,
-				yRightLaser: shipData.yRightLaser,
-				xLeftLaser: shipData.xLeftLaser,
-				yLeftLaser: shipData.yLeftLaser,
-				laserColor: shipData.laserColor,
-				laser_side: 0,
-				shields: 10,
-				last_fired: 0,
-				target: target,
-				squad_leader: null
-			}
-		);
-		
+		var normalSpeed;
+		var squad_separation = 30;		
 		var shipSpritesheet = new SpriteSheet(
 			[
 				{id: 1, x:  0, y:  0, w: 39, h: 40},
@@ -335,12 +307,27 @@
 			canvasUI.height = window.innerHeight;
 			
 			canvasUI.onmousedown = function(e) {
-				if(heat_level < max_heat) player.fire_laser();
+				if(scene == 'select' && ship_targeted)
+				{
+					scene = 'game';
+					player.data.x = ship_target.data.x;
+					player.data.y = ship_target.data.y;
+					player.data.angle = ship_target.data.angle;
+					player.data.ship = ship_target.data.ship;
+					player.data.tracking_distance = 0;
+					clearInterval(gameInterval);
+					reset_game();
+					timer.tick();
+					gameInterval = setInterval(gameLoop, 20);
+				}else if(scene == 'game' && heat_level < max_heat)
+				{
+					player.fire_laser();
+				}
 			};
 			
 			canvasUI.onmousemove = function(e) {
-				target.data.x = e.clientX - this.offsetLeft + 9;
-				target.data.y = e.clientY - this.offsetTop + 9;
+				target.data.x = e.clientX - this.offsetLeft;
+				target.data.y = e.clientY - this.offsetTop;
 			};
 			
 			shipSprites.onload = initialize();
@@ -348,10 +335,10 @@
 			window.onkeypress = function(e) {
 				switch(e.which) {
 					case 119:
-						player.data.speed = fastSpeed;
+						player.data.speed = normalSpeed * 3 / 2;
 						break;
 					case 115:
-						player.data.speed = slowSpeed;
+						player.data.speed = normalSpeed / 2;
 						break;
 					case 100:
 						fire_lasers = 1;
@@ -432,11 +419,73 @@
 		function initialize()
 		{
 			drawBackground();
+			shipSelect();
+		}
+		function shipSelect()
+		{
+			addEnemy(canvasFront.width / 3,canvasFront.height / 2,1);
+			addEnemy(canvasFront.width / 2,canvasFront.height / 2,2);
+			addEnemy(canvasFront.width * 2 / 3,canvasFront.height / 2,3);
+			for(var s in ships)
+			{
+				var sprite = shipSpritesheet.getSprite(ships[s].data.ship);
+				contextUI.translate(ships[s].data.x, ships[s].data.y);
+				contextUI.rotate(ships[s].data.angle * Math.PI / 180);
+				contextUI.drawImage(shipSprites, sprite.x, sprite.y, sprite.w, sprite.h, -ships[s].data.xOffset, -ships[s].data.yOffset, sprite.w, sprite.h);
+				contextUI.rotate(-ships[s].data.angle * Math.PI / 180);
+				contextUI.translate(-ships[s].data.x, -ships[s].data.y);
+			}
+			contextUI.font = '20px Arial';
+			contextUI.fillStyle =  '#FFFFFF';
+    		contextUI.textAlign = "center";
+			contextUI.fillText('Fury Class',canvasFront.width / 3,canvasFront.height / 2 + 40);
+			contextUI.fillText('Speed: 270',canvasFront.width / 3,canvasFront.height / 2 + 70);
+			contextUI.fillText('Shields: 15',canvasFront.width / 3,canvasFront.height / 2 + 100);
+			contextUI.fillText('Missiles: 10',canvasFront.width / 3,canvasFront.height / 2 + 130);
+			contextUI.fillText('Phantom Class',canvasFront.width / 2,canvasFront.height / 2 + 40);
+			contextUI.fillText('Speed: 260',canvasFront.width / 2,canvasFront.height / 2 + 70);
+			contextUI.fillText('Shields: 12',canvasFront.width / 2,canvasFront.height / 2 + 100);
+			contextUI.fillText('Missiles: 15',canvasFront.width / 2,canvasFront.height / 2 + 130);
+			contextUI.fillText('Manta Class',canvasFront.width * 2 / 3,canvasFront.height / 2 + 40);
+			contextUI.fillText('Speed: 250',canvasFront.width * 2 / 3,canvasFront.height / 2 + 70);
+			contextUI.fillText('Shields: 10',canvasFront.width * 2 / 3,canvasFront.height / 2 + 100);
+			contextUI.fillText('Missiles: 20',canvasFront.width * 2 / 3,canvasFront.height / 2 + 130);
+			gameInterval = setInterval(selectLoop, 20);
+		}
+		function selectLoop()
+		{
+			contextFront.clearRect(0, 0, canvasUI.width, canvasUI.height);
+			ship_targeted = 0;
+			closest_ship = 100;
+			for(var s in ships)
+			{
+				var mouse_distance = Math.sqrt(Math.pow(target.data.x - ships[s].data.x, 2) + Math.pow(target.data.y - ships[s].data.y, 2));
+				if(mouse_distance < 100 && mouse_distance < closest_ship)
+				{
+					closest_ship = mouse_distance;
+					ship_targeted = 1;
+					ship_target = ships[s];
+				}
+			}
+			if(ship_targeted)
+			{
+				var targeted = new Image();
+				targeted.src = 'targeted.png';
+				contextFront.translate(ship_target.data.x, ship_target.data.y);
+				contextFront.rotate(ship_target.data.angle * Math.PI / 180);
+				contextFront.drawImage(targeted,-20,-20);
+				contextFront.rotate(-ship_target.data.angle * Math.PI / 180);
+				contextFront.translate(-ship_target.data.x, -ship_target.data.y);
+			}
+		}
+		
+		function startGame()
+		{
+			reset_game();
 			drawUI();
 			timer.tick();
 			gameInterval = setInterval(gameLoop, 20);
 		}
-		
 		function drawBackground()
 		{
 			contextBack.fillStyle =  '#000000';
@@ -475,13 +524,16 @@
 		function drawUI()
 		{
 			contextUI.clearRect(0, 0, canvasUI.width, canvasUI.height);
-			contextUI.font = '40pt Arial';
+			contextUI.font = '24px Arial';
 			contextUI.fillStyle =  '#FFFFFF';
-			contextUI.fillText('Level: '+level+' Score: '+score+' Shields: '+player.data.shields,20,canvasUI.height - 40);
-			contextUI.font = '24pt Arial';
-			contextUI.fillText('Ship follows the Mouse. F to shoot. S to slow down.',canvasUI.width / 2,canvasUI.height - 40);
+    		contextUI.textAlign = "left";
+			contextUI.fillText('Level: '+level,20,canvasUI.height - 160);
+			contextUI.fillText('Score: '+score,20,canvasUI.height - 130);
+			contextUI.fillText('Shields: '+player.data.shields,20,canvasUI.height - 100);
+			contextUI.fillText('Missiles: '+missile_count,20,canvasUI.height - 70);
+			contextUI.fillText('Heat Level:',20,canvasUI.height - 40);
 			contextUI.fillStyle =  'rgba('+Math.round((255*heat_level)/max_heat)+','+Math.round((255*(max_heat-heat_level))/max_heat)+',0,1)';
-			contextUI.fillRect(20,canvasUI.height - 200,20,20);
+			contextUI.fillRect(150,canvasUI.height - 57,20,20);
 		}
 
 		function gameLoop()
@@ -521,13 +573,6 @@
 			for(var s in ships)
 			{
 				ships[s].update();
-			}
-			var o = document.getElementById("canvasUI");
-			if(ship_targeted)
-			{
-				o.style.cursor="url(green_reticle.png),auto";
-			}else{
-				o.style.cursor="url(red_reticle.png),auto";			
 			}
 			heat_level -= 3000 * timer.getSeconds();
 			if(heat_level < 0) heat_level = 0;
@@ -814,9 +859,10 @@
 					shipData.xLeftLaser = -6;
 					shipData.yLeftLaser = -25;
 					shipData.laserColor = 'rgb(0,255,0)';
-					shipData.speed = 150;
-					shipData.angular_speed = 150;
-					shipData.shields = 3;
+					shipData.speed = 270;
+					shipData.angular_speed = 200;
+					shipData.shields = 15;
+					shipData.missiles = 10;
 					break;
 				case 2:
 					//phantom
@@ -827,9 +873,10 @@
 					shipData.xLeftLaser = -12;
 					shipData.yLeftLaser = -5;
 					shipData.laserColor = 'rgb(0,255,0)';
-					shipData.speed = 150;
-					shipData.angular_speed = 150;
-					shipData.shields = 3;
+					shipData.speed = 260;
+					shipData.angular_speed = 200;
+					shipData.shields = 12;
+					shipData.missiles = 15;
 					
 					break;
 				case 3:
@@ -841,9 +888,10 @@
 					shipData.xLeftLaser = -14;
 					shipData.yLeftLaser = -12;
 					shipData.laserColor = 'rgb(0,255,0)';
-					shipData.speed = 150;
-					shipData.angular_speed = 150;
-					shipData.shields = 3;
+					shipData.speed = 250;
+					shipData.angular_speed = 200;
+					shipData.shields = 10;
+					shipData.missiles = 20;
 					
 					break;
 				case 4:
@@ -858,6 +906,7 @@
 					shipData.speed = 150;
 					shipData.angular_speed = 150;
 					shipData.shields = 4;
+					shipData.missiles = 10;
 					
 					break;
 				case 5:
@@ -872,6 +921,7 @@
 					shipData.speed = 300;
 					shipData.angular_speed = 150;
 					shipData.shields = 9;
+					shipData.missiles = 10;
 					
 					break;
 				case 6:
@@ -886,6 +936,7 @@
 					shipData.speed = 150;
 					shipData.angular_speed = 150;
 					shipData.shields = 3;
+					shipData.missiles = 10;
 					break;
 			}
 			return shipData;
@@ -1011,39 +1062,37 @@
 			level = 0;
 			lasers.length = 0;
 			missiles.length = 0;
-			missile_count = 10;
 			ships.length = 0;
 			squads.length = 0;
 			arrived = 0;
 			hyperspaceCharge = 0;
 			score = 0;
-			ship_type = Math.floor(Math.random()*3) + 1;
-			shipData = getShipData(ship_type);
+			shipData = getShipData(player.data.ship);
+			normalSpeed = shipData.speed;
+			missile_count = shipData.missiles;
 			player  = new StarShip(
 				{
-					x: window.innerWidth / 2,
-					y: window.innerHeight / 2,
+					x: player.data.x,
+					y: player.data.y,
 					w: 39,
 					h: 40,
 					xOffset: 20,
 					yOffset: 20,
-					speed: 200,
+					speed: normalSpeed,
 					angular_speed: 200,
-					angle: 0,
+					angle: player.data.angle,
 					tracking_distance: 0,
-					ship: ship_type,
+					ship: player.data.ship,
 					xRightLaser: shipData.xRightLaser,
 					yRightLaser: shipData.yRightLaser,
 					xLeftLaser: shipData.xLeftLaser,
 					yLeftLaser: shipData.yLeftLaser,
 					laserColor: shipData.laserColor,
 					laser_side: 0,
-					shields: 10,
+					shields: shipData.shields,
 					last_fired: 0,
 					target: target,
-					squad_leader: null,
-					squad_position: null,
-					dead: 0
+					squad_leader: null
 				}
 			);
 		}
@@ -1051,6 +1100,6 @@
 	</script>
 	<canvas id="canvasBack" style="position:absolute;"></canvas>
 	<canvas id="canvasFront" style="position:absolute;"></canvas>
-	<canvas id="canvasUI" style="position:absolute;cursor:url(red_reticle.png),auto;"></canvas>
+	<canvas id="canvasUI" style="position:absolute;"></canvas>
 </body>
 </html>
