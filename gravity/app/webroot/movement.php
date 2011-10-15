@@ -266,35 +266,7 @@
 		var lps = 10;
 		var score = 0;
 		var normalSpeed;
-		var squad_separation = 30;
-		var ship_type = Math.floor(Math.random()*3) + 1;
-		var shipData = getShipData(ship_type);
-		player  = new StarShip(
-			{
-				x: window.innerWidth / 2,
-				y: window.innerHeight / 2,
-				w: 39,
-				h: 40,
-				xOffset: 20,
-				yOffset: 20,
-				speed: normalSpeed,
-				angular_speed: 200,
-				angle: 0,
-				tracking_distance: 0,
-				ship: ship_type,
-				xRightLaser: shipData.xRightLaser,
-				yRightLaser: shipData.yRightLaser,
-				xLeftLaser: shipData.xLeftLaser,
-				yLeftLaser: shipData.yLeftLaser,
-				laserColor: shipData.laserColor,
-				laser_side: 0,
-				shields: 10,
-				last_fired: 0,
-				target: target,
-				squad_leader: null
-			}
-		);
-		
+		var squad_separation = 30;		
 		var shipSpritesheet = new SpriteSheet(
 			[
 				{id: 1, x:  0, y:  0, w: 39, h: 40},
@@ -1104,8 +1076,32 @@
 			score = 0;
 			shipData = getShipData(player.data.ship);
 			normalSpeed = shipData.speed;
-			player.data.shields = shipData.shields;
 			missile_count = shipData.missiles;
+			player  = new StarShip(
+				{
+					x: window.innerWidth / 2,
+					y: window.innerHeight / 2,
+					w: 39,
+					h: 40,
+					xOffset: 20,
+					yOffset: 20,
+					speed: normalSpeed,
+					angular_speed: 200,
+					angle: 0,
+					tracking_distance: 0,
+					ship: ship_type,
+					xRightLaser: shipData.xRightLaser,
+					yRightLaser: shipData.yRightLaser,
+					xLeftLaser: shipData.xLeftLaser,
+					yLeftLaser: shipData.yLeftLaser,
+					laserColor: shipData.laserColor,
+					laser_side: 0,
+					shields: shipData.shields,
+					last_fired: 0,
+					target: target,
+					squad_leader: null
+				}
+			);
 		}
 		
 	</script>
