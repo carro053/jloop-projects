@@ -326,8 +326,8 @@
 			};
 			
 			canvasUI.onmousemove = function(e) {
-				target.data.x = e.clientX - this.offsetLeft + 9;
-				target.data.y = e.clientY - this.offsetTop + 9;
+				target.data.x = e.clientX - this.offsetLeft;
+				target.data.y = e.clientY - this.offsetTop;
 			};
 			
 			shipSprites.onload = initialize();
@@ -573,13 +573,6 @@
 			for(var s in ships)
 			{
 				ships[s].update();
-			}
-			var o = document.getElementById("canvasUI");
-			if(ship_targeted)
-			{
-				o.style.cursor="url(green_reticle.png),auto";
-			}else{
-				o.style.cursor="url(red_reticle.png),auto";			
 			}
 			heat_level -= 3000 * timer.getSeconds();
 			if(heat_level < 0) heat_level = 0;
@@ -1107,6 +1100,6 @@
 	</script>
 	<canvas id="canvasBack" style="position:absolute;"></canvas>
 	<canvas id="canvasFront" style="position:absolute;"></canvas>
-	<canvas id="canvasUI" style="position:absolute;cursor:url(red_reticle.png),auto;"></canvas>
+	<canvas id="canvasUI" style="position:absolute;"></canvas>
 </body>
 </html>
