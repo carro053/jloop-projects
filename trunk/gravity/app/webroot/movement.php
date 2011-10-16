@@ -548,7 +548,7 @@
 			drawObjects();
 			drawUI();
 			timer.tick();
-			if(player.data.shields <= 0)
+			/*if(player.data.shields <= 0)
 			{
 				var ship_text = 'ships';
 				if(score == 1) ship_text = 'ship';
@@ -559,7 +559,7 @@
 				}else{
 					clearInterval(gameInterval);
 				}
-			}
+			}*/
 		}
 
 		function updateObjects()
