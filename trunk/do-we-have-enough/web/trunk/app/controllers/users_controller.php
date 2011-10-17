@@ -8,7 +8,6 @@ class UsersController extends AppController
 	var $helpers = array('Html','Javascript','Error','Ajax','Form');
 	var $components = array('uAuth','uCookie','RequestHandler','Postmark');
 	var $access = array ();
-	var $headers = 'From: support@dowehaveenough.com'. "\r\n" .'Reply-To: support@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
 	function beforeFilter() {
         parent::beforeFilter();
     }
@@ -19,6 +18,7 @@ class UsersController extends AppController
 		//$this->Postmark->textMessage = 'Hey Jay, just wanted to let you know it is working.
 //The Production Team';
 		//$result = $this->Postmark->send();
+		$headers = 'From: support@dowehaveenough.com'. "\r\n" .'Reply-To: support@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
 		mail($email_to, $email_subject, $email_msg, $headers);	
 		exit();
 	}
@@ -248,6 +248,7 @@ class UsersController extends AppController
 		//$this->Postmark->subject = $email_subject;
 		//$this->Postmark->textMessage = $email_msg;
 		//$result = $this->Postmark->send();
+		$headers = 'From: support@dowehaveenough.com'. "\r\n" .'Reply-To: support@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
 		mail($email_to, $email_subject, $email_msg, $headers);		
 	}
 	
@@ -315,6 +316,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 				//$this->Postmark->subject = $email_subject;
 				//$this->Postmark->textMessage = $email_msg;
 				//$result = $this->Postmark->send();
+				$headers = 'From: support@dowehaveenough.com'. "\r\n" .'Reply-To: support@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
 				mail($email_to, $email_subject, $email_msg, $headers);	
 				$user['latest_event'] = $event['Event']['id'];
 				$this->User->save($user);
@@ -492,6 +494,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 				//$this->Postmark->subject = $email_subject;
 				//$this->Postmark->textMessage = $email_msg;
 				//$result = $this->Postmark->send();
+				$headers = 'From: support@dowehaveenough.com'. "\r\n" .'Reply-To: support@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
 				mail($email_to, $email_subject, $email_msg, $headers);	
 				$this->set('message','An email has been sent. Thank you.');
 				$this->render('current_events_sent');
@@ -640,6 +643,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 				//$this->Postmark->subject = $email_subject;
 				//$this->Postmark->textMessage = $email_msg;
 				//$result = $this->Postmark->send();
+				$headers = 'From: support@dowehaveenough.com'. "\r\n" .'Reply-To: support@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
 				mail($email_to, $email_subject, $email_msg, $headers);	
 				$user['User']['id'] = $user_id;
 				$user['User']['latest_event'] = $event['Event']['id'];
@@ -752,6 +756,7 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 						//$this->Postmark->subject = $email_subject;
 						//$this->Postmark->textMessage = $email_msg;
 						//$result = $this->Postmark->send();
+						$headers = 'From: support@dowehaveenough.com'. "\r\n" .'Reply-To: support@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
 						mail($email_to, $email_subject, $email_msg, $headers);
 						foreach($user['UserMobileDevice'] as $device):
 							$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' is on!',$event['Event']['id'],3);
@@ -797,6 +802,7 @@ and '.$fifty.' 50/50.';
 						//$this->Postmark->subject = $email_subject;
 						//$this->Postmark->textMessage = $email_msg;
 						//$result = $this->Postmark->send();
+						$headers = 'From: support@dowehaveenough.com'. "\r\n" .'Reply-To: support@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
 						mail($email_to, $email_subject, $email_msg, $headers);
 						foreach($user['UserMobileDevice'] as $device):
 							$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' is off.',$event['Event']['id'],3);
@@ -840,6 +846,7 @@ and '.$fifty.' 50/50.';
 						//$this->Postmark->subject = $email_subject;
 						//$this->Postmark->textMessage = $email_msg;
 						//$result = $this->Postmark->send();
+						$headers = 'From: support@dowehaveenough.com'. "\r\n" .'Reply-To: support@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
 						mail($email_to, $email_subject, $email_msg, $headers);	
 						foreach($user['UserMobileDevice'] as $device):
 							$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' needs more!.',$event['Event']['id'],3);
@@ -881,6 +888,7 @@ and '.$fifty.' 50/50.';
 						//$this->Postmark->subject = $email_subject;
 						//$this->Postmark->textMessage = $email_msg;
 						//$result = $this->Postmark->send();
+						$headers = 'From: support@dowehaveenough.com'. "\r\n" .'Reply-To: support@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
 						mail($email_to, $email_subject, $email_msg, $headers);
 						foreach($user['UserMobileDevice'] as $device):
 							$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' now has '.$in.' in.',$event['Event']['id'],3);
@@ -941,6 +949,7 @@ and '.$fifty.' 50/50.';
 							//$this->Postmark->subject = $email_subject;
 							//$this->Postmark->textMessage = $email_msg;
 							//$result = $this->Postmark->send();
+							$headers = 'From: support@dowehaveenough.com'. "\r\n" .'Reply-To: support@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
 							mail($email_to, $email_subject, $email_msg, $headers);
 							foreach($user['UserMobileDevice'] as $device):
 								$this->Notification->save_notification($user['id'],$device['device_token'],'People are in for '.$event['Event']['name'],$event['Event']['id'],1);
@@ -1019,6 +1028,7 @@ and '.$fifty.' 50/50.';
 							//$this->Postmark->subject = $email_subject;
 							//$this->Postmark->textMessage = $email_msg;
 							//$result = $this->Postmark->send();
+							$headers = 'From: support@dowehaveenough.com'. "\r\n" .'Reply-To: support@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
 							mail($email_to, $email_subject, $email_msg, $headers);
 							foreach($user['UserMobileDevice'] as $device):
 								$this->Notification->save_notification($user['id'],$device['device_token'],'People are out for '.$event['Event']['name'],$event['Event']['id'],1);
