@@ -359,12 +359,13 @@
 						if(ship_targeted) player.fire_missile();
 						break;
 					case 49:				
-						player.data.ship = 1;
+						/*player.data.ship = 1;
 						player.data.xRightLaser = 5;
 						player.data.yRightLaser = -25;
 						player.data.xLeftLaser = -6;
 						player.data.yLeftLaser = -25;
-						player.data.laserColor = 'rgb(0,255,0)';
+						player.data.laserColor = 'rgb(0,255,0)';*/
+						addEnemy(-150,-150,6);
 						break;
 					case 50:
 						player.data.ship = 2;						
