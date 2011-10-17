@@ -8,16 +8,18 @@ class UsersController extends AppController
 	var $helpers = array('Html','Javascript','Error','Ajax','Form');
 	var $components = array('uAuth','uCookie','RequestHandler','Postmark');
 	var $access = array ();
+	var $headers = 'From: support@dowehaveenough.com'. "\r\n" .'Reply-To: support@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
 	function beforeFilter() {
         parent::beforeFilter();
     }
 	function test_postmark()
 	{
-		$this->Postmark->to = '<michael@jloop.com>';
-		$this->Postmark->subject = 'This is the subject';
-		$this->Postmark->textMessage = 'Hey Jay, just wanted to let you know it is working.
-The Production Team';
-		$result = $this->Postmark->send();
+		//$this->Postmark->to = '<michael@jloop.com>';
+		//$this->Postmark->subject = 'This is the subject';
+		//$this->Postmark->textMessage = 'Hey Jay, just wanted to let you know it is working.
+//The Production Team';
+		//$result = $this->Postmark->send();
+		mail($email_to, $email_subject, $email_msg, $headers);	
 		exit();
 	}
 	function generate_hash()
@@ -242,10 +244,11 @@ The Production Team';
 		$email_msg = "Your event is almost ready to roll out, we just need you to click this validation link to get those invites rolling.
 		
 		".$activation_link;
-		$this->Postmark->to = '<'.$email_to.'>';
-		$this->Postmark->subject = $email_subject;
-		$this->Postmark->textMessage = $email_msg;
-		$result = $this->Postmark->send();		
+		//$this->Postmark->to = '<'.$email_to.'>';
+		//$this->Postmark->subject = $email_subject;
+		//$this->Postmark->textMessage = $email_msg;
+		//$result = $this->Postmark->send();
+		mail($email_to, $email_subject, $email_msg, $headers);		
 	}
 	
 	function validate_event($hash,$device_hash=null)
@@ -308,10 +311,11 @@ Direct Link to Event: http://".$this->environment.".dowehaveenough.com/go_to_eve
 ----
 
 If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email']."/".$user['EventsUser']['hash'];
-				$this->Postmark->to = '<'.$email_to.'>';
-				$this->Postmark->subject = $email_subject;
-				$this->Postmark->textMessage = $email_msg;
-				$result = $this->Postmark->send();	
+				//$this->Postmark->to = '<'.$email_to.'>';
+				//$this->Postmark->subject = $email_subject;
+				//$this->Postmark->textMessage = $email_msg;
+				//$result = $this->Postmark->send();
+				mail($email_to, $email_subject, $email_msg, $headers);	
 				$user['latest_event'] = $event['Event']['id'];
 				$this->User->save($user);
 				foreach($user['UserMobileDevice'] as $device):
@@ -484,10 +488,11 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 ----
 
 If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['User']['email'];
-				$this->Postmark->to = '<'.$email_to.'>';
-				$this->Postmark->subject = $email_subject;
-				$this->Postmark->textMessage = $email_msg;
-				$result = $this->Postmark->send();	
+				//$this->Postmark->to = '<'.$email_to.'>';
+				//$this->Postmark->subject = $email_subject;
+				//$this->Postmark->textMessage = $email_msg;
+				//$result = $this->Postmark->send();
+				mail($email_to, $email_subject, $email_msg, $headers);	
 				$this->set('message','An email has been sent. Thank you.');
 				$this->render('current_events_sent');
 			}else{
@@ -631,10 +636,11 @@ Direct Link to Event: http://".$this->environment.".dowehaveenough.com/go_to_eve
 ----
 
 If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['User']['email']."/".$event_user['EventsUser']['hash'];
-				$this->Postmark->to = '<'.$email_to.'>';
-				$this->Postmark->subject = $email_subject;
-				$this->Postmark->textMessage = $email_msg;
-				$result = $this->Postmark->send();	
+				//$this->Postmark->to = '<'.$email_to.'>';
+				//$this->Postmark->subject = $email_subject;
+				//$this->Postmark->textMessage = $email_msg;
+				//$result = $this->Postmark->send();
+				mail($email_to, $email_subject, $email_msg, $headers);	
 				$user['User']['id'] = $user_id;
 				$user['User']['latest_event'] = $event['Event']['id'];
 				$this->User->save($user);
@@ -742,10 +748,11 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 	
 	If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email']."/".$user['EventsUser']['hash'];
 						$email_to = $user['email'];
-						$this->Postmark->to = '<'.$email_to.'>';
-						$this->Postmark->subject = $email_subject;
-						$this->Postmark->textMessage = $email_msg;
-						$result = $this->Postmark->send();	
+						//$this->Postmark->to = '<'.$email_to.'>';
+						//$this->Postmark->subject = $email_subject;
+						//$this->Postmark->textMessage = $email_msg;
+						//$result = $this->Postmark->send();
+						mail($email_to, $email_subject, $email_msg, $headers);
 						foreach($user['UserMobileDevice'] as $device):
 							$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' is on!',$event['Event']['id'],3);
 						endforeach;
@@ -786,10 +793,11 @@ and '.$fifty.' 50/50.';
 	
 	If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email'];
 						$email_to = $user['email'];
-						$this->Postmark->to = '<'.$email_to.'>';
-						$this->Postmark->subject = $email_subject;
-						$this->Postmark->textMessage = $email_msg;
-						$result = $this->Postmark->send();	
+						//$this->Postmark->to = '<'.$email_to.'>';
+						//$this->Postmark->subject = $email_subject;
+						//$this->Postmark->textMessage = $email_msg;
+						//$result = $this->Postmark->send();
+						mail($email_to, $email_subject, $email_msg, $headers);
 						foreach($user['UserMobileDevice'] as $device):
 							$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' is off.',$event['Event']['id'],3);
 						endforeach;
@@ -828,10 +836,11 @@ and '.$fifty.' 50/50.';
 	
 	If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email']."/".$user['EventsUser']['hash'];
 						$email_to = $user['email'];
-						$this->Postmark->to = '<'.$email_to.'>';
-						$this->Postmark->subject = $email_subject;
-						$this->Postmark->textMessage = $email_msg;
-						$result = $this->Postmark->send();	
+						//$this->Postmark->to = '<'.$email_to.'>';
+						//$this->Postmark->subject = $email_subject;
+						//$this->Postmark->textMessage = $email_msg;
+						//$result = $this->Postmark->send();
+						mail($email_to, $email_subject, $email_msg, $headers);	
 						foreach($user['UserMobileDevice'] as $device):
 							$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' needs more!.',$event['Event']['id'],3);
 						endforeach;
@@ -868,10 +877,11 @@ and '.$fifty.' 50/50.';
 	
 	If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email']."/".$user['EventsUser']['hash'];
 						$email_to = $user['email'];
-						$this->Postmark->to = '<'.$email_to.'>';
-						$this->Postmark->subject = $email_subject;
-						$this->Postmark->textMessage = $email_msg;
-						$result = $this->Postmark->send();	
+						//$this->Postmark->to = '<'.$email_to.'>';
+						//$this->Postmark->subject = $email_subject;
+						//$this->Postmark->textMessage = $email_msg;
+						//$result = $this->Postmark->send();
+						mail($email_to, $email_subject, $email_msg, $headers);
 						foreach($user['UserMobileDevice'] as $device):
 							$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' now has '.$in.' in.',$event['Event']['id'],3);
 						endforeach;
@@ -927,10 +937,11 @@ and '.$fifty.' 50/50.';
 	
 	If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email']."/".$user['EventsUser']['hash'];
 							$email_to = $user['email'];
-							$this->Postmark->to = '<'.$email_to.'>';
-							$this->Postmark->subject = $email_subject;
-							$this->Postmark->textMessage = $email_msg;
-							$result = $this->Postmark->send();	
+							//$this->Postmark->to = '<'.$email_to.'>';
+							//$this->Postmark->subject = $email_subject;
+							//$this->Postmark->textMessage = $email_msg;
+							//$result = $this->Postmark->send();
+							mail($email_to, $email_subject, $email_msg, $headers);
 							foreach($user['UserMobileDevice'] as $device):
 								$this->Notification->save_notification($user['id'],$device['device_token'],'People are in for '.$event['Event']['name'],$event['Event']['id'],1);
 							endforeach;
@@ -1004,10 +1015,11 @@ and '.$fifty.' 50/50.';
 	
 	If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email']."/".$user['EventsUser']['hash'];
 							$email_to = $user['email'];
-							$this->Postmark->to = '<'.$email_to.'>';
-							$this->Postmark->subject = $email_subject;
-							$this->Postmark->textMessage = $email_msg;
-							$result = $this->Postmark->send();	
+							//$this->Postmark->to = '<'.$email_to.'>';
+							//$this->Postmark->subject = $email_subject;
+							//$this->Postmark->textMessage = $email_msg;
+							//$result = $this->Postmark->send();
+							mail($email_to, $email_subject, $email_msg, $headers);
 							foreach($user['UserMobileDevice'] as $device):
 								$this->Notification->save_notification($user['id'],$device['device_token'],'People are out for '.$event['Event']['name'],$event['Event']['id'],1);
 							endforeach;
