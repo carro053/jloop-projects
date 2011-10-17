@@ -1020,8 +1020,8 @@
 		{
 			if(level == 1)
 			{
-				addSquad(6,13,window.innerWidth + 150,window.innerHeight / 2);
-				//addEnemy(-150,-150,6);
+				//addSquad(6,13,window.innerWidth + 150,window.innerHeight / 2);
+				addEnemy(-150,-150,6);
 			}else if(level == 2)
 			{
 				addEnemy(window.innerWidth / 2,-150,4);
