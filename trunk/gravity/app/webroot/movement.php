@@ -663,7 +663,8 @@
 							{
 								ships[s].data.shields -= 4;
 								if(ships[s].data.shields <= 0)
-								{										
+								{
+									newExplosion(ships[s].data.x,ships[s].data.y);							
 									score++;
 									if(player.data.shields < 10) player.data.shields++;
 									ships[s].data.dead = 1;
@@ -747,29 +748,7 @@
 									ships[s].data.shields -= 1;
 									if(ships[s].data.shields <= 0)
 									{
-										var new_explosion = new	Object;
-										new_explosion.data = new Object;
-										new_explosion.data.x = ships[s].data.x - 14;
-										new_explosion.data.y = ships[s].data.y - 26;
-										new_explosion.explode = new SpriteSequence(
-											[
-												{id: 1, t: 0.05},
-												{id: 2, t: 0.05},
-												{id: 3, t: 0.05},
-												{id: 4, t: 0.05},
-												{id: 5, t: 0.05},
-												{id: 6, t: 0.05},
-												{id: 7, t: 0.05},
-												{id: 8, t: 0.05},
-												{id: 9, t: 0.05},
-												{id: 10, t: 0.05},
-												{id: 11, t: 0.05},
-												{id: 12, t: 0.05},
-												{id: 13, t: 0.05}
-											],
-											explosion
-										);
-										explosions.push(new_explosion);
+										newExplosion(ships[s].data.x,ships[s].data.y);
 										score++;
 										if(player.data.shields < 10) player.data.shields++;
 										ships[s].data.dead = 1;
@@ -785,6 +764,32 @@
 					lasers.splice(l, 1);
 				}
 			}
+		}
+		function newExplosion(x,y)
+		{
+			var new_explosion = new	Object;
+			new_explosion.data = new Object;
+			new_explosion.data.x = x - 14;
+			new_explosion.data.y = y - 26;
+			new_explosion.explode = new SpriteSequence(
+				[
+					{id: 1, t: 0.05},
+					{id: 2, t: 0.05},
+					{id: 3, t: 0.05},
+					{id: 4, t: 0.05},
+					{id: 5, t: 0.05},
+					{id: 6, t: 0.05},
+					{id: 7, t: 0.05},
+					{id: 8, t: 0.05},
+					{id: 9, t: 0.05},
+					{id: 10, t: 0.05},
+					{id: 11, t: 0.05},
+					{id: 12, t: 0.05},
+					{id: 13, t: 0.05}
+				],
+				explosion
+			);
+			explosions.push(new_explosion);
 		}
 		function clearCanvas()
 		{
