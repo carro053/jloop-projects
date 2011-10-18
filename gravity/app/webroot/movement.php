@@ -574,7 +574,7 @@
 		
 		function drawUI()
 		{
-			if(explode.currentFrame < 13)
+			if(explode.currentFrame < 12)
 			{
 				alert(explode.currentFrame);
 				explode.animate(timer.getSeconds());
