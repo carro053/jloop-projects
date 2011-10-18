@@ -574,9 +574,12 @@
 		
 		function drawUI()
 		{
-			explode.animate(timer.getSeconds());
-			explodeFrame = explode.getFrame();
-			contextFront.drawImage(explosionImage, explodeFrame.x, explodeFrame.y, explodeFrame.w, explodeFrame.h, 100, 100, explodeFrame.w, explodeFrame.h);
+			if(explode.currentFrame < 13)
+			{
+				explode.animate(timer.getSeconds());
+				explodeFrame = explode.getFrame();
+				contextFront.drawImage(explosionImage, explodeFrame.x, explodeFrame.y, explodeFrame.w, explodeFrame.h, 100, 100, explodeFrame.w, explodeFrame.h);
+			}
 
 			contextUI.clearRect(0, 0, canvasUI.width, canvasUI.height);
 			contextUI.font = '24px Arial';
