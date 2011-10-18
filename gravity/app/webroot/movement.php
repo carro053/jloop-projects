@@ -636,6 +636,7 @@
 		{
 			for(var e in explosions)
 			{
+				alert(explosions[e].explode.currentFrame);
 				explosions[e].explode.animate(timer.getSeconds());
 				explodeFrame = explosions[e].explode.getFrame();
 				contextFront.drawImage(explosionImage, explodeFrame.x, explodeFrame.y, explodeFrame.w, explodeFrame.h, explosions[e].data.x, explosions[e].data.y, explodeFrame.w, explodeFrame.h);
@@ -843,6 +844,7 @@
 			hyperspace_ship();
 			updateLasers();
 			updateMissiles();
+			updateExplosions();
 			clearCanvas();
 			drawObjects();
 			timer.tick();
