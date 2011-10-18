@@ -576,6 +576,7 @@
 		{
 			if(explode.currentFrame < 13)
 			{
+				alert(explode.currentFrame);
 				explode.animate(timer.getSeconds());
 				explodeFrame = explode.getFrame();
 				contextFront.drawImage(explosionImage, explodeFrame.x, explodeFrame.y, explodeFrame.w, explodeFrame.h, 100, 100, explodeFrame.w, explodeFrame.h);
