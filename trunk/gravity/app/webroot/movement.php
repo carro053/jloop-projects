@@ -317,7 +317,7 @@
 			],
 			explosion
 		);
-		var explodeFrame = New Object;
+		var explodeFrame = new Object;
 		var explosionImage = new Image();
 		explosionImage.src = 'explosion.png';
 
