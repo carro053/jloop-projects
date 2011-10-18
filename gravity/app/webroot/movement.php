@@ -261,6 +261,7 @@
 		var player = new Object;
 		player.data = new Object;
 		player.data.ship = 1;
+		var explosions = new Array();
 		var ships = new Array();
 		var squads = new Array();
 		var lps = 10;
@@ -299,24 +300,6 @@
 			]
 		);
 		
-		var explode = new SpriteSequence(
-			[
-				{id: 1, t: 0.05},
-				{id: 2, t: 0.05},
-				{id: 3, t: 0.05},
-				{id: 4, t: 0.05},
-				{id: 5, t: 0.05},
-				{id: 6, t: 0.05},
-				{id: 7, t: 0.05},
-				{id: 8, t: 0.05},
-				{id: 9, t: 0.05},
-				{id: 10, t: 0.05},
-				{id: 11, t: 0.05},
-				{id: 12, t: 0.05},
-				{id: 13, t: 0.05}
-			],
-			explosion
-		);
 		var explodeFrame = new Object;
 		var explosionImage = new Image();
 		explosionImage.src = 'explosion.png';
@@ -574,13 +557,6 @@
 		
 		function drawUI()
 		{
-			if(explode.currentFrame < 12)
-			{
-				explode.animate(timer.getSeconds());
-				explodeFrame = explode.getFrame();
-				contextFront.drawImage(explosionImage, explodeFrame.x, explodeFrame.y, explodeFrame.w, explodeFrame.h, 100, 100, explodeFrame.w, explodeFrame.h);
-			}
-
 			contextUI.clearRect(0, 0, canvasUI.width, canvasUI.height);
 			contextUI.font = '24px Arial';
 			contextUI.fillStyle =  '#FFFFFF';
@@ -648,12 +624,24 @@
 			if(heat_level < 0) heat_level = 0;
 			updateLasers();
 			updateMissiles();
+			updateExplosions();
 			if(ships.length == 0)
 			{
 				ship_targeted = 0;
 				clearInterval(gameInterval);
 				gameInterval = setInterval(hyperspaceLoop, 20);
 			}			
+		}
+		function updateExplosions()
+		{
+			for(var e in explosions)
+			{
+				explosion[e].explode.animate(timer.getSeconds());
+				explodeFrame = explosion[e].getFrame();
+				contextFront.drawImage(explosionImage, explodeFrame.x, explodeFrame.y, explodeFrame.w, explodeFrame.h, explosion[e].data.x, explosion[e].data.y, explodeFrame.w, explodeFrame.h);
+				if(explosion[e].explode.currentFrame == 12)
+					explosions.splice(e, 1);
+			}
 		}
 		function updateMissiles()
 		{
@@ -758,7 +746,30 @@
 								{
 									ships[s].data.shields -= 1;
 									if(ships[s].data.shields <= 0)
-									{										
+									{
+										var new_explosion = new	Object;
+										new_explosion.data = new Object;
+										new_explosion.data.x = ships[s].data.x;
+										new_explosion.data.y = ships[s].data.y;
+										new_explosion.explode = new SpriteSequence(
+											[
+												{id: 1, t: 0.05},
+												{id: 2, t: 0.05},
+												{id: 3, t: 0.05},
+												{id: 4, t: 0.05},
+												{id: 5, t: 0.05},
+												{id: 6, t: 0.05},
+												{id: 7, t: 0.05},
+												{id: 8, t: 0.05},
+												{id: 9, t: 0.05},
+												{id: 10, t: 0.05},
+												{id: 11, t: 0.05},
+												{id: 12, t: 0.05},
+												{id: 13, t: 0.05}
+											],
+											explosion
+										);
+										explosions.push(new_explosion);
 										score++;
 										if(player.data.shields < 10) player.data.shields++;
 										ships[s].data.dead = 1;
