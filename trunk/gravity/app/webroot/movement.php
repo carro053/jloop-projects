@@ -274,12 +274,57 @@
 				{id: 3, x: 78, y:  0, w: 39, h: 40},
 				{id: 4, x:  0, y: 40, w: 39, h: 40},
 				{id: 5, x: 39, y: 40, w: 39, h: 40},
-				{id: 6, x: 78, y: 40, w: 39, h: 40},
+				{id: 6, x: 78, y: 40, w: 39, h: 40}
 			]
 		);
 		
 		var shipSprites = new Image();
 		shipSprites.src = 'ship_sprites.png';
+		
+		var explosion = new SpriteSheet(
+			[
+				{ id:1, x:0, y:0, w:30, h:45},
+			    { id:10, x:30, y:0, w:30, h:45},
+				{ id:11, x:60, y:0, w:30, h:45},
+				{ id:12, x:90, y:0, w:30, h:45},
+				{ id:13, x:0, y:45, w:30, h:45},
+				{ id:2, x:30, y:45, w:30, h:45},
+				{ id:3, x:60, y:45, w:30, h:45},
+				{ id:4, x:90, y:45, w:30, h:45},
+				{ id:5, x:0, y:90, w:30, h:45},
+				{ id:6, x:30, y:90, w:30, h:45},
+				{ id:7, x:60, y:90, w:30, h:45},
+				{ id:8, x:90, y:90, w:30, h:45},
+				{ id:9, x:0, y:135, w:30, h:45}
+			]
+		);
+		
+		var explode = new SpriteSequence(
+			[
+				{id: 1, t: 0.05},
+				{id: 2, t: 0.05},
+				{id: 3, t: 0.05},
+				{id: 4, t: 0.05},
+				{id: 5, t: 0.05},
+				{id: 6, t: 0.05},
+				{id: 7, t: 0.05},
+				{id: 8, t: 0.05},
+				{id: 9, t: 0.05},
+				{id: 10, t: 0.05},
+				{id: 11, t: 0.05},
+				{id: 12, t: 0.05},
+				{id: 13, t: 0.05}
+			],
+			explosion
+		);
+		var explodeFrame = New Object;
+		var explosionImage = new Image();
+		explosionImage.src = 'explosion.png';
+
+		
+		
+		
+		
 		var canvasFront = new Object();
 		var contextFront = new Object();
 		var canvasBack = new Object();
@@ -529,6 +574,9 @@
 		
 		function drawUI()
 		{
+			explodeFrame = explode.getFrame();
+			contextFront.drawImage(explosionImage, explodeFrame.x, explodeFrame.y, explodeFrame.w, explodeFrame.h, 100, 100, explodeFrame.w, explodeFrame.h);
+
 			contextUI.clearRect(0, 0, canvasUI.width, canvasUI.height);
 			contextUI.font = '24px Arial';
 			contextUI.fillStyle =  '#FFFFFF';
