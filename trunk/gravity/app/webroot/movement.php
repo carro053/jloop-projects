@@ -636,10 +636,10 @@
 		{
 			for(var e in explosions)
 			{
-				explosion[e].explode.animate(timer.getSeconds());
+				explosions[e].explode.animate(timer.getSeconds());
 				explodeFrame = explosion[e].getFrame();
-				contextFront.drawImage(explosionImage, explodeFrame.x, explodeFrame.y, explodeFrame.w, explodeFrame.h, explosion[e].data.x, explosion[e].data.y, explodeFrame.w, explodeFrame.h);
-				if(explosion[e].explode.currentFrame == 12)
+				contextFront.drawImage(explosionImage, explodeFrame.x, explodeFrame.y, explodeFrame.w, explodeFrame.h, explosions[e].data.x, explosions[e].data.y, explodeFrame.w, explodeFrame.h);
+				if(explosions[e].explode.currentFrame == 12)
 					explosions.splice(e, 1);
 			}
 		}
