@@ -637,7 +637,7 @@
 			for(var e in explosions)
 			{
 				explosions[e].explode.animate(timer.getSeconds());
-				explodeFrame = explode.getFrame();
+				explodeFrame = explosions[e].explode.getFrame();
 				contextFront.drawImage(explosionImage, explodeFrame.x, explodeFrame.y, explodeFrame.w, explodeFrame.h, explosions[e].data.x, explosions[e].data.y, explodeFrame.w, explodeFrame.h);
 				if(explosions[e].explode.currentFrame == 12)
 					explosions.splice(e, 1);
