@@ -267,7 +267,8 @@
 		var lps = 10;
 		var score = 0;
 		var normalSpeed;
-		var squad_separation = 30;		
+		var squad_separation = 30;
+		var soundExplosion = new Audio('/explosion.mp3');
 		var shipSpritesheet = new SpriteSheet(
 			[
 				{id: 1, x:  0, y:  0, w: 39, h: 40},
@@ -790,6 +791,8 @@
 				explosion
 			);
 			explosions.push(new_explosion);
+			soundExplosion.currentTime = 0;
+			soundExplosion.play();
 		}
 		function clearCanvas()
 		{
