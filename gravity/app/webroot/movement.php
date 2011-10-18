@@ -636,7 +636,6 @@
 		{
 			for(var e in explosions)
 			{
-				alert(explosions[e].explode.currentFrame);
 				explosions[e].explode.animate(timer.getSeconds());
 				explodeFrame = explosions[e].explode.getFrame();
 				contextFront.drawImage(explosionImage, explodeFrame.x, explodeFrame.y, explodeFrame.w, explodeFrame.h, explosions[e].data.x, explosions[e].data.y, explodeFrame.w, explodeFrame.h);
@@ -750,8 +749,8 @@
 									{
 										var new_explosion = new	Object;
 										new_explosion.data = new Object;
-										new_explosion.data.x = ships[s].data.x;
-										new_explosion.data.y = ships[s].data.y;
+										new_explosion.data.x = ships[s].data.x - 14;
+										new_explosion.data.y = ships[s].data.y - 26;
 										new_explosion.explode = new SpriteSequence(
 											[
 												{id: 1, t: 0.05},
