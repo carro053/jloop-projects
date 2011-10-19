@@ -261,12 +261,16 @@
 		var player = new Object;
 		player.data = new Object;
 		player.data.ship = 1;
+		var explosions = new Array();
 		var ships = new Array();
 		var squads = new Array();
 		var lps = 10;
 		var score = 0;
 		var normalSpeed;
-		var squad_separation = 30;		
+		var maxShields;
+		var maxMissiles;
+		var squad_separation = 30;
+		var soundExplosion = new Audio('/explosion.mp3');
 		var shipSpritesheet = new SpriteSheet(
 			[
 				{id: 1, x:  0, y:  0, w: 39, h: 40},
@@ -274,12 +278,39 @@
 				{id: 3, x: 78, y:  0, w: 39, h: 40},
 				{id: 4, x:  0, y: 40, w: 39, h: 40},
 				{id: 5, x: 39, y: 40, w: 39, h: 40},
-				{id: 6, x: 78, y: 40, w: 39, h: 40},
+				{id: 6, x: 78, y: 40, w: 39, h: 40}
 			]
 		);
 		
 		var shipSprites = new Image();
 		shipSprites.src = 'ship_sprites.png';
+		
+		var explosion = new SpriteSheet(
+			[
+				{ id:1, x:0, y:0, w:30, h:45},
+			    { id:10, x:30, y:0, w:30, h:45},
+				{ id:11, x:60, y:0, w:30, h:45},
+				{ id:12, x:90, y:0, w:30, h:45},
+				{ id:13, x:0, y:45, w:30, h:45},
+				{ id:2, x:30, y:45, w:30, h:45},
+				{ id:3, x:60, y:45, w:30, h:45},
+				{ id:4, x:90, y:45, w:30, h:45},
+				{ id:5, x:0, y:90, w:30, h:45},
+				{ id:6, x:30, y:90, w:30, h:45},
+				{ id:7, x:60, y:90, w:30, h:45},
+				{ id:8, x:90, y:90, w:30, h:45},
+				{ id:9, x:0, y:135, w:30, h:45}
+			]
+		);
+		
+		var explodeFrame = new Object;
+		var explosionImage = new Image();
+		explosionImage.src = 'explosion.png';
+
+		
+		
+		
+		
 		var canvasFront = new Object();
 		var contextFront = new Object();
 		var canvasBack = new Object();
@@ -359,12 +390,13 @@
 						if(ship_targeted) player.fire_missile();
 						break;
 					case 49:				
-						player.data.ship = 1;
+						/*player.data.ship = 1;
 						player.data.xRightLaser = 5;
 						player.data.yRightLaser = -25;
 						player.data.xLeftLaser = -6;
 						player.data.yLeftLaser = -25;
-						player.data.laserColor = 'rgb(0,255,0)';
+						player.data.laserColor = 'rgb(0,255,0)';*/
+						addEnemy(-150,-150,6);
 						break;
 					case 50:
 						player.data.ship = 2;						
@@ -595,12 +627,24 @@
 			if(heat_level < 0) heat_level = 0;
 			updateLasers();
 			updateMissiles();
+			updateExplosions();
 			if(ships.length == 0)
 			{
 				ship_targeted = 0;
 				clearInterval(gameInterval);
 				gameInterval = setInterval(hyperspaceLoop, 20);
 			}			
+		}
+		function updateExplosions()
+		{
+			for(var e in explosions)
+			{
+				explosions[e].explode.animate(timer.getSeconds());
+				explodeFrame = explosions[e].explode.getFrame();
+				contextFront.drawImage(explosionImage, explodeFrame.x, explodeFrame.y, explodeFrame.w, explodeFrame.h, explosions[e].data.x, explosions[e].data.y, explodeFrame.w, explodeFrame.h);
+				if(explosions[e].explode.currentFrame == 12)
+					explosions.splice(e, 1);
+			}
 		}
 		function updateMissiles()
 		{
@@ -622,9 +666,10 @@
 							{
 								ships[s].data.shields -= 4;
 								if(ships[s].data.shields <= 0)
-								{										
+								{
+									newExplosion(ships[s].data.x,ships[s].data.y);							
 									score++;
-									if(player.data.shields < 10) player.data.shields++;
+									if(player.data.shields < maxShields) player.data.shields++;
 									ships[s].data.dead = 1;
 									ships.splice(s, 1);
 								}
@@ -705,9 +750,10 @@
 								{
 									ships[s].data.shields -= 1;
 									if(ships[s].data.shields <= 0)
-									{										
+									{
 										score++;
-										if(player.data.shields < 10) player.data.shields++;
+										if(player.data.shields < maxShields) player.data.shields++;
+										newExplosion(ships[s].data.x,ships[s].data.y);
 										ships[s].data.dead = 1;
 										ships.splice(s, 1);
 									}
@@ -722,6 +768,35 @@
 				}
 			}
 		}
+		
+		function newExplosion(x,y)
+		{
+			var new_explosion = new	Object;
+			new_explosion.data = new Object;
+			new_explosion.data.x = x - 14;
+			new_explosion.data.y = y - 26;
+			new_explosion.explode = new SpriteSequence(
+				[
+					{id: 1, t: 0.05},
+					{id: 2, t: 0.05},
+					{id: 3, t: 0.05},
+					{id: 4, t: 0.05},
+					{id: 5, t: 0.05},
+					{id: 6, t: 0.05},
+					{id: 7, t: 0.05},
+					{id: 8, t: 0.05},
+					{id: 9, t: 0.05},
+					{id: 10, t: 0.05},
+					{id: 11, t: 0.05},
+					{id: 12, t: 0.05},
+					{id: 13, t: 0.05}
+				],
+				explosion
+			);
+			explosions.push(new_explosion);
+			soundExplosion.currentTime = 0;
+			soundExplosion.play();
+		}
 		function clearCanvas()
 		{
 			contextFront.clearRect(0, 0, canvasFront.width, canvasFront.height);
@@ -729,6 +804,7 @@
 
 		function drawObjects()
 		{
+			updateExplosions();
 			var sprite = shipSpritesheet.getSprite(player.data.ship);
 			contextFront.translate(player.data.x, player.data.y);
 			contextFront.rotate(player.data.angle * Math.PI / 180);sprite.x, sprite.y, sprite.w, sprite.h, 10, 50, sprite.w, sprite.h
@@ -1019,6 +1095,7 @@
 		{
 			if(level == 1)
 			{
+				//addSquad(6,13,window.innerWidth + 150,window.innerHeight / 2);
 				addEnemy(-150,-150,6);
 			}else if(level == 2)
 			{
@@ -1075,6 +1152,8 @@
 			score = 0;
 			shipData = getShipData(player.data.ship);
 			normalSpeed = shipData.speed;
+			maxMissiles = shipData.missiles;
+			maxShields = shipData.shields;
 			missile_count = shipData.missiles;
 			player  = new StarShip(
 				{
