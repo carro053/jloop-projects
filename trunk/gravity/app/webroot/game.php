@@ -270,7 +270,7 @@
 		var maxShields;
 		var maxMissiles;
 		var squad_separation = 30;
-		var soundExplosion = new Audio('/explosion.mp3');
+		//var soundExplosion = new Audio('/explosion.mp3');
 		var shipSpritesheet = new SpriteSheet(
 			[
 				{id: 1, x:  0, y:  0, w: 39, h: 40},
@@ -794,8 +794,8 @@
 				explosion
 			);
 			explosions.push(new_explosion);
-			soundExplosion.currentTime = 0;
-			soundExplosion.play();
+			//soundExplosion.currentTime = 0;
+			//soundExplosion.play();
 		}
 		function clearCanvas()
 		{
