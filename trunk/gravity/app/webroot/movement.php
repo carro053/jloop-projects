@@ -267,6 +267,8 @@
 		var lps = 10;
 		var score = 0;
 		var normalSpeed;
+		var maxShields;
+		var maxMissiles;
 		var squad_separation = 30;
 		var soundExplosion = new Audio('/explosion.mp3');
 		var shipSpritesheet = new SpriteSheet(
@@ -578,7 +580,7 @@
 			drawObjects();
 			drawUI();
 			timer.tick();
-			/*if(player.data.shields <= 0)
+			if(player.data.shields <= 0)
 			{
 				var ship_text = 'ships';
 				if(score == 1) ship_text = 'ship';
@@ -589,7 +591,7 @@
 				}else{
 					clearInterval(gameInterval);
 				}
-			}*/
+			}
 		}
 
 		function updateObjects()
@@ -667,7 +669,7 @@
 								{
 									newExplosion(ships[s].data.x,ships[s].data.y);							
 									score++;
-									if(player.data.shields < 10) player.data.shields++;
+									if(player.data.shields < maxShields) player.data.shields++;
 									ships[s].data.dead = 1;
 									ships.splice(s, 1);
 								}
@@ -749,9 +751,9 @@
 									ships[s].data.shields -= 1;
 									if(ships[s].data.shields <= 0)
 									{
-										newExplosion(ships[s].data.x,ships[s].data.y);
 										score++;
-										if(player.data.shields < 10) player.data.shields++;
+										if(player.data.shields < maxShields) player.data.shields++;
+										newExplosion(ships[s].data.x,ships[s].data.y);
 										ships[s].data.dead = 1;
 										ships.splice(s, 1);
 									}
@@ -766,6 +768,7 @@
 				}
 			}
 		}
+		
 		function newExplosion(x,y)
 		{
 			var new_explosion = new	Object;
@@ -1149,6 +1152,8 @@
 			score = 0;
 			shipData = getShipData(player.data.ship);
 			normalSpeed = shipData.speed;
+			maxMissiles = shipData.missiles;
+			maxShields = shipData.shields;
 			missile_count = shipData.missiles;
 			player  = new StarShip(
 				{
