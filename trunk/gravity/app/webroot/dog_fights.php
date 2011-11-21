@@ -376,12 +376,12 @@
 			if(empire_count <= 10)
 			{
 				var angle = Math.random() * Math.PI - Math.PI / 2;
-				addShip('empire',window.innerWidth / 2 + page_radius * Math.cos(angle),window.innerHeight / 2 + page_radius * Math.sin(angle),Math.floor(Math.random() * 3) + 1);
+				addShip('empire',window.innerWidth / 2 + page_radius * Math.cos(angle),window.innerHeight / 2 + page_radius * Math.sin(angle),Math.floor(Math.random() * 3) + 1,angle * 180 / Math.PI);
 			}
 			if(republic_count <= 10)
 			{
 				var angle = Math.random() * Math.PI + Math.PI / 2;
-				addShip('republic',window.innerWidth / 2 + page_radius * Math.cos(angle),window.innerHeight / 2 + page_radius * Math.sin(angle),Math.floor(Math.random() * 3) + 4);
+				addShip('republic',window.innerWidth / 2 + page_radius * Math.cos(angle),window.innerHeight / 2 + page_radius * Math.sin(angle),Math.floor(Math.random() * 3) + 4,angle * 180 / Math.PI);
 			}
 			updateObjects();
 			clearCanvas();
@@ -663,13 +663,12 @@
 			}
 		}
 		
-		function addShip(side,x,y,set_ship_type,squad_leader,squad_position,squad_number)
+		function addShip(side,x,y,set_ship_type,angle,squad_leader,squad_position,squad_number)
 		{
 			var w = 39;
 			var h = 40;
 			var xOffset = 20;
 			var yOffset = 20;
-			var angle = 90;
 			var ship_type = Math.floor(Math.random()*3) + 4;
 			if(set_ship_type) ship_type = set_ship_type;
 			var shipData = getShipData(ship_type);
