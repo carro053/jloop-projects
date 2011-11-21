@@ -443,7 +443,7 @@
 									score++;
 									newExplosion(ships[s].data.x,ships[s].data.y);
 									ships[s].data.dead = 1;										
-									if(ships[s].dataside == 'republic')
+									if(ships[s].data.side == 'republic')
 									{
 										republic_count--;
 									}else{
