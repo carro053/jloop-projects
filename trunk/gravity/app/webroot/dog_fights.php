@@ -585,8 +585,8 @@
 					shipData.xLeftLaser = -6;
 					shipData.yLeftLaser = -25;
 					shipData.laserColor = 'rgb(0,255,0)';
-					shipData.speed = 150;
-					shipData.angular_speed = 150;
+					shipData.speed = 250;
+					shipData.angular_speed = 250;
 					shipData.shields = 2;
 					shipData.missiles = 10;
 					break;
@@ -600,8 +600,8 @@
 					shipData.xLeftLaser = -12;
 					shipData.yLeftLaser = -5;
 					shipData.laserColor = 'rgb(0,255,0)';
-					shipData.speed = 150;
-					shipData.angular_speed = 150;
+					shipData.speed = 250;
+					shipData.angular_speed = 250;
 					shipData.shields = 2;
 					shipData.missiles = 15;
 					
@@ -616,8 +616,8 @@
 					shipData.xLeftLaser = -14;
 					shipData.yLeftLaser = -12;
 					shipData.laserColor = 'rgb(0,255,0)';
-					shipData.speed = 200;
-					shipData.angular_speed = 150;
+					shipData.speed = 300;
+					shipData.angular_speed = 250;
 					shipData.shields = 3;
 					shipData.missiles = 20;
 					
@@ -632,8 +632,8 @@
 					shipData.xLeftLaser = -10;
 					shipData.yLeftLaser = -23;
 					shipData.laserColor = 'rgb(255,0,0)';
-					shipData.speed = 150;
-					shipData.angular_speed = 150;
+					shipData.speed = 250;
+					shipData.angular_speed = 250;
 					shipData.shields = 2;
 					shipData.missiles = 10;
 					
@@ -648,8 +648,8 @@
 					shipData.xLeftLaser = -1;
 					shipData.yLeftLaser = -10;
 					shipData.laserColor = 'rgb(255,0,0)';
-					shipData.speed = 200;
-					shipData.angular_speed = 150;
+					shipData.speed = 300;
+					shipData.angular_speed = 250;
 					shipData.shields = 3;
 					shipData.missiles = 10;
 					
@@ -664,8 +664,8 @@
 					shipData.xLeftLaser = -14;
 					shipData.yLeftLaser = -10;
 					shipData.laserColor = 'rgb(255,0,0)';
-					shipData.speed = 150;
-					shipData.angular_speed = 150;
+					shipData.speed = 250;
+					shipData.angular_speed = 250;
 					shipData.shields = 2;
 					shipData.missiles = 10;
 					break;
