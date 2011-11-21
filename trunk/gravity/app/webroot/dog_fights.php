@@ -297,6 +297,8 @@
 		var squads = new Array();
 		var empire_count = 0;
 		var republic_count = 0;
+		var empire_killed = 0;
+		var republic_killed = 0;
 		var lps = 10;
 		var score = 0;
 		var normalSpeed;
@@ -349,6 +351,8 @@
 		var contextFront = new Object();
 		var canvasBack = new Object();
 		var contextBack = new Object();
+		var canvasUI = new Object();
+		var contextUI = new Object();
 		
 		window.onload = function() {
 			
@@ -362,14 +366,21 @@
 			canvasFront.width = window.innerWidth;
 			canvasFront.height = window.innerHeight;
 			
+			canvasUI = document.getElementById('canvasUI');
+			contextUI = canvasUI.getContext('2d');
+			canvasUI.width = window.innerWidth;
+			canvasUI.height = window.innerHeight;
+			
 			shipSprites.onload = initialize();
 		};
 		function initialize()
 		{
 			scene = 'select';
 			reset_game();
+			contextUI.clearRect(0, 0, canvasUI.width, canvasUI.height);
 			contextFront.clearRect(0, 0, canvasFront.width, canvasFront.height);
-			drawBackground();			
+			drawBackground();
+			drawUI();			
 			timer.tick();
 			gameInterval = setInterval(gameLoop, 20);
 		}
@@ -404,6 +415,19 @@
 			}
 			contextBack.strokeStyle =  '#FFFFFF';
 		}
+		
+		function drawUI()
+		{
+			contextUI.clearRect(0, 0, canvasUI.width, canvasUI.height);
+			contextUI.font = '24px Arial';
+			contextUI.fillStyle =  '#FFFFFF';
+    		contextUI.textAlign = "left";
+			contextUI.fillText('Republic: '+empire_killed,0,30);
+			contextUI.font = '24px Arial';
+			contextUI.fillStyle =  '#FFFFFF';
+    		contextUI.textAlign = "right";
+			contextUI.fillText('Empire: '+republic_killed,window.innerWidth,30);
+		}
 
 		function gameLoop()
 		{
@@ -420,6 +444,7 @@
 			updateObjects();
 			clearCanvas();
 			drawObjects();
+			drawUI();
 			timer.tick();
 		}
 
@@ -483,8 +508,10 @@
 									if(ships[s].data.side == 'republic')
 									{
 										republic_count--;
+										republic_killed++;
 									}else{
 										empire_count--;
+										empire_killed++;
 									}
 									ships.splice(s, 1);
 								}
@@ -672,7 +699,7 @@
 			}
 			return shipData;
 		}
-		function addSquad(side,ship_type,amount,x,y)
+		function addSquad(side,ship_type,amount,x,y,angle)
 		{
 			squads.push = 1;
 			var squad_number = squads.length;
@@ -693,7 +720,7 @@
 					squadX = x + position * squad_separation * sin + position * squad_separation * cos;
 					squadY = y + position * squad_separation * sin - position * squad_separation * cos;
 				}
-				addShip(side,squadX,squadY,ship_type,ships[squadLeader],i,squad_number);
+				addShip(side,squadX,squadY,ship_type,angle,ships[squadLeader],i,squad_number);
 			}
 		}
 		
@@ -773,5 +800,6 @@
 	</script>
 	<canvas id="canvasBack" style="position:absolute;"></canvas>
 	<canvas id="canvasFront" style="position:absolute;"></canvas>
+	<canvas id="canvasUI" style="position:absolute;"></canvas>
 </body>
 </html>
