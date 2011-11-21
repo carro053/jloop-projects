@@ -270,6 +270,7 @@
 		var maxMissiles;
 		var squad_separation = 30;
 		var page_radius = Math.sqrt(Math.pow(window.innerWidth/2,2),Math.pow(window.innerHeight/2,2));
+		alert(page_radius);
 		//var soundExplosion = new Audio('/explosion.mp3');
 		var shipSpritesheet = new SpriteSheet(
 			[
