@@ -678,6 +678,7 @@
 				while(target_found == 0)
 				{
 					var randShip = Math.random() * (ships.length - 1);
+					alert(randShip);
 					if(ships[randShip].data.side != side && ships[randShip].data.dead == 0)
 					{
 						target_found = 1;
