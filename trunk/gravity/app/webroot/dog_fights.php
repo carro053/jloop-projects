@@ -258,11 +258,6 @@
 		var heat_level = 0;
 		var max_heat = 25000;
 		var speed_change = 1;
-		var target = new Object;
-		target.data = new Object;
-		var player = new Object;
-		player.data = new Object;
-		player.data.ship = 1;
 		var explosions = new Array();
 		var ships = new Array();
 		var squads = new Array();
@@ -393,26 +388,6 @@
 		function updateObjects()
 		{
 			gameTime += timer.getSeconds();
-			if(player.data.speed != normalSpeed)
-			{
-				if(heat_level < max_heat && speed_change == 1)
-				{
-					heat_level += 5000 * timer.getSeconds();
-				}else{
-					speed_change = 0;
-					player.data.speed = normalSpeed;
-				}
-			}
-			if(fire_lasers == 1)
-			{
-				if(heat_level < max_heat)
-				{
-					player.fire_laser();
-				}else{
-					fire_lasers = 0;
-				}
-			}
-			player.update();
 			ship_targeted = 0;
 			closest_ship = 100;
 			for(var s in ships)
@@ -465,7 +440,6 @@
 								if(ships[s].data.shields <= 0)
 								{
 									score++;
-									if(player.data.shields < maxShields) player.data.shields++;
 									newExplosion(ships[s].data.x,ships[s].data.y);
 									ships[s].data.dead = 1;										
 									if(ships[s].dataside == 'republic')
@@ -521,12 +495,6 @@
 		function drawObjects()
 		{
 			updateExplosions();
-			var sprite = shipSpritesheet.getSprite(player.data.ship);
-			contextFront.translate(player.data.x, player.data.y);
-			contextFront.rotate(player.data.angle * Math.PI / 180);sprite.x, sprite.y, sprite.w, sprite.h, 10, 50, sprite.w, sprite.h
-			contextFront.drawImage(shipSprites, sprite.x, sprite.y, sprite.w, sprite.h, -player.data.xOffset, -player.data.yOffset, sprite.w, sprite.h);
-			contextFront.rotate(-player.data.angle * Math.PI / 180);
-			contextFront.translate(-player.data.x, -player.data.y);
 			for(var l in lasers)
 			{
 				contextFront.beginPath();
