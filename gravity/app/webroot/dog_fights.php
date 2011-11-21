@@ -334,14 +334,7 @@
 			scene = 'select';
 			reset_game();
 			contextFront.clearRect(0, 0, canvasFront.width, canvasFront.height);
-			drawBackground();
-			
-			
-				addShip('republic',-50,100,5);
-				
-				addShip('empire',window.innerWidth + 50,100,1);
-			
-			
+			drawBackground();			
 			timer.tick();
 			gameInterval = setInterval(gameLoop, 20);
 		}
@@ -379,6 +372,14 @@
 
 		function gameLoop()
 		{
+			if(empire_count <= 10)
+			{
+				addShip('empire',window.innerWidth + 50,Math.floor(Math.random() * 200),1);
+			}
+			if(republic_count <= 10)
+			{
+				addShip('republic',-50,Math.floor(Math.random() * 200),5);
+			}
 			updateObjects();
 			clearCanvas();
 			drawObjects();
