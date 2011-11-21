@@ -374,11 +374,11 @@
 		{
 			if(empire_count <= 10)
 			{
-				addShip('empire',window.innerWidth + 50,Math.floor(Math.random() * 1000),1);
+				addShip('empire',window.innerWidth + 50,Math.floor(Math.random() * 1000),Math.floor(Math.random() * 3) + 1);
 			}
 			if(republic_count <= 10)
 			{
-				addShip('republic',-50,Math.floor(Math.random() * 1000),5);
+				addShip('republic',-50,Math.floor(Math.random() * 1000),Math.floor(Math.random() * 3) + 4);
 			}
 			updateObjects();
 			clearCanvas();
