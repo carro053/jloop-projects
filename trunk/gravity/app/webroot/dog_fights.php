@@ -269,6 +269,7 @@
 		var maxShields;
 		var maxMissiles;
 		var squad_separation = 30;
+		var page_radius = Math.sqrt(Math.pow(window.innerWidth/2,2),Math.pow(window.innerHeight/2,2));
 		//var soundExplosion = new Audio('/explosion.mp3');
 		var shipSpritesheet = new SpriteSheet(
 			[
@@ -374,11 +375,13 @@
 		{
 			if(empire_count <= 10)
 			{
-				addShip('empire',window.innerWidth + 50,Math.floor(Math.random() * 1000),Math.floor(Math.random() * 3) + 1);
+				var angle = Math.random() * Math.PI - Math.PI / 2;
+				addShip('empire',window.innerWidth / 2 + page_radius * Math.cos(angle),window.innerHeight / 2 + page_radius * Math.sin(angle),Math.floor(Math.random() * 3) + 1);
 			}
 			if(republic_count <= 10)
 			{
-				addShip('republic',-50,Math.floor(Math.random() * 1000),Math.floor(Math.random() * 3) + 4);
+				var angle = Math.random() * Math.PI + Math.PI / 2;
+				addShip('republic',window.innerWidth / 2 + page_radius * Math.cos(angle),window.innerHeight / 2 + page_radius * Math.sin(angle),Math.floor(Math.random() * 3) + 4);
 			}
 			updateObjects();
 			clearCanvas();
