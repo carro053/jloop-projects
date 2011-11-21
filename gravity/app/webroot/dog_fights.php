@@ -88,7 +88,7 @@
 						var target_found = 0;
 						while(target_found == 0)
 						{
-							var randShip = Math.random() * (ships.length - 1);
+							var randShip = Math.floor(Math.random() * ships.length);
 							alert(randShip);
 							if(ships[randShip].data.side != this.data.side && ships[randShip].data.dead == 0)
 							{
@@ -678,7 +678,7 @@
 				var target_found = 0;
 				while(target_found == 0)
 				{
-					var randShip = Math.random() * (ships.length - 1);
+					var randShip = Math.floor(Math.random() * ships.length);
 					alert(randShip);
 					if(ships[randShip].data.side != side && ships[randShip].data.dead == 0)
 					{
