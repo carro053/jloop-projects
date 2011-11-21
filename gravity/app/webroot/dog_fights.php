@@ -169,6 +169,40 @@
 						this.data.x = squadX;
 						this.data.y = squadY;
 					}
+				}else if(this.data.x < 0 || this.data.y < 0 || this.data.x > window.innerWidth || this.data.y > window.innerHeight)
+				{
+					var ta = Math.atan2(window.innerHeight / 2 - this.data.y,window.innerWidth / 2 - this.data.x) * 180 / Math.PI + 90;
+					if(ta < 0) ta += 360;
+					
+					var firing_angle_tolerance = 30 * (200 - distance) / 200;
+					if(firing_angle_tolerance < 0) firing_angle_tolerance = 0;
+					
+					if(Math.round(ta) != Math.round(this.data.angle))
+					{
+						//angle diff
+						var ad = ta - this.data.angle;
+						//change angle by this
+						var ca = 0;
+						if(ad < -180) ad += 360;
+						if(ad > 180) ad -= 360;
+						
+						if(ad < 0)//turn left
+						{
+							ca = -this.data.angular_speed * timer.getSeconds();
+						}else{//turn right
+							ca = this.data.angular_speed * timer.getSeconds();
+						}
+						if(Math.abs(ca) > Math.abs(ad))
+						{
+							this.data.angle = ta;
+						}else{
+							this.data.angle += ca;
+							if(this.data.angle < 0) this.data.angle += 360;
+							if(this.data.angle >= 360) this.data.angle -= 360;
+						}
+					}
+					this.data.x += Math.cos((this.data.angle - 90) *(Math.PI/180)) * this.data.speed * timer.getSeconds();
+					this.data.y += Math.sin((this.data.angle - 90) *(Math.PI/180)) * this.data.speed * timer.getSeconds();
 				}else{
 					if(distance > 1)
 					{
