@@ -234,6 +234,13 @@ class MagicController extends AppController {
 		$this->redirect('/magic/game_battlefield/'.$game_id);
 	}
 	
+	function set_white()
+	{
+		$this->Card->query('UPDATE `cards` SET `color` = 10');
+		$this->Card->query('UPDATE `cards` SET `color` = 1 WHERE `id` IN (SELECT `card_id` FROM `deck_cards` WHERE `deck_id` = 1)');
+		exit();
+	}
+	
 }
 
 ?>
