@@ -22,6 +22,8 @@
 		<li><a href="/forum">Forum</a></li>
 		<li><a href="/videos">Videos</a></li>
 		<li><a href="/screenshots">Screenshots</a></li>
+		<li><a href="/magic/deck_index">Decks</a></li>
+		<li><a href="/magic/game_index">Games</a></li>
 	</ul>
 	</div>
     <div id="main">
