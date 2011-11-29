@@ -16,6 +16,7 @@ class MagicController extends AppController {
 		if(isset($this->data['Deck']['name']))
 		{
 			$this->Deck->create();
+			$this->data['Deck']['user_id'] = $this->Auth->user('id');
 			$this->Deck->save($this->data);
 			$this->redirect('/magic/deck_manage/'.$this->Deck->id);
 		}else{
