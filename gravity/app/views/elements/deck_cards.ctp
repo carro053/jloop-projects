@@ -12,6 +12,5 @@ foreach($deck['DeckCard'] as $deck_card):
 	}
 endforeach;
 if($current_card_id != 0) echo '<div><a href="" onclick="remove_card('.$current_card_id.'); return false;"><img src="/files/magic_cards/'.$current_card_id.'.jpg" /></a><br />x'.$current_card_count.'</div>';
-echo '<div style="clear:both;">&nbsp;</div>';
 echo '<h2>Total Cards: '.count($deck['DeckCard']).'</h2>';
 ?>
