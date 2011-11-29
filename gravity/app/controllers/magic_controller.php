@@ -30,7 +30,7 @@ class MagicController extends AppController {
 		$deck = $this->Deck->find('first',array('conditions'=>'Deck.id = '.$deck_id.' AND Deck.user_id = '.$this->Auth->user('id')));
 		if(!isset($deck['Deck']['id'])) die('This is not your deck.');
 		$this->set('deck',$deck);
-		$this->set('cards',$this->Card->find('all',array('order'=>'Card.color ASC, Card.id ASC')));
+		$this->set('cards',$this->Card->find('all',array('order'=>'Card.color ASC, Card.card_set_id ASC, Card.id ASC')));
 	}
 	
 	function deck_add_card($deck_id,$card_id)
