@@ -8,6 +8,8 @@ class MagicController extends AppController {
 	
 	function deck_index()
 	{
+		pr($this->Auth);
+		exit();
 		$this->set('decks',$this->Deck->find('all',array('Deck.user_id = '.$this->Auth->)))
 	}
 	
