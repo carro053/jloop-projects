@@ -10,7 +10,7 @@ class MagicController extends AppController {
 	{
 		pr($this->Auth);
 		exit();
-		$this->set('decks',$this->Deck->find('all',array('Deck.user_id = '.$this->Auth->)))
+		$this->set('decks',$this->Deck->find('all',array('Deck.user_id = '.$this->Auth->)));
 	}
 	
 }
