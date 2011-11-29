@@ -49,7 +49,7 @@ class MagicController extends AppController {
 	
 	function deck_remove_card($deck_id,$card_id)
 	{
-		$deck_card = $this->DeckCard->find('first',array('DeckCard.deck_id = '.$deck_id.' AND DeckCard.card_id = '.$card_id));
+		$deck_card = $this->DeckCard->find('first',array('conditions'=>'DeckCard.deck_id = '.$deck_id.' AND DeckCard.card_id = '.$card_id));
 		if(isset($deck_card['DeckCard']['id']))
 		{
 			$this->DeckCard->delete($deck_card['DeckCard']['id']);
