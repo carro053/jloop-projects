@@ -17,7 +17,7 @@ class MagicController extends AppController {
 		{
 			$this->Deck->create();
 			$this->Deck->save($this->data);
-			$this->redirect('/magic/deck_edit/'.$this->Deck->id);
+			$this->redirect('/magic/deck_manage/'.$this->Deck->id);
 		}else{
 			$this->redirect('/magic/deck_index');
 		}
@@ -25,6 +25,7 @@ class MagicController extends AppController {
 	
 	function deck_manage($deck_id)
 	{
+		$this->Deck->bindModel(array('hasMany'=>array('DeckCard'=>array('className'=>'DeckCard','foreign_key'=>'deck_id','order'=>'DeckCard.card_id ASC'))));
 		$deck = $this->Deck->find('first',array('conditions'=>'Deck.id = '.$deck_id.' AND Deck.user_id = '.$this->Auth->user('id')));
 		if(!isset($deck['Deck']['id'])) die('This is not your deck.');
 		$this->set('deck',$deck);
@@ -38,8 +39,8 @@ class MagicController extends AppController {
 		$this->DeckCard->create();
 		$deck_card['DeckCard']['deck_id'] = $deck_id;
 		$deck_card['DeckCard']['card_id'] = $card_id;
-		echo $this->DeckCard->save($deck_card);
-		exit();
+		$this->DeckCard->save($deck_card);
+		$this->redirect('/magic/deck_manage/'.$deck_id);
 	}
 	
 	function deck_remove_card($deck_id,$card_id)
@@ -49,10 +50,11 @@ class MagicController extends AppController {
 		$deck_card = $this->DeckCard->find('first',array('DeckCard.deck_id = '.$deck_id.' AND DeckCard.card_id = '.$card_id));
 		if(isset($deck_card['DeckCard']['id']))
 		{
-			echo $this->DeckCard->delete($deck_card['DeckCard']['id']);
+			$this->DeckCard->delete($deck_card['DeckCard']['id']);
 		}else{
-			echo 0;
+			//echo 0;
 		}
+		$this->redirect('/magic/deck_manage/'.$deck_id);
 	}
 	
 	function game_index()
