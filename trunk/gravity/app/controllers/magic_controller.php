@@ -236,7 +236,7 @@ class MagicController extends AppController {
 	
 	function set_green()
 	{
-		$this->Card->query('UPDATE `cards` SET `color` = 4, `card_set_id` = 1 WHERE `id` IN (SELECT `card_id` FROM `deck_cards` WHERE `deck_id` = 6)');
+		$this->Card->query('UPDATE `cards` SET `color` = 5, `card_set_id` = 1 WHERE `id` IN (SELECT `card_id` FROM `deck_cards` WHERE `deck_id` = 7)');
 		exit();
 	}
 	
