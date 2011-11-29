@@ -2,6 +2,7 @@
 echo '<div id="current_cards">';
 echo $this->element('deck_cards');
 echo '</div>';
+echo '<div style="clear:both;">&nbsp;</div>';
 echo '<h2>Card Pool</h2>';
 echo '<div id="card_pool">';
 foreach($cards as $card):
