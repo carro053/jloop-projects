@@ -225,15 +225,6 @@ class MagicController extends AppController {
 		$this->redirect('/magic/game_battlefield/'.$game_id);
 	}
 	
-	function populate_cards()
-	{
-		for($i=1;$i<=683;$i++)
-		{
-			$this->Card->query('INSERT INTO `cards` (`id`,`created`,`modified`) VALUES ('.$i.',"'.date('Y-m-d H:i:s').'","'.date('Y-m-d H:i:s').'")');
-		}
-		exit();
-	}
-	
 }
 
 ?>
