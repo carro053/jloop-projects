@@ -26,8 +26,15 @@ if($your_number == 1)
 }else{	
 	$opponents_name = $game['User_1']['username'];
 }
-echo '<h2>'.$opponents_name.'\'s Field</h2>';
-echo '<a href="/magic/game_graveyard/'.$game['MagicGame']['id'].'/1" target="_blank">View Their Graveyard</a> - <a href="" onclick="giveOpponentACard(); return false;">Give '.$opponents_name.' A Card</a>';
+echo '<h2>'.$opponents_name.'\'s Field';
+if($opponents_hand == 1)
+{
+	echo ' - '.$opponents_hand.' Card In Hand';
+}else{
+	echo ' - '.$opponents_hand.' Cards In Hand';
+}
+echo '</h2>';
+echo '<a href="/magic/game_graveyard/'.$game['MagicGame']['id'].'/1" target="_blank">View Their Graveyard</a> - <a href="" onclick="giveOpponentACard(); return false;">Give '.$opponents_name.' A Random Card</a> - <a href="" onclick="giveOpponentALand(); return false;">Give '.$opponents_name.' A Land</a>';
 echo '<div id="card_pool">';
 foreach($opponents_cards as $deck_card):
 	echo '<div><img';
