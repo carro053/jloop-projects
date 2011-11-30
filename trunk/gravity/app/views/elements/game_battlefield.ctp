@@ -1,5 +1,34 @@
 <?php 
-echo '<h2>Your Field</h2>';
+if($your_number == 1)
+{
+	$opponents_name = $game['User_2']['username'];
+	$opponents_number = 2;
+}else{	
+	$opponents_name = $game['User_1']['username'];
+	$opponents_number = 1;
+}
+if($game['MagicGame']['winner_id'] == 1)
+{
+	echo '<h2>';
+	if($your_number == 1)
+	{
+		echo 'You Won';
+	}else{
+		echo $opponents_name.' Won';
+	}
+	echo '</h2>';
+}elseif($game['MagicGame']['winner_id'] == 2)
+{
+	echo '<h2>';
+	if($your_number == 2)
+	{
+		echo 'You Won';
+	}else{
+		echo $opponents_name.' Won';
+	}
+	echo '</h2>';
+}
+echo '<h2>Your Field | <a href="" onclick="loseAHitPoint(); return false;">-</a> <span id="MyHealth">'.$game['MagicGame']['user_'.$your_number.'_hp'].'</span> <a href="" onclick="gainAHitPoint(); return false;">+</a></h2>';
 echo '<a href="/magic/game_graveyard/'.$game['MagicGame']['id'].'/0" target="_blank">View Your Graveyard</a>';
 echo '<div id="card_pool">';
 foreach($your_cards as $deck_card):
@@ -20,18 +49,13 @@ if($your_number == $game['MagicGame']['turn'] + 1)
 }else{
 	echo '<h2>'.$game['User_1']['username'].'\'s Turn</h2>';	
 }
-if($your_number == 1)
-{
-	$opponents_name = $game['User_2']['username'];
-}else{	
-	$opponents_name = $game['User_1']['username'];
-}
-echo '<h2>'.$opponents_name.'\'s Field';
+
+echo '<h2>'.$opponents_name.'\'s Field | '.$game['MagicGame']['user_'.$opponents_number.'_hp'];
 if($opponents_hand == 1)
 {
-	echo ' - '.$opponents_hand.' Card In Hand';
+	echo ' | '.$opponents_hand.' Card In Hand';
 }else{
-	echo ' - '.$opponents_hand.' Cards In Hand';
+	echo ' | '.$opponents_hand.' Cards In Hand';
 }
 echo '</h2>';
 echo '<a href="/magic/game_graveyard/'.$game['MagicGame']['id'].'/1" target="_blank">View Their Graveyard</a> - <a href="" onclick="giveOpponentACard(); return false;">Give '.$opponents_name.' A Random Card</a> - <a href="" onclick="giveOpponentALand(); return false;">Give '.$opponents_name.' A Land</a>';

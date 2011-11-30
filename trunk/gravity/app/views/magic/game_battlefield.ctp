@@ -13,6 +13,24 @@ $(document).ready(function() {
     setInterval("refreshBattlefield()",3000);
 });
 
+function gainAHitPoint()
+{
+	$.post('/magic/game_raise_health/<?php echo $game['MagicGame']['id']; ?>', function(data) {
+		var myHealth = parseInt($('#MyHealth').html());
+		myHealth++;
+		$('#MyHealth').html(myHealth);
+	});
+}
+
+function loseAHitPoint()
+{
+	$.post('/magic/game_lower_health/<?php echo $game['MagicGame']['id']; ?>', function(data) {
+		var myHealth = parseInt($('#MyHealth').html());
+		myHealth--;
+		$('#MyHealth').html(myHealth);
+	});
+}
+
 function giveOpponentACard()
 {
 	if(confirm('Are you sure you want to?'))
