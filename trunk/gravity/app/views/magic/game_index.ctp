@@ -1,7 +1,33 @@
 <h2>My Games</h2>
 <?php
 foreach($games as $game):
-	if($user_id != $game['MagicGame']['user_1_id'] && $game['MagicGame']['user_2_deck_id'] == 0)
+	if($game['MagicGame']['winner_id'] > 0)
+	{	echo '<div>';
+		if($user_id == $game['MagicGame']['user_1_id'])
+		{
+			echo 'VS '.$game['User_2']['username'];
+		}else{
+			echo 'VS '.$game['User_1']['username'];
+		}
+		echo ' - <a target="_blank" href="/magic/game_hand/'.$game['MagicGame']['id'].'">View Hand</a> | <a target="_blank" href="/magic/game_battlefield/'.$game['MagicGame']['id'].'">View Battlefield</a>';
+		if($user_id == $game['MagicGame']['user_1_id'])
+		{
+			if($game['MagicGame']['winner_id'] == 1)
+			{
+				echo ' - You Won';
+			}else{
+				echo ' - '.$game['User_2']['username'].' Won';
+			}
+		}else{
+			if($game['MagicGame']['winner_id'] == 1)
+			{
+				echo ' - '.$game['User_1']['username'].' Won';
+			}else{
+				echo ' - You Won';
+			}
+		}
+		echo '</div>';
+	}elseif($user_id != $game['MagicGame']['user_1_id'] && $game['MagicGame']['user_2_deck_id'] == 0)
 	{
 		echo '<div>VS '.$game['User_1']['username'];
 		echo $this->Form->create('MagicGame',array('url' => array('controller' => 'magic', 'action' => 'game_start')));
