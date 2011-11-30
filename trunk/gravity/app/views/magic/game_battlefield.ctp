@@ -1,6 +1,6 @@
 <?php
 echo '<h2>Your Field</h2>';
-echo '<a href="/magic/game_your_graveyard/'.$game['MagicGame']['id'].'/0" target="_blank">View Your Graveyard</a>';
+echo '<a href="/magic/game_graveyard/'.$game['MagicGame']['id'].'/0" target="_blank">View Your Graveyard</a>';
 echo '<div id="card_pool">';
 foreach($your_cards as $deck_card):
 	echo '<div><a href="/magic/game_tap_card/'.$game['MagicGame']['id'].'/'.$deck_card['DeckCard']['id'].'"><img';
@@ -26,7 +26,7 @@ if($your_number == 1)
 }else{
 	echo '<h2>'.$game['User_1']['username'].'\'s Field</h2>';	
 }
-echo '<a href="/magic/game_their_graveyard/'.$game['MagicGame']['id'].'/1" target="_blank">View Their Graveyard</a>';
+echo '<a href="/magic/game_graveyard/'.$game['MagicGame']['id'].'/1" target="_blank">View Their Graveyard</a>';
 echo '<div id="card_pool">';
 foreach($opponents_cards as $deck_card):
 	echo '<div><img';
