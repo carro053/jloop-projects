@@ -6,7 +6,7 @@ if($theirs)
 	echo '<h2>Your Graveyard</h2>';
 }
 echo '<div id="card_pool">';
-echo $this->elememt('game_graveyard');
+echo $this->element('game_graveyard');
 echo '</div>';
 ?>
 <style>

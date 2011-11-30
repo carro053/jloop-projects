@@ -227,6 +227,34 @@ class MagicController extends AppController {
 		$this->set('theirs',$theirs);
 	}
 	
+	function game_refresh_graveyard($game_id,$theirs)
+	{
+		$game = $this->MagicGame->findById($game_id);
+		$this->set('game',$game);
+		if($this->Auth->user('id') == $game['MagicGame']['user_1_id'])
+		{
+			if($theirs)
+			{
+				$deck_id = $game['MagicGame']['user_2_deck_id'];
+			}else{
+				$deck_id = $game['MagicGame']['user_1_deck_id'];
+			}
+		}else if($this->Auth->user('id') == $game['MagicGame']['user_2_id'])
+		{
+			if($theirs)
+			{
+				$deck_id = $game['MagicGame']['user_1_deck_id'];
+			}else{
+				$deck_id = $game['MagicGame']['user_2_deck_id'];
+			}
+		}else{
+			die('How did you get here?');
+		}
+		$this->set('game_id',$game_id);
+		$this->set('hand',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$deck_id.' AND DeckCard.location = "Graveyard"')));
+		$this->set('theirs',$theirs);
+	}
+	
 	function game_end_turn($game_id)
 	{
 		$game = $this->MagicGame->findById($game_id);
