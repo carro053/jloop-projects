@@ -235,7 +235,14 @@ class MagicController extends AppController {
 		}else{
 			die('How did you get here?');
 		}
-		$this->DeckCard->query('UPDATE `deck_cards` SET `tapped` = 1 WHERE `id` = '.$deck_card_id);
+		$deck_card = $this->DeckCard->findById($deck_card_id);
+		if($deck_card['DeckCard']['tapped'])
+		{
+			$deck_card['DeckCard']['tapped'] = 0;
+		}else{
+			$deck_card['DeckCard']['tapped'] = 1;
+		}
+		$this->DeckCard->save($deck_card);
 		$this->redirect('/magic/game_battlefield/'.$game_id);
 	}
 	
