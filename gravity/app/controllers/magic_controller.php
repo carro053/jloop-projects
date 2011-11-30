@@ -177,6 +177,28 @@ class MagicController extends AppController {
 		$this->set('opponents_cards',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$other_deck_id.' AND DeckCard.location = "Battlefield"')));
 	}
 	
+	function game_refresh_battlefield($game_id)
+	{
+		$this->MagicGame->bindModel(array('belongsTo'=>array('User_1'=>array('className'=>'User','foreign_key'=>'user_1_id'),'User_2'=>array('className'=>'User','foreign_key'=>'user_2_id'))));
+		$game = $this->MagicGame->findById($game_id);
+		if($this->Auth->user('id') == $game['MagicGame']['user_1_id'])
+		{
+			$this->set('your_number',1);
+			$deck_id = $game['MagicGame']['user_1_deck_id'];
+			$other_deck_id = $game['MagicGame']['user_2_deck_id'];
+		}else if($this->Auth->user('id') == $game['MagicGame']['user_2_id'])
+		{
+			$this->set('your_number',2);
+			$deck_id = $game['MagicGame']['user_2_deck_id'];
+			$other_deck_id = $game['MagicGame']['user_1_deck_id'];
+		}else{
+			die('How did you get here?');
+		}
+		$this->set('game',$game);
+		$this->set('your_cards',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$deck_id.' AND DeckCard.location = "Battlefield"')));
+		$this->set('opponents_cards',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$other_deck_id.' AND DeckCard.location = "Battlefield"')));
+	}
+	
 	function game_graveyard($game_id,$theirs)
 	{
 		$game = $this->MagicGame->findById($game_id);
@@ -235,7 +257,8 @@ class MagicController extends AppController {
 			die('How did you get here?');
 		}
 		$this->DeckCard->query('UPDATE `deck_cards` SET `location` = "Battlefield", `tapped` = 0 WHERE `id` = '.$deck_card_id);
-		$this->redirect('/magic/game_hand/'.$game_id);		
+		echo 1;
+		exit();		
 	}
 	
 	function game_discard_card($game_id,$deck_card_id)
@@ -251,7 +274,8 @@ class MagicController extends AppController {
 			die('How did you get here?');
 		}
 		$this->DeckCard->query('UPDATE `deck_cards` SET `location` = "Graveyard" WHERE `id` = '.$deck_card_id);
-		$this->redirect('/magic/game_battlefield/'.$game_id);
+		echo 1;
+		exit();
 	}
 	
 	function game_return_card_to_hand($game_id,$deck_card_id,$from_graveyard=null)
@@ -267,15 +291,8 @@ class MagicController extends AppController {
 			die('How did you get here?');
 		}
 		$this->DeckCard->query('UPDATE `deck_cards` SET `location` = "Hand" WHERE `id` = '.$deck_card_id);
-		if($from_graveyard == 1)
-		{
-			$this->redirect('/magic/game_graveyard/'.$game_id.'/0');
-		}elseif($from_graveyard == 2)
-		{
-			$this->redirect('/magic/game_graveyard/'.$game_id.'/1');
-		}else{
-			$this->redirect('/magic/game_battlefield/'.$game_id);
-		}
+		echo 1;
+		exit();
 	}
 	
 	function game_tap_card($game_id,$deck_card_id)
@@ -294,11 +311,13 @@ class MagicController extends AppController {
 		if($deck_card['DeckCard']['tapped'])
 		{
 			$deck_card['DeckCard']['tapped'] = 0;
+			echo 1;
 		}else{
 			$deck_card['DeckCard']['tapped'] = 1;
+			echo 0.4;
 		}
 		$this->DeckCard->save($deck_card);
-		$this->redirect('/magic/game_battlefield/'.$game_id);
+		exit();
 	}
 	
 }

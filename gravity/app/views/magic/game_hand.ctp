@@ -19,7 +19,7 @@ $(document).ready(function() {
 function playCard(deck_card_id)
 {
 	$.post('/magic/game_play_card/<?php echo $game_id; ?>/'+deck_card_id, function(data) {
-		refreshand();
+		if(data == 1) $('#DeckCard'+deck_card_id).remove();
 	});
 }
 

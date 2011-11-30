@@ -1,38 +1,6 @@
 <?php
-echo '<h2>Your Field</h2>';
-echo '<a href="/magic/game_graveyard/'.$game['MagicGame']['id'].'/0" target="_blank">View Your Graveyard</a>';
-echo '<div id="card_pool">';
-foreach($your_cards as $deck_card):
-	echo '<div><a href="/magic/game_tap_card/'.$game['MagicGame']['id'].'/'.$deck_card['DeckCard']['id'].'"><img';
-	if($deck_card['DeckCard']['tapped']) echo ' style="opacity:0.4;"';
-	echo ' src="/files/magic_cards/'.$deck_card['DeckCard']['card_id'].'.jpg" /></a><br /><a href="/magic/game_discard_card/'.$game['MagicGame']['id'].'/'.$deck_card['DeckCard']['id'].'">Discard Card</a> <a href="/magic/game_return_card_to_hand/'.$game['MagicGame']['id'].'/'.$deck_card['DeckCard']['id'].'">Return to Hand</a></div>';
-endforeach;
-echo '</div>';
-
-echo '<div style="clear:both";>&nbsp;</div>';
-if($your_number == $game['MagicGame']['turn'] + 1)
-{
-	echo '<h2>Your Turn</h2>';
-	echo '<a href="/magic/game_end_turn/'.$game['MagicGame']['id'].'" onclick="return confirm(\'Are you sure you want to end your turn?\');">End Turn</a>';
-}elseif($your_number == 1)
-{
-	echo '<h2>'.$game['User_2']['username'].'\'s Turn</h2>';
-}else{
-	echo '<h2>'.$game['User_1']['username'].'\'s Turn</h2>';	
-}
-if($your_number == 1)
-{
-	echo '<h2>'.$game['User_2']['username'].'\'s Field</h2>';
-}else{
-	echo '<h2>'.$game['User_1']['username'].'\'s Field</h2>';	
-}
-echo '<a href="/magic/game_graveyard/'.$game['MagicGame']['id'].'/1" target="_blank">View Their Graveyard</a>';
-echo '<div id="card_pool">';
-foreach($opponents_cards as $deck_card):
-	echo '<div><img';
-	if($deck_card['DeckCard']['tapped']) echo ' style="opacity:0.4;"';
-	echo ' src="/files/magic_cards/'.$deck_card['DeckCard']['card_id'].'.jpg" /></div>';
-endforeach;
+echo '<div id="battlefield">';
+echo $this->element('game_battlefield');
 echo '</div>';
  ?>
 <style>
@@ -40,3 +8,34 @@ echo '</div>';
 		float:left;
 	}
 </style>
+<script type="text/javascript">
+$(document).ready(function() {
+    setInterval("refreshBattlefield()",3000);
+});
+
+function tapCard(deck_card_id)
+{
+	$.post('/magic/game_tap_card/<?php echo $game_id; ?>/'+deck_card_id, function(data) {
+		$('#DeckCard'+deck_card_id).attr('style', 'opacity:'+data';');
+	});
+}
+
+function discardCard(deck_card_id)
+{
+	$.post('/magic/game_discard_card/<?php echo $game_id; ?>/'+deck_card_id, function(data) {
+		if(data == 1) $('#DeckCard'+deck_card_id).remove();
+	});
+}
+
+function returnCardToHand(deck_card_id)
+{
+	$.post('/magic/game_return_card_to_hand/<?php echo $game_id; ?>/'+deck_card_id, function(data) {
+		if(data == 1) $('#DeckCard'+deck_card_id).remove();
+	});
+}
+
+function refreshBattlefield()
+{ 
+	$('#card_pool').load('/magic/game_refresh_battlefield/<?php echo $game_id; ?>');
+}
+</script>
