@@ -407,11 +407,11 @@ class MagicController extends AppController {
 		if($this->Auth->user('id') == $game['MagicGame']['user_1_id'])
 		{
 			$game['MagicGame']['user_1_hp']--;
-			if($game['MagicGame']['user_1_hp'] == 0) $game['MagicGame']['winner_id'] = $game['MagicGame']['user_2_id'];
+			if($game['MagicGame']['user_1_hp'] == 0) $game['MagicGame']['winner_id'] = 2;
 		}else if($this->Auth->user('id') == $game['MagicGame']['user_2_id'])
 		{
 			$game['MagicGame']['user_2_hp']--;
-			if($game['MagicGame']['user_2_hp'] == 0) $game['MagicGame']['winner_id'] = $game['MagicGame']['user_1_id'];
+			if($game['MagicGame']['user_2_hp'] == 0) $game['MagicGame']['winner_id'] = 1;
 		}else{
 			die('How did you get here?');
 		}
