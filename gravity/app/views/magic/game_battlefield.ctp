@@ -13,8 +13,11 @@ if($your_number == $game['MagicGame']['turn'] + 1)
 {
 	echo '<h2>Your Turn</h2>';
 	echo '<a href="/magic/end_turn/'.$game['MagicGame']['id'].'" onclick="return confirm(\'Are you sure you want to end your turn?\');">End Turn</a>
+}elseif($your_number == 1)
+{
+	echo '<h2>'.$game['Player2']['username'].'\'s Turn</h2>';
 }else{
-	echo '<h2>'.$game['Opponent']['username'].'\'s Turn</h2>';
+	echo '<h2>'.$game['Player1']['username'].'\'s Turn</h2>';	
 }
 echo '<h2>Opponent\'s Field</h2>';
 echo '<div id="card_pool">';

@@ -66,6 +66,7 @@ class MagicController extends AppController {
 	
 	function game_index()
 	{
+		$this->MagicGame->bindModel(array('hasOne'=>array('Player1'=>array('className'=>'User','foreign_key'=>'user_1_id'),'Player2'=>array('className'=>'User','foreign_key'=>'user_2_id'))));
 		$this->set('games',$this->MagicGame->find('all',array('conditions'=>'MagicGame.user_1_id = '.$this->Auth->user('id').' OR MagicGame.user_2_id = '.$this->Auth->user('id'))));
 		$this->set('decks',$this->Deck->find('all',array('conditions'=>'Deck.user_id = '.$this->Auth->user('id'))));
 		$this->set('users',$this->User->find('all',array('conditions'=>'User.id != '.$this->Auth->user('id'))));
@@ -93,11 +94,9 @@ class MagicController extends AppController {
 			$this->data['MagicGame']['turn'] = $turn;
 			$this->MagicGame->save($this->data);
 			$game = $this->MagicGame->findById($this->data['MagicGame']['id']);
-			pr($game);
 			$this->MagicGame->query('UPDATE `deck_cards` SET `location` = "Library" WHERE `deck_id` = '.$game['MagicGame']['user_1_deck_id'].' OR `deck_id` = '.$game['MagicGame']['user_2_deck_id']);
 			$this->MagicGame->query('UPDATE `deck_cards` SET `location` = "Hand" WHERE `deck_id` = '.$game['MagicGame']['user_1_deck_id'].' ORDER BY RAND() LIMIT 7');
 			$this->MagicGame->query('UPDATE `deck_cards` SET `location` = "Hand" WHERE `deck_id` = '.$game['MagicGame']['user_2_deck_id'].' ORDER BY RAND() LIMIT 7');
-			exit();
 			$this->redirect('/magic/game_battlefield/'.$this->data['MagicGame']['id']);
 		}else{
 			die('How did you get here?');
@@ -141,6 +140,7 @@ class MagicController extends AppController {
 	
 	function game_battlefield($game_id)
 	{
+		$this->MagicGame->bindModel(array('hasOne'=>array('Player1'=>array('className'=>'User','foreign_key'=>'user_1_id'),'Player2'=>array('className'=>'User','foreign_key'=>'user_2_id'))));
 		$game = $this->MagicGame->findById($game_id);
 		if($this->Auth->user('id') == $game['MagicGame']['user_1_id'])
 		{
