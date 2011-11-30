@@ -118,7 +118,7 @@ class MagicController extends AppController {
 		}		
 		$current_hand_count = $this->DeckCard->find('count',array('conditions'=>'DeckCard.deck_id = '.$deck_id.' AND DeckCard.location = "Hand"'));
 		$this->MagicGame->query('UPDATE `deck_cards` SET `location` = "Library" WHERE `deck_id` = '.$deck_id);
-		$this->MagicGame->query('UPDATE `deck_cards` SET `location` = "Hand" WHERE `deck_id` = '.$game['MagicGame']['user_1_deck_id'].' LIMIT '.($current_hand_count - 1).' ORDER BY RAND()');
+		$this->MagicGame->query('UPDATE `deck_cards` SET `location` = "Hand" WHERE `deck_id` = '.$game['MagicGame']['user_1_deck_id'].' ORDER BY RAND() LIMIT '.($current_hand_count - 1));
 		$this->redirect('/magic/game_hand/'.$game_id);
 	}
 	
@@ -170,7 +170,7 @@ class MagicController extends AppController {
 			$deck_id = $game['MagicGame']['user_2_deck_id'];
 		}
 		$this->MagicGame->query('UPDATE `deck_cards` SET `tapped` = 0 WHERE `deck_id` = '.$deck_id);
-		$this->MagicGame->query('UPDATE `deck_cards` SET `location` = "Hand" WHERE `deck_id` = '.$deck_id.' AND `location` = "Library" LIMIT 1 ORDER BY RAND()');
+		$this->MagicGame->query('UPDATE `deck_cards` SET `location` = "Hand" WHERE `deck_id` = '.$deck_id.' AND `location` = "Library" ORDER BY RAND() LIMIT 1');
 		$this->MagicGame->save($game);
 		$this->redirect('/magic/game_hand/'.$game_id);
 	}
