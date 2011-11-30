@@ -22,11 +22,12 @@ if($your_number == $game['MagicGame']['turn'] + 1)
 }
 if($your_number == 1)
 {
-	echo '<h2>'.$game['User_2']['username'].'\'s Field</h2>';
-}else{
-	echo '<h2>'.$game['User_1']['username'].'\'s Field</h2>';	
+	$opponents_name = $game['User_2']['username'];
+}else{	
+	$opponents_name = $game['User_1']['username'];
 }
-echo '<a href="/magic/game_graveyard/'.$game['MagicGame']['id'].'/1" target="_blank">View Their Graveyard</a>';
+echo '<h2>'.$opponents_name.'\'s Field</h2>';
+echo '<a href="/magic/game_graveyard/'.$game['MagicGame']['id'].'/1" target="_blank">View Their Graveyard</a> - <a href="" onclick="giveOpponentACard(); return false;">Give '.$opponents_name.' A Card</a>';
 echo '<div id="card_pool">';
 foreach($opponents_cards as $deck_card):
 	echo '<div><img';

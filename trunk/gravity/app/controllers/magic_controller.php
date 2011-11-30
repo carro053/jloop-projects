@@ -30,7 +30,7 @@ class MagicController extends AppController {
 		$deck = $this->Deck->find('first',array('conditions'=>'Deck.id = '.$deck_id.' AND Deck.user_id = '.$this->Auth->user('id')));
 		if(!isset($deck['Deck']['id'])) die('This is not your deck.');
 		$this->set('deck',$deck);
-		$this->set('cards',$this->Card->find('all',array('order'=>'Card.color ASC, Card.card_set_id ASC, Card.id ASC')));
+		$this->set('cards',$this->Card->find('all',array('order'=>'Card.mana DESC, Card.color ASC, Card.card_set_id ASC, Card.id ASC')));
 	}
 	
 	function deck_add_card($deck_id,$card_id)
@@ -270,6 +270,23 @@ class MagicController extends AppController {
 		$this->MagicGame->query('UPDATE `deck_cards` SET `location` = "Hand" WHERE `deck_id` = '.$deck_id.' AND `location` = "Library" ORDER BY RAND() LIMIT 1');
 		$this->MagicGame->save($game);
 		$this->redirect('/magic/game_battlefield/'.$game_id);
+	}
+	
+	function game_give_card_to_opponent($game_id)
+	{
+		$game = $this->MagicGame->findById($game_id);
+		if($this->Auth->user('id') == $game['MagicGame']['user_1_id'])
+		{
+			$deck_id = $game['MagicGame']['user_2_deck_id'];
+		}else if($this->Auth->user('id') == $game['MagicGame']['user_2_id'])
+		{
+			$deck_id = $game['MagicGame']['user_1_deck_id'];
+		}else{
+			die('How did you get here?');
+		}
+		$this->MagicGame->query('UPDATE `deck_cards` SET `location` = "Hand" WHERE `deck_id` = '.$deck_id.' AND `location` = "Library" ORDER BY RAND() LIMIT 1');
+		echo 1;
+		exit();
 	}
 	
 	function game_play_card($game_id,$deck_card_id)
