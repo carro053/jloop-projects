@@ -155,7 +155,7 @@ class MagicController extends AppController {
 		}
 		$this->set('game_id',$game_id);
 		$this->set('your_cards',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$deck_id.' AND DeckCard.location = "Battlefield"')));
-		$this->set('opponent_cards',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$other_deck_id.' AND DeckCard.location = "Battlefield"')));
+		$this->set('opponents_cards',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$other_deck_id.' AND DeckCard.location = "Battlefield"')));
 	}
 	
 	function game_end_turn($game_id)
