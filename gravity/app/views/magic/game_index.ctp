@@ -20,7 +20,7 @@ foreach($games as $game):
 		echo '<div><a target="_blank" href="/magic/game_hand/'.$game['MagicGame']['id'].'">View Hand</a> | <a target="_blank" href="/magic/game_battlefield/'.$game['MagicGame']['id'].'">View Battlefield</a></div>';
 	}
 endforeach;
-if(count($$games) == 0) echo '<div>You have no games yet.</div>';
+if(count($games) == 0) echo '<div>You have no games yet.</div>';
 echo '<h2>Start New Game</h2>';
 echo $this->Form->create('MagicGame',array('url' => array('controller' => 'magic', 'action' => 'game_create')));
 $deck_array = array();
