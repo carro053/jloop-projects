@@ -144,16 +144,18 @@ class MagicController extends AppController {
 		$game = $this->MagicGame->findById($game_id);
 		if($this->Auth->user('id') == $game['MagicGame']['user_1_id'])
 		{
+			$this->set('your_number',1);
 			$deck_id = $game['MagicGame']['user_1_deck_id'];
 			$other_deck_id = $game['MagicGame']['user_2_deck_id'];
 		}else if($this->Auth->user('id') == $game['MagicGame']['user_2_id'])
 		{
+			$this->set('your_number',2);
 			$deck_id = $game['MagicGame']['user_2_deck_id'];
 			$other_deck_id = $game['MagicGame']['user_1_deck_id'];
 		}else{
 			die('How did you get here?');
 		}
-		$this->set('game_id',$game_id);
+		$this->set('game',$game);
 		$this->set('your_cards',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$deck_id.' AND DeckCard.location = "Battlefield"')));
 		$this->set('opponents_cards',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$other_deck_id.' AND DeckCard.location = "Battlefield"')));
 	}
