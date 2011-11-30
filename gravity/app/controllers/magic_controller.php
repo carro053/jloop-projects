@@ -93,9 +93,11 @@ class MagicController extends AppController {
 			$this->data['MagicGame']['turn'] = $turn;
 			$this->MagicGame->save($this->data);
 			$game = $this->MagicGame->findById($this->data['MagicGame']['id']);
+			pr($game);
 			$this->MagicGame->query('UPDATE `deck_cards` SET `location` = "Library" WHERE `deck_id` = '.$game['MagicGame']['user_1_deck_id'].' OR `deck_id` = '.$game['MagicGame']['user_2_deck_id']);
 			$this->MagicGame->query('UPDATE `deck_cards` SET `location` = "Hand" WHERE `deck_id` = '.$game['MagicGame']['user_1_deck_id'].' LIMIT 7 ORDER BY RAND()');
 			$this->MagicGame->query('UPDATE `deck_cards` SET `location` = "Hand" WHERE `deck_id` = '.$game['MagicGame']['user_2_deck_id'].' LIMIT 7 ORDER BY RAND()');
+			exit();
 			$this->redirect('/magic/game_battlefield/'.$this->data['MagicGame']['id']);
 		}else{
 			die('How did you get here?');
