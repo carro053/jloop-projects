@@ -174,7 +174,7 @@ class MagicController extends AppController {
 		$this->MagicGame->query('UPDATE `deck_cards` SET `tapped` = 0 WHERE `deck_id` = '.$deck_id);
 		$this->MagicGame->query('UPDATE `deck_cards` SET `location` = "Hand" WHERE `deck_id` = '.$deck_id.' AND `location` = "Library" ORDER BY RAND() LIMIT 1');
 		$this->MagicGame->save($game);
-		$this->redirect('/magic/game_hand/'.$game_id);
+		$this->redirect('/magic/game_battlefield/'.$game_id);
 	}
 	
 	function game_play_card($game_id,$deck_card_id)
