@@ -384,7 +384,7 @@ class MagicController extends AppController {
 		exit();
 	}
 	
-	function game_raise_health()
+	function game_raise_health($game_id)
 	{
 		$game = $this->MagicGame->findById($game_id);
 		if($this->Auth->user('id') == $game['MagicGame']['user_1_id'])
@@ -401,7 +401,7 @@ class MagicController extends AppController {
 		exit();
 	}
 	
-	function game_lower_health()
+	function game_lower_health($game_id)
 	{
 		$game = $this->MagicGame->findById($game_id);
 		if($this->Auth->user('id') == $game['MagicGame']['user_1_id'])
