@@ -22,7 +22,9 @@ if($your_number == $game['MagicGame']['turn'] + 1)
 echo '<h2>Opponent\'s Field</h2>';
 echo '<div id="card_pool">';
 foreach($opponents_cards as $deck_card):
-	echo '<div><img src="/files/magic_cards/'.$deck_card['DeckCard']['card_id'].'.jpg" /></div>';
+	echo '<div><img';
+	if($deck_card['DeckCard']['tapped']) echo ' style="opacity:0.4;"';
+	echo ' src="/files/magic_cards/'.$deck_card['DeckCard']['card_id'].'.jpg" /></div>';
 endforeach;
 echo '</div>';
  ?>
