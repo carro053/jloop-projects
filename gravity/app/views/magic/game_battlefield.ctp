@@ -16,7 +16,7 @@ $(document).ready(function() {
 function tapCard(deck_card_id)
 {
 	$.post('/magic/game_tap_card/<?php echo $game['MagicGame']['id']; ?>/'+deck_card_id, function(data) {
-		$('#DeckCard'+deck_card_id).attr('style', 'opacity:'+data';');
+		$('#DeckCard'+deck_card_id).attr('style', 'opacity:'+data+';');
 	});
 }
 
