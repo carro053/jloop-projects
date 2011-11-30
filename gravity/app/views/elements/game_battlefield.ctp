@@ -32,9 +32,9 @@ echo '<h2>Your Field | <a href="" onclick="loseAHitPoint(); return false;">-</a>
 echo '<a href="/magic/game_graveyard/'.$game['MagicGame']['id'].'/0" target="_blank">View Your Graveyard</a>';
 echo '<div id="card_pool">';
 foreach($your_cards as $deck_card):
-	echo '<div id="DeckCard'.$deck_card['DeckCard']['id'].'"><a href="" onclick="tapCard('.$deck_card['DeckCard']['id'].'); return false;"><img';
-	if($deck_card['DeckCard']['tapped']) echo ' style="opacity:0.4;"';
-	echo ' src="/files/magic_cards/'.$deck_card['DeckCard']['card_id'].'.jpg" /></a><br /><a href="" onclick="discardCard('.$deck_card['DeckCard']['id'].'); return false;">Discard Card</a> <a href="" onclick="returnCardToHand('.$deck_card['DeckCard']['id'].'); return false;">Return to Hand</a></div>';
+	echo '<div id="DeckCard'.$deck_card['MagicGameDeckCard']['id'].'"><a href="" onclick="tapCard('.$deck_card['MagicGameDeckCard']['id'].'); return false;"><img';
+	if($deck_card['MagicGameDeckCard']['tapped']) echo ' style="opacity:0.4;"';
+	echo ' src="/files/magic_cards/'.$deck_card['MagicGameDeckCard']['card_id'].'.jpg" /></a><br /><a href="" onclick="discardCard('.$deck_card['MagicGameDeckCard']['id'].'); return false;">Discard Card</a> <a href="" onclick="returnCardToHand('.$deck_card['MagicGameDeckCard']['id'].'); return false;">Return to Hand</a></div>';
 endforeach;
 echo '</div>';
 
@@ -62,8 +62,8 @@ echo '<a href="/magic/game_graveyard/'.$game['MagicGame']['id'].'/1" target="_bl
 echo '<div id="card_pool">';
 foreach($opponents_cards as $deck_card):
 	echo '<div><img';
-	if($deck_card['DeckCard']['tapped']) echo ' style="opacity:0.4;"';
-	echo ' src="/files/magic_cards/'.$deck_card['DeckCard']['card_id'].'.jpg" /></div>';
+	if($deck_card['MagicGameDeckCard']['tapped']) echo ' style="opacity:0.4;"';
+	echo ' src="/files/magic_cards/'.$deck_card['MagicGameDeckCard']['card_id'].'.jpg" /></div>';
 endforeach;
 echo '</div>';
 ?>
