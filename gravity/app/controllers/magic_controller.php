@@ -66,7 +66,7 @@ class MagicController extends AppController {
 	
 	function game_index()
 	{
-		$this->MagicGame->bindModel(array('hasOne'=>array('Player1'=>array('className'=>'User','foreign_key'=>'user_1_id'),'Player2'=>array('className'=>'User','foreign_key'=>'user_2_id'))));
+		$this->MagicGame->bindModel(array('belongsTo'=>array('Player1'=>array('className'=>'User','foreign_key'=>'user_1_id'),'Player2'=>array('className'=>'User','foreign_key'=>'user_2_id'))));
 		$this->set('games',$this->MagicGame->find('all',array('conditions'=>'MagicGame.user_1_id = '.$this->Auth->user('id').' OR MagicGame.user_2_id = '.$this->Auth->user('id'))));
 		$this->set('decks',$this->Deck->find('all',array('conditions'=>'Deck.user_id = '.$this->Auth->user('id'))));
 		$this->set('users',$this->User->find('all',array('conditions'=>'User.id != '.$this->Auth->user('id'))));
@@ -140,7 +140,7 @@ class MagicController extends AppController {
 	
 	function game_battlefield($game_id)
 	{
-		$this->MagicGame->bindModel(array('hasOne'=>array('Player1'=>array('className'=>'User','foreign_key'=>'user_1_id'),'Player2'=>array('className'=>'User','foreign_key'=>'user_2_id'))));
+		$this->MagicGame->bindModel(array('belongsTo'=>array('Player1'=>array('className'=>'User','foreign_key'=>'user_1_id'),'Player2'=>array('className'=>'User','foreign_key'=>'user_2_id'))));
 		$game = $this->MagicGame->findById($game_id);
 		if($this->Auth->user('id') == $game['MagicGame']['user_1_id'])
 		{
