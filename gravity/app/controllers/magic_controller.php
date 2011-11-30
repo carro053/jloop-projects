@@ -384,6 +384,42 @@ class MagicController extends AppController {
 		exit();
 	}
 	
+	function game_raise_health()
+	{
+		$game = $this->MagicGame->findById($game_id);
+		if($this->Auth->user('id') == $game['MagicGame']['user_1_id'])
+		{
+			$game['MagicGame']['user_1_hp']++;
+		}else if($this->Auth->user('id') == $game['MagicGame']['user_2_id'])
+		{
+			$game['MagicGame']['user_2_hp']++;
+		}else{
+			die('How did you get here?');
+		}
+		$this->MagicGame->save($game);
+		echo 1;
+		exit();
+	}
+	
+	function game_lower_health()
+	{
+		$game = $this->MagicGame->findById($game_id);
+		if($this->Auth->user('id') == $game['MagicGame']['user_1_id'])
+		{
+			$game['MagicGame']['user_1_hp']--;
+			if($game['MagicGame']['user_1_hp'] == 0) $game['MagicGame']['winner_id'] = $game['MagicGame']['user_2_id'];
+		}else if($this->Auth->user('id') == $game['MagicGame']['user_2_id'])
+		{
+			$game['MagicGame']['user_2_hp']--;
+			if($game['MagicGame']['user_2_hp'] == 0) $game['MagicGame']['winner_id'] = $game['MagicGame']['user_1_id'];
+		}else{
+			die('How did you get here?');
+		}
+		$this->MagicGame->save($game);
+		echo 1;
+		exit();
+	}
+	
 	function set_mana()
 	{
 		$this->Card->query('UPDATE `cards` SET `mana` = 1 WHERE `id` IN (SELECT `card_id` FROM `deck_cards` WHERE `deck_id` = 10)');
