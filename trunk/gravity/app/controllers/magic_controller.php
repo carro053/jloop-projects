@@ -71,7 +71,7 @@ class MagicController extends AppController {
 		$this->set('users',$this->User->find('all',array('conditions'=>'User.id != '.$this->Auth->user('id'))));
 	}
 	
-	function game_challenge()
+	function game_create()
 	{
 		if(isset($this->data['MagicGame']['user_1_deck_id']))
 		{
@@ -232,12 +232,6 @@ class MagicController extends AppController {
 		}
 		$this->DeckCard->query('UPDATE `deck_cards` SET `tapped` = 1 WHERE `id` = '.$deck_card_id);
 		$this->redirect('/magic/game_battlefield/'.$game_id);
-	}
-	
-	function set_grey()
-	{
-		$this->Card->query('UPDATE `cards` SET `color` = 6, `card_set_id` = 1 WHERE `id` IN (SELECT `card_id` FROM `deck_cards` WHERE `deck_id` = 8)');
-		exit();
 	}
 	
 }
