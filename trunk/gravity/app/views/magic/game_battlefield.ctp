@@ -12,7 +12,7 @@ echo '<div style="clear:both";>&nbsp;</div>';
 if($your_number == $game['MagicGame']['turn'] + 1)
 {
 	echo '<h2>Your Turn</h2>';
-	echo '<a href="/magic/end_turn/'.$game['MagicGame']['id'].'" onclick="return confirm(\'Are you sure you want to end your turn?\');">End Turn</a>';
+	echo '<a href="/magic/game_end_turn/'.$game['MagicGame']['id'].'" onclick="return confirm(\'Are you sure you want to end your turn?\');">End Turn</a>';
 }elseif($your_number == 1)
 {
 	echo '<h2>'.$game['User_2']['username'].'\'s Turn</h2>';
