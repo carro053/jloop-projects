@@ -134,7 +134,7 @@ class MagicController extends AppController {
 			die('How did you get here?');
 		}
 		$this->set('deck_id',$deck_id);
-		$this->set('hand',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$deck_id.' AND DeckCard.location = "Hand"','order'=>'DeckCard.mana ASC')));
+		$this->set('hand',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$deck_id.' AND DeckCard.location = "Hand"')));
 	}
 	
 	function game_battlefield($game_id)
@@ -152,8 +152,8 @@ class MagicController extends AppController {
 			die('How did you get here?');
 		}
 		$this->set('deck_id',$deck_id);
-		$this->set('your_cards',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$deck_id.' AND DeckCard.location = "Battlefield"','order'=>'DeckCard.mana ASC')));
-		$this->set('opponent_cards',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$other_deck_id.' AND DeckCard.location = "Battlefield"','order'=>'DeckCard.mana ASC')));
+		$this->set('your_cards',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$deck_id.' AND DeckCard.location = "Battlefield"')));
+		$this->set('opponent_cards',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$other_deck_id.' AND DeckCard.location = "Battlefield"')));
 	}
 	
 	function game_end_turn($game_id)
