@@ -138,6 +138,23 @@ class MagicController extends AppController {
 		$this->set('hand',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$deck_id.' AND DeckCard.location = "Hand"')));
 	}
 	
+	function game_refresh_hand($game_id)
+	{
+		$game = $this->MagicGame->findById($game_id);
+		$this->set('game',$game);
+		if($this->Auth->user('id') == $game['MagicGame']['user_1_id'])
+		{
+			$deck_id = $game['MagicGame']['user_1_deck_id'];
+		}else if($this->Auth->user('id') == $game['MagicGame']['user_2_id'])
+		{
+			$deck_id = $game['MagicGame']['user_2_deck_id'];
+		}else{
+			die('How did you get here?');
+		}
+		$this->set('game_id',$game_id);
+		$this->set('hand',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$deck_id.' AND DeckCard.location = "Hand"')));
+	}
+	
 	function game_battlefield($game_id)
 	{
 		$this->MagicGame->bindModel(array('belongsTo'=>array('User_1'=>array('className'=>'User','foreign_key'=>'user_1_id'),'User_2'=>array('className'=>'User','foreign_key'=>'user_2_id'))));
