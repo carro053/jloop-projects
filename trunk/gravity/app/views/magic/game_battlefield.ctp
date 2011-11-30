@@ -9,7 +9,7 @@ echo '</div>';
 echo '<div style="clear:both";>&nbsp;</div>';
 echo '<h2>Opponent\'s Field</h2>';
 echo '<div id="card_pool">';
-foreach($opponent_cards as $deck_card):
+foreach($opponents_cards as $deck_card):
 	echo '<div><img src="/files/magic_cards/'.$deck_card['DeckCard']['card_id'].'.jpg" /></div>';
 endforeach;
 echo '</div>';
