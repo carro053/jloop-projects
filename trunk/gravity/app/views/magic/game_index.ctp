@@ -15,9 +15,16 @@ foreach($games as $game):
 		echo '</div>';
 	}elseif($game['MagicGame']['user_2_deck_id'] == 0)
 	{
-		echo '<div>Waiting for Opponent to Select Deck</div>';
+		echo '<div>Waiting for '.$game['User_2']['username'].' to Select Deck</div>';
 	}else{
-		echo '<div><a target="_blank" href="/magic/game_hand/'.$game['MagicGame']['id'].'">View Hand</a> | <a target="_blank" href="/magic/game_battlefield/'.$game['MagicGame']['id'].'">View Battlefield</a></div>';
+		echo '<div>';
+		if($user_id == $game['MagicGame']['user_1_id'])
+		{
+			echo 'VS '.$game['User_2']['username'];
+		}else{
+			echo 'VS '.$game['User_1']['username'];
+		}
+		echo ' - <a target="_blank" href="/magic/game_hand/'.$game['MagicGame']['id'].'">View Hand</a> | <a target="_blank" href="/magic/game_battlefield/'.$game['MagicGame']['id'].'">View Battlefield</a></div>';
 	}
 endforeach;
 if(count($games) == 0) echo '<div>You have no games yet.</div>';
