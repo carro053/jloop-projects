@@ -175,6 +175,7 @@ class MagicController extends AppController {
 		$this->set('game',$game);
 		$this->set('your_cards',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$deck_id.' AND DeckCard.location = "Battlefield"')));
 		$this->set('opponents_cards',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$other_deck_id.' AND DeckCard.location = "Battlefield"')));
+		$this->set('opponents_hand',$this->DeckCard->find('count',array('conditions'=>'DeckCard.deck_id = '.$other_deck_id.' AND DeckCard.location = "Hand"')));
 	}
 	
 	function game_refresh_battlefield($game_id)
@@ -197,6 +198,7 @@ class MagicController extends AppController {
 		$this->set('game',$game);
 		$this->set('your_cards',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$deck_id.' AND DeckCard.location = "Battlefield"')));
 		$this->set('opponents_cards',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$other_deck_id.' AND DeckCard.location = "Battlefield"')));
+		$this->set('opponents_hand',$this->DeckCard->find('count',array('conditions'=>'DeckCard.deck_id = '.$other_deck_id.' AND DeckCard.location = "Hand"')));
 	}
 	
 	function game_graveyard($game_id,$theirs)
@@ -285,6 +287,23 @@ class MagicController extends AppController {
 			die('How did you get here?');
 		}
 		$this->MagicGame->query('UPDATE `deck_cards` SET `location` = "Hand" WHERE `deck_id` = '.$deck_id.' AND `location` = "Library" ORDER BY RAND() LIMIT 1');
+		echo 1;
+		exit();
+	}
+	
+	function game_give_land_to_opponent($game_id)
+	{
+		$game = $this->MagicGame->findById($game_id);
+		if($this->Auth->user('id') == $game['MagicGame']['user_1_id'])
+		{
+			$deck_id = $game['MagicGame']['user_2_deck_id'];
+		}else if($this->Auth->user('id') == $game['MagicGame']['user_2_id'])
+		{
+			$deck_id = $game['MagicGame']['user_1_deck_id'];
+		}else{
+			die('How did you get here?');
+		}
+		$this->MagicGame->query('UPDATE `deck_cards` SET `location` = "Hand" WHERE `deck_id` = '.$deck_id.' AND `location` = "Library" AND `card_id` IN (SELECT `id` FROM `cards` WHERE `mana` = 1) LIMIT 1');
 		echo 1;
 		exit();
 	}
