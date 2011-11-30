@@ -8,7 +8,8 @@ echo '<div id="card_pool">';
 foreach($cards as $card):
 	echo '<div><a href="" onclick="add_card('.$card['Card']['id'].'); return false;"><img src="/files/magic_cards/'.$card['Card']['id'].'.jpg" /></a></div>';
 endforeach;
-echo '</div>'; ?>
+echo '</div>';
+ ?>
 <script type="text/javascript">
 	function add_card(card_id)
 	{
