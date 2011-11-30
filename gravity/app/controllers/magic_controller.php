@@ -97,10 +97,12 @@ class MagicController extends AppController {
 			$this->Deck->bindModel(array('hasMany'=>array('DeckCard'=>array('className'=>'DeckCard','foreign_key'=>'deck_id','order'=>'DeckCard.card_id ASC'))));
 			$deck_1 = $this->Deck->find('first',array('conditions'=>'Deck.id = '.$game['MagicGame']['user_1_deck_id']));
 			$this->MagicGameDeck->create();
+			$deck_1['Deck']['id'] = null;
 			$this->MagicGameDeck->save($deck_1['Deck']);
 			$new_deck_1_id = $this->MagicGameDeck->id;
 			foreach($deck_1['DeckCard'] as $deck_card):
 				$this->MagicGameDeckCard->create();
+				$deck_card['id'] = null;
 				$deck_card['magic_game_deck_id'] = $new_deck_1_id;
 				$this->MagicGameDeckCard->save($deck_card);
 			endforeach;
@@ -108,10 +110,12 @@ class MagicController extends AppController {
 			$this->Deck->bindModel(array('hasMany'=>array('DeckCard'=>array('className'=>'DeckCard','foreign_key'=>'deck_id','order'=>'DeckCard.card_id ASC'))));
 			$deck_2 = $this->Deck->find('first',array('conditions'=>'Deck.id = '.$game['MagicGame']['user_2_deck_id']));
 			$this->MagicGameDeck->create();
+			$deck_2['Deck']['id'] = null;
 			$this->MagicGameDeck->save($deck_2['Deck']);
 			$new_deck_2_id = $this->MagicGameDeck->id;
 			foreach($deck_2['DeckCard'] as $deck_card):
 				$this->MagicGameDeckCard->create();
+				$deck_card['id'] = null;
 				$deck_card['magic_game_deck_id'] = $new_deck_2_id;
 				$this->MagicGameDeckCard->save($deck_card);
 			endforeach;
