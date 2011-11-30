@@ -420,7 +420,7 @@ class MagicController extends AppController {
 		}else{
 			die('How did you get here?');
 		}
-		$this->DeckCard->query('UPDATE `magic_game_deck_cards` SET `location` = "Hand" WHERE `id` = '.$deck_card_id);
+		$this->MagicGameDeckCard->query('UPDATE `magic_game_deck_cards` SET `location` = "Hand" WHERE `id` = '.$deck_card_id);
 		echo 1;
 		exit();
 	}
@@ -437,7 +437,7 @@ class MagicController extends AppController {
 		}else{
 			die('How did you get here?');
 		}
-		$deck_card = $this->DeckCard->findById($deck_card_id);
+		$deck_card = $this->MagicGameDeckCard->findById($deck_card_id);
 		if($deck_card['MagicGameDeckCard']['tapped'])
 		{
 			$deck_card['MagicGameDeckCard']['tapped'] = 0;
