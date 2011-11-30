@@ -4,7 +4,7 @@ echo '<div id="card_pool">';
 foreach($your_cards as $deck_card):
 	echo '<div><a href="/magic/game_tap_card/'.$game_id.'/'.$deck_card['DeckCard']['id'].'"><img';
 	if($deck_card['DeckCard']['tapped']) echo ' style="opacity:0.4;"';
-	echo ' src="/files/magic_cards/'.$deck_card['DeckCard']['card_id'].'.jpg" /></a><br /<a href="/magic/game_discard_card/'.$game_id.'/'.$deck_card['DeckCard']['id'].'">Discard Card</a> <a href="/magic/game_return_card_to_hand/'.$game_id.'/'.$deck_card['DeckCard']['id'].'">Return to Hand</a></div>';
+	echo ' src="/files/magic_cards/'.$deck_card['DeckCard']['card_id'].'.jpg" /></a><br /><a href="/magic/game_discard_card/'.$game_id.'/'.$deck_card['DeckCard']['id'].'">Discard Card</a> <a href="/magic/game_return_card_to_hand/'.$game_id.'/'.$deck_card['DeckCard']['id'].'">Return to Hand</a></div>';
 endforeach;
 echo '</div>';
 
