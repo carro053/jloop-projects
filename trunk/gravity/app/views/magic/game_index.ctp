@@ -3,7 +3,15 @@
 foreach($games as $game):
 	if($user_id != $game['MagicGame']['user_1_id'] && $game['MagicGame']['user_2_deck_id'] == 0)
 	{
-		echo '<div>SelectDeck</div>';
+		echo '<div>';
+		echo $this->Form->create('MagicGame',array('url' => array('controller' => 'magic', 'action' => 'game_start')));
+		$deck_array = array();
+		foreach($decks as $deck):
+			$deck_array[$deck['Deck']['id']] = $deck['Deck']['name'];
+		endforeach;
+		echo $this->Form->input('MagicGame.user_2_deck_id',array('options'=>$deck_array,'label'=>'Deck'));
+		echo $this->Form->end('Start Game');
+		echo '</div>';
 	}elseif($game['MagicGame']['user_2_deck_id'] == 0)
 	{
 		echo '<div>Waiting for Opponent to Select Deck</div>';
