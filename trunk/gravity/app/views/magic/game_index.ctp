@@ -5,6 +5,7 @@ foreach($games as $game):
 	{
 		echo '<div>';
 		echo $this->Form->create('MagicGame',array('url' => array('controller' => 'magic', 'action' => 'game_start')));
+		echo $this->Form->input('MagicGame.id',array('value'=>$game['MagicGame']['id']));
 		$deck_array = array();
 		foreach($decks as $deck):
 			$deck_array[$deck['Deck']['id']] = $deck['Deck']['name'];
