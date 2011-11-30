@@ -284,6 +284,62 @@ class MagicController extends AppController {
 		$this->set('theirs',$theirs);
 	}
 	
+	function game_library($game_id,$theirs)
+	{
+		$game = $this->MagicGame->findById($game_id);
+		$this->set('game',$game);
+		if($this->Auth->user('id') == $game['MagicGame']['user_1_id'])
+		{
+			if($theirs)
+			{
+				$deck_id = $game['MagicGame']['user_2_deck_id'];
+			}else{
+				$deck_id = $game['MagicGame']['user_1_deck_id'];
+			}
+		}else if($this->Auth->user('id') == $game['MagicGame']['user_2_id'])
+		{
+			if($theirs)
+			{
+				$deck_id = $game['MagicGame']['user_1_deck_id'];
+			}else{
+				$deck_id = $game['MagicGame']['user_2_deck_id'];
+			}
+		}else{
+			die('How did you get here?');
+		}
+		$this->set('game_id',$game_id);
+		$this->set('hand',$this->MagicGameDeckCard->find('all',array('conditions'=>'MagicGameDeckCard.magic_game_deck_id = '.$deck_id.' AND MagicGameDeckCard.location = "library"')));
+		$this->set('theirs',$theirs);
+	}
+	
+	function game_refresh_library($game_id,$theirs)
+	{
+		$game = $this->MagicGame->findById($game_id);
+		$this->set('game',$game);
+		if($this->Auth->user('id') == $game['MagicGame']['user_1_id'])
+		{
+			if($theirs)
+			{
+				$deck_id = $game['MagicGame']['user_2_deck_id'];
+			}else{
+				$deck_id = $game['MagicGame']['user_1_deck_id'];
+			}
+		}else if($this->Auth->user('id') == $game['MagicGame']['user_2_id'])
+		{
+			if($theirs)
+			{
+				$deck_id = $game['MagicGame']['user_1_deck_id'];
+			}else{
+				$deck_id = $game['MagicGame']['user_2_deck_id'];
+			}
+		}else{
+			die('How did you get here?');
+		}
+		$this->set('game_id',$game_id);
+		$this->set('hand',$this->MagicGameDeckCard->find('all',array('conditions'=>'MagicGameDeckCard.magic_game_deck_id = '.$deck_id.' AND MagicGameDeckCard.location = "Library"')));
+		$this->set('theirs',$theirs);
+	}
+	
 	function game_end_turn($game_id)
 	{
 		$game = $this->MagicGame->findById($game_id);
@@ -314,23 +370,6 @@ class MagicController extends AppController {
 			die('How did you get here?');
 		}
 		$this->MagicGame->query('UPDATE `magic_game_deck_cards` SET `location` = "Hand" WHERE `magic_game_deck_id` = '.$deck_id.' AND `location` = "Library" ORDER BY RAND() LIMIT 1');
-		echo 1;
-		exit();
-	}
-	
-	function game_give_land_to_opponent($game_id)
-	{
-		$game = $this->MagicGame->findById($game_id);
-		if($this->Auth->user('id') == $game['MagicGame']['user_1_id'])
-		{
-			$deck_id = $game['MagicGame']['user_2_deck_id'];
-		}else if($this->Auth->user('id') == $game['MagicGame']['user_2_id'])
-		{
-			$deck_id = $game['MagicGame']['user_1_deck_id'];
-		}else{
-			die('How did you get here?');
-		}
-		$this->MagicGame->query('UPDATE `magic_game_deck_cards` SET `location` = "Hand" WHERE `magic_game_deck_id` = '.$deck_id.' AND `location` = "Library" AND `card_id` IN (SELECT `id` FROM `cards` WHERE `mana` = 1) LIMIT 1');
 		echo 1;
 		exit();
 	}

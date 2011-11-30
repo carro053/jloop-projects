@@ -29,7 +29,7 @@ if($game['MagicGame']['winner_id'] == 1)
 	echo '</h2>';
 }
 echo '<h2>Your Field | <a href="" onclick="loseAHitPoint(); return false;">-</a> <span id="MyHealth">'.$game['MagicGame']['user_'.$your_number.'_hp'].'</span> <a href="" onclick="gainAHitPoint(); return false;">+</a></h2>';
-echo '<a href="/magic/game_graveyard/'.$game['MagicGame']['id'].'/0" target="_blank">View Your Graveyard</a>';
+echo '<a href="/magic/game_graveyard/'.$game['MagicGame']['id'].'/0" target="_blank">View Your Graveyard</a> - <a href="/magic/game_library/'.$game['MagicGame']['id'].'/0" target="_blank">View Your Library</a>';
 echo '<div id="card_pool">';
 foreach($your_cards as $deck_card):
 	echo '<div id="DeckCard'.$deck_card['MagicGameDeckCard']['id'].'"><a href="" onclick="tapCard('.$deck_card['MagicGameDeckCard']['id'].'); return false;"><img';
@@ -58,7 +58,7 @@ if($opponents_hand == 1)
 	echo ' | '.$opponents_hand.' Cards In Hand';
 }
 echo '</h2>';
-echo '<a href="/magic/game_graveyard/'.$game['MagicGame']['id'].'/1" target="_blank">View Their Graveyard</a> - <a href="" onclick="giveOpponentACard(); return false;">Give '.$opponents_name.' A Random Card</a> - <a href="" onclick="giveOpponentALand(); return false;">Give '.$opponents_name.' A Land</a>';
+echo '<a href="/magic/game_graveyard/'.$game['MagicGame']['id'].'/1" target="_blank">View Their Graveyard</a> - <a href="/magic/game_library/'.$game['MagicGame']['id'].'/1" target="_blank">View Their Library</a> - <a href="" onclick="giveOpponentACard(); return false;">Give '.$opponents_name.' A Random Card</a>';
 echo '<div id="card_pool">';
 foreach($opponents_cards as $deck_card):
 	echo '<div><img';

@@ -39,14 +39,6 @@ function giveOpponentACard()
 	}
 }
 
-function giveOpponentALand()
-{
-	if(confirm('Are you sure you want to?'))
-	{
-		$.post('/magic/game_give_land_to_opponent/<?php echo $game['MagicGame']['id']; ?>');
-	}
-}
-
 function tapCard(deck_card_id)
 {
 	$.post('/magic/game_tap_card/<?php echo $game['MagicGame']['id']; ?>/'+deck_card_id, function(data) {
