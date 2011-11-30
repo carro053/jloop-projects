@@ -15,27 +15,27 @@ $(document).ready(function() {
 
 function tapCard(deck_card_id)
 {
-	$.post('/magic/game_tap_card/<?php echo $game_id; ?>/'+deck_card_id, function(data) {
+	$.post('/magic/game_tap_card/<?php echo $game['MagicGame']['id']; ?>/'+deck_card_id, function(data) {
 		$('#DeckCard'+deck_card_id).attr('style', 'opacity:'+data';');
 	});
 }
 
 function discardCard(deck_card_id)
 {
-	$.post('/magic/game_discard_card/<?php echo $game_id; ?>/'+deck_card_id, function(data) {
+	$.post('/magic/game_discard_card/<?php echo $game['MagicGame']['id']; ?>/'+deck_card_id, function(data) {
 		if(data == 1) $('#DeckCard'+deck_card_id).remove();
 	});
 }
 
 function returnCardToHand(deck_card_id)
 {
-	$.post('/magic/game_return_card_to_hand/<?php echo $game_id; ?>/'+deck_card_id, function(data) {
+	$.post('/magic/game_return_card_to_hand/<?php echo $game['MagicGame']['id']; ?>/'+deck_card_id, function(data) {
 		if(data == 1) $('#DeckCard'+deck_card_id).remove();
 	});
 }
 
 function refreshBattlefield()
 { 
-	$('#card_pool').load('/magic/game_refresh_battlefield/<?php echo $game_id; ?>');
+	$('#card_pool').load('/magic/game_refresh_battlefield/<?php echo $game['MagicGame']['id']; ?>');
 }
 </script>
