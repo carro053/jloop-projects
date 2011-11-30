@@ -384,6 +384,11 @@ class MagicController extends AppController {
 		exit();
 	}
 	
+	function set_mana()
+	{
+		$this->Card->query('UPDATE `cards` SET `mana` = 1 WHERE `id` IN (SELECT `card_id` FROM `deck_cards` WHERE `deck_id` = 10)');
+		exit();
+	}
 }
 
 ?>
