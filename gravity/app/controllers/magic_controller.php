@@ -187,7 +187,7 @@ class MagicController extends AppController {
 		}else{
 			die('How did you get here?');
 		}
-		$this->DeckCard->query('UPDATE `deck_cards` SET `location` = "Battlefield" WHERE `id` = '.$deck_card_id);
+		$this->DeckCard->query('UPDATE `deck_cards` SET `location` = "Battlefield", `tapped` = 0 WHERE `id` = '.$deck_card_id);
 		$this->redirect('/magic/game_hand/'.$game_id);		
 	}
 	
