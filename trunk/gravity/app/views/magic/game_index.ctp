@@ -18,11 +18,11 @@ $deck_array = array();
 foreach($decks as $deck):
 	$deck_array[$deck['Deck']['id']] = $deck['Deck']['name'];
 endforeach;
-echo $this->Form->input('Game.user_1_deck_id',array('options'=>$deck_array));
+echo $this->Form->input('Game.user_1_deck_id',array('options'=>$deck_array,'label'=>'Deck'));
 $opponent_array = array();
 foreach($users as $user):
 	$opponent_array[$user['User']['id']] = $user['User']['username'];
 endforeach;
-echo $this->Form->input('Game.user_2_id',array('options'=>$opponent_array));
+echo $this->Form->input('Game.user_2_id',array('options'=>$opponent_array,'label'=>'Against'));
 echo $this->Form->end('Create Game');
 ?>
