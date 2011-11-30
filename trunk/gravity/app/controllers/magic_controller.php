@@ -184,7 +184,7 @@ class MagicController extends AppController {
 			die('How did you get here?');
 		}
 		$this->set('game_id',$game_id);
-		$this->set('hand',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$deck_id.' AND DeckCard.location = "Hand"')));
+		$this->set('hand',$this->DeckCard->find('all',array('conditions'=>'DeckCard.deck_id = '.$deck_id.' AND DeckCard.location = "Graveyard"')));
 		$this->set('theirs',$theirs);
 	}
 	
