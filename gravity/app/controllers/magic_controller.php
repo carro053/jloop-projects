@@ -14,8 +14,7 @@ class MagicController extends AppController {
 	
 	function deck_index()
 	{
-		$this->Deck->bindModel(array('belongsTo'=>array('User'=>array('className'=>'User','foreign_key'=>'user_id'))));
-		$this->set('decks',$this->Deck->find('all',array()));
+		$this->set('decks',$this->Deck->find('all',array('conditions'=>'Deck.user_id = '.$this->Auth->user('id'))));
 	}
 	
 	function deck_create()
@@ -75,7 +74,8 @@ class MagicController extends AppController {
 	{
 		$this->MagicGame->bindModel(array('belongsTo'=>array('User_1'=>array('className'=>'User','foreign_key'=>'user_1_id'),'User_2'=>array('className'=>'User','foreign_key'=>'user_2_id'))));
 		$this->set('games',$this->MagicGame->find('all',array('conditions'=>'MagicGame.user_1_id = '.$this->Auth->user('id').' OR MagicGame.user_2_id = '.$this->Auth->user('id'))));
-		$this->set('decks',$this->Deck->find('all',array('conditions'=>'Deck.user_id = '.$this->Auth->user('id'))));
+		$this->Deck->bindModel(array('belongsTo'=>array('User'=>array('className'=>'User','foreign_key'=>'user_id'))));
+		$this->set('decks',$this->Deck->find('all',array()));
 		$this->set('users',$this->User->find('all',array('conditions'=>'User.id != '.$this->Auth->user('id'))));
 		$this->set('user_id',$this->Auth->user('id'));
 	}
