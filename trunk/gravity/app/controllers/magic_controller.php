@@ -15,6 +15,16 @@ class MagicController extends AppController {
 	function deck_index()
 	{
 		$this->set('decks',$this->Deck->find('all',array('conditions'=>'Deck.user_id = '.$this->Auth->user('id'))));
+		$this->Deck->bindModel(array('belongsTo'=>array('User'=>array('className'=>'User','foreign_key'=>'user_id'))));
+		$this->set('others_decks',$this->Deck->find('all',array('conditions'=>'Deck.user_id != '.$this->Auth->user('id'))));
+	}
+	
+	function deck_view($deck_id)
+	{
+		$this->Deck->bindModel(array('hasMany'=>array('DeckCard'=>array('className'=>'DeckCard','foreign_key'=>'deck_id','order'=>'DeckCard.card_id ASC'))));
+		$deck = $this->Deck->find('first',array('conditions'=>'Deck.id = '.$deck_id));
+		if(!isset($deck['Deck']['id'])) die('This deck doesn\'t exist.');
+		$this->set('deck',$deck);
 	}
 	
 	function deck_create()
