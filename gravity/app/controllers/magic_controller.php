@@ -6,6 +6,12 @@ class MagicController extends AppController {
 	var $uses = array('Card','Deck','DeckCard','MagicGame','MagicGameDeck','MagicGameDeckCard','User');
 	var $components = array('Auth');
 	
+	function beforeFilter()
+ 	{
+ 		$this->Auth->allow('game_spectate','game_refresh_spectate');
+ 		parent::beforeFilter();
+ 	}
+	
 	function deck_index()
 	{
 		$this->set('decks',$this->Deck->find('all',array('conditions'=>'Deck.user_id = '.$this->Auth->user('id'))));
