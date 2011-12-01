@@ -8,3 +8,7 @@ echo $this->Form->create('Deck',array('url' => array('controller' => 'magic', 'a
 echo $this->Form->input('Deck.name');
 echo $this->Form->end('Create');
 ?>
+<h2>Other's Decks</h2>
+<?php foreach($others_decks as $deck): ?>
+<div><a href="/magic/deck_view/<?php echo $deck['Deck']['id']; ?>"><?php echo $deck['Deck']['name']; ?> - <?php echo $deck['User']['username']; ?></a></div>
+<?php endforeach; ?>
