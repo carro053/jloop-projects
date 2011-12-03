@@ -69,16 +69,16 @@ if($opponents_hand == 1)
 }
 echo '</h2>';
 echo '<a href="/magic/game_graveyard/'.$game['MagicGame']['id'].'/1" target="_blank">View Their Graveyard</a> - <a href="/magic/game_library/'.$game['MagicGame']['id'].'/1" target="_blank">View Their Library</a> - <a href="" onclick="giveOpponentACard(); return false;">Give '.$opponents_name.' A Random Card</a>';
-echo '<div id="mana_pool">';
-foreach($opponents_mana as $deck_card):
+echo '<div id="card_pool">';
+foreach($opponents_cards as $deck_card):
 	echo '<div><img';
 	if($deck_card['MagicGameDeckCard']['tapped']) echo ' style="opacity:0.4;"';
 	echo ' src="/files/magic_cards/'.$deck_card['MagicGameDeckCard']['card_id'].'.jpg" /></div>';
 endforeach;
 echo '</div>';
 echo '<div style="clear:both;height:10px;">&nbsp;</div>';
-echo '<div id="card_pool">';
-foreach($opponents_cards as $deck_card):
+echo '<div id="mana_pool">';
+foreach($opponents_mana as $deck_card):
 	echo '<div><img';
 	if($deck_card['MagicGameDeckCard']['tapped']) echo ' style="opacity:0.4;"';
 	echo ' src="/files/magic_cards/'.$deck_card['MagicGameDeckCard']['card_id'].'.jpg" /></div>';
