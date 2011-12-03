@@ -41,7 +41,6 @@ echo '</div>';
 	}
 	
 	div#card_pool div {
-		background-color: #FFFFFF;
 		width: 168px;
 		height: 233px;
 		position:relative;

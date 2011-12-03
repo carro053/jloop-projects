@@ -44,16 +44,6 @@ echo '</div>';
 		-moz-transform: scale(1);
 		-webkit-transform: scale(1);
 	}
-	.card_bg
-	{
-		position: absolute;
-		top:0;
-		left:0;
-		background-color: #FFFFFF;
-		width: 223px;
-		height: 310px;
-		z-index: -1;
-	}
 </style>
 <script type="text/javascript">
 $(document).ready(function() {

@@ -11,7 +11,7 @@ echo '<div id="mana_pool">';
 foreach($player_1_mana as $deck_card):
 	echo '<div><img';
 	if($deck_card['MagicGameDeckCard']['tapped']) echo ' style="opacity:0.4;"';
-	echo ' src="/files/magic_cards/'.$deck_card['MagicGameDeckCard']['card_id'].'.jpg" /><div class="card_bg"></div></div>';
+	echo ' src="/files/magic_cards/'.$deck_card['MagicGameDeckCard']['card_id'].'.jpg" /></div>';
 endforeach;
 echo '</div>';
 echo '<div style="clear:both;height:20px;">&nbsp;</div>';
@@ -19,7 +19,7 @@ echo '<div id="card_pool">';
 foreach($player_1_cards as $deck_card):
 	echo '<div><img';
 	if($deck_card['MagicGameDeckCard']['tapped']) echo ' style="opacity:0.4;"';
-	echo ' src="/files/magic_cards/'.$deck_card['MagicGameDeckCard']['card_id'].'.jpg" /><div class="card_bg"></div></div>';
+	echo ' src="/files/magic_cards/'.$deck_card['MagicGameDeckCard']['card_id'].'.jpg" /></div>';
 endforeach;
 echo '</div>';
 echo '<div style="clear:both;height:50px;">&nbsp;</div>';
