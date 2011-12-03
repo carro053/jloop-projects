@@ -50,6 +50,7 @@ if($your_number == $game['MagicGame']['turn'] + 1)
 	echo '<h2>'.$game['User_1']['username'].'\'s Turn</h2>';	
 }
 
+echo '<div style="clear:both;height:20px;">&nbsp;</div>';
 echo '<h2>'.$opponents_name.'\'s Field | '.$game['MagicGame']['user_'.$opponents_number.'_hp'];
 if($opponents_hand == 1)
 {
