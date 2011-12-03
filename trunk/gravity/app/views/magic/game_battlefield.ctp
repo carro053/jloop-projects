@@ -24,9 +24,11 @@ echo '</div>';
 		-moz-transform: scale(1);
 		-webkit-transform: scale(1);
 	}
+	div#card_pool div.a {
+		position: relative;
+	}
 	div#card_pool div a.links {
 		float:left;
-		position: relative;
 	}
 </style>
 <script type="text/javascript">
