@@ -24,7 +24,7 @@ echo '</div>';
 		-moz-transform: scale(1);
 		-webkit-transform: scale(1);
 	}
-	div#card_pool div a.link {
+	div#card_pool div a.links {
 		float:left;
 		position: relative;
 	}
