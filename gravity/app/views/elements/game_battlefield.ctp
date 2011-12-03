@@ -68,9 +68,6 @@ endforeach;
 echo '</div>';
 ?>
 <script type="text/javascript">
-$(document).ready(function() {
-    setInterval("refreshBattlefield()",3000);
-});
 $('div','#card_pool').hover(
 	function () {
 		$('.discard_link',this).show();
@@ -81,4 +78,4 @@ $('div','#card_pool').hover(
 		$('.hand_link',this).hide();
 	}
 );
-<>
+</script>
