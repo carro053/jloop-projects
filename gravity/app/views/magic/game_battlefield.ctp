@@ -27,7 +27,7 @@ echo '</div>';
 	div#card_pool div a.discard_link {
 		position: absolute;
 		top:-5px;
-		right:-5px;
+		left:233px;
 	}
 	div#card_pool div a.hand_link {
 		position: absolute;
