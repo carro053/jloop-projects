@@ -52,6 +52,7 @@ echo '</div>';
 		background-color: #FFFFFF;
 		width: 223px;
 		height: 310px;
+		z-index: -1;
 	}
 </style>
 <script type="text/javascript">
