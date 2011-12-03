@@ -362,7 +362,8 @@ class MagicController extends AppController {
 		$this->MagicGame->bindModel(array('belongsTo'=>array('User_1'=>array('className'=>'User','foreign_key'=>'user_1_id'),'User_2'=>array('className'=>'User','foreign_key'=>'user_2_id'))));
 		$game = $this->MagicGame->findById($game_id);
 		$this->set('game',$game);
-		$this->set('player_1_cards',$this->MagicGameDeckCard->find('all',array('conditions'=>'MagicGameDeckCard.magic_game_deck_id = '.$game['MagicGame']['user_1_deck_id'].' AND MagicGameDeckCard.location = "Battlefield"')));
+		$this->MagicGameDeckCard->bindModel(array('belongsTo'=>array('Card'=>array('className'=>'Card','foreign_key'=>'card_id'))));
+		$this->set('player_1_cards',$this->MagicGameDeckCard->find('all',array('conditions'=>'MagicGameDeckCard.magic_game_deck_id = '.$game['MagicGame']['user_1_deck_id'].' AND MagicGameDeckCard.location = "Battlefield" AND Card.mana = 1')));
 		$this->set('player_1_hand',$this->MagicGameDeckCard->find('count',array('conditions'=>'MagicGameDeckCard.magic_game_deck_id = '.$game['MagicGame']['user_1_deck_id'].' AND MagicGameDeckCard.location = "Hand"')));
 		$this->set('player_2_cards',$this->MagicGameDeckCard->find('all',array('conditions'=>'MagicGameDeckCard.magic_game_deck_id = '.$game['MagicGame']['user_2_deck_id'].' AND MagicGameDeckCard.location = "Battlefield"')));
 		$this->set('player_2_hand',$this->MagicGameDeckCard->find('count',array('conditions'=>'MagicGameDeckCard.magic_game_deck_id = '.$game['MagicGame']['user_2_deck_id'].' AND MagicGameDeckCard.location = "Hand"')));
