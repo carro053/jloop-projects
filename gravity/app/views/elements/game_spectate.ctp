@@ -14,6 +14,7 @@ foreach($player_1_mana as $deck_card):
 	echo ' src="/files/magic_cards/'.$deck_card['MagicGameDeckCard']['card_id'].'.jpg" /></div>';
 endforeach;
 echo '</div>';
+echo '<div style="clear:both;height:10px;">&nbsp;</div>';
 echo '<div id="card_pool">';
 foreach($player_1_cards as $deck_card):
 	echo '<div><img';
