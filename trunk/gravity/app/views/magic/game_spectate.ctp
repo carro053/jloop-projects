@@ -7,6 +7,15 @@ echo '</div>';
 	div#card_pool div {
 		float:left;
 	}
+	
+	div#card_pool div {
+		-moz-transform: scale(0.5);
+		-webkit-transform: scale(0.5);
+	}
+	div#card_pool div:hover {
+		-moz-transform: scale(1);
+		-webkit-transform: scale(1);
+	}
 </style>
 <script type="text/javascript">
 $(document).ready(function() {
