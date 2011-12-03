@@ -1,4 +1,5 @@
 <?php 
+echo '<div style="clear:both;height:50px;">&nbsp;</div>';
 if($your_number == 1)
 {
 	$opponents_name = $game['User_2']['username'];
