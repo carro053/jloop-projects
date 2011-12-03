@@ -33,7 +33,7 @@ echo '<a href="/magic/game_graveyard/'.$game['MagicGame']['id'].'/0" target="_bl
 echo '<div id="card_pool">';
 foreach($your_cards as $deck_card):
 	echo '<div id="DeckCard'.$deck_card['MagicGameDeckCard']['id'].'"><a href="" onclick="tapCard('.$deck_card['MagicGameDeckCard']['id'].'); return false;"><img';
-	if($deck_card['MagicGameDeckCard']['tapped']) echo ' style="opacity:0.4;background-color: #FFFFFF;"';
+	if($deck_card['MagicGameDeckCard']['tapped']) echo ' style="opacity:0.4;"';
 	echo ' src="/files/magic_cards/'.$deck_card['MagicGameDeckCard']['card_id'].'.jpg" /></a><a class="discard_link" href="" onclick="discardCard('.$deck_card['MagicGameDeckCard']['id'].'); return false;"><img src="/img/discard_card.png" /></a> <a class="hand_link" href="" onclick="returnCardToHand('.$deck_card['MagicGameDeckCard']['id'].'); return false;"><img src="/img/return_card_to_hand.png" /></a></div>';
 endforeach;
 echo '</div>';
@@ -68,6 +68,9 @@ endforeach;
 echo '</div>';
 ?>
 <script type="text/javascript">
+$(document).ready(function() {
+    setInterval("refreshBattlefield()",3000);
+});
 $('div','#card_pool').hover(
 	function () {
 		$('.discard_link',this).show();
@@ -78,4 +81,4 @@ $('div','#card_pool').hover(
 		$('.hand_link',this).hide();
 	}
 );
-</script>
+<>
