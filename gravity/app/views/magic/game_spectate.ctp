@@ -11,6 +11,7 @@ echo '</div>';
 	div#card_pool div {
 		width: 112px;
 		height: 155px;
+		position:relative
 		z-index: 10;
 		-moz-transform: scale(0.5);
 		-webkit-transform: scale(0.5);
