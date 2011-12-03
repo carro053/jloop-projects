@@ -9,7 +9,7 @@ echo '</div>';
 	}
 	
 	div#card_pool div {
-		width: 168px;
+		width: 175px;
 		height: 233px;
 		position:relative;
 		z-index: 10;
@@ -17,8 +17,8 @@ echo '</div>';
 		-webkit-transform: scale(0.75);
 	}
 	div#card_pool div:hover {
-		width: 168px;
-		height: 233px;
+		width: 233px;
+		height: 310px;
 		position:relative;
 		z-index: 100;
 		-moz-transform: scale(1);
