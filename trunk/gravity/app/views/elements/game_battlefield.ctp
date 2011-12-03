@@ -67,3 +67,15 @@ foreach($opponents_cards as $deck_card):
 endforeach;
 echo '</div>';
 ?>
+<script type="text/javascript">
+$('div','#card_pool').hover(
+	function () {
+		$('.discard_link',this).show();
+		$('.hand_link',this).show();
+	},
+	function () {
+		$('.discard_link',this).hide();
+		$('.hand_link',this).hide();
+	}
+);
+</script>
