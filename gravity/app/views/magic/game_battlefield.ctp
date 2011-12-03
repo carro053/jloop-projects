@@ -10,7 +10,7 @@ echo '</div>';
 	
 	div#card_pool div {
 		background-color: #FFFFFF;
-		width: 175px;
+		width: 168px;
 		height: 233px;
 		position:relative;
 		z-index: 10;
@@ -18,7 +18,7 @@ echo '</div>';
 		-webkit-transform: scale(0.75);
 	}
 	div#card_pool div:hover {
-		width: 175px;
+		width: 168px;
 		height: 233px;
 		position:relative;
 		z-index: 100;
