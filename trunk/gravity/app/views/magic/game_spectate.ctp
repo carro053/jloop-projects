@@ -8,7 +8,7 @@ echo '</div>';
 		float:left;
 	}
 	
-	div#card_pool div {
+	div#mana_pool div {
 		width: 168px;
 		height: 233px;
 		position:relative;
@@ -16,7 +16,7 @@ echo '</div>';
 		-moz-transform: scale(0.5);
 		-webkit-transform: scale(0.5);
 	}
-	div#card_pool div:hover {
+	div#mana_pool div:hover {
 		width: 168px;
 		height: 233px;
 		position:relative;
