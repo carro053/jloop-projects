@@ -31,6 +31,14 @@ if($game['MagicGame']['winner_id'] == 1)
 }
 echo '<h2>Your Field | <a href="" onclick="loseAHitPoint(); return false;">-</a> <span id="MyHealth">'.$game['MagicGame']['user_'.$your_number.'_hp'].'</span> <a href="" onclick="gainAHitPoint(); return false;">+</a></h2>';
 echo '<a href="/magic/game_graveyard/'.$game['MagicGame']['id'].'/0" target="_blank">View Your Graveyard</a> - <a href="/magic/game_library/'.$game['MagicGame']['id'].'/0" target="_blank">View Your Library</a>';
+echo '<div id="mana_pool">';
+foreach($your_mana as $deck_card):
+	echo '<div id="DeckCard'.$deck_card['MagicGameDeckCard']['id'].'"><a href="" onclick="tapCard('.$deck_card['MagicGameDeckCard']['id'].'); return false;"><img';
+	if($deck_card['MagicGameDeckCard']['tapped']) echo ' style="opacity:0.4;"';
+	echo ' src="/files/magic_cards/'.$deck_card['MagicGameDeckCard']['card_id'].'.jpg" /></a><a class="discard_link" href="" onclick="discardCard('.$deck_card['MagicGameDeckCard']['id'].'); return false;"><img src="/img/discard_card.png" /></a> <a class="hand_link" href="" onclick="returnCardToHand('.$deck_card['MagicGameDeckCard']['id'].'); return false;"><img src="/img/return_card_to_hand.png" /></a></div>';
+endforeach;
+echo '</div>';
+echo '<div style="clear:both;height:10px;">&nbsp;</div>';
 echo '<div id="card_pool">';
 foreach($your_cards as $deck_card):
 	echo '<div id="DeckCard'.$deck_card['MagicGameDeckCard']['id'].'"><a href="" onclick="tapCard('.$deck_card['MagicGameDeckCard']['id'].'); return false;"><img';
@@ -61,6 +69,14 @@ if($opponents_hand == 1)
 }
 echo '</h2>';
 echo '<a href="/magic/game_graveyard/'.$game['MagicGame']['id'].'/1" target="_blank">View Their Graveyard</a> - <a href="/magic/game_library/'.$game['MagicGame']['id'].'/1" target="_blank">View Their Library</a> - <a href="" onclick="giveOpponentACard(); return false;">Give '.$opponents_name.' A Random Card</a>';
+echo '<div id="mana_pool">';
+foreach($opponents_mana as $deck_card):
+	echo '<div><img';
+	if($deck_card['MagicGameDeckCard']['tapped']) echo ' style="opacity:0.4;"';
+	echo ' src="/files/magic_cards/'.$deck_card['MagicGameDeckCard']['card_id'].'.jpg" /></div>';
+endforeach;
+echo '</div>';
+echo '<div style="clear:both;height:10px;">&nbsp;</div>';
 echo '<div id="card_pool">';
 foreach($opponents_cards as $deck_card):
 	echo '<div><img';
@@ -72,6 +88,16 @@ echo '<div style="clear:both;height:50px;">&nbsp;</div>';
 ?>
 <script type="text/javascript">
 $('div','#card_pool').hover(
+	function () {
+		$('.discard_link',this).show();
+		$('.hand_link',this).show();
+	},
+	function () {
+		$('.discard_link',this).hide();
+		$('.hand_link',this).hide();
+	}
+);
+$('div','#mana_pool').hover(
 	function () {
 		$('.discard_link',this).show();
 		$('.hand_link',this).show();
