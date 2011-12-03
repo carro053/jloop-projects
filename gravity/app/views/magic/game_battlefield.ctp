@@ -31,8 +31,8 @@ echo '</div>';
 	}
 	div#card_pool div a.hand_link {
 		position: absolute;
-		top:20px;
-		left:0;
+		top:0px;
+		left:85px;
 	}
 </style>
 <script type="text/javascript">
