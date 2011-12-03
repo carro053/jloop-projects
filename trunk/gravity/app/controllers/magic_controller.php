@@ -244,8 +244,10 @@ class MagicController extends AppController {
 		}
 		$this->set('game',$game);
 		$this->MagicGameDeckCard->bindModel(array('belongsTo'=>array('Card'=>array('className'=>'Card','foreign_key'=>'card_id'))),false);
-		$this->set('your_cards',$this->MagicGameDeckCard->find('all',array('conditions'=>'MagicGameDeckCard.magic_game_deck_id = '.$deck_id.' AND MagicGameDeckCard.location = "Battlefield"')));
-		$this->set('opponents_cards',$this->MagicGameDeckCard->find('all',array('conditions'=>'MagicGameDeckCard.magic_game_deck_id = '.$other_deck_id.' AND MagicGameDeckCard.location = "Battlefield"')));
+		$this->set('your_mana',$this->MagicGameDeckCard->find('all',array('conditions'=>'MagicGameDeckCard.magic_game_deck_id = '.$deck_id.' AND MagicGameDeckCard.location = "Battlefield" AND Card.mana = 1')));
+		$this->set('your_cards',$this->MagicGameDeckCard->find('all',array('conditions'=>'MagicGameDeckCard.magic_game_deck_id = '.$deck_id.' AND MagicGameDeckCard.location = "Battlefield" AND Card.mana = 0')));
+		$this->set('opponents_mana',$this->MagicGameDeckCard->find('all',array('conditions'=>'MagicGameDeckCard.magic_game_deck_id = '.$other_deck_id.' AND MagicGameDeckCard.location = "Battlefield" AND Card.mana = 1')));
+		$this->set('opponents_cards',$this->MagicGameDeckCard->find('all',array('conditions'=>'MagicGameDeckCard.magic_game_deck_id = '.$other_deck_id.' AND MagicGameDeckCard.location = "Battlefield" AND Card.mana = 0')));
 		$this->set('opponents_hand',$this->MagicGameDeckCard->find('count',array('conditions'=>'MagicGameDeckCard.magic_game_deck_id = '.$other_deck_id.' AND MagicGameDeckCard.location = "Hand"')));
 	}
 	
