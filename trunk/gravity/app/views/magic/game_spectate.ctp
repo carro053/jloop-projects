@@ -22,6 +22,12 @@ echo '</div>';
 		-moz-transform: scale(1);
 		-webkit-transform: scale(1);
 	}
+	div#card_pool div img {
+		z-index: 10;
+	}
+	div#card_pool div img:hover {
+		z-index: 100;
+	}
 </style>
 <script type="text/javascript">
 $(document).ready(function() {
