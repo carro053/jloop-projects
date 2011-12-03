@@ -12,7 +12,8 @@ echo '<a href="/magic/game_mulligan/'.$game_id.'" onclick="return confirm(\'Are 
 	}
 	
 	div#card_pool div {
-		width: 168px;
+		background-color: #FFFFFF;
+		width: 175px;
 		height: 233px;
 		position:relative;
 		z-index: 10;
@@ -20,7 +21,7 @@ echo '<a href="/magic/game_mulligan/'.$game_id.'" onclick="return confirm(\'Are 
 		-webkit-transform: scale(0.75);
 	}
 	div#card_pool div:hover {
-		width: 168px;
+		width: 175px;
 		height: 233px;
 		position:relative;
 		z-index: 100;
