@@ -24,14 +24,6 @@ echo '</div>';
 		-moz-transform: scale(1);
 		-webkit-transform: scale(1);
 	}
-	div#card_pool div img {
-		position:relative;
-		z-index: 10;
-	}
-	div#card_pool div img:hover {
-		position:relative;
-		z-index: 100;
-	}
 </style>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -40,6 +32,6 @@ $(document).ready(function() {
 
 function refreshSpectate()
 { 
-	//$('#spectate').load('/magic/game_refresh_spectate/<?php echo $game['MagicGame']['id']; ?>');
+	$('#spectate').load('/magic/game_refresh_spectate/<?php echo $game['MagicGame']['id']; ?>');
 }
 </script>
