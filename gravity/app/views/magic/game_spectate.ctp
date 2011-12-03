@@ -15,6 +15,6 @@ $(document).ready(function() {
 
 function refreshSpectate()
 { 
-	//$('#spectate').load('/magic/game_refresh_spectate/<?php echo $game['MagicGame']['id']; ?>');
+	$('#spectate').load('/magic/game_refresh_spectate/<?php echo $game['MagicGame']['id']; ?>');
 }
 </script>
