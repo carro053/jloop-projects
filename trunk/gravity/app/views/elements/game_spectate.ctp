@@ -14,7 +14,7 @@ foreach($player_1_cards as $deck_card):
 	echo ' src="/files/magic_cards/'.$deck_card['MagicGameDeckCard']['card_id'].'.jpg" /></div>';
 endforeach;
 echo '</div>';
-echo '<div style="clear:both";>&nbsp;</div>';
+echo '<div style="clear:both;height:50px;">&nbsp;</div>';
 if($game['MagicGame']['turn'] == 1)
 {
 	echo '<h2>'.str_replace('s\'s','s\'',$game['User_2']['username'].'\'s').' Turn</h2>';
