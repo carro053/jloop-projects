@@ -38,7 +38,7 @@ foreach($your_cards as $deck_card):
 endforeach;
 echo '</div>';
 
-echo '<div style="clear:both";>&nbsp;</div>';
+echo '<div style="clear:both;height:20px;">&nbsp;</div>';
 if($your_number == $game['MagicGame']['turn'] + 1)
 {
 	echo '<h2>Your Turn</h2>';
