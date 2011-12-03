@@ -42,16 +42,6 @@ echo '</div>';
 $(document).ready(function() {
     setInterval("refreshBattlefield()",3000);
 });
-$('div','#card_pool').hover(
-	function () {
-		$('.discard_link',this).show();
-		$('.hand_link',this).show();
-	},
-	function () {
-		$('.discard_link',this).hide();
-		$('.hand_link',this).hide();
-	}
-);
 function gainAHitPoint()
 {
 	$.post('/magic/game_raise_health/<?php echo $game['MagicGame']['id']; ?>', function(data) {
