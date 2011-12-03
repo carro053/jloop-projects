@@ -89,6 +89,6 @@ function returnCardToHand(deck_card_id)
 
 function refreshBattlefield()
 { 
-	//$('#battlefield').load('/magic/game_refresh_battlefield/<?php echo $game['MagicGame']['id']; ?>');
+	$('#battlefield').load('/magic/game_refresh_battlefield/<?php echo $game['MagicGame']['id']; ?>');
 }
 </script>
