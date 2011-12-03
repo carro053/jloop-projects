@@ -4,7 +4,7 @@ echo $this->element('game_spectate');
 echo '</div>';
  ?>
 <style>
-	div#card_pool div {
+	div#mana_pool div {
 		float:left;
 	}
 	
@@ -23,6 +23,9 @@ echo '</div>';
 		z-index: 100;
 		-moz-transform: scale(1);
 		-webkit-transform: scale(1);
+	}
+	div#card_pool div {
+		float:left;
 	}
 	
 	div#card_pool div {
