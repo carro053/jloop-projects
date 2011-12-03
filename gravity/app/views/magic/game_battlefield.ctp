@@ -4,6 +4,38 @@ echo $this->element('game_battlefield');
 echo '</div>';
  ?>
 <style>
+	div#mana_pool div {
+		float:left;
+	}
+	
+	div#mana_pool div {
+		width: 112px;
+		height: 156px;
+		position:relative;
+		z-index: 10;
+		-moz-transform: scale(0.5);
+		-webkit-transform: scale(0.5);
+	}
+	div#mana_pool div:hover {
+		width: 112px;
+		height: 156px;
+		position:relative;
+		z-index: 100;
+		-moz-transform: scale(1);
+		-webkit-transform: scale(1);
+	}
+	div#mana_pool div a.discard_link {
+		position: absolute;
+		top:-15px;
+		left:149px;
+		display:none;
+	}
+	div#mana_pool div a.hand_link {
+		position: absolute;
+		top:-15px;
+		left:-15px;
+		display:none;
+	}
 	div#card_pool div {
 		float:left;
 	}
