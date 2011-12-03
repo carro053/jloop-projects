@@ -26,6 +26,7 @@ echo '</div>';
 	}
 	div#card_pool div a.link {
 		float:left;
+		position: relative;
 	}
 </style>
 <script type="text/javascript">
