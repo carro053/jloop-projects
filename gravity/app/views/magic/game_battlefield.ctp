@@ -24,6 +24,9 @@ echo '</div>';
 		-moz-transform: scale(1);
 		-webkit-transform: scale(1);
 	}
+	div#card_pool div a.link {
+		float:left;
+	}
 </style>
 <script type="text/javascript">
 $(document).ready(function() {
