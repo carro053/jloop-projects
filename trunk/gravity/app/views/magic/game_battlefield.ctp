@@ -26,13 +26,13 @@ echo '</div>';
 	}
 	div#card_pool div a.discard_link {
 		position: absolute;
-		top:-5px;
-		left:210px;
+		top:-15px;
+		left:205px;
 	}
 	div#card_pool div a.hand_link {
 		position: absolute;
-		top:-5px;
-		left:-5px;
+		top:-15px;
+		left:-15px;
 	}
 </style>
 <script type="text/javascript">
