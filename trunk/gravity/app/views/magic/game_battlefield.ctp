@@ -24,11 +24,15 @@ echo '</div>';
 		-moz-transform: scale(1);
 		-webkit-transform: scale(1);
 	}
-	div#card_pool div.a {
-		position: relative;
+	div#card_pool div a.discard_link {
+		position: absolute;
+		top:0;
+		left:0;
 	}
-	div#card_pool div a.links {
-		float:left;
+	div#card_pool div a.hand_link {
+		position: absolute;
+		top:0;
+		right:0;
 	}
 </style>
 <script type="text/javascript">
