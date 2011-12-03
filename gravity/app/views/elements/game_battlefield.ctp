@@ -67,6 +67,7 @@ foreach($opponents_cards as $deck_card):
 	echo ' src="/files/magic_cards/'.$deck_card['MagicGameDeckCard']['card_id'].'.jpg" /></div>';
 endforeach;
 echo '</div>';
+echo '<div style="clear:both;height:50px;">&nbsp;</div>';
 ?>
 <script type="text/javascript">
 $('div','#card_pool').hover(
