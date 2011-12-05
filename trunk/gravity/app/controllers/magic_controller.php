@@ -161,7 +161,7 @@ class MagicController extends AppController {
 		}		
 		$current_hand_count = $this->MagicGameDeckCard->find('count',array('conditions'=>'MagicGameDeckCard.magic_game_deck_id = '.$deck_id.' AND MagicGameDeckCard.location = "Hand"'));
 		$this->MagicGame->query('UPDATE `magic_game_deck_cards` SET `location` = "Library" WHERE `magic_game_deck_id` = '.$deck_id);
-		$this->MagicGame->query('UPDATE `magic_game_deck_cards` SET `location` = "Hand" WHERE `magic_game_deck_id` = '.$game['MagicGame']['user_1_deck_id'].' ORDER BY RAND() LIMIT '.($current_hand_count - 1));
+		$this->MagicGame->query('UPDATE `magic_game_deck_cards` SET `location` = "Hand" WHERE `magic_game_deck_id` = '.$deck_id.' ORDER BY RAND() LIMIT '.($current_hand_count - 1));
 		$this->redirect('/magic/game_hand/'.$game_id);
 	}
 	
