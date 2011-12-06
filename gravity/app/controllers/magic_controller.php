@@ -536,6 +536,22 @@ class MagicController extends AppController {
 		echo 1;
 		exit();
 	}
+	
+	function odds_of_mana($draws = 14,$need_at_least = 6,$number_of_mana = 25)
+	{
+		$got_at_least = 0;
+		for($i=0;$i<10000;$i++)
+		{
+			$got_mana = 0;
+			for($k=0;$k<$draws;$k++)
+			{
+				if(rand(1,60 - $k) <= $number_of_mana - $got_mana) $got_mana++;
+			}
+			if($got_mana >= $need_at_least) $got_at_least++;
+		}
+		echo $got_at_least/100;		
+	}
+	
 }
 
 ?>
