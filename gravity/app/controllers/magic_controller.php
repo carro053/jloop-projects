@@ -549,7 +549,8 @@ class MagicController extends AppController {
 			}
 			if($got_mana >= $need_at_least) $got_at_least++;
 		}
-		echo $got_at_least/100;		
+		echo $got_at_least/100;
+		exit();	
 	}
 	
 }
