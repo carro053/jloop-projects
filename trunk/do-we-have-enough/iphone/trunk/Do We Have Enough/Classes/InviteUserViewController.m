@@ -7,8 +7,8 @@
 //
 
 #import "InviteUserViewController.h"
-#import "LoadingView.h";
-#import "SettingsTracker.h";
+#import "LoadingView.h"
+#import "SettingsTracker.h"
 
 
 @implementation InviteUserViewController

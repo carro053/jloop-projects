@@ -9,7 +9,7 @@
 #import "ChooseUsersController.h"
 #import "ChooseGroupController.h"
 #import "CreateEventViewController.h"
-#import "UserGroup.h";
+#import "UserGroup.h"
 #import	"AddUserController.h"
 #import "EditableCell.h"
 
@@ -25,8 +25,11 @@
 //
 - (EditableCell *)newEditableCellWithTag:(NSInteger)tag
 {
-    EditableCell *cell = [[EditableCell alloc] initWithFrame:CGRectZero 
-                                                         reuseIdentifier:nil];
+    //EditableCell *cell = [[EditableCell alloc] initWithFrame:CGRectZero 
+    //                                                     reuseIdentifier:nil];
+    
+    EditableCell *cell = [[EditableCell alloc] initWithFrame:CGRectZero];
+    
     [[cell textField] setDelegate:self];
     [[cell textField] setTag:tag];
     

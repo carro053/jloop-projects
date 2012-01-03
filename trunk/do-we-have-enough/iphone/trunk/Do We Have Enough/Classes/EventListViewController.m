@@ -160,10 +160,23 @@ titleForHeaderInSection:(NSInteger)section
 			cellImage = [UIImage imageNamed:@"icon_thumbs_down.png"];
 			cell.detailTextLabel.text = offText;
 			break;
+            
+        /*
 		case (kEventPending || kEventNeedsMore):
 			cellImage = [UIImage imageNamed:@"icon_what.png"];
 			cell.detailTextLabel.text = pendingText;
 			break;
+         */
+        
+        case (kEventPending):
+			cellImage = [UIImage imageNamed:@"icon_what.png"];
+			cell.detailTextLabel.text = pendingText;
+			break;
+        case (kEventNeedsMore):
+			cellImage = [UIImage imageNamed:@"icon_what.png"];
+			cell.detailTextLabel.text = pendingText;
+			break;
+            
 		default:
 			break;
 	}

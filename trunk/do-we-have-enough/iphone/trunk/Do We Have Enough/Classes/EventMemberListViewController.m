@@ -31,7 +31,7 @@
 	
 	for (int i=0; i<[memberlist count]; i++) {
 		NSMutableDictionary *myMember = [memberlist objectAtIndex:i];
-		NSMutableString *myStatus = [[NSString alloc] initWithString:[myMember objectForKey:@"status"]];
+		NSMutableString *myStatus = [[NSMutableString alloc] initWithString:[myMember objectForKey:@"status"]];
 		//NSMutableString *myName = [[NSString alloc] initWithString:[myMember objectForKey:@"name"]];
 		//NSLog(@"%@", myName);
 		int myStatusInt = [myStatus intValue];

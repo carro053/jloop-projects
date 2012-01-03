@@ -7,14 +7,14 @@
 //
 
 #import "HomeController.h"
-#import "CreateEventViewController.h";
-#import "RootViewController.h";
-#import "EventListViewController.h";
-#import "EventDetailsViewController.h";
-#import "SettingsTracker.h";
-#import "ValidateEmailViewController.h";
-#import "CheckValidationViewController.h";
-#import "Do_We_Have_EnoughAppDelegate.h";
+#import "CreateEventViewController.h"
+#import "RootViewController.h"
+#import "EventListViewController.h"
+#import "EventDetailsViewController.h"
+#import "SettingsTracker.h"
+#import "ValidateEmailViewController.h"
+#import "CheckValidationViewController.h"
+#import "Do_We_Have_EnoughAppDelegate.h"
 //#import "Beacon.h"; //no longer using
 
 
