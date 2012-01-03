@@ -47,7 +47,7 @@
 	}
 	@catch (NSException* e) {
 		// Log any errors
-		NSLog(@"HUDView::calcTimezoneDiff #@", e);
+		NSLog(@"HUDView::calcTimezoneDiff %@", e);
 	}
 	
 	// Return the difference
@@ -152,8 +152,10 @@
 
 - (EditableCell *)newEditableCellWithTag:(NSInteger)tag
 {
-    EditableCell *cell = [[EditableCell alloc] initWithFrame:CGRectZero 
-											 reuseIdentifier:nil];
+    //EditableCell *cell = [[EditableCell alloc] initWithFrame:CGRectZero 
+	//										 reuseIdentifier:nil];
+    EditableCell *cell = [[EditableCell alloc] initWithFrame:CGRectZero];
+    
     [[cell textField] setDelegate:self];
     [[cell textField] setTag:tag];
     

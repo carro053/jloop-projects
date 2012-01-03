@@ -20,7 +20,7 @@
 	NSLog(@"cancel");
 	//HomeController *homeController = self.parentViewController;
 	[(HomeController *)self.parentViewController swapCheckValidation];
-	//[self dismissModalViewControllerAnimated:YES];
+	[self dismissModalViewControllerAnimated:YES];
 }
 -(IBAction)save:(id)sender {
 	
@@ -44,6 +44,8 @@
 		
 		[self retrieveXMLFileAtURL:path];
 		[path release];
+        
+        [self dismissModalViewControllerAnimated:YES];
 		
 	} else {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Incorrect Email" message:@"Please check the format of the email address you entered." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

@@ -6,14 +6,14 @@
 //  Copyright 2009 JLOOP. All rights reserved.
 //
 
-#import "EventDetailsViewController.h";
-#import "SetUserStatusViewController.h";
-#import "SetUserNotifyViewController.h";
-#import "EventMemberListViewController.h";
-#import "InviteUserViewController.h";
-#import "LoadingView.h";
-#import "SettingsTracker.h";
-#import "StringHelper.h";
+#import "EventDetailsViewController.h"
+#import "SetUserStatusViewController.h"
+#import "SetUserNotifyViewController.h"
+#import "EventMemberListViewController.h"
+#import "InviteUserViewController.h"
+#import "LoadingView.h"
+#import "SettingsTracker.h"
+#import "StringHelper.h"
 
 
 @implementation EventDetailsViewController
@@ -364,7 +364,7 @@ titleForHeaderInSection:(NSInteger)section
 					int members_50 = 0;
 					for (int i=0; i<[memberlist count]; i++) {
 						NSMutableDictionary *myMember = [memberlist objectAtIndex:i];
-						NSMutableString *myStatus = [[NSString alloc] initWithString:[myMember objectForKey:@"status"]];
+						NSMutableString *myStatus = [[NSMutableString alloc] initWithString:[myMember objectForKey:@"status"]];
 						int myStatusInt = [myStatus intValue];
 						int myGuestsInt = [[myMember objectForKey:@"guests"] intValue];
 						if (myStatusInt == 1) members_in = members_in + 1 + myGuestsInt;
@@ -423,7 +423,8 @@ titleForHeaderInSection:(NSInteger)section
 				{
 					cell = [tableView dequeueReusableCellWithIdentifier:cellExpand];
 					if (cell == nil) {
-						cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellExpand] autorelease];
+						//cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellExpand] autorelease];
+                        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero] autorelease];
 					}
 					NSString *label = [eventDetails objectForKey:@"details"];
 					if ([[cell.contentView subviews] count] > 0) {

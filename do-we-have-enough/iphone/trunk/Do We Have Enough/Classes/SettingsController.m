@@ -7,10 +7,10 @@
 //
 
 #import "SettingsController.h"
-#import "RootViewController.h";
+#import "RootViewController.h"
 #import "SettingsTracker.h"
-#import "LoadingView.h";
-#import "SettingsTracker.h";
+#import "LoadingView.h"
+#import "SettingsTracker.h"
 
 
 @implementation SettingsController

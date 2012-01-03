@@ -8,8 +8,8 @@
 
 #import "SetUserStatusViewController.h"
 #import "EventDetailsViewController.h"
-#import "LoadingView.h";
-#import "SettingsTracker.h";
+#import "LoadingView.h"
+#import "SettingsTracker.h"
 
 
 @implementation SetUserStatusViewController

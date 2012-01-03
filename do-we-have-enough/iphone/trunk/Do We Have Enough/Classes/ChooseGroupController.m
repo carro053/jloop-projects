@@ -9,7 +9,7 @@
 #import "ChooseGroupController.h"
 #import "CreateEventViewController.h"
 #import "ChooseUsersController.h"
-#import "UserGroup.h";
+#import "UserGroup.h"
 
 
 @implementation ChooseGroupController
