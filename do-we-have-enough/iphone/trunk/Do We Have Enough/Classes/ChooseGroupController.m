@@ -236,7 +236,7 @@ titleForHeaderInSection:(NSInteger)section
 	[chooseUsersController release];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	
+
 	int newRow = [indexPath row];
 	int oldRow = [lastIndexPath row];
 	int newSection = [indexPath section];
