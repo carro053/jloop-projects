@@ -20,6 +20,8 @@
     NSMutableData *webData;
     NSURLConnection *conn;
 	LoadingView *loadingView;
+    
+    
 }
 @property (nonatomic, retain) UIButton *checkButton;
 @property (nonatomic, retain) UIButton *restartButton;

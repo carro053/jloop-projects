@@ -32,6 +32,10 @@
     NSURLConnection *conn;
 	LoadingView *loadingView;
 }
+
+@property (nonatomic, retain) NSMutableData *webData;
+@property (nonatomic, retain) NSXMLParser *xmlParser;
+
 @property (nonatomic, retain) IBOutlet UIButton *createButton;
 @property (nonatomic, retain) IBOutlet UIButton *eventsButton;
 @property (nonatomic, retain) IBOutlet UIButton *latestButton;

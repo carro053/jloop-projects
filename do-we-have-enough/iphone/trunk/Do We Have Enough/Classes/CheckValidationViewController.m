@@ -132,9 +132,13 @@
 		[settings initData];
 		if ([currentResult isEqualToString:@"true"]) {
 			[settings saveValidation:@"true"];
-			[(HomeController *)self.parentViewController dismissModalViewControllerAnimated:YES];
+			//[(HomeController *)self.parentViewController dismissModalViewControllerAnimated:YES];
+            [self dismissModalViewControllerAnimated:YES];
 		} else {
 			//TODO: add failure alert
+            UIAlertView * errorAlert = [[UIAlertView alloc] initWithTitle:@"Email Validation Error" message:@"Please check your email and click the validation link before proceeding." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [errorAlert show];
+            [errorAlert release];
 		}
 		[settings release];
 	}
