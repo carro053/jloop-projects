@@ -29,6 +29,9 @@
 @synthesize latestActivity;
 @synthesize settingsButton;
 
+@synthesize webData;
+@synthesize xmlParser;
+
 - (void)viewDidLoad {
 	NSLog(@"didappear");
 	latestButton.hidden = YES;
@@ -45,6 +48,12 @@
 	//NSLog(@"environment: %@", [[[NSBundle mainBundle] infoDictionary] valueForKey:@"WEB_ENVIRONMENT"]);
 	
 	[super viewDidLoad];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"home screen appeared");
+    //[self performSelector:@selector(checkValidation) withObject:nil afterDelay:0.1];
 }
 
 -(void)swapCheckValidation {
@@ -272,6 +281,9 @@
 
 
 - (void)dealloc {
+    [webData release];
+    [xmlParser release];
+    
 	[createButton release];
 	[eventsButton release];
 	[rootController release];
