@@ -26,6 +26,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    lastIndexPath = [[NSIndexPath alloc] initWithIndex:1];
 
     NSString *myTitle = [[NSString alloc] initWithString:@"Choose Group"];
 	UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
@@ -164,6 +166,11 @@ titleForHeaderInSection:(NSInteger)section
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView 
 		 cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    //[indexPath retain];
+    
+    
 	NSUInteger section = [indexPath section];
 	UITableViewCell *cell = nil;
 	UIImage *cellImage = nil;
@@ -188,7 +195,7 @@ titleForHeaderInSection:(NSInteger)section
 			cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
 			if (parentController.selectedGroupID == @"0") {
 				cellImage = [UIImage imageNamed:@"checkmark.png"];
-				lastIndexPath = indexPath;
+				lastIndexPath = [indexPath copy];
 			} else 
 				cellImage = [UIImage imageNamed:@"checkmark-open.png"];
 			cell.imageView.image = cellImage;
@@ -210,7 +217,7 @@ titleForHeaderInSection:(NSInteger)section
 			NSString *rowSubString = [[NSString alloc] initWithFormat:@"%d members", group.groupMembersCount];
 			cell.detailTextLabel.text = rowSubString;
 			if (parentController.selectedGroupID == group.groupID) {
-				lastIndexPath = indexPath;
+				lastIndexPath = [indexPath copy];
 				cellImage = [UIImage imageNamed:@"checkmark.png"];
 			} else 
 				cellImage = [UIImage imageNamed:@"checkmark-open.png"];
@@ -237,6 +244,24 @@ titleForHeaderInSection:(NSInteger)section
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
+    /*
+    int oldRow;
+    int oldSection;
+    if(lastIndexPath != nil)
+    {
+        oldRow = [lastIndexPath row];
+        oldSection = [lastIndexPath section];
+    }
+    else
+    {
+        oldRow = 0;
+        oldSection = 0;
+    }
+    int newRow = [indexPath row];
+    int newSection = [indexPath section];
+     */
+    
+    
 	int newRow = [indexPath row];
 	int oldRow = [lastIndexPath row];
 	int newSection = [indexPath section];
@@ -252,7 +277,7 @@ titleForHeaderInSection:(NSInteger)section
 		UIImage *cellImage2 = [UIImage imageNamed:@"checkmark-open.png"];
 		oldCell.imageView.image = cellImage2;
 		
-		lastIndexPath = indexPath;
+		lastIndexPath = [indexPath copy];
 		if (newSection != NewGroupSection) {
 			UserGroup *group = [self.parentController.grouplist objectAtIndex:newRow];
 			parentController.selectedGroupID = group.groupID;

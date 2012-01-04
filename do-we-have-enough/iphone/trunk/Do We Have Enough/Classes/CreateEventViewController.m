@@ -473,14 +473,15 @@ titleForHeaderInSection:(NSInteger)section
 						for (mygroup in grouplist) {
 							if (selectedGroupID == mygroup.groupID) {
 								numPeeps = mygroup.groupMembersCount;
-								tempGroupName = mygroup.groupName;
+								//tempGroupName = mygroup.groupName;
+                                tempGroupName = [mygroup.groupName copy];
 								break;
 							}
 						}
 					} else {
 						//mygroup = newGroup;
 						//[tempGroupName release];
-						if ([newGroup.groupName length] > 0) tempGroupName = newGroup.groupName;
+						if ([newGroup.groupName length] > 0) tempGroupName = [newGroup.groupName copy];
 						//else tempGroupName = @"New Group";
 					}
 					if (numPeeps > 0) {
@@ -996,9 +997,9 @@ titleForHeaderInSection:(NSInteger)section
 	[statusEmailDate release];
 	[cancelEmailDate release];
 	//[loadingView release];
-	[eventName release];
-	[eventTime release];
-	[eventLocation release];
+	//[eventName release];
+	//[eventTime release];
+	//[eventLocation release];
     [super dealloc];
 }
 
