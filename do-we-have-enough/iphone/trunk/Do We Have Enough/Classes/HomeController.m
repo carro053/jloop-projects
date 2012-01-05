@@ -53,7 +53,9 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     NSLog(@"home screen appeared");
-    //[self performSelector:@selector(checkValidation) withObject:nil afterDelay:0.1];
+    latestButton.hidden = YES;
+    latestTipImage.hidden = YES;
+    [self performSelector:@selector(checkValidation) withObject:nil afterDelay:0.1];
 }
 
 -(void)swapCheckValidation {
@@ -78,7 +80,6 @@
 			NSString * path = [[NSString alloc] initWithFormat:@"http://%@.dowehaveenough.com/devices/get_user.xml", [[[NSBundle mainBundle] infoDictionary] valueForKey:@"WEB_ENVIRONMENT"]];
 			[self retrieveXMLFileAtURL:path];
 			[path release];
-			
 		}
 	}
 	[settings release];
@@ -142,7 +143,7 @@
 
 #pragma mark POST methods
 - (void)retrieveXMLFileAtURL:(NSString *)URL {
-	latestButton.titleLabel.text = @"loading . . .";
+	latestButton.titleLabel.text = @"       loading...";
 	UIDevice *device = [UIDevice currentDevice];
 	NSString *uniqueIdentifier = [device uniqueIdentifier];
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
