@@ -33,6 +33,8 @@
 	LoadingView *loadingView;
 }
 
+@property (readwrite) bool viewAppeared;
+
 @property (nonatomic, retain) NSMutableData *webData;
 @property (nonatomic, retain) NSXMLParser *xmlParser;
 

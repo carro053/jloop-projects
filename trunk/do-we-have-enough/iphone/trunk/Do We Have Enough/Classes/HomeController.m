@@ -32,7 +32,13 @@
 @synthesize webData;
 @synthesize xmlParser;
 
+@synthesize viewAppeared;
+
 - (void)viewDidLoad {
+    
+    viewAppeared = NO;
+    
+    
 	NSLog(@"didappear");
 	latestButton.hidden = YES;
 	latestTipImage.hidden = YES;
@@ -53,9 +59,19 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     NSLog(@"home screen appeared");
-    latestButton.hidden = YES;
-    latestTipImage.hidden = YES;
-    [self performSelector:@selector(checkValidation) withObject:nil afterDelay:0.1];
+    
+    if(!viewAppeared)
+    {
+        latestButton.hidden = YES;
+        latestTipImage.hidden = YES;
+        [self performSelector:@selector(checkValidation) withObject:nil afterDelay:0.2];
+        viewAppeared = YES;
+    }
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    viewAppeared = NO;
 }
 
 -(void)swapCheckValidation {
