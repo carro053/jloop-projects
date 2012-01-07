@@ -742,6 +742,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				WEB_ENVIRONMENT = www;
 			};
 			name = Release;
 		};
