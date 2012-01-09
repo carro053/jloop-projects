@@ -123,6 +123,11 @@ function status_change(value)
 		tb_show('', '#TB_inline?height=260&width=230&inlineId=status_date&modal=true', null);
 	}
 }
+function select_date()
+{
+	which_element = 'EventDate';
+	tb_show('', '#TB_inline?height=260&width=230&inlineId=status_date&modal=true', null);
+}
 function am_or_pm(object)
 {
 	if(object.value != '')
