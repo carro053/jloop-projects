@@ -11,7 +11,7 @@
         	<input name="data[Event][when]" id="EventWhen" type="text" value="When is it?" onfocus="javascript:if(this.value == 'When is it?') { this.value = ''; } the_tooltip(this,'When is your event?<br />eg: \'11pm Tonight\'','when');" onblur="javascript:if(this.value == '') { this.value = 'When is it?'; }" />
         </div>
          <div>
-        	<input type="text" name="data[Event][date]" id="EventDate" class="dateformat-d-sl-m-sl-Y" />
+        	<input type="text" name="data[Event][date]" id="EventDate" class="dateformat-d-sl-m-sl-Y display-inline" />
         	
         </div>
         <div>
