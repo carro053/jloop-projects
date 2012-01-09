@@ -86,10 +86,10 @@ function datePicker(options) {
 
         o.events = {
                 onblur:function(e) {
-                        o.removeKeyboardEvents();
+                        //o.removeKeyboardEvents();
                 },
                 onfocus:function(e) {
-                        o.addKeyboardEvents();
+                        //o.addKeyboardEvents();
                 },
                 onkeydown: function (e) {
                         o.stopTimer();
