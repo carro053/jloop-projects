@@ -251,7 +251,9 @@ function datePicker(options) {
                         if(isNaN(n)) { return true; };
                         d.setDate( n );
 						var ddl = document.getElementById(which_element);
-						ddl.options.add(new Option((1+d.getMonth())+"/"+d.getDate()+"/"+(1900+d.getYear()),(1+d.getMonth())+"/"+d.getDate()+"/"+(1900+d.getYear())));
+						if(which_element != 'EventDate') {
+							ddl.options.add(new Option((1+d.getMonth())+"/"+d.getDate()+"/"+(1900+d.getYear()),(1+d.getMonth())+"/"+d.getDate()+"/"+(1900+d.getYear())));
+						}
 						ddl.value = (1+d.getMonth())+"/"+d.getDate()+"/"+(1900+d.getYear());
                         o.date = d;
                         o.returnFormattedDate();
