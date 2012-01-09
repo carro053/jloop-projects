@@ -681,14 +681,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: JLOOP";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JLOOP";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "206968F2-8A32-4D0D-8C86-F5B5A640A127";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "206968F2-8A32-4D0D-8C86-F5B5A640A127";
 				SDKROOT = iphoneos;
 				WEB_ENVIRONMENT = www;
 			};
@@ -699,7 +699,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JLOOP";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Do_We_Have_Enough_Prefix.pch;
@@ -710,7 +710,7 @@
 					"\"$(SRCROOT)/Classes\"",
 				);
 				PRODUCT_NAME = DoWeHaveEnough;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "206968F2-8A32-4D0D-8C86-F5B5A640A127";
 			};
 			name = Distribution;
 		};
@@ -734,13 +734,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: JLOOP";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JLOOP";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "206968F2-8A32-4D0D-8C86-F5B5A640A127";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "206968F2-8A32-4D0D-8C86-F5B5A640A127";
 				SDKROOT = iphoneos;
 				WEB_ENVIRONMENT = www;
 			};
