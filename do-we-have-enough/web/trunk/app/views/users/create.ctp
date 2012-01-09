@@ -49,7 +49,7 @@
             </div>
             <div style="display:none;" id="cancel_date"><input class="w8em format-d-m-y divider-dash highlight-days-67 no-fade" id="dp-normal-1" name="dp-normal-1" type="hidden" /></div>
             <div style="display:none;" id="status_date"><input class="w8em format-d-m-y divider-dash highlight-days-67 no-fade" id="dp-normal-2" name="dp-normal-2" type="hidden" /></div>
-             <div style="display:none;" id="event_date"><input class="w8em format-y-m-d divider-dash highlight-days-67 no-fade" id="dp-normal-3" name="dp-normal-3" type="hidden" /></div>
+             <div style="display:none;" id="event_date"><input class="w8em format-d-m-y divider-dash highlight-days-67 no-fade" id="dp-normal-3" name="dp-normal-3" type="hidden" /></div>
             <div class="optionrow" align="center">
 				<span>Timezone: </span>
             	<select name="data[Event][timezone]" id="EventTimezone">
