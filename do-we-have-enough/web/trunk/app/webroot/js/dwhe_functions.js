@@ -187,6 +187,11 @@ function validate_form()
 		$(returnVar.EventName).after("<div class='errortip' id='errorname'>Can't have an event without a name!</div>");
 		valid = 0;
 	}
+	if (returnVar.EventDate.value == "" || returnVar.EventDate.value == "What is the date?")
+	{
+		$(returnVar.EventDate).after("<div class='errortip' id='errorname'>Can't have an event without a date!</div>");
+		valid = 0;
+	}
 	if (returnVar.EventWhen.value == "" || returnVar.EventWhen.value == "When is it?")
 	{
 		$(returnVar.EventWhen).after("<div class='errortip' id='errorwhen'>When is your event?</div>");
