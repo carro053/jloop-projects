@@ -10,7 +10,7 @@
         <div>
         	<input name="data[Event][when]" id="EventWhen" type="text" value="When is it?" onfocus="javascript:if(this.value == 'When is it?') { this.value = ''; } the_tooltip(this,'When is your event?<br />eg: \'11pm Tonight\'','when');" onblur="javascript:if(this.value == '') { this.value = 'When is it?'; }" />
         </div>
-        <div style="height:300px; text-align:center;"><input class="w8em format-d-m-y divider-dash highlight-days-67 no-fade" id="EventDate" name="data[Event][date]" type="hidden" /></div>
+        <div style="height:300px; padding:0 150px;"><input class="w8em format-d-m-y divider-dash highlight-days-67 no-fade" id="EventDate" name="data[Event][date]" type="hidden" /></div>
         <div>
         	<input name="data[Event][where]" id="EventWhere" type="text" value="Where is it?" onfocus="javascript:if(this.value == 'Where is it?') { this.value = ''; } the_tooltip(this,'Where is your event? eg: \'The Queen Mary\'','where');" onblur="javascript:if(this.value == '') { this.value = 'Where is it?'; }" />
         </div>
