@@ -12,7 +12,7 @@
         </div>
         
 		<div>
-        	<input name="data[Event][date]" id="EventDate" type="text" value="What is the date?" onfocus="javascript:if(this.value == 'What is the date?') { this.value = ''; }" onblur="javascript:if(this.value == '') { this.value = 'What is the date?'; }" />
+        	<input name="data[Event][date]" id="EventDate" type="text" value="What is the date?" onfocus="javascript:if(this.value == 'What is the date?') { this.value = ''; } select_date();" onblur="javascript:if(this.value == '') { this.value = 'What is the date?'; }" />
         </div>
         
         <div>
@@ -51,6 +51,7 @@
             </div>
             <div style="display:none;" id="cancel_date"><input class="w8em format-d-m-y divider-dash highlight-days-67 no-fade" id="dp-normal-1" name="dp-normal-1" type="hidden" /></div>
             <div style="display:none;" id="status_date"><input class="w8em format-d-m-y divider-dash highlight-days-67 no-fade" id="dp-normal-2" name="dp-normal-2" type="hidden" /></div>
+             <div style="display:none;" id="select_date"><input class="w8em format-d-m-y divider-dash highlight-days-67 no-fade" id="dp-normal-3" name="dp-normal-3" type="hidden" /></div>
             <div class="optionrow" align="center">
 				<span>Timezone: </span>
             	<select name="data[Event][timezone]" id="EventTimezone">
