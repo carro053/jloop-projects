@@ -1082,23 +1082,23 @@ function datePicker(options) {
                         o.timer = window.setTimeout(o.updateTable, o.timerInc);
                 };
         };
-        o.addKeyboardEvents = function() {
-                datePickerController.addEvent(document, "keypress", o.events.onkeydown);
-                /*@cc_on
-                @if(@_win32)
-                datePickerController.removeEvent(document, "keypress", o.events.onkeydown);
-                datePickerController.addEvent(document, "keydown", o.events.onkeydown);
-                @end
-                @*/
-                if(window.devicePixelRatio) {
-                        datePickerController.removeEvent(document, "keypress", o.events.onkeydown);
-                        datePickerController.addEvent(document, "keydown", o.events.onkeydown);
-                };
-        };
-        o.removeKeyboardEvents =function() {
-                datePickerController.removeEvent(document, "keypress", o.events.onkeydown);
-                datePickerController.removeEvent(document, "keydown",  o.events.onkeydown);
-        };
+//       *o.addKeyboardEvents = function() {
+//                datePickerController.addEvent(document, "keypress", o.events.onkeydown);
+//                /*@cc_on
+//				@if(@_win32)
+//                datePickerController.removeEvent(document, "keypress", o.events.onkeydown);
+//                datePickerController.addEvent(document, "keydown", o.events.onkeydown);
+//                @end
+//                @*/
+//                if(window.devicePixelRatio) {
+//                        datePickerController.removeEvent(document, "keypress", o.events.onkeydown);
+//                        datePickerController.addEvent(document, "keydown", o.events.onkeydown);
+//                };
+//        };
+//        o.removeKeyboardEvents =function() {
+//                datePickerController.removeEvent(document, "keypress", o.events.onkeydown);
+//                datePickerController.removeEvent(document, "keydown",  o.events.onkeydown);
+//        };
         o.show = function() {
                 var elem = o.getElem();
                 if(!elem || o.visible || elem.disabled) return;
