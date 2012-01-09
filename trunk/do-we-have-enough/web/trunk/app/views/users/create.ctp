@@ -8,7 +8,7 @@
         	<input name="data[Event][name]" id="EventName" type="text" value="What is the event?" onfocus="javascript:if(this.value == 'What is the event?') { this.value = ''; } the_tooltip(this,'This is the event name, like \'Late Night Poker\'','name');" onblur="javascript:if(this.value == '') { this.value = 'What is the event?'; }" />
         </div>
         <div>
-        	<input name="data[Event][date]" id="EventDate" type="text" value="What is the date?" onfocus="javascript:if(this.value == 'What is the date?') { this.value = ''; } select_date();" onblur="javascript:if(this.value == '') { this.value = 'What is the date?'; }" />
+        	<input name="data[Event][date]" id="EventDate" type="text" value="What is the date?" onfocus="javascript:if(this.value == 'What is the date?') { this.value = ''; } select_date();" onblur="javascript:if(this.value == '') { this.value = 'What is the date?'; } tb_remove();" />
         </div>
         <div>
         	<input name="data[Event][when]" id="EventWhen" type="text" value="When is it?" onfocus="javascript:if(this.value == 'When is it?') { this.value = ''; } the_tooltip(this,'When is your event?<br />eg: \'11:30pm \'','when');" onblur="javascript:if(this.value == '') { this.value = 'When is it?'; }" />
