@@ -2,7 +2,7 @@
     <form action="/save_event" method="post" class="event" id="create_event" name="create_event" enctype="multipart/form-data">
          <?php echo $form->hidden('Group.id',array('value'=>'0')); ?>
         <div>
-        	<input name="data[User][email]" id="UserEmail" type="text" value="Your email" onfocus="javascript:if(this.value == 'Your email') { this.value = ''; } the_tooltip(this,'Enter your email address please. :)','email');" onblur="javascript:if(this.value == '') { this.value = 'Your email'; }else{ check_email(this.value); }" />
+        	<input name="data[User][email]" id="UserEmail" type="text" value="Your email" onfocus="javascript:if(this.value == 'Your email') { this.value = ''; } the_tooltip(this,'Enter your email address please. :)','email');" onblur="javascript:if(this.value == '') { this.value = 'Your email'; }else{ //check_email(this.value); }" />
         </div>
         <div>
         	<input name="data[Event][name]" id="EventName" type="text" value="What is the event?" onfocus="javascript:if(this.value == 'What is the event?') { this.value = ''; } the_tooltip(this,'This is the event name, like \'Late Night Poker\'','name');" onblur="javascript:if(this.value == '') { this.value = 'What is the event?'; }" />
