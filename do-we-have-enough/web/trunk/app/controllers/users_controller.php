@@ -114,7 +114,7 @@ class UsersController extends AppController
 	function save_event()
 	{
 		echo $this->params['data']['Event']['date'].'<br>';
-		echo strtotime($this->params['data']['Event']['date']);
+		echo strtotime($this->params['data']['Event']['date']).'<br>';
 		echo date('Y-m-d', strtotime($this->params['data']['Event']['cancel_email'])).'<br>';
 		$this->params['data']['Event']['date'] = date('Y-m-d', strtotime($this->params['data']['Event']['cancel_email']));
 		$i=0;
