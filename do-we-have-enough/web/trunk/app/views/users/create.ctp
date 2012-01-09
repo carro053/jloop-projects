@@ -10,6 +10,18 @@
         <div>
         	<input name="data[Event][when]" id="EventWhen" type="text" value="When is it?" onfocus="javascript:if(this.value == 'When is it?') { this.value = ''; } the_tooltip(this,'When is your event?<br />eg: \'11pm Tonight\'','when');" onblur="javascript:if(this.value == '') { this.value = 'When is it?'; }" />
         </div>
+         <div>
+        	<input name="data[Event][date]" id="EventDate" />
+        	<script type="text/javascript">
+        		$('#EventDate').DatePicker({
+					flat: true,
+					date: '2008-07-31',
+					current: '2008-07-31',
+					calendars: 1,
+					starts: 1
+				});
+        	</script>
+        </div>
         <div>
         	<input name="data[Event][where]" id="EventWhere" type="text" value="Where is it?" onfocus="javascript:if(this.value == 'Where is it?') { this.value = ''; } the_tooltip(this,'Where is your event? eg: \'The Queen Mary\'','where');" onblur="javascript:if(this.value == '') { this.value = 'Where is it?'; }" />
         </div>
