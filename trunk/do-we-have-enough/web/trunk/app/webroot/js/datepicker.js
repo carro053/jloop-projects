@@ -1082,7 +1082,7 @@ function datePicker(options) {
                         o.timer = window.setTimeout(o.updateTable, o.timerInc);
                 };
         };
-       *o.addKeyboardEvents = function() {
+		o.addKeyboardEvents = function() {
                 datePickerController.addEvent(document, "keypress", o.events.onkeydown);
                 /*@cc_on
 				@if(@_win32)
