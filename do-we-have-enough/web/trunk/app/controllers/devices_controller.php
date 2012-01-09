@@ -761,13 +761,6 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 			$apnsPort = 2195;
 			$apnsCert = '/var/www/vhosts/dowehaveenough.com/ck.pem';
 		}
-		
-		
-		
-		$apnsHost = 'gateway.sandbox.push.apple.com';
-		
-		
-		
 
 		$streamContext = stream_context_create();
 		stream_context_set_option($streamContext, 'ssl', 'local_cert', $apnsCert);
