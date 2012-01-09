@@ -113,9 +113,6 @@ class UsersController extends AppController
 	}
 	function save_event()
 	{
-		echo $this->params['data']['Event']['date'].'<br>';
-		echo strtotime($this->params['data']['Event']['date']).'<br>';
-		echo date('Y-m-d', strtotime($this->params['data']['Event']['date'])).'<br>';
 		$this->params['data']['Event']['date'] = date('Y-m-d', strtotime($this->params['data']['Event']['date']));
 		$i=0;
 		$current_url = '/event/'.strtolower(str_replace(array('/',' ','"',"'"),array('-','-','',''),$this->params['data']['Event']['name'])).'/'.strtolower(str_replace(array('/',' ','"',"'"),array('-','-','',''),$this->params['data']['Event']['when']));
