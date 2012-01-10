@@ -281,7 +281,7 @@ class UsersController extends AppController
 				$email_msg = $host_name." has sent you an invitation to:
 				
 ".$event['Event']['name']."
- * When: ".$event['Event']['when']."
+ * When: ".$event['Event']['when'].", ".date('n/j/Y', strtotime($event['Event']['date']))."
 ";
 if($event['Event']['where'] != '') $email_msg .= " * Where: ".$event['Event']['where']."
 ";
@@ -612,7 +612,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 				$email_msg = $host_name." has sent you an invitation to:
 				
 ".$event['Event']['name']."
- * When: ".$event['Event']['when']."
+ * When: ".$event['Event']['when'].", ".date('n/j/Y', strtotime($event['Event']['date']))."
 ";
 if($event['Event']['where'] != '') $email_msg .= " * Where: ".$event['Event']['where']."
 ";
@@ -654,7 +654,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 				endforeach;
 				if($user['User']['notify_text'] == 1)
 				{
-					$message = $host_name.' has invited you to '.$event['Event']['name'].' - '.$event['Event']['when'].'.
+					$message = $host_name.' has invited you to '.$event['Event']['name'].' - '.$event['Event']['when'].', '.date('n/j/Y', strtotime($event['Event']['date'])).'.
 Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.';
 					$this->send_sms($user['User']['id'],$message);
 				}
