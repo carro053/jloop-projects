@@ -718,7 +718,8 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 	{
 		$this->User->bindModel(array('hasMany'=>array('UserMobileDevice' =>array('className'=>'UserMobileDevice','foreignKey'=>'user_id','conditions'=>'UserMobileDevice.device_token != "" AND UserMobileDevice.notify_push = 1 AND UserMobileDevice.validator = ""','order'=> '','limit'=> ''))));
 		$this->Event->bindModel(array('hasAndBelongsToMany'=>array('User' =>array('className'=>'User','joinTable'=>'events_users','foreignKey'=>'event_id','associationForeignKey'=>'user_id','conditions'=>'','order'=> '','limit'=> '','unique'=>true,'finderQuery'=>'','deleteQuery'=>''))));
-		$events = $this->Event->findAll('Event.validated = 1 AND Event.active > 0 AND Event.created > (NOW() - INTERVAL 3 MONTH)',null,null,null,null,4);
+		//$events = $this->Event->findAll('Event.validated = 1 AND Event.active > 0 AND Event.created > (NOW() - INTERVAL 3 MONTH)',null,null,null,null,4);
+		$events = $this->Event->findAll('Event.validated = 1 AND Event.active > 0 AND Event.date >= NOW()',null,null,null,null,4);
 		foreach($events as $event):
 			$in = 0;
 			$out = 0;
