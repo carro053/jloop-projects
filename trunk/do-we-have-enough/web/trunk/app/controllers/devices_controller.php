@@ -265,7 +265,7 @@ class DevicesController extends AppController
 					$email_msg = $host_name." has sent you an invitation to:
 					
 ".$event['Event']['name']."
- * When: ".$event['Event']['when']."
+ * When: ".$event['Event']['when'].", ".date('n/j/Y', strtotime($event['Event']['date']))."
 ";				
 if($event['Event']['where'] != '') $email_msg .= " * Where: ".$event['Event']['where']."
 ";				
