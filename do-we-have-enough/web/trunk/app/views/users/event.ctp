@@ -15,7 +15,7 @@
         	<h2>Event info for:<br />
             <span><?php echo $event['Event']['name']; ?></span></h2>
             <h2>When:<br />
-            <span><?php echo $event['Event']['when'].' ,'.date('n/j/Y', strtotime($event['Event']['date'])); ?></span></h2>
+            <span><?php echo $event['Event']['when'].', '.date('n/j/Y', strtotime($event['Event']['date'])); ?></span></h2>
             <?php if($event['Event']['where'] != '' && $event['Event']['where'] != 'Where is it?') { ?><h2>Where:<br />
             <span><?php echo $event['Event']['where']; ?></span></h2><?php } ?>
             <?php if($event['Event']['details'] != '') { ?>
