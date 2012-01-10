@@ -173,6 +173,7 @@ class DevicesController extends AppController
 			$event['Event']['validated'] = 1;
 			$event['Event']['url'] = $current_url;
 			$event['Event']['name'] = $_POST['event_name'];
+			$event['Event']['date'] = date('Y-m-d');
 			$event['Event']['when'] = $_POST['event_when'];
 			$event['Event']['where'] = $_POST['event_where'];
 			$event['Event']['need'] = $_POST['event_need'];
