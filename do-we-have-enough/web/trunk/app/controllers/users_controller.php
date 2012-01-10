@@ -1496,5 +1496,13 @@ Still need at least '.$event['Event']['need'].'!';
 		print($data);
 		exit();
 	}
+	
+	function toddtest()
+	{
+		$events = $this->Event->findAll('Event.validated = 1 AND Event.active > 0 AND Event.date >= CURDATE()',null,null,null,null,4);
+		echo '<pre>';
+		print_r($events);
+		die;
+	}
 }
 ?>
