@@ -2,7 +2,7 @@
 	<div class="copy">
         <h2>My Events</h2>
         <p><?php foreach($data['Event'] as $event):
-        echo '<a href="http://'.$environment.'.dowehaveenough.com/go_to_event/'.$event['EventsUser']['hash'].'">'.$event['name'].' - '.$event['when'].' - '.$event['where'].'</a><br />';
+        echo '<a href="http://'.$environment.'.dowehaveenough.com/go_to_event/'.$event['EventsUser']['hash'].'">'.$event['name'].' - '.$event['when'].', '.date('n/j/Y', strtotime($event['date'])).' - '.$event['where'].'</a><br />';
         endforeach; ?>
         </p>
     </div><!-- end .copy -->
