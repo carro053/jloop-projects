@@ -7,7 +7,6 @@
 <meta name="keywords" content="" />
 <title><?php echo $title_for_layout; ?></title>
 <link rel="stylesheet" href="/forum/css/style.css" type="text/css" media="all" />
-<link rel="stylesheet" href="/css/main.css" type="text/css" media="all" />
 <script type="text/javascript" src="/forum/js/script.js"></script>
 <script type="text/javascript" src="/js/jquery-1.6.2.min.js"></script>
 </head>
