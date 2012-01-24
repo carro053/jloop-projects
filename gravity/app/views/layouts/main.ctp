@@ -25,7 +25,7 @@
 		<li><a href="/magic/deck_index">Decks</a></li>
 		<li><a href="/magic/game_index">Games</a></li>
 		<?php if (!$this->Cupcake->user()) { ?>
-		<li><a href="/forum/users/signup">Signup</a></li>
+		<li><a href="/forum/users/signup">Sign Up</a></li>
 		<?php } ?>
 	</ul>
 	</div>
