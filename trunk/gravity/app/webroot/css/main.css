@@ -19,7 +19,7 @@ body {
 	font-size: 100%;
 	line-height: 1.125em;
 	margin: 0;
-	background-color: #000;
+	background-color: #069;
 	}
 
 #container {
@@ -29,7 +29,7 @@ body {
 	
 #main {
 	float: left;
-	width: 892px;
+	width: 882px;
 	background-color: #FFF;
 	padding: 5px;
 	}
