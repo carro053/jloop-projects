@@ -18,10 +18,10 @@
 		<h1>Gravity</h1>
 		<!--Planets for Todd-->
 		<ul id="menu">
-			<li><a href="/">Home</a></li>
+			<!--<li><a href="/">Home</a></li>-->
 			<li><a href="/forum">Forum</a></li>
-			<li><a href="/videos">Videos</a></li>
-			<li><a href="/screenshots">Screenshots</a></li>
+			<!--<li><a href="/videos">Videos</a></li>-->
+			<!--<li><a href="/screenshots">Screenshots</a></li>-->
 			<li><a href="/magic/deck_index">Decks</a></li>
 			<li><a href="/magic/game_index">Games</a></li>
 			<?php if (!$this->Cupcake->user()) { ?>
