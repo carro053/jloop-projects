@@ -74,7 +74,7 @@ echo $scripts_for_layout; ?>
         	<?php /*<li<?php if ($menuTab == 'rules') echo ' class="active"'; ?>><?php echo $this->Html->link(__d('forum', 'Rules', true), array('controller' => 'home', 'action' => 'rules')); ?></li>
         	<li<?php if ($menuTab == 'help') echo ' class="active"'; ?>><?php echo $this->Html->link(__d('forum', 'Help', true), array('controller' => 'home', 'action' => 'help')); ?></li>*/ ?>
         	<li<?php if ($menuTab == 'users') echo ' class="active"'; ?>><?php echo $this->Html->link(__d('forum', 'Users', true), array('controller' => 'users', 'action' => 'listing')); ?></li>
-        	<li<?php if ($menuTab == 'Magic Decks') echo ' class="active"'; ?>><?php echo $this->Html->link('Magic Decks', array('controller' => 'magic', 'action' => 'decks')); ?></li>
+        	<li<?php if ($menuTab == 'Magic Decks') echo ' class="active"'; ?>><?php echo $this->Html->link('Magic Decks', array('controller' => 'magic', 'action' => 'deck_index')); ?></li>
         	<li<?php if ($menuTab == 'Magic Games') echo ' class="active"'; ?>><?php echo $this->Html->link('Magic Games', array('controller' => 'magic', 'action' => 'game_index')); ?></li>
             <?php if ($this->Cupcake->user() && $this->Cupcake->hasAccess('admin')) { ?>
         	<li><?php echo $this->Html->link(__d('forum', 'Admin', true), array('controller' => 'home', 'action' => 'index', 'admin' => true)); ?></li>
