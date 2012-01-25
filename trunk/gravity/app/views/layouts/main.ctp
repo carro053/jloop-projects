@@ -15,6 +15,7 @@
 
 <div id="wrapper">
 	<div id="header">
+		<h1>Gravity</h1>
 		<!--Planets for Todd-->
 		<ul id="menu">
 			<li><a href="/">Home</a></li>
