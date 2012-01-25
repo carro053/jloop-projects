@@ -8,12 +8,14 @@ class MagicController extends AppController {
 	
 	function beforeFilter()
  	{
+ 		$this->set('menuTab','Magic Games');
  		$this->Auth->allow('game_spectate','game_refresh_spectate');
  		parent::beforeFilter();
  	}
 	
 	function deck_index()
 	{
+ 		$this->set('menuTab','Magic Decks');
 		$this->set('decks',$this->Deck->find('all',array('conditions'=>'Deck.user_id = '.$this->Auth->user('id'))));
 		$this->Deck->bindModel(array('belongsTo'=>array('User'=>array('className'=>'User','foreign_key'=>'user_id'))));
 		$this->set('others_decks',$this->Deck->find('all',array('conditions'=>'Deck.user_id != '.$this->Auth->user('id'))));
@@ -21,6 +23,7 @@ class MagicController extends AppController {
 	
 	function deck_view($deck_id)
 	{
+ 		$this->set('menuTab','Magic Decks');
 		$this->Deck->bindModel(array('hasMany'=>array('DeckCard'=>array('className'=>'DeckCard','foreign_key'=>'deck_id','order'=>'DeckCard.card_id ASC'))));
 		$deck = $this->Deck->find('first',array('conditions'=>'Deck.id = '.$deck_id));
 		if(!isset($deck['Deck']['id'])) die('This deck doesn\'t exist.');
@@ -29,6 +32,7 @@ class MagicController extends AppController {
 	
 	function deck_create()
 	{
+ 		$this->set('menuTab','Magic Decks');
 		if(isset($this->data['Deck']['name']))
 		{
 			$this->Deck->create();
@@ -42,6 +46,7 @@ class MagicController extends AppController {
 	
 	function deck_manage($deck_id)
 	{
+ 		$this->set('menuTab','Magic Decks');
 		$this->Deck->bindModel(array('hasMany'=>array('DeckCard'=>array('className'=>'DeckCard','foreign_key'=>'deck_id','order'=>'DeckCard.card_id ASC'))));
 		$deck = $this->Deck->find('first',array('conditions'=>'Deck.id = '.$deck_id.' AND Deck.user_id = '.$this->Auth->user('id')));
 		if(!isset($deck['Deck']['id'])) die('This is not your deck.');
@@ -51,6 +56,7 @@ class MagicController extends AppController {
 	
 	function deck_add_card($deck_id,$card_id)
 	{
+ 		$this->set('menuTab','Magic Decks');
 		$this->DeckCard->create();
 		$deck_card['DeckCard']['deck_id'] = $deck_id;
 		$deck_card['DeckCard']['card_id'] = $card_id;
@@ -65,6 +71,7 @@ class MagicController extends AppController {
 	
 	function deck_remove_card($deck_id,$card_id)
 	{
+ 		$this->set('menuTab','Magic Decks');
 		$deck_card = $this->DeckCard->find('first',array('conditions'=>'DeckCard.deck_id = '.$deck_id.' AND DeckCard.card_id = '.$card_id));
 		if(isset($deck_card['DeckCard']['id']))
 		{
