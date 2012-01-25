@@ -13,7 +13,7 @@
 
 <body>
 
-<div id="container">
+<div id="wrapper">
 	<div id="header">
 		<!--Planets for Todd-->
 		<ul id="menu">
@@ -34,6 +34,6 @@
     </div><!-- end #main -->
     <div style="clear:both;">&nbsp;</div>
 
-</div><!-- end #container -->
+</div><!-- end #wrapper -->
 </body>
 </html>
