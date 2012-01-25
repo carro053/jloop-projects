@@ -66,7 +66,7 @@ echo $scripts_for_layout; ?>
 <body>
 <div id="wrapper">  
 	<div id="header">
-    	<h1>Gravity <?php echo $this->Cupcake->settings['site_name']; ?></h1>
+    	<h1><?php echo $this->Cupcake->settings['site_name']; ?></h1>
         
         <ul id="menu">
         	<li<?php if ($menuTab == 'home') echo ' class="active"'; ?>><?php echo $this->Html->link(__d('forum', 'Home', true), array('controller' => 'home', 'action' => 'index')); ?></li>
