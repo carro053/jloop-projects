@@ -85,6 +85,7 @@ echo $scripts_for_layout; ?>
     </div>
     
     <div id="content">
+    <?php echo $menuTab; ?>
     	<?php echo $this->element('navigation'); ?>
         
 		<?php echo $content_for_layout; ?>
