@@ -28,6 +28,7 @@
 			<li><a href="/forum/users/signup">Sign Up</a></li>
 			<?php } ?>
 		</ul>
+		<span class="clear"><!-- --></span>
 	</div>
     <div id="content">
     	<?php if (!empty($this->_crumbs)) echo $this->element('navigation'); ?>
