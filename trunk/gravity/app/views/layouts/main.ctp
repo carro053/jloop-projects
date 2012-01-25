@@ -15,20 +15,20 @@
 
 <div id="container">
 	<div id="header">
-	<!--Planets for Todd-->
-	<ul id="menu">
-		<li><a href="/">Home</a></li>
-		<li><a href="/forum">Forum</a></li>
-		<li><a href="/videos">Videos</a></li>
-		<li><a href="/screenshots">Screenshots</a></li>
-		<li><a href="/magic/deck_index">Decks</a></li>
-		<li><a href="/magic/game_index">Games</a></li>
-		<?php if (!$this->Cupcake->user()) { ?>
-		<li><a href="/forum/users/signup">Sign Up</a></li>
-		<?php } ?>
-	</ul>
+		<!--Planets for Todd-->
+		<ul id="menu">
+			<li><a href="/">Home</a></li>
+			<li><a href="/forum">Forum</a></li>
+			<li><a href="/videos">Videos</a></li>
+			<li><a href="/screenshots">Screenshots</a></li>
+			<li><a href="/magic/deck_index">Decks</a></li>
+			<li><a href="/magic/game_index">Games</a></li>
+			<?php if (!$this->Cupcake->user()) { ?>
+			<li><a href="/forum/users/signup">Sign Up</a></li>
+			<?php } ?>
+		</ul>
 	</div>
-    <div id="main">
+    <div id="content">
     	<?php if (!empty($this->_crumbs)) echo $this->element('navigation'); ?>
     	<?php echo $content_for_layout; ?>
     </div><!-- end #main -->
