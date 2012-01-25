@@ -16,7 +16,7 @@
 <div id="container">
 	<div id="header">
 	<!--Planets for Todd-->
-	<ul id="nav">
+	<ul id="menu">
 		<li><a href="/">Home</a></li>
 		<li><a href="/forum">Forum</a></li>
 		<li><a href="/videos">Videos</a></li>
