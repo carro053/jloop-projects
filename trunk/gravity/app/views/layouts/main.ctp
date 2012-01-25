@@ -69,7 +69,7 @@ echo $scripts_for_layout; ?>
     	<h1><?php echo $this->Cupcake->settings['site_name']; ?></h1>
         
         <ul id="menu">
-        	<li<?php if ($menuTab == 'home') echo ' class="active"'; ?>><a href="/forum/">Home</a></li>
+        	<li<?php if ($menuTab == 'home') echo ' class="active"'; ?>><a href="/forum/">Forum</a></li>
         	<li<?php if ($menuTab == 'search') echo ' class="active"'; ?>><a href="/forum/search/index">Search</a></li>
         	<?php /*<li<?php if ($menuTab == 'rules') echo ' class="active"'; ?>><?php echo $this->Html->link(__d('forum', 'Rules', true), array('controller' => 'home', 'action' => 'rules')); ?></li>
         	<li<?php if ($menuTab == 'help') echo ' class="active"'; ?>><?php echo $this->Html->link(__d('forum', 'Help', true), array('controller' => 'home', 'action' => 'help')); ?></li>*/ ?>
