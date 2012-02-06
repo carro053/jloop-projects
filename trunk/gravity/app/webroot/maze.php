@@ -39,7 +39,7 @@ for($x=0;$x<$width;$x++):
 endfor;
 $wall_list = array();
 //setAsMaze($width/2-1,$height/2-1);
-setAsMaze(48,0);
+setAsMaze(0,0);
 
 while(count($wall_list) > 0)
 {
