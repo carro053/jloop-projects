@@ -920,7 +920,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 					{
 						
 						//email based on user option
-						if($user['EventsUser']['notify_event_change'])
+						if($user['EventsUser']['notify_event_change'] || (!$user['EventsUser']['notify_event_change'] && !$user['EventsUser']['app_notify_event_change']))
 						{
 							//notify user we have X amount
 							$email_from = "events@dowehaveenough.com";
