@@ -153,8 +153,8 @@
                     <?php echo $form->checkbox('User.notify_in',array('style'=>'width:15px;','onchange'=>'document.getElementById("save_settings").style.display = "";')); ?> Every time someone is IN<br />
                     <?php echo $form->checkbox('User.notify_out',array('style'=>'width:15px;','onchange'=>'document.getElementById("save_settings").style.display = "";')); ?> Every time someone is OUT<br />
                     <?php if(count($the_user['UserMobileDevice']) > 0) { ?>
-                    <p style="color: #7DC3E1; margin-top:5px;margin-bottom:0px;">Send me push notifications...</p>
-                    <?php echo $form->checkbox('User.app_notify_event_change',array('style'=>'width:15px;','onchange'=>'document.getElementById("save_settings").style.display = "";')); ?> For event status updates.<br />
+                    <p style="color: #7DC3E1; margin-top:5px;margin-bottom:0px;">Send me a push notification...</p>
+                    <?php echo $form->checkbox('User.app_notify_event_change',array('style'=>'width:15px;','onchange'=>'document.getElementById("save_settings").style.display = "";')); ?> For each event status update.<br />
                     <?php echo $form->checkbox('User.app_notify_in',array('style'=>'width:15px;','onchange'=>'document.getElementById("save_settings").style.display = "";')); ?> Every time someone is IN<br />
                     <?php echo $form->checkbox('User.app_notify_out',array('style'=>'width:15px;','onchange'=>'document.getElementById("save_settings").style.display = "";')); ?> Every time someone is OUT<br />
                     <?php } ?>
