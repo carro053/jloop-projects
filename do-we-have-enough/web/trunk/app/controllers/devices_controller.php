@@ -668,11 +668,11 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 			if(isset($_POST['app_notify_event_change'])) $user['User']['app_notify_event_change'] = $_POST['app_notify_event_change'];
 			if(isset($_POST['app_notify_in'])) $user['User']['app_notify_in'] = $_POST['app_notify_in'];
 			if(isset($_POST['app_notify_out'])) $user['User']['app_notify_out'] = $_POST['app_notify_out'];
-			if(isset($_POST['notify_push']))
+			/*if(isset($_POST['notify_push']))
 			{
 				$user['UserMobileDevice']['notify_push'] = $_POST['notify_push'];
 				$this->UserMobileDevice->save($user);
-			}
+			}*/
 			if($this->User->save($user))
 			{
 				$this->set('result','true');
