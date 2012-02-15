@@ -275,11 +275,15 @@ class UsersController extends AppController
 			$host_name = $event['Host']['email'];
 			if($event['Host']['name'] != '') $host_name = $event['Host']['name'];
 			foreach($event['User'] as $user):
-				$email_to = $user['email'];
-				$email_from = "events@dowehaveenough.com";
-				$email_subject = $event['Event']['name']." - ".$event['Event']['when']." - Do we have enough?";
-				$email_msg = $host_name." has sent you an invitation to:
-				
+			
+				//email based off user setting
+				if($user['notify_event_change'] || (!$user['notify_event_change'] && !$user['app_notify_event_change']))
+				{
+					$email_to = $user['email'];
+					$email_from = "events@dowehaveenough.com";
+					$email_subject = $event['Event']['name']." - ".$event['Event']['when']." - Do we have enough?";
+					$email_msg = $host_name." has sent you an invitation to:
+
 ".$event['Event']['name']."
  * When: ".$event['Event']['when'].", ".date('F jS, Y', strtotime($event['Event']['date']))."
 ";
@@ -313,22 +317,29 @@ Direct Link to Event: http://".$this->environment.".dowehaveenough.com/go_to_eve
 ----
 
 If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email']."/".$user['EventsUser']['hash'];
-				//$this->Postmark->to = '<'.$email_to.'>';
-				//$this->Postmark->subject = $email_subject;
-				//$this->Postmark->textMessage = $email_msg;
-				//$result = $this->Postmark->send();
-				$headers = 'From: events@dowehaveenough.com'. "\r\n" .'Reply-To: events@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
-				mail($email_to, $email_subject, $email_msg, $headers);	
+					//$this->Postmark->to = '<'.$email_to.'>';
+					//$this->Postmark->subject = $email_subject;
+					//$this->Postmark->textMessage = $email_msg;
+					//$result = $this->Postmark->send();
+					$headers = 'From: events@dowehaveenough.com'. "\r\n" .'Reply-To: events@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
+					mail($email_to, $email_subject, $email_msg, $headers);
+				}
+				
 				$user['latest_event'] = $event['Event']['id'];
 				$this->User->save($user);
-				foreach($user['UserMobileDevice'] as $device):
-					$this->Notification->save_notification($user['id'],$device['device_token'],'You have been invited to '.$event['Event']['name'],$event['Event']['id'],2);
-				endforeach;
-				if($user['notify_text'] == 1)
+				
+				//app notification based off user setting
+				if($user['app_notify_event_change'])
+				{
+					foreach($user['UserMobileDevice'] as $device):
+						$this->Notification->save_notification($user['id'],$device['device_token'],'You have been invited to '.$event['Event']['name'],$event['Event']['id'],2);
+					endforeach;
+				}
+				/*if($user['notify_text'] == 1)
 				{
 					$message = $host_name.' has invited you to '.$event['Event']['name'].' - '.$event['Event']['when'].'. To reply, txt IAMIN, IAMOUT, or IAM50. For status, txt ENOUGH?';
 					$this->send_sms($user['id'],$message);
-				}
+				}*/
 			endforeach;
 		}else{
 			$this->render('event_not_found');
@@ -746,35 +757,47 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 				foreach($event['User'] as $user):
 					if($user['EventsUser']['unsubscribed'] == 0)
 					{
-						$email_msg = "With ".$in." people in so far ".$event['Event']['name']." is ON!
-	
-	----
-	
-	Direct Link to Event: http://".$this->environment.".dowehaveenough.com/go_to_event/".$user['EventsUser']['hash']."
-	
-	
-	
-	----
-	
-	If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email']."/".$user['EventsUser']['hash'];
-						$email_to = $user['email'];
-						//$this->Postmark->to = '<'.$email_to.'>';
-						//$this->Postmark->subject = $email_subject;
-						//$this->Postmark->textMessage = $email_msg;
-						//$result = $this->Postmark->send();
-						$headers = 'From: events@dowehaveenough.com'. "\r\n" .'Reply-To: events@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
-						mail($email_to, $email_subject, $email_msg, $headers);
-						foreach($user['UserMobileDevice'] as $device):
-							$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' is on!',$event['Event']['id'],3);
-						endforeach;
-						if($user['notify_text'] == 1)
+						//email based on user option
+						if($user['EventsUser']['notify_event_change'])
+						{
+							$email_msg = "With ".$in." people in so far ".$event['Event']['name']." is ON!
+
+----
+
+Direct Link to Event: http://".$this->environment.".dowehaveenough.com/go_to_event/".$user['EventsUser']['hash']."
+
+
+
+
+----
+
+If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email']."/".$user['EventsUser']['hash'];
+							$email_to = $user['email'];
+							//$this->Postmark->to = '<'.$email_to.'>';
+							//$this->Postmark->subject = $email_subject;
+							//$this->Postmark->textMessage = $email_msg;
+							//$result = $this->Postmark->send();
+							$headers = 'From: events@dowehaveenough.com'. "\r\n" .'Reply-To: events@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
+							mail($email_to, $email_subject, $email_msg, $headers);
+						}
+						
+						//app notification based on user option
+						if($user['EventsUser']['app_notify_event_change'])
+						{
+							foreach($user['UserMobileDevice'] as $device):
+								$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' is on!',$event['Event']['id'],3);
+							endforeach;
+						}
+						
+						//text notification based on user option
+						/*if($user['notify_text'] == 1)
 						{
 							$message = ' '.$event['Event']['name'].' is on!
 We have '.$in.' in,
 '.$out.' out,
 and '.$fifty.' 50/50.';
 							$this->send_sms($user['id'],$message);
-						}
+						}*/
 					}
 				endforeach;	
 				$event['Event']['active'] = 3;
@@ -788,39 +811,50 @@ and '.$fifty.' 50/50.';
 				foreach($event['User'] as $user):
 					if($user['EventsUser']['unsubscribed'] == 0)
 					{
-						$email_msg = "We didn't get enough people in so sadly ".$event['Event']['name']." is OFF.
+						//email based on user option
+						if($user['EventsUser']['notify_event_change'])
+						{
+								$email_msg = "We didn't get enough people in so sadly ".$event['Event']['name']." is OFF.
+		
+----
+
+Direct Link to Event: http://".$this->environment.".dowehaveenough.com/go_to_event/".$user['EventsUser']['hash']."
+
+----
+
+Create a new event at http://".$this->environment.".dowehaveenough.com/create
+
+
+
+----
+
+If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email'];
+							$email_to = $user['email'];
+							//$this->Postmark->to = '<'.$email_to.'>';
+							//$this->Postmark->subject = $email_subject;
+							//$this->Postmark->textMessage = $email_msg;
+							//$result = $this->Postmark->send();
+							$headers = 'From: events@dowehaveenough.com'. "\r\n" .'Reply-To: events@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
+							mail($email_to, $email_subject, $email_msg, $headers);
+						}
 						
-	----
-	
-	Direct Link to Event: http://".$this->environment.".dowehaveenough.com/go_to_event/".$user['EventsUser']['hash']."
-	
-	----
-	
-	Create a new event at http://".$this->environment.".dowehaveenough.com/create
-	
-	
-	
-	----
-	
-	If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email'];
-						$email_to = $user['email'];
-						//$this->Postmark->to = '<'.$email_to.'>';
-						//$this->Postmark->subject = $email_subject;
-						//$this->Postmark->textMessage = $email_msg;
-						//$result = $this->Postmark->send();
-						$headers = 'From: events@dowehaveenough.com'. "\r\n" .'Reply-To: events@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
-						mail($email_to, $email_subject, $email_msg, $headers);
-						foreach($user['UserMobileDevice'] as $device):
-							$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' is off.',$event['Event']['id'],3);
-						endforeach;
-						if($user['notify_text'] == 1)
+						//app notification based on user option
+						if($user['EventsUser']['app_notify_event_change'])
+						{
+							foreach($user['UserMobileDevice'] as $device):
+								$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' is off.',$event['Event']['id'],3);
+							endforeach;
+						}
+						
+						//text notification based on user option
+						/*if($user['notify_text'] == 1)
 						{
 							$message = ' '.$event['Event']['name'].' is off.
 We had '.$in.' in,
 '.$out.' out,
 and '.$fifty.' 50/50.';
 							$this->send_sms($user['id'],$message);
-						}
+						}*/
 					}
 				endforeach;	
 			
@@ -835,33 +869,44 @@ and '.$fifty.' 50/50.';
 				foreach($event['User'] as $user):
 					if($user['EventsUser']['unsubscribed'] == 0)
 					{
-						$email_msg = "We only have ".$in." in so far and we need ".$event['Event']['need']." for ".$event['Event']['name']." to be on.
-					
-	----
-	
-	Direct Link to Event: http://".$this->environment.".dowehaveenough.com/go_to_event/".$user['EventsUser']['hash']."
-	
-	
-	
-	
-	----
-	
-	If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email']."/".$user['EventsUser']['hash'];
-						$email_to = $user['email'];
-						//$this->Postmark->to = '<'.$email_to.'>';
-						//$this->Postmark->subject = $email_subject;
-						//$this->Postmark->textMessage = $email_msg;
-						//$result = $this->Postmark->send();
-						$headers = 'From: events@dowehaveenough.com'. "\r\n" .'Reply-To: events@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
-						mail($email_to, $email_subject, $email_msg, $headers);	
-						foreach($user['UserMobileDevice'] as $device):
-							$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' needs more!.',$event['Event']['id'],3);
-						endforeach;
-						if($user['notify_text'] == 1)
+						//email based on user option
+						if($user['EventsUser']['notify_event_change'])
+						{
+							$email_msg = "We only have ".$in." in so far and we need ".$event['Event']['need']." for ".$event['Event']['name']." to be on.
+				
+----
+
+Direct Link to Event: http://".$this->environment.".dowehaveenough.com/go_to_event/".$user['EventsUser']['hash']."
+
+
+
+
+----
+
+If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email']."/".$user['EventsUser']['hash'];
+							$email_to = $user['email'];
+							//$this->Postmark->to = '<'.$email_to.'>';
+							//$this->Postmark->subject = $email_subject;
+							//$this->Postmark->textMessage = $email_msg;
+							//$result = $this->Postmark->send();
+							$headers = 'From: events@dowehaveenough.com'. "\r\n" .'Reply-To: events@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
+							mail($email_to, $email_subject, $email_msg, $headers);
+						}
+						
+						//app notification based on user option
+						if($user['EventsUser']['app_notify_event_change'])
+						{
+							foreach($user['UserMobileDevice'] as $device):
+								$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' needs more!.',$event['Event']['id'],3);
+							endforeach;
+						}
+							
+						//text notification based on user option
+						/*if($user['notify_text'] == 1)
 						{
 							$message = ' '.$event['Event']['name'].' needs more! We have '.$in.' in, '.$out.' out, and '.$fifty.' 50/50. Still need at least '.$event['Event']['need'].'!';
 							$this->send_sms($user['id'],$message);
-						}
+						}*/
 					}
 				endforeach;	
 				
@@ -873,41 +918,54 @@ and '.$fifty.' 50/50.';
 				{
 					if($user['EventsUser']['notify_reach_checked'] == 1 && $user['EventsUser']['notify_reach_count'] <= $in && $user['EventsUser']['notified_reached'] != 1)
 					{
-						//notify user we have X amount
-						$email_from = "events@dowehaveenough.com";
-						$email_subject = $event['Event']['name'].' has '.$in.' in!';
-						$email_headers = "From: ".$email_from;
-						$email_msg = "You wanted to be notified when ".$event['Event']['name']." has at least ".$user['EventsUser']['notify_reach_count']." in and guess what? It does!
-					
-	----
+						
+						//email based on user option
+						if($user['EventsUser']['notify_event_change'])
+						{
+							//notify user we have X amount
+							$email_from = "events@dowehaveenough.com";
+							$email_subject = $event['Event']['name'].' has '.$in.' in!';
+							$email_headers = "From: ".$email_from;
+							$email_msg = "You wanted to be notified when ".$event['Event']['name']." has at least ".$user['EventsUser']['notify_reach_count']." in and guess what? It does!
 	
-	Direct Link to Event: http://".$this->environment.".dowehaveenough.com/go_to_event/".$user['EventsUser']['hash']."
-	
-	
-	
-	
-	----
-	
-	If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email']."/".$user['EventsUser']['hash'];
-						$email_to = $user['email'];
-						//$this->Postmark->to = '<'.$email_to.'>';
-						//$this->Postmark->subject = $email_subject;
-						//$this->Postmark->textMessage = $email_msg;
-						//$result = $this->Postmark->send();
-						$headers = 'From: events@dowehaveenough.com'. "\r\n" .'Reply-To: events@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
-						mail($email_to, $email_subject, $email_msg, $headers);
-						foreach($user['UserMobileDevice'] as $device):
-							$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' now has '.$in.' in.',$event['Event']['id'],3);
-						endforeach;
-						if($user['notify_text'] == 1)
+----
+
+Direct Link to Event: http://".$this->environment.".dowehaveenough.com/go_to_event/".$user['EventsUser']['hash']."
+
+
+
+
+----
+
+If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email']."/".$user['EventsUser']['hash'];
+							$email_to = $user['email'];
+							//$this->Postmark->to = '<'.$email_to.'>';
+							//$this->Postmark->subject = $email_subject;
+							//$this->Postmark->textMessage = $email_msg;
+							//$result = $this->Postmark->send();
+							$headers = 'From: events@dowehaveenough.com'. "\r\n" .'Reply-To: events@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
+							mail($email_to, $email_subject, $email_msg, $headers);
+						}
+						
+						//app notification based on user option
+						if($user['EventsUser']['app_notify_event_change'])
+						{
+							foreach($user['UserMobileDevice'] as $device):
+								$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' now has '.$in.' in.',$event['Event']['id'],3);
+							endforeach;
+						}
+						
+						//text notification based on user option
+						/*if($user['notify_text'] == 1)
 						{
 							$message = ' '.$event['Event']['name'].' now has '.$in.' in.';
 							$this->send_sms($user['id'],$message);
-						}
+						}*/
 						$user['EventsUser']['notified_reached'] = 1;
 						$this->EventsUser->save($user['EventsUser']);
 					}
-					if($user['notify_in'] == 1)
+					
+					if($user['notify_in'] == 1 || $user['app_notify_in'] == 1)
 					{
 						$people_are_in = 0;
 						foreach($user_in_recent as $ins):
@@ -918,49 +976,58 @@ and '.$fifty.' 50/50.';
 						endforeach;
 						if($people_are_in > 0)
 						{
-							
-							//notify who has joined in
-							$email_from = "events@dowehaveenough.com";
-							$email_subject = 'People are IN for '.$event['Event']['name'];
-							$email_headers = "From: ".$email_from;
-							$email_msg = "The following people are IN for ".$event['Event']['name'].":
-	";
-							foreach($user_in_recent as $ins):
-								if($ins['id'] != $user['id'])
-								{
-									if($ins['name'] != '')
+							//email based on user option
+							if($user['notify_in'])
+							{
+								//notify who has joined in
+								$email_from = "events@dowehaveenough.com";
+								$email_subject = 'People are IN for '.$event['Event']['name'];
+								$email_headers = "From: ".$email_from;
+								$email_msg = "The following people are IN for ".$event['Event']['name'].":
+";
+								foreach($user_in_recent as $ins):
+									if($ins['id'] != $user['id'])
 									{
-										$email_msg .= "
-	".$ins['name'];
-									}else{
-										$email_msg .= "
-	".$ins['email'];
+										if($ins['name'] != '')
+										{
+											$email_msg .= "
+".$ins['name'];
+										}else{
+											$email_msg .= "
+".$ins['email'];
+										}
 									}
-								}
-							endforeach;
-							$email_msg .= "
-	
-	----
-	
-	Direct Link to Event: http://".$this->environment.".dowehaveenough.com/go_to_event/".$user['EventsUser']['hash']."
-	
-	
-	
-	
-	----
-	
-	If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email']."/".$user['EventsUser']['hash'];
-							$email_to = $user['email'];
-							//$this->Postmark->to = '<'.$email_to.'>';
-							//$this->Postmark->subject = $email_subject;
-							//$this->Postmark->textMessage = $email_msg;
-							//$result = $this->Postmark->send();
-							$headers = 'From: events@dowehaveenough.com'. "\r\n" .'Reply-To: events@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
-							mail($email_to, $email_subject, $email_msg, $headers);
-							foreach($user['UserMobileDevice'] as $device):
-								$this->Notification->save_notification($user['id'],$device['device_token'],'People are in for '.$event['Event']['name'],$event['Event']['id'],1);
-							endforeach;
-							if($user['notify_text'] == 1)
+								endforeach;
+								$email_msg .= "
+
+----
+
+Direct Link to Event: http://".$this->environment.".dowehaveenough.com/go_to_event/".$user['EventsUser']['hash']."
+
+
+
+
+----
+
+If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email']."/".$user['EventsUser']['hash'];
+								$email_to = $user['email'];
+								//$this->Postmark->to = '<'.$email_to.'>';
+								//$this->Postmark->subject = $email_subject;
+								//$this->Postmark->textMessage = $email_msg;
+								//$result = $this->Postmark->send();
+								$headers = 'From: events@dowehaveenough.com'. "\r\n" .'Reply-To: events@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
+								mail($email_to, $email_subject, $email_msg, $headers);
+							}
+							
+							//app notification based on user option
+							if($user['app_notify_in'])
+							{
+								foreach($user['UserMobileDevice'] as $device):
+									$this->Notification->save_notification($user['id'],$device['device_token'],'People are in for '.$event['Event']['name'],$event['Event']['id'],1);
+								endforeach;
+							
+							}
+							/*if($user['notify_text'] == 1)
 							{
 								$message = '';
 								$i=0;
@@ -984,10 +1051,11 @@ and '.$fifty.' 50/50.';
 									$message .= ' is in for '.$event['Event']['name'].'.';
 								}
 								$this->send_sms($user['id'],$message);
-							}
+							}*/
 						}
 					}
-					if($user['notify_out'] == 1)
+					
+					if($user['notify_out'] == 1 || $user['app_notify_out'] == 1)
 					{
 						$people_are_out = 0;
 						foreach($user_out_recent as $outs):
@@ -998,48 +1066,58 @@ and '.$fifty.' 50/50.';
 						endforeach;
 						if($people_are_out > 0)
 						{
-							//notify who has joouted out
-							$email_from = "events@dowehaveenough.com";
-							$email_subject = 'People are OUT for '.$event['Event']['name'];
-							$email_headers = "From: ".$email_from;
-							$email_msg = "The following people are OUT for ".$event['Event']['name'].":
-	";
-							foreach($user_out_recent as $outs):
-								if($outs['id'] != $user['id'])
-								{
-									if($outs['name'] != '')
+							//email based on user option
+							if($user['notify_out'])
+							{
+								//notify who has joouted out
+								$email_from = "events@dowehaveenough.com";
+								$email_subject = 'People are OUT for '.$event['Event']['name'];
+								$email_headers = "From: ".$email_from;
+								$email_msg = "The following people are OUT for ".$event['Event']['name'].":
+";
+								foreach($user_out_recent as $outs):
+									if($outs['id'] != $user['id'])
 									{
-										$email_msg .= "
-	".$outs['name'];
-									}else{
-										$email_msg .= "
-	".$outs['email'];
+										if($outs['name'] != '')
+										{
+											$email_msg .= "
+".$outs['name'];
+										}else{
+											$email_msg .= "
+".$outs['email'];
+										}
 									}
-								}
-							endforeach;
-							$email_msg .= "
-	
-	----
-	
-	Direct Link to Event: http://".$this->environment.".dowehaveenough.com/go_to_event/".$user['EventsUser']['hash']."
-	
-	
-	
-	
-	----
-	
-	If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email']."/".$user['EventsUser']['hash'];
-							$email_to = $user['email'];
-							//$this->Postmark->to = '<'.$email_to.'>';
-							//$this->Postmark->subject = $email_subject;
-							//$this->Postmark->textMessage = $email_msg;
-							//$result = $this->Postmark->send();
-							$headers = 'From: events@dowehaveenough.com'. "\r\n" .'Reply-To: events@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
-							mail($email_to, $email_subject, $email_msg, $headers);
-							foreach($user['UserMobileDevice'] as $device):
-								$this->Notification->save_notification($user['id'],$device['device_token'],'People are out for '.$event['Event']['name'],$event['Event']['id'],1);
-							endforeach;
-							if($user['notify_text'] == 1)
+								endforeach;
+								$email_msg .= "
+
+----
+
+Direct Link to Event: http://".$this->environment.".dowehaveenough.com/go_to_event/".$user['EventsUser']['hash']."
+
+
+
+
+----
+
+If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email']."/".$user['EventsUser']['hash'];
+								$email_to = $user['email'];
+								//$this->Postmark->to = '<'.$email_to.'>';
+								//$this->Postmark->subject = $email_subject;
+								//$this->Postmark->textMessage = $email_msg;
+								//$result = $this->Postmark->send();
+								$headers = 'From: events@dowehaveenough.com'. "\r\n" .'Reply-To: events@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
+								mail($email_to, $email_subject, $email_msg, $headers);
+							}
+							
+							//app notification based on user option
+							if($user['app_notify_out'])
+							{
+								foreach($user['UserMobileDevice'] as $device):
+									$this->Notification->save_notification($user['id'],$device['device_token'],'People are out for '.$event['Event']['name'],$event['Event']['id'],1);
+								endforeach;
+							}
+							
+							/*if($user['notify_text'] == 1)
 							{
 								$message = '';
 								$i=0;
@@ -1063,7 +1141,7 @@ and '.$fifty.' 50/50.';
 									$message .= ' is out for '.$event['Event']['name'].'.';
 								}
 								$this->send_sms($user['id'],$message);
-							}
+							}*/
 						}
 					}
 				}
