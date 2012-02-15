@@ -259,11 +259,15 @@ class DevicesController extends AppController
 				$host_name = $event['Host']['email'];
 				if($event['Host']['name'] != '') $host_name = $event['Host']['name'];
 				foreach($event['User'] as $user):
-					$email_to = $user['email'];
-					$email_from = "events@dowehaveenough.com";
-					$email_subject = $event['Event']['name']." - ".$event['Event']['when']." - Do we have enough?";
-					$email_msg = $host_name." has sent you an invitation to:
 					
+					//email based off user setting
+					if($user['notify_event_change'] || (!$user['notify_event_change'] && !$user['app_notify_event_change']))
+					{
+						$email_to = $user['email'];
+						$email_from = "events@dowehaveenough.com";
+						$email_subject = $event['Event']['name']." - ".$event['Event']['when']." - Do we have enough?";
+						$email_msg = $host_name." has sent you an invitation to:
+
 ".$event['Event']['name']."
  * When: ".$event['Event']['when'].", ".date('F jS, Y', strtotime($event['Event']['date']))."
 ";				
@@ -297,19 +301,26 @@ Direct Link to Event: http://".$this->environment.".dowehaveenough.com/go_to_eve
 ----		
 			
 If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment.".dowehaveenough.com/unsubscribe/".$user['email']."/".$user['EventsUser']['hash'];
-					///SEND THE MESSAGE
-					$email_headers = "From: ".$email_from;
-					$success = mail($email_to, $email_subject, $email_msg, $email_headers);
+						///SEND THE MESSAGE
+						$email_headers = "From: ".$email_from;
+						$success = mail($email_to, $email_subject, $email_msg, $email_headers);
+					}
+					
 					$user['latest_event'] = $event['Event']['id'];
 					$this->User->save($user);
-					foreach($user['UserMobileDevice'] as $device):
-						$this->Notification->save_notification($user['id'],$device['device_token'],'You have been invited to '.$event['Event']['name'],$event['Event']['id'],2);
-					endforeach;
-					if($user['notify_text'] == 1)
+					
+					//app notification based off user setting
+					if($user['app_notify_event_change'])
+					{
+						foreach($user['UserMobileDevice'] as $device):
+							$this->Notification->save_notification($user['id'],$device['device_token'],'You have been invited to '.$event['Event']['name'],$event['Event']['id'],2);
+						endforeach;
+					}
+					/*if($user['notify_text'] == 1)
 					{
 						$message = $host_name.' has invited you to '.$event['Event']['name'].' - '.$event['Event']['when'].'. To reply, txt IAMIN, IAMOUT, or IAM50. For status, txt ENOUGH?';
 						$this->send_sms($user['id'],$message);
-					}
+					}*/
 				endforeach;
 				$this->set('status','active');
 				$this->set('event_id',$event_id);
