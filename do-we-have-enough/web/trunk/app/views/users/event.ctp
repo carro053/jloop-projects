@@ -148,12 +148,12 @@
                     echo $form->hidden('User.id',array('value' => $the_user['User']['id'])); 
                     echo $form->hidden('EventsUser.id',array('value' => $the_user['EventsUser']['id']));
                     echo $form->hidden('EventsUser.event_id',array('value' => $this->data['EventsUser']['event_id'])); ?>
-                    <h2>Email Me:</h2>
+                    <p style="color: #7DC3E1; margin-top:5px;">Email me...</p>
                     <?php echo $form->checkbox('User.notify_event_change',array('style'=>'width:15px;','onchange'=>'document.getElementById("save_settings").style.display = "";')); ?> Event status updates.<br />
                     <?php echo $form->checkbox('User.notify_in',array('style'=>'width:15px;','onchange'=>'document.getElementById("save_settings").style.display = "";')); ?> Every time someone is IN<br />
                     <?php echo $form->checkbox('User.notify_out',array('style'=>'width:15px;','onchange'=>'document.getElementById("save_settings").style.display = "";')); ?> Every time someone is OUT<br />
                     <?php if(count($the_user['UserMobileDevice']) > 0) { ?>
-                    <h2>Send Me Push Notifications:</h2>
+                    <p style="color: #7DC3E1; margin-top:5px;">Send me push notifications...</p>
                     <?php echo $form->checkbox('User.app_notify_event_change',array('style'=>'width:15px;','onchange'=>'document.getElementById("save_settings").style.display = "";')); ?> For event status updates.<br />
                     <?php echo $form->checkbox('User.app_notify_in',array('style'=>'width:15px;','onchange'=>'document.getElementById("save_settings").style.display = "";')); ?> Every time someone is IN<br />
                     <?php echo $form->checkbox('User.app_notify_out',array('style'=>'width:15px;','onchange'=>'document.getElementById("save_settings").style.display = "";')); ?> Every time someone is OUT<br />
