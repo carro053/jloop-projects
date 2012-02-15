@@ -541,7 +541,6 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 		$this->User->save($this->params['data']['User']);
 		$this->EventsUser->save($this->params['data']['EventsUser']);
 		$this->User->bindModel(array('hasMany'=>array('UserMobileDevice' =>array('className'=>'UserMobileDevice','foreignKey'=>'user_id','conditions'=>'UserMobileDevice.device_token != "" AND UserMobileDevice.notify_push = 1 AND UserMobileDevice.validator = ""','order'=> '','limit'=> ''))));
-		$this->User->bindModel(array('hasOne'=>array('EventsUser' =>array('className'=>'EventsUser','foreignKey'=>'user_id','conditions'=>'EventsUser.event_id = '.$event['Event']['id'],'order'=> '','limit'=> ''))));
 		$the_user = $this->User->find('User.id = '.$this->uAuth->user_id);
 		$this->set('the_user',$the_user);
 		$this->render('update_settings','ajax');
