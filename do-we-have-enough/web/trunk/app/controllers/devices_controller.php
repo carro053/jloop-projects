@@ -59,6 +59,13 @@ class DevicesController extends AppController
 	{
 		$this->User->bindModel(array('hasOne'=>array('UserMobileDevice'=>array('foreignKey'=>false,'conditions'=> array('User.id = UserMobileDevice.user_id')))));
 		$user = $this->User->find('User.email = "'.$_POST['email_address'].'" AND UserMobileDevice.device_id = "'.$_POST['device_id'].'"');
+		if($user['User']['app_notify_event_change'] == 0 && $user['User']['app_notify_in'] == 0 && $user['User']['app_notify_out'] == 0)
+		{
+			$user['User']['app_notify_event_change'] = $user['User']['notify_event_change'];
+			$user['User']['app_notify_in'] = $user['User']['notify_in'];
+			$user['User']['app_notify_out'] = $user['User']['notify_out'];
+			$this->User->save($user);
+		}
 		if(isset($user['User']['id']))
 		{
 			if($user['UserMobileDevice']['validator'] != '')
@@ -173,7 +180,12 @@ class DevicesController extends AppController
 			$event['Event']['validated'] = 1;
 			$event['Event']['url'] = $current_url;
 			$event['Event']['name'] = $_POST['event_name'];
-			$event['Event']['date'] = date('Y-m-d');
+			if(isset($_POST['date']))
+			{
+				$event['Event']['date'] = date('Y-m-d',strtotime($_POST['date']));;
+			}else{
+				$event['Event']['date'] = date('Y-m-d');
+			}
 			$event['Event']['when'] = $_POST['event_when'];
 			$event['Event']['where'] = $_POST['event_where'];
 			$event['Event']['need'] = $_POST['event_need'];
