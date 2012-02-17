@@ -758,7 +758,7 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 					if($user['EventsUser']['unsubscribed'] == 0)
 					{
 						//email based on user option
-						if($user['EventsUser']['notify_event_change'])
+						if($user['notify_event_change'])
 						{
 							$email_msg = "With ".$in." people in so far ".$event['Event']['name']." is ON!
 
@@ -782,7 +782,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 						}
 						
 						//app notification based on user option
-						if($user['EventsUser']['app_notify_event_change'])
+						if($user['app_notify_event_change'])
 						{
 							foreach($user['UserMobileDevice'] as $device):
 								$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' is on!',$event['Event']['id'],3);
@@ -812,7 +812,7 @@ and '.$fifty.' 50/50.';
 					if($user['EventsUser']['unsubscribed'] == 0)
 					{
 						//email based on user option
-						if($user['EventsUser']['notify_event_change'])
+						if($user['notify_event_change'])
 						{
 								$email_msg = "We didn't get enough people in so sadly ".$event['Event']['name']." is OFF.
 		
@@ -839,7 +839,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 						}
 						
 						//app notification based on user option
-						if($user['EventsUser']['app_notify_event_change'])
+						if($user['app_notify_event_change'])
 						{
 							foreach($user['UserMobileDevice'] as $device):
 								$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' is off.',$event['Event']['id'],3);
@@ -870,7 +870,7 @@ and '.$fifty.' 50/50.';
 					if($user['EventsUser']['unsubscribed'] == 0)
 					{
 						//email based on user option
-						if($user['EventsUser']['notify_event_change'])
+						if($user['notify_event_change'])
 						{
 							$email_msg = "We only have ".$in." in so far and we need ".$event['Event']['need']." for ".$event['Event']['name']." to be on.
 				
@@ -894,7 +894,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 						}
 						
 						//app notification based on user option
-						if($user['EventsUser']['app_notify_event_change'])
+						if($user['app_notify_event_change'])
 						{
 							foreach($user['UserMobileDevice'] as $device):
 								$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' needs more!.',$event['Event']['id'],3);
@@ -920,7 +920,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 					{
 						
 						//email based on user option
-						if($user['EventsUser']['notify_event_change'] || (!$user['EventsUser']['notify_event_change'] && !$user['EventsUser']['app_notify_event_change']))
+						if($user['notify_event_change'] || (!$user['notify_event_change'] && !$user['app_notify_event_change']))
 						{
 							//notify user we have X amount
 							$email_from = "events@dowehaveenough.com";
@@ -948,7 +948,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 						}
 						
 						//app notification based on user option
-						if($user['EventsUser']['app_notify_event_change'])
+						if($user['app_notify_event_change'])
 						{
 							foreach($user['UserMobileDevice'] as $device):
 								$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' now has '.$in.' in.',$event['Event']['id'],3);
