@@ -1,6 +1,6 @@
 <event_data>
 <event_name><?php echo $event['Event']['name']; ?></event_name>
-<event_date><?php echo $event['Event']['date']; ?></event_date>
+<event_date><?php echo date('D, M j',$event['Event']['date']); ?></event_date>
 <event_when><?php echo $event['Event']['when']; ?></event_when>
 <event_where><?php echo $event['Event']['where']; ?></event_where>
 <event_need><?php echo $event['Event']['need']; ?></event_need>
