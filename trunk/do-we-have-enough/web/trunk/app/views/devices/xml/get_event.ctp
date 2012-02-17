@@ -1,7 +1,6 @@
 <event_data>
 <event_name><?php echo $event['Event']['name']; ?></event_name>
-<event_date><?php echo date('D, M j',strtotime($event['Event']['date'])); ?></event_date>
-<event_when><?php echo $event['Event']['when']; ?></event_when>
+<event_when><?php echo date('D, M jS',strtotime($event['Event']['date'])).' at '.$event['Event']['when']; ?></event_when>
 <event_where><?php echo $event['Event']['where']; ?></event_where>
 <event_need><?php echo $event['Event']['need']; ?></event_need>
 <event_details><?php echo $event['Event']['details']; ?></event_details>
