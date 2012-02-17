@@ -1018,7 +1018,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 								$headers = 'From: events@dowehaveenough.com'. "\r\n" .'Reply-To: events@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
 								mail($email_to, $email_subject, $email_msg, $headers);
 							}
-							
+							echo 'Notified: '.$user['id'];
 							//app notification based on user option
 							if($user['app_notify_in'])
 							{
