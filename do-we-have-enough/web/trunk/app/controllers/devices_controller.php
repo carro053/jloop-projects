@@ -790,8 +790,8 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 
 		$streamContext = stream_context_create();
 		stream_context_set_option($streamContext, 'ssl', 'local_cert', $apnsCert);
-		//stream_context_set_option($streamContext, 'ssl', 'passphrase', 'a4d6s5');
-		//stream_context_set_option($streamContext, 'ssl', 'verify_peer', false);
+		stream_context_set_option($streamContext, 'ssl', 'passphrase', 'a4d6s5');
+		stream_context_set_option($streamContext, 'ssl', 'verify_peer', false);
 		$apns = stream_socket_client('ssl://' . $apnsHost . ':' . $apnsPort, $error, $errorString, 2, STREAM_CLIENT_CONNECT,$streamContext);
 		if (!$apns)
 		{
@@ -821,7 +821,7 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 	{
 		$apnsHost = 'feedback.sandbox.push.apple.com';
 		$apnsPort = 2196;
-		$apnsCert = '/var/www/vhosts/dowehaveenough.com/subdomains/dev/httpdocs/app/controllers/win.pem';
+			$apnsCert = '/var/www/vhosts/dowehaveenough.com/subdomains/dev/httpdocs/app/webroot/dev-cert.pem';
 
 		$streamContext = stream_context_create();
 		stream_context_set_option($streamContext, 'ssl', 'local_cert', $apnsCert);
