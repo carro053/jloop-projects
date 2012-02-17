@@ -126,21 +126,40 @@
 	//[[Beacon shared] startSubBeaconWithName:@"Event List" timeSession:NO];
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
 	[settings initData];
-	NSString *tempEmail = [[NSString alloc] initWithString:@"false"];
 	if ([settings.emailAddress isEqualToString: @"false"]) {
 		ValidateEmailViewController *validateController = [[ValidateEmailViewController alloc] initWithNibName:@"ValidateEmailViewController" bundle:nil];
 		[self presentModalViewController:validateController animated:YES];
 		[validateController release];
 	} else {
-		EventListViewController *eventListViewController = [[EventListViewController alloc] initWithStyle:UITableViewStyleGrouped];
-		[self.rootController.navigationController pushViewController:eventListViewController animated:YES];
-		[eventListViewController release];
+        if ([settings.isValidated isEqualToString:@"false"]) {
+			CheckValidationViewController *checkValidationController = [[CheckValidationViewController alloc] initWithNibName:@"CheckValidationViewController" bundle:nil];
+			[self presentModalViewController:checkValidationController animated:YES];
+			[checkValidationController release];
+		} else {
+            EventListViewController *eventListViewController = [[EventListViewController alloc] initWithStyle:UITableViewStyleGrouped];
+            [self.rootController.navigationController pushViewController:eventListViewController animated:YES];
+            [eventListViewController release];
+        }
 	}
 	[settings release];
-	[tempEmail release];
 }
 -(IBAction)settingsButtonPressed {
-	[self.rootController switchViews:self];
+    SettingsTracker *settings = [[SettingsTracker alloc] init];
+	[settings initData];
+    if (![settings.emailAddress isEqualToString:@"false"]) {
+		if ([settings.isValidated isEqualToString:@"false"]) {
+			CheckValidationViewController *checkValidationController = [[CheckValidationViewController alloc] initWithNibName:@"CheckValidationViewController" bundle:nil];
+			[self presentModalViewController:checkValidationController animated:YES];
+			[checkValidationController release];
+		} else {
+            [self.rootController switchViews:self];
+		}
+	}else{
+		ValidateEmailViewController *validateController = [[ValidateEmailViewController alloc] initWithNibName:@"ValidateEmailViewController" bundle:nil];
+		[self presentModalViewController:validateController animated:YES];
+		[validateController release];
+    }
+    [settings release];
 }
 
 
@@ -238,7 +257,10 @@
 		//item = [[NSMutableDictionary alloc] init];
 		currentNotifyIn = [[NSMutableString alloc] init];
 		currentNotifyOut = [[NSMutableString alloc] init];
-		currentNotifyPush = [[NSMutableString alloc] init];
+		currentNotifyEventChange = [[NSMutableString alloc] init];
+		currentAppNotifyIn = [[NSMutableString alloc] init];
+		currentAppNotifyOut = [[NSMutableString alloc] init];
+		currentAppNotifyEventChange = [[NSMutableString alloc] init];
 		currentEventID = [[NSMutableString alloc] init];
 		currentEventName = [[NSMutableString alloc] init];
 		currentEventWhen = [[NSMutableString alloc] init];
@@ -259,8 +281,14 @@
 		[currentNotifyIn appendString:string];
 	} else if ([currentElement isEqualToString:@"notify_out"]) {
 		[currentNotifyOut appendString:string];
-	} else if ([currentElement isEqualToString:@"notify_push"]) {
-		[currentNotifyPush appendString:string];
+	} else if ([currentElement isEqualToString:@"notify_event_change"]) {
+		[currentNotifyEventChange appendString:string];
+    } else if ([currentElement isEqualToString:@"app_notify_in"]) {
+        [currentAppNotifyIn appendString:string];
+    } else if ([currentElement isEqualToString:@"app_notify_out"]) {
+        [currentAppNotifyOut appendString:string];
+    } else if ([currentElement isEqualToString:@"app_notify_event_change"]) {
+        [currentAppNotifyEventChange appendString:string];
 	} else if ([currentElement isEqualToString:@"latest_event_id"]) {
 		[currentEventID appendString:string];
 	} else if ([currentElement isEqualToString:@"latest_event_name"]) {
@@ -280,7 +308,11 @@
 	[settings initData];
 	[settings saveNotifyIn:currentNotifyIn];
 	[settings saveNotifyOut:currentNotifyOut];
-	[settings saveNotifyPush:currentNotifyPush];
+	[settings saveNotifyEventChange:currentNotifyEventChange];
+	[settings saveAppNotifyIn:currentAppNotifyIn];
+	[settings saveAppNotifyOut:currentAppNotifyOut];
+	[settings saveAppNotifyEventChange:currentAppNotifyEventChange];
+    NSLog(@"%@ %@ %@ %@ %@ %@",currentNotifyIn,currentNotifyOut,currentNotifyEventChange,currentAppNotifyIn,currentAppNotifyOut,currentAppNotifyEventChange);
 	NSLog(@"notify in in home view: %d", [settings.notifyIn intValue]);
 	[settings release];
 	NSLog(@"the event IS: %@", currentEventName);

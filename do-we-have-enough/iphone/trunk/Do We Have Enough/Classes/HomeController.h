@@ -24,7 +24,7 @@
 	//---xml parser stuff
 	NSXMLParser *xmlParser;
 	NSString *currentElement;
-	NSMutableString *currentNotifyIn, *currentNotifyOut, *currentNotifyPush;
+	NSMutableString *currentNotifyIn, *currentNotifyOut, *currentNotifyEventChange, *currentAppNotifyIn, *currentAppNotifyOut, *currentAppNotifyEventChange;
 	NSMutableString *currentEventID, *currentEventName, *currentEventWhen;
 
 	//---web service access---

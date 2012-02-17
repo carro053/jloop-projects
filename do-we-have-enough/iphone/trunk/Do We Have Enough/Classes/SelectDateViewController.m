@@ -17,9 +17,14 @@
 {
 	NSDate *selected = [datePicker date];
 	CreateEventViewController *parentController = [self.navigationController.viewControllers objectAtIndex:1];
-	if (theNotification == @"status")
+	if (theNotification == @"when")
+    {
+		parentController.whenDate = selected;
+		parentController.whenSet = TRUE;
+    } else if(theNotification == @"status")
+    {
 		parentController.statusEmailDate = selected;
-	else {
+	} else {
 		parentController.cancelEmailDate = selected;
 	}
 	//[parentController release];
@@ -30,9 +35,14 @@
 {
 	NSDate *selected = [datePicker date];
 	CreateEventViewController *parentController = [self.navigationController.viewControllers objectAtIndex:1];
-	if (theNotification == @"status")
+	if (theNotification == @"when")
+    {
+		parentController.whenDate = selected;
+		parentController.whenSet = TRUE;
+    } else if(theNotification == @"status")
+    {
 		parentController.statusEmailDate = selected;
-	else {
+	} else {
 		parentController.cancelEmailDate = selected;
 	}
 }
@@ -40,9 +50,13 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	CreateEventViewController *parentController = [self.navigationController.viewControllers objectAtIndex:1];
-	if (theNotification == @"status")
+	if (theNotification == @"when")
+    {
+		[datePicker setDate:parentController.whenDate];
+    } else if(theNotification == @"status")
+    {
 		[datePicker setDate:parentController.statusEmailDate];
-	else {
+	} else {
 		[datePicker setDate:parentController.cancelEmailDate];
 	}
 	//[parentController release];
