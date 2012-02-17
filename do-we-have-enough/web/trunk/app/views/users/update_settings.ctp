@@ -3,7 +3,7 @@ echo $form->hidden('User.id',array('value' => $this->data['User']['id']));
 echo $form->hidden('EventsUser.id',array('value' => $this->data['EventsUser']['id']));
 echo $form->hidden('EventsUser.event_id',array('value' => $this->data['EventsUser']['event_id'])); ?>
 
-<p style="color: #7DC3E1; margin-top:5px;margin-bottom:0px;">Email me...</p>
+<p style="color: #7DC3E1; margin-top:5px;margin-bottom:0px;">Send me an email...</p>
 <?php echo $form->checkbox('User.notify_event_change',array('style'=>'width:15px;','onchange'=>'document.getElementById("save_settings").style.display = "";')); ?> Event status updates.<br />
 <?php echo $form->checkbox('User.notify_in',array('style'=>'width:15px;','onchange'=>'document.getElementById("save_settings").style.display = "";')); ?> Every time someone is IN<br />
 <?php echo $form->checkbox('User.notify_out',array('style'=>'width:15px;','onchange'=>'document.getElementById("save_settings").style.display = "";')); ?> Every time someone is OUT<br />
