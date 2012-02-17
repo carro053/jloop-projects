@@ -781,7 +781,7 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 		if ($this->environment == "dev") {
 			$apnsHost = 'gateway.sandbox.push.apple.com';
 			$apnsPort = 2195;
-			$apnsCert = '/var/www/vhosts/dowehaveenough.com/subdomains/dev/httpdocs/app/controllers/win.pem';
+			$apnsCert = '/var/www/vhosts/dowehaveenough.com/subdomains/dev/httpdocs/app/webroot/dev-cert.pem';
 		} else {
 			$apnsHost = 'gateway.push.apple.com';
 			$apnsPort = 2195;
