@@ -1021,8 +1021,20 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 							//app notification based on user option
 							if($user['app_notify_in'])
 							{
+								if(count($user_in_recent) == 1)
+								{
+									if($user_in_recent[0]['name'] != '')
+									{
+										$notification = $user_in_recent[0]['name'];
+									}else{
+										$notification = $user_in_recent[0]['email'];
+									}
+									$notification .= ' is in for '.$event['Event']['name'];
+								}else{
+									$notification = 'People are in for '.$event['Event']['name'];
+								}
 								foreach($user['UserMobileDevice'] as $device):
-									$this->Notification->save_notification($user['id'],$device['device_token'],'People are in for '.$event['Event']['name'],$event['Event']['id'],1);
+									$this->Notification->save_notification($user['id'],$device['device_token'],$notification,$event['Event']['id'],1);
 								endforeach;
 							
 							}
@@ -1111,8 +1123,21 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 							//app notification based on user option
 							if($user['app_notify_out'])
 							{
+								
+								if(count($user_out_recent) == 1)
+								{
+									if($user_out_recent[0]['name'] != '')
+									{
+										$notification = $user_out_recent[0]['name'];
+									}else{
+										$notification = $user_out_recent[0]['email'];
+									}
+									$notification .= ' is out for '.$event['Event']['name'];
+								}else{
+									$notification = 'People are out for '.$event['Event']['name'];
+								}
 								foreach($user['UserMobileDevice'] as $device):
-									$this->Notification->save_notification($user['id'],$device['device_token'],'People are out for '.$event['Event']['name'],$event['Event']['id'],1);
+									$this->Notification->save_notification($user['id'],$device['device_token'],$notification,$event['Event']['id'],1);
 								endforeach;
 							}
 							
