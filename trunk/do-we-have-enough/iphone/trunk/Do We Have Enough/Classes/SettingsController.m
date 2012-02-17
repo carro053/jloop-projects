@@ -18,9 +18,12 @@
 @synthesize closeButton;
 @synthesize rootController;
 @synthesize emailAddressLabel;
-@synthesize pushSwitch;
 @synthesize notifyInSwitch;
 @synthesize notifyOutSwitch;
+@synthesize notifyEventChangeSwitch;
+@synthesize appNotifyInSwitch;
+@synthesize appNotifyOutSwitch;
+@synthesize appNotifyEventChangeSwitch;
 @synthesize loadingView;
 
 -(IBAction)resetButtonPressed:(id)sender
@@ -35,18 +38,6 @@
 }
 -(IBAction)closeButtonPressed {
 	[self.rootController switchViews:self];
-}
--(IBAction)togglePushSwitch:(id)sender
-{
-	LoadingView *myLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
-	loadingView = myLoadingView;
-	SettingsTracker *settings = [[SettingsTracker alloc] init];
-	[settings initData];
-	NSString *myNotify = [[NSString alloc] initWithFormat:@"%d", [sender isOn]];
-	[settings saveNotifyPush:myNotify];
-	[myNotify release];
-	[settings release];
-	[self saveNotifications];
 }
 -(IBAction)toggleInSwitch:(id)sender
 {
@@ -72,6 +63,54 @@
 	[settings release];
 	[self saveNotifications];
 }
+-(IBAction)toggleEventChangeSwitch:(id)sender
+{
+	LoadingView *myLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
+	loadingView = myLoadingView;
+	SettingsTracker *settings = [[SettingsTracker alloc] init];
+	[settings initData];
+	NSString *myNotify = [[NSString alloc] initWithFormat:@"%d", [sender isOn]];
+	[settings saveNotifyEventChange:myNotify];
+	[myNotify release];
+	[settings release];
+	[self saveNotifications];
+}
+-(IBAction)toggleAppInSwitch:(id)sender
+{
+	LoadingView *myLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
+	loadingView = myLoadingView;
+	SettingsTracker *settings = [[SettingsTracker alloc] init];
+	[settings initData];
+	NSString *myNotify = [[NSString alloc] initWithFormat:@"%d", [sender isOn]];
+	[settings saveAppNotifyIn:myNotify];
+	[myNotify release];
+	[settings release];
+	[self saveNotifications];
+}
+-(IBAction)toggleAppOutSwitch:(id)sender
+{
+	LoadingView *myLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
+	loadingView = myLoadingView;
+	SettingsTracker *settings = [[SettingsTracker alloc] init];
+	[settings initData];
+	NSString *myNotify = [[NSString alloc] initWithFormat:@"%d", [sender isOn]];
+	[settings saveAppNotifyOut:myNotify];
+	[myNotify release];
+	[settings release];
+	[self saveNotifications];
+}
+-(IBAction)toggleAppEventChangeSwitch:(id)sender
+{
+	LoadingView *myLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
+	loadingView = myLoadingView;
+	SettingsTracker *settings = [[SettingsTracker alloc] init];
+	[settings initData];
+	NSString *myNotify = [[NSString alloc] initWithFormat:@"%d", [sender isOn]];
+	[settings saveAppNotifyEventChange:myNotify];
+	[myNotify release];
+	[settings release];
+	[self saveNotifications];
+}
 
 -(void)resetEmailSettings
 {
@@ -90,20 +129,28 @@
 	[settings initData];
 	if ([settings.emailAddress isEqualToString:@"false"]) {
 		emailAddressLabel.text = @"not set";
-		pushSwitch.enabled = NO;
 		resetButton.enabled = NO;
 		notifyInSwitch.enabled = NO;
 		notifyOutSwitch.enabled = NO;
+		notifyEventChangeSwitch.enabled = NO;
+		appNotifyInSwitch.enabled = NO;
+		appNotifyOutSwitch.enabled = NO;
+		appNotifyEventChangeSwitch.enabled = NO;
 	} else {
 		emailAddressLabel.text = settings.emailAddress;
-		pushSwitch.enabled = YES;
 		resetButton.enabled = YES;
 		notifyInSwitch.enabled = YES;
 		notifyOutSwitch.enabled = YES;
+		notifyEventChangeSwitch.enabled = YES;
+		appNotifyInSwitch.enabled = YES;
+		appNotifyOutSwitch.enabled = YES;
+		appNotifyEventChangeSwitch.enabled = YES;
 		[notifyInSwitch setOn:[settings.notifyIn intValue]];
 		[notifyOutSwitch setOn:[settings.notifyOut intValue]];
-		[pushSwitch setOn:[settings.notifyPush intValue]];
-		NSLog(@"notify in in settings view: %@", settings.notifyIn);
+		[notifyEventChangeSwitch setOn:[settings.notifyEventChange intValue]];
+		[appNotifyInSwitch setOn:[settings.appNotifyIn intValue]];
+		[appNotifyOutSwitch setOn:[settings.appNotifyOut intValue]];
+		[appNotifyEventChangeSwitch setOn:[settings.appNotifyEventChange intValue]];
 	}
 	//emailAddressLabel.text = settings.emailAddress;
 	[settings release];
@@ -158,8 +205,8 @@
 	NSString *uniqueIdentifier = [device uniqueIdentifier];
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
 	[settings initData];
-	NSString *postString = [NSString stringWithFormat:@"email_address=%@&device_id=%@&notify_in=%@&notify_out=%@&notify_push=%@", settings.emailAddress, uniqueIdentifier, settings.notifyIn, settings.notifyOut, settings.notifyPush];
-    //NSLog(postString);
+	NSString *postString = [NSString stringWithFormat:@"email_address=%@&device_id=%@&notify_in=%@&notify_out=%@&notify_event_change=%@&app_notify_in=%@&app_notify_out=%@&app_notify_event_change=%@", settings.emailAddress, uniqueIdentifier, settings.notifyIn, settings.notifyOut, settings.notifyEventChange, settings.appNotifyIn, settings.appNotifyOut, settings.appNotifyEventChange];
+    NSLog(@"%@",postString);
     [settings release];
     
     NSURL *url = [NSURL URLWithString:URL];
@@ -294,9 +341,12 @@
 	[closeButton release];
 	[rootController release];
 	[emailAddressLabel release];
-	[pushSwitch release];
 	[notifyInSwitch release];
 	[notifyOutSwitch release];
+	[notifyEventChangeSwitch release];
+	[appNotifyInSwitch release];
+	[appNotifyOutSwitch release];
+	[appNotifyEventChangeSwitch release];
 	[loadingView release];
     [super dealloc];
 }

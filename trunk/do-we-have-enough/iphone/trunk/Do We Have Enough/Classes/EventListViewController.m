@@ -305,10 +305,10 @@ titleForHeaderInSection:(NSInteger)section
 		//NSString *myCurrentName = [currentName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		event2.eventName = [currentName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		event2.active = [currentActive intValue];
-		event2.eventWhen = [currentWhen stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];;
+		event2.eventWhen = [currentWhen stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		event2.membersIn = [currentMembersIn intValue];
 		event2.eventNeed = [currentNeed intValue];
-		event2.eventID = [currentID stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];;
+		event2.eventID = [currentID stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		[eventlist addObject:event2];
 		[event2 release];
 		

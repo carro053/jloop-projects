@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define kFilename	@"dwhedata.plist"
+#define kFilename	@"dwhesettingsdata.plist"
 
 
 @interface SettingsTracker : NSObject {
@@ -16,21 +16,30 @@
 	NSString *isValidated;
 	NSString *notifyIn;
 	NSString *notifyOut;
-	NSString *notifyPush;
+	NSString *notifyEventChange;
+	NSString *appNotifyIn;
+	NSString *appNotifyOut;
+	NSString *appNotifyEventChange;
 	BOOL isInited;
 }
 @property (nonatomic, retain) NSString *emailAddress;
 @property (nonatomic, retain) NSString *isValidated;
 @property (nonatomic, retain) NSString *notifyIn;
 @property (nonatomic, retain) NSString *notifyOut;
-@property (nonatomic, retain) NSString *notifyPush;
+@property (nonatomic, retain) NSString *notifyEventChange;
+@property (nonatomic, retain) NSString *appNotifyIn;
+@property (nonatomic, retain) NSString *appNotifyOut;
+@property (nonatomic, retain) NSString *appNotifyEventChange;
 @property (nonatomic, readwrite) BOOL isInited;
 -(NSString *)dataFilePath;
 -(void)saveEmail:(NSString *)email;
 -(void)saveValidation:(NSString *)validation;
 -(void)saveNotifyIn:(NSString *)notify;
 -(void)saveNotifyOut:(NSString *)notify;
--(void)saveNotifyPush:(NSString *)notify;
+-(void)saveNotifyEventChange:(NSString *)notify;
+-(void)saveAppNotifyIn:(NSString *)notify;
+-(void)saveAppNotifyOut:(NSString *)notify;
+-(void)saveAppNotifyEventChange:(NSString *)notify;
 -(void)initData;
 -(void)resetData;
 

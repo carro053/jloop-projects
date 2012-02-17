@@ -11,6 +11,7 @@
 #import "ChooseUsersController.h"
 #import "AddNoteViewController.h"
 #import "EventOptionsViewController.h"
+#import "SelectDateViewController.h"
 #import "ChoosePeopleNeedViewController.h"
 #import "EventDetailsViewController.h"
 #import "ValidateEmailCreateViewController.h"
@@ -25,14 +26,13 @@
 @implementation CreateEventViewController
 @synthesize grouplist, newGroup, selectedGroupID;
 @synthesize eventDetails;
-@synthesize inviteOthers, bringGuests, statusEmail, cancelEmail;
-@synthesize statusEmailDate, cancelEmailDate;
+@synthesize inviteOthers, bringGuests, statusEmail, cancelEmail, whenSet;
+@synthesize statusEmailDate, cancelEmailDate, whenDate;
 @synthesize eventNameField = _eventNameField;
 @synthesize eventLocationField = _eventLocationField;
-@synthesize eventTimeField = _eventTimeField;
 @synthesize eventNeed;
 @synthesize loadingView;
-@synthesize eventName, eventTime, eventLocation;
+@synthesize eventName, eventLocation;
 
 
 - (NSTimeInterval)calcTimezoneDiff
@@ -56,6 +56,15 @@
 -(IBAction)cancel:(id)sender {
 	[self.navigationController popViewControllerAnimated:YES];
 }
+
+-(IBAction)selectWhenDatePressed {
+	NSLog(@"select when date pressed");
+	SelectDateViewController *selectDateController = [[SelectDateViewController alloc] initWithNibName:@"SelectDateViewController" bundle:nil];
+	selectDateController.theNotification = @"when";
+	[self.navigationController pushViewController:selectDateController animated:YES];
+	[selectDateController release];
+}
+
 -(void)startCreate
 {
 	[self storeEventValues];
@@ -64,8 +73,8 @@
 		UIAlertView *nameAlert = [[UIAlertView alloc] initWithTitle:@"Whoops!" message:@"You gotta call this event something..." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[nameAlert show];
 		[nameAlert release];
-	} else if (eventTime == nil || [eventTime isEqualToString:@""]) {
-		//no event name
+	} else if (!whenSet) {
+		//no event when
 		UIAlertView *timeAlert = [[UIAlertView alloc] initWithTitle:@"Whoops!" message:@"People will show up at different times if you don't specify when it is." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[timeAlert show];
 		[timeAlert release];
@@ -137,9 +146,6 @@
 			case EventLocationCell:
 				eventLocation = [[cell textField] text];
 				break;
-			case EventTimeCell:
-				eventTime = [[cell textField] text];
-				break;
 			default:
 				break;
 		}
@@ -147,7 +153,6 @@
 	}
 	NSLog(@"eventName: %@", eventName);
 	NSLog(@"eventLocation: %@", eventLocation);
-	NSLog(@"eventTime: %@", eventTime);
 }
 
 - (EditableCell *)newEditableCellWithTag:(NSInteger)tag
@@ -188,10 +193,8 @@
 		[newUserGroup release];
 	}
 	eventName = [[NSString alloc] initWithString:@""];
-	eventTime = [[NSString alloc] initWithString:@""];
 	eventLocation = [[NSString alloc] initWithString:@""];
 	[self setEventNameField: [self newEditableCellWithTag:EventNameCell]];
-	[self setEventTimeField: [self newEditableCellWithTag:EventTimeCell]];
 	[self setEventLocationField: [self newEditableCellWithTag:EventLocationCell]];
 	[self setInviteOthers:NO];
 	[self setBringGuests:NO];
@@ -201,6 +204,7 @@
 	eventDetails = @"";
 	statusEmailDate = [[NSDate alloc] init];
 	cancelEmailDate = [[NSDate alloc] init];
+	whenDate = [[NSDate alloc] init];
 	//[now release];
 	if (grouplist == nil) {
 		NSMutableArray *groupArray = [[NSMutableArray alloc] init];
@@ -282,7 +286,6 @@
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
-
 
 #pragma mark Table view methods
 
@@ -399,13 +402,40 @@ titleForHeaderInSection:(NSInteger)section
 				}
 				case EventTimeCell:
 				{
-					cell = [self eventTimeField];
+					/*cell = [self eventTimeField];
 					UIImage *cellImage = nil;
 					cellImage = [UIImage imageNamed:@"icon_when.png"];
 					cell.imageView.image = cellImage;
 					//text = eventTime;
 					tag = EventTimeCell;
 					placeholder = @"When is it?";
+					break;*/
+                    static NSString *WhenCellIdentifier = @"WhenCellIdentifier";
+					UITableViewCell *cell = nil;
+					if (!whenSet) {
+						cell = [tableView dequeueReusableCellWithIdentifier:WhenCellIdentifier];
+						if (cell == nil) {
+							cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:WhenCellIdentifier] autorelease];
+						}
+						cell.textLabel.text = @"When is it?";
+					} else {
+						cell = [tableView dequeueReusableCellWithIdentifier:WhenCellIdentifier];
+						if (cell == nil) {
+							cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:WhenCellIdentifier] autorelease];
+						}
+                        NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+                        [outputFormatter setDateFormat:@"EEE',' MMM d 'at' h:mma"];
+                        //NSDate *myDate = [[[NSDate alloc] init] autorelease];		// Get current date/time
+                        NSDate *myDate = [whenDate addTimeInterval:[self calcTimezoneDiff]];
+                        NSString *newWhenDate = [outputFormatter stringFromDate:myDate];
+                        [outputFormatter release];
+                        cell.textLabel.text = newWhenDate;
+					}
+					UIImage *cellImage = nil;
+					cellImage = [UIImage imageNamed:@"icon_when.png"];
+					cell.imageView.image = cellImage;
+					cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+					return cell;
 					break;
 				}
 				default:
@@ -641,7 +671,11 @@ titleForHeaderInSection:(NSInteger)section
 			[evtOptionsController release];
 		}
 	}
-	
+	if (section == EventDetailsSection) {
+        if (row == EventTimeCell) {
+            [self selectWhenDatePressed];
+        }
+    }
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -765,11 +799,20 @@ titleForHeaderInSection:(NSInteger)section
 	NSString *uniqueIdentifier = [device uniqueIdentifier];
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
 	[settings initData];
+    
+    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+    [outputFormatter setDateFormat:@"Y-MM-dd HH:mm:00"];
+    //NSDate *myDate = [[[NSDate alloc] init] autorelease];		// Get current date/time
+    NSDate *myDate = [whenDate addTimeInterval:[self calcTimezoneDiff]];
+    NSString *newWhenDate = [outputFormatter stringFromDate:myDate];
+    [outputFormatter release];
+    
+    
 	NSMutableString *postString = [NSMutableString stringWithFormat:@"email_address=%@&device_id=%@&event_name=%@&event_when=%@&event_where=%@&event_need=%d", 
 							settings.emailAddress, 
 							uniqueIdentifier,
 							eventName,
-							eventTime,
+							newWhenDate,
 							eventLocation,
 							eventNeed];
 	//[uniqueIdentifier release];
@@ -989,13 +1032,13 @@ titleForHeaderInSection:(NSInteger)section
 - (void)dealloc {
 	[_eventNameField release];
 	[_eventLocationField release];
-	[_eventTimeField release];
 	[grouplist release];
 	[newGroup release];
 	[selectedGroupID release];
 	[eventDetails release];
 	[statusEmailDate release];
 	[cancelEmailDate release];
+	[whenDate release];
 	//[loadingView release];
 	//[eventName release];
 	//[eventTime release];

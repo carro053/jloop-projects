@@ -15,9 +15,12 @@
 	IBOutlet UIButton *closeButton;
 	RootViewController *rootController;
 	IBOutlet UILabel *emailAddressLabel;
-	IBOutlet UISwitch *pushSwitch;
 	IBOutlet UISwitch *notifyInSwitch;
 	IBOutlet UISwitch *notifyOutSwitch;
+	IBOutlet UISwitch *notifyEventChangeSwitch;
+	IBOutlet UISwitch *appNotifyInSwitch;
+	IBOutlet UISwitch *appNotifyOutSwitch;
+	IBOutlet UISwitch *appNotifyEventChangeSwitch;
 	//---xml parser stuff
 	NSXMLParser *xmlParser;
 	NSString *currentElement;
@@ -31,15 +34,22 @@
 @property (nonatomic, retain) UIButton *closeButton;
 @property (nonatomic, retain) RootViewController *rootController;
 @property (nonatomic, retain) UILabel *emailAddressLabel;
-@property (nonatomic, retain) UISwitch *pushSwitch;
 @property (nonatomic, retain) UISwitch *notifyInSwitch;
 @property (nonatomic, retain) UISwitch *notifyOutSwitch;
+@property (nonatomic, retain) UISwitch *notifyEventChangeSwitch;
+@property (nonatomic, retain) UISwitch *appNotifyInSwitch;
+@property (nonatomic, retain) UISwitch *appNotifyOutSwitch;
+@property (nonatomic, retain) UISwitch *appNotifyEventChangeSwitch;
+
 @property (nonatomic, retain) LoadingView *loadingView;
 -(IBAction)resetButtonPressed:(id)sender;
 -(IBAction)closeButtonPressed;
--(IBAction)togglePushSwitch:(id)sender;
 -(IBAction)toggleInSwitch:(id)sender;
 -(IBAction)toggleOutSwitch:(id)sender;
+-(IBAction)toggleEventChangeSwitch:(id)sender;
+-(IBAction)toggleAppInSwitch:(id)sender;
+-(IBAction)toggleAppOutSwitch:(id)sender;
+-(IBAction)toggleAppEventChangeSwitch:(id)sender;
 -(void)resetEmailSettings;
 -(void)setStage;
 - (void)saveNotifications;

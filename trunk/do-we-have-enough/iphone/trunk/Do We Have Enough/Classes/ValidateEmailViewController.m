@@ -44,8 +44,6 @@
 		
 		[self retrieveXMLFileAtURL:path];
 		[path release];
-        
-        [self dismissModalViewControllerAnimated:YES];
 		
 	} else {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Incorrect Email" message:@"Please check the format of the email address you entered." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -156,6 +154,7 @@
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName{
 	
 	//NSLog(@"ended element: %@", elementName);
+    NSLog(@"the result");
 	if ([elementName isEqualToString:@"result"]) {
 		
 		NSLog(@"the result: %@", currentResult);
@@ -190,6 +189,7 @@
 	//[activityIndicator removeFromSuperview];
 	
 	NSLog(@"all done!");
+    [self dismissModalViewControllerAnimated:YES];
 	//NSLog(@"events array has %d items", [eventlist count]);
 	//[self.tableView reloadData];
 }
