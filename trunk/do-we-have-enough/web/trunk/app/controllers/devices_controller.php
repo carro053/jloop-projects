@@ -263,7 +263,7 @@ class DevicesController extends AppController
 				$this->Event->save($save_event);
 				$this->User->bindModel(array('hasMany'=>array('UserMobileDevice' =>array('className'=>'UserMobileDevice','foreignKey'=>'user_id','conditions'=>'UserMobileDevice.device_token != "" AND UserMobileDevice.notify_push = 1 AND UserMobileDevice.validator = ""','order'=> '','limit'=> ''))));
 				$this->Event->bindModel(array('hasAndBelongsToMany'=>array('User' =>array('className'=>'User','joinTable'=>'events_users','foreignKey'=>'event_id','associationForeignKey'=>'user_id','conditions'=>'','order'=> '','limit'=> '','unique'=>true,'finderQuery'=>'','deleteQuery'=>''))));
-		$this->Event->bindModel(array('belongsTo'=>array('Host' =>array('className'=>'User','foreignKey'=>'user_id','conditions'=>'','order'=> '','limit'=> ''))));
+				$this->Event->bindModel(array('belongsTo'=>array('Host' =>array('className'=>'User','foreignKey'=>'user_id','conditions'=>'','order'=> '','limit'=> ''))));
 				$event = $this->Event->find('Event.id = '.$event_id,null,null,4);
 				$host_name = $event['Host']['email'];
 				if($event['Host']['name'] != '') $host_name = $event['Host']['name'];
@@ -796,22 +796,23 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 		if (!$apns)
 		{
 			print "Failed to connect".$error." ".$errorString;
+		}else{
+			$current_token = '';
+			foreach($notifications as $notification):
+				$notification['Notification']['sent'] = 1;
+				$this->Notification->save($notification);
+				if($current_token != $notification['Notification']['device_token'])
+				{
+					$payload = '';
+					$current_token = $notification['Notification']['device_token'];
+					$payload['aps'] = array('alert' => $notification['Notification']['alert'], 'sound' => 'default');
+					$payload['push_data'] = array('event_id' => ''.$notification['Notification']['event_id'].'');
+					$payload = json_encode($payload);
+					$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$notification['Notification']['device_token'])).chr(0).chr(strlen($payload)).$payload;
+					fwrite($apns, $apnsMessage);
+				}
+			endforeach;
 		}
-		$current_token = '';
-		foreach($notifications as $notification):
-			$notification['Notification']['sent'] = 1;
-			$this->Notification->save($notification);
-			if($current_token != $notification['Notification']['device_token'])
-			{
-				$payload = '';
-				$current_token = $notification['Notification']['device_token'];
-				$payload['aps'] = array('alert' => $notification['Notification']['alert'], 'sound' => 'default');
-				$payload['push_data'] = array('event_id' => ''.$notification['Notification']['event_id'].'');
-				$payload = json_encode($payload);
-				$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$notification['Notification']['device_token'])).chr(0).chr(strlen($payload)).$payload;
-				fwrite($apns, $apnsMessage);
-			}
-		endforeach;
 		socket_close($apns);
 		fclose($apns);
 		exit();
