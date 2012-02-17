@@ -748,6 +748,8 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 				if(date('Y-m-d H:i:s',mktime(date('G'),date('i')-5,date('s'),date('n'),date('j'),date('Y'))) < $user['EventsUser']['status_changed'] && $user['EventsUser']['status'] == 1) $user_in_recent[] = $user;
 				if(date('Y-m-d H:i:s',mktime(date('G'),date('i')-5,date('s'),date('n'),date('j'),date('Y'))) < $user['EventsUser']['status_changed'] && $user['EventsUser']['status'] == 2) $user_out_recent[] = $user;
 			endforeach;
+			echo '<pre>';
+			print_r($user_in_recent);
 			if($in >= $event['Event']['need'] && $event['Event']['active'] < 3)
 			{
 				//notify we are on
