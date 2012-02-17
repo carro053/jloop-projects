@@ -748,8 +748,6 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 				if(date('Y-m-d H:i:s',mktime(date('G'),date('i')-5,date('s'),date('n'),date('j'),date('Y'))) < $user['EventsUser']['status_changed'] && $user['EventsUser']['status'] == 1) $user_in_recent[] = $user;
 				if(date('Y-m-d H:i:s',mktime(date('G'),date('i')-5,date('s'),date('n'),date('j'),date('Y'))) < $user['EventsUser']['status_changed'] && $user['EventsUser']['status'] == 2) $user_out_recent[] = $user;
 			endforeach;
-			echo '<pre>';
-			print_r($user_in_recent);
 			if($in >= $event['Event']['need'] && $event['Event']['active'] < 3)
 			{
 				//notify we are on
@@ -1020,11 +1018,9 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 								$headers = 'From: events@dowehaveenough.com'. "\r\n" .'Reply-To: events@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
 								mail($email_to, $email_subject, $email_msg, $headers);
 							}
-							echo 'Notified: '.$user['id'];
 							//app notification based on user option
 							if($user['app_notify_in'])
 							{
-								echo 'Notified: '.$user['id'];
 								foreach($user['UserMobileDevice'] as $device):
 									$this->Notification->save_notification($user['id'],$device['device_token'],'People are in for '.$event['Event']['name'],$event['Event']['id'],1);
 								endforeach;
