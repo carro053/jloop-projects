@@ -1022,6 +1022,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 							//app notification based on user option
 							if($user['app_notify_in'])
 							{
+								echo 'Notified: '.$user['id'];
 								foreach($user['UserMobileDevice'] as $device):
 									$this->Notification->save_notification($user['id'],$device['device_token'],'People are in for '.$event['Event']['name'],$event['Event']['id'],1);
 								endforeach;
