@@ -12,5 +12,5 @@
 <app_notify_event_change><?php echo $user['User']['app_notify_event_change']; ?></app_notify_event_change>
 <latest_event_id><?php echo $user['Event']['id']; ?></latest_event_id>
 <latest_event_name><?php echo $user['Event']['name']; ?></latest_event_name>
-<latest_event_when><?php echo $user['Event']['when']; ?></latest_event_when>
+<latest_event_when><?php echo date('D, M jS',strtotime($user['Event']['date'])).' at '.$user['Event']['when']; ?></latest_event_when>
 </user_data>
