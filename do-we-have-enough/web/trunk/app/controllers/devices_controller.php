@@ -767,6 +767,7 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 		{
 			$user['EventsUser']['status'] = $_POST['status'];
 			$user['EventsUser']['guests'] = $_POST['guests'];
+			$user['EventsUser']['status_changed'] = date('Y-m-d H:i:s'); 
 			$this->EventsUser->save($user['EventsUser']);
 			$this->set('result','true');	
 		}else{
