@@ -68,11 +68,14 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
 	NSLog(@"got user info: %@", userInfo);
-	NSDictionary *aps = [userInfo objectForKey:@"aps"];
-	NSString *myAlert = [aps objectForKey:@"alert"];
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"DoWeHaveEnough" message:myAlert delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-	[alert show];
-	[alert release];
+    UIApplicationState state = [application applicationState];
+    if (state == UIApplicationStateActive) {
+        NSDictionary *aps = [userInfo objectForKey:@"aps"];
+        NSString *myAlert = [aps objectForKey:@"alert"];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"DoWeHaveEnough" message:myAlert delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+    }
 	
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

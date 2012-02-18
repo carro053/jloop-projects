@@ -632,6 +632,7 @@ titleForHeaderInSection:(NSInteger)section
     NSUInteger section = [indexPath section];
 	NSUInteger row = [indexPath row];
 	NSLog(@"its clicked");
+    [self.view endEditing:YES];
 	//[self storeEventValues];
 	if (section == InvitePeopleSection) {
 		if (row == PeopleNeedCell) {

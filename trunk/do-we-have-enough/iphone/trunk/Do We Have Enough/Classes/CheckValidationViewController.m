@@ -133,6 +133,7 @@
 		if ([currentResult isEqualToString:@"true"]) {
 			[settings saveValidation:@"true"];
 			//[(HomeController *)self.parentViewController dismissModalViewControllerAnimated:YES];
+            [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound |UIRemoteNotificationTypeAlert)];
             [self dismissModalViewControllerAnimated:YES];
 		} else {
 			//TODO: add failure alert
