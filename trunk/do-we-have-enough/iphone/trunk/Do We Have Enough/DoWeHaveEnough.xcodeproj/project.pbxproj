@@ -160,6 +160,11 @@
 		7465C00A14EEE80B006D2168 /* title_your_email@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7465BFDD14EEE80B006D2168 /* title_your_email@2x.png */; };
 		7465C00D14EEE83E006D2168 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7465C00B14EEE83E006D2168 /* Default@2x.png */; };
 		7465C00E14EEE83E006D2168 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7465C00C14EEE83E006D2168 /* icon@2x.png */; };
+		7469782414F5D23800B3910F /* check_validation_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7469781F14F5D23800B3910F /* check_validation_bg@2x.png */; };
+		7469782514F5D23800B3910F /* checkbox-open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7469782014F5D23800B3910F /* checkbox-open@2x.png */; };
+		7469782614F5D23800B3910F /* checkbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7469782114F5D23800B3910F /* checkbox@2x.png */; };
+		7469782714F5D23800B3910F /* checkmark-open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7469782214F5D23800B3910F /* checkmark-open@2x.png */; };
+		7469782814F5D23800B3910F /* close_btn_over@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7469782314F5D23800B3910F /* close_btn_over@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -347,6 +352,11 @@
 		7465BFDD14EEE80B006D2168 /* title_your_email@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title_your_email@2x.png"; sourceTree = "<group>"; };
 		7465C00B14EEE83E006D2168 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		7465C00C14EEE83E006D2168 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		7469781F14F5D23800B3910F /* check_validation_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_validation_bg@2x.png"; sourceTree = "<group>"; };
+		7469782014F5D23800B3910F /* checkbox-open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox-open@2x.png"; sourceTree = "<group>"; };
+		7469782114F5D23800B3910F /* checkbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox@2x.png"; sourceTree = "<group>"; };
+		7469782214F5D23800B3910F /* checkmark-open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark-open@2x.png"; sourceTree = "<group>"; };
+		7469782314F5D23800B3910F /* close_btn_over@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_btn_over@2x.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Do_We_Have_Enough-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Do_We_Have_Enough-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -517,6 +527,11 @@
 		695569D110B1F7C800A2B659 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				7469781F14F5D23800B3910F /* check_validation_bg@2x.png */,
+				7469782014F5D23800B3910F /* checkbox-open@2x.png */,
+				7469782114F5D23800B3910F /* checkbox@2x.png */,
+				7469782214F5D23800B3910F /* checkmark-open@2x.png */,
+				7469782314F5D23800B3910F /* close_btn_over@2x.png */,
 				7465C00B14EEE83E006D2168 /* Default@2x.png */,
 				7465C00C14EEE83E006D2168 /* icon@2x.png */,
 				7465BFB114EEE808006D2168 /* btn_create@2x.png */,
@@ -786,6 +801,11 @@
 				7465C00A14EEE80B006D2168 /* title_your_email@2x.png in Resources */,
 				7465C00D14EEE83E006D2168 /* Default@2x.png in Resources */,
 				7465C00E14EEE83E006D2168 /* icon@2x.png in Resources */,
+				7469782414F5D23800B3910F /* check_validation_bg@2x.png in Resources */,
+				7469782514F5D23800B3910F /* checkbox-open@2x.png in Resources */,
+				7469782614F5D23800B3910F /* checkbox@2x.png in Resources */,
+				7469782714F5D23800B3910F /* checkmark-open@2x.png in Resources */,
+				7469782814F5D23800B3910F /* close_btn_over@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
