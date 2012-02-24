@@ -44,7 +44,7 @@ endforeach;
 			endforeach; ?>
 		</ul>
 		<?php }else{ ?>
-		<h2>No one is in yet.<br />
+		<h2>No one is IN yet.<br />
 		<span>We need at least <?php echo $event['Event']['need']; ?>.</span></h2>
 		<?php } ?>
 		<?php if($fifty > 0) { ?>

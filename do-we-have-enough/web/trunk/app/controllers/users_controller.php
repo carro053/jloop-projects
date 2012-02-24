@@ -296,15 +296,15 @@ if($event['Event']['details'] != '') $email_msg .= " * Additional details: ".$ev
 $email_msg .= "
 
 ARE YOU IN?
- ** Yes, I'm in! - http://".$this->environment.".dowehaveenough.com/event_status/".$user['EventsUser']['hash']."/1
- ** Nope, I'm out - http://".$this->environment.".dowehaveenough.com/event_status/".$user['EventsUser']['hash']."/2
+ ** Yes, I'm IN! - http://".$this->environment.".dowehaveenough.com/event_status/".$user['EventsUser']['hash']."/1
+ ** Nope, I'm OUT. - http://".$this->environment.".dowehaveenough.com/event_status/".$user['EventsUser']['hash']."/2
 
 ----
 
 OTHER OPTIONS
  ** I'm 50/50 - http://".$this->environment.".dowehaveenough.com/event_status/".$user['EventsUser']['hash']."/3
 ";
-if($event['Event']['cannot_bring_guests'] == 0) $email_msg .= " ** Yes, I'm in & bringing extra - http://".$this->environment.".dowehaveenough.com/event_status/".$user['EventsUser']['hash']."/4
+if($event['Event']['cannot_bring_guests'] == 0) $email_msg .= " ** Yes, I'm IN & bringing extra - http://".$this->environment.".dowehaveenough.com/event_status/".$user['EventsUser']['hash']."/4
 ";
 
 $email_msg .= "
@@ -634,15 +634,15 @@ if($event['Event']['where'] != '') $email_msg .= " * Where: ".$event['Event']['w
 $email_msg .= " * We need: ".$event['Event']['need']." people.
 
 ARE YOU IN?
- ** Yes, I'm in! - http://".$this->environment.".dowehaveenough.com/event_status/".$event_user['EventsUser']['hash']."/1
- ** Nope, I'm out - http://".$this->environment.".dowehaveenough.com/event_status/".$event_user['EventsUser']['hash']."/2
+ ** Yes, I'm IN! - http://".$this->environment.".dowehaveenough.com/event_status/".$event_user['EventsUser']['hash']."/1
+ ** Nope, I'm OUT. - http://".$this->environment.".dowehaveenough.com/event_status/".$event_user['EventsUser']['hash']."/2
 
 ----
 
 OTHER OPTIONS
  ** I'm 50/50 - http://".$this->environment.".dowehaveenough.com/event_status/".$event_user['EventsUser']['hash']."/3
 ";
-if($event['Event']['cannot_bring_guests'] == 0) $email_msg .= " ** Yes, I'm in & bringing extra - http://".$this->environment.".dowehaveenough.com/event_status/".$event_user['EventsUser']['hash']."/4
+if($event['Event']['cannot_bring_guests'] == 0) $email_msg .= " ** Yes, I'm IN & bringing extra - http://".$this->environment.".dowehaveenough.com/event_status/".$event_user['EventsUser']['hash']."/4
 ";
 
 $email_msg .= "
@@ -760,7 +760,7 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 						//email based on user option
 						if($user['notify_event_change'])
 						{
-							$email_msg = "With ".$in." people in so far ".$event['Event']['name']." is ON!
+							$email_msg = "With ".$in." people IN so far ".$event['Event']['name']." is ON!
 
 ----
 
@@ -814,7 +814,7 @@ and '.$fifty.' 50/50.';
 						//email based on user option
 						if($user['notify_event_change'])
 						{
-								$email_msg = "We didn't get enough people in so sadly ".$event['Event']['name']." is OFF.
+								$email_msg = "We didn't get enough people IN so sadly ".$event['Event']['name']." is OFF.
 		
 ----
 
@@ -872,7 +872,7 @@ and '.$fifty.' 50/50.';
 						//email based on user option
 						if($user['notify_event_change'])
 						{
-							$email_msg = "We only have ".$in." in so far and we need ".$event['Event']['need']." for ".$event['Event']['name']." to be on.
+							$email_msg = "We only have ".$in." IN so far and we need ".$event['Event']['need']." for ".$event['Event']['name']." to be on.
 				
 ----
 
@@ -924,9 +924,9 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 						{
 							//notify user we have X amount
 							$email_from = "events@dowehaveenough.com";
-							$email_subject = $event['Event']['name'].' has '.$in.' in!';
+							$email_subject = $event['Event']['name'].' has '.$in.' IN!';
 							$email_headers = "From: ".$email_from;
-							$email_msg = "You wanted to be notified when ".$event['Event']['name']." has at least ".$user['EventsUser']['notify_reach_count']." in and guess what? It does!
+							$email_msg = "You wanted to be notified when ".$event['Event']['name']." has at least ".$user['EventsUser']['notify_reach_count']." IN and guess what? It does!
 	
 ----
 
@@ -951,7 +951,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 						if($user['app_notify_event_change'])
 						{
 							foreach($user['UserMobileDevice'] as $device):
-								$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' now has '.$in.' in.',$event['Event']['id'],3);
+								$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' now has '.$in.' IN.',$event['Event']['id'],3);
 							endforeach;
 						}
 						
@@ -1029,9 +1029,9 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 									}else{
 										$notification = $user_in_recent[0]['email'];
 									}
-									$notification .= ' is in for '.$event['Event']['name'];
+									$notification .= ' is IN for '.$event['Event']['name'];
 								}else{
-									$notification = 'People are in for '.$event['Event']['name'];
+									$notification = 'People are IN for '.$event['Event']['name'];
 								}
 								foreach($user['UserMobileDevice'] as $device):
 									$this->Notification->save_notification($user['id'],$device['device_token'],$notification,$event['Event']['id'],1);
@@ -1057,9 +1057,9 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 								endforeach;
 								if($i > 1)
 								{
-									$message .= ' are in for '.$event['Event']['name'].'.';
+									$message .= ' are IN for '.$event['Event']['name'].'.';
 								}else{
-									$message .= ' is in for '.$event['Event']['name'].'.';
+									$message .= ' is IN for '.$event['Event']['name'].'.';
 								}
 								$this->send_sms($user['id'],$message);
 							}*/
@@ -1132,9 +1132,9 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 									}else{
 										$notification = $user_out_recent[0]['email'];
 									}
-									$notification .= ' is out for '.$event['Event']['name'];
+									$notification .= ' is OUT for '.$event['Event']['name'];
 								}else{
-									$notification = 'People are out for '.$event['Event']['name'];
+									$notification = 'People are OUT for '.$event['Event']['name'];
 								}
 								foreach($user['UserMobileDevice'] as $device):
 									$this->Notification->save_notification($user['id'],$device['device_token'],$notification,$event['Event']['id'],1);
@@ -1263,7 +1263,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 				$user['EventsUser']['status'] = 1;
 				$user['EventsUser']['status_changed'] = date('Y-m-d H:i:s');
 				$this->EventsUser->save($user['EventsUser']);
-				$string = ' You are now in for '.$user['Event']['name'];
+				$string = ' You are now IN for '.$user['Event']['name'];
 				header('Content-length: '.strlen($string));
 				echo $string;
 				$this->Sms->save($sms);
@@ -1273,7 +1273,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 				$user['EventsUser']['status'] = 2;
 				$user['EventsUser']['status_changed'] = date('Y-m-d H:i:s');
 				$this->EventsUser->save($user['EventsUser']);
-				$string = ' You are now out for '.$user['Event']['name'];
+				$string = ' You are now OUT for '.$user['Event']['name'];
 				header('Content-length: '.strlen($string));
 				echo $string;
 				$this->Sms->save($sms);
@@ -1336,7 +1336,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 		$user['EventsUser']['status'] = 1;
 		$user['EventsUser']['status_changed'] = date('Y-m-d H:i:s');
 		$this->EventsUser->save($user['EventsUser']);
-		$string = ' You are now in for '.$user['Event']['name'].'.';
+		$string = ' You are now IN for '.$user['Event']['name'].'.';
 		if($user['Event']['cannot_bring_guests'] == 0)
 		{
 			$string .= '
@@ -1379,7 +1379,7 @@ txt PLUS1 to show that you are bringing a guest!';
 		$user['EventsUser']['guests'] = 0;
 		$user['EventsUser']['status_changed'] = date('Y-m-d H:i:s');
 		$this->EventsUser->save($user['EventsUser']);
-		$string = ' You are now out for '.$user['Event']['name'];
+		$string = ' You are now OUT for '.$user['Event']['name'];
 		header('Content-length: '.strlen($string));
 		echo $string;
 		$this->Sms->save($sms);
@@ -1555,8 +1555,8 @@ txt MINUS1 to remove guests.';
 		if($event['Event']['active'] == 0)
 		{
 			$string = ' '.$event['Event']['name'].' is off.
-We had '.$in.' in,
-'.$out.' out,
+We had '.$in.' IN,
+'.$out.' OUT,
 and '.$fifty.' 50/50.';
 			header('Content-length: '.strlen($string));
 			echo $string;
@@ -1565,8 +1565,8 @@ and '.$fifty.' 50/50.';
 		}elseif($in >= $event['Event']['need'])
 		{
 			$string = ' '.$event['Event']['name'].' is on!
-We have '.$in.' in,
-'.$out.' out,
+We have '.$in.' IN,
+'.$out.' OUT,
 and '.$fifty.' 50/50.';
 			header('Content-length: '.strlen($string));
 			echo $string;
@@ -1574,8 +1574,8 @@ and '.$fifty.' 50/50.';
 			exit();
 		}else{
 			$string = ' '.$event['Event']['name'].' needs more!
-We have '.$in.' in,
-'.$out.' out,
+We have '.$in.' IN,
+'.$out.' OUT,
 and '.$fifty.' 50/50.
 Still need at least '.$event['Event']['need'].'!';
 			header('Content-length: '.strlen($string));
