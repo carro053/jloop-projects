@@ -13,11 +13,6 @@ class UsersController extends AppController
     }
 	function test_postmark()
 	{
-		//$this->Postmark->to = '<michael@jloop.com>';
-		//$this->Postmark->subject = 'This is the subject';
-		//$this->Postmark->textMessage = 'Hey Jay, just wanted to let you know it is working.
-//The Production Team';
-		//$result = $this->Postmark->send();
 		$headers = 'From: events@dowehaveenough.com'. "\r\n" .'Reply-To: events@dowehaveenough.com'. "\r\n" .'X-Mailer: PHP/' . phpversion();
 		mail($email_to, $email_subject, $email_msg, $headers);	
 		exit();
@@ -68,7 +63,7 @@ class UsersController extends AppController
 	function create()
 	{
 		$this->set('page_title','Create an event and find out');
-		$this->set('meta_description','Do We Have Enough? Have a reason to get together? Create an event Now. When is it? Where is it? How many people to make it happen? Send out an invite and let DWHE notify you when it is on.');
+		$this->set('meta_description','Do We Have Enough? Have a reason to get together? Create an event Now. When is it? Where is it? How many people to make it happen? Send out an invite and let DWHE notify you when it is ON.');
 		$this->layout = 'dowehaveenough_main';
 	}
 	function old_create()
@@ -785,7 +780,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 						if($user['app_notify_event_change'])
 						{
 							foreach($user['UserMobileDevice'] as $device):
-								$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' is on!',$event['Event']['id'],3);
+								$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' is ON!',$event['Event']['id'],3);
 							endforeach;
 						}
 						
@@ -842,7 +837,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 						if($user['app_notify_event_change'])
 						{
 							foreach($user['UserMobileDevice'] as $device):
-								$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' is off.',$event['Event']['id'],3);
+								$this->Notification->save_notification($user['id'],$device['device_token'],$event['Event']['name'].' is OFF.',$event['Event']['id'],3);
 							endforeach;
 						}
 						
@@ -872,7 +867,7 @@ and '.$fifty.' 50/50.';
 						//email based on user option
 						if($user['notify_event_change'])
 						{
-							$email_msg = "We only have ".$in." IN so far and we need ".$event['Event']['need']." for ".$event['Event']['name']." to be on.
+							$email_msg = "We only have ".$in." IN so far and we need ".$event['Event']['need']." for ".$event['Event']['name']." to be ON.
 				
 ----
 
@@ -993,8 +988,9 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 											$email_msg .= "
 ".$ins['name'];
 										}else{
+											$name = split("@",$ins['email']);
 											$email_msg .= "
-".$ins['email'];
+".$name[0];
 										}
 									}
 								endforeach;
@@ -1027,7 +1023,8 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 									{
 										$notification = $user_in_recent[0]['name'];
 									}else{
-										$notification = $user_in_recent[0]['email'];
+										$name = split("@",$user_in_recent[0]['email']);
+										$notification = $name[0];
 									}
 									$notification .= ' is IN for '.$event['Event']['name'];
 								}else{
@@ -1094,8 +1091,9 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 											$email_msg .= "
 ".$outs['name'];
 										}else{
+											$name = split("@",$outs['email']);
 											$email_msg .= "
-".$outs['email'];
+".$name[0];
 										}
 									}
 								endforeach;
@@ -1130,7 +1128,8 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 									{
 										$notification = $user_out_recent[0]['name'];
 									}else{
-										$notification = $user_out_recent[0]['email'];
+										$name = split("@",$user_out_recent[0]['email']);
+										$notification = $name[0];
 									}
 									$notification .= ' is OUT for '.$event['Event']['name'];
 								}else{
@@ -1554,7 +1553,7 @@ txt MINUS1 to remove guests.';
 		endforeach;
 		if($event['Event']['active'] == 0)
 		{
-			$string = ' '.$event['Event']['name'].' is off.
+			$string = ' '.$event['Event']['name'].' is OFF.
 We had '.$in.' IN,
 '.$out.' OUT,
 and '.$fifty.' 50/50.';
@@ -1564,7 +1563,7 @@ and '.$fifty.' 50/50.';
 			exit();
 		}elseif($in >= $event['Event']['need'])
 		{
-			$string = ' '.$event['Event']['name'].' is on!
+			$string = ' '.$event['Event']['name'].' is ON!
 We have '.$in.' IN,
 '.$out.' OUT,
 and '.$fifty.' 50/50.';
