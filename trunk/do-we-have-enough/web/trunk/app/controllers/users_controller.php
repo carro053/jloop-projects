@@ -73,10 +73,14 @@ class UsersController extends AppController
 	function check_email()
 	{
 		$this->User->bindModel(array('hasAndBelongsToMany'=>array('Group' =>array('className'=>'Group','joinTable'=>'groups_users','foreignKey'=>'user_id','associationForeignKey'=>'group_id','conditions'=>'Group.name != "" AND Group.name != "Name this group"','order'=> '','limit'=> '','unique'=>true,'finderQuery'=>'','deleteQuery'=>''))));
-		$this->Group->bindModel(array('hasAndBelongsToMany'=>array('User' =>array('className'=>'User','joinTable'=>'groups_users','foreignKey'=>'group_id','associationForeignKey'=>'user_id','conditions'=>'User.email != '.$this->params['data']['User']['email'],'order'=> ''))));
-		$user = $this->User->find('User.email = "'.$this->params['data']['User']['email'].'"',null,null,5);
+		$user = $this->User->find('User.email = "'.$this->params['data']['User']['email'].'"');
 		if(isset($user['User']['id']))
 		{
+			foreach($user['Group'] as $key=>$group)
+			{
+				$user['Group'][$key]['User'] = $this->User->findAll('User.id IN(SELECT * FROM `groups_users` WHERE `group_id` = '.$group['id'].')');
+			}
+			
 			$this->uAuth->set(0,$user['User']['id']);
 			$this->set('user',$user);
 			$this->render('check_email','ajax');
