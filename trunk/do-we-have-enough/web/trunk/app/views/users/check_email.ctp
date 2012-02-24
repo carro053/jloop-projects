@@ -1,4 +1,6 @@
-<pre><?php print_r($user); ?></pre>
+<script type="text/javascript">
+	var userGroups = <?php json_encode($user['Group']); ?>;
+</script>
 <?php
 if (count($user['Group']) > 0) {
 ?>or <?php 
