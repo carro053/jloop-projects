@@ -88,7 +88,7 @@
             </div>
         </div><!-- end #options -->
         <div class="tall-glass"><textarea name="data[Group][list]" id="GroupList" class="tall-glass-of-water" onfocus="javascript:if(this.value == 'Who\'s invited?') { this.value = ''; } the_tooltip(this,'Separate emails by commas or returns.','list');" onblur="javascript:if(this.value == '') { this.value = 'Who\'s invited?'; }" onkeypress="javascript:if(this.value != '' && this.value != 'Who\'s invited?') name_group(this.value);">Who's invited?</textarea></div>
-        <div class="indent" id="GroupNameParent" style="display:none;"><input name="data[Group][name]" id="GroupName" class="med-small" type="text" value="Name this group" onfocus="javascript:if(this.value == 'Name this group') { this.value = ''; } the_tooltip(this,'Name this group for future reference. This group can be used by everyone in it.','group');" onblur="javascript:if(this.value == '') { this.value = 'Name this group'; }" /></div>
+        <div class="indent" id="GroupNameParent" style="display:none;"><input name="data[Group][name]" id="GroupName" class="med-small" type="text" value="Name this group" onfocus="javascript:if(this.value == 'Name this group') { this.value = ''; } the_tooltip(this,'Name this group for future use. This group can be used by everyone in it.','group');" onblur="javascript:if(this.value == '') { this.value = 'Name this group'; }" /></div>
         <input type="hidden" id="GroupDummyId" value="0" />
         <div id="previous_groups" class="indent"></div>
         <div class="formspacer">&nbsp;</div>
