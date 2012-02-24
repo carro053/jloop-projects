@@ -1,5 +1,5 @@
 <script type="text/javascript">
-	console.log(':-D');
+	var userGroups = <?php echo json_encode($user['Group']); ?>;
 </script>
 <?php
 if (count($user['Group']) > 0) {
