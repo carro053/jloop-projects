@@ -73,6 +73,7 @@ class UsersController extends AppController
 	function check_email()
 	{
 		$this->User->bindModel(array('hasAndBelongsToMany'=>array('Group' =>array('className'=>'Group','joinTable'=>'groups_users','foreignKey'=>'user_id','associationForeignKey'=>'group_id','conditions'=>'Group.name != "" AND Group.name != "Name this group"','order'=> '','limit'=> '','unique'=>true,'finderQuery'=>'','deleteQuery'=>''))));
+		$this->Group->bindModel(array('hasAndBelongsToMany'=>array('User' =>array('className'=>'User','joinTable'=>'groups_users','foreignKey'=>'group_id','associationForeignKey'=>'user_id','conditions'=>'User.email != '.$this->params['data']['User']['email'],'order'=> '','limit'=> '','unique'=>true,'finderQuery'=>'','deleteQuery'=>''))));
 		$user = $this->User->find('User.email = "'.$this->params['data']['User']['email'].'"');
 		if(isset($user['User']['id']))
 		{
