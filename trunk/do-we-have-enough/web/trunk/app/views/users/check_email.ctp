@@ -9,7 +9,7 @@
 				alert(userGroups[n].name);
 				for(var m in userGroups[n].User) {
 					alert(userGroups[n].User[m].User.email);
-					groupList.innerHTML += userGroups[n].User[m].User.email+"\n";
+					groupList.innerHTML += userGroups[n].User[m].User.email+"\r\n";
 				}
 			}
 		}
