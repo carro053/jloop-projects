@@ -78,7 +78,7 @@ class UsersController extends AppController
 		{
 			foreach($user['Group'] as $key=>$group)
 			{
-				$user['Group'][$key]['User'] = $this->User->findAll('User.id IN(SELECT * FROM `groups_users` WHERE `group_id` = '.$group['id'].')');
+				$user['Group'][$key]['User'] = $this->User->findAll('User.id IN(SELECT `user_id` FROM `groups_users` WHERE `group_id` = '.$group['id'].')');
 			}
 			
 			$this->uAuth->set(0,$user['User']['id']);
