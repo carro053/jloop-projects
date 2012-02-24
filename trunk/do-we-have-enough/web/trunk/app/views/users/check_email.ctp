@@ -2,7 +2,11 @@
 	var userGroups = <?php echo json_encode($user['Group']); ?>;
 	
 	function populateTextAreaWithEmails(group_id) {
-		alert(group_id);
+		for(var n in userGroups) {
+			if(userGroups[n].id == group_id) {
+				alert(userGroups[n].name);
+			}
+		}
 	}
 </script>
 <?php
