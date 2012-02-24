@@ -289,15 +289,15 @@ if($event['Event']['details'] != '') $email_msg .= " * Additional details: ".$ev
 $email_msg .= "
 				
 ARE YOU IN?	
- ** Yes, I'm in! - http://".$this->environment.".dowehaveenough.com/event_status/".$user['EventsUser']['hash']."/1
- ** Nope, I'm out - http://".$this->environment.".dowehaveenough.com/event_status/".$user['EventsUser']['hash']."/2
+ ** Yes, I'm IN! - http://".$this->environment.".dowehaveenough.com/event_status/".$user['EventsUser']['hash']."/1
+ ** Nope, I'm OUT. - http://".$this->environment.".dowehaveenough.com/event_status/".$user['EventsUser']['hash']."/2
 				
 ----			
 				
 OTHER OPTIONS
  ** I'm 50/50 - http://".$this->environment.".dowehaveenough.com/event_status/".$user['EventsUser']['hash']."/3
 ";				
-if($event['Event']['cannot_bring_guests'] == 0) $email_msg .= " ** Yes, I'm in & bringing extra - http://".$this->environment.".dowehaveenough.com/event_status/".$user['EventsUser']['hash']."/4
+if($event['Event']['cannot_bring_guests'] == 0) $email_msg .= " ** Yes, I'm IN & bringing extra - http://".$this->environment.".dowehaveenough.com/event_status/".$user['EventsUser']['hash']."/4
 ";				
 				
 $email_msg .= "
@@ -564,15 +564,15 @@ if($event['Event']['where'] != '') $email_msg .= " * Where: ".$event['Event']['w
 $email_msg .= " * We need: ".$event['Event']['need']." people.
 					
 ARE YOU IN?			
- ** Yes, I'm in! - http://".$this->environment.".dowehaveenough.com/event_status/".$event_user['EventsUser']['hash']."/1
- ** Nope, I'm out - http://".$this->environment.".dowehaveenough.com/event_status/".$event_user['EventsUser']['hash']."/2
+ ** Yes, I'm IN! - http://".$this->environment.".dowehaveenough.com/event_status/".$event_user['EventsUser']['hash']."/1
+ ** Nope, I'm OUT. - http://".$this->environment.".dowehaveenough.com/event_status/".$event_user['EventsUser']['hash']."/2
 					
 ----				
 					
 OTHER OPTIONS		
  ** I'm 50/50 - http://".$this->environment.".dowehaveenough.com/event_status/".$event_user['EventsUser']['hash']."/3
 ";					
-if($event['Event']['cannot_bring_guests'] == 0) $email_msg .= " ** Yes, I'm in & bringing extra - http://".$this->environment.".dowehaveenough.com/event_status/".$event_user['EventsUser']['hash']."/4
+if($event['Event']['cannot_bring_guests'] == 0) $email_msg .= " ** Yes, I'm IN & bringing extra - http://".$this->environment.".dowehaveenough.com/event_status/".$event_user['EventsUser']['hash']."/4
 ";					
 					
 $email_msg .= "		
