@@ -679,7 +679,7 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 		$user = $this->User->find('User.email = "'.$_POST['email_address'].'" AND UserMobileDevice.device_id = "'.$_POST['device_id'].'" AND UserMobileDevice.validator = ""');
 		if(isset($user['User']['id']))
 		{
-			if(isset($_POST['name'])) $user['User']['name'] = $_POST['name'];
+			if(isset($_POST['name'])) $user['User']['name'] = trim($_POST['name']);
 			if(isset($_POST['cell_number'])) $user['User']['cell_number'] = $_POST['cell_number'];
 			if(isset($_POST['notify_text'])) $user['User']['notify_text'] = $_POST['notify_text'];
 			if(isset($_POST['notify_event_change'])) $user['User']['notify_event_change'] = $_POST['notify_event_change'];
