@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-#define kFilename	@"dwhesettingsdata.plist"
+#define kFilename	@"dwhefullsettingsdata.plist"
 
 
 @interface SettingsTracker : NSObject {
 	NSString *emailAddress;
+	NSString *userName;
 	NSString *isValidated;
 	NSString *notifyIn;
 	NSString *notifyOut;
@@ -23,6 +24,7 @@
 	BOOL isInited;
 }
 @property (nonatomic, retain) NSString *emailAddress;
+@property (nonatomic, retain) NSString *userName;
 @property (nonatomic, retain) NSString *isValidated;
 @property (nonatomic, retain) NSString *notifyIn;
 @property (nonatomic, retain) NSString *notifyOut;
@@ -40,6 +42,7 @@
 -(void)saveAppNotifyIn:(NSString *)notify;
 -(void)saveAppNotifyOut:(NSString *)notify;
 -(void)saveAppNotifyEventChange:(NSString *)notify;
+-(void)saveUserName:(NSString *)userName;
 -(void)initData;
 -(void)resetData;
 

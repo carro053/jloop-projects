@@ -165,6 +165,9 @@
 		7469782614F5D23800B3910F /* checkbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7469782114F5D23800B3910F /* checkbox@2x.png */; };
 		7469782714F5D23800B3910F /* checkmark-open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7469782214F5D23800B3910F /* checkmark-open@2x.png */; };
 		7469782814F5D23800B3910F /* close_btn_over@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7469782314F5D23800B3910F /* close_btn_over@2x.png */; };
+		74C9CA1814F80E1E00CEDEC0 /* title_your_name.png in Resources */ = {isa = PBXBuildFile; fileRef = 74C9CA1614F80E1E00CEDEC0 /* title_your_name.png */; };
+		74C9CA1914F80E1E00CEDEC0 /* title_your_name@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74C9CA1714F80E1E00CEDEC0 /* title_your_name@2x.png */; };
+		74C9CA1C14F8523D00CEDEC0 /* icon_fpo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74C9CA1B14F8523D00CEDEC0 /* icon_fpo@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -357,6 +360,9 @@
 		7469782114F5D23800B3910F /* checkbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox@2x.png"; sourceTree = "<group>"; };
 		7469782214F5D23800B3910F /* checkmark-open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark-open@2x.png"; sourceTree = "<group>"; };
 		7469782314F5D23800B3910F /* close_btn_over@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_btn_over@2x.png"; sourceTree = "<group>"; };
+		74C9CA1614F80E1E00CEDEC0 /* title_your_name.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_your_name.png; sourceTree = "<group>"; };
+		74C9CA1714F80E1E00CEDEC0 /* title_your_name@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title_your_name@2x.png"; sourceTree = "<group>"; };
+		74C9CA1B14F8523D00CEDEC0 /* icon_fpo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_fpo@2x.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Do_We_Have_Enough-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Do_We_Have_Enough-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -527,6 +533,9 @@
 		695569D110B1F7C800A2B659 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				74C9CA1B14F8523D00CEDEC0 /* icon_fpo@2x.png */,
+				74C9CA1614F80E1E00CEDEC0 /* title_your_name.png */,
+				74C9CA1714F80E1E00CEDEC0 /* title_your_name@2x.png */,
 				7469781F14F5D23800B3910F /* check_validation_bg@2x.png */,
 				7469782014F5D23800B3910F /* checkbox-open@2x.png */,
 				7469782114F5D23800B3910F /* checkbox@2x.png */,
@@ -806,6 +815,9 @@
 				7469782614F5D23800B3910F /* checkbox@2x.png in Resources */,
 				7469782714F5D23800B3910F /* checkmark-open@2x.png in Resources */,
 				7469782814F5D23800B3910F /* close_btn_over@2x.png in Resources */,
+				74C9CA1814F80E1E00CEDEC0 /* title_your_name.png in Resources */,
+				74C9CA1914F80E1E00CEDEC0 /* title_your_name@2x.png in Resources */,
+				74C9CA1C14F8523D00CEDEC0 /* icon_fpo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

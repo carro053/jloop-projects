@@ -11,6 +11,7 @@
 
 @implementation SettingsTracker
 @synthesize emailAddress;
+@synthesize userName;
 @synthesize isValidated;
 @synthesize isInited;
 @synthesize notifyIn, notifyOut, notifyEventChange, appNotifyIn, appNotifyOut, appNotifyEventChange;
@@ -33,6 +34,7 @@
 	[array addObject:appNotifyIn];
 	[array addObject:appNotifyOut];
 	[array addObject:appNotifyEventChange];
+	[array addObject:userName];
 	[array writeToFile:[self dataFilePath] atomically:YES];
 	[array release];
 	self.emailAddress = email;
@@ -49,6 +51,7 @@
 	[array addObject:appNotifyIn];
 	[array addObject:appNotifyOut];
 	[array addObject:appNotifyEventChange];
+	[array addObject:userName];
 	[array writeToFile:[self dataFilePath] atomically:YES];
 	[array release];
 	self.isValidated = validation;
@@ -65,6 +68,7 @@
 	[array addObject:appNotifyIn];
 	[array addObject:appNotifyOut];
 	[array addObject:appNotifyEventChange];
+	[array addObject:userName];
 	[array writeToFile:[self dataFilePath] atomically:YES];
 	[array release];
 	self.notifyIn = notify;
@@ -81,6 +85,7 @@
 	[array addObject:appNotifyIn];
 	[array addObject:appNotifyOut];
 	[array addObject:appNotifyEventChange];
+	[array addObject:userName];
 	[array writeToFile:[self dataFilePath] atomically:YES];
 	[array release];
 	self.notifyOut = notify;
@@ -97,6 +102,7 @@
 	[array addObject:appNotifyIn];
 	[array addObject:appNotifyOut];
 	[array addObject:appNotifyEventChange];
+	[array addObject:userName];
 	[array writeToFile:[self dataFilePath] atomically:YES];
 	[array release];
 	self.notifyEventChange = notify;
@@ -113,6 +119,7 @@
 	[array addObject:notify];
 	[array addObject:appNotifyOut];
 	[array addObject:appNotifyEventChange];
+	[array addObject:userName];
 	[array writeToFile:[self dataFilePath] atomically:YES];
 	[array release];
 	self.appNotifyIn = notify;
@@ -129,6 +136,7 @@
 	[array addObject:appNotifyIn];
 	[array addObject:notify];
 	[array addObject:appNotifyEventChange];
+	[array addObject:userName];
 	[array writeToFile:[self dataFilePath] atomically:YES];
 	[array release];
 	self.appNotifyOut = notify;
@@ -145,9 +153,27 @@
 	[array addObject:appNotifyIn];
 	[array addObject:appNotifyOut];
 	[array addObject:notify];
+	[array addObject:userName];
 	[array writeToFile:[self dataFilePath] atomically:YES];
 	[array release];
 	self.appNotifyEventChange = notify;
+}
+-(void)saveUserName:(NSString *)name
+{
+	if (!isInited) [self initData];
+	NSMutableArray *array = [[NSMutableArray alloc] init];
+	[array addObject:emailAddress];
+	[array addObject:isValidated];
+	[array addObject:notifyIn];
+	[array addObject:notifyOut];
+	[array addObject:notifyEventChange];
+	[array addObject:appNotifyIn];
+	[array addObject:appNotifyOut];
+	[array addObject:appNotifyEventChange];
+	[array addObject:name];
+	[array writeToFile:[self dataFilePath] atomically:YES];
+	[array release];
+	self.userName = name;
 }
 
 -(void)initData
@@ -165,6 +191,7 @@
 		NSString *myAppNotifyIn = [array objectAtIndex:5];
 		NSString *myAppNotifyOut = [array objectAtIndex:6];
 		NSString *myAppNotifyEventChange = [array objectAtIndex:7];
+		NSString *myUserName = [array objectAtIndex:8];
 		self.emailAddress = myEmail;
 		self.isValidated = myValidation;
 		self.notifyIn = myNotifyIn;
@@ -173,6 +200,7 @@
 		self.appNotifyIn = myAppNotifyIn;
 		self.appNotifyOut = myAppNotifyOut;
 		self.appNotifyEventChange = myAppNotifyEventChange;
+		self.userName = myUserName;
 		[array autorelease];
 		[self setIsInited:YES];
 	} else {
@@ -191,6 +219,7 @@
 	NSString *tempAppNotifyIn= [[NSString alloc] initWithString:@"0"];
 	NSString *tempAppNotifyOut= [[NSString alloc] initWithString:@"0"];
 	NSString *tempAppNotifyEventChange= [[NSString alloc] initWithString:@"1"];
+	NSString *tempUserName= [[NSString alloc] initWithString:@""];
 	self.emailAddress = tempEmail;
 	self.isValidated = tempValidated;
 	self.notifyIn = tempNotifyIn;
@@ -199,6 +228,7 @@
 	self.appNotifyIn = tempAppNotifyIn;
 	self.appNotifyOut = tempAppNotifyOut;
 	self.appNotifyEventChange = tempAppNotifyEventChange;
+	self.userName = tempUserName;
 	[tempEmail release];
 	[tempValidated release];
 	[tempNotifyIn release];
@@ -207,6 +237,7 @@
 	[tempAppNotifyIn release];
 	[tempAppNotifyOut release];
 	[tempAppNotifyEventChange release];
+	[tempUserName release];
 	NSMutableArray *array = [[NSMutableArray alloc] init];
 	[array addObject:emailAddress];
 	[array addObject:isValidated];
@@ -216,6 +247,7 @@
 	[array addObject:appNotifyIn];
 	[array addObject:appNotifyOut];
 	[array addObject:appNotifyEventChange];
+	[array addObject:userName];
 	[array writeToFile:[self dataFilePath] atomically:YES];
 	[array release];
 }

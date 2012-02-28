@@ -261,6 +261,7 @@
 		currentAppNotifyIn = [[NSMutableString alloc] init];
 		currentAppNotifyOut = [[NSMutableString alloc] init];
 		currentAppNotifyEventChange = [[NSMutableString alloc] init];
+		currentUserName = [[NSMutableString alloc] init];
 		currentEventID = [[NSMutableString alloc] init];
 		currentEventName = [[NSMutableString alloc] init];
 		currentEventWhen = [[NSMutableString alloc] init];
@@ -289,6 +290,8 @@
         [currentAppNotifyOut appendString:string];
     } else if ([currentElement isEqualToString:@"app_notify_event_change"]) {
         [currentAppNotifyEventChange appendString:string];
+    } else if ([currentElement isEqualToString:@"name"]) {
+        [currentUserName appendString:string];
 	} else if ([currentElement isEqualToString:@"latest_event_id"]) {
 		[currentEventID appendString:string];
 	} else if ([currentElement isEqualToString:@"latest_event_name"]) {
@@ -312,7 +315,8 @@
 	[settings saveAppNotifyIn:currentAppNotifyIn];
 	[settings saveAppNotifyOut:currentAppNotifyOut];
 	[settings saveAppNotifyEventChange:currentAppNotifyEventChange];
-    NSLog(@"%@ %@ %@ %@ %@ %@",currentNotifyIn,currentNotifyOut,currentNotifyEventChange,currentAppNotifyIn,currentAppNotifyOut,currentAppNotifyEventChange);
+	[settings saveUserName:currentUserName];
+    NSLog(@"%@ %@ %@ %@ %@ %@ %@",currentNotifyIn,currentNotifyOut,currentNotifyEventChange,currentAppNotifyIn,currentAppNotifyOut,currentAppNotifyEventChange,currentUserName);
 	NSLog(@"notify in in home view: %d", [settings.notifyIn intValue]);
 	[settings release];
 	NSLog(@"the event IS: %@", currentEventName);
