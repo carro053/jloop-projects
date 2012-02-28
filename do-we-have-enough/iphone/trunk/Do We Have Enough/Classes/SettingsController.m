@@ -24,6 +24,8 @@
 @synthesize appNotifyInSwitch;
 @synthesize appNotifyOutSwitch;
 @synthesize appNotifyEventChangeSwitch;
+@synthesize scroller;
+@synthesize userNameField;
 @synthesize loadingView;
 
 -(IBAction)resetButtonPressed:(id)sender
@@ -145,6 +147,7 @@
 		appNotifyInSwitch.enabled = YES;
 		appNotifyOutSwitch.enabled = YES;
 		appNotifyEventChangeSwitch.enabled = YES;
+        userNameField.text = [settings.userName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		[notifyInSwitch setOn:[settings.notifyIn intValue]];
 		[notifyOutSwitch setOn:[settings.notifyOut intValue]];
 		[notifyEventChangeSwitch setOn:[settings.notifyEventChange intValue]];
@@ -157,12 +160,40 @@
 	
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    if (theTextField == self.userNameField) {
+        [theTextField resignFirstResponder];
+        [self saveName:theTextField.text];
+    }
+    return YES;
+}
+
+- (IBAction)dismissKeyboard:(id)sender {
+    if([userNameField isFirstResponder])
+    {
+        [userNameField resignFirstResponder];
+        [self saveName:userNameField.text];
+    }
+}
+    
+-(void) saveName:(NSString *)theName {
+    LoadingView *myLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
+    loadingView = myLoadingView;
+    SettingsTracker *settings = [[SettingsTracker alloc] init];
+    [settings initData];
+    [settings saveUserName:theName];
+    [settings release];
+    [self saveNotifications];
+}
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	//[self setStage];
     [super viewDidLoad];
+    
+    [scroller setScrollEnabled:YES];
+    [scroller setContentSize:CGSizeMake(320, 518)];
 }
 -(void)viewDidAppear:(BOOL)animated {
 	[self setStage];
@@ -195,6 +226,8 @@
 
 
 - (void)viewDidUnload {
+    [userNameField release];
+    userNameField = nil;
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
@@ -205,7 +238,7 @@
 	NSString *uniqueIdentifier = [device uniqueIdentifier];
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
 	[settings initData];
-	NSString *postString = [NSString stringWithFormat:@"email_address=%@&device_id=%@&notify_in=%@&notify_out=%@&notify_event_change=%@&app_notify_in=%@&app_notify_out=%@&app_notify_event_change=%@", settings.emailAddress, uniqueIdentifier, settings.notifyIn, settings.notifyOut, settings.notifyEventChange, settings.appNotifyIn, settings.appNotifyOut, settings.appNotifyEventChange];
+	NSString *postString = [NSString stringWithFormat:@"email_address=%@&device_id=%@&notify_in=%@&notify_out=%@&notify_event_change=%@&app_notify_in=%@&app_notify_out=%@&app_notify_event_change=%@&name=%@", settings.emailAddress, uniqueIdentifier, settings.notifyIn, settings.notifyOut, settings.notifyEventChange, settings.appNotifyIn, settings.appNotifyOut, settings.appNotifyEventChange,settings.userName];
     NSLog(@"%@",postString);
     [settings release];
     
@@ -348,6 +381,7 @@
 	[appNotifyOutSwitch release];
 	[appNotifyEventChangeSwitch release];
 	[loadingView release];
+    [userNameField release];
     [super dealloc];
 }
 

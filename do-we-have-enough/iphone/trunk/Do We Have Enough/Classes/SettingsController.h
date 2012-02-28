@@ -10,7 +10,7 @@
 @class RootViewController;
 @class LoadingView; //test
 
-@interface SettingsController : UIViewController <UIAlertViewDelegate, NSXMLParserDelegate> {
+@interface SettingsController : UIViewController <UIAlertViewDelegate, NSXMLParserDelegate, UITextFieldDelegate> {
 	IBOutlet UIButton *resetButton;
 	IBOutlet UIButton *closeButton;
 	RootViewController *rootController;
@@ -21,6 +21,8 @@
 	IBOutlet UISwitch *appNotifyInSwitch;
 	IBOutlet UISwitch *appNotifyOutSwitch;
 	IBOutlet UISwitch *appNotifyEventChangeSwitch;
+    IBOutlet UIScrollView *scroller;
+    IBOutlet UITextField *userNameField;
 	//---xml parser stuff
 	NSXMLParser *xmlParser;
 	NSString *currentElement;
@@ -40,6 +42,8 @@
 @property (nonatomic, retain) UISwitch *appNotifyInSwitch;
 @property (nonatomic, retain) UISwitch *appNotifyOutSwitch;
 @property (nonatomic, retain) UISwitch *appNotifyEventChangeSwitch;
+@property (nonatomic, retain) UIScrollView *scroller;
+@property (weak, nonatomic) IBOutlet UITextField *userNameField;
 
 @property (nonatomic, retain) LoadingView *loadingView;
 -(IBAction)resetButtonPressed:(id)sender;
@@ -50,6 +54,8 @@
 -(IBAction)toggleAppInSwitch:(id)sender;
 -(IBAction)toggleAppOutSwitch:(id)sender;
 -(IBAction)toggleAppEventChangeSwitch:(id)sender;
+-(IBAction)dismissKeyboard:(id)sender;
+-(void)saveName:(NSString *)theName;
 -(void)resetEmailSettings;
 -(void)setStage;
 - (void)saveNotifications;
