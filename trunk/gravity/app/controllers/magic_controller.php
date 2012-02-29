@@ -12,7 +12,21 @@ class MagicController extends AppController {
  		$this->Auth->allow('game_spectate','game_refresh_spectate');
  		parent::beforeFilter();
  	}
-	
+	function add_cards()
+	{
+		$card = $this->Card->findById(58);
+		$card['Card']['id'] = 684;
+		$this->Card->save($card);
+		$card['Card']['id'] = 685;
+		$this->Card->save($card);
+		$card['Card']['id'] = 686;
+		$this->Card->save($card);
+		$card['Card']['id'] = 687;
+		$this->Card->save($card);
+		$card['Card']['id'] = 688;
+		$this->Card->save($card);
+		exit();
+	}
 	function deck_index()
 	{
  		$this->set('menuTab','Magic Decks');
