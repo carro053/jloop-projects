@@ -15,15 +15,7 @@ class MagicController extends AppController {
 	function add_cards()
 	{
 		$card = $this->Card->findById(58);
-		$card['Card']['id'] = 684;
-		$this->Card->save($card);
-		$card['Card']['id'] = 685;
-		$this->Card->save($card);
-		$card['Card']['id'] = 686;
-		$this->Card->save($card);
-		$card['Card']['id'] = 687;
-		$this->Card->save($card);
-		$card['Card']['id'] = 688;
+		$card['Card']['id'] = 689;
 		$this->Card->save($card);
 		exit();
 	}
