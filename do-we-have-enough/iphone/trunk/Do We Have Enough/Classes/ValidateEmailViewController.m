@@ -64,6 +64,11 @@
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [self.parentViewController performSelector:@selector(checkValidation) withObject:nil afterDelay:5.0];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
