@@ -869,7 +869,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Stratford (CR3RAM6YSA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Stratford (CR3RAM6YSA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -883,7 +883,7 @@
 				);
 				PRODUCT_NAME = DoWeHaveEnough;
 				PROVISIONING_PROFILE = "AD834339-C609-4C6C-AE7C-B97D68A93A6E";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AD834339-C609-4C6C-AE7C-B97D68A93A6E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 			};
 			name = Debug;
 		};
@@ -952,13 +952,13 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Stratford (CR3RAM6YSA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Stratford (CR3RAM6YSA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PROVISIONING_PROFILE = "AD834339-C609-4C6C-AE7C-B97D68A93A6E";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AD834339-C609-4C6C-AE7C-B97D68A93A6E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				WEB_ENVIRONMENT = dev;
 			};
