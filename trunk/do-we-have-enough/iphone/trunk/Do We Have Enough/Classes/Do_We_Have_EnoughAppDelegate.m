@@ -81,6 +81,7 @@
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [TestFlight takeOff:@"4daac12df9d7ba3264eef02799dfd0bf_NDk0MjIwMTEtMTAtMDUgMTI6MjI6MjkuMjc5Nzgw"];
 	[window addSubview:[navigationController view]];
     [window makeKeyAndVisible];
 	//NSLog(@"got launchoptions: %@", launchOptions);
@@ -93,8 +94,6 @@
                                   useCoreLocation:NO
                                       useOnlyWiFi:NO
                                   enableDebugMode:YES];*/
-    
-    [TestFlight takeOff:@"4daac12df9d7ba3264eef02799dfd0bf_NDk0MjIwMTEtMTAtMDUgMTI6MjI6MjkuMjc5Nzgw"];
 	
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound |UIRemoteNotificationTypeAlert)];
 	return YES;

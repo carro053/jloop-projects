@@ -226,6 +226,7 @@
 	r = 39;
 	self.tableView.backgroundColor = [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0];*/
 	self.tableView.backgroundColor = [UIColor clearColor];
+    [TestFlight passCheckpoint:@"CREATE EVENT VIEW"];
     [super viewDidLoad];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
