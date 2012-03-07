@@ -10,6 +10,7 @@
 #import "EventDetailsViewController.h"
 #import "LoadingView.h"
 #import "SettingsTracker.h"
+#import "TestFlight.h"
 
 
 @implementation SetUserStatusViewController
@@ -49,6 +50,7 @@
 	self.navigationItem.rightBarButtonItem = doneButton;
 	[doneButton release];
 	self.title = @"Set Status";
+    [TestFlight passCheckpoint:@"SET USER STATUS VIEW"];
     [super viewDidLoad];
 }
 - (void)viewDidAppear:(BOOL)animated {

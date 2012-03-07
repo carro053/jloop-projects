@@ -21,6 +21,7 @@
 #import "EditableCell.h"
 #import "LoadingView.h"
 #import "SettingsTracker.h"
+#import "TestFlight.h"
 
 
 @implementation CreateEventViewController
@@ -67,28 +68,34 @@
 
 -(void)startCreate
 {
+    [TestFlight passCheckpoint:@"STARTING EVENT CREATION"];
 	[self storeEventValues];
 	if (eventName == nil || [eventName isEqualToString:@""]) {
 		//no event name
+        [TestFlight passCheckpoint:@"EVENT VALIDATION MISSING NAME"];
 		UIAlertView *nameAlert = [[UIAlertView alloc] initWithTitle:@"Whoops!" message:@"You gotta call this event something..." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[nameAlert show];
 		[nameAlert release];
 	} else if (!whenSet) {
 		//no event when
+        [TestFlight passCheckpoint:@"EVENT VALIDATION MISSING WHEN"];
 		UIAlertView *timeAlert = [[UIAlertView alloc] initWithTitle:@"Whoops!" message:@"People will show up at different times if you don't specify when it is." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[timeAlert show];
 		[timeAlert release];
 	} else if (eventLocation == nil || [eventLocation isEqualToString:@""]) {
 		//no event name
+        [TestFlight passCheckpoint:@"EVENT VALIDATION MISSING WHERE"];
 		UIAlertView *locationAlert = [[UIAlertView alloc] initWithTitle:@"Whoops!" message:@"Hmmm.... no one can come if they don't know where it is." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[locationAlert show];
 		[locationAlert release];
 	} else if (eventNeed == 0) {
 		//no event name
+        [TestFlight passCheckpoint:@"EVENT VALIDATION MISSING NEED"];
 		UIAlertView *needAlert = [[UIAlertView alloc] initWithTitle:@"Whoops!" message:@"How many people do you need for your event?" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[needAlert show];
 		[needAlert release];
 	} else if ([selectedGroupID isEqualToString:@"0"] && [newGroup.groupMembers count] < 1) {
+        [TestFlight passCheckpoint:@"EVENT VALIDATION MISSING INVITEES"];
 			UIAlertView *inviteAlert = [[UIAlertView alloc] initWithTitle:@"Whoops!" message:@"You better invite some people or no one will show up." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 			[inviteAlert show];
 			[inviteAlert release];
@@ -96,11 +103,13 @@
 		SettingsTracker *settings = [[SettingsTracker alloc] init];
 		[settings initData];
 		if ([settings.emailAddress isEqualToString:@"false"]) { //DON'T KNOW THE EMAIL ADDY
+            [TestFlight passCheckpoint:@"EVENT VALIDATED NOW NEED VALID EMAIL"];
 			ValidateEmailCreateViewController *myController = [[ValidateEmailCreateViewController alloc] initWithNibName:@"ValidateEmailCreateViewController" bundle:nil];
 			myController.parentController = self;
 			[self presentModalViewController:myController animated:YES];
 			[myController release];
 		} else {
+            [TestFlight passCheckpoint:@"EVENT VALIDATED AND READY TO CREATE EVENT"];
 			//SHOW THE ACTION SHEET
 			UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Invitations will be sent now.  Ready?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Create Event" otherButtonTitles:nil];
 			[actionSheet showInView:self.view];
@@ -987,13 +996,16 @@ titleForHeaderInSection:(NSInteger)section
 		NSString *myMsg = nil;
 		NSString *mySubmitStatus = [submitStatus stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		if ([mySubmitStatus isEqualToString:@"active"]) {
+            [TestFlight passCheckpoint:@"EVENT CREATED"];
 			myTitle = [[NSString alloc] initWithString:@"Whoo-hooo!"];
 			myMsg = [[NSString alloc] initWithString:@"Your event was successfully created.\n\nDon't forget to set your own status!"];
 		} else if ([mySubmitStatus isEqualToString:@"error"]) {
+            [TestFlight passCheckpoint:@"EVENT CREATION ERROR"];
 			myTitle = [[NSString alloc] initWithString:@"Whoops!"];
 			myMsg = [[NSString alloc] initWithString:@"There was an error submitting your event.  Please try again."];
 		} else if ([mySubmitStatus isEqualToString:@"pending_validation"]) {
 			myTitle = [[NSString alloc] initWithString:@"Almost Done!"];
+            [TestFlight passCheckpoint:@"EVENT CREATED NEED EMAIL VALIDATION"];
 			myMsg = [[NSString alloc] initWithString:@"Your event is lined up and waiting.  We just need you to validate your email address to confirm your identity.\n\nPlease check your email now and follow the directions."];
 		}
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:myTitle message:myMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];

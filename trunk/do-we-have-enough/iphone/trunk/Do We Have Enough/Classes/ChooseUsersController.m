@@ -12,6 +12,7 @@
 #import "UserGroup.h"
 #import	"AddUserController.h"
 #import "EditableCell.h"
+#import "TestFlight.h"
 
 @implementation ChooseUsersController
 @synthesize parentController, textFieldBeingEdited, myParent, parentController2;
@@ -150,6 +151,7 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
 	 r = 39;
 	 self.tableView.backgroundColor = [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0];*/
 	self.tableView.backgroundColor = [UIColor clearColor];
+    [TestFlight passCheckpoint:@"CHOOSE USERS VIEW"];
 	[super viewDidLoad];
 }
 - (void)didReceiveMemoryWarning {

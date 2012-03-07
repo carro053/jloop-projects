@@ -10,6 +10,7 @@
 #import "SettingsTracker.h"
 #import "LoadingView.h"
 #import "HomeController.h"
+#import "TestFlight.h"
 
 @implementation ValidateEmailViewController
 @synthesize emailAddress;
@@ -70,6 +71,7 @@
 }
 
 - (void)viewDidLoad {
+    [TestFlight passCheckpoint:@"VALIDATE EMAIL VIEW"];
     [super viewDidLoad];
 }
 -(void)viewDidAppear:(BOOL)animated

@@ -11,6 +11,7 @@
 #import "SettingsTracker.h"
 #import "LoadingView.h"
 #import "SettingsTracker.h"
+#import "TestFlight.h"
 
 
 @implementation SettingsController
@@ -43,6 +44,7 @@
 }
 -(IBAction)toggleInSwitch:(id)sender
 {
+    [TestFlight passCheckpoint:@"SETTINGS TOGGLE IN"];
 	LoadingView *myLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
 	loadingView = myLoadingView;
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
@@ -55,6 +57,7 @@
 }
 -(IBAction)toggleOutSwitch:(id)sender
 {
+    [TestFlight passCheckpoint:@"SETTINGS TOGGLE OUT"];
 	LoadingView *myLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
 	loadingView = myLoadingView;
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
@@ -67,6 +70,7 @@
 }
 -(IBAction)toggleEventChangeSwitch:(id)sender
 {
+    [TestFlight passCheckpoint:@"SETTINGS TOGGLE EVENT CHANGE"];
 	LoadingView *myLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
 	loadingView = myLoadingView;
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
@@ -79,6 +83,7 @@
 }
 -(IBAction)toggleAppInSwitch:(id)sender
 {
+    [TestFlight passCheckpoint:@"SETTINGS TOGGLE APP IN"];
 	LoadingView *myLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
 	loadingView = myLoadingView;
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
@@ -91,6 +96,7 @@
 }
 -(IBAction)toggleAppOutSwitch:(id)sender
 {
+    [TestFlight passCheckpoint:@"SETTINGS TOGGLE APP OUT"];
 	LoadingView *myLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
 	loadingView = myLoadingView;
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
@@ -103,6 +109,7 @@
 }
 -(IBAction)toggleAppEventChangeSwitch:(id)sender
 {
+    [TestFlight passCheckpoint:@"SETTINGS TOGGLE APP EVENT CHANGE"];
 	LoadingView *myLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
 	loadingView = myLoadingView;
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
@@ -177,6 +184,7 @@
 }
     
 -(void) saveName:(NSString *)theName {
+    [TestFlight passCheckpoint:@"SETTINGS SAVE NAME"];
     LoadingView *myLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
     loadingView = myLoadingView;
     SettingsTracker *settings = [[SettingsTracker alloc] init];
@@ -190,6 +198,7 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	//[self setStage];
+    [TestFlight passCheckpoint:@"SETTINGS VIEW"];
     [super viewDidLoad];
     
     [scroller setScrollEnabled:YES];
@@ -233,6 +242,7 @@
 }
 #pragma mark POST methods
 - (void)saveNotifications {
+    [TestFlight passCheckpoint:@"SETTINGS SAVE NOTIFICATIONS"];
 	NSString *URL = [[NSString alloc] initWithFormat:@"http://%@.dowehaveenough.com/devices/save_user.xml", [[[NSBundle mainBundle] infoDictionary] valueForKey:@"WEB_ENVIRONMENT"]];
 	UIDevice *device = [UIDevice currentDevice];
 	NSString *uniqueIdentifier = [device uniqueIdentifier];
@@ -258,6 +268,7 @@
 	[URL release];
 }
 - (void)saveResetEmailSettings {
+    [TestFlight passCheckpoint:@"SETTINGS RESET EMAIL"];
 	NSString *URL = [[NSString alloc] initWithFormat:@"http://%@.dowehaveenough.com/devices/invalidate_device.xml", [[[NSBundle mainBundle] infoDictionary] valueForKey:@"WEB_ENVIRONMENT"]];
 	UIDevice *device = [UIDevice currentDevice];
 	NSString *uniqueIdentifier = [device uniqueIdentifier];

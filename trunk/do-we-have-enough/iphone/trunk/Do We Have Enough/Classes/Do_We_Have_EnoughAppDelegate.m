@@ -9,6 +9,7 @@
 #import "Do_We_Have_EnoughAppDelegate.h"
 #import "RootViewController.h"
 #import "SettingsTracker.h"
+#import "TestFlight.h"
 //#import "Beacon.h"
 
 
@@ -92,6 +93,8 @@
                                   useCoreLocation:NO
                                       useOnlyWiFi:NO
                                   enableDebugMode:YES];*/
+    
+    [TestFlight takeOff:@"4daac12df9d7ba3264eef02799dfd0bf_NDk0MjIwMTEtMTAtMDUgMTI6MjI6MjkuMjc5Nzgw"];
 	
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound |UIRemoteNotificationTypeAlert)];
 	return YES;

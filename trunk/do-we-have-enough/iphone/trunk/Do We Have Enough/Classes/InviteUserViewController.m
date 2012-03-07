@@ -9,6 +9,7 @@
 #import "InviteUserViewController.h"
 #import "LoadingView.h"
 #import "SettingsTracker.h"
+#import "TestFlight.h"
 
 
 @implementation InviteUserViewController
@@ -139,6 +140,7 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
 	[doneButton release];
 	self.title = @"Invite Someone";
 	self.view.backgroundColor = [UIColor clearColor];
+    [TestFlight passCheckpoint:@"INVITE USER VIEW"];
     [super viewDidLoad];
 }
 -(void)viewDidAppear:(BOOL)animated {
