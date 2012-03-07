@@ -10,6 +10,7 @@
 #import "SettingsTracker.h"
 #import "LoadingView.h"
 #import "HomeController.h"
+#import "TestFlight.h"
 
 @implementation CheckValidationViewController
 @synthesize loadingView;
@@ -131,12 +132,14 @@
 		SettingsTracker *settings = [[SettingsTracker alloc] init];
 		[settings initData];
 		if ([currentResult isEqualToString:@"true"]) {
+            [TestFlight passCheckpoint:@"USER SUCCESSFULLY CHECKED VALIDATION"];
 			[settings saveValidation:@"true"];
 			//[(HomeController *)self.parentViewController dismissModalViewControllerAnimated:YES];
             [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound |UIRemoteNotificationTypeAlert)];
             [self dismissModalViewControllerAnimated:YES];
 		} else {
 			//TODO: add failure alert
+            [TestFlight passCheckpoint:@"USER FAILED VALIDATION CHECK"];
             UIAlertView * errorAlert = [[UIAlertView alloc] initWithTitle:@"Email Validation Error" message:@"Please check your email and click the validation link before proceeding." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [errorAlert show];
             [errorAlert release];

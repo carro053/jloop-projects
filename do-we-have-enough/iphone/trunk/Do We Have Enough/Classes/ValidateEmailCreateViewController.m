@@ -9,6 +9,7 @@
 #import "ValidateEmailCreateViewController.h"
 #import "CreateEventViewController.h"
 #import "SettingsTracker.h"
+#import "TestFlight.h"
 
 
 @implementation ValidateEmailCreateViewController

@@ -7,6 +7,7 @@
 //
 
 #import "EventMemberListViewController.h"
+#import "TestFlight.h"
 
 
 
@@ -43,6 +44,7 @@
 		[myStatus release];
 		//[myName release];
 	}
+    [TestFlight passCheckpoint:@"EVENT MEMBER LIST VIEW"];
 	[super viewDidLoad];
 }
 - (void)viewDidAppear:(BOOL)animated {

@@ -15,6 +15,7 @@
 #import "ValidateEmailViewController.h"
 #import "CheckValidationViewController.h"
 #import "Do_We_Have_EnoughAppDelegate.h"
+#import "TestFlight.h"
 //#import "Beacon.h"; //no longer using
 
 
@@ -53,6 +54,7 @@
 	//NSDictionary *infoDict = [mainBundle infoDictionary];
 	//NSLog(@"environment: %@", [[[NSBundle mainBundle] infoDictionary] valueForKey:@"WEB_ENVIRONMENT"]);
 	
+    [TestFlight passCheckpoint:@"HOME VIEW"];
 	[super viewDidLoad];
 }
 
@@ -84,14 +86,17 @@
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
 	[settings initData];
 	if (![settings.emailAddress isEqualToString:@"false"]) {
+        [TestFlight passCheckpoint:@"HOME VIEW EMAIL IS SET"];
 		NSLog(@"email is set");
 		if ([settings.isValidated isEqualToString:@"false"]) {
+            [TestFlight passCheckpoint:@"HOME VIEW VALIDATION NOT SET"];
 			NSLog(@"validation is not set");
 			CheckValidationViewController *checkValidationController = [[CheckValidationViewController alloc] initWithNibName:@"CheckValidationViewController" bundle:nil];
 			[self presentModalViewController:checkValidationController animated:YES];
 			[checkValidationController release];
 
 		} else {
+            [TestFlight passCheckpoint:@"HOME VIEW VALIDATION IS SET"];
 			[latestActivity startAnimating];
 			NSString * path = [[NSString alloc] initWithFormat:@"http://%@.dowehaveenough.com/devices/get_user.xml", [[[NSBundle mainBundle] infoDictionary] valueForKey:@"WEB_ENVIRONMENT"]];
 			[self retrieveXMLFileAtURL:path];
@@ -103,6 +108,7 @@
 	//NSString *myEventID = [[NSString alloc] initWithFormat:@"%@", appDelegate.launchEventID];
 	//NSLog(@"my event id: %@", myEventID);
 	if ([appDelegate.launchEventID length] > 1) {
+        [TestFlight passCheckpoint:@"HOME VIEW LAUNCHED WITH EVENT ID"];
 		EventDetailsViewController *myController = [[EventDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped];
 		myController.event_id = appDelegate.launchEventID;
 		[self.rootController.navigationController pushViewController:myController animated:YES];
@@ -111,12 +117,14 @@
 }
 - (IBAction)createButtonPressed {
 	//[[Beacon shared] startSubBeaconWithName:@"Create Event Started" timeSession:NO];
+    [TestFlight passCheckpoint:@"HOME VIEW CREATE BUTTON PRESSED"];
 	CreateEventViewController *createEventController = [[CreateEventViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	[self.rootController.navigationController pushViewController:createEventController animated:YES];
 	[createEventController release];
 }
 - (IBAction)latestButtonPressed {
 	//[[Beacon shared] startSubBeaconWithName:@"Latest Event" timeSession:NO];
+    [TestFlight passCheckpoint:@"HOME VIEW LATEST BUTTON PRESSED"];
 	EventDetailsViewController *myController = [[EventDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	myController.event_id = latest_event_id;
 	[self.rootController.navigationController pushViewController:myController animated:YES];
@@ -124,6 +132,7 @@
 }
 - (IBAction)eventsButtonPressed {
 	//[[Beacon shared] startSubBeaconWithName:@"Event List" timeSession:NO];
+    [TestFlight passCheckpoint:@"HOME VIEW EVENTS BUTTON PRESSED"];
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
 	[settings initData];
 	if ([settings.emailAddress isEqualToString: @"false"]) {
@@ -144,6 +153,7 @@
 	[settings release];
 }
 -(IBAction)settingsButtonPressed {
+    [TestFlight passCheckpoint:@"HOME VIEW SETTINGS BUTTON PRESSED"];
     SettingsTracker *settings = [[SettingsTracker alloc] init];
 	[settings initData];
     if (![settings.emailAddress isEqualToString:@"false"]) {

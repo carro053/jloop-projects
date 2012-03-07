@@ -7,6 +7,7 @@
 //
 
 #import "AddUserController.h"
+#import "TestFlight.h"
 
 
 @implementation AddUserController
@@ -81,6 +82,7 @@
 	[doneButton release];
 	self.title = @"Invite someone";
 	self.view.backgroundColor = [UIColor clearColor];
+    [TestFlight passCheckpoint:@"ADD USER VIEW"];
     [super viewDidLoad];
 }
 

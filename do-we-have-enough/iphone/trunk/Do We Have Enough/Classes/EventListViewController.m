@@ -11,6 +11,7 @@
 #import "EventListItem.h"
 #import "LoadingView.h"
 #import "SettingsTracker.h"
+#import "TestFlight.h"
 
 
 @implementation EventListViewController
@@ -57,6 +58,7 @@
 	 r = 39;
 	 self.tableView.backgroundColor = [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0];*/
 	self.tableView.backgroundColor = [UIColor clearColor];
+    [TestFlight passCheckpoint:@"EVENT LIST VIEW"];
     [super viewDidLoad];
 }
 

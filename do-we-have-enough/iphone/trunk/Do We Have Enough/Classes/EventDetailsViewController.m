@@ -14,6 +14,7 @@
 #import "LoadingView.h"
 #import "SettingsTracker.h"
 #import "StringHelper.h"
+#import "TestFlight.h"
 
 
 @implementation EventDetailsViewController
@@ -36,6 +37,7 @@
 }
 -(void)updateMyStatus:(int)status :(int)guests
 {
+    [TestFlight passCheckpoint:@"UPDATE MY STATUS"];
 	NSLog(@"my status is: %d", status);
 	NSString *myStatus = [[NSString alloc] initWithFormat:@"%d", status];
 	NSString *myGuests = [[NSString alloc] initWithFormat:@"%d", guests];
@@ -47,6 +49,7 @@
 }
 -(void)updateMyNotify:(int)notify
 {
+    [TestFlight passCheckpoint:@"UPDATE MY NOTIFY"];
 	NSString *myNotify = [[NSString alloc] initWithFormat:@"%d", notify];
 	[eventDetails setObject:myNotify forKey:@"notify_when"];
 	[myNotify release];
@@ -55,7 +58,7 @@
 
 -(void)refreshView
 {
-	
+    [TestFlight passCheckpoint:@"EVENT DETAILS REFRESHED"];
 	int myInvite = [[eventDetails objectForKey:@"cannotInvite"] intValue];
 	if (myInvite != 1) {
 		[self.navigationController setToolbarHidden:NO animated:YES];
@@ -86,6 +89,7 @@
 
 
 - (void)viewDidLoad {
+    [TestFlight passCheckpoint:@"EVENT DETAILS VIEW"];
 	memberlist = [[NSMutableArray alloc] init];
 	eventDetails = [[NSMutableDictionary alloc] init];
     [[self navigationController] setNavigationBarHidden:NO animated:YES];

@@ -9,6 +9,7 @@
 #import "EventOptionsViewController.h"
 #import "CreateEventViewController.h"
 #import "SelectDateViewController.h"
+#import "TestFlight.h"
 
 
 @implementation EventOptionsViewController
@@ -16,6 +17,7 @@
 
 
 -(IBAction)selectStatusDatePressed {
+    [TestFlight passCheckpoint:@"EVENT OPTIONS SELECT STATUS DATE PRESSED"];
 	NSLog(@"select status date pressed");
 	SelectDateViewController *selectDateController = [[SelectDateViewController alloc] initWithNibName:@"SelectDateViewController" bundle:nil];
 	selectDateController.theNotification = @"status";
@@ -23,6 +25,7 @@
 	[selectDateController release];
 }
 -(IBAction)selectCancelDatePressed {
+    [TestFlight passCheckpoint:@"EVENT OPTIONS SELECT CANCEL DATE PRESSED"];
 	NSLog(@"select cancel date pressed");
 	SelectDateViewController *selectDateController = [[SelectDateViewController alloc] initWithNibName:@"SelectDateViewController" bundle:nil];
 	selectDateController.theNotification = @"cancel";
@@ -54,6 +57,7 @@
 	 r = 39;
 	 self.tableView.backgroundColor = [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0];*/
 	self.tableView.backgroundColor = [UIColor clearColor];
+    [TestFlight passCheckpoint:@"EVENT OPTIONS VIEW"];
     [super viewDidLoad];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.

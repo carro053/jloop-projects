@@ -10,6 +10,7 @@
 #import "EventDetailsViewController.h"
 #import "LoadingView.h"
 #import "SettingsTracker.h"
+#import "TestFlight.h"
 
 
 @implementation SetUserNotifyViewController
@@ -47,6 +48,7 @@
 	self.navigationItem.rightBarButtonItem = doneButton;
 	[doneButton release];
 	self.title = @"Set Status";
+    [TestFlight passCheckpoint:@"SET USER NOTIFY VIEW"];
     [super viewDidLoad];
 }
 - (void)viewDidAppear:(BOOL)animated {

@@ -112,6 +112,7 @@
 		69F263F310C5FB880028B52C /* title_recent_events.png in Resources */ = {isa = PBXBuildFile; fileRef = 69F263F110C5FB880028B52C /* title_recent_events.png */; };
 		69F2649110C649C40028B52C /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 69F2649010C649C40028B52C /* Entitlements.plist */; };
 		69F9CC1E109286C6005A6DE8 /* checkmarkControllerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 69F9CC1D109286C6005A6DE8 /* checkmarkControllerIcon.png */; };
+		7459725C1506E49800911C57 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7459725B1506E49800911C57 /* libz.dylib */; };
 		74610E9C14EDBE2C00A981EC /* check_validation_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 74610E9B14EDBE2C00A981EC /* check_validation_bg.png */; };
 		7465BFDE14EEE80B006D2168 /* btn_create@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7465BFB114EEE808006D2168 /* btn_create@2x.png */; };
 		7465BFDF14EEE80B006D2168 /* checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7465BFB214EEE808006D2168 /* checkmark@2x.png */; };
@@ -165,6 +166,9 @@
 		7469782614F5D23800B3910F /* checkbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7469782114F5D23800B3910F /* checkbox@2x.png */; };
 		7469782714F5D23800B3910F /* checkmark-open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7469782214F5D23800B3910F /* checkmark-open@2x.png */; };
 		7469782814F5D23800B3910F /* close_btn_over@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7469782314F5D23800B3910F /* close_btn_over@2x.png */; };
+		74C2FCD11506F23D007DD607 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C2FCCD1506F23D007DD607 /* libTestFlight.a */; };
+		74C2FCD21506F23D007DD607 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 74C2FCCE1506F23D007DD607 /* README.txt */; };
+		74C2FCD31506F23D007DD607 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 74C2FCCF1506F23D007DD607 /* release_notes.txt */; };
 		74C9CA1814F80E1E00CEDEC0 /* title_your_name.png in Resources */ = {isa = PBXBuildFile; fileRef = 74C9CA1614F80E1E00CEDEC0 /* title_your_name.png */; };
 		74C9CA1914F80E1E00CEDEC0 /* title_your_name@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74C9CA1714F80E1E00CEDEC0 /* title_your_name@2x.png */; };
 		74C9CA1C14F8523D00CEDEC0 /* icon_fpo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74C9CA1B14F8523D00CEDEC0 /* icon_fpo@2x.png */; };
@@ -307,6 +311,7 @@
 		69F263F110C5FB880028B52C /* title_recent_events.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_recent_events.png; sourceTree = "<group>"; };
 		69F2649010C649C40028B52C /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		69F9CC1D109286C6005A6DE8 /* checkmarkControllerIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkmarkControllerIcon.png; sourceTree = "<group>"; };
+		7459725B1506E49800911C57 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		74610E9B14EDBE2C00A981EC /* check_validation_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_validation_bg.png; sourceTree = "<group>"; };
 		7465BFB114EEE808006D2168 /* btn_create@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_create@2x.png"; sourceTree = "<group>"; };
 		7465BFB214EEE808006D2168 /* checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark@2x.png"; sourceTree = "<group>"; };
@@ -360,6 +365,10 @@
 		7469782114F5D23800B3910F /* checkbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox@2x.png"; sourceTree = "<group>"; };
 		7469782214F5D23800B3910F /* checkmark-open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark-open@2x.png"; sourceTree = "<group>"; };
 		7469782314F5D23800B3910F /* close_btn_over@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_btn_over@2x.png"; sourceTree = "<group>"; };
+		74C2FCCD1506F23D007DD607 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		74C2FCCE1506F23D007DD607 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		74C2FCCF1506F23D007DD607 /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.txt; sourceTree = "<group>"; };
+		74C2FCD01506F23D007DD607 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		74C9CA1614F80E1E00CEDEC0 /* title_your_name.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_your_name.png; sourceTree = "<group>"; };
 		74C9CA1714F80E1E00CEDEC0 /* title_your_name@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title_your_name@2x.png"; sourceTree = "<group>"; };
 		74C9CA1B14F8523D00CEDEC0 /* icon_fpo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_fpo@2x.png"; sourceTree = "<group>"; };
@@ -371,6 +380,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7459725C1506E49800911C57 /* libz.dylib in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
@@ -380,6 +390,7 @@
 				698CB2F110C708AA0036887A /* libsqlite3.dylib in Frameworks */,
 				698CB2F310C708CC0036887A /* CoreLocation.framework in Frameworks */,
 				698CB2F510C708CC0036887A /* SystemConfiguration.framework in Frameworks */,
+				74C2FCD11506F23D007DD607 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +470,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				7459725B1506E49800911C57 /* libz.dylib */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -481,6 +493,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				74C2FCCC1506F209007DD607 /* TestFlightSDK */,
 				695569D110B1F7C800A2B659 /* images */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
 				69C2149A10864D0800B748F8 /* RootViewController.xib */,
@@ -642,6 +655,17 @@
 			name = images;
 			sourceTree = "<group>";
 		};
+		74C2FCCC1506F209007DD607 /* TestFlightSDK */ = {
+			isa = PBXGroup;
+			children = (
+				74C2FCCD1506F23D007DD607 /* libTestFlight.a */,
+				74C2FCCE1506F23D007DD607 /* README.txt */,
+				74C2FCCF1506F23D007DD607 /* release_notes.txt */,
+				74C2FCD01506F23D007DD607 /* TestFlight.h */,
+			);
+			name = TestFlightSDK;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -668,7 +692,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "DoWeHaveEnough" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -818,6 +842,8 @@
 				74C9CA1814F80E1E00CEDEC0 /* title_your_name.png in Resources */,
 				74C9CA1914F80E1E00CEDEC0 /* title_your_name@2x.png in Resources */,
 				74C9CA1C14F8523D00CEDEC0 /* icon_fpo@2x.png in Resources */,
+				74C2FCD21506F23D007DD607 /* README.txt in Resources */,
+				74C2FCD31506F23D007DD607 /* release_notes.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,6 +906,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Classes\"",
+					"\"$(SRCROOT)/TestFlightSDK0.8.3\"",
+					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = DoWeHaveEnough;
 				PROVISIONING_PROFILE = "AD834339-C609-4C6C-AE7C-B97D68A93A6E";
@@ -893,7 +921,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: JLOOP";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JLOOP";
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Do_We_Have_Enough_Prefix.pch;
 				INFOPLIST_FILE = "Do_We_Have_Enough-Info.plist";
@@ -901,6 +929,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Classes\"",
+					"\"$(SRCROOT)/TestFlightSDK0.8.3\"",
+					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = DoWeHaveEnough;
 				PROVISIONING_PROFILE = "9FEFEFFC-8C6E-4F1B-AEE8-5CA66D6E9633";
@@ -914,6 +944,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: JLOOP";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JLOOP";
+				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -932,7 +963,7 @@
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: JLOOP";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JLOOP";
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Do_We_Have_Enough_Prefix.pch;
 				INFOPLIST_FILE = "Do_We_Have_Enough-Info.plist";
@@ -940,6 +971,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Classes\"",
+					"\"$(SRCROOT)/TestFlightSDK0.8.3\"",
+					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = DoWeHaveEnough;
 				PROVISIONING_PROFILE = "9FEFEFFC-8C6E-4F1B-AEE8-5CA66D6E9633";
@@ -953,6 +986,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Stratford (CR3RAM6YSA)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -970,6 +1004,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: JLOOP";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JLOOP";
+				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;

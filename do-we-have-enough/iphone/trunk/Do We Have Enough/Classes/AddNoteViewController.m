@@ -8,6 +8,7 @@
 
 #import "AddNoteViewController.h"
 #import "CreateEventViewController.h"
+#import "TestFlight.h"
 
 //Text View contstants
 #define kUITextViewCellRowHeight 150.0
@@ -56,6 +57,7 @@
 																			  target:self action:@selector(save:)];
 	self.navigationItem.rightBarButtonItem = saveItem;
 	[saveItem release];*/
+    [TestFlight passCheckpoint:@"ADD NOTE VIEW"];
 	int r, g, b;
 	b = 205;
 	g = 155;
