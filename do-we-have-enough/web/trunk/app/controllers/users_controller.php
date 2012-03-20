@@ -44,7 +44,7 @@ class UsersController extends AppController
 	function event_list()
 	{
 		$this->layout = 'dowehaveenough_main';
-		$this->set('data',$this->Event->findAll('Event.created > (NOW() - INTERVAL 9 DAY)',null,'Event.created DESC'));
+		$this->set('data',$this->Event->findAll(null,null,'Event.created DESC',20));
 	}
 	
 	function home()
