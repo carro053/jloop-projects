@@ -14,7 +14,7 @@
         		$i++;
         		$j++;
         	}	
-        	$date = $data[$i]['Event']['created'];
+        	$date = date('Y-m-d',strtotime($data[$i]['Event']['created']));
         }
         if($i==0) echo 'No events have been made today yet.';
         $i=0;
@@ -28,7 +28,7 @@
         		$i++;
         		$j++;
         	}	
-        	$date = $data[$i]['Event']['created'];
+        	$date = date('Y-m-d',strtotime($data[$i]['Event']['created']));
         }
         if($i==0) echo 'No events were made yesterday.';
         $i=0;
