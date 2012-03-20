@@ -1,6 +1,7 @@
 <div class="container">
 	<div class="copy">
 		<h2>30 Latest Events Made</h2>
+		<p>
         <?php 
         $i = 0;
         $j = 0;
@@ -8,11 +9,15 @@
         foreach($data as $event):
         	if($date != date('Y-m-d',strtotime($data[$i]['Event']['created'])))
         	{
-        		echo '<h3>'.date('F jS',strtotime($data[$i]['Event']['created'])).'</h3>';
+        		echo '
+        		</p>
+        		<h3>'.date('F jS',strtotime($data[$i]['Event']['created'])).'</h3>
+        		<p>';
         	}
-        	echo '<p>'.$event['Event']['name'].' - '.$event['Event']['when'].' - '.$event['Event']['where'].'</p>';
+        	echo $event['Event']['name'].' - '.$event['Event']['when'].' - '.$event['Event']['where'].'<br />';
         	$date = date('Y-m-d',strtotime($data[$i]['Event']['created']));
         endforeach;
-        ?> 
+        ?>
+        </p>
     </div><!-- end .copy -->
 </div><!-- end .container -->
