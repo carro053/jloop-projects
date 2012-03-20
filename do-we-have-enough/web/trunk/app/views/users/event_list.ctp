@@ -7,15 +7,15 @@
         $j = 0;
         $date = '';
         foreach($data as $event):
-        	if($date != date('Y-m-d',strtotime($data[$i]['Event']['created'])))
+        	if($date != date('Y-m-d',strtotime($event['Event']['created'])))
         	{
         		echo '
         		</p>
-        		<h3>'.date('F jS',strtotime($data[$i]['Event']['created'])).'</h3>
+        		<h3>'.date('F jS',strtotime($event['Event']['created'])).'</h3>
         		<p>';
         	}
         	echo $event['Event']['name'].' - '.date('F jS',strtotime($event['Event']['date'])).' '.$event['Event']['when'].' - '.$event['Event']['where'].'<br />';
-        	$date = date('Y-m-d',strtotime($data[$i]['Event']['created']));
+        	$date = date('Y-m-d',strtotime($event['Event']['created']));
         endforeach;
         ?>
         </p>
