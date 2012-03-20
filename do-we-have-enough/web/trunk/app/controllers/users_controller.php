@@ -43,6 +43,7 @@ class UsersController extends AppController
 	
 	function event_list()
 	{
+		set_time_limit(0);
 		Configure::write('debug', '2');
 		$this->layout = 'dowehaveenough_main';
 		$this->set('data',$this->Event->findAll(null,null,'Event.created DESC',20));
