@@ -1,3 +1,6 @@
+<pre>
+<?php print_r($data); ?>
+</pre>
 <div class="container">
 	<div class="copy">
         <h2>Today's Events</h2>
