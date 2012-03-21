@@ -436,7 +436,9 @@ titleForHeaderInSection:(NSInteger)section
                         NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
                         [outputFormatter setDateFormat:@"EEE',' MMM d 'at' h:mma"];
                         //NSDate *myDate = [[[NSDate alloc] init] autorelease];		// Get current date/time
-                        NSDate *myDate = [whenDate addTimeInterval:[self calcTimezoneDiff]];
+                        
+                        //got rid of timezone calculation
+                        NSDate *myDate = whenDate;
                         NSString *newWhenDate = [outputFormatter stringFromDate:myDate];
                         [outputFormatter release];
                         cell.textLabel.text = newWhenDate;
@@ -814,7 +816,8 @@ titleForHeaderInSection:(NSInteger)section
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
     [outputFormatter setDateFormat:@"Y-MM-dd HH:mm:00"];
     //NSDate *myDate = [[[NSDate alloc] init] autorelease];		// Get current date/time
-    NSDate *myDate = [whenDate addTimeInterval:[self calcTimezoneDiff]];
+    //got rid of timezone calculation
+    NSDate *myDate = whenDate;
     NSString *newWhenDate = [outputFormatter stringFromDate:myDate];
     [outputFormatter release];
     
