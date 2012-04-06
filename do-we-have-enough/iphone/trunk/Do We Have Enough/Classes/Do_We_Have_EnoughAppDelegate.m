@@ -10,6 +10,7 @@
 #import "RootViewController.h"
 #import "SettingsTracker.h"
 #import "TestFlight.h"
+#import "FlurryAnalytics.h"
 //#import "Beacon.h"
 
 
@@ -23,7 +24,9 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
-//- (void)applicationDidFinishLaunching:(UIApplication *)application {    
+- (void)applicationDidFinishLaunching:(UIApplication *)application {    
+    
+    [FlurryAnalytics startSession:@"7994fb80cece2b2663b0c3188280ae63"];
     
     // Override point for customization after app launch    
 	
@@ -31,7 +34,7 @@
    // [window makeKeyAndVisible];
 	//NSLog(@"Initiating remoteNoticationssAreActive"); 
 	//[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound |UIRemoteNotificationTypeAlert)];
-//}
+}
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {          
 	NSLog(@"devToken=%@",deviceToken);
