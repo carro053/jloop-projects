@@ -22,6 +22,7 @@ class PuzzlesController extends AppController {
  		$puzzle['Puzzle']['start_y'] = $json_data->startPoint[1];
  		$puzzle['Puzzle']['end_x'] = $json_data->endPoint[0];
  		$puzzle['Puzzle']['end_y'] = $json_data->endPoint[1];
+ 		CakeLog::write('savePuzzle',print_r($puzzle,true));
  		if($json_data->server_id > 0)
  		{
  			$puzzle['Puzzle']['id'] = $json_data->server_id;
