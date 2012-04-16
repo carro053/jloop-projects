@@ -18,10 +18,10 @@ class PuzzlesController extends AppController {
  		CakeLog::write('savePuzzle',print_r($json_data,true).' '.$json_data->total_fuel.' '.$json_data->server_id);
  		$puzzle['Puzzle']['account_id'] = 1;
  		$puzzle['Puzzle']['total_fuel'] = $json_data->total_fuel;
- 		$puzzle['Puzzle']['start_x'] = $json_data->start->x;
- 		$puzzle['Puzzle']['start_y'] = $json_data->start->y;
- 		$puzzle['Puzzle']['end_x'] = $json_data->end->x;
- 		$puzzle['Puzzle']['end_y'] = $json_data->end->y;
+ 		$puzzle['Puzzle']['start_x'] = $json_data->startPoint[0];
+ 		$puzzle['Puzzle']['start_y'] = $json_data->startPoint[1];
+ 		$puzzle['Puzzle']['end_x'] = $json_data->endPoint[0];
+ 		$puzzle['Puzzle']['end_y'] = $json_data->endPoint[1];
  		if($json_data->server_id > 0)
  		{
  			$puzzle['Puzzle']['id'] = $json_data->server_id;
@@ -31,7 +31,7 @@ class PuzzlesController extends AppController {
  			$this->PuzzleAstronaut->query('DELETE FROM `puzzle_astronauts` WHERE `puzzle_id` = '.$puzzle_id);
  		}else{
  			$this->Puzzle->save($puzzle);
- 			$puzzle_id = $this->Puzzle->getLastInsertId();
+ 			$puzzle_id = $this->Puzzle->id;
  		}
  		foreach($json_data->planets as $planet)
  		{
