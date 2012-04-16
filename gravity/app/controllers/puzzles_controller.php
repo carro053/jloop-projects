@@ -14,7 +14,7 @@ class PuzzlesController extends AppController {
  	
  	function savePuzzle()
  	{
- 	
+ 		CakeLog::write('savePuzzle', ' TEST '.$puzzle_id);
  		$json_data = json_decode($_POST['json_data']);
  		$puzzle['Puzzle']['account_id'] = 1;
  		$puzzle['Puzzle']['total_fuel'] = $json_data['total_fuel'];
