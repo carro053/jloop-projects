@@ -35,6 +35,7 @@ class PuzzlesController extends AppController {
  		}
  		foreach($json_data->planets as $planet)
  		{
+ 			$newplanet['PuzzlePlanet']['id'] = null;
  			$newplanet['PuzzlePlanet']['puzzle_id'] = $puzzle_id;
  			$newplanet['PuzzlePlanet']['x'] = $planet->x;
  			$newplanet['PuzzlePlanet']['y'] = $planet->y;
@@ -46,6 +47,7 @@ class PuzzlesController extends AppController {
  		}
  		foreach($json_data->astronauts as $astronaut)
  		{
+ 			$newastro['PuzzleAstronaut']['id'] = null;
  			$newastro['PuzzleAstronaut']['puzzle_id'] = $puzzle_id;
  			$newastro['PuzzleAstronaut']['x'] = $astronaut->x;
  			$newastro['PuzzleAstronaut']['y'] = $astronaut->y;
