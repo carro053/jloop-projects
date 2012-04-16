@@ -4,9 +4,11 @@ class PuzzlesController extends AppController {
 
 
 	var $uses = array('Puzzle','Account','PuzzlePlanet','PuzzleAstronaut');
+	var $components = array('Auth');
 	
 	function beforeFilter()
  	{
+ 		$this->Auth->allow('savePuzzle');
  		parent::beforeFilter();
  	}
  	
