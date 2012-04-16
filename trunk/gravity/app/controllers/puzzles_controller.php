@@ -15,13 +15,13 @@ class PuzzlesController extends AppController {
  	function savePuzzle()
  	{
  		$json_data = json_decode($_POST['json_data']);
+ 		CakeLog::write('savePuzzle', ' TEST ');
  		$puzzle['Puzzle']['account_id'] = 1;
  		$puzzle['Puzzle']['total_fuel'] = $json_data['total_fuel'];
  		$puzzle['Puzzle']['start_x'] = 1;
  		$puzzle['Puzzle']['start_y'] = 1;
  		$puzzle['Puzzle']['end_x'] = 1;
  		$puzzle['Puzzle']['end_y'] = 1;
- 		CakeLog::write('savePuzzle', ' TEST ');
  		if(isset($json_data['puzzle_id']) && $json_data['puzzle_id'] > 0)
  		{
  			$puzzle['Puzzle']['id'] = $json_data['puzzle_id'];
