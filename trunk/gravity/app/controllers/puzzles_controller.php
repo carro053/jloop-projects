@@ -8,14 +8,14 @@ class PuzzlesController extends AppController {
 	
 	function beforeFilter()
  	{
- 		$this->Auth->allow('savePuzzle');
+ 		$this->Auth->allow('savePuzzle','getPuzzles');
  		parent::beforeFilter();
  	}
  	
  	function savePuzzle()
  	{
  		$json_data = json_decode($_POST['json_data']);
- 		CakeLog::write('savePuzzle',print_r($json_data,true).' '.print_r($_POST,true));
+ 		CakeLog::write('savePuzzle',print_r($json_data,true)));
  		$puzzle['Puzzle']['account_id'] = 1;
  		$puzzle['Puzzle']['total_fuel'] = $json_data->total_fuel;
  		$puzzle['Puzzle']['start_x'] = $json_data->startPoint[0];
@@ -54,6 +54,13 @@ class PuzzlesController extends AppController {
  			$this->PuzzleAstronaut->save($newastro);
  		}
  		echo $puzzle_id;
+ 		exit;
+ 	}
+ 	
+ 	function getPuzzles()
+ 	{
+ 		$puzzles = $this->Puzzle->find('all',array('order'=>'Puzzle.rating DESC'));
+ 		echo json_encode($puzzles);
  		exit;
  	}
 	
