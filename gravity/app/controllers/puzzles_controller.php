@@ -15,15 +15,14 @@ class PuzzlesController extends AppController {
  	function savePuzzle()
  	{
  		$json_data = json_decode($_POST['json_data']);
- 		$json_data = $this->objectToArray($json_data);
- 		CakeLog::write('savePuzzle',print_r($json_data,true));
+ 		CakeLog::write('savePuzzle',print_r($json_data,true).' '.$json_data->total_fuel.' '.$json_data->puzzle_id);
  		$puzzle['Puzzle']['account_id'] = 1;
  		$puzzle['Puzzle']['total_fuel'] = $json_data->total_fuel;
  		$puzzle['Puzzle']['start_x'] = 1;
  		$puzzle['Puzzle']['start_y'] = 1;
  		$puzzle['Puzzle']['end_x'] = 1;
  		$puzzle['Puzzle']['end_y'] = 1;
- 		if(isset($json_data['puzzle_id']) && $json_data['puzzle_id'] > 0)
+ 		if($json_data->puzzle_id > 0)
  		{
  			$puzzle['Puzzle']['id'] = $json_data['puzzle_id'];
  			$this->Puzzle->save($puzzle);
@@ -57,26 +56,6 @@ class PuzzlesController extends AppController {
  		echo $puzzle_id;
  		exit;
  	}
- 	function objectToArray($d) {
-		if (is_object($d)) {
-			// Gets the properties of the given object
-			// with get_object_vars function
-			$d = get_object_vars($d);
-		}
- 
-		if (is_array($d)) {
-			/*
-			* Return array converted to object
-			* Using __FUNCTION__ (Magic constant)
-			* for recursive call
-			*/
-			return array_map(__FUNCTION__, $d);
-		}
-		else {
-			// Return array
-			return $d;
-		}
-	}
 	
 }
 
