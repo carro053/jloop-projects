@@ -31,7 +31,7 @@ class PuzzlesController extends AppController {
  			$this->PuzzleAstronaut->query('DELETE FROM `puzzle_astronauts` WHERE `puzzle_id` = '.$puzzle_id);
  		}else{
  			$this->Puzzle->save($puzzle);
- 			$puzzle_id = $this->Puzzle->id;
+ 			$puzzle_id = $this->Puzzle->getLastInsertId();
  		}
  		foreach($json_data->planets as $planet)
  		{
