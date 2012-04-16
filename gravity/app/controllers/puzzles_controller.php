@@ -22,7 +22,7 @@ class PuzzlesController extends AppController {
  		$puzzle['Puzzle']['start_y'] = $json_data->startPoint[1];
  		$puzzle['Puzzle']['end_x'] = $json_data->endPoint[0];
  		$puzzle['Puzzle']['end_y'] = $json_data->endPoint[1];
- 		if($json_data->server_id > 0)
+ 		if(isset($json_data->server_id) && $json_data->server_id > 0)
  		{
  			$puzzle['Puzzle']['id'] = $json_data->server_id;
  			$this->Puzzle->save($puzzle);
