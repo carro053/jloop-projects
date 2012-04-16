@@ -15,14 +15,13 @@ class PuzzlesController extends AppController {
  	function savePuzzle()
  	{
  		$json_data = json_decode($_POST['json_data']);
- 		CakeLog::write('savePuzzle',print_r($json_data,true).' '.$json_data->total_fuel.' '.$json_data->server_id);
+ 		CakeLog::write('savePuzzle',print_r($json_data,true));
  		$puzzle['Puzzle']['account_id'] = 1;
  		$puzzle['Puzzle']['total_fuel'] = $json_data->total_fuel;
  		$puzzle['Puzzle']['start_x'] = $json_data->startPoint[0];
  		$puzzle['Puzzle']['start_y'] = $json_data->startPoint[1];
  		$puzzle['Puzzle']['end_x'] = $json_data->endPoint[0];
  		$puzzle['Puzzle']['end_y'] = $json_data->endPoint[1];
- 		CakeLog::write('savePuzzle',print_r($puzzle,true));
  		if($json_data->server_id > 0)
  		{
  			$puzzle['Puzzle']['id'] = $json_data->server_id;
@@ -43,19 +42,15 @@ class PuzzlesController extends AppController {
  			$newplanet['PuzzlePlanet']['density'] = $planet->density;
  			$newplanet['PuzzlePlanet']['hasMoon'] = $planet->hasMoon;
  			$newplanet['PuzzlePlanet']['moonAngle'] = $planet->moonAngle;
- 			CakeLog::write('savePuzzle',print_r($newplanet,true));
  			$this->PuzzlePlanet->save($newplanet);
  		}
  		foreach($json_data->astronauts as $astronaut)
  		{
- 			$newastro['PuzzlePlanet']['puzzle_id'] = $puzzle_id;
- 			$newastro['PuzzlePlanet']['x'] = $astronaut->x;
- 			$newastro['PuzzlePlanet']['y'] = $astronaut->y;
- 			CakeLog::write('savePuzzle',print_r($newastro,true));
+ 			$newastro['PuzzleAstronaut']['puzzle_id'] = $puzzle_id;
+ 			$newastro['PuzzleAstronaut']['x'] = $astronaut->x;
+ 			$newastro['PuzzleAstronaut']['y'] = $astronaut->y;
  			$this->PuzzleAstronaut->save($newastro);
  		}
- 		
- 		CakeLog::write('savePuzzle', ' MIKE '.$puzzle_id);
  		echo $puzzle_id;
  		exit;
  	}
