@@ -60,7 +60,11 @@ class PuzzlesController extends AppController {
  	function getPuzzles()
  	{
  		$puzzles = $this->Puzzle->find('all',array('order'=>'Puzzle.rating DESC'));
- 		echo json_encode($puzzles);
+ 		$return = array();
+ 		foreach($puzzles as $puzzle):
+ 			$return[] = $puzzle['Puzzle'];
+ 		endforeach;
+ 		echo json_encode($return);
  		exit;
  	}
 	
