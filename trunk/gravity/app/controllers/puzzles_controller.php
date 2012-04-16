@@ -18,10 +18,10 @@ class PuzzlesController extends AppController {
  		CakeLog::write('savePuzzle',print_r($json_data,true).' '.$json_data->total_fuel.' '.$json_data->server_id);
  		$puzzle['Puzzle']['account_id'] = 1;
  		$puzzle['Puzzle']['total_fuel'] = $json_data->total_fuel;
- 		$puzzle['Puzzle']['start_x'] = 1;
- 		$puzzle['Puzzle']['start_y'] = 1;
- 		$puzzle['Puzzle']['end_x'] = 1;
- 		$puzzle['Puzzle']['end_y'] = 1;
+ 		$puzzle['Puzzle']['start_x'] = $json_data->start->x;
+ 		$puzzle['Puzzle']['start_y'] = $json_data->start->y;
+ 		$puzzle['Puzzle']['end_x'] = $json_data->end->x;
+ 		$puzzle['Puzzle']['end_y'] = $json_data->end->y;
  		if($json_data->server_id > 0)
  		{
  			$puzzle['Puzzle']['id'] = $json_data->server_id;
