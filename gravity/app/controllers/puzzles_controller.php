@@ -67,6 +67,31 @@ class PuzzlesController extends AppController {
  		echo json_encode($return);
  		exit;
  	}
+ 	
+ 	function getPuzzle($puzzle_id)
+ 	{
+ 		$return = array();
+ 		$puzzle = $this->Puzzle->find('first',array('conditions'=>'Puzzle.id = '.$puzzle_id));
+ 		$return['startData'] = array($puzzle['Puzzle']['start_x'],$puzzle['Puzzle']['start_y']);
+ 		$return['endData'] = array($puzzle['Puzzle']['end_x'],$puzzle['Puzzle']['end_y']);
+ 		$return['total_fuel'] = $puzzle['Puzzle']['total_fuel'];
+ 		$return['least_fuel'] = $puzzle['Puzzle']['least_fuel_used'];
+ 		$return['fastest_time'] = $puzzle['Puzzle']['fastest_solution'];
+ 		$astronauts = $this->PuzzleAstronaut->find('all',array('conditions'=>'PuzzleAstronaut.puzzle_id = '.$puzzle_id));
+ 		$return_astros = array();
+ 		foreach($astronauts as $astronaut):
+ 			$return_astros = array('x'=>$astronaut['PuzzleAstronaut']['x'],'y'=>$astronaut['PuzzleAstronaut']['y']);	
+ 		endforeach;
+ 		$return['astronauts'] = $return_astros;
+ 		$planets = $this->PuzzlePlanet->find('all',array('conditions'=>'PuzzlePlanet.puzzle_id = '.$puzzle_id));
+ 		$return_planets = array();
+ 		foreach($planets as $planet):
+ 			$return_planets = array('x'=>$planet['PuzzlePlanet']['x'],'y'=>$planet['PuzzlePlanet']['y'],'radius'=>$planet['PuzzlePlanet']['radius'],'density'=>$planet['PuzzlePlanet']['density'],'hasMoon'=>$planet['PuzzlePlanet']['hasMoon'],'moonAngle'=>$planet['PuzzlePlanet']['moonAngle']);	
+ 		endforeach;
+ 		$return['planets'] = $return_planets;
+ 		echo json_encode($return);
+ 		exit;
+ 	}
 	
 }
 
