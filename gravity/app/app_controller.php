@@ -14,6 +14,8 @@ class AppController extends Controller {
 	 * @var array
 	 */
 	public $uses = array();
+	
+	public $webroot = '';
 
 	/**
 	 * Components.
@@ -73,7 +75,7 @@ class AppController extends Controller {
 	 */
 	public function beforeFilter() {
 		parent::beforeFilter();
-		
+		$this->webroot = dirname(__FILE__).'/webroot/';
 		$Config = ForumConfig::getInstance();
 
 		// Load l10n/i18n support
