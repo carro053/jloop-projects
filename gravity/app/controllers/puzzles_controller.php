@@ -83,6 +83,7 @@ class PuzzlesController extends AppController {
  	{
  		$json_data = json_decode($_POST['json_data']);
  		CakeLog::write('savePuzzle',print_r($json_data,true));
+ 		$device_id = $json_data->device_id;
  		$account = $this->Account->find('first',array('conditions'=>'Account.device_id = "'.$device_id.'"'));
  		if(isset($account['Account']['id']))
  		{
