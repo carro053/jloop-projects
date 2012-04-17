@@ -57,6 +57,13 @@ class PuzzlesController extends AppController {
  		exit;
  	}
  	
+ 	function saveSolution($puzzle_id)
+ 	{
+ 		$json_data = json_decode($_POST['json_data']);
+ 		CakeLog::write('savePuzzle',print_r($json_data,true));
+ 		exit;
+ 	}
+ 	
  	function getPuzzles()
  	{
  		$puzzles = $this->Puzzle->find('all',array('order'=>'Puzzle.rating DESC'));
