@@ -26,8 +26,19 @@ class PuzzlesController extends AppController {
  	function savePuzzle()
  	{
  		$json_data = json_decode($_POST['json_data']);
- 		CakeLog::write('savePuzzle',print_r($json_data,true));
- 		$puzzle['Puzzle']['account_id'] = 1;
+ 		$device_id = $json_data->device_id;
+ 		$account = $this->Account->find('first',array('conditions'=>'Account.device_id = "'.$device_id.'"'));
+ 		if(isset($account['Account']['id']))
+ 		{
+ 			$account_id = $account['Account']['id'];
+ 		}else{
+ 			$account['Account']['id'] = null;
+ 			$account['Account']['device_id'] = $device_id;
+ 			$this->Account->save($account);
+ 			$account_id = $this->Account->id;
+ 		}
+ 		
+ 		$puzzle['Puzzle']['account_id'] = $account_id;
  		$puzzle['Puzzle']['total_fuel'] = $json_data->total_fuel;
  		$puzzle['Puzzle']['start_x'] = $json_data->startPoint[0];
  		$puzzle['Puzzle']['start_y'] = $json_data->startPoint[1];
@@ -71,27 +82,59 @@ class PuzzlesController extends AppController {
  	function saveSolution($puzzle_id)
  	{
  		$json_data = json_decode($_POST['json_data']);
+ 		
+ 		$account = $this->Account->find('first',array('conditions'=>'Account.device_id = "'.$device_id.'"'));
+ 		if(isset($account['Account']['id']))
+ 		{
+ 			$account_id = $account['Account']['id'];
+ 		}else{
+ 			$account['Account']['id'] = null;
+ 			$account['Account']['device_id'] = $device_id;
+ 			$this->Account->save($account);
+ 			$account_id = $this->Account->id;
+ 		}
+ 		
  		$puzzle = $this->Puzzle->find('first',array('conditions'=>'Puzzle.id = '.$puzzle_id));
  		if($puzzle['Puzzle']['least_fuel_used'] == 0 || $puzzle['Puzzle']['least_fuel_used'] > $json_data->fuel_used) $puzzle['Puzzle']['least_fuel_used'] = $json_data->fuel_used;
  		if($puzzle['Puzzle']['fastest_solution'] == 0 || $puzzle['Puzzle']['fastest_solution'] > $json_data->travelTime) $puzzle['Puzzle']['fastest_solution'] = $json_data->travelTime;
  		$this->Puzzle->save($puzzle);
- 		$puzzle_solution['PuzzleSolution']['puzzle_id'] = $puzzle_id;
- 		$puzzle_solution['PuzzleSolution']['account_id'] = 1;
- 		$puzzle_solution['PuzzleSolution']['fuel_used'] = $json_data->fuel_used;
- 		$puzzle_solution['PuzzleSolution']['time'] = $json_data->travelTime;
- 		$this->PuzzleSolution->save($puzzle_solution);
- 		$puzzle_solution_id = $this->PuzzleSolution->id;
- 		$order = 1;
- 		foreach($json_data->way_points as $point)
+ 		
+ 		$save_this = 0;
+ 		$previous_fuel = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id.' AND PuzzleSolution.fuel_used > '.$json_data->fuel_used));
+ 		if(isset($previous_fuel['PuzzleSolution']['id']))
  		{
- 			$newpoint['PuzzleSolutionWayPoint']['id'] = null;
- 			$newpoint['PuzzleSolutionWayPoint']['puzzle_solution_id'] = $puzzle_solution_id;
- 			$newpoint['PuzzleSolutionWayPoint']['order'] = $order;
- 			$newpoint['PuzzleSolutionWayPoint']['x'] = $point->x;
- 			$newpoint['PuzzleSolutionWayPoint']['y'] = $point->y;
- 			$this->PuzzleSolutionWayPoint->save($newpoint);
- 			$order++;
+ 			$this->PuzzleSolutionWayPoint->query('DELETE FROM `puzzle_solution_way_points` WHERE `puzzle_solution_id` = '.$previous_fuel['PuzzleSolution']['id']);
+ 			$this->PuzzleSolution->delete($previous_fuel['PuzzleSolution']['id']);
+ 			$save_this = 1;
  		}
+ 		
+ 		$previous_time = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id.' AND PuzzleSolution.time > '.$json_data->travelTime));
+ 		if(isset($previous_time['PuzzleSolution']['id']))
+ 		{
+ 			$this->PuzzleSolutionWayPoint->query('DELETE FROM `puzzle_solution_way_points` WHERE `puzzle_solution_id` = '.$previous_time['PuzzleSolution']['id']);
+ 			$this->PuzzleSolution->delete($previous_time['PuzzleSolution']['id']);
+ 			$save_this = 1;
+ 		}
+ 		if($save_this)
+ 		{
+	 		$puzzle_solution['PuzzleSolution']['puzzle_id'] = $puzzle_id;
+	 		$puzzle_solution['PuzzleSolution']['account_id'] = $account_id;
+	 		$puzzle_solution['PuzzleSolution']['fuel_used'] = $json_data->fuel_used;
+	 		$puzzle_solution['PuzzleSolution']['time'] = $json_data->travelTime;
+	 		$this->PuzzleSolution->save($puzzle_solution);
+	 		$puzzle_solution_id = $this->PuzzleSolution->id;
+	 		$order = 1;
+	 		foreach($json_data->way_points as $point)
+	 		{
+	 			$newpoint['PuzzleSolutionWayPoint']['id'] = null;
+	 			$newpoint['PuzzleSolutionWayPoint']['puzzle_solution_id'] = $puzzle_solution_id;
+	 			$newpoint['PuzzleSolutionWayPoint']['order'] = $order;
+	 			$newpoint['PuzzleSolutionWayPoint']['x'] = $point->x;
+	 			$newpoint['PuzzleSolutionWayPoint']['y'] = $point->y;
+	 			$this->PuzzleSolutionWayPoint->save($newpoint);
+	 			$order++;
+	 		}
+	 	}
  		exit;
  	}
  	
