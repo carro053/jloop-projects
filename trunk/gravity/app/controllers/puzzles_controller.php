@@ -14,7 +14,13 @@ class PuzzlesController extends AppController {
  	function saveImage($puzzle_id,$hd=0)
  	{
  		echo 'YES';
- 		CakeLog::write('saveImage',print_r($_FILES,true));
+ 		if($hd)
+ 		{
+ 			$hd_part = '-hd';
+ 		}else{
+ 			$hd_part = '';
+ 		}
+        move_uploaded_file($_FILES['uploaded']['tmp_name'], $this->webroot.'puzzle_'.$puzzle_id.$hd_part.'.jpg');
  		exit;
  	}
  	function savePuzzle()
