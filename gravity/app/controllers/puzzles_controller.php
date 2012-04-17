@@ -3,7 +3,7 @@
 class PuzzlesController extends AppController {
 
 
-	var $uses = array('Puzzle','Account','PuzzlePlanet','PuzzleAstronaut');
+	var $uses = array('Puzzle','Account','PuzzlePlanet','PuzzleAstronaut','PuzzleSolution','PuzzleSolutionWayPoint');
 	var $components = array('Auth');
 	
 	function beforeFilter()
@@ -60,7 +60,27 @@ class PuzzlesController extends AppController {
  	function saveSolution($puzzle_id)
  	{
  		$json_data = json_decode($_POST['json_data']);
- 		CakeLog::write('savePuzzle',print_r($json_data,true));
+ 		$puzzle = $this->Puzzle->find('first',array('conditions'=>'Puzzle.id = '.$puzzle_id));
+ 		if($puzzle['Puzzle']['least_fuel_used'] == 0 || $puzzle['Puzzle']['least_fuel_used'] > $json_data->fuel_used) $puzzle['Puzzle']['least_fuel_used'] = $json_data->fuel_used;
+ 		if($puzzle['Puzzle']['fastest_solution'] == 0 || $puzzle['Puzzle']['fastest_solution'] > $json_data->travelTime) $puzzle['Puzzle']['fastest_solution'] = $json_data->travelTime;
+ 		$this->Puzzle->save($puzzle);
+ 		$puzzle_solution['PuzzleSolution']['puzzle_id'] = $puzzle_id;
+ 		$puzzle_solution['PuzzleSolution']['account_id'] = 1;
+ 		$puzzle_solution['PuzzleSolution']['fuel_used'] = $json_data->fuel_used;
+ 		$puzzle_solution['PuzzleSolution']['time'] = $json_data->travelTime;
+ 		$this->PuzzleSolution->save($puzzle_solution);
+ 		$puzzle_solution_id = $this->PuzzleSolution->id;
+ 		$order = 1;
+ 		foreach($json_data->way_points as $point)
+ 		{
+ 			$newpoint['PuzzleSolutionWayPoint']['id'] = null;
+ 			$newpoint['PuzzleSolutionWayPoint']['puzzle_solution_id'] = $puzzle_solution_id;
+ 			$newpoint['PuzzleSolutionWayPoint']['order'] = $order;
+ 			$newpoint['PuzzleSolutionWayPoint']['x'] = $point->x;
+ 			$newpoint['PuzzleSolutionWayPoint']['y'] = $point->y;
+ 			$this->PuzzleSolutionWayPoint->save($newpoint);
+ 			$order++;
+ 		}
  		exit;
  	}
  	
