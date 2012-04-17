@@ -20,7 +20,7 @@ class PuzzlesController extends AppController {
  		}else{
  			$hd_part = '';
  		}
-        move_uploaded_file($_FILES['uploaded']['tmp_name'], $this->webroot.'puzzle_'.$puzzle_id.$hd_part.'.jpg');
+        move_uploaded_file($_FILES['uploaded']['tmp_name'], $this->webroot.'files/puzzles/puzzle_'.$puzzle_id.$hd_part.'.jpg');
  		exit;
  	}
  	function savePuzzle()
