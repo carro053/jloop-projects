@@ -8,10 +8,14 @@ class PuzzlesController extends AppController {
 	
 	function beforeFilter()
  	{
- 		$this->Auth->allow('savePuzzle','getPuzzles','getPuzzle','saveSolution');
+ 		$this->Auth->allow('savePuzzle','getPuzzles','getPuzzle','saveSolution','saveImage');
  		parent::beforeFilter();
  	}
- 	
+ 	function saveImage($puzzle_id,$hd=0)
+ 	{
+ 		CakeLog::write('saveImage',print_r($_POST,true));
+ 		exit;
+ 	}
  	function savePuzzle()
  	{
  		$json_data = json_decode($_POST['json_data']);
