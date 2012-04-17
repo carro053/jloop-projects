@@ -59,7 +59,7 @@ class PuzzlesController extends AppController {
  	
  	function getPuzzles()
  	{
- 		$puzzles = $this->Puzzle->find('all',array('order'=>'Puzzle.rating DESC'));
+ 		$puzzles = $this->Puzzle->find('all',array('order'=>'Puzzle.rating DESC','limit'=>2));
  		$return = array();
  		foreach($puzzles as $puzzle):
  			$return[] = $puzzle['Puzzle'];
