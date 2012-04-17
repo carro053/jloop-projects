@@ -14,7 +14,7 @@ class PuzzlesController extends AppController {
  	function saveImage($puzzle_id,$hd=0)
  	{
  		echo 'YES';
- 		CakeLog::write('saveImage',print_r($_POST,true));
+ 		CakeLog::write('saveImage',print_r($_FILES,true));
  		exit;
  	}
  	function savePuzzle()
