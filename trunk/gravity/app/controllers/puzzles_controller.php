@@ -89,7 +89,7 @@ class PuzzlesController extends AppController {
  			$return_planets[] = array('x'=>$planet['PuzzlePlanet']['x'],'y'=>$planet['PuzzlePlanet']['y'],'radius'=>$planet['PuzzlePlanet']['radius'],'density'=>$planet['PuzzlePlanet']['density'],'hasMoon'=>$planet['PuzzlePlanet']['hasMoon'],'moonAngle'=>$planet['PuzzlePlanet']['moonAngle']);	
  		endforeach;
  		$return['planets'] = $return_planets;
- 		echo json_encode($return);
+ 		echo json_encode(array($return));
  		exit;
  	}
 	
