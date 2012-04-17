@@ -101,6 +101,8 @@ class PuzzlesController extends AppController {
  		$this->Puzzle->save($puzzle);
  		
  		$save_this = 0;
+ 		$any_previous = $this->PuzzleSolution->find('count',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id));
+ 		if($any_previous == 0) $save_this = 1;
  		$previous_fuel = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id.' AND PuzzleSolution.fuel_used > '.$json_data->fuel_used));
  		if(isset($previous_fuel['PuzzleSolution']['id']))
  		{
