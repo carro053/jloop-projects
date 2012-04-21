@@ -84,7 +84,7 @@ class PuzzlesController extends AppController {
  			$newitem['PuzzleItem']['type'] = $item->type;
  			$newitem['PuzzleItem']['x'] = $item->x;
  			$newitem['PuzzleItem']['y'] = $item->y;
- 			$this->PuzzleItem->save($$newitem);
+ 			$this->PuzzleItem->save($newitem);
  		}
  		echo $puzzle_id;
  		exit;
