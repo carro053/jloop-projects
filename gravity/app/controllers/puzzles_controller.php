@@ -3,7 +3,7 @@
 class PuzzlesController extends AppController {
 
 
-	var $uses = array('Puzzle','Account','PuzzlePlanet','PuzzleAstronaut','PuzzleSolution','PuzzleSolutionWayPoint');
+	var $uses = array('Puzzle','Account','PuzzlePlanet','PuzzleAstronaut','PuzzleSolution','PuzzleSolutionWayPoint','PuzzleItem');
 	var $components = array('Auth');
 	
 	function beforeFilter()
@@ -51,6 +51,7 @@ class PuzzlesController extends AppController {
  			$puzzle_id = $puzzle['Puzzle']['id'];
  			$this->PuzzlePlanet->query('DELETE FROM `puzzle_planets` WHERE `puzzle_id` = '.$puzzle_id);
  			$this->PuzzleAstronaut->query('DELETE FROM `puzzle_astronauts` WHERE `puzzle_id` = '.$puzzle_id);
+ 			$this->PuzzleItem->query('DELETE FROM `puzzle_items` WHERE `puzzle_id` = '.$puzzle_id);
  		}else{
  			$this->Puzzle->save($puzzle);
  			$puzzle_id = $this->Puzzle->id;
@@ -75,6 +76,15 @@ class PuzzlesController extends AppController {
  			$newastro['PuzzleAstronaut']['x'] = $astronaut->x;
  			$newastro['PuzzleAstronaut']['y'] = $astronaut->y;
  			$this->PuzzleAstronaut->save($newastro);
+ 		}
+ 		foreach($json_data->items as $item)
+ 		{
+ 			$newitem['PuzzleItem']['id'] = null;
+ 			$newitem['PuzzleItem']['puzzle_id'] = $puzzle_id;
+ 			$newitem['PuzzleItem']['type'] = $item->type;
+ 			$newitem['PuzzleItem']['x'] = $item->x;
+ 			$newitem['PuzzleItem']['y'] = $item->y;
+ 			$this->PuzzleItem->save($$newitem);
  		}
  		echo $puzzle_id;
  		exit;
@@ -174,6 +184,12 @@ class PuzzlesController extends AppController {
  			$return_planets[] = array('x'=>$planet['PuzzlePlanet']['x'],'y'=>$planet['PuzzlePlanet']['y'],'radius'=>$planet['PuzzlePlanet']['radius'],'density'=>$planet['PuzzlePlanet']['density'],'antiGravity'=>$planet['PuzzlePlanet']['anti_gravity'],'hasMoon'=>$planet['PuzzlePlanet']['hasMoon'],'moonAngle'=>$planet['PuzzlePlanet']['moonAngle']);	
  		endforeach;
  		$return['planets'] = $return_planets;
+ 		$items = $this->PuzzleItem->find('all',array('conditions'=>'PuzzleItem.puzzle_id = '.$puzzle_id));
+ 		$return_items = array();
+ 		foreach($items as $item):
+ 			$return_items[] = array('type'=>$item['PuzzleItem']['type'],'x'=>$item['PuzzleItem']['x'],'y'=>$item['PuzzleItem']['y']);	
+ 		endforeach;
+ 		$return['items'] = $return_items;
  		echo json_encode($return);
  		exit;
  	}
