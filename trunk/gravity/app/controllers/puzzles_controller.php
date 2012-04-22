@@ -211,19 +211,39 @@ class PuzzlesController extends AppController {
  		$puzzle = $this->Puzzle->find('first',array('conditions'=>'Puzzle.id = '.$puzzle_id));
  		$return['least_fuel'] = $puzzle['Puzzle']['least_fuel_used'];
  		$return['fastest_time'] = $puzzle['Puzzle']['fastest_solution'];
+ 		$fastest_time = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'PuzzleSolution.time ASC'));
+ 		if(isset($fastest_time['PuzzleSolution']['id']))
+ 		{
+ 			$return['fastest_time_id'] = $fastest_time['PuzzleSolution']['id'];
+ 		}else{
+ 			$return['fastest_time_id'] = 0;
+ 		}
+ 		$least_fuel = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'PuzzleSolution.fuel_used ASC'));
+ 		if(isset($least_fuel['PuzzleSolution']['id']))
+ 		{
+ 			$return['least_fuel_id'] = $least_fuel['PuzzleSolution']['id'];
+ 		}else{
+ 			$return['least_fuel_id'] = 0;
+ 		}
+ 		
+ 		
  		$your_fastest_time = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id,'order'=>'PuzzleSolution.time ASC'));
  		if(isset($your_fastest_time['PuzzleSolution']['id']))
  		{
  			$return['your_fastest_time'] = $your_fastest_time['PuzzleSolution']['time'];
+ 			$return['your_fastest_time_id'] = $your_fastest_time['PuzzleSolution']['id'];
  		}else{
  			$return['your_fastest_time'] = 0;
+ 			$return['your_fastest_time_id'] = 0;
  		}
  		$your_least_fuel = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id,'order'=>'PuzzleSolution.fuel_used ASC'));
  		if(isset($your_least_fuel['PuzzleSolution']['id']))
  		{
  			$return['your_least_fuel'] = $your_least_fuel['PuzzleSolution']['fuel_used'];
+ 			$return['your_least_fuel_id'] = $your_least_fuel['PuzzleSolution']['id'];
  		}else{
  			$return['your_least_fuel'] = 0;
+ 			$return['your_least_fuel_id'] = 0;
  		}
  		echo json_encode($return);
  		exit;
