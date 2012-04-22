@@ -218,10 +218,10 @@ class PuzzlesController extends AppController {
  		}else{
  			$return['your_fastest_time'] = 0;
  		}
- 		$your_least_fuel = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id,'order'=>'PuzzleSolution.least_fuel ASC'));
+ 		$your_least_fuel = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id,'order'=>'PuzzleSolution.fuel_used ASC'));
  		if(isset($your_least_fuel['PuzzleSolution']['id']))
  		{
- 			$return['your_least_fuel'] = $your_least_fuel['PuzzleSolution']['least_fuel'];
+ 			$return['your_least_fuel'] = $your_least_fuel['PuzzleSolution']['fuel_used'];
  		}else{
  			$return['your_least_fuel'] = 0;
  		}
