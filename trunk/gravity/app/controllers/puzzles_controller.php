@@ -193,6 +193,41 @@ class PuzzlesController extends AppController {
  		echo json_encode($return);
  		exit;
  	}
+ 	
+ 	
+ 	function getPuzzleTimes($puzzle_id,$device_id)
+ 	{
+ 		$account = $this->Account->find('first',array('conditions'=>'Account.device_id = "'.$device_id.'"'));
+ 		if(isset($account['Account']['id']))
+ 		{
+ 			$account_id = $account['Account']['id'];
+ 		}else{
+ 			$account['Account']['id'] = null;
+ 			$account['Account']['device_id'] = $device_id;
+ 			$this->Account->save($account);
+ 			$account_id = $this->Account->id;
+ 		}
+ 		$return = array();
+ 		$puzzle = $this->Puzzle->find('first',array('conditions'=>'Puzzle.id = '.$puzzle_id));
+ 		$return['least_fuel'] = $puzzle['Puzzle']['least_fuel_used'];
+ 		$return['fastest_time'] = $puzzle['Puzzle']['fastest_solution'];
+ 		$your_fastest_time = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id,'order'=>'PuzzleSolution.time ASC'));
+ 		if(isset($your_fastest_time['PuzzleSolution']['id']))
+ 		{
+ 			$return['your_fastest_time'] = $your_fastest_time['PuzzleSolution']['time'];
+ 		}else{
+ 			$return['your_fastest_time'] = 0;
+ 		}
+ 		$your_least_fuel = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id,'order'=>'PuzzleSolution.least_fuel ASC'));
+ 		if(isset($your_least_fuel['PuzzleSolution']['id']))
+ 		{
+ 			$return['your_least_fuel'] = $your_least_fuel['PuzzleSolution']['least_fuel'];
+ 		}else{
+ 			$return['your_least_fuel'] = 0;
+ 		}
+ 		echo json_encode($return);
+ 		exit;
+ 	}
 	
 }
 
