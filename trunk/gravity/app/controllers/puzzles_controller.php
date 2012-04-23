@@ -154,7 +154,7 @@ class PuzzlesController extends AppController {
  	
  	function getPuzzles()
  	{
- 		$puzzles = $this->Puzzle->find('all',array('order'=>'RAND()'));
+ 		$puzzles = $this->Puzzle->find('all',array('order'=>'Puzzle.id ASC'));
  		$return = array();
  		foreach($puzzles as $puzzle):
  			$return[] = $puzzle['Puzzle'];
