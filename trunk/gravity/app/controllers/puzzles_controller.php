@@ -115,20 +115,8 @@ class PuzzlesController extends AppController {
  		$any_previous = $this->PuzzleSolution->find('count',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id));
  		if($any_previous == 0) $save_this = 1;
  		$previous_fuel = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id.' AND PuzzleSolution.fuel_used > '.$json_data->fuel_used));
- 		if(isset($previous_fuel['PuzzleSolution']['id']))
- 		{
- 			$this->PuzzleSolutionWayPoint->query('DELETE FROM `puzzle_solution_way_points` WHERE `puzzle_solution_id` = '.$previous_fuel['PuzzleSolution']['id']);
- 			$this->PuzzleSolution->delete($previous_fuel['PuzzleSolution']['id']);
- 			$save_this = 1;
- 		}
- 		
  		$previous_time = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id.' AND PuzzleSolution.time > '.$json_data->travelTime));
- 		if(isset($previous_time['PuzzleSolution']['id']))
- 		{
- 			$this->PuzzleSolutionWayPoint->query('DELETE FROM `puzzle_solution_way_points` WHERE `puzzle_solution_id` = '.$previous_time['PuzzleSolution']['id']);
- 			$this->PuzzleSolution->delete($previous_time['PuzzleSolution']['id']);
- 			$save_this = 1;
- 		}
+ 		if(isset($previous_fuel['PuzzleSolution']['id']) || isset($previous_time['PuzzleSolution']['id'])) $save_this = 1;
  		if($save_this)
  		{
 	 		$puzzle_solution['PuzzleSolution']['puzzle_id'] = $puzzle_id;
@@ -148,6 +136,14 @@ class PuzzlesController extends AppController {
 	 			$this->PuzzleSolutionWayPoint->save($newpoint);
 	 			$order++;
 	 		}
+	 		
+		 	$best_fuel = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id,'order'=>'PuzzleSolution.fuel_used ASC'));
+		 	$best_time = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id,'order'=>'PuzzleSolution.time ASC'));
+		 	$remove_these = $this->PuzzleSolution->find('all',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id.' AND PuzzleSolution.id != '.$best_fuel['PuzzleSolution']['id'].' AND PuzzleSolution.id != '.$best_time['PuzzleSolution']['id']));
+		 	foreach($remove_these as $these):
+ 				$this->PuzzleSolutionWayPoint->query('DELETE FROM `puzzle_solution_way_points` WHERE `puzzle_solution_id` = '.$these['PuzzleSolution']['id']);
+ 				$this->PuzzleSolution->delete($these['PuzzleSolution']['id']);
+		 	endforeach;
 	 	}
  		exit;
  	}
