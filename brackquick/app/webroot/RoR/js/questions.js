@@ -105,10 +105,10 @@ var questions = [
 		clue: 'android-icon.png',
 		question: 'test-02.png',
 		answers: [
-			'android-icon.png',
-			'android-icon.png',
-			'android-icon.png',
-			'android-icon.png'
+			'bg_answer_image_blank.png',
+			'bg_answer_image_blank.png',
+			'bg_answer_image_blank.png',
+			'bg_answer_image_blank.png'
 			],
 		correct_answer_index: 3,
 		insight: 'android-icon.png'
