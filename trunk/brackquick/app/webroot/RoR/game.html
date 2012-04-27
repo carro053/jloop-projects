@@ -350,7 +350,7 @@
 				$('#answer3').click(function() {answerQuestion(3);});
 				
 				$('#answer0, #answer1, #answer2, #answer3').mousedown(function() {
-					switch(question.question_type) {
+					switch(question.answer_type) {
 						case 'text':
 							if(!questionAnswered)
 								$(this).css('background-image', 'url(img/bg_answer_grey_selected.png)');
@@ -362,16 +362,14 @@
 					}
 				});
 				$('#answer0, #answer1, #answer2, #answer3').mouseup(function() {
-					switch(question.question_type) {
+					switch(question.answer_type) {
 						case 'text':
 							if(!questionAnswered)
 								$(this).css('background-image', 'url(img/bg_answer_grey.png)');
-							console.log('text up');
 							break;
 						case 'image':
 							if(!questionAnswered)
 								$(this).css('background-image', 'url(img/bg_answer_image_blank.png)');
-							console.log('image up');
 							break;
 					}
 				});
