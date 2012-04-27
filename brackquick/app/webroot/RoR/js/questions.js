@@ -97,13 +97,13 @@ var questions = [
 	{
 		title: 'Unplayed Question 6',
 		time: '12/03/12 2:47pm',
-		question_type: 'text',
+		question_type: 'image',
 		answer_type: 'image',
-		clue_type: 'text',
-		insight_type: 'text',
+		clue_type: 'image',
+		insight_type: 'image',
 		category: 'Energy-efficient lighting',
-		clue: 'Out of the blue.',
-		question: 'Energy-saving bulbs give off a cold, bluish light.',
+		clue: 'android-icon.png',
+		question: 'android-icon.png',
 		answers: [
 			'android-icon.png',
 			'android-icon.png',
@@ -111,6 +111,6 @@ var questions = [
 			'android-icon.png'
 			],
 		correct_answer_index: 3,
-		insight: 'Newer efficient bulbs provide all types of light, from warm yellows to cooler shades.  Check the package labels for the graph that shows how warm of cool the bulb\'s light is'
+		insight: 'android-icon.png'
 	}
 ];
