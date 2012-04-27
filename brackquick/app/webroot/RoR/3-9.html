@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
+		<script type="text/javascript">
+			
+			function openDrawer() {
+				$('#drawerParent').show();
+				var properties = {top: '0px'};
+				var options = {
+					duration: 350,
+					easing: 'swing'
+				};
+				$('#drawer').animate(properties, options);
+			}
+			
+			function slideBack()
+			{
+				var properties = {left: '320px'};
+				var options = {
+					duration: 500,
+					easing: 'swing',
+					complete: function() {
+						$('#transition').css('background-image', 'url(img/3-9_transition.png)');
+					}
+				};
+				$('#transition').animate(properties, options);
+			}
+			
+			$(function() {
+				$(document).disableSelection();
+				$('#app').click(function() {openDrawer();});
+				$('#backButton').click(function() {slideBack();});
+				$("#drawer").draggable({containment: 'parent', axis: 'y'});
+				$('#drawer').mouseup(function() {
+					if(parseInt($(this).css('top')) < 160) {
+						var properties = {top: '0px'};
+					} else {
+						var properties = {top: '371px'};
+					}
+					var options = {
+						duration: 350,
+						easing: 'swing'
+					};
+					$(this).animate(properties, options);
+				});
+				$('#clickQuestion').click(function() {
+					window.location = '3-10.html';
+					var properties = {left: '0'};
+					var options = {
+						duration: 500,
+						easing: 'swing',
+						complete: function() {
+							window.location = '3-10.html'
+						}
+					};
+					//$('#transition').animate(properties, options);
+				});
+				$("#prizeDrawer").draggable({containment: 'parent', axis: 'y'});
+				$('#prizeDrawer').mouseup(function() {
+					if(parseInt($(this).css('top')) < 140) {
+						var properties = {top: '0px'};
+					} else {
+						var properties = {top: '274px'};
+					}
+					var options = {
+						duration: 350,
+						easing: 'swing'
+					};
+					$(this).animate(properties, options);
+				});
+			});
+		</script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				background-color: #000;
+				background-image: url(img/bg_2.png);
+				background-repeat: no-repeat;
+				overflow: hidden;
+			}
+			
+			#shadow {
+				position: absolute;
+				left: 458px;
+				top: 60px;
+				z-index: -1;
+			}
+			
+			#app {
+				width: 320px;
+				height: 486px;
+				background: url(img/bg_app_timeline.png);
+				margin: 100px 488px;
+				overflow: hidden;
+			}
+			
+			#drawerParent {
+				width: 320px;
+				height: 735px;
+				position: relative;
+				/* top: 122px; */
+				top: -336px;
+				/* display: none; */
+				z-index: 4;
+			}
+			
+			#drawer {
+				width: 320px;
+				height: 364px;
+				background: url(img/question_drawer_2.png);
+				position: relative;
+				/* top: 280px; */
+				top: 0px;
+			}
+			
+			#clickQuestion {
+				height: 100px;
+				position: relative;
+				top: 25px;
+			}
+			
+			#transition {
+				width: 320px;
+				height: 460px;
+				background: url(img/bg_3-9_transition.png);
+				position: relative;
+				top: 26px;
+				z-index: 5;
+			}
+			
+			#backButton {
+				width: 34px;
+				height: 28px;
+				position: relative;
+				top: 6px;
+				left: 15px;
+			}
+			
+			#prizeDrawerParent {
+				width: 320px;
+				height: 565px;
+				position: relative;
+				top: 138px;
+			}
+			
+			#prizeDrawer {
+				width: 320px;
+				height: 296px;
+				background: url(img/drawer.png);
+				position: relative;
+				top: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<img id="shadow" src="img/shadow.png" />
+		<div id="app">
+			<div id="transition">
+				<div id="backButton"></div>
+				<div id="prizeDrawerParent">
+					<div id="prizeDrawer"></div>
+				</div>
+			</div>
+			<div id="drawerParent">
+				<div id="drawer">
+					<div id="clickQuestion"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

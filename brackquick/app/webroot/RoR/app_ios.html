@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
+		<script type="text/javascript">
+			var incorrect_audio;
+		
+			var timerPosition = 0;
+			var questionAnswered = false;
+			var readyPersonCount = answeredPersonCount = 0;
+			var showCorrectImg = false;
+			var imageCache = [];
+			for(var index = 1; index < 101; index++) {
+				var indexString = index.toString();
+				while(indexString.length < 4) {
+					indexString = "0" + indexString;
+				}
+				var image = new Image;
+				image.src = 'img/animation/incorrect'+indexString+'.png';
+				imageCache.push(image);
+			}
+			var clueAudio = new Audio('audio/ROR_ringtoneAB_combined.ogg');
+			var timeout;
+			
+			function clueTimer() {
+				timeout = setTimeout(function() {clueAudio.play();}, 27500);
+				var properties = {marginLeft: '74px'};
+				var options = {
+					duration: 30000,
+					easing: 'linear',
+					complete: function() {
+						$('#meter').appendTo('#question');
+						$('#meter').css('marginLeft', 0);
+						questionTimer();
+					}
+				};
+				timerPosition = 1;
+				$('#meter').animate(properties, options);
+			}
+			
+			function questionTimer() {
+				$('#subContentClue').remove();
+				timerPosition = 2;
+				slideContent(2);
+				$('#question').css('background-image', 'url(img/btn_question_blue.png)');
+				var properties = {marginLeft: '131px'};
+				var options = {
+					duration: 20000,
+					easing: 'linear',
+					complete: function() {
+						$('#meter').appendTo('#insight');
+						$('#meter').css('marginLeft', 0);
+						insightTimer();
+					}
+				};
+				$('#meter').animate(properties, options);
+			}
+			
+			function insightTimer() {
+				timerPosition = 3;
+				slideContent(3);
+				$('#insight').css('background-image', 'url(img/btn_insight_blue.png)');
+				$('#subContentInsight').css('background-image', 'url(img/bg_sub_compiling.gif)');
+				$('.personCounter').remove();
+				var properties = {marginLeft: '74px'};
+				var options = {
+					duration: 20000,
+					easing: 'linear',
+					complete: function() {
+						$('#contentQuestion').css('background-image', 'url(img/bg_question_pictures_answered.png)');
+						showCorrectImg = true;
+						timerPosition = 0;
+						slideContent(2);
+						$('#meter').remove();
+						$('#subContentInsight').remove();
+					}
+				};
+				$('#meter').animate(properties, options);
+			}
+			
+			function slideContent(position) {
+				var properties = false;
+				switch(timerPosition) {
+					case 1:
+						properties = {left: '0px'};
+						break;
+					case 2:
+						if(position == 1 && !questionAnswered) {
+							properties = {left: '0px'};
+							$('#clue').css('background-image', 'url(img/btn_clue_blue.png)');
+							$('#question').css('background-image', 'url(img/btn_question_grey.png)');
+							$('#insight').css('background-image', 'url(img/btn_insight_black.png)');
+						}
+						if(position == 2 && !questionAnswered) {
+							properties = {left: '-320px'};
+							$('#clue').css('background-image', 'url(img/btn_clue_grey.png)');
+							$('#question').css('background-image', 'url(img/btn_question_blue.png)');
+							$('#insight').css('background-image', 'url(img/btn_insight_black.png)');
+						}
+						if(position == 3 && questionAnswered) {
+							properties = {left: '-640px'};
+							$('#clue').css('background-image', 'url(img/btn_clue_black.png)');
+							$('#question').css('background-image', 'url(img/btn_question_black.png)');
+							$('#insight').css('background-image', 'url(img/btn_insight_blue.png)');
+						}
+						break;
+					case 3:
+						properties = {left: '-640px'};
+						$('#clue').css('background-image', 'url(img/btn_clue_black.png)');
+						$('#question').css('background-image', 'url(img/btn_question_black.png)');
+						$('#insight').css('background-image', 'url(img/btn_insight_blue.png)');
+						break;
+					default:
+						if(position == 1) {
+							properties = {left: '0px'};
+							$('#clue').css('background-image', 'url(img/btn_clue_blue.png)');
+							$('#question').css('background-image', 'url(img/btn_question_grey.png)');
+							$('#insight').css('background-image', 'url(img/btn_insight_grey.png)');
+						}
+						if(position == 2) {
+							properties = {left: '-320px'};
+							$('#clue').css('background-image', 'url(img/btn_clue_grey.png)');
+							$('#question').css('background-image', 'url(img/btn_question_blue.png)');
+							$('#insight').css('background-image', 'url(img/btn_insight_grey.png)');
+						}
+						if(position == 3) {
+							properties = {left: '-640px'};
+							$('#clue').css('background-image', 'url(img/btn_clue_grey.png)');
+							$('#question').css('background-image', 'url(img/btn_question_grey.png)');
+							$('#insight').css('background-image', 'url(img/btn_insight_blue.png)');
+						}
+						break;
+				}
+				var options = {
+					duration: 500,
+					easing: 'swing',
+					complete: function() {
+						console.log('slide');
+						if(showCorrectImg)
+							animateCorrectImg();
+					}
+				};
+				if(properties)
+					if(properties.left != $('#content').css('left'))
+						$('#content').animate(properties, options);
+			}
+			
+			function imReady() {
+				clearTimeout(timeout);
+				$('#meter').stop();
+				$('#meter').appendTo('#question');
+				$('#meter').css('marginLeft', 0);
+				questionTimer();
+			}
+			
+			function answerQuestion() {
+				if(!questionAnswered && timerPosition) {
+					questionAnswered = true;
+					$('#meter').stop();
+					$('#meter').appendTo('#insight');
+					$('#meter').css('marginLeft', 0);
+					insightTimer();
+				}
+			}
+			
+			function animateCorrectImg() {
+				$('#app').css('background-image','url(img/bg_ios_with_icons.png)');
+				incorrect_audio.play();
+				
+				showCorrectImg = false;
+				$('#correct').show();
+				
+				var properties = {top: '0px'};
+				var options = {
+					duration: 1000,
+					easing: 'swing'
+				};
+				
+				var index = 1;
+				var interval = setInterval(function() {
+					if(index >= 100) {
+						clearInterval(interval);
+						//$('#drawerParent').show();
+						//$('#drawer').animate(properties, options);
+						window.location = 'ios_leaderboard.html';
+					}
+					var indexString = index.toString();
+					while(indexString.length < 4) {
+						indexString = "0" + indexString;
+					}
+					$('#correct').attr('src', 'img/animation/incorrect'+indexString+'.png');
+					index++;
+				}, 50);
+			}
+			
+			$(function() {
+				$(document).disableSelection();
+				clueTimer();
+				$('#clue').click(function() {slideContent(1);});
+				$('#question').click(function() {slideContent(2);});
+				$('#insight').click(function() {slideContent(3);});
+				$('#contentQuestion').click(function() {answerQuestion();});
+				$('#subContentClue').click(function() {imReady();});
+				$("#drawer").draggable({containment: 'parent', axis: 'y'});
+				
+				incorrect_audio = document.createElement('audio');
+				incorrect_audio.setAttribute('src', 'audio/incorrect.ogg');
+				incorrect_audio.load();
+			});
+		</script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				background-color: #000;
+				background-image: url(img/iphone_ringorang.png);
+				background-position: 0 0;
+				background-repeat: no-repeat;
+				overflow: hidden;
+			}
+			
+			#app {
+				width: 320px;
+				height: 462px;
+				background: url(img/bg_ios.png);
+				margin: 170px 488px;
+				overflow: hidden;
+			}
+			
+			#buttons {
+				width: 369px;
+				height: 52px;
+				display: block;
+				margin: 115px 0 0 5px;
+			}
+			
+			#clue {
+				width: 83px;
+				height: 52px;
+				background: url(img/btn_clue_blue.png);
+				float: left;
+				overflow: hidden;
+			}
+			
+			#question {
+				width: 143px;
+				height: 52px;
+				background: url(img/btn_question_black.png);
+				float: left;
+				overflow: hidden;
+			}
+			
+			#insight {
+				width: 84px;
+				height: 52px;
+				background: url(img/btn_insight_black.png);
+				float: left;
+				overflow: hidden;
+			}
+			
+			#meter {
+				width: 312px;
+				height: 12px;
+				background: url(img/red_meter.png);
+				margin: 34px 0 0 0;
+			}
+			
+			#content {
+				width: 1500px;
+				height: 294px;
+				position: relative;
+				left: 0px;
+			}
+			
+			#contentClue {
+				width: 320px;
+				height: 125px;
+				background-image: url(img/bg_clue_ios.png);
+				background-repeat: no-repeat;
+				float: left
+			}
+			
+			#contentQuestion {
+				width: 320px;
+				height: 296px;
+				background-image: url(img/bg_question_pictures.png);
+				background-repeat: no-repeat;
+				float: left
+			}
+			
+			#contentInsight {
+				width: 320px;
+				height: 127px;
+				background-image: url(img/bg_insight_ios.png);
+				background-repeat: no-repeat;
+				float: left
+			}
+			
+			#subContentClue {
+				width: 320px;
+				height: 70px;
+				background-image: url(img/bg_sub_im_ready.png);
+				margin: 228px 0 0 0;
+			}
+			
+			#subContentInsight {
+				width: 320px;
+				height: 51px;
+				background-image: url(img/bg_sub_answered.png);
+				background-repeat: no-repeat;
+				margin: 243px 0 0 0;
+			}
+			
+			.personCounter {
+				width: 60px;
+				color: #fff;
+				padding: 15px 0 0 20px;
+				display: inline-block;
+				text-align: right;
+			}
+			
+			#correct {
+				width: 320px;
+				height: 502px;
+				position: relative;
+				top: -200px;
+				display: none;
+			}
+			
+			#drawerParent {
+				width: 320px;
+				height: 570px;
+				position: relative;
+				top: -295px;
+				display: none;
+			}
+			
+			#drawer {
+				width: 320px;
+				height: 296px;
+				background: url(img/drawer.png);
+				position: relative;
+				top: 280px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div id="buttons">
+				<div id="clue">
+					<div id="meter"></div>
+				</div>
+				<div id="question"></div>
+				<div id="insight"></div>
+			</div>
+			<div id="content">
+				<div id="contentClue">
+					<div id="subContentClue"></div>
+				</div>
+				<div id="contentQuestion">
+					<img id="correct" src="img/animation/incorrect0001.png" />
+				</div>
+				<div id="contentInsight">
+					<div id="subContentInsight"></div>
+				</div>
+			</div>
+			<div id="drawerParent">
+				<div id="drawer"></div>
+			</div>
+		</div>
+	</body>
+</html>
