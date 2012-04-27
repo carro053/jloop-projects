@@ -78,7 +78,8 @@
 									$('#answer'+i+' p').html(question.answers[i]);
 									break;
 								case 'image':
-									var image = new Image('img/answers/'+question.answers[i]);
+									var image = new Image();
+									image.src = 'img/answers/'+question.answers[i];
 									$('#answer'+i+' p').html(image);
 									break;
 							}
