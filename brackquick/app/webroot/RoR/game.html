@@ -273,7 +273,7 @@
 				showAnswerImage = false;
 				$('#answerAnimation').show();
 				
-				var properties = {top: '283px'};
+				var properties = {top: '408px'};
 				var options = {
 					duration: 1000,
 					easing: 'swing',
@@ -281,7 +281,7 @@
 						setTimeout(function() {
 							if(!leaderboardWasDragged) {
 								$('#drawer').animate(
-									{top: '347px'},
+									{top: '468px'},
 									{duration: 1000, easing: 'swing'}
 								);
 							}
@@ -325,10 +325,10 @@
 				$("#drawer").draggable({containment: [0, 220, 0, 568], axis: 'y'});
 				$('#drawer').mousedown(function() {leaderboardWasDragged = true;});
 				$('#drawer').mouseup(function() {
-					if(parseInt($(this).css('top')) < 174) {
-						var properties = {top: '0px'};
+					if(parseInt($(this).css('top')) < 294) {
+						var properties = {top: '120px'};
 					} else {
-						var properties = {top: '348px'};
+						var properties = {top: '468px'};
 					}
 					var options = {
 						duration: 350,
