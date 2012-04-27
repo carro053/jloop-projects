@@ -72,7 +72,7 @@
 							break;
 						case 'image':
 							$('#textClue').html('');
-							$('#textClue').css('background-image', 'url(img/clues/'+question.clue+')');
+							$('#contentClue').css('background-image', 'url(img/clues/'+question.clue+')');
 							break;
 					}
 					switch(question.question_type) {
@@ -81,7 +81,7 @@
 							break;
 						case 'image':
 							$('#textQuestion').html('');
-							$('#textQuestion').css('background-image', 'url(img/questions/'+question.question+')');
+							$('#contentQuestion').css('background-image', 'url(img/questions/'+question.question+')');
 							break;
 					}
 					switch(question.insight_type) {
@@ -90,7 +90,7 @@
 							break;
 						case 'image':
 							$('#textInsight').html('');
-							$('#textInsight').css('background-image', 'url(img/insights/'+question.insight+')');
+							$('#contentInsight').css('background-image', 'url(img/insights/'+question.insight+')');
 							break;
 					}
 					for(var i in question.answers) {
