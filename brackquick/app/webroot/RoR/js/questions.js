@@ -84,4 +84,22 @@ var questions = [
 		correct_answer_index: 3,
 		insight: 'Newer efficient bulbs provide all types of light, from warm yellows to cooler shades.  Check the package labels for the graph that shows how warm of cool the bulb\'s light is'
 	}
+	,
+	{
+		title: 'Unplayed Question 6',
+		time: '12/03/12 2:47pm',
+		question_type: 'text',
+		answer_type: 'image',
+		category: 'Energy-efficient lighting',
+		clue: 'Out of the blue.',
+		question: 'Energy-saving bulbs give off a cold, bluish light.',
+		answers: [
+			'android-icon.png',
+			'android-icon.png',
+			'android-icon.png',
+			'android-icon.png'
+			],
+		correct_answer_index: 3,
+		insight: 'Newer efficient bulbs provide all types of light, from warm yellows to cooler shades.  Check the package labels for the graph that shows how warm of cool the bulb\'s light is'
+	}
 ];
