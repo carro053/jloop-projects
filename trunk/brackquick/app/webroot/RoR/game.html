@@ -65,9 +65,36 @@
 					$('#subContentInsight').show();
 					$('#drawer').hide();
 					$('#title').html(question.category);
-					$('#textClue').html(question.clue);
-					$('#textQuestion').html(question.question);
-					$('#textInsight').html(question.insight);
+					switch(question.clue_type) {
+						case 'text':
+							$('#textClue').html(question.clue);
+							break;
+						case 'image':
+							var image = new Image();
+							image.src = 'img/clues/'+question.clue;
+							$('#textClue').html(image);
+							break;
+					}
+					switch(question.question_type) {
+						case 'text':
+							$('#textQuestion').html(question.question);
+							break;
+						case 'image':
+							var image = new Image();
+							image.src = 'img/questions/'+question.question;
+							$('#textQuestion').html(image);
+							break;
+					}
+					switch(question.insight_type) {
+						case 'text':
+							$('#textInsight').html(question.insight);
+							break;
+						case 'image':
+							var image = new Image();
+							image.src = 'img/insights/'+question.insight;
+							$('#textInsight').html(image);
+							break;
+					}
 					for(var i in question.answers) {
 						if(question.answers[i]) {
 							$('#answer'+i).show();
