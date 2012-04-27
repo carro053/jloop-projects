@@ -226,7 +226,9 @@
 				questionTimer();
 			}
 			
-			function answerQuestion() {
+			function answerQuestion(answerIndex) {
+				alert(answerIndex);
+				return;
 				if(!questionAnswered && timerPosition) {
 					questionAnswered = true;
 					$('#meter').stop();
@@ -273,7 +275,6 @@
 				$('#clue').click(function() {slideContent(1);});
 				$('#question').click(function() {slideContent(2);});
 				$('#insight').click(function() {slideContent(3);});
-				$('#contentQuestion').click(function() {answerQuestion();});
 				$('#subContentClue').click(function() {imReady();});
 				$('#backButton').click(function() {
 					var properties = {left: '320px'};
@@ -284,6 +285,11 @@
 					if(timerPosition == 0)
 						$('#app').animate(properties, options);
 				});
+				$('#answer0').click(function() {answerQuestion(0);});
+				$('#answer1').click(function() {answerQuestion(1);});
+				$('#answer2').click(function() {answerQuestion(2);});
+				$('#answer3').click(function() {answerQuestion(3);});
+				
 				$("#drawer").draggable({containment: 'parent', axis: 'y'});
 				$('#drawer').mouseup(function() {
 					if(parseInt($(this).css('top')) < 140) {
