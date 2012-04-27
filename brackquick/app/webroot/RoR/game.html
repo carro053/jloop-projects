@@ -351,7 +351,7 @@
 				
 				$('#answer0, #answer1, #answer2, #answer3').mousedown(function() {
 					if(question.question_type == 'text')
-						$('#answer0, #answer1, #answer2, #answer3').css('background-image', 'url(img/bg_answer_grey_selected.png)');
+						$(this).css('background-image', 'url(img/bg_answer_grey_selected.png)');
 				});
 				
 				$("#drawer").draggable({containment: [0, 220, 0, 568], axis: 'y'});
