@@ -80,7 +80,6 @@
 									$('#answer'+i).css('background-image', 'url(img/bg_answer_image_blank.png)');
 									var image = new Image();
 									image.src = 'img/answers/'+question.answers[i];
-									console.log(image);
 									$('#answer'+i+' p').html(image);
 									break;
 							}
@@ -229,7 +228,6 @@
 					duration: 500,
 					easing: 'swing',
 					complete: function() {
-						console.log('slide');
 						if(showAnswerImage)
 							animateAnswerImage();
 					}
@@ -351,7 +349,10 @@
 				$('#answer2').click(function() {answerQuestion(2);});
 				$('#answer3').click(function() {answerQuestion(3);});
 				
-				$('#answer0, #answer1, #answer2, #answer3,').mousedown(function() {console.log(1);});
+				$('#answer0, #answer1, #answer2, #answer3').mousedown(function() {
+					if(question.question_type == 'text')
+						$('#answer0, #answer1, #answer2, #answer3').css('background-image', 'url(img/bg_answer_grey_selected.png)');
+				});
 				
 				$("#drawer").draggable({containment: [0, 220, 0, 568], axis: 'y'});
 				$('#drawer').mousedown(function() {leaderboardWasDragged = true;});
