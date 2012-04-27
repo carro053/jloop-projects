@@ -103,7 +103,7 @@ var questions = [
 		insight_type: 'image',
 		category: 'Android',
 		clue: 'android-icon.png',
-		question: 'android-icon.png',
+		question: 'test-02.png',
 		answers: [
 			'android-icon.png',
 			'android-icon.png',
