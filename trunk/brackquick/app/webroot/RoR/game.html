@@ -64,10 +64,6 @@
 					$('#subContentClue').show();
 					$('#subContentInsight').show();
 					$('#drawer').hide();
-					$('#answer0').css('background-image', 'url(img/bg_answer_grey.png)');
-					$('#answer1').css('background-image', 'url(img/bg_answer_grey.png)');
-					$('#answer2').css('background-image', 'url(img/bg_answer_grey.png)');
-					$('#answer3').css('background-image', 'url(img/bg_answer_grey.png)');
 					$('#title').html(question.category);
 					$('#textClue').html(question.clue);
 					$('#textQuestion').html(question.question);
@@ -77,9 +73,11 @@
 							$('#answer'+i).show();
 							switch(question.answer_type) {
 								case 'text':
+									$('#answer'+i).css('background-image', 'url(img/bg_answer_grey.png)');
 									$('#answer'+i+' p').html(question.answers[i]);
 									break;
 								case 'image':
+									$('#answer'+i).css('background-image', 'url(img/bg_answer_image_blank.png)');
 									var image = new Image();
 									image.src = 'img/answers/'+question.answers[i];
 									console.log(image);
