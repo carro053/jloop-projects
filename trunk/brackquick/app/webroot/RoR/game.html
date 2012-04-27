@@ -46,6 +46,7 @@
 			
 			function reset() {
 				if(question) {
+					leaderboardWasDragged = false;
 					questionAnswered = false;
 					answerClicked = null;
 					showAnswerImage = false;
@@ -277,12 +278,14 @@
 					duration: 1000,
 					easing: 'swing',
 					complete: function() {
-						setTimeout(function() {
-							$('#drawer').animate(
-								{top: '347px'},
-								{duration: 1000, easing: 'swing'}
-							);
-						}, 5000);
+						if(!leaderboardWasDragged) {
+							setTimeout(function() {
+								$('#drawer').animate(
+									{top: '347px'},
+									{duration: 1000, easing: 'swing'}
+								);
+							}, 5000);
+						}
 					}
 				};
 				
@@ -320,6 +323,7 @@
 				$('#answer3').click(function() {answerQuestion(3);});
 				
 				$("#drawer").draggable({containment: 'parent', axis: 'y'});
+				$('#drawer').mousedown(function() {leaderboardWasDragged = true;});
 				$('#drawer').mouseup(function() {
 					if(parseInt($(this).css('top')) < 174) {
 						var properties = {top: '0px'};
