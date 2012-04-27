@@ -65,7 +65,7 @@
 					$('#subContentInsight').show();
 					$('#drawer').hide();
 					$('#drawer').css('top', '468px');
-					$('#title').html(question.category);
+					$('#category').html(question.category);
 					switch(question.clue_type) {
 						case 'text':
 							$('#contentClue').css('background-image', 'url(img/bg_white_textbox.png)');
@@ -451,7 +451,7 @@
 				//clueTimer();
 				
 				for(var i in questions) {
-					$('#timelineDrawer').append('<div id="timelineQuestion'+i+'" onclick="loadQuestion('+i+');" class="unplayedQuestion"><p class="unplayedQuestionTitle">'+questions[i]['title']+'</p><p class="unplayedQuestionTime">'+questions[i]['time']+'</p></div>');
+					$('#timelineDrawer').append('<div id="timelineQuestion'+i+'" onclick="loadQuestion('+i+');" class="unplayedQuestion"><p class="unplayedQuestionTitle">'+questions[i]['category']+'</p><p class="unplayedQuestionTime">'+questions[i]['time']+'</p></div>');
 				}
 			});
 		</script>
@@ -515,7 +515,7 @@
 				margin: 140px 0 0 5px;
 			}
 			
-			#title {
+			#category {
 				margin: -12px 0 0 -5px;
 				position: absolute;
 				text-align: center;
@@ -832,7 +832,7 @@
 			<div id="app">
 				<div id="backButton"></div>
 				<div id="buttons">
-					<p id="title"></p>
+					<p id="category"></p>
 					<div id="clue">
 						<div id="meter"></div>
 					</div>
