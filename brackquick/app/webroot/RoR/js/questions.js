@@ -101,7 +101,7 @@ var questions = [
 		answer_type: 'image',
 		clue_type: 'image',
 		insight_type: 'image',
-		category: 'Energy-efficient lighting',
+		category: 'Android',
 		clue: 'android-icon.png',
 		question: 'android-icon.png',
 		answers: [
