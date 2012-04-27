@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				window.resizeTo(1280,800);
+				$('#email_container').disableSelection();
+			});
+		</script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			*:hover {
+				cursor: default;
+			}
+			
+			body {
+				height: 800px;
+				width: 1280px;
+				background-image: url('img/bg_1.png');
+				background-repeat: no-repeat;
+				background-color: #000;
+				overflow: none;
+			}
+			#email_container {
+				width: 1108px;
+				height: 686px;
+				background-image: url('img/email_container.png');
+				background-repeat: no-repeat;
+				position: absolute;
+				left: 57px;
+				top: 29px;
+			}
+			#email_content {
+				position: absolute;
+				display:none;
+				height: 457px;
+				width: 877px;
+				overflow-x: hidden;
+				overflow-y: scroll;
+				top: 208px;
+				left: 207px;
+			}
+			#app_store {
+				position: absolute;
+				display:none;
+				height: 765px;
+				width: 1070px;
+				overflow: hidden;
+				margin-top: 2px;
+				margin-left: 90px;
+			}
+			#mac_app {
+				position: absolute;
+				display:none;
+				height: 536px;
+				width: 371px;
+				background-image: url('img/mac_app.png');
+				background-repeat: no-repeat;
+				overflow: hidden;
+				top: 85px;
+				left: 478px;
+			}
+			#game_code, #username, #password {
+				position: absolute;
+				background-image: url('img/host_name_text.png');
+				background-repeat: no-repeat;
+				width: 270px;
+				height: 30px;
+				border: none;
+				top:172px;
+				left:48px;
+				padding-left: 14px;
+				font-size: 16px;
+				color: #666;
+			}
+			#game_code:focus, #username:focus, #password:focus {
+				outline: none;
+			}
+			#username {
+				background-image: url('img/username_text.png');
+				background-repeat: no-repeat;
+				border: none;
+				top:209px;
+				left:48px;
+			}
+			#password {
+				background-image: url('img/password_text.png');
+				background-repeat: no-repeat;
+				border: none;
+				top:247px;
+				left:48px;
+			}
+			
+			#sign_in {
+				position: absolute;
+				background-image: url('img/sign_in.png');
+				background-repeat: no-repeat;
+				width: 119px;
+				height: 39px;
+				border: none;
+				top:289px;
+				left:208px;
+			}
+		</style>
+	</head>
+	<body onclick="$('#email_content').show();$('body').attr('onclick','return true;');">
+		<div id="email_container">
+			<div id="email_content" onclick="$('#app_store').fadeIn(50);">
+				<img src="img/email_content.png" />
+			</div>
+		</div>
+		<div id="app_store" onclick="$('body').css('background-image', 'url(img/bg_2.png)'); $('#mac_app').fadeIn(50,function() { $('#app_store').fadeOut(50); });">
+			<img src="img/app_store.png" />
+		</div>
+		<div id="mac_app">
+			<input id="game_code" type="text" onfocus="$('#game_code').css('background-image', 'url(img/host_name_no_text.png)');" />
+			<input id="username" type="text" onfocus="$('#username').css('background-image', 'url(img/username_no_text.png)');" />
+			<input id="password" type="password" onfocus="$('#password').css('background-image', 'url(img/password_no_text.png)');" />
+			<input id="sign_in" type="submit" value="" onclick="$('body').html($('#iphone_app').html()); " />
+		</div>
+	</body>
+	<div style="display:none;" id="iphone_app">
+		<img src="img/iphone_app_store.png" onclick="$('body').html($('#iphone_ringorang').html());" />
+		<div style="display:none;" id="iphone_ringorang">
+			<a href="scene_2.html"><img src="img/iphone_ringorang_login.png" /></a>
+		</div>
+	</div>
+</html>

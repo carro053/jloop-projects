@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				window.resizeTo(1280,800);
+				$('#email_container').disableSelection();
+			});
+			
+			function titleFade() {
+				$('#title').fadeOut(1000);
+			}
+			
+			function clickEmailContent() {
+				$('#app_store').fadeIn(50, function() {
+					$('#appStoreLoading').delay(1000).fadeOut(50);
+				});
+			}
+			
+			function clickAppStore() {
+				$('#title').html('');
+				$('#title').fadeIn(2000, function() {
+					$('body').css('background-image', 'url(img/bg_2.png)');
+					$('#mac_app').fadeIn(100,function() {
+						$('#app_store').fadeOut(50);
+					});
+					
+					$('#title').fadeOut(2000); 
+				});
+			}
+			
+			function macAppSignIn() {
+				$('#mac_app').children().hide();
+				$('#mac_app').css('background-image', 'url(img/mac_app_loading.png)');
+				
+				$('#loading').show();
+				
+				setTimeout(function() {
+					$('#mac_app').css('background-image', 'url(img/mac_app_how.png)');
+					$('#loading').hide();
+					$('#mac_app').click(function() {
+						$('#title').children().hide();
+						$('#title').fadeIn(1000, function() {
+							window.location = '2-1.html';
+						});
+					});
+				}, 3000);
+			}
+		</script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			*:hover {
+				cursor: default;
+			}
+			body {
+				height: 800px;
+				width: 1280px;
+				background-image: url('img/bg_1.png');
+				background-repeat: no-repeat;
+				background-color: #000;
+				overflow: none;
+			}
+			#title {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: #000;
+				color: #fff;
+				text-align: center;
+			}
+			#title h1 {
+				margin: 200px 0 0 0;
+			}
+			#title h2 {
+				margin: 80px 0 0 0;
+			}
+			#email_container {
+				width: 1114px;
+				height: 742px;
+				background-image: url('img/1-1.png');
+				background-repeat: no-repeat;
+				position: absolute;
+				left: 36px;
+				top: -4px;
+			}
+			#email_content {
+				position: absolute;
+				display:none;
+				height: 457px;
+				width: 880px;
+				overflow-x: hidden;
+				overflow-y: scroll;
+				top: 241px;
+				left: 227px;
+			}
+			#app_store {
+				position: absolute;
+				display:none;
+				height: 765px;
+				width: 1070px;
+				overflow: hidden;
+				margin-top: 2px;
+				margin-left: 90px;
+			}
+			#appStoreLoading {
+				position: relative;
+				left: 33px;
+				top: -707px;
+			}
+			#mac_app {
+				position: absolute;
+				display:none;
+				height: 549px;
+				width: 416px;
+				background-image: url('img/mac_app.png');
+				background-repeat: no-repeat;
+				overflow: hidden;
+				top: 85px;
+				left: 478px;
+			}
+			#game_code, #username, #password {
+				position: absolute;
+				background-image: url('img/host_name_text.png');
+				background-repeat: no-repeat;
+				width: 270px;
+				height: 30px;
+				border: none;
+				top:175px;
+				left:66px;
+				padding-left: 14px;
+				font-size: 16px;
+				color: #666;
+			}
+			#game_code:focus, #username:focus, #password:focus {
+				outline: none;
+			}
+			#username {
+				background-image: url('img/username_text.png');
+				background-repeat: no-repeat;
+				border: none;
+				top:212px;
+				left:65px;
+			}
+			#password {
+				background-image: url('img/password_text.png');
+				background-repeat: no-repeat;
+				border: none;
+				top:250px;
+				left:65px;
+			}
+			
+			#sign_in {
+				position: absolute;
+				background-image: url('img/sign_in.png');
+				background-repeat: no-repeat;
+				width: 151px;
+				height: 47px;
+				border: none;
+				top:293px;
+				left:200px;
+			}
+			
+			#loading {
+				position: absolute;
+				top: 165px;
+				left: 110px;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="email_container" onclick="$('#email_content').show();$('body').attr('onclick','return true;');">
+			<div id="email_content" onclick="clickEmailContent();">
+				<img src="img/email_content.png" />
+			</div>
+		</div>
+		<div id="app_store" onclick="clickAppStore();">
+			<img src="img/app_store.png" />
+			<img id="appStoreLoading" src="img/app_store_loading.png" />
+		</div>
+		<div id="mac_app">
+			<input id="game_code" type="text" onfocus="$('#game_code').css('background-image', 'url(img/host_name_no_text.png)');" />
+			<input id="username" type="text" onfocus="$('#username').css('background-image', 'url(img/username_no_text.png)');" />
+			<input id="password" type="password" onfocus="$('#password').css('background-image', 'url(img/password_no_text.png)');" />
+			<input id="sign_in" type="submit" value="" onclick="macAppSignIn();" />
+			<img id="loading" src="img/loading.gif" />
+		</div>
+		<div id="title" onclick="titleFade();">
+			<h1>Email Welcome to the Trial</h1>
+			<h2>Invitation to Install Ringorang</h2>
+		</div>
+	</body>
+</html>

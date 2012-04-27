@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
+		
+		<style type="text/css">
+			body {
+				background-color: #000;
+				background-image: url(img/iphone_ringorang.png);
+				background-position: 0 0;
+				background-repeat: no-repeat;
+				overflow: hidden;
+			}
+			
+			#title {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: #000;
+				color: #fff;
+				text-align: center;
+			}
+			
+			#title h1 {
+				margin: 200px 0 0 0;
+			}
+			
+			#title h2 {
+				margin: 80px 0 0 0;
+			}
+			
+			#app {
+				width: 324px;
+				height: 463px;
+				margin: 170px 480px;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			#container {
+				width: 1000px;
+				height: 479px;
+				position: relative;
+				top: 18px;
+				left: -268px;
+			}
+			
+			#questionScreen {
+				width: 320px;
+				height: 461px;
+				/* background: url(img/bg_ios_wrong_answer.png); */
+				background: url(img/bg_ios_friday_timeline.png);
+				background-repeat: no-repeat;
+				position: relative;
+				top: -18px;
+				left: 266px;
+			}
+			
+			#drawerIcon {
+				width: 28px;
+				height: 28px;
+				position: absolute;
+				top: 6px;
+				left: 13px;
+				overflow: hidden;
+			}
+			
+			#navigationDrawer {
+				width: 266px;
+				height: 459px;
+				background: url(img/navigation_drawer.png);
+				position: absolute;
+				top: -18px;
+				left: 0px;
+				overflow: hidden;
+			}
+			
+			#myGamesButton {
+				width: 266px;
+				height: 52px;
+				position: absolute;
+				left: 0px;
+				top: 97px;
+			}
+			
+		</style>
+	</head>
+	
+	<body>
+		<div id="app">
+			<div id="container">
+				<div id="questionScreen">
+					<div id="drawerIcon" onclick="open_navigation_drawer();"></div>
+				</div>
+				<div id="navigationDrawer">
+					<div id="myGamesButton" onclick="my_games_clicked();"></div>
+				</div>
+			</div>
+		</div>
+		<div id="title" onclick="titleFade();">
+			<h1>Education Design Sequence (Tue-Fri)</h1>
+			<h2>Friday Gameplay and Direct Mail</h2>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		function open_navigation_drawer()
+		{
+			$('#container').animate({
+				left: '0px',
+			}, 500, function() {
+				// Animation complete.
+			});
+		}
+		
+		function my_games_clicked()
+		{
+			$('#questionScreen').css('background','url(img/my_games_bg.png)');
+			$('#drawerParent').hide();
+			$('#container').animate({
+				left: '-268px',
+			}, 500, function() {
+				// Animation complete.
+				$('#app').attr('onclick','fadeToBlack();');
+			});
+		}
+		
+		function titleFade() {
+			$('#title').fadeOut(1000);
+		}
+		
+		function fadeToBlack() {
+			$('#title').html('');
+			$('#title').fadeIn(1000, function() { window.location = '5-4.html'; });
+		}
+	</script>
+</html>

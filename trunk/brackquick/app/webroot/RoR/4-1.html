@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
+		
+		<style type="text/css">
+			body {
+				background-color: #000;
+				background-image: url(img/iphone_ringorang.png);
+				background-position: 0 0;
+				background-repeat: no-repeat;
+				overflow: hidden;
+			}
+		
+			#phone {
+				width: 756px;
+				height: 853px;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			
+			#title {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: #000;
+				color: #fff;
+				text-align: center;
+			}
+			
+			#title h1 {
+				margin: 200px 0 0 0;
+			}
+			
+			#title h2 {
+				margin: 80px 0 0 0;
+			}
+			
+			#app {
+				width: 320px;
+				height: 480px;
+				background: url(img/bg_ios_home.png) #fff;
+				margin: 154px 478px;
+				overflow: hidden;
+			}
+			
+			#incoming {
+				width: 320px;
+				height: 40px;
+				background: url(img/incoming.png) #fff;
+				margin: 0 auto;
+				overflow: hidden;
+				position: relative;
+				top: -40px;
+			}
+			
+			#drawerParent {
+				width: 324px;
+				height: 978px;
+				background: url(img/notification_drawer.png);
+				background-repeat: no-repeat;
+				position: relative;
+				top: -519px;
+			}
+			
+			#drawer {
+				width: 324px;
+				height: 500px;
+				background: url(img/notification_drawer.png);
+				background-repeat: no-repeat;
+				position: relative;
+				top: 0px;
+			}
+			
+			#questionButton {
+				width: 324px;
+				height: 50px;
+				position: relative;
+				top: 206px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="app" onclick="push_notification();">
+			<div id="incoming"></div>
+			<div id="drawerParent">
+				<div id="drawer" onmouseup="snap_drawer_to_edge();">
+					<div id="questionButton" onclick="question_clicked();"></div>
+				</div>
+			</div>
+		</div>
+		<div id="title" onclick="titleFade();">
+			<h1>Education Design Sequence (Tue-Fri)</h1>
+			<h2>Thursday Gameplay on iPhone</h2>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		var notification_sent = false;
+	
+		$(document).ready(function()
+		{
+			notification_tone = document.createElement('audio');
+			notification_tone.setAttribute('src', 'audio/ROR_ringtone.ogg');
+			notification_tone.load();
+			
+			$("#drawer").draggable({containment: 'parent', axis: 'y'});
+		});
+		
+		function push_notification()
+		{
+			if(!notification_sent)
+			{
+				$('#incoming').animate({
+					top: 0,
+				}, 1000, function() {
+					// Animation complete.
+					setTimeout(function() {
+						$('#incoming').animate({
+							top: -40,
+						}, 1000, function() {
+							// Animation complete.
+						});
+					},3000);
+				});
+				notification_tone.play();
+				notification_sent = true;
+			}
+		}
+		
+		function snap_drawer_to_edge()
+		{
+		    if(parseInt($('#drawer').css('top')) > 250)
+		    {
+				$('#drawer').animate({
+					top: 478,
+				}, 350, function() {
+					// Animation complete.
+				});
+		    } else {
+		    	$('#drawer').animate({
+					top: 0,
+				}, 350, function() {
+					// Animation complete.
+				});
+		    }
+		}
+		
+		function question_clicked()
+		{
+			window.location = '4-3.html';
+		}
+		
+		function titleFade() {
+			$('#title').fadeOut(1000);
+		}
+	</script>
+</html>

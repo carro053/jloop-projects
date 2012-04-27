@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript">
+			var notification_tone;
+			
+			$(function() {
+				window.resizeTo(1280,800);
+				
+				//preload audio
+				notification_tone = document.createElement('audio');
+				notification_tone.setAttribute('src', 'audio/ROR_ringtone.ogg');
+				notification_tone.load();
+			});
+			function triggerNotification()
+			{
+				$('body').attr('onclick','');
+				setTimeout('showNotification()',3000);
+			}
+			function showNotification()
+			{
+				$('#mac_notification').fadeIn(50);
+				
+				notification_tone.play();
+			}
+			
+			function runAppDemo()
+			{
+				$('#mac_notification').fadeOut(50);
+				window.location = '3-17.html';
+			}
+		</script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			*:hover {
+				cursor: default;
+			}
+			
+			body {
+				height: 800px;
+				width: 1280px;
+				background-color: #000;
+				background-image: url('img/bg_2.png');
+				background-repeat: no-repeat;
+				overflow: hidden;
+			}
+			
+			#google {
+				position: absolute;
+				display:block;
+				height: 748px;
+				width: 1163px;
+				overflow: hidden;
+				margin-top: 16px;
+				margin-left: 51px;
+			}
+			
+			#mac_notification {
+				position: absolute;
+				display:none;
+				height: 198px;
+				width: 368px;
+				overflow: hidden;
+				margin-top: 23px;
+				margin-left: 877px;
+			}
+		</style>
+	</head>
+	<body onclick="triggerNotification();">
+		<div id="google" onclick="$('#google').fadeOut(50);">
+			<img src="img/google.png" />
+		</div>
+		<div id="mac_notification" onclick="runAppDemo();">
+			<img src="img/mac_notification.png" />
+		</div>
+	</body>
+</html>
