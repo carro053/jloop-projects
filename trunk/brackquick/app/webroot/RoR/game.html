@@ -7,6 +7,8 @@
 		<script type="text/javascript">
 			//alert( parseInt(location.hash.substr(1))  );
 			
+			var unplayedQuestionCount;
+			
 			var leaderboardWasDragged = false;
 			
 			var timerPosition = 0;
@@ -112,6 +114,8 @@
 				$('#app').animate(properties, options);
 				reset();
 				clueTimer();
+				unplayedQuestionCount--;
+				$('#unplayedQuestionCount').html(unplayedQuestionCount);
 			}
 			
 			function clueTimer() {
@@ -313,6 +317,8 @@
 			}
 			
 			$(function() {
+				unplayedQuestionCount = 0;
+				$('#unplayedQuestionCount').html(unplayedQuestionCount);
 				$(document).disableSelection();
 				$('#clue').click(function() {slideContent(1);});
 				$('#question').click(function() {slideContent(2);});
