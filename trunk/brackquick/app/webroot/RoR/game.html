@@ -66,7 +66,7 @@
 					$('#answer1').css('background-image', 'url(img/bg_answer_grey.png)');
 					$('#answer2').css('background-image', 'url(img/bg_answer_grey.png)');
 					$('#answer3').css('background-image', 'url(img/bg_answer_grey.png)');
-					
+					$('#title').html(question.title);
 					$('#textClue').html(question.clue);
 					$('#textQuestion').html(question.question);
 					$('#textInsight').html(question.insight);
@@ -273,7 +273,7 @@
 				showAnswerImage = false;
 				$('#answerAnimation').show();
 				
-				var properties = {top: '405px'};
+				var properties = {top: '408px'};
 				var options = {
 					duration: 1000,
 					easing: 'swing',
@@ -427,7 +427,7 @@
 			}
 			
 			#title {
-				margin: -15px 0 0 -5px;
+				margin: -12px 0 0 -5px;
 				position: absolute;
 				text-align: center;
 				width: 320px;
@@ -687,7 +687,7 @@
 			<div id="app">
 				<div id="backButton"></div>
 				<div id="buttons">
-					<p id="title">Chris Stevens</p>
+					<p id="title"></p>
 					<div id="clue">
 						<div id="meter"></div>
 					</div>
@@ -717,9 +717,7 @@
 				<!--</div>-->
 			</div>
 			<div id="timelineDrawerParent">
-				<div id="timelineButton">
-					<p id="unplayedQuestionCount">5</p>
-				</div>
+				<div id="timelineButton"></div>
 				<div id="timelineDrawer">
 				</div>
 			</div>
