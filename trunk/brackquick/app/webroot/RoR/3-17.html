@@ -22,10 +22,10 @@
 			var correctAudio = new Audio('audio/correct.ogg');
 			
 			function clueTimer() {
-				setTimeout(function() {clueAudio.play();}, 27500);
+				setTimeout(function() {clueAudio.play();}, 17500);
 				var properties = {marginLeft: '74px'};
 				var options = {
-					duration: 30000,
+					duration: 20000,
 					easing: 'linear',
 					step: function() {
 						if(Math.random() > 0.9) {
@@ -75,7 +75,7 @@
 				$('.personCounter').remove();
 				var properties = {marginLeft: '74px'};
 				var options = {
-					duration: 20000,
+					duration: 10000,
 					easing: 'linear',
 					complete: function() {
 						$('#contentQuestion').css('background-image', 'url(img/live_question_answered.png)');
