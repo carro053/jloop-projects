@@ -68,6 +68,7 @@
 					$('#title').html(question.category);
 					switch(question.clue_type) {
 						case 'text':
+							$('#contentClue').css('background-image', 'url(img/bg_white_textbox.png)');
 							$('#textClue').html(question.clue);
 							break;
 						case 'image':
@@ -77,6 +78,7 @@
 					}
 					switch(question.question_type) {
 						case 'text':
+							$('#contentQuestion').css('background-image', 'url(img/bg_white_textbox.png)');
 							$('#textQuestion').html(question.question);
 							break;
 						case 'image':
@@ -86,6 +88,7 @@
 					}
 					switch(question.insight_type) {
 						case 'text':
+							$('#contentInsight').css('background-image', 'url(img/bg_white_textbox.png)');
 							$('#textInsight').html(question.insight);
 							break;
 						case 'image':
@@ -94,6 +97,7 @@
 							break;
 					}
 					for(var i in question.answers) {
+						$('#answer'+i+' img').hide();
 						if(question.answers[i]) {
 							$('#answer'+i).show();
 							switch(question.answer_type) {
@@ -301,6 +305,10 @@
 						}else{
 							//$('#answer'+question.correct_answer_index).css('background-image', 'url(img/bg_answer_image_green.png)');
 							//$('#answer'+answerClicked).css('background-image', 'url(img/bg_answer_image_red.png)');
+							$('#answer'+question.correct_answer_index+' img').attr('src', 'img/bg_answer_image_green.png');
+							$('#answer'+question.correct_answer_index+' img').show();
+							$('#answer'+answerClicked+' img').attr('src', 'img/bg_answer_image_red.png');
+							$('#answer'+answerClicked+' img').show();
 							$('#drawer').css('background-image', 'url(img/bg_leaderboard_drawer_incorrect.png)');
 						}
 						break;
@@ -399,8 +407,8 @@
 					}
 				});
 				
-				/* $("#drawer").draggable({containment: [0, 220, 0, 568], axis: 'y'}); */ //DESKTOP
-				$("#drawer").draggable({containment: [0, 265, 0, 613], axis: 'y'});
+				$("#drawer").draggable({containment: [0, 220, 0, 568], axis: 'y'}); //DESKTOP
+				/* $("#drawer").draggable({containment: [0, 265, 0, 613], axis: 'y'}); */ //IPHONE
 				$('#drawer').mousedown(function() {leaderboardWasDragged = true;});
 				$('#drawer').mouseup(function() {
 					if(parseInt($(this).css('top')) < 294) {
@@ -455,8 +463,8 @@
 			
 			body {
 				background-color: #000;
-				/* background-image: url(img/bg_2.png); */ /* DESKTOP */
-				background-image: url(img/iphone_ringorang.png); /* IPHONE */
+				background-image: url(img/bg_2.png); /* DESKTOP */
+				/* background-image: url(img/iphone_ringorang.png); */ /* IPHONE */
 				background-position: 0 0;
 				background-repeat: no-repeat;
 				overflow: hidden;
@@ -472,12 +480,12 @@
 			#timeline {
 				width: 320px;
 				height: 486px;
-				/* background-image: url(img/bg_app_timeline.png); */ /* DESKTOP */
-				background-image: url(img/bg_app_timeline_ios.png);
+				background-image: url(img/bg_app_timeline.png); /* DESKTOP */
+				/* background-image: url(img/bg_app_timeline_ios.png); */ /* IPHONE */
 				background-repeat: no-repeat;
 				background-position: 0 0;
-				margin: 145px 488px; /* IPHONE */
-				/* margin: 100px 488px; */ /* DESKTOP */
+				/* margin: 145px 488px; */ /* IPHONE */
+				margin: 100px 488px; /* DESKTOP */
 				overflow: hidden;
 			}
 			
@@ -663,18 +671,26 @@
 			
 			#answer0 img{
 				position: absolute;
+				margin: 2px;
+				display: none;
 			}
 			
 			#answer1 img{
 				position: absolute;
+				margin: 2px;
+				display: none;
 			}
 			
 			#answer2 img{
 				position: absolute;
+				margin: 2px;
+				display: none;
 			}
 			
 			#answer3 img{
 				position: absolute;
+				margin: 2px;
+				display: none;
 			}
 			
 			p.answer {
@@ -794,7 +810,7 @@
 		</style>
 	</head>
 	<body>
-		<!-- <img id="shadow" src="img/shadow.png" /> --> <!-- DESKTOP -->
+		<img id="shadow" src="img/shadow.png" /> <!-- DESKTOP -->
 		<div id="timeline">
 			<div id="app">
 				<div id="backButton"></div>
