@@ -71,9 +71,8 @@
 							$('#textClue').html(question.clue);
 							break;
 						case 'image':
-							var image = new Image();
-							image.src = 'img/clues/'+question.clue;
-							$('#textClue').html(image);
+							$('#textClue').html('');
+							$('#textClue').css('background-image', 'url(img/clues/'+question.clue+')');
 							break;
 					}
 					switch(question.question_type) {
@@ -81,9 +80,8 @@
 							$('#textQuestion').html(question.question);
 							break;
 						case 'image':
-							var image = new Image();
-							image.src = 'img/questions/'+question.question;
-							$('#textQuestion').html(image);
+							$('#textQuestion').html('');
+							$('#textQuestion').css('background-image', 'url(img/questions/'+question.question+')');
 							break;
 					}
 					switch(question.insight_type) {
@@ -91,9 +89,8 @@
 							$('#textInsight').html(question.insight);
 							break;
 						case 'image':
-							var image = new Image();
-							image.src = 'img/insights/'+question.insight;
-							$('#textInsight').html(image);
+							$('#textInsight').html('');
+							$('#textInsight').css('background-image', 'url(img/insights/'+question.insight+')');
 							break;
 					}
 					for(var i in question.answers) {
@@ -105,10 +102,8 @@
 									$('#answer'+i+' p').html(question.answers[i]);
 									break;
 								case 'image':
-									$('#answer'+i).css('background-image', 'url(img/bg_answer_image_blank.png)');
-									var image = new Image();
-									image.src = 'img/answers/'+question.answers[i];
-									$('#answer'+i+' p').html(image);
+									$('#answer'+i+' p').html('');
+									$('#answer'+i).css('background-image', 'url(img/answers/'+question.answers[i]+')');
 									break;
 							}
 						}
