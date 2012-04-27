@@ -46,6 +46,10 @@
 			
 			var question;
 			
+			function titleFade() {
+				$('#title').fadeOut(1000, function() { $('#title').html(''); });
+			}
+			
 			function reset() {
 				if(question) {
 					leaderboardWasDragged = false;
@@ -369,13 +373,17 @@
 				$('#insight').click(function() {slideContent(3);});
 				$('#subContentClue').click(function() {imReady();});
 				$('#backButton').click(function() {
-					var properties = {left: '320px'};
-					var options = {
-						duration: 500,
-						easing: 'swing'
-					};
-					if(timerPosition == 0)
-						$('#app').animate(properties, options);
+					if(unplayedQuestionCount > 0) {
+						var properties = {left: '320px'};
+						var options = {
+							duration: 500,
+							easing: 'swing'
+						};
+						if(timerPosition == 0)
+							$('#app').animate(properties, options);
+					} else {
+						$('#title').fadeIn(1000, function() { window.location = '2-1.html'; });
+					}
 				});
 				$('#answer0').click(function() {answerQuestion(0);});
 				$('#answer1').click(function() {answerQuestion(1);});
@@ -408,7 +416,7 @@
 				});
 				
 				/* $("#drawer").draggable({containment: [0, 220, 0, 568], axis: 'y'}); */ //DESKTOP
-				$("#drawer").draggable({containment: [0, 265, 0, 613], axis: 'y'});
+				$("#drawer").draggable({containment: [0, 265, 0, 613], axis: 'y'}); //IPHONE
 				$('#drawer').mousedown(function() {leaderboardWasDragged = true;});
 				$('#drawer').mouseup(function() {
 					if(parseInt($(this).css('top')) < 294) {
@@ -481,7 +489,7 @@
 				width: 320px;
 				height: 486px;
 				/* background-image: url(img/bg_app_timeline.png); */ /* DESKTOP */
-				background-image: url(img/bg_app_timeline_ios.png);
+				background-image: url(img/bg_app_timeline_ios.png); /* IPHONE */
 				background-repeat: no-repeat;
 				background-position: 0 0;
 				margin: 145px 488px; /* IPHONE */
@@ -817,6 +825,7 @@
 				background: #000;
 				color: #fff;
 				text-align: center;
+				z-index: 20;
 			}
 			#title h1 {
 				margin: 200px 0 0 0;
@@ -827,7 +836,7 @@
 		</style>
 	</head>
 	<body>
-		<!-- <img id="shadow" src="img/shadow.png" /> --> <!-- DESKTOP -->
+		<!--<img id="shadow" src="img/shadow.png" />--> <!-- DESKTOP -->
 		<div id="timeline">
 			<div id="app">
 				<div id="backButton"></div>
@@ -869,8 +878,7 @@
 			</div>
 		</div>
 		<div id="title" onclick="titleFade();">
-			<h1>(Wed-Fri Gameplay)</h1>
-			<h2>WE DON'T EVEN KNOW</h2>
+			<h1>Wed-Fri Gameplay on the Desktop</h1>
 		</div>
 	</body>
 </html>
