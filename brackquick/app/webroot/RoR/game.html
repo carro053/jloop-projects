@@ -322,7 +322,7 @@
 				$('#answer2').click(function() {answerQuestion(2);});
 				$('#answer3').click(function() {answerQuestion(3);});
 				
-				$("#drawer").draggable({containment: 'parent', axis: 'y'});
+				$("#drawer").draggable({containment: [0, 100, 0, 400], axis: 'y'});
 				$('#drawer').mousedown(function() {leaderboardWasDragged = true;});
 				$('#drawer').mouseup(function() {
 					if(parseInt($(this).css('top')) < 174) {
