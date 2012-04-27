@@ -17,7 +17,9 @@ var questions = [
 			],
 		correct_answer_index: 1,
 		insight: 'Adding a layer of clothing while indoors makes it even easier to keep the thermostat lowered on cold days.'
-	},
+	}
+	
+/*
 	{
 		title: 'Unplayed Question 2',
 		time: '12/03/12 11:42am',
@@ -151,4 +153,5 @@ var questions = [
 		correct_answer_index: 3,
 		insight: 'android-icon.png'
 	}
+*/
 ];
