@@ -350,8 +350,12 @@
 				$('#answer3').click(function() {answerQuestion(3);});
 				
 				$('#answer0, #answer1, #answer2, #answer3').mousedown(function() {
-					if(question.question_type == 'text')
+					if(question.question_type == 'text' && !questionAnswered)
 						$(this).css('background-image', 'url(img/bg_answer_grey_selected.png)');
+				});
+				$('#answer0, #answer1, #answer2, #answer3').mouseup(function() {
+					if(question.question_type == 'text' && !questionAnswered)
+						$(this).css('background-image', 'url(img/bg_answer_grey.png)');
 				});
 				
 				$("#drawer").draggable({containment: [0, 220, 0, 568], axis: 'y'});
