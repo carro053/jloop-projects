@@ -278,14 +278,14 @@
 					duration: 1000,
 					easing: 'swing',
 					complete: function() {
-						if(!leaderboardWasDragged) {
-							setTimeout(function() {
+						setTimeout(function() {
+							if(!leaderboardWasDragged) {
 								$('#drawer').animate(
 									{top: '347px'},
 									{duration: 1000, easing: 'swing'}
 								);
-							}, 5000);
-						}
+							}
+						}, 5000);
 					}
 				};
 				
