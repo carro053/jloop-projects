@@ -47,7 +47,7 @@
 			var question;
 			
 			function titleFade() {
-				$('#title').fadeOut(1000);
+				$('#title').fadeOut(1000, function() { $('#title').html(''); });
 			}
 			
 			function reset() {
