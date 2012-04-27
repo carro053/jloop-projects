@@ -317,7 +317,7 @@
 			}
 			
 			$(function() {
-				unplayedQuestionCount = 0;
+				unplayedQuestionCount = questions.length;
 				$('#unplayedQuestionCount').html(unplayedQuestionCount);
 				$(document).disableSelection();
 				$('#clue').click(function() {slideContent(1);});
