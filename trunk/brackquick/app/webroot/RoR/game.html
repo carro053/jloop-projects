@@ -9,6 +9,7 @@
 			
 			var timerPosition = 0;
 			var questionAnswered = false;
+			var answerClicked;
 			var readyPersonCount = answeredPersonCount = 0;
 			var showAnswerImage = false;
 			
@@ -44,6 +45,7 @@
 			function reset() {
 				if(question) {
 					questionAnswered = false;
+					answerClicked = null;
 					showAnswerImage = false;
 					
 					$('#content').css('left', 0);
@@ -140,7 +142,7 @@
 					duration: 2000,
 					easing: 'linear',
 					complete: function() {
-						//$('#contentQuestion').css('background-image', 'url(img/3-7.png)');
+						loadAnswerStates();
 						showAnswerImage = true;
 						timerPosition = 0;
 						slideContent(2);
@@ -227,14 +229,22 @@
 			}
 			
 			function answerQuestion(answerIndex) {
-				alert(answerIndex);
-				return;
 				if(!questionAnswered && timerPosition) {
 					questionAnswered = true;
+					answerClicked = answerIndex;
 					$('#meter').stop();
 					$('#meter').appendTo('#insight');
 					$('#meter').css('marginLeft', 0);
 					insightTimer();
+				}
+			}
+			
+			function loadAnswerStates() {
+				if(answerClicked == question.correct_answer_index) {
+					$('#answer'+answerClicked).css('background-image', 'url(img/bg_answer_green.png)');
+				}else{
+					$('#answer'+question.correct_answer_index).css('background-image', 'url(img/bg_answer_green.png)');
+					$('#answer'+answerClicked).css('background-image', 'url(img/bg_answer_red.png)');
 				}
 			}
 			
