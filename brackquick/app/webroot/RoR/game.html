@@ -75,7 +75,7 @@
 					for(var i in question.answers) {
 						if(question.answers[i]) {
 							$('#answer'+i).show();
-							switch(question.type) {
+							switch(question.answer_type) {
 								case 'text':
 									$('#answer'+i+' p').html(question.answers[i]);
 									break;
