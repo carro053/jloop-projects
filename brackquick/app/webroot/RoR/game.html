@@ -245,15 +245,17 @@
 				showAnswerImage = false;
 				$('#answerAnimation').show();
 				
-				var properties = {top: '190px'};
+				var properties = {top: '215px'};
 				var options = {
 					duration: 1000,
 					easing: 'swing',
 					complete: function() {
-						$('#drawer').animate(
-							{top: '274px'},
-							{duration: 1000, easing: 'swing'}
-						);
+						setTimeout(function() {
+							$('#drawer').animate(
+								{top: '274px'},
+								{duration: 1000, easing: 'swing'}
+							);
+						}, 5000);
 					}
 				};
 				
