@@ -61,7 +61,7 @@
 					$('#insight').css('background-image', 'url(img/btn_insight_black.png)');
 					$('#subContentClue').show();
 					$('#subContentInsight').show();
-					$('#drawerParent').hide();
+					$('#drawer').hide();
 					$('#answer0').css('background-image', 'url(img/bg_answer_grey.png)');
 					$('#answer1').css('background-image', 'url(img/bg_answer_grey.png)');
 					$('#answer2').css('background-image', 'url(img/bg_answer_grey.png)');
@@ -293,7 +293,7 @@
 				var interval = setInterval(function() {
 					if(index >= 99) {
 						clearInterval(interval);
-						$('#drawerParent').show();
+						$('#drawer').show();
 						$('#drawer').animate(properties, options);
 						$('#answerAnimation').hide();
 					}
@@ -601,13 +601,13 @@
 				display: none;
 			}
 			
-			#drawerParent {
+			/*#drawerParent {
 				width: 320px;
 				height: 712px;
 				position: relative;
 				top: -364px;
 				display: none;
-			}
+			}*/
 			
 			#drawer {
 				width: 320px;
@@ -615,6 +615,7 @@
 				background: url(img/bg_leaderboard_drawer_correct.png);
 				position: relative;
 				top: 347px;
+				display: none;
 			}
 			
 			#timelineButton {
@@ -693,9 +694,9 @@
 						<div id="subContentInsight"></div>
 					</div>
 				</div>
-				<div id="drawerParent">
+				<!--<div id="drawerParent">-->
 					<div id="drawer"></div>
-				</div>
+				<!--</div>-->
 			</div>
 			<div id="timelineDrawerParent">
 				<div id="timelineButton"></div>
