@@ -68,6 +68,7 @@
 					$('#title').html(question.category);
 					switch(question.clue_type) {
 						case 'text':
+							$('#contentClue').css('background-image', 'url(img/bg_white_textbox.png)');
 							$('#textClue').html(question.clue);
 							break;
 						case 'image':
@@ -77,6 +78,7 @@
 					}
 					switch(question.question_type) {
 						case 'text':
+							$('#contentQuestion').css('background-image', 'url(img/bg_white_textbox.png)');
 							$('#textQuestion').html(question.question);
 							break;
 						case 'image':
@@ -86,6 +88,7 @@
 					}
 					switch(question.insight_type) {
 						case 'text':
+							$('#contentInsight').css('background-image', 'url(img/bg_white_textbox.png)');
 							$('#textInsight').html(question.insight);
 							break;
 						case 'image':
