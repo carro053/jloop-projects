@@ -272,14 +272,14 @@
 				showAnswerImage = false;
 				$('#answerAnimation').show();
 				
-				var properties = {top: '215px'};
+				var properties = {top: '283px'};
 				var options = {
 					duration: 1000,
 					easing: 'swing',
 					complete: function() {
 						setTimeout(function() {
 							$('#drawer').animate(
-								{top: '278px'},
+								{top: '347px'},
 								{duration: 1000, easing: 'swing'}
 							);
 						}, 5000);
@@ -599,7 +599,6 @@
 			
 			#drawerParent {
 				width: 320px;
-				/* height: 570px; */
 				height: 639px;
 				position: relative;
 				top: -364px;
@@ -608,11 +607,10 @@
 			
 			#drawer {
 				width: 320px;
-				/*height: 296px;*/
 				height: 365px;
 				background: url(img/bg_leaderboard_drawer_correct.png);
 				position: relative;
-				top: 280px;
+				top: 347px;
 			}
 			
 			#timelineButton {
