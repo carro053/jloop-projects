@@ -373,13 +373,17 @@
 				$('#insight').click(function() {slideContent(3);});
 				$('#subContentClue').click(function() {imReady();});
 				$('#backButton').click(function() {
-					var properties = {left: '320px'};
-					var options = {
-						duration: 500,
-						easing: 'swing'
-					};
-					if(timerPosition == 0)
-						$('#app').animate(properties, options);
+					if(unplayedQuestionCount > 0) {
+						var properties = {left: '320px'};
+						var options = {
+							duration: 500,
+							easing: 'swing'
+						};
+						if(timerPosition == 0)
+							$('#app').animate(properties, options);
+					} else {
+						$('#title').fadeIn(1000, function() { window.location = '2-1.html'; });
+					}
 				});
 				$('#answer0').click(function() {answerQuestion(0);});
 				$('#answer1').click(function() {answerQuestion(1);});
@@ -873,8 +877,7 @@
 			</div>
 		</div>
 		<div id="title" onclick="titleFade();">
-			<h1>(Wed-Fri Gameplay)</h1>
-			<h2>WE DON'T EVEN KNOW</h2>
+			<h1>Wed-Fri Gameplay on the Desktop</h1>
 		</div>
 	</body>
 </html>
