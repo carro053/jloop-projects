@@ -73,7 +73,15 @@
 					for(var i in question.answers) {
 						if(question.answers[i]) {
 							$('#answer'+i).show();
-							$('#answer'+i+' p').html(question.answers[i]);
+							switch(question.type) {
+								case 'text':
+									$('#answer'+i+' p').html(question.answers[i]);
+									break;
+								case 'image':
+									var image = new Image('img/answers/'+question.answers[i]);
+									$('#answer'+i+' p').html(image);
+									break;
+							}
 						}
 						else
 							$('#answer'+i).hide();
