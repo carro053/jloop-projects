@@ -94,6 +94,7 @@
 							break;
 					}
 					for(var i in question.answers) {
+						$('#answer'+i+' img').hide();
 						if(question.answers[i]) {
 							$('#answer'+i).show();
 							switch(question.answer_type) {
@@ -301,6 +302,10 @@
 						}else{
 							//$('#answer'+question.correct_answer_index).css('background-image', 'url(img/bg_answer_image_green.png)');
 							//$('#answer'+answerClicked).css('background-image', 'url(img/bg_answer_image_red.png)');
+							$('#answer'+question.correct_answer_index+' img').attr('src', 'img/bg_answer_image_green.png');
+							$('#answer'+question.correct_answer_index+' img').show();
+							$('#answer'+answerClicked+' img').attr('src', 'img/bg_answer_image_red.png');
+							$('#answer'+answerClicked+' img').show();
 							$('#drawer').css('background-image', 'url(img/bg_leaderboard_drawer_incorrect.png)');
 						}
 						break;
@@ -663,18 +668,22 @@
 			
 			#answer0 img{
 				position: absolute;
+				display: none;
 			}
 			
 			#answer1 img{
 				position: absolute;
+				display: none;
 			}
 			
 			#answer2 img{
 				position: absolute;
+				display: none;
 			}
 			
 			#answer3 img{
 				position: absolute;
+				display: none;
 			}
 			
 			p.answer {
