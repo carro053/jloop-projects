@@ -254,7 +254,16 @@
 			
 			function animateAnswerImage() {
 				$('#app').css('background-image', 'url(img/bg_game_back.png)');
-				correctAudio.play();
+				
+				if(answerClicked == question.correct_answer_index) {
+					var audio = correctAudio;
+					var imageCache = correctImageCache;
+				}else{
+					var audio = incorrectAudio;
+					var imageCache = incorrectImageCache;
+				}
+				
+				audio.play();
 				
 				showAnswerImage = false;
 				$('#answerAnimation').show();
@@ -281,7 +290,7 @@
 						$('#drawer').animate(properties, options);
 						$('#answerAnimation').hide();
 					}
-					$('#answerAnimation').attr('src', correctImageCache[index].src);
+					$('#answerAnimation').attr('src', imageCache[index].src);
 					index++;
 				}, 50);
 			}
