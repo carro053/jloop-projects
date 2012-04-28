@@ -54,7 +54,7 @@ var questions = [
 			'desktop_answer_2_1.png',
 			'desktop_answer_2_2.png',
 			'desktop_answer_2_3.png',
-			'bg_answer_image_blank.png'
+			'all_of_the_above.png'
 			],
 		correct_answer_index: 3,
 		insight: 'Just as new purchases can increase energy use, a new roommate or a new baby can raise your bill. (Be sure to plug new electronics into power strips and turn strips off when not in use.)'
