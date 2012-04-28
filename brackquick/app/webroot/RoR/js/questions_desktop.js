@@ -11,7 +11,7 @@ var questions = [
 		question: 'The best place to learn how to read your bill is:',
 		answers: [
 			'Google search',
-			'.nvenergy.com',
+			'nvenergy.com',
 			'YouTube',
 			'Ask a neighbor'
 			],
@@ -116,7 +116,7 @@ var questions = [
 			'Use NV Energy’s online bill calculator.'
 			],
 		correct_answer_index: 3,
-		insight: 'All you have to enter is the number of kilowatt hours. Select the correct calculator for Northern Nevada or Southern Nevada at nvenergy.com.<br />Source: .nvenergy.com'
+		insight: 'All you have to enter is the number of kilowatt hours. Select the correct calculator for Northern Nevada or Southern Nevada at nvenergy.com.<br />Source: nvenergy.com'
 	},
 	
 	{
@@ -168,7 +168,7 @@ var questions = [
 		insight_type: 'text',
 		category: 'How to Read a Bill',
 		clue: 'Smart meter, smarter customer. ',
-		question: 'If you sign up for email alerts, NV Energy will notify you when your energy use or dollar amount for the billing period goes over a threshold you choose. Insight: If you have a smart meter installed and sign up to monitor your account online at nvenergy.com, you can check your energy use and projected bill—and even see how your consumption varies by day of the week and time of day.<br />Source: .nvenergy.com',
+		question: 'If you sign up for email alerts, NV Energy will notify you when your energy use or dollar amount for the billing period goes over a threshold you choose. Insight: If you have a smart meter installed and sign up to monitor your account online at nvenergy.com, you can check your energy use and projected bill—and even see how your consumption varies by day of the week and time of day.<br />Source: nvenergy.com',
 		answers: [
 			null,
 			null,
