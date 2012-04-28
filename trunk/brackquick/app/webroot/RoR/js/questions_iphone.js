@@ -54,7 +54,7 @@ var questions = [
 			'All of the above.'
 			],
 		correct_answer_index: 3,
-		insight: 'Exterior caulking keeps the rain out but doesn’t improve energy savings.'
+		insight: 'Exterior caulking keeps the rain out but doesn\'t improve energy savings.'
 	},
 	{
 		title: 'Unplayed Question 4',
@@ -92,7 +92,7 @@ var questions = [
 			'False'
 			],
 		correct_answer_index: 2,
-		insight: 'The U.S. Department of Energy’s office of Energy Efficiency & Renewable Energy has many programs available to consumers that help save money and energy.'
+		insight: 'The U.S. Department of Energy\'s office of Energy Efficiency & Renewable Energy has many programs available to consumers that help save money and energy.'
 	},
 	{
 		title: 'Unplayed Question 6',
@@ -168,7 +168,7 @@ var questions = [
 			'False'
 			],
 		correct_answer_index: 2,
-		insight: 'When hiring someone to perform a blower door test, it’s important to choose an auditor who uses a calibrated blower door.'
+		insight: 'When hiring someone to perform a blower door test, it\'s important to choose an auditor who uses a calibrated blower door.'
 	},
 	{
 		title: 'Unplayed Question 10',
