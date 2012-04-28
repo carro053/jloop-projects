@@ -70,7 +70,7 @@ var questions = [
 		clue: 'R is for renewable--and rebates!',
 		question: 'What is the "Renewable Energy Program" charge on my bill?',
 		answers: [
-			'A fee that supports alternative energy projects.',
+			'&nbsp;&nbsp;&nbsp;&nbsp;A fee that supports alternative energy projects.',
 			'A fee that helps fund rebate programs.',
 			'A fee approved by the Public Utilities Commission of Nevada.',
 			'All of the above.'
