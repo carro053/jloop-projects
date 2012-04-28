@@ -72,7 +72,7 @@ var questions = [
 		answers: [
 			'A fee that supports alternative energy projects.',
 			'A fee that helps fund rebate programs.',
-			'&nbsp;&nbsp;A fee approved by the Public Utilities Commission of Nevada.',
+			'A fee approved by the Public Utilities Commission of Nevada.',
 			'All of the above.'
 			],
 		correct_answer_index: 3,
