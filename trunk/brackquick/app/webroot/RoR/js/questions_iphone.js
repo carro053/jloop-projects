@@ -94,7 +94,7 @@ var questions = [
 		correct_answer_index: 2,
 		insight: 'The U.S. Department of Energy\'s office of Energy Efficiency & Renewable Energy has many programs available to consumers that help save money and energy.'
 	},
-	/*{
+	{
 		title: 'Unplayed Question 6',
 		time: '12/03/12 2:47pm',
 		question_type: 'text',
@@ -105,14 +105,14 @@ var questions = [
 		clue: 'Start with the common areas where there are gaps for air to leak.',
 		question: 'Which of the following [use images] are likely to be a source for energy loss (and higher utility bills):',
 		answers: [
-			'bg_answer_image_blank.png',
-			'bg_answer_image_blank.png',
-			'bg_answer_image_blank.png',
-			'bg_answer_image_blank.png'
+			'cable_tv_line.png',
+			'dryer_vent.png',
+			'mail_slot.png',
+			'all_of_the_above.png'
 			],
 		correct_answer_index: 3,
-		insight: 'android-icon.png'
-	},*/
+		insight: 'TDD'
+	},
 	{
 		title: 'Unplayed Question 7',
 		time: '12/03/12 2:47pm',
