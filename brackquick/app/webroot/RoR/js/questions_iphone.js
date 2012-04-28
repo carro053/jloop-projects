@@ -6,7 +6,7 @@ var questions = [
 		answer_type: 'text',
 		clue_type: 'text',
 		insight_type: 'text',
-		category: 'Energy-efficient lighting',
+		category: 'Air Leaks',
 		clue: 'It sweeps without a broom.',
 		question: 'What product is easy to install, saves energy and lowers utility bills?',
 		answers: [
@@ -25,7 +25,7 @@ var questions = [
 		answer_type: 'text',
 		clue_type: 'text',
 		insight_type: 'text',
-		category: 'Energy-efficient lighting',
+		category: 'Air Leaks',
 		clue: 'Only 15 percent of air leakage is through windows and doors.',
 		question: 'Replacing windows are the only way to stop air leaks.',
 		answers: [
@@ -44,7 +44,7 @@ var questions = [
 		answer_type: 'text',
 		clue_type: 'text',
 		insight_type: 'text',
-		category: 'Energy-efficient lighting',
+		category: 'Air Leaks',
 		clue: 'If there\'s a hole, caulking will save energy and cost.',
 		question: 'The top choices for caulking and weather stripping inside the home are:',
 		answers: [
@@ -63,7 +63,7 @@ var questions = [
 		answer_type: 'text',
 		clue_type: 'text',
 		insight_type: 'text',
-		category: 'Energy-efficient lighting',
+		category: 'Air Leaks',
 		clue: 'Child safety plugs save energy as well as lives.',
 		question: 'Using child safety plugs with an insulated backing will lower energy costs by preventing air leakage.',
 		answers: [
@@ -82,7 +82,7 @@ var questions = [
 		answer_type: 'text',
 		clue_type: 'text',
 		insight_type: 'text',
-		category: 'Energy-efficient lighting',
+		category: 'Air Leaks',
 		clue: 'WAP is the federal government\'s Weatherization Assistance Program',
 		question: 'Qualified low-income families can save more than $400 per year by participating in the Weatherization Assistance Program.',
 		answers: [
@@ -101,7 +101,7 @@ var questions = [
 		answer_type: 'image',
 		clue_type: 'text',
 		insight_type: 'image',
-		category: 'Energy-efficient lighting',
+		category: 'Air Leaks',
 		clue: 'Start with the common areas where there are gaps for air to leak.',
 		question: 'Which of the following [use images] are likely to be a source for energy loss (and higher utility bills):',
 		answers: [
@@ -120,7 +120,7 @@ var questions = [
 		answer_type: 'text',
 		clue_type: 'text',
 		insight_type: 'text',
-		category: 'Energy-efficient lighting',
+		category: 'Air Leaks',
 		clue: 'Leaks are a likely culprit.',
 		question: 'One room that is more difficult to heat or cool than others could be a sign that:',
 		answers: [
@@ -139,7 +139,7 @@ var questions = [
 		answer_type: 'text',
 		clue_type: 'text',
 		insight_type: 'text',
-		category: 'Energy-efficient lighting',
+		category: 'Air Leaks',
 		clue: 'A blow to put you in the know.',
 		question: 'Which test is important for determining a home\'s air tightness?',
 		answers: [
@@ -158,7 +158,7 @@ var questions = [
 		answer_type: 'text',
 		clue_type: 'text',
 		insight_type: 'text',
-		category: 'Energy-efficient lighting',
+		category: 'Air Leaks',
 		clue: 'It\'s a fantastic--and powerful--fan.',
 		question: 'A blower door is a special fan that mounts onto an exterior door, pulling the air from the house as part of a test to locate unsealed cracks and openings.',
 		answers: [
@@ -177,7 +177,7 @@ var questions = [
 		answer_type: 'text',
 		clue_type: 'text',
 		insight_type: 'text',
-		category: 'Energy-efficient lighting',
+		category: 'Air Leaks',
 		clue: 'Vinyl shines when it comes to weather-stripping.',
 		question: 'Which weather-stripping material is considered the most durable and weather-resistant:',
 		answers: [
