@@ -54,7 +54,7 @@ var questions = [
 			'All of the above.'
 			],
 		correct_answer_index: 3,
-		insight: 'Exterior caulking keeps the rain out but doesn\'t improve energy savings.'
+		insight: 'Exterior caulking keeps the rain out but doesn\'t improve energy savings.<br />Source: Coloradoenergy.org'
 	},
 	{
 		title: 'Unplayed Question 4',
@@ -130,7 +130,7 @@ var questions = [
 			'The ductwork might be leaky, poorly insulated or otherwise inefficient.'
 			],
 		correct_answer_index: 3,
-		insight: 'Many homeowners choose to hire a professional to inspect and repair ductwork.'
+		insight: 'Many homeowners choose to hire a professional to inspect and repair ductwork.<br />Source:  Environmental Protection Agency'
 	},
 	{
 		title: 'Unplayed Question 8',
@@ -149,7 +149,7 @@ var questions = [
 			'None of the above.'
 			],
 		correct_answer_index: 0,
-		insight: 'Blower door tests are performed by professional energy auditors. Local government sustainability offices or utility companies are resources for finding a company that performs energy assessments.'
+		insight: 'Blower door tests are performed by professional energy auditors. Local government sustainability offices or utility companies are resources for finding a company that performs energy assessments.<br />Source: www.energysavers.gov'
 	},
 	{
 		title: 'Unplayed Question 9',
@@ -168,7 +168,7 @@ var questions = [
 			'False'
 			],
 		correct_answer_index: 2,
-		insight: 'When hiring someone to perform a blower door test, it\'s important to choose an auditor who uses a calibrated blower door.'
+		insight: 'When hiring someone to perform a blower door test, it\'s important to choose an auditor who uses a calibrated blower door.<br />Source: www.energysavers.gov'
 	},
 	{
 		title: 'Unplayed Question 10',
