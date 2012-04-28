@@ -28,7 +28,7 @@ var questions = [
 		clue_type: 'image',
 		insight_type: 'text',
 		category: 'How to Read a Bill',
-		clue: 'bg_answer_image_blank.png',
+		clue: 'desktop_clue_1.png',
 		question: 'How can you tell from your bill how you are doing on your conservation efforts?',
 		answers: [
 			'By how much your bill is.',
@@ -51,9 +51,9 @@ var questions = [
 		clue: 'New additions draw more power.',
 		question: 'What are some reasons electricity bills might suddenly rise? ',
 		answers: [
-			'bg_answer_image_blank.png',
-			'bg_answer_image_blank.png',
-			'bg_answer_image_blank.png',
+			'desktop_answer_2_1.png',
+			'desktop_answer_2_2.png',
+			'desktop_answer_2_3.png',
 			'bg_answer_image_blank.png'
 			],
 		correct_answer_index: 3,
@@ -69,7 +69,7 @@ var questions = [
 		insight_type: 'text',
 		category: 'How to Read a Bill',
 		clue: 'What you actually pay for energy used.',
-		question: 'bg_answer_image_blank.png',
+		question: 'desktop_question_3.png',
 		answers: [
 			null,
 			null,
@@ -177,7 +177,7 @@ var questions = [
 			'False'
 			],
 		correct_answer_index: 2,
-		insight: 'bg_answer_image_blank.png'
+		insight: 'desktop_insight_8.png'
 	},
 	
 //THIS IS WAY TOO LONG!!
