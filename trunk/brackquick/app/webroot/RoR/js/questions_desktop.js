@@ -137,7 +137,7 @@ var questions = [
 			'Use NV Energy\'s online bill calculator.'
 			],
 		correct_answer_index: 3,
-		insight: 'All you have to enter is the number of kilowatt hours. Select the correct calculator for Northern Nevada or Southern Nevada at nvenergy.com.<br />Source: nvenergy.com'
+		insight: 'All you have to enter is the number of kilowatt hours. Select the correct calculator for Northern Nevada or Southern Nevada at nvenergy.com.'
 	},
 	
 	{
@@ -202,7 +202,7 @@ var questions = [
 	},
 	
 	{
-		title: 'Unplayed Question 9',
+		title: 'Unplayed Question 10',
 		time: '12/03/12 10:16am',
 		question_type: 'text',
 		answer_type: 'text',
