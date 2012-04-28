@@ -111,7 +111,7 @@ var questions = [
 			'all_of_the_above.png'
 			],
 		correct_answer_index: 3,
-		insight: 'TDD'
+		insight: 'TODO'
 	},
 	{
 		title: 'Unplayed Question 7',
