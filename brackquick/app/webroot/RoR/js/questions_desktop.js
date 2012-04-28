@@ -113,7 +113,7 @@ var questions = [
 			'Crunch the numbers yourself.',
 			'Call the utility company.',
 			'Compare bills with your neighbor.',
-			'Use NV Energy’s online bill calculator.'
+			'Use NV Energy\'s online bill calculator.'
 			],
 		correct_answer_index: 3,
 		insight: 'All you have to enter is the number of kilowatt hours. Select the correct calculator for Northern Nevada or Southern Nevada at nvenergy.com.<br />Source: nvenergy.com'
@@ -128,7 +128,7 @@ var questions = [
 		insight_type: 'text',
 		category: 'How to Read a Bill',
 		clue: 'Get smart.',
-		question: 'What’s a smart meter?',
+		question: 'What\'s a smart meter?',
 		answers: [
 			'A digital meter that records energy usage.',
 			'A device that transmits and receives data.',
@@ -188,7 +188,7 @@ var questions = [
 		insight_type: 'text',
 		category: 'How to Read a Bill',
 		clue: 'Big Brother is not watching.',
-		question: 'Smart meters aren’t surveillance devices.',
+		question: 'Smart meters aren\'t surveillance devices.',
 		answers: [
 			null,
 			null,
