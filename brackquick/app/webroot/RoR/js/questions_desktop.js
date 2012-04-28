@@ -1,4 +1,5 @@
 var questions = [
+/*
 	{
 		title: 'Unplayed Question 1',
 		time: '12/03/12 10:16am',
@@ -18,7 +19,27 @@ var questions = [
 		correct_answer_index: 1,
 		insight: 'Your bill has great information to save you money and improve energy efficiency. A picture of it, with each section explained, can be found the FAQ section of the NV energy website.'
 	},
-	
+*/	
+	{
+		title: 'Unplayed Question 1',
+		time: '12/03/12 10:16am',
+		question_type: 'text',
+		answer_type: 'text',
+		clue_type: 'image',
+		insight_type: 'text',
+		category: 'How to Read a Bill',
+		clue: 'bg_answer_image_blank.png',
+		question: 'How can you tell from your bill how you are doing on your conservation efforts?',
+		answers: [
+			'By how much your bill is.',
+			'By whether you used less energy in January than July.',
+			'By studying the bar graph of your use over the past 13 months.',
+			'All of the above.'
+			],
+		correct_answer_index: 2,
+		insight: 'Changes in rates and seasonal climate variations can make some comparisons misleading, so observe the general trend and compare your usage to the most recent month and to the same month last year.'
+	},
+
 	{
 		title: 'Unplayed Question 2',
 		time: '12/03/12 10:16am',
