@@ -159,7 +159,7 @@ var questions = [
 		insight: 'bg_answer_image_blank.png'
 	},
 	
-/* //THIS IS WAY TOO LONG!!
+//THIS IS WAY TOO LONG!!
 	{
 		title: 'Unplayed Question 9',
 		time: '12/03/12 10:16am',
@@ -179,7 +179,6 @@ var questions = [
 		correct_answer_index: 2,
 		insight: 'NOT PRESENT'
 	},
-*/
 	
 	{
 		title: 'Unplayed Question 9',
