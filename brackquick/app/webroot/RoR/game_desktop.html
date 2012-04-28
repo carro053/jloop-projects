@@ -459,7 +459,7 @@
 				//clueTimer();
 				
 				for(var i in questions) {
-					$('#timelineDrawer').append('<div id="timelineQuestion'+i+'" onclick="loadQuestion('+i+');" class="unplayedQuestion"><p class="unplayedQuestionTitle">'+questions[i]['category']+'</p><p class="unplayedQuestionTime">'+questions[i]['time']+'</p></div>');
+					$('#timelineDrawer').append('<div id="timelineQuestion'+i+'" onclick="loadQuestion('+i+');" class="unplayedQuestion"><p class="unplayedQuestionTitle">'+questions[i]['title']+'</p><p class="unplayedQuestionTime">'+questions[i]['time']+'</p></div>');
 				}
 			});
 		</script>
