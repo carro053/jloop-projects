@@ -68,7 +68,7 @@ var questions = [
 		insight_type: 'text',
 		category: 'How to Read a Bill',
 		clue: 'R is for renewable--and rebates!',
-		question: 'What is the “Renewable Energy Program” charge on my bill?',
+		question: 'What is the "Renewable Energy Program" charge on my bill?',
 		answers: [
 			'A fee that supports alternative energy projects.',
 			'A fee that helps fund rebate programs.',
@@ -76,7 +76,7 @@ var questions = [
 			'All of the above.'
 			],
 		correct_answer_index: 3,
-		insight: 'To find out what rebates might be available to you, go to nvenergy.com and enter “rebates” in the search box in the upper right corner.'
+		insight: 'To find out what rebates might be available to you, go to nvenergy.com and enter "rebates" in the search box in the upper right corner.'
 	},
 	
 	{
