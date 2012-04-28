@@ -7,19 +7,17 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'Energy-efficient lighting',
-		clue: 'Let the sun shine in.',
-		question: 'During winter days, the best way to warm the house is:',
+		clue: 'It sweeps without a broom.',
+		question: 'What product is easy to install, saves energy and lowers utility bills?',
 		answers: [
-			'Turn up your thermostat.',
-			'Open the coverings on the south facing windows.',
-			'Keep a fire going.',
-			'Close all doors and windows.'
-			],
+			'Fan',
+			'Door-sweep',
+			'Window tint',
+			'Swamp cooler'
+		],
 		correct_answer_index: 1,
-		insight: 'Adding a layer of clothing while indoors makes it even easier to keep the thermostat lowered on cold days.'
-	}
-	
-/*
+		insight: 'Door-sweeps can be found at any home improvement store and keep cool air in and warm air out. They easily screw into the bottom of any door.'
+	},
 	{
 		title: 'Unplayed Question 2',
 		time: '12/03/12 11:42am',
@@ -28,16 +26,16 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'Energy-efficient lighting',
-		clue: 'See the light.',
-		question: 'Watts measure energy used and lumens measure the light produced.',
+		clue: 'Only 15 percent of air leakage is through windows and doors.',
+		question: 'Replacing windows are the only way to stop air leaks.',
 		answers: [
 			null,
 			null,
 			'True',
 			'False'
-			],
-		correct_answer_index: 2,
-		insight: 'A 60-watt bulb can be replaced by an energy-efficient bulb that uses only 13 to 15 watts and puts out 800 lumens.'
+		],
+		correct_answer_index: 3,
+		insight: 'Caulking small areas around the house, particularly the attic and foundation, will lower your heat loss and improve your bill, oftentimes more than replacing windows.'
 	},
 	{
 		title: 'Unplayed Question 3',
@@ -47,16 +45,16 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'Energy-efficient lighting',
-		clue: 'Sometimes it\'s simple.',
-		question: 'What is the easiest way to save electricity in your home?',
+		clue: 'If there\'s a hole, caulking will save energy and cost.',
+		question: 'The top choices for caulking and weather stripping inside the home are:',
 		answers: [
-			'Limit use of computers for only important tasks',
-			'Wash dishes by hand once a day.',
-			'Don\'t watch TV at night.',
-			'Turn off the lights when leaving a room, and urge others to also.'
+			'The attic access door.',
+			'Electrical outlets and switches.',
+			'Fixtures, pipes, electrical wires and anything that penetrates the ceiling or walls to the outside where air comes in and goes out.',
+			'All of the above.'
 			],
 		correct_answer_index: 3,
-		insight: 'For a game, put your monthly utility bill savings in a jar.  After six months, spend the money on something fun.'
+		insight: 'Exterior caulking keeps the rain out but doesn’t improve energy savings.'
 	},
 	{
 		title: 'Unplayed Question 4',
@@ -66,16 +64,16 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'Energy-efficient lighting',
-		clue: 'Out of the blue.',
-		question: 'Energy-saving bulbs give off a cold, bluish light.',
+		clue: 'Child safety plugs save energy as well as lives.',
+		question: 'Using child safety plugs with an insulated backing will lower energy costs by preventing air leakage.',
 		answers: [
 			null,
 			null,
 			'True',
 			'False'
 			],
-		correct_answer_index: 3,
-		insight: 'Newer efficient bulbs provide all types of light, from warm yellows to cooler shades.  Check the package labels for the graph that shows how warm of cool the bulb\'s light is'
+		correct_answer_index: 2,
+		insight: 'Plugging the many small areas in your home where air leaks can add up to big savings in utility bills.'
 	},
 	{
 		title: 'Unplayed Question 5',
@@ -85,27 +83,27 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'Energy-efficient lighting',
-		clue: 'Out of the blue.',
-		question: 'Energy-saving bulbs give off a cold, bluish light.',
+		clue: 'WAP is the federal government\'s Weatherization Assistance Program',
+		question: 'Qualified low-income families can save more than $400 per year by participating in the Weatherization Assistance Program.',
 		answers: [
 			null,
 			null,
 			'True',
 			'False'
 			],
-		correct_answer_index: 3,
-		insight: 'Newer efficient bulbs provide all types of light, from warm yellows to cooler shades.  Check the package labels for the graph that shows how warm of cool the bulb\'s light is'
+		correct_answer_index: 2,
+		insight: 'The U.S. Department of Energy’s office of Energy Efficiency & Renewable Energy has many programs available to consumers that help save money and energy.'
 	},
 	{
 		title: 'Unplayed Question 6',
 		time: '12/03/12 2:47pm',
-		question_type: 'image',
+		question_type: 'text',
 		answer_type: 'image',
-		clue_type: 'image',
+		clue_type: 'text',
 		insight_type: 'image',
-		category: 'Android',
-		clue: 'android-icon.png',
-		question: 'test-02.png',
+		category: 'Energy-efficient lighting',
+		clue: 'Start with the common areas where there are gaps for air to leak.',
+		question: 'Which of the following [use images] are likely to be a source for energy loss (and higher utility bills):',
 		answers: [
 			'bg_answer_image_blank.png',
 			'bg_answer_image_blank.png',
@@ -118,40 +116,77 @@ var questions = [
 	{
 		title: 'Unplayed Question 7',
 		time: '12/03/12 2:47pm',
-		question_type: 'image',
-		answer_type: 'image',
-		clue_type: 'image',
-		insight_type: 'image',
-		category: 'Android',
-		clue: 'android-icon.png',
-		question: 'android-icon.png',
+		question_type: 'text',
+		answer_type: 'text',
+		clue_type: 'text',
+		insight_type: 'text',
+		category: 'Energy-efficient lighting',
+		clue: 'Leaks are a likely culprit.',
+		question: 'One room that is more difficult to heat or cool than others could be a sign that:',
 		answers: [
-			'android-icon.png',
-			'android-icon.png',
-			'android-icon.png',
-			'android-icon.png'
+			'The furnace needs replacing.',
+			'The air conditioner needs replacing.',
+			'It\'s been more than a year since the filter was changed.',
+			'The ductwork might be leaky, poorly insulated or otherwise inefficient.'
 			],
 		correct_answer_index: 3,
-		insight: 'android-icon.png'
+		insight: 'Many homeowners choose to hire a professional to inspect and repair ductwork.'
 	},
 	{
 		title: 'Unplayed Question 8',
 		time: '12/03/12 2:47pm',
-		question_type: 'image',
-		answer_type: 'image',
-		clue_type: 'image',
-		insight_type: 'image',
-		category: 'Android',
-		clue: 'android-icon.png',
-		question: 'android-icon.png',
+		question_type: 'text',
+		answer_type: 'text',
+		clue_type: 'text',
+		insight_type: 'text',
+		category: 'Energy-efficient lighting',
+		clue: 'A blow to put you in the know.',
+		question: 'Which test is important for determining a home\'s air tightness?',
 		answers: [
-			'android-icon.png',
-			'android-icon.png',
-			'android-icon.png',
-			'android-icon.png'
+			'Blower door test.',
+			'Candle test.',
+			'Air tightness quiz.',
+			'None of the above.'
 			],
-		correct_answer_index: 3,
-		insight: 'android-icon.png'
+		correct_answer_index: 0,
+		insight: 'Blower door tests are performed by professional energy auditors. Local government sustainability offices or utility companies are resources for finding a company that performs energy assessments.'
+	},
+	{
+		title: 'Unplayed Question 9',
+		time: '12/03/12 2:47pm',
+		question_type: 'text',
+		answer_type: 'text',
+		clue_type: 'text',
+		insight_type: 'text',
+		category: 'Energy-efficient lighting',
+		clue: 'It\'s a fantastic--and powerful--fan.',
+		question: 'A blower door is a special fan that mounts onto an exterior door, pulling the air from the house as part of a test to locate unsealed cracks and openings.',
+		answers: [
+			null,
+			null,
+			'True',
+			'False'
+			],
+		correct_answer_index: 2,
+		insight: 'When hiring someone to perform a blower door test, it’s important to choose an auditor who uses a calibrated blower door.'
+	},
+	{
+		title: 'Unplayed Question 10',
+		time: '12/03/12 2:47pm',
+		question_type: 'text',
+		answer_type: 'text',
+		clue_type: 'text',
+		insight_type: 'text',
+		category: 'Energy-efficient lighting',
+		clue: 'Vinyl shines when it comes to weather-stripping.',
+		question: 'Which weather-stripping material is considered the most durable and weather-resistant:',
+		answers: [
+			'Felt or foam',
+			'Vinyl',
+			'Metal',
+			'All of the above.'
+			],
+		correct_answer_index: 1,
+		insight: 'Choose a material appropriate for where it will be used.  Felt and foam are inexpensive. Vinyl is only slightly more expensive and is more durable and resistant to weather.'
 	}
-*/
 ];
