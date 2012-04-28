@@ -61,10 +61,10 @@ var questions = [
 		time: '12/03/12 1:33pm',
 		question_type: 'text',
 		answer_type: 'text',
-		clue_type: 'text',
+		clue_type: 'image',
 		insight_type: 'text',
 		category: 'Air Leaks',
-		clue: 'Child safety plugs save energy as well as lives.',
+		clue: 'child_safety_plugs.png',
 		question: 'Using child safety plugs with an insulated backing will lower energy costs by preventing air leakage.',
 		answers: [
 			null,
@@ -94,13 +94,13 @@ var questions = [
 		correct_answer_index: 2,
 		insight: 'The U.S. Department of Energy\'s office of Energy Efficiency & Renewable Energy has many programs available to consumers that help save money and energy.'
 	},
-	{
+	/*{
 		title: 'Unplayed Question 6',
 		time: '12/03/12 2:47pm',
 		question_type: 'text',
 		answer_type: 'image',
 		clue_type: 'text',
-		insight_type: 'image',
+		insight_type: 'text',
 		category: 'Air Leaks',
 		clue: 'Start with the common areas where there are gaps for air to leak.',
 		question: 'Which of the following [use images] are likely to be a source for energy loss (and higher utility bills):',
@@ -112,7 +112,7 @@ var questions = [
 			],
 		correct_answer_index: 3,
 		insight: 'android-icon.png'
-	},
+	},*/
 	{
 		title: 'Unplayed Question 7',
 		time: '12/03/12 2:47pm',
