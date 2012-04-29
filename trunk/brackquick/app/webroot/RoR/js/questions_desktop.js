@@ -22,7 +22,7 @@ var questions = [
 */	
 	{
 		title: 'Unplayed Question 1',
-		time: '12/03/12 10:16am',
+		time: 'Two days ago, 9:52am',
 		question_type: 'text',
 		answer_type: 'text',
 		clue_type: 'image',
@@ -42,7 +42,7 @@ var questions = [
 
 	{
 		title: 'Unplayed Question 2',
-		time: '12/03/12 10:16am',
+		time: 'Two days ago, 2:14pm',
 		question_type: 'text',
 		answer_type: 'image',
 		clue_type: 'text',
@@ -62,7 +62,7 @@ var questions = [
 	
 	{
 		title: 'Unplayed Question 3',
-		time: '12/03/12 10:16am',
+		time: 'Two days ago, 4:22pm',
 		question_type: 'image',
 		answer_type: 'text',
 		clue_type: 'text',
@@ -82,7 +82,7 @@ var questions = [
 	
 	{
 		title: 'Unplayed Question 4',
-		time: '12/03/12 10:16am',
+		time: 'Yesterday, 10:11am',
 		question_type: 'text',
 		answer_type: 'text',
 		clue_type: 'text',
@@ -102,7 +102,7 @@ var questions = [
 	
 	{
 		title: 'Unplayed Question 5',
-		time: '12/03/12 10:16am',
+		time: 'Yesterday, 1:05pm',
 		question_type: 'text',
 		answer_type: 'text',
 		clue_type: 'text',
@@ -122,7 +122,7 @@ var questions = [
 	
 	{
 		title: 'Unplayed Question 6',
-		time: '12/03/12 10:16am',
+		time: 'Yesterday, 3:31pm',
 		question_type: 'text',
 		answer_type: 'text',
 		clue_type: 'text',
@@ -142,7 +142,7 @@ var questions = [
 	
 	{
 		title: 'Unplayed Question 7',
-		time: '12/03/12 10:16am',
+		time: 'Today, 9:44am',
 		question_type: 'text',
 		answer_type: 'text',
 		clue_type: 'text',
@@ -162,7 +162,7 @@ var questions = [
 	
 	{
 		title: 'Unplayed Question 8',
-		time: '12/03/12 10:16am',
+		time: 'Today, 12:20pm',
 		question_type: 'text',
 		answer_type: 'text',
 		clue_type: 'text',
@@ -180,10 +180,10 @@ var questions = [
 		insight: 'desktop_insight_8.png'
 	},
 	
-//THIS IS WAY TOO LONG!!
+/*THIS IS WAY TOO LONG!!
 	{
 		title: 'Unplayed Question 9',
-		time: '12/03/12 10:16am',
+		time: 'Today, 5:01pm',
 		question_type: 'text',
 		answer_type: 'text',
 		clue_type: 'text',
@@ -200,10 +200,10 @@ var questions = [
 		correct_answer_index: 2,
 		insight: 'NOT PRESENT'
 	},
-	
+	*/
 	{
-		title: 'Unplayed Question 10',
-		time: '12/03/12 10:16am',
+		title: 'Unplayed Question 9',
+		time: 'Today, 5:48pm',
 		question_type: 'text',
 		answer_type: 'text',
 		clue_type: 'text',
