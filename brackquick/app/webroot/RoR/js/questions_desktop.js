@@ -225,6 +225,6 @@ var questions = [
 			'False'
 			],
 		correct_answer_index: 2,
-		insight: 'Smart meters record energy usage, just as older meters do. The information is sent over secure encrypted networks and NV Energy never shares customer data unless required to do so by law.'
+		insight: 'Smart meters record energy usage, just as older meters do. Information is sent over secure encrypted networks. NV Energy never shares customer data unless required to do so by law.'
 	},
 ];
