@@ -24,6 +24,67 @@ var questions = [
 		title: 'Unplayed Question 1',
 		time: 'Two days ago, 9:52am',
 		question_type: 'text',
+		answer_type: 'image',
+		clue_type: 'text',
+		insight_type: 'text',
+		category: 'How to Read a Bill',
+		clue: 'New additions draw more power.',
+		question: 'What are some reasons electricity bills might suddenly rise? ',
+		answers: [
+			'desktop_answer_2_1.png',
+			'desktop_answer_2_2.png',
+			'desktop_answer_2_3.png',
+			'all_of_the_above.png'
+			],
+		correct_answer_index: 3,
+		insight: 'One way to lower the cost of new appliances is to turn them off when not in use.'
+	},
+	
+	{
+		title: 'Unplayed Question 2',
+		time: 'Two days ago, 1:22pm',
+		question_type: 'image',
+		answer_type: 'text',
+		clue_type: 'text',
+		insight_type: 'text',
+		category: 'How to Read a Bill',
+		clue: 'What you actually pay for energy used.',
+		question: 'desktop_question_3.png',
+		answers: [
+			null,
+			null,
+			'True',
+			'False'
+			],
+		correct_answer_index: 2,
+		insight: 'You control the amount you pay for consumption. The less you use, the less you pay.'
+	},
+	{
+		title: 'Unplayed Question 3',
+		time: 'Two days ago, 3:12pm',
+		question_type: 'text',
+		answer_type: 'text',
+		clue_type: 'text',
+		insight_type: 'text',
+		category: 'How to Read a Bill',
+		clue: 'Take care when you compare.',
+		question: 'Comparing your usage in total kilowatt hours each billing period is the best way to gauge conservation efforts.',
+		answers: [
+			null,
+			null,
+			'True',
+			'False'
+			],
+		correct_answer_index: 3,
+		insight: 'Some billing periods have more days than others, so use the column that shows average kilowatt hours (kWh) per day to compare.'
+	},
+	
+	
+	/////////CUTOFF
+	{
+		title: 'Unplayed Question 1',
+		time: 'Two days ago, 2:14pm',
+		question_type: 'text',
 		answer_type: 'text',
 		clue_type: 'image',
 		insight_type: 'text',
@@ -40,45 +101,9 @@ var questions = [
 		insight: 'Changes in rates and seasonal climate variations can make some comparisons misleading, so observe the general trend and compare your usage to the most recent month and to the same month last year.'
 	},
 
-	{
-		title: 'Unplayed Question 2',
-		time: 'Two days ago, 2:14pm',
-		question_type: 'text',
-		answer_type: 'image',
-		clue_type: 'text',
-		insight_type: 'text',
-		category: 'How to Read a Bill',
-		clue: 'New additions draw more power.',
-		question: 'What are some reasons electricity bills might suddenly rise? ',
-		answers: [
-			'desktop_answer_2_1.png',
-			'desktop_answer_2_2.png',
-			'desktop_answer_2_3.png',
-			'all_of_the_above.png'
-			],
-		correct_answer_index: 3,
-		insight: 'Just as new purchases can increase energy use, a new roommate or a new baby can raise your bill. (Be sure to plug new electronics into power strips and turn strips off when not in use.)'
-	},
 	
-	{
-		title: 'Unplayed Question 3',
-		time: 'Two days ago, 4:22pm',
-		question_type: 'image',
-		answer_type: 'text',
-		clue_type: 'text',
-		insight_type: 'text',
-		category: 'How to Read a Bill',
-		clue: 'What you actually pay for energy used.',
-		question: 'desktop_question_3.png',
-		answers: [
-			null,
-			null,
-			'True',
-			'False'
-			],
-		correct_answer_index: 2,
-		insight: 'A kilowatt is 1000 watts, and a kilowatt hour (kWh) is 1,000 watts of electricity used for one hour. To get a feel for how that translates to your wallet, check the rate per kWh noted on your bill.'
-	},
+	
+	
 	
 	{
 		title: 'Unplayed Question 4',
@@ -100,25 +125,7 @@ var questions = [
 		insight: 'To find out what rebates might be available to you, go to nvenergy.com and enter "rebates" in the search box in the upper right corner.'
 	},
 	
-	{
-		title: 'Unplayed Question 5',
-		time: 'Yesterday, 1:05pm',
-		question_type: 'text',
-		answer_type: 'text',
-		clue_type: 'text',
-		insight_type: 'text',
-		category: 'How to Read a Bill',
-		clue: 'Take care when you compare.!',
-		question: 'Comparing your usage in total kilowatt hours each billing period is the best way to gauge conservation efforts.',
-		answers: [
-			null,
-			null,
-			'True',
-			'False'
-			],
-		correct_answer_index: 3,
-		insight: 'Some billing periods have more days than others, so use the column that shows average kilowatt hours (kWh) per day to compare.'
-	},
+	
 	
 	{
 		title: 'Unplayed Question 6',
