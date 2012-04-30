@@ -80,63 +80,38 @@ var questions = [
 	},
 	
 	
-	/////////CUTOFF
+	
 	{
-		title: 'Unplayed Question 1',
-		time: 'Two days ago, 2:14pm',
+		title: 'Unplayed Question 4',
+		time: 'Yesterday, 10:15am',
 		question_type: 'text',
 		answer_type: 'text',
 		clue_type: 'image',
 		insight_type: 'text',
 		category: 'How to Read a Bill',
 		clue: 'desktop_clue_1.png',
-		question: 'How can you tell from your bill how you are doing on your conservation efforts?',
+		question: 'What part of your bill shows conservation efforts over time?',
 		answers: [
-			'By how much your bill is.',
-			'By whether you used less energy in January than July.',
-			'By studying the bar graph of your use over the past 13 months.',
+			'The total column.',
+			'Comparing meter months.',
+			'The bar graph of your use.',
 			'All of the above.'
 			],
 		correct_answer_index: 2,
-		insight: 'Changes in rates and seasonal climate variations can make some comparisons misleading, so observe the general trend and compare your usage to the most recent month and to the same month last year.'
+		insight: 'Conserving energy takes but it’s worth it. Watch do a little each month for best results.'
 	},
 
 	
-	
-	
-	
 	{
-		title: 'Unplayed Question 4',
-		time: 'Yesterday, 10:11am',
-		question_type: 'text',
-		answer_type: 'text',
-		clue_type: 'text',
-		insight_type: 'text',
-		category: 'How to Read a Bill',
-		clue: 'R is for renewable--and rebates!',
-		question: 'What is the "Renewable Energy Program" charge on my bill?',
-		answers: [
-			'A fee that supports alternative energy projects.',
-			'A fee that helps fund rebate programs.',
-			'A fee approved by the Public Utilities Commission of Nevada.',
-			'All of the above.'
-			],
-		correct_answer_index: 3,
-		insight: 'To find out what rebates might be available to you, go to nvenergy.com and enter "rebates" in the search box in the upper right corner.'
-	},
-	
-	
-	
-	{
-		title: 'Unplayed Question 6',
-		time: 'Yesterday, 3:31pm',
+		title: 'Unplayed Question 5',
+		time: 'Yesterday, 1:31pm',
 		question_type: 'text',
 		answer_type: 'text',
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'How to Read a Bill',
 		clue: 'Calculating savings made easy.',
-		question: 'The see how much reducing usage could lower your bill:',
+		question: 'To see how much reducing usage could lower your bill:',
 		answers: [
 			'Crunch the numbers yourself.',
 			'Call the utility company.',
@@ -146,6 +121,31 @@ var questions = [
 		correct_answer_index: 3,
 		insight: 'All you have to enter is the number of kilowatt hours. Select the correct calculator for Northern Nevada or Southern Nevada at nvenergy.com.'
 	},
+	
+	
+	{
+		title: 'Unplayed Question 6',
+		time: 'Yesterday, 4:11pm',
+		question_type: 'text',
+		answer_type: 'text',
+		clue_type: 'text',
+		insight_type: 'text',
+		category: 'How to Read a Bill',
+		clue: 'R is for renewable--and rebates!',
+		question: 'What is the "Renewable Energy Program" charge on my bill?',
+		answers: [
+			'It supports alternative energy projects.',
+			'It funds rebate programs.',
+			'A fee approved by the Public Utilities Commission.',
+			'All of the above.'
+			],
+		correct_answer_index: 3,
+		insight: 'To find out what rebates might be available to you, go to nvenergy.com and enter "rebates" in the search box in the upper right corner.'
+	},
+	
+	
+	
+	
 	
 	{
 		title: 'Unplayed Question 7',
