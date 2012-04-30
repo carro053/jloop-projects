@@ -98,7 +98,7 @@ var questions = [
 			'All of the above.'
 			],
 		correct_answer_index: 2,
-		insight: 'Conserving energy takes but it\'s worth it. Watch do a little each month for best results.'
+		insight: 'Conserving energy takes effort but it\'s worth it. Do a little each month for best results.'
 	},
 
 	
