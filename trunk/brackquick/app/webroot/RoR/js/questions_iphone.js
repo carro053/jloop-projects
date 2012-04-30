@@ -27,7 +27,7 @@ var questions = [
 		insight_type: 'text',
 		category: 'Air Leaks',
 		clue: 'Only 15 percent of air leakage is through windows and doors.',
-		question: 'Replacing windows are the only way to stop air leaks.',
+		question: 'Replacing windows is the <u>only</u> way to stop air leaks.',
 		answers: [
 			null,
 			null,
@@ -35,7 +35,7 @@ var questions = [
 			'False'
 		],
 		correct_answer_index: 3,
-		insight: 'Caulking small areas around the house, particularly the attic and foundation, will lower your heat loss and improve your bill, oftentimes more than replacing windows.'
+		insight: 'Caulking the attic and foundation will lower your heat loss and cost, oftentimes more than replacing windows.'
 	},
 	{
 		title: 'Unplayed Question 3',
