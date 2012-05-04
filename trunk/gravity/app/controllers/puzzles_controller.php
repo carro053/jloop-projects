@@ -94,7 +94,7 @@ class PuzzlesController extends AppController {
  	
  	function updateAllPuzzles()
  	{
- 		$puzzles = $this->Puzzles->find('all');
+ 		$puzzles = $this->Puzzle->find('all');
  		foreach($puzzles as $puzzle):
  			$puzzle['Puzzle']['hot_rating'] = $this->hot_rating($puzzle['Puzzle']['up_votes'],$puzzle['Puzzle']['down_votes'],strtotime($puzzle['Puzzle']['created']));
  			$puzzle['Puzzle']['confidence_rating'] = $this->confidence_rating($puzzle['Puzzle']['up_votes'],$puzzle['Puzzle']['down_votes']);
