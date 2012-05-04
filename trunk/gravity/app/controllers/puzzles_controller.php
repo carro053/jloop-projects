@@ -42,7 +42,7 @@ class PuzzlesController extends AppController {
 			$sign = 0;
 		}
 		$seconds = $seconds - 1325404800;
-		return round($order + $sign * $seconds / 45000, 7);
+		return round($order + $sign * $seconds / 450000, 7);
  	}
  	
  	function voteForPuzzle($device_id,$puzzle_id,$vote)
