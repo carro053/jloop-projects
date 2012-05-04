@@ -12,37 +12,37 @@ class PuzzlesController extends AppController {
  		parent::beforeFilter();
  	}
  	
- 	function confidence_rating(ups,downs)
+ 	function confidence_rating($ups,$downs)
  	{
- 		if(ups + downs == 0)
+ 		if($ups + $downs == 0)
  			return 0;
- 		if(ups == 0)
- 			return downs;
-		n = ups + downs;
+ 		if($ups == 0)
+ 			return $downs;
+		$n = $ups + $downs;
 		//z = 1.0 #1.0 = 85%, 1.6 = 95%
-		z = 1.281551565545 # 80% confidence
-		p = ups/n;
-    	left = p + 1/(2*n)*z*z;
-    	right = z*sqrt(p*(1-p)/n + z*z/(4*n*n));
-    	under = 1+1/n*z*z;
-    	return (left - right) / under;
+		$z = 1.281551565545 # 80% confidence
+		$p = $ups/$n;
+    	$left = $p + 1/(2*$n)*$z*$z;
+    	$right = $z*sqrt($p*(1-$p)/$n + $z*$z/(4*$n*$n));
+    	$under = 1+1/$n*$z*$z;
+    	return ($left - $right) / $under;
 	}
  	
- 	function hot_rating(ups,downs,seconds)
+ 	function hot_rating($ups,$downs,$seconds)
  	{
-		s = ups - downs;
-		order = log(max(abs(s), 1), 10);
-		if(s > 0)
+		$s = $ups - $downs;
+		$order = log(max(abs(s), 1), 10);
+		if($s > 0)
 		{
-			sign = 1;
-		}elseif(s < 0)
+			$sign = 1;
+		}elseif($s < 0)
 		{
-			sign = -1;
+			$sign = -1;
 		}else{
-			sign = 0;
+			$sign = 0;
 		}
-		seconds = seconds - 1134028003;
-		return round(order + sign * seconds / 45000, 7);
+		$seconds = $seconds - 1134028003;
+		return round($order + $sign * $seconds / 45000, 7);
  	}
  	
  	function voteForPuzzle($device_id,$puzzle_id,$vote)
