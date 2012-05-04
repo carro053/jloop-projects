@@ -324,8 +324,12 @@ class PuzzlesController extends AppController {
  		$return = array();
 		$this->Puzzle->bindModel(array('hasOne'=>array('PuzzleVote'=>array('className'=>'PuzzleVote','foreign_key'=>'puzzle_id','conditions'=>'PuzzleVote.account_id = '.$account_id))));
  		$puzzle = $this->Puzzle->find('first',array('conditions'=>'Puzzle.id = '.$puzzle_id));
- 		pr($puzzle);
- 		exit;
+ 		if($puzzle['PuzzleVote']['id'] > 0)
+ 		{
+ 			$return['vote'] = $puzzle['PuzzleVote']['vote'];
+ 		}else{
+ 			$return['vote'] = 0;
+ 		}
  		$return['least_fuel'] = $puzzle['Puzzle']['least_fuel_used'];
  		$return['fastest_time'] = $puzzle['Puzzle']['fastest_solution'];
  		$fastest_time = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'PuzzleSolution.time ASC'));
