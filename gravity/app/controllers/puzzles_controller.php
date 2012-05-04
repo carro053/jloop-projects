@@ -86,7 +86,7 @@ class PuzzlesController extends AppController {
  		$this->PuzzleVote->save($previous_vote);
  		
  		$puzzle['Puzzle']['hot_rating'] = $this->hot_rating($puzzle['Puzzle']['up_votes'],$puzzle['Puzzle']['down_votes'],strtotime($puzzle['Puzzle']['created']));
- 		$puzzle['Puzzle']['confidence_rating'] = $this->confidence_rating($puzzle['Puzzle']['up_votes'],$puzzle['Puzzle']['down_votes']));
+ 		$puzzle['Puzzle']['confidence_rating'] = $this->confidence_rating($puzzle['Puzzle']['up_votes'],$puzzle['Puzzle']['down_votes']);
  		$this->Puzzle->save($puzzle);
  		echo 1;
  		exit;
