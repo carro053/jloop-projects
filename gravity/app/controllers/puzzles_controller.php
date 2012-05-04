@@ -3,14 +3,95 @@
 class PuzzlesController extends AppController {
 
 
-	var $uses = array('Puzzle','Account','PuzzlePlanet','PuzzleAstronaut','PuzzleSolution','PuzzleSolutionWayPoint','PuzzleItem');
+	var $uses = array('Puzzle','Account','PuzzlePlanet','PuzzleAstronaut','PuzzleSolution','PuzzleSolutionWayPoint','PuzzleItem','PuzzleVote');
 	var $components = array('Auth');
 	
 	function beforeFilter()
  	{
- 		$this->Auth->allow('savePuzzle','getPuzzles','getPuzzle','getPuzzleWithSolution','saveSolution','saveImage','getPuzzleTimes');
+ 		$this->Auth->allow('savePuzzle','getPuzzles','getPuzzle','getPuzzleWithSolution','saveSolution','saveImage','getPuzzleTimes','voteForPuzzle');
  		parent::beforeFilter();
  	}
+ 	
+ 	function confidence_rating(ups,downs)
+ 	{
+ 		if(ups + downs == 0)
+ 			return 0;
+ 		if(ups == 0)
+ 			return downs;
+		n = ups + downs;
+		//z = 1.0 #1.0 = 85%, 1.6 = 95%
+		z = 1.281551565545 # 80% confidence
+		p = ups/n;
+    	left = p + 1/(2*n)*z*z;
+    	right = z*sqrt(p*(1-p)/n + z*z/(4*n*n));
+    	under = 1+1/n*z*z;
+    	return (left - right) / under;
+	}
+ 	
+ 	function hot_rating(ups,downs,seconds)
+ 	{
+		s = ups - downs;
+		order = log(max(abs(s), 1), 10);
+		if(s > 0)
+		{
+			sign = 1;
+		}elseif(s < 0)
+		{
+			sign = -1;
+		}else{
+			sign = 0;
+		}
+		seconds = seconds - 1134028003;
+		return round(order + sign * seconds / 45000, 7);
+ 	}
+ 	
+ 	function voteForPuzzle($device_id,$puzzle_id,$vote)
+ 	{
+ 	
+ 		$account = $this->Account->find('first',array('conditions'=>'Account.device_id = "'.$device_id.'"'));
+ 		if(isset($account['Account']['id']))
+ 		{
+ 			$account_id = $account['Account']['id'];
+ 			$previous_vote = $this->PuzzleVote->find('first',array('conditions'=>'PuzzleVote.account_id = '.$account_id.' AND PuzzleVote.puzzle_id = '.$puzzle_id));
+ 		}else{
+ 			$account['Account']['id'] = null;
+ 			$account['Account']['device_id'] = $device_id;
+ 			$this->Account->save($account);
+ 			$account_id = $this->Account->id;
+ 		}
+ 		
+ 		$puzzle = $this->Puzzle->findById($puzzle_id);
+ 		
+ 		if(!isset($previous_vote['PuzzleVote']['id']))
+ 		{
+ 			$previous_vote = array('PuzzleVote'=>array('id'=>null,'puzzle_id'=>$puzzle_id,'account_id'=>$account_id,'vote'=>$vote));
+ 			if($vote == 1)
+ 			{
+ 				$puzzle['Puzzle']['up_votes']++;
+ 			}else{
+ 				$puzzle['Puzzle']['down_votes']--;
+ 			}
+ 		}else{
+ 			if($previous_vote['PuzzleVote']['vote'] == 1 && $vote == -1)
+ 			{
+ 				$puzzle['Puzzle']['up_votes']--;
+ 				$puzzle['Puzzle']['down_votes']++;
+ 			}elseif($previous_vote['PuzzleVote']['vote'] == -1 && $vote == 1)
+ 			{
+ 				$puzzle['Puzzle']['up_votes']++;
+ 				$puzzle['Puzzle']['down_votes']--;
+ 			}
+ 			$previous_vote['PuzzleVote']['vote'] = $vote;
+ 		}
+ 		$this->PuzzleVote->save($previous_vote);
+ 		
+ 		$puzzle['Puzzle']['hot_rating'] = $this->hot_rating($puzzle['Puzzle']['up_votes'],$puzzle['Puzzle']['down_votes'],strtotime($puzzle['Puzzle']['created']));
+ 		$puzzle['Puzzle']['confidence_rating'] = $this->confidence_rating($puzzle['Puzzle']['up_votes'],$puzzle['Puzzle']['down_votes']));
+ 		$this->Puzzle->save($puzzle);
+ 		echo 1;
+ 		exit;
+ 	}
+ 	
  	function saveImage($puzzle_id,$hd=0)
  	{
  		echo 'YES';
