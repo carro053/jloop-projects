@@ -43,7 +43,7 @@ class PuzzlesController extends AppController {
 		}else{
 			$sign = 0;
 		}
-		$seconds = $seconds - 1325404800;
+		$seconds = $seconds - 1325404800; //time since Jan 1st 2012 changing this just shifts the rating linearaly.
 		return round($order + $sign * $seconds / $time_weight, 7);
  	}
  	
