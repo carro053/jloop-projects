@@ -19,8 +19,8 @@ class PuzzlesController extends AppController {
  		if($ups == 0)
  			return $downs;
 		$n = $ups + $downs;
-		//z = 1.0 #1.0 = 85%, 1.6 = 95%
-		$z = 1.281551565545 # 80% confidence
+		//z = 1.0; #1.0 = 85%, 1.6 = 95%
+		$z = 1.281551565545; # 80% confidence
 		$p = $ups/$n;
     	$left = $p + 1/(2*$n)*$z*$z;
     	$right = $z*sqrt($p*(1-$p)/$n + $z*$z/(4*$n*$n));
