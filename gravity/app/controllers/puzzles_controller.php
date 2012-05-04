@@ -95,7 +95,7 @@ class PuzzlesController extends AppController {
  	function updateAllPuzzles()
  	{
  		echo date('Y-m-d H:i:s',1134028003);
- 		echo time();
+ 		echo strtotime('January 1st 2012');
  		exit;
  		$puzzles = $this->Puzzle->find('all');
  		foreach($puzzles as $puzzle):
