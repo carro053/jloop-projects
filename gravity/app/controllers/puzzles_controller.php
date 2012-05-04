@@ -41,7 +41,7 @@ class PuzzlesController extends AppController {
 		}else{
 			$sign = 0;
 		}
-		$seconds = $seconds - 1134028003;
+		$seconds = $seconds - 1325404800;
 		return round($order + $sign * $seconds / 45000, 7);
  	}
  	
@@ -94,9 +94,6 @@ class PuzzlesController extends AppController {
  	
  	function updateAllPuzzles()
  	{
- 		echo date('Y-m-d H:i:s',1134028003);
- 		echo strtotime('January 1st 2012');
- 		exit;
  		$puzzles = $this->Puzzle->find('all');
  		foreach($puzzles as $puzzle):
  			$puzzle['Puzzle']['hot_rating'] = $this->hot_rating($puzzle['Puzzle']['up_votes'],$puzzle['Puzzle']['down_votes'],strtotime($puzzle['Puzzle']['created']));
