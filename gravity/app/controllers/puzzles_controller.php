@@ -94,6 +94,8 @@ class PuzzlesController extends AppController {
  	
  	function updateAllPuzzles()
  	{
+ 		echo date('Y-m-d H:i:s',1134028003);
+ 		exit;
  		$puzzles = $this->Puzzle->find('all');
  		foreach($puzzles as $puzzle):
  			$puzzle['Puzzle']['hot_rating'] = $this->hot_rating($puzzle['Puzzle']['up_votes'],$puzzle['Puzzle']['down_votes'],strtotime($puzzle['Puzzle']['created']));
