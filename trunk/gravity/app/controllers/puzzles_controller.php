@@ -69,7 +69,7 @@ class PuzzlesController extends AppController {
  			{
  				$puzzle['Puzzle']['up_votes']++;
  			}else{
- 				$puzzle['Puzzle']['down_votes']--;
+ 				$puzzle['Puzzle']['down_votes']++;
  			}
  		}else{
  			if($previous_vote['PuzzleVote']['vote'] == 1 && $vote == -1)
