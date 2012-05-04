@@ -31,7 +31,7 @@ class PuzzlesController extends AppController {
  	function hot_rating($ups,$downs,$seconds)
  	{
 		$s = $ups - $downs;
-		$order = log(max(abs(s), 1), 10);
+		$order = log(max(abs($s), 1), 10);
 		if($s > 0)
 		{
 			$sign = 1;
