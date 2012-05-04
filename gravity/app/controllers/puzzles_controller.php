@@ -31,7 +31,9 @@ class PuzzlesController extends AppController {
  	function hot_rating($ups,$downs,$seconds)
  	{
 		$s = $ups - $downs;
-		$order = log(max(abs($s), 1), 10);
+		$degree = 3; // first X votes is worth the same as the next X*X etc.
+		$time_weight = 604800; //one week is worth another degree of votes to the degree
+		$order = log(max(abs($s), 1), $degree);
 		if($s > 0)
 		{
 			$sign = 1;
@@ -42,7 +44,7 @@ class PuzzlesController extends AppController {
 			$sign = 0;
 		}
 		$seconds = $seconds - 1325404800;
-		return round($order + $sign * $seconds / 450000, 7);
+		return round($order + $sign * $seconds / $time_weight, 7);
  	}
  	
  	function voteForPuzzle($device_id,$puzzle_id,$vote)
@@ -242,7 +244,7 @@ class PuzzlesController extends AppController {
  	
  	function getPuzzles()
  	{
- 		$puzzles = $this->Puzzle->find('all',array('order'=>'Puzzle.id ASC'));
+ 		$puzzles = $this->Puzzle->find('all',array('order'=>'Puzzle.hot_rating DESC'));
  		$return = array();
  		foreach($puzzles as $puzzle):
  			$return[] = $puzzle['Puzzle'];
