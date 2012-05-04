@@ -8,7 +8,7 @@ class PuzzlesController extends AppController {
 	
 	function beforeFilter()
  	{
- 		$this->Auth->allow('savePuzzle','getPuzzles','getPuzzle','getPuzzleWithSolution','saveSolution','saveImage','getPuzzleTimes','voteForPuzzle');
+ 		$this->Auth->allow('savePuzzle','getPuzzles','getPuzzle','getPuzzleWithSolution','saveSolution','saveImage','getPuzzleTimes','voteForPuzzle','updateAllPuzzles');
  		parent::beforeFilter();
  	}
  	
@@ -100,6 +100,7 @@ class PuzzlesController extends AppController {
  			$puzzle['Puzzle']['confidence_rating'] = $this->confidence_rating($puzzle['Puzzle']['up_votes'],$puzzle['Puzzle']['down_votes']);
  			$this->Puzzle->save($puzzle);
  		endforeach;
+ 		exit;
  	}
  	
  	function saveImage($puzzle_id,$hd=0)
