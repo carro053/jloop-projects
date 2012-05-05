@@ -16,7 +16,8 @@ var questions = [
 			'Swamp cooler'
 		],
 		correct_answer_index: 1,
-		insight: 'Door-sweeps can be found at any home improvement store and keep cool air in and warm air out. They easily screw into the bottom of any door.'
+		insight: 'Door-sweeps can be found at any home improvement store and keep cool air in and warm air out. They easily screw into the bottom of any door.',
+		prize: 'prize_13.png'
 	},
 	//////NEVADA
 	{
