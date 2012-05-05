@@ -67,16 +67,16 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'How to Read a Bill',
-		clue: 'Take care when you compare.',
-		question: 'Comparing your usage in total kilowatt hours each billing period is the best way to gauge conservation efforts.',
+		clue: 'Level payment plans help even out monthly costs.',
+		question: 'Most of us have higher bills in summer and winter.',
 		answers: [
 			null,
 			null,
 			'True',
 			'False'
 			],
-		correct_answer_index: 3,
-		insight: 'Some billing periods have more days than others, so use the column that shows average kilowatt hours (kWh) per day to compare.'
+		correct_answer_index: 2,
+		insight: 'NV Energy\'s Equal Payment Plan lets you even out your costs over the year.'
 	},
 	
 	
@@ -119,7 +119,7 @@ var questions = [
 			'Use NV Energy\'s online bill calculator.'
 			],
 		correct_answer_index: 3,
-		insight: 'All you have to enter is the number of kilowatt hours. Select the correct calculator for Northern Nevada or Southern Nevada at nvenergy.com.'
+		insight: 'Select the correct calculator for Northern Nevada or Southern Nevada at nvenergy.com.'
 	},
 	
 	
@@ -131,16 +131,16 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'How to Read a Bill',
-		clue: 'R is for renewable--and rebates!',
-		question: 'What is the "Renewable Energy Program" charge on my bill?',
+		clue: 'The search word is \'rebate\'.',
+		question: 'How do I participate in rebate programs that are partly paid from my bill?',
 		answers: [
-			'It supports alternative energy projects.',
-			'It funds rebate programs.',
-			'A fee approved by the Public Utilities Commission.',
-			'All of the above.'
+			'Ask a retailer.',
+			'Insert "Rebate" in the search box on NV Energy.com',
+			'Write the Public Utilities Commission.',
+			'None of the above.'
 			],
-		correct_answer_index: 3,
-		insight: 'To find out what rebates might be available to you, go to nvenergy.com and enter "rebates" in the search box in the upper right corner.'
+		correct_answer_index: 1,
+		insight: 'The \'Renewable Energy Program\' charge on your bill funds alternative energy and rebate programs.'
 	},
 	
 	
@@ -152,19 +152,19 @@ var questions = [
 		time: 'Today, 9:44am',
 		question_type: 'text',
 		answer_type: 'text',
-		clue_type: 'text',
+		clue_type: 'image',
 		insight_type: 'text',
 		category: 'How to Read a Bill',
-		clue: 'Get smart.',
-		question: 'What\'s a smart meter?',
+		clue: 'image',
+		question: 'The billing usage tells you how much energy you used in a month.',
 		answers: [
-			'A digital meter that records energy usage.',
-			'A device that transmits and receives data.',
-			'Technology that can reduce operating costs and help lower customer bills.',
-			'All of the above.'
+			null,
+			null,
+			'True',
+			'False'
 			],
-		correct_answer_index: 3,
-		insight: 'Having a smart meter and monitoring the data online gives you information that can help you understand how to save.'
+		correct_answer_index: 2,
+		insight: 'The billing usage is the number you need to use the on line calculator at NV Energy.com'
 	},
 	
 	{
@@ -175,8 +175,8 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'image',
 		category: 'How to Read a Bill',
-		clue: 'Compare meter readings',
-		question: 'The simplest way to see if your usage is up or down month over month is to compare the meter readings listed on your bill.',
+		clue: 'The \'meter readings\' section on your bill helps you manage monthly usage and cost',
+		question: 'Comparing the meter readings listed on your bill is the simplest way to see how you\'re doing month over month.',
 		answers: [
 			null,
 			null,
@@ -187,7 +187,7 @@ var questions = [
 		insight: 'desktop_insight_8.png'
 	},
 	
-/*THIS IS WAY TOO LONG!!
+
 	{
 		title: 'Unplayed Question 9',
 		time: 'Today, 5:01pm',
@@ -196,35 +196,17 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'How to Read a Bill',
-		clue: 'Smart meter, smarter customer. ',
-		question: 'If you sign up for email alerts, NV Energy will notify you when your energy use or dollar amount for the billing period goes over a threshold you choose. Insight: If you have a smart meter installed and sign up to monitor your account online at nvenergy.com, you can check your energy use and projected bill—and even see how your consumption varies by day of the week and time of day.<br />Source: nvenergy.com',
+		clue: 'Some billing periods have more days than others',
+		question: 'I can accurately compare my month over month usage.',
+		
 		answers: [
 			null,
 			null,
 			'True',
 			'False'
 			],
-		correct_answer_index: 2,
-		insight: 'NOT PRESENT'
+		correct_answer_index: 3,
+		insight: 'Take care when you compare. Use the column that shows average kilowatt hours (kWh) per day to compare.',
 	},
-	*/
-	{
-		title: 'Unplayed Question 9',
-		time: 'Today, 5:48pm',
-		question_type: 'text',
-		answer_type: 'text',
-		clue_type: 'text',
-		insight_type: 'text',
-		category: 'How to Read a Bill',
-		clue: 'Big Brother is not watching.',
-		question: 'Smart meters aren\'t surveillance devices.',
-		answers: [
-			null,
-			null,
-			'True',
-			'False'
-			],
-		correct_answer_index: 2,
-		insight: 'Smart meters record energy usage, and information is sent over secure encrypted networks. NV Energy never shares customer data unless required to do so by law.'
-	},
+
 ];

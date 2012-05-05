@@ -18,8 +18,28 @@ var questions = [
 		correct_answer_index: 1,
 		insight: 'Door-sweeps can be found at any home improvement store and keep cool air in and warm air out. They easily screw into the bottom of any door.'
 	},
+	//////NEVADA
 	{
-		title: 'Unplayed Question 2',
+		title: 'Unplayed Question 2', 
+		time: '12/03/12 11:42am',
+		question_type: 'text',
+		answer_type: 'text',
+		clue_type: 'text',
+		insight_type: 'text',
+		category: 'Air Leaks',
+		clue: 'Two pines intertwined.',
+		question: 'What is the Nevada state tree? ',
+		answers: [
+			'Blackjack Oak',
+			'Single-Leaf Pi&ntilde;on',
+			'Bristlecone Pine',
+			'2 & 3'
+		],
+		correct_answer_index: 3,
+		insight: 'The Bristlecone Pine, which shares the state-tree designation, is considered the oldest living thing on earth, with some estimated at more than 4,000 years old.'
+	},
+	{
+		title: 'Unplayed Question 3',
 		time: '12/03/12 11:42am',
 		question_type: 'text',
 		answer_type: 'text',
@@ -35,10 +55,10 @@ var questions = [
 			'False'
 		],
 		correct_answer_index: 3,
-		insight: 'Caulking the attic and foundation will lower your heat loss and cost, oftentimes more than replacing windows.'
+		insight: 'Caulking the attic and foundation will lower your  cost, oftentimes more than replacing windows.'
 	},
 	{
-		title: 'Unplayed Question 3',
+		title: 'Unplayed Question 4',
 		time: '12/03/12 1:33pm',
 		question_type: 'text',
 		answer_type: 'text',
@@ -57,14 +77,14 @@ var questions = [
 		insight: 'Plugging small air leaks can add up to big savings in utility bills. '
 	},
 	{
-		title: 'Unplayed Question 4',
+		title: 'Unplayed Question 5',
 		time: '12/03/12 2:47pm',
 		question_type: 'text',
 		answer_type: 'image',
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'Air Leaks',
-		clue: 'Start with the common areas where there are gaps for air to leak.',
+		clue: 'Have you noticed these common areas that leak air?',
 		question: 'Which of the following are likely to be a source for energy loss (and higher utility bills):',
 		answers: [
 			'cable_tv_line.png',
@@ -76,25 +96,6 @@ var questions = [
 		insight: 'Plugging small air leaks can add up to big savings in utility bills. '
 	},
 	{
-		title: 'Unplayed Question 5',
-		time: '12/03/12 2:47pm',
-		question_type: 'text',
-		answer_type: 'text',
-		clue_type: 'text',
-		insight_type: 'text',
-		category: 'Air Leaks',
-		clue: 'A blow to put you in the know.',
-		question: 'Which test is important for determining a home\'s air tightness?',
-		answers: [
-			'Blower door test.',
-			'Candle test.',
-			'Air tightness quiz.',
-			'None of the above.'
-			],
-		correct_answer_index: 0,
-		insight: 'Tests performed by professional energy auditors save money in the long run. Check the NV Energy website for references.'
-	},
-	{
 		title: 'Unplayed Question 6',
 		time: '12/03/12 2:47pm',
 		question_type: 'text',
@@ -102,8 +103,27 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'Air Leaks',
-		clue: 'WAP is the federal government\'s Weatherization Assistance Program',
-		question: 'Qualified low-income families can save more than $400 per year by participating in the Weatherization Assistance Program.',
+		clue: 'Start with the seal.',
+		question: 'The correct order when sealing and insulating is: ',
+		answers: [
+			'Seal before insulating.',
+			'Insulate before sealing.',
+			'Insulating eliminates the need for sealing.',
+			'None of the above.'
+			],
+		correct_answer_index: 0,
+		insight: 'It\'s important to seal leaks first. Insulating materials don\'t block leaks.'	
+	},
+	{
+		title: 'Unplayed Question 7',
+		time: '12/03/12 2:47pm',
+		question_type: 'text',
+		answer_type: 'text',
+		clue_type: 'text',
+		insight_type: 'text',
+		category: 'Air Leaks',
+		clue: 'Stick to the task.',
+		question: 'Using an incense stick or smoke pen is an inexpensive way to check for air leaks. ',
 		answers: [
 			null,
 			null,
@@ -111,10 +131,12 @@ var questions = [
 			'False'
 			],
 		correct_answer_index: 2,
-		insight: 'The U.S. Department of Energy has many programs available to consumers that help save money and energy.'
+		insight: 'If the smoke moves horizontally instead of upward, you have an air leak that might need to be sealed.'
 	},
+	
+	
 	{
-		title: 'Unplayed Question 7',
+		title: 'Unplayed Question 8',
 		time: '12/03/12 2:47pm',
 		question_type: 'text',
 		answer_type: 'text',
@@ -132,8 +154,29 @@ var questions = [
 		correct_answer_index: 1,
 		insight: 'Felt and foam are inexpensive but vinyl is more durable and resistant to weather.'
 	},
+	
 	{
-		title: 'Unplayed Question 8',
+		title: 'Unplayed Question 9',
+		time: '12/03/12 2:47pm',
+		question_type: 'text',
+		answer_type: 'text',
+		clue_type: 'text',
+		insight_type: 'text',
+		category: 'Air Leaks',
+		clue: 'If it moves, use weatherstripping.',
+		question: 'Where is it best to use weatherstripping instead of caulk?',
+		answers: [
+			'Around baseboards.',
+			'Around windows and doors.',
+			'Around recessed lights.',
+			'Around outlets and switches.'
+			],		correct_answer_index: 1,
+		insight: 'Weatherstripping is best around moveable joints. (Be sure to apply it in a way that allows the window or door to operate freely.).'
+	},
+	
+	//////PRIZE
+	{
+		title: 'Unplayed Question 10',
 		time: '12/03/12 2:47pm',
 		question_type: 'text',
 		answer_type: 'text',
@@ -150,54 +193,10 @@ var questions = [
 			],
 		correct_answer_index: 3,
 		insight: 'Many homeowners choose to hire a professional to inspect and repair ductwork.'
-	},
-	
-	/*
-	{
-		title: 'Unplayed Question 9',
-		time: '12/03/12 2:47pm',
-		question_type: 'text',
-		answer_type: 'text',
-		clue_type: 'text',
-		insight_type: 'text',
-		category: 'Air Leaks',
-		clue: 'It\'s a fantastic--and powerful--fan.',
-		question: 'A blower door is a special fan that mounts onto an exterior door, pulling the air from the house as part of a test to locate unsealed cracks and openings.',
-		answers: [
-			null,
-			null,
-			'True',
-			'False'
-			],
-		correct_answer_index: 2,
-		insight: 'When hiring someone to perform a blower door test, it\'s important to choose an auditor who uses a calibrated blower door.<br />Source: www.energysavers.gov'
-	},
-*/
-	
-	
-	{
-		title: 'Unplayed Question 9',
-		time: '12/03/12 12:02pm',
-		question_type: 'text',
-		answer_type: 'text',
-		clue_type: 'text',
-		insight_type: 'text',
-		category: 'Air Leaks',
-		clue: 'If there\'s a hole, caulking will save energy and cost.',
-		question: 'The top choices for caulking and weather stripping inside the home are:',
-		answers: [
-			'The attic access door.',
-			'Electrical outlets and switches.',
-			'A hole that penetrates to the outside.',
-			'All of the above.'
-			],
-		correct_answer_index: 3,
-		insight: 'Exterior caulking keeps the rain out but doesn\'t improve energy savings.'
 	}
 	
+
 	
-	
-	
-	
+
 		
 ];
