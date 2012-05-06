@@ -24,7 +24,7 @@ var questions = [
 		title: 'Unplayed Question 2', 
 		time: '12/03/12 11:42am',
 		question_type: 'text',
-		answer_type: 'text',
+		answer_type: 'image',
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'Air Leaks',
