@@ -31,10 +31,10 @@ var questions = [
 		clue: 'Two pines intertwined.',
 		question: 'What is the Nevada state tree? ',
 		answers: [
-			'Blackjack Oak',
-			'Single-Leaf Pi&ntilde;on',
-			'Bristlecone Pine',
-			'2 & 3'
+			'tree-01.png',
+			'tree-02.png',
+			'tree-03.png',
+			'tree-04.png'
 		],
 		correct_answer_index: 3,
 		insight: 'The Bristlecone Pine, which shares the state-tree designation, is considered the oldest living thing on earth, with some estimated at more than 4,000 years old.'
