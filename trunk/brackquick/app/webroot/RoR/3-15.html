@@ -4,7 +4,8 @@
 		<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 		<script type="text/javascript">
 			var notification_tone;
-			
+			var triggerReady = false;
+			var webRemoved = false;
 			$(function() {
 				window.resizeTo(1280,800);
 				
@@ -15,8 +16,20 @@
 			});
 			function triggerNotification()
 			{
-				$('body').attr('onclick','');
-				setTimeout('showNotification()',3000);
+				if(webRemoved)
+				{
+					if(triggerReady)
+					{
+						$('body').attr('onclick','');
+						setTimeout('showNotification()',3000);
+					}else{
+						$('#google').html('<img src="img/google.png" />');
+						$('#google').fadeIn(50);
+						triggerReady = true;
+					}
+				}else{
+					webRemoved = true;
+				}
 			}
 			function showNotification()
 			{
