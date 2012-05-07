@@ -155,7 +155,7 @@ var questions = [
 		clue_type: 'image',
 		insight_type: 'text',
 		category: 'How to Read a Bill',
-		clue: 'image',
+		clue: 'clue_billing_2.png',
 		question: 'The billing usage tells you how much energy you used in a month.',
 		answers: [
 			null,
