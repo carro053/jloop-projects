@@ -450,7 +450,12 @@
 					};
 					$('#timelineDrawer').animate(properties, options);
 				});
-				
+				var properties = {top: '364px'};
+				var options = {
+					duration: 0,
+					easing: 'swing'
+				};
+				$("#timelineDrawer").animate(properties, options);
 				$("#timelineDrawer").draggable({containment: 'parent', axis: 'y'});
 				$('#timelineDrawer').mouseup(function() {
 					if(parseInt($(this).css('top')) < 182) {
