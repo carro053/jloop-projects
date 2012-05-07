@@ -37,8 +37,7 @@ var questions = [
 			'all_of_the_above.png'
 			],
 		correct_answer_index: 3,
-		insight: 'One way to lower the cost of new appliances is to turn them off when not in use.',
-		prize: 'giftcard-36.png'
+		insight: 'One way to lower the cost of new appliances is to turn them off when not in use.'
 	},
 	
 	{
