@@ -164,7 +164,7 @@ var questions = [
 			'False'
 			],
 		correct_answer_index: 2,
-		insight: 'The billing usage is the number you need to use the on line calculator at NV Energy.com'
+		insight: 'The billing usage is the number you need to use the online calculator at nvenergy.com'
 	},
 	//////NEVADA
 	{
