@@ -6,7 +6,9 @@
 		<script type="text/javascript" src="js/questions_desktop.js"></script>
 		<script type="text/javascript">
 			//alert( parseInt(location.hash.substr(1))  );
-			
+			var prize = false;
+			var drawer_top;
+			var drawer_bottom;
 			var unplayedQuestionCount;
 			
 			var leaderboardWasDragged = false;
@@ -147,7 +149,7 @@
 			}
 			
 			function clueTimer() {
-				timeout = setTimeout(function() {clueAudio.play();}, 27500);
+				timeout = setTimeout(function() {clueAudio.play();}, 17500);
 				var properties = {marginLeft: '74px'};
 				var options = {
 					duration: 20000,
@@ -316,7 +318,16 @@
 							$('#drawer').css('background-image', 'url(img/bg_leaderboard_drawer_incorrect.png)');
 						}
 						break;
-				}		
+				}
+				if(answerClicked == question.correct_answer_index && question.prize != false && question.prize != null)
+				{
+					drawer_top = '120';
+					drawer_bottom = '468';
+					$('#drawer').css('background-image', 'url(img/prizes/'+question.prize+')');
+				}else{
+					drawer_top = '408';
+					drawer_bottom = '468';
+				}
 			}
 			
 			function animateAnswerImage() {
@@ -335,19 +346,19 @@
 				showAnswerImage = false;
 				$('#answerAnimation').show();
 				
-				var properties = {top: '408px'};
+				var properties = {top: drawer_top+'px'};
 				var options = {
 					duration: 1000,
 					easing: 'swing',
 					complete: function() {
-						setTimeout(function() {
-							if(!leaderboardWasDragged) {
+						if(!leaderboardWasDragged && drawer_top != '120') {
+							setTimeout(function() {
 								$('#drawer').animate(
-									{top: '468px'},
+									{top: drawer_bottom+'px'},
 									{duration: 1000, easing: 'swing'}
 								);
-							}
-						}, 5000);
+							}, 5000);
+						}
 					}
 				};
 				
