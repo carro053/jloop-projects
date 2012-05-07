@@ -52,15 +52,20 @@
 		<div id="mailPiece">
 			<img src="img/mail_piece.png" />
 		</div>
+		<div id="oPower">
+			<img src="img/mail_piece.png" />
+		</div>
 	</body>
 	
 	<script type="text/javascript">
 		function titleFade() {
-			$('#title').fadeOut(1000, function() { $('#mailPiece').attr('onclick','fadeToBlack();'); });
+			$('#title').fadeOut(1000, function() { $('#mailPiece').attr('onclick','fadeToPower();'); $('#title').html(''); });
+			
 		}
-		
+		function fadeToPower() {
+			$('#title').fadeIn(1000, function() { $('#mailPiece').hide(); $('#title').fadeOut(1000, function() { $('#oPower').attr('onclick','fadeToBlack();'); }); } );
+		}
 		function fadeToBlack() {
-			$('#title').html('');
 			$('#title').fadeIn(1000);
 		}
 	</script>
