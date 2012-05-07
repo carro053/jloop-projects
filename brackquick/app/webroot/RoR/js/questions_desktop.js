@@ -217,7 +217,7 @@ var questions = [
 		insight_type: 'text',
 		category: 'How to Read a Bill',
 		clue: 'Some billing periods have more days than others',
-		question: 'I can accurately compare my month over month usage.',
+		question: 'Comparing total amounts from this month\'s bill and last month\'s bill is <u>always</u> an accurate way to compare my energy usage.',
 		
 		answers: [
 			null,
