@@ -47,7 +47,7 @@ var questions = [
 		insight_type: 'text',
 		category: 'Air Leaks',
 		clue: 'child_safety_plugs.png',
-		question: 'Using child safety plugs with an insulated backing will lower energy costs by preventing air leakage.',
+		question: 'Using child safety plugs with an insulated backing can lower energy costs by preventing air leakage.',
 		answers: [
 			null,
 			null,
