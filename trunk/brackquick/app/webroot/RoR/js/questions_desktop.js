@@ -196,7 +196,7 @@ var questions = [
 		insight_type: 'image',
 		category: 'How to Read a Bill',
 		clue: 'The \'meter readings\' section on your bill helps you manage monthly usage and cost',
-		question: 'Comparing the meter readings listed on your bill is the simplest way to see how you\'re doing month over month.',
+		question: 'Comparing the meter readings listed on your bill is a simple way to see how you\'re doing month over month.',
 		answers: [
 			null,
 			null,
