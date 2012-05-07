@@ -167,9 +167,29 @@ var questions = [
 		correct_answer_index: 2,
 		insight: 'The billing usage is the number you need to use the on line calculator at NV Energy.com'
 	},
+	//////NEVADA
+	{
+		title: 'Unplayed Question 8', 
+		time: 'Today 11:42am',
+		question_type: 'text',
+		answer_type: 'image',
+		clue_type: 'text',
+		insight_type: 'text',
+		category: 'Air Leaks',
+		clue: 'Two pines intertwined.',
+		question: 'What is the Nevada state tree? ',
+		answers: [
+			'tree-01.png',
+			'tree-02.png',
+			'tree-03.png',
+			'tree-04.png'
+		],
+		correct_answer_index: 3,
+		insight: 'The Bristlecone Pine, which shares the state-tree designation, is considered the oldest living thing on earth, with some estimated at more than 4,000 years old.'
+	},
 	
 	{
-		title: 'Unplayed Question 8',
+		title: 'Unplayed Question 9',
 		time: 'Today, 12:20pm',
 		question_type: 'text',
 		answer_type: 'text',
@@ -190,7 +210,7 @@ var questions = [
 	
 
 	{
-		title: 'Unplayed Question 9',
+		title: 'Unplayed Question 10',
 		time: 'Today, 5:01pm',
 		question_type: 'text',
 		answer_type: 'text',
