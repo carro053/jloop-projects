@@ -175,7 +175,7 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'Air Leaks',
-		clue: 'Two pines intertwined.\n\nBONUS QUESTION!',
+		clue: 'BONUS QUESTION!<br/><br/>Two pines intertwined.',
 		question: 'What is the Nevada state tree? ',
 		answers: [
 			'tree-01.png',
