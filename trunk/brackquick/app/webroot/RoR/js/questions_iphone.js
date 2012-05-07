@@ -19,26 +19,7 @@ var questions = [
 		insight: 'Door-sweeps can be found at any home improvement store and keep cool air in and warm air out. They easily screw into the bottom of any door.',
 		prize: 'prize_13.png'
 	},
-	//////NEVADA
-	{
-		title: 'Unplayed Question 2', 
-		time: '12/03/12 11:42am',
-		question_type: 'text',
-		answer_type: 'image',
-		clue_type: 'text',
-		insight_type: 'text',
-		category: 'Air Leaks',
-		clue: 'Two pines intertwined.',
-		question: 'What is the Nevada state tree? ',
-		answers: [
-			'tree-01.png',
-			'tree-02.png',
-			'tree-03.png',
-			'tree-04.png'
-		],
-		correct_answer_index: 3,
-		insight: 'The Bristlecone Pine, which shares the state-tree designation, is considered the oldest living thing on earth, with some estimated at more than 4,000 years old.'
-	},
+	
 	{
 		title: 'Unplayed Question 3',
 		time: '12/03/12 11:42am',
