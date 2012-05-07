@@ -16,12 +16,11 @@ var questions = [
 			'Swamp cooler'
 		],
 		correct_answer_index: 1,
-		insight: 'Door-sweeps can be found at any home improvement store and keep cool air in and warm air out. They easily screw into the bottom of any door.',
-		prize: 'prize_13.png'
+		insight: 'Door-sweeps can be found at any home improvement store and keep cool air in and warm air out. They easily screw into the bottom of any door.'
 	},
 	
 	{
-		title: 'Unplayed Question 3',
+		title: 'Unplayed Question 2',
 		time: '12/03/12 11:42am',
 		question_type: 'text',
 		answer_type: 'text',
@@ -40,7 +39,7 @@ var questions = [
 		insight: 'Caulking the attic and foundation will lower your  cost, oftentimes more than replacing windows.'
 	},
 	{
-		title: 'Unplayed Question 4',
+		title: 'Unplayed Question 3',
 		time: '12/03/12 1:33pm',
 		question_type: 'text',
 		answer_type: 'text',
@@ -59,7 +58,7 @@ var questions = [
 		insight: 'Plugging small air leaks can add up to big savings in utility bills. '
 	},
 	{
-		title: 'Unplayed Question 5',
+		title: 'Unplayed Question 4',
 		time: '12/03/12 2:47pm',
 		question_type: 'text',
 		answer_type: 'image',
@@ -78,7 +77,7 @@ var questions = [
 		insight: 'Plugging small air leaks can add up to big savings in utility bills. '
 	},
 	{
-		title: 'Unplayed Question 6',
+		title: 'Unplayed Question 5',
 		time: '12/03/12 2:47pm',
 		question_type: 'text',
 		answer_type: 'text',
@@ -97,7 +96,7 @@ var questions = [
 		insight: 'It\'s important to seal leaks first. Insulating materials don\'t block leaks.'	
 	},
 	{
-		title: 'Unplayed Question 7',
+		title: 'Unplayed Question 6',
 		time: '12/03/12 2:47pm',
 		question_type: 'text',
 		answer_type: 'text',
@@ -118,7 +117,7 @@ var questions = [
 	
 	
 	{
-		title: 'Unplayed Question 8',
+		title: 'Unplayed Question 7',
 		time: '12/03/12 2:47pm',
 		question_type: 'text',
 		answer_type: 'text',
@@ -138,7 +137,7 @@ var questions = [
 	},
 	
 	{
-		title: 'Unplayed Question 9',
+		title: 'Unplayed Question 8',
 		time: '12/03/12 2:47pm',
 		question_type: 'text',
 		answer_type: 'text',
@@ -153,12 +152,13 @@ var questions = [
 			'Around recessed lights.',
 			'Around outlets and switches.'
 			],		correct_answer_index: 1,
-		insight: 'Weatherstripping is best around moveable joints. (Be sure to apply it in a way that allows the window or door to operate freely.).'
+		insight: 'Weatherstripping is best around moveable joints. (Be sure to apply it in a way that allows the window or door to operate freely.).',
+		prize: 'giftcard-36.png'
 	},
 	
 	//////PRIZE
 	{
-		title: 'Unplayed Question 10',
+		title: 'Unplayed Question 9',
 		time: '12/03/12 2:47pm',
 		question_type: 'text',
 		answer_type: 'text',
