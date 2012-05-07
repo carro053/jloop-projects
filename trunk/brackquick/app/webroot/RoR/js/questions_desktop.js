@@ -135,7 +135,7 @@ var questions = [
 		question: 'How do I participate in rebate programs that are partly paid from my bill?',
 		answers: [
 			'Ask a retailer.',
-			'Insert "Rebate" in the search box on NV Energy.com',
+			'Search "rebate" on nvenergy.com',
 			'Write the Public Utilities Commission.',
 			'None of the above.'
 			],
