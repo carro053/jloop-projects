@@ -156,7 +156,7 @@ var questions = [
 		insight_type: 'text',
 		category: 'How to Read a Bill',
 		clue: 'clue_billing_2.png',
-		question: 'The billing usage tells you how much energy you used in a month.',
+		question: 'The billing usage field tells you how much energy you have used in a month.',
 		answers: [
 			null,
 			null,
@@ -164,7 +164,7 @@ var questions = [
 			'False'
 			],
 		correct_answer_index: 2,
-		insight: 'The billing usage is the number you need to use the online calculator at nvenergy.com'
+		insight: 'The billing usage is also the number you need to use the online calculator at nvenergy.com'
 	},
 	//////NEVADA
 	{
