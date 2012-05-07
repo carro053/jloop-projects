@@ -170,12 +170,14 @@
 				
 				correctAudio.play();
 				
-				var properties = {top: '220px'};
+				var properties = {top: '0px'};
 				var options = {
 					duration: 1000,
 					easing: 'swing',
 					complete: function() {
-						$('#drawer').delay(2000).animate({top: '274px'}, {duration: 1000, easing: 'swing',});
+						/*
+						$('#drawer').delay(2000).animate({top: '227px'}, {duration: 1000, easing: 'swing'});
+						*/
 					}
 				};
 				
@@ -386,7 +388,7 @@
 			#drawer {
 				width: 320px;
 				height: 296px;
-				background-image: url(img/bg_leaderboard_drawer.png);
+				background-image: url(img/drawer.png);
 				background-repeat: no-repeat;
 				background-position: -1px 0;
 				position: relative;

@@ -7,7 +7,7 @@ var questions = [
 		answer_type: 'text',
 		clue_type: 'text',
 		insight_type: 'text',
-		category: 'How to Read a Bill',
+		category: 'How to Read Your Bill',
 		clue: 'Understand your bill',
 		question: 'The best place to learn how to read your bill is:',
 		answers: [
@@ -27,7 +27,7 @@ var questions = [
 		answer_type: 'image',
 		clue_type: 'text',
 		insight_type: 'text',
-		category: 'How to Read a Bill',
+		category: 'How to Read Your Bill',
 		clue: 'New additions draw more power.',
 		question: 'What are some reasons electricity bills might suddenly rise? ',
 		answers: [
@@ -47,7 +47,7 @@ var questions = [
 		answer_type: 'text',
 		clue_type: 'text',
 		insight_type: 'text',
-		category: 'How to Read a Bill',
+		category: 'How to Read Your Bill',
 		clue: 'What you actually pay for energy used.',
 		question: 'desktop_question_3.png',
 		answers: [
@@ -66,7 +66,7 @@ var questions = [
 		answer_type: 'text',
 		clue_type: 'text',
 		insight_type: 'text',
-		category: 'How to Read a Bill',
+		category: 'How to Read Your Bill',
 		clue: 'Level payment plans help even out monthly costs.',
 		question: 'Most of us have higher bills in summer and winter.',
 		answers: [
@@ -88,7 +88,7 @@ var questions = [
 		answer_type: 'text',
 		clue_type: 'image',
 		insight_type: 'text',
-		category: 'How to Read a Bill',
+		category: 'How to Read Your Bill',
 		clue: 'desktop_clue_1.png',
 		question: 'What part of your bill shows conservation efforts over time?',
 		answers: [
@@ -109,7 +109,7 @@ var questions = [
 		answer_type: 'text',
 		clue_type: 'text',
 		insight_type: 'text',
-		category: 'How to Read a Bill',
+		category: 'How to Read Your Bill',
 		clue: 'Calculating savings made easy.',
 		question: 'To see how much reducing usage could lower your bill:',
 		answers: [
@@ -130,7 +130,7 @@ var questions = [
 		answer_type: 'text',
 		clue_type: 'text',
 		insight_type: 'text',
-		category: 'How to Read a Bill',
+		category: 'How to Read Your Bill',
 		clue: 'The search word is \'rebate\'.',
 		question: 'How do I participate in rebate programs that are partly paid from my bill?',
 		answers: [
@@ -154,7 +154,7 @@ var questions = [
 		answer_type: 'text',
 		clue_type: 'image',
 		insight_type: 'text',
-		category: 'How to Read a Bill',
+		category: 'How to Read Your Bill',
 		clue: 'clue_billing_2.png',
 		question: 'The billing usage field tells you how much energy you have used in a month.',
 		answers: [
@@ -194,7 +194,7 @@ var questions = [
 		answer_type: 'text',
 		clue_type: 'text',
 		insight_type: 'image',
-		category: 'How to Read a Bill',
+		category: 'How to Read Your Bill',
 		clue: 'The \'meter readings\' section on your bill helps you manage monthly usage and cost',
 		question: 'Comparing the meter readings listed on your bill is a simple way to see how you\'re doing month over month.',
 		answers: [
@@ -215,7 +215,7 @@ var questions = [
 		answer_type: 'text',
 		clue_type: 'text',
 		insight_type: 'text',
-		category: 'How to Read a Bill',
+		category: 'How to Read Your Bill',
 		clue: 'Some billing periods have more days than others',
 		question: 'Comparing total amounts from this month\'s bill and last month\'s bill is <u>always</u> an accurate way to compare my energy usage.',
 		
