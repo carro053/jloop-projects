@@ -92,8 +92,8 @@ var questions = [
 		clue: 'desktop_clue_1.png',
 		question: 'What part of your bill shows conservation efforts over time?',
 		answers: [
-			'The total column.',
-			'Comparing meter months.',
+			'Total amount due.',
+			'Previous balance.',
 			'The bar graph of your use.',
 			'All of the above.'
 			],
