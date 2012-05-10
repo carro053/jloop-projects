@@ -43,13 +43,13 @@ var questions = [
 	{
 		title: 'Unplayed Question 2',
 		time: 'Two days ago, 1:22pm',
-		question_type: 'image',
+		question_type: 'text',
 		answer_type: 'text',
-		clue_type: 'text',
+		clue_type: 'image',
 		insight_type: 'text',
 		category: 'How to Read Your Bill',
-		clue: 'What you actually pay for energy used.',
-		question: 'desktop_question_3.png',
+		clue: 'desktop_question_3.png',
+		question: 'Electricity consumed during the billing period determines the amount you pay.',
 		answers: [
 			null,
 			null,
@@ -68,7 +68,7 @@ var questions = [
 		insight_type: 'text',
 		category: 'How to Read Your Bill',
 		clue: 'Level payment plans help even out monthly costs.',
-		question: 'Most of us have higher bills in summer and winter.',
+		question: 'Seasonal weather can change your month over month electricity cost.',
 		answers: [
 			null,
 			null,
@@ -174,7 +174,7 @@ var questions = [
 		answer_type: 'image',
 		clue_type: 'text',
 		insight_type: 'text',
-		category: 'Air Leaks',
+		category: 'How to Read Your Bill',
 		clue: 'BONUS QUESTION!<br/><br/>Two pines intertwined.',
 		question: 'What is the Nevada state tree? ',
 		answers: [
