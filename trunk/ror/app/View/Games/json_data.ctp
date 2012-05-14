@@ -7,7 +7,8 @@ $html .= '{title:\'Unplayed Question '.($key+1).'\',time: \''.$question['time'].
 {
 $html .= 'clue:\''.$question['id'].'.png\',';
 }else{
-$html .= 'clue: \''.nl2br($question['clue_text']).'\',';
+$html .= 'clue: \''.str_replace('
+','',nl2br($question['clue_text'])).'\',';
 }
 if($question['question_type'] == 'image')
 {
