@@ -475,7 +475,7 @@
 				//clueTimer();
 				
 				for(var i in questions) {
-					$('#timelineDrawer').append('<div id="timelineQuestion'+i+'" onclick="loadQuestion('+i+');" class="unplayedQuestion"><img src="/img/game_icons/default.png" style="position:absolute; top:9px; left:16px;" /><p class="unplayedQuestionTitle">'+questions[i]['title']+'</p><p class="unplayedQuestionTime">'+questions[i]['time']+'</p></div>');
+					$('#timelineDrawer').append('<div id="timelineQuestion'+i+'" onclick="loadQuestion('+i+');" class="unplayedQuestion"><img src="/img/game_icons/default.png" style="float: left; margin-top: -7px; margin-left: -48px;" /><p class="unplayedQuestionTitle">'+questions[i]['title']+'</p><p class="unplayedQuestionTime">'+questions[i]['time']+'</p></div>');
 				}
 			});
 		</script>
