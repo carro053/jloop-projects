@@ -86,7 +86,7 @@ foreach($game['Question'] as $key=>$question):
 			echo '
 		insight: \''.nl2br(str_replace("'","\\'",$question['insight_text'])).'\'';
 		}
-		echo ';
+		echo '
 	}';
 endforeach;
 echo '
