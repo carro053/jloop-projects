@@ -26,7 +26,7 @@
 					indexString = "0" + indexString;
 				}
 				var image = new Image;
-				image.src = 'img/animation/correct'+indexString+'.png';
+				image.src = '/img/animation/correct'+indexString+'.png';
 				correctImageCache.push(image);
 			}
 			
@@ -37,7 +37,7 @@
 					indexString = "0" + indexString;
 				}
 				var image = new Image;
-				image.src = 'img/animation/incorrect'+indexString+'.png';
+				image.src = '/img/animation/incorrect'+indexString+'.png';
 				incorrectImageCache.push(image);
 			}
 			
@@ -305,15 +305,15 @@
 					case 'image':
 						if(answerClicked == question.correct_answer_index) {
 							//$('#answer'+answerClicked).css('background-image', 'url(/img/bg_answer_image_green.png)');
-							$('#answer'+answerClicked+' img').attr('src', 'img/bg_answer_image_green.png');
+							$('#answer'+answerClicked+' img').attr('src', '/img/bg_answer_image_green.png');
 							$('#answer'+answerClicked+' img').show();
 							$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_correct.png)');
 						}else{
 							//$('#answer'+question.correct_answer_index).css('background-image', 'url(/img/bg_answer_image_green.png)');
 							//$('#answer'+answerClicked).css('background-image', 'url(/img/bg_answer_image_red.png)');
-							$('#answer'+question.correct_answer_index+' img').attr('src', 'img/bg_answer_image_green.png');
+							$('#answer'+question.correct_answer_index+' img').attr('src', '/img/bg_answer_image_green.png');
 							$('#answer'+question.correct_answer_index+' img').show();
-							$('#answer'+answerClicked+' img').attr('src', 'img/bg_answer_image_red.png');
+							$('#answer'+answerClicked+' img').attr('src', '/img/bg_answer_image_red.png');
 							$('#answer'+answerClicked+' img').show();
 							$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_incorrect.png)');
 						}
