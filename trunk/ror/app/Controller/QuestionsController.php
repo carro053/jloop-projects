@@ -29,7 +29,37 @@ class QuestionsController extends AppController {
 			$question['Question']['game_id'] = $game_id;
 			$question['Question']['order'] = $this->Question->find('count',array('conditions'=>'Question.game_id = '.$game_id));
 			if($this->Question->save($question))
+			{
+				if($this->data['Question']['clue_image']['error'] == 0 && $this->data['Question']['clue_image']['size'] > 0)
+				{
+					move_uploaded_file($this->data['Question']['clue_image']['tmp_name'], WWW_ROOT.'img'.DS.'clues'.DS.$this->Question->id.'.png');
+				}
+				if($this->data['Question']['question_image']['error'] == 0 && $this->data['Question']['question_image']['size'] > 0)
+				{
+					move_uploaded_file($this->data['Question']['question_image']['tmp_name'], WWW_ROOT.'img'.DS.'questions'.DS.$this->Question->id.'.png');
+				}
+				if($this->data['Question']['insight_image']['error'] == 0 && $this->data['Question']['insight_image']['size'] > 0)
+				{
+					move_uploaded_file($this->data['Question']['insight_image']['tmp_name'], WWW_ROOT.'img'.DS.'insights'.DS.$this->Question->id.'.png');
+				}
+				if($this->data['Question']['answer_1_image']['error'] == 0 && $this->data['Question']['answer_1_image']['size'] > 0)
+				{
+					move_uploaded_file($this->data['Question']['answer_1_image']['tmp_name'], WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-1.png');
+				}
+				if($this->data['Question']['answer_2_image']['error'] == 0 && $this->data['Question']['answer_2_image']['size'] > 0)
+				{
+					move_uploaded_file($this->data['Question']['answer_2_image']['tmp_name'], WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-2.png');
+				}
+				if($this->data['Question']['answer_3_image']['error'] == 0 && $this->data['Question']['answer_3_image']['size'] > 0)
+				{
+					move_uploaded_file($this->data['Question']['answer_3_image']['tmp_name'], WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-3.png');
+				}
+				if($this->data['Question']['answer_4_image']['error'] == 0 && $this->data['Question']['answer_4_image']['size'] > 0)
+				{
+					move_uploaded_file($this->data['Question']['answer_4_image']['tmp_name'], WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-4.png');
+				}
 				$this->redirect('/questions/index/'.$game_id);
+			}
 		}
 		$this->set('game_id', $game_id);
 	}
@@ -37,10 +67,40 @@ class QuestionsController extends AppController {
 	function edit($question_id)
 	{
 		$question = $this->Question->findById($question_id);
-		if(isset($this->data))
+		if(isset($this->data['Question']))
 		{
 			if($this->Question->save($this->data))
+			{
+				if($this->data['Question']['clue_image']['error'] == 0 && $this->data['Question']['clue_image']['size'] > 0)
+				{
+					move_uploaded_file($this->data['Question']['clue_image']['tmp_name'], WWW_ROOT.'img'.DS.'clues'.DS.$this->Question->id.'.png');
+				}
+				if($this->data['Question']['question_image']['error'] == 0 && $this->data['Question']['question_image']['size'] > 0)
+				{
+					move_uploaded_file($this->data['Question']['question_image']['tmp_name'], WWW_ROOT.'img'.DS.'questions'.DS.$this->Question->id.'.png');
+				}
+				if($this->data['Question']['insight_image']['error'] == 0 && $this->data['Question']['insight_image']['size'] > 0)
+				{
+					move_uploaded_file($this->data['Question']['insight_image']['tmp_name'], WWW_ROOT.'img'.DS.'insights'.DS.$this->Question->id.'.png');
+				}
+				if($this->data['Question']['answer_1_image']['error'] == 0 && $this->data['Question']['answer_1_image']['size'] > 0)
+				{
+					move_uploaded_file($this->data['Question']['answer_1_image']['tmp_name'], WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-1.png');
+				}
+				if($this->data['Question']['answer_2_image']['error'] == 0 && $this->data['Question']['answer_2_image']['size'] > 0)
+				{
+					move_uploaded_file($this->data['Question']['answer_2_image']['tmp_name'], WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-2.png');
+				}
+				if($this->data['Question']['answer_3_image']['error'] == 0 && $this->data['Question']['answer_3_image']['size'] > 0)
+				{
+					move_uploaded_file($this->data['Question']['answer_3_image']['tmp_name'], WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-3.png');
+				}
+				if($this->data['Question']['answer_4_image']['error'] == 0 && $this->data['Question']['answer_4_image']['size'] > 0)
+				{
+					move_uploaded_file($this->data['Question']['answer_4_image']['tmp_name'], WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-4.png');
+				}
 				$this->redirect('/questions/index/'.$question['Question']['game_id']);
+			}
 		} else {
 			$this->data = $question;
 		}
