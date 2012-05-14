@@ -3,7 +3,7 @@
     echo $this->Form->input('title');
     echo $this->Form->input('clue_type',array('options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));
     echo $this->Form->input('clue_text');
-    echo $this->Form->input('clue_image');
+    echo $this->Form->input('clue_image',array('type'=>'file'));
     echo $this->Form->input('question_type',array('options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));
     echo $this->Form->input('question_text');
     echo $this->Form->input('question_image',array('type'=>'file'));
