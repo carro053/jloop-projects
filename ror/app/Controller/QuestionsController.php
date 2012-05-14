@@ -58,6 +58,10 @@ class QuestionsController extends AppController {
 				{
 					move_uploaded_file($this->data['Question']['answer_4_image']['tmp_name'], WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-4.png');
 				}
+				if($this->data['Question']['prize_image']['error'] == 0 && $this->data['Question']['prize_image']['size'] > 0)
+				{
+					move_uploaded_file($this->data['Question']['prize_image']['tmp_name'], WWW_ROOT.'img'.DS.'prizes'.DS.$this->Question->id.'.png');
+				}
 				$this->redirect('/questions/index/'.$game_id);
 			}
 		}
@@ -98,6 +102,10 @@ class QuestionsController extends AppController {
 				if($this->data['Question']['answer_4_image']['error'] == 0 && $this->data['Question']['answer_4_image']['size'] > 0)
 				{
 					move_uploaded_file($this->data['Question']['answer_4_image']['tmp_name'], WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-4.png');
+				}
+				if($this->data['Question']['prize_image']['error'] == 0 && $this->data['Question']['prize_image']['size'] > 0)
+				{
+					move_uploaded_file($this->data['Question']['prize_image']['tmp_name'], WWW_ROOT.'img'.DS.'prizes'.DS.$this->Question->id.'.png');
 				}
 				$this->redirect('/questions/index/'.$question['Question']['game_id']);
 			}
