@@ -15,7 +15,7 @@ $html .= 'question: \''.$question['id'].'.png\',';}else{$html .= 'question: \''.
 endforeach;
 $html .= '
 ];';
-
+echo $html;
 $new_html = json_decode($html);
 echo 'var question = '.json_encode($new_html);
 ?>
