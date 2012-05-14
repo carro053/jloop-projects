@@ -19,8 +19,8 @@ foreach($game['Question'] as $key=>$question):
 		clue: \''.$question['id'].'.png\',';
 		}else{
 			echo '
-		clue: \''.str_replace(array("'",'
-','\\n','\\r'),array("\\'",'<br>','<br>','<br>'),$question['clue_text']).'\',';
+		clue: \''."".str_replace(array("'",'
+','\\n','\\r'),array("\\'",'<br>','<br>','<br>'),$question['clue_text'])."".'\',';
 		}
 		if($question['question_type'] == 'image')
 		{
