@@ -19,7 +19,7 @@
     echo $this->Form->input('answer_3_image',array('type'=>'file'));
     echo $this->Form->input('answer_4_text');
     echo $this->Form->input('answer_4_image',array('type'=>'file'));
-    echo $this->Form->input('correct_answer',array('options'=>array(1=>1,2=>2,3=>3,4=>4)));
+    echo $this->Form->input('correct_answer',array('options'=>array(0=>1,1=>2,2=>3,3=>4)));
     echo $this->Form->input('has_prize');
     echo $this->Form->end('Submit');
 ?>
