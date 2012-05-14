@@ -14,11 +14,11 @@
 			<tr>
 				<td><img src="/img/game_icons/<?php if($game['Game']['has_icon']) { echo $game['Game']['id'].'.png'; }else{ echo 'default.png'; } ?>" /></td>
 				<td><?php echo $game['Game']['title']; ?></td>
-				<td><a class="button" href="/questions/index/<?php echo $game['Game']['id']; ?>">View Questions</a>&nbsp;<a class="button" href="/games/edit/<?php echo $game['Game']['id']; ?>">Edit</a>&nbsp;<a class="button" href="/games/delete/<?php echo $game['Game']['id']; ?>" onclick="return confirm('Are you sure you want to delete this game?');">Delete</a></td>
+				<td><a class="button" href="/games/play/<?php echo $game['Game']['id']; ?>">Play Game</a>&nbsp;<a class="button" href="/questions/index/<?php echo $game['Game']['id']; ?>">View Questions</a>&nbsp;<a class="button" href="/games/edit/<?php echo $game['Game']['id']; ?>">Edit</a>&nbsp;<a class="button" href="/games/delete/<?php echo $game['Game']['id']; ?>" onclick="return confirm('Are you sure you want to delete this game?');">Delete</a></td>
 			</tr>
 		<?php } ?>
 	<?php } else { ?>
-		<tr><td colspan="2">There are currently no games.</td></tr>
+		<tr><td colspan="3">There are currently no games.</td></tr>
 	<?php } ?>
 	</tbody>
 </table>

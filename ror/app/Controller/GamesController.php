@@ -11,7 +11,7 @@ class GamesController extends AppController {
 		$this->set('games',$games);
 	}
 	
-	function add()
+	public function add()
 	{
 		if(isset($this->data['Game']))
 		{
@@ -28,7 +28,7 @@ class GamesController extends AppController {
 		}
 	}
 	
-	function edit($game_id)
+	public function edit($game_id)
 	{
 		$game = $this->Game->findById($game_id);
 		if(isset($this->data['Game']))
@@ -46,6 +46,13 @@ class GamesController extends AppController {
 		} else {
 			$this->data = $game;
 		}
+	}
+	
+	public function delete($game_id)
+	{
+		if($this->Game->delete($game_id))
+			$this->Game->query('DELETE FROM `questions` WHERE `game_id` = '.$game_id);
+		$this->redirect('/games');
 	}
 	
 	public function play($game_id,$question_index=-1) {
