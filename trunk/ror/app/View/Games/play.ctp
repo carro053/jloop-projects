@@ -893,7 +893,7 @@
 			<div id="timelineDrawerParent">
 				<img src="/img/game_icons/default.png" style="position:absolute; top:9px; left:16px; width:36px; height:36px;" />
 				<img src="/img/game_icons/default.png" style="position:absolute; top:139px; left:16px; width:36px; height:36px;" />
-				<img src="/img/game_icons/default.png" style="position:absolute; top:260px; left:16px; width:36px; height:36px;" />
+				<img src="/img/game_icons/default.png" style="position:absolute; top:221px; left:16px; width:36px; height:36px;" />
 				<img src="/img/game_icons/default.png" style="position:absolute; top:270px; left:16px; width:36px; height:36px;" />
 				<div id="timelineButton">
 					<p id="unplayedQuestionCount">8</p>
