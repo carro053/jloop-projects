@@ -86,7 +86,7 @@
 			theName = theName.substr(theName.length-4);
 			if(theName == 'Type')
 			{
-				if(!$(this).value) $("#"+theName+" option[text=text]").attr("selected","selected");
+				if(!$(this).attr('value')) $("#"+theName+" option[text=text]").attr("selected","selected");
 				change_type($(this));
 			}
 		});
