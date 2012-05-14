@@ -370,7 +370,7 @@
 						$('#drawer').animate(properties, options);
 						$('#answerAnimation').hide();
 					}
-					$('#answerAnimation').attr('src', imageCache[index]);
+					$('#answerAnimation').attr('src', imageCache[index].src);
 					index++;
 				}, 50);
 			}
