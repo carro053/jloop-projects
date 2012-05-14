@@ -64,6 +64,16 @@ class GamesController extends AppController {
 	
 	public function json_data() {
 		$this->layout = false;
+		$this->Game->bindModel(array(
+			'hasMany'=>array(
+				'Question'=>array(
+					'className'=>'Question',
+					'foreignKey'=>'game_id',
+					'order'=>'Question.order ASC'
+				)
+			)
+		));
+		$this->set('game',$this->Game->findById($game_id));
 	}
 	
 }
