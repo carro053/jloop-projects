@@ -29,14 +29,14 @@
 <script type="text/javascript">
 	function change_type(item)
 	{
-		var item = $(item).attr('id');
-		item = item.substr(8,item.length-12);
+		var theName = $(item).attr('id');
+		theName = theName.substr(8,item.length-12);
 		var what = item.value;
 		if(what == 'image')
 		{
-			$('#Question'+item+'Text').parent().hide();
+			$('#Question'+theName+'Text').parent().hide();
 		}else{
-			$('#Question'+item+'Image').parent().hide();
+			$('#Question'+theName+'Image').parent().hide();
 		}
 	}
 	$(function(){
