@@ -20,7 +20,6 @@ foreach($game['Question'] as $key=>$question):
 		}else{
 			echo '
 		clue: \''.str_replace('
-','',str_replace('
 ','',nl2br($question['clue_text'])).'\',';
 		}
 		if($question['question_type'] == 'image')
