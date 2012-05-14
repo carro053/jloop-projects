@@ -1,10 +1,10 @@
 <?php
-echo '
+$html = '
 var questions = [';
 foreach($game['Question'] as $key=>$question):
-	if($key != 0) echo ',
+	if($key != 0) $html = ',
 	';
-	echo '
+	$html = '
 	{
 		title: \'Unplayed Question '.($key+1).'\',
 		time: \''.$question['time'].'\',
@@ -15,23 +15,23 @@ foreach($game['Question'] as $key=>$question):
 		category: \''.$game['Game']['title'].'\',';
 		if($question['clue_type'] == 'image')
 		{
-			echo '
+			$html = '
 		clue: \''.$question['id'].'.png\',';
 		}else{
-			echo '
+			$html = '
 		clue: \''.nl2br($question['clue_text']).'\',';
 		}
 		if($question['question_type'] == 'image')
 		{
-			echo '
+			$html = '
 		question: \''.$question['id'].'.png\',';
 		}else{
-			echo '
+			$html = '
 		question: \''.nl2br($question['question_text']).'\',';
 		}
 		if($question['answer_type'] == 'image')
 		{
-			echo '
+			$html = '
 		answers: [
 			\''.$question['id'].'_1.png\',
 			\''.$question['id'].'_2.png\',
@@ -39,58 +39,60 @@ foreach($game['Question'] as $key=>$question):
 			\''.$question['id'].'_4.png\'
 			],';
 		}else{
-			echo '
+			$html = '
 		answers: [';
 			if($question['answer_1_text'] == '')
 			{
-				echo '
+				$html = '
 			null,';
 			}else{
-				echo '
+				$html = '
 			\''.nl2br($question['answer_1_text']).'\',';
 			}
 			if($question['answer_2_text'] == '')
 			{
-				echo '
+				$html = '
 			null,';
 			}else{
-				echo '
+				$html = '
 			\''.nl2br($question['answer_2_text']).'\',';
 			}
 			if($question['answer_3_text'] == '')
 			{
-				echo '
+				$html = '
 			null,';
 			}else{
-				echo '
+				$html = '
 			\''.nl2br($question['answer_3_text']).'\',';
 			}
 			if($question['answer_4_text'] == '')
 			{
-				echo '
+				$html = '
 			null,';
 			}else{
-				echo '
+				$html = '
 			\''.nl2br($question['answer_4_text']).'\'';
 			}
-			echo '
+			$html = '
 			],';
 		}
-		echo '
+		$html = '
 		correct_answer_index: '.$question['correct_answer'].',';
 		if($question['insight_type'] == 'image')
 		{
-			echo '
+			$html = '
 		insight: \''.$question['id'].'.png\'';
 		}else{
-			echo '
+			$html = '
 		insight: \''.nl2br($question['insight_text']).'\'';
 		}
-		echo '
+		$html = '
 	}';
 endforeach;
-echo '
+$html = '
 ];';
+$new_html = json_decode($html);
+echo json_encode($new_html);
 	/*{
 		title: 'Unplayed Question 2',
 		time: 'Two days ago, 1:22pm',
