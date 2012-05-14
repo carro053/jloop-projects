@@ -1,3 +1,6 @@
+
+<?php pr($game); ?>
+
 var questions = [
 	{
 		title: 'Unplayed Question 1',
