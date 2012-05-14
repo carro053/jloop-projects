@@ -72,6 +72,7 @@ class QuestionsController extends AppController {
 	{
 		$question = $this->Question->findById($question_id);
 		$game_id = $question['Question']['game_id'];
+		$this->set('game_id',$game_id);
 		if(isset($this->data['Question']))
 		{
 			$question = $this->data;
