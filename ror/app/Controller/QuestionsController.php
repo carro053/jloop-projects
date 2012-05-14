@@ -74,6 +74,7 @@ class QuestionsController extends AppController {
 	function edit($question_id)
 	{
 		$question = $this->Question->findById($question_id);
+		$game_id = $question['Question']['game_id'];
 		if(isset($this->data['Question']))
 		{
 			$question = $this->data;
@@ -117,7 +118,7 @@ class QuestionsController extends AppController {
 				{
 					move_uploaded_file($this->data['Question']['prize_image']['tmp_name'], WWW_ROOT.'img'.DS.'prizes'.DS.$this->Question->id.'.png');
 				}
-				$this->redirect('/questions/index/'.$question_id);
+				$this->redirect('/questions/index/'.$game_id);
 			}
 		} else {
 			$this->data = $question;
