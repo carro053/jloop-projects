@@ -35,8 +35,10 @@
 		if(what == 'image')
 		{
 			$('#Question'+theName+'Text').parent().hide();
+			$('#Question'+theName+'Image').parent().show();
 		}else{
 			$('#Question'+theName+'Image').parent().hide();
+			$('#Question'+theName+'Text').parent().show();
 		}
 	}
 	$(function(){
