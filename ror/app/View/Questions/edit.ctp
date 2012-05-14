@@ -1,4 +1,4 @@
-<h3><a href="/questions/index/<?php echo $this->data['Question']['id']; ?>">&larr;Back To Question List</a></h3>
+<h3><a href="/questions/index/<?php echo $game_id; ?>">&larr;Back To Question List</a></h3>
 <?php
     echo $this->Form->create('Question',array('url'=>'/questions/edit/'.$this->data['Question']['id'],'type' => 'file'));
     echo $this->Form->input('id');
