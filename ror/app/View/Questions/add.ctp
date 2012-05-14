@@ -10,16 +10,13 @@
     echo $this->Form->input('insight_type',array('options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));
     echo $this->Form->input('insight_text');
     echo $this->Form->input('insight_image',array('type'=>'file'));
-    echo $this->Form->input('answer_1_type',array('options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));
+    echo $this->Form->input('answer_type',array('options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));
     echo $this->Form->input('answer_1_text');
     echo $this->Form->input('answer_1_image',array('type'=>'file'));
-    echo $this->Form->input('answer_2_type',array('options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));
     echo $this->Form->input('answer_2_text');
     echo $this->Form->input('answer_2_image',array('type'=>'file'));
-    echo $this->Form->input('answer_3_type',array('options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));
     echo $this->Form->input('answer_3_text');
     echo $this->Form->input('answer_3_image',array('type'=>'file'));
-    echo $this->Form->input('answer_4_type',array('options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));
     echo $this->Form->input('answer_4_text');
     echo $this->Form->input('answer_4_image',array('type'=>'file'));
     echo $this->Form->input('correct_answer',array('options'=>array(1=>1,2=>2,3=>3,4=>4)));
@@ -32,13 +29,37 @@
 		var theName = $(item).attr('id');
 		theName = theName.substr(8,theName.length-12);
 		var what = item.value;
-		if(what == 'image')
+		if(theName == 'Answer')
 		{
-			$('#Question'+theName+'Text').parent().hide();
-			$('#Question'+theName+'Image').parent().show();
+			if(what == 'image')
+			{
+				$('#Question'+theName+'1Text').parent().hide();
+				$('#Question'+theName+'1Image').parent().show();
+				$('#Question'+theName+'2Text').parent().hide();
+				$('#Question'+theName+'2Image').parent().show();
+				$('#Question'+theName+'3Text').parent().hide();
+				$('#Question'+theName+'3Image').parent().show();
+				$('#Question'+theName+'4Text').parent().hide();
+				$('#Question'+theName+'4Image').parent().show();
+			}else{
+				$('#Question'+theName+'1Image').parent().hide();
+				$('#Question'+theName+'1Text').parent().show();
+				$('#Question'+theName+'2Image').parent().hide();
+				$('#Question'+theName+'2Text').parent().show();
+				$('#Question'+theName+'3Image').parent().hide();
+				$('#Question'+theName+'3Text').parent().show();
+				$('#Question'+theName+'4Image').parent().hide();
+				$('#Question'+theName+'4Text').parent().show();
+			}
 		}else{
-			$('#Question'+theName+'Image').parent().hide();
-			$('#Question'+theName+'Text').parent().show();
+			if(what == 'image')
+			{
+				$('#Question'+theName+'Text').parent().hide();
+				$('#Question'+theName+'Image').parent().show();
+			}else{
+				$('#Question'+theName+'Image').parent().hide();
+				$('#Question'+theName+'Text').parent().show();
+			}
 		}
 	}
 	$(function(){
