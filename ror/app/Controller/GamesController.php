@@ -46,11 +46,11 @@ class GamesController extends AppController {
 		}
 	}
 	
-	public function play($game_id,$question_id=false) {
+	public function play($game_id,$question_index=false) {
 		$this->layout = false;
 		
 		$this->set('game',$this->Game->findById($game_id));
-		$this->set('question_id',$question_id);
+		$this->set('question_index',$question_index);
 	}
 	
 	public function json_data() {
