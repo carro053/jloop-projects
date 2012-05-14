@@ -20,7 +20,7 @@ foreach($game['Question'] as $key=>$question):
 		}else{
 			echo '
 		clue: \''.str_replace(array("'",'
-'),array("\\'",'<br />'),$question['clue_text']).'\',';
+','\\n','\\r'),array("\\'",'<br />','<br />','<br />'),$question['clue_text']).'\',';
 		}
 		if($question['clue_type'] == 'image')
 		{
@@ -29,7 +29,7 @@ foreach($game['Question'] as $key=>$question):
 		}else{
 			echo '
 		question: \''.str_replace(array("'",'
-'),array("\\'",'<br />'),$question['question_text']).'\',';
+','\\n','\\r'),array("\\'",'<br />','<br />','<br />'),$question['question_text']).'\',';
 		}
 		if($question['answer_type'] == 'image')
 		{
@@ -50,7 +50,7 @@ foreach($game['Question'] as $key=>$question):
 			}else{
 				echo '
 			\''.str_replace(array("'",'
-'),array("\\'",'<br />'),$question['answer_1_text']).'\',';
+','\\n','\\r'),array("\\'",'<br />','<br />','<br />'),$question['answer_1_text']).'\',';
 			}
 			if($question['answer_2_text'] == '')
 			{
@@ -59,7 +59,7 @@ foreach($game['Question'] as $key=>$question):
 			}else{
 				echo '
 			\''.str_replace(array("'",'
-'),array("\\'",'<br />'),$question['answer_2_text']).'\',';
+','\\n','\\r'),array("\\'",'<br />','<br />','<br />'),$question['answer_2_text']).'\',';
 			}
 			if($question['answer_3_text'] == '')
 			{
@@ -68,7 +68,7 @@ foreach($game['Question'] as $key=>$question):
 			}else{
 				echo '
 			\''.str_replace(array("'",'
-'),array("\\'",'<br />'),$question['answer_3_text']).'\',';
+','\\n','\\r'),array("\\'",'<br />','<br />','<br />'),$question['answer_3_text']).'\',';
 			}
 			if($question['answer_4_text'] == '')
 			{
@@ -77,7 +77,7 @@ foreach($game['Question'] as $key=>$question):
 			}else{
 				echo '
 			\''.str_replace(array("'",'
-'),array("\\'",'<br />'),$question['answer_4_text']).'\'';
+','\\n','\\r'),array("\\'",'<br />','<br />','<br />'),$question['answer_4_text']).'\'';
 			}
 			echo '
 			],';
@@ -91,7 +91,7 @@ foreach($game['Question'] as $key=>$question):
 		}else{
 			echo '
 		insight: \''.str_replace(array("'",'
-'),array("\\'",'<br />'),$question['insight_text']).'\'';
+','\\n','\\r'),array("\\'",'<br />','<br />','<br />'),$question['insight_text']).'\'';
 		}
 		echo '
 	}';
