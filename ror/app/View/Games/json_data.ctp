@@ -1,10 +1,11 @@
 <?php
-$html = '
+$html = '';
+$html .= '
 var questions = [';
 foreach($game['Question'] as $key=>$question):
-	if($key != 0) $html = ',
+	if($key != 0) $html .= ',
 	';
-	$html = '
+	$html .= '
 	{
 		title: \'Unplayed Question '.($key+1).'\',
 		time: \''.$question['time'].'\',
@@ -15,23 +16,23 @@ foreach($game['Question'] as $key=>$question):
 		category: \''.$game['Game']['title'].'\',';
 		if($question['clue_type'] == 'image')
 		{
-			$html = '
+			$html .= '
 		clue: \''.$question['id'].'.png\',';
 		}else{
-			$html = '
+			$html .= '
 		clue: \''.nl2br($question['clue_text']).'\',';
 		}
 		if($question['question_type'] == 'image')
 		{
-			$html = '
+			$html .= '
 		question: \''.$question['id'].'.png\',';
 		}else{
-			$html = '
+			$html .= '
 		question: \''.nl2br($question['question_text']).'\',';
 		}
 		if($question['answer_type'] == 'image')
 		{
-			$html = '
+			$html .= '
 		answers: [
 			\''.$question['id'].'_1.png\',
 			\''.$question['id'].'_2.png\',
@@ -39,58 +40,59 @@ foreach($game['Question'] as $key=>$question):
 			\''.$question['id'].'_4.png\'
 			],';
 		}else{
-			$html = '
+			$html .= '
 		answers: [';
 			if($question['answer_1_text'] == '')
 			{
-				$html = '
+				$html .= '
 			null,';
 			}else{
-				$html = '
+				$html .= '
 			\''.nl2br($question['answer_1_text']).'\',';
 			}
 			if($question['answer_2_text'] == '')
 			{
-				$html = '
+				$html .= '
 			null,';
 			}else{
-				$html = '
+				$html .= '
 			\''.nl2br($question['answer_2_text']).'\',';
 			}
 			if($question['answer_3_text'] == '')
 			{
-				$html = '
+				$html .= '
 			null,';
 			}else{
-				$html = '
+				$html .= '
 			\''.nl2br($question['answer_3_text']).'\',';
 			}
 			if($question['answer_4_text'] == '')
 			{
-				$html = '
+				$html .= '
 			null,';
 			}else{
-				$html = '
+				$html .= '
 			\''.nl2br($question['answer_4_text']).'\'';
 			}
-			$html = '
+			$html .= '
 			],';
 		}
-		$html = '
+		$html .= '
 		correct_answer_index: '.$question['correct_answer'].',';
 		if($question['insight_type'] == 'image')
 		{
-			$html = '
+			$html .= '
 		insight: \''.$question['id'].'.png\'';
 		}else{
-			$html = '
+			$html .= '
 		insight: \''.nl2br($question['insight_text']).'\'';
 		}
-		$html = '
+		$html .= '
 	}';
 endforeach;
-$html = '
+$html .= '
 ];';
+
 $new_html = json_decode($html);
 echo json_encode($new_html);
 	/*{
