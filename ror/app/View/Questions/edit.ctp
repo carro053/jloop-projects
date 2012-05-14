@@ -36,7 +36,7 @@
 	{
 		var theName = $(item).attr('id');
 		theName = theName.substr(8,theName.length-12);
-		var what = item.value;
+		var what = $('#Question'+theName+'Type option:selected').val();
 		alert(what);
 		if(theName == 'Answer')
 		{
@@ -87,7 +87,7 @@
 			theName = theName.substr(theName.length-4);
 			if(theName == 'Type')
 			{
-				if(!$(this).attr('value')) $("#"+theName+" option[text=text]").attr("selected","selected");
+				if(!$('#Question'+theName+'Type option:selected').val()) $("#"+theName+" option[text=text]").attr("selected","selected");
 				change_type($(this));
 			}
 		});
