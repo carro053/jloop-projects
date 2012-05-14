@@ -29,7 +29,7 @@ foreach($game['Question'] as $key=>$question):
 			echo '
 		question: \''.$question['question_text'].'\',';
 		}
-		if($question['clue_type'] == 'image')
+		if($question['answer_type'] == 'image')
 		{
 			echo '
 		answers: [
@@ -71,7 +71,7 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.$question['answer_4_text'].'\',';
+			\''.$question['answer_4_text'].'\'';
 			}
 			echo '
 			],';
