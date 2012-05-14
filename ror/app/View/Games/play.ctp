@@ -41,9 +41,9 @@
 				incorrectImageCache.push(image);
 			}
 			
-			var clueAudio = new Audio('audio/ROR_ringtoneAB_combined.ogg');
-			var correctAudio = new Audio('audio/correct.ogg');
-			var incorrectAudio = new Audio('audio/incorrect.ogg');
+			var clueAudio = new Audio('/audio/ROR_ringtoneAB_combined.ogg');
+			var correctAudio = new Audio('/audio/correct.ogg');
+			var incorrectAudio = new Audio('/audio/incorrect.ogg');
 			var timeout;
 			
 			var question;
