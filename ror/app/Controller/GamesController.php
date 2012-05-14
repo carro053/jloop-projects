@@ -62,7 +62,7 @@ class GamesController extends AppController {
 		if($question_index >= 0) $this->set('question_index',$question_index);
 	}
 	
-	public function json_data() {
+	public function json_data($game_id) {
 		$this->layout = false;
 		$this->Game->bindModel(array(
 			'hasMany'=>array(
