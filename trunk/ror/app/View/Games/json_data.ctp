@@ -22,7 +22,7 @@ foreach($game['Question'] as $key=>$question):
 		clue: \''.str_replace(array("'",'
 ','\\n','\\r'),array("\\'",'<br>','<br>','<br>'),$question['clue_text']).'\',';
 		}
-		if($question['clue_type'] == 'image')
+		if($question['question_type'] == 'image')
 		{
 			echo '
 		question: \''.$question['id'].'.png\',';
@@ -84,7 +84,7 @@ foreach($game['Question'] as $key=>$question):
 		}
 		echo '
 		correct_answer_index: '.$question['correct_answer'].',';
-		if($question['clue_type'] == 'image')
+		if($question['insight_type'] == 'image')
 		{
 			echo '
 		insight: \''.$question['id'].'.png\'';
