@@ -17,6 +17,7 @@ endforeach;
 $html .= '];';
 echo $html;
 $new_html = json_decode($html);
+print_r($new_html);
 echo '
 var question = '.json_encode($new_html);
 ?>
