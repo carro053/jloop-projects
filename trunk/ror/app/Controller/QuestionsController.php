@@ -1,8 +1,8 @@
 <?php
 
 App::uses('AppController', 'Controller');
-class GamesController extends AppController {
-	public $name = 'Games';
+class QuestionsController extends AppController {
+	public $name = 'Questions';
 	public $helpers = array('Html', 'Session');
 	public $uses = array('Game','Question');
 	
