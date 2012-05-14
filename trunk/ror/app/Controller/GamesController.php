@@ -11,5 +11,9 @@ class GamesController extends AppController {
 		$this->set('games',$games);
 	}
 	
+	public function play() {
+		
+	}
+	
 }
 ?>
