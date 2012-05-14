@@ -17,5 +17,5 @@ $html .= '
 ];';
 
 $new_html = json_decode($html);
-echo json_encode($new_html);
+echo 'var question = '.json_encode($new_html);
 ?>
