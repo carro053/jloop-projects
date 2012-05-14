@@ -1,3 +1,12 @@
+<?php
+if($game['Game']['has_icon'])
+{
+	$icon_src = $game['Game']['id'].'.png';
+}else{
+	$icon_src = 'default.png';
+}
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -475,7 +484,7 @@
 				//clueTimer();
 				
 				for(var i in questions) {
-					$('#timelineDrawer').append('<div id="timelineQuestion'+i+'" onclick="loadQuestion('+i+');" class="unplayedQuestion"><img src="/img/game_icons/default.png" style="float: left; margin-top: -7px; margin-left: -48px;" /><p class="unplayedQuestionTitle">'+questions[i]['title']+'</p><p class="unplayedQuestionTime">'+questions[i]['time']+'</p></div>');
+					$('#timelineDrawer').append('<div id="timelineQuestion'+i+'" onclick="loadQuestion('+i+');" class="unplayedQuestion"><img src="/img/game_icons/<?php echo $icon_src; ?>" style="float: left; margin-top: -7px; margin-left: -48px;" /><p class="unplayedQuestionTitle">'+questions[i]['title']+'</p><p class="unplayedQuestionTime">'+questions[i]['time']+'</p></div>');
 				}
 			});
 		</script>
@@ -891,10 +900,10 @@
 				<!--</div>-->
 			</div>
 			<div id="timelineDrawerParent">
-				<img src="/img/game_icons/default.png" style="position:absolute; top:9px; left:16px; width:36px; height:36px;" />
-				<img src="/img/game_icons/default.png" style="position:absolute; top:139px; left:16px; width:36px; height:36px;" />
-				<img src="/img/game_icons/default.png" style="position:absolute; top:221px; left:16px; width:36px; height:36px;" />
-				<img src="/img/game_icons/default.png" style="position:absolute; top:270px; left:16px; width:36px; height:36px;" />
+				<img src="/img/game_icons/<?php echo $icon_src; ?>" style="position:absolute; top:9px; left:16px; width:36px; height:36px;" />
+				<img src="/img/game_icons/<?php echo $icon_src; ?>" style="position:absolute; top:139px; left:16px; width:36px; height:36px;" />
+				<img src="/img/game_icons/<?php echo $icon_src; ?>" style="position:absolute; top:221px; left:16px; width:36px; height:36px;" />
+				<img src="/img/game_icons/<?php echo $icon_src; ?>" style="position:absolute; top:270px; left:16px; width:36px; height:36px;" />
 				<div id="timelineButton">
 					<p id="unplayedQuestionCount">8</p>
 				</div>
