@@ -19,7 +19,9 @@ foreach($game['Question'] as $key=>$question):
 		clue: \''.$question['id'].'.png\',';
 		}else{
 			echo '
-		clue: \''.nl2br($question['clue_text']).'\',';
+		clue: \''.str_replace('
+','',str_replace('
+','',nl2br($question['clue_text'])).'\',';
 		}
 		if($question['question_type'] == 'image')
 		{
@@ -27,7 +29,8 @@ foreach($game['Question'] as $key=>$question):
 		question: \''.$question['id'].'.png\',';
 		}else{
 			echo '
-		question: \''.nl2br($question['question_text']).'\',';
+		question: \''.str_replace('
+','',nl2br($question['question_text'])).'\',';
 		}
 		if($question['answer_type'] == 'image')
 		{
@@ -47,7 +50,8 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.nl2br($question['answer_1_text']).'\',';
+			\''.str_replace('
+','',nl2br($question['answer_1_text'])).'\',';
 			}
 			if($question['answer_2_text'] == '')
 			{
@@ -55,7 +59,8 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.nl2br($question['answer_2_text']).'\',';
+			\''.str_replace('
+','',nl2br($question['answer_2_text'])).'\',';
 			}
 			if($question['answer_3_text'] == '')
 			{
@@ -63,7 +68,8 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.nl2br($question['answer_3_text']).'\',';
+			\''.str_replace('
+','',nl2br($question['answer_3_text'])).'\',';
 			}
 			if($question['answer_4_text'] == '')
 			{
@@ -71,7 +77,8 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.nl2br($question['answer_4_text']).'\'';
+			\''.str_replace('
+','',nl2br($question['answer_4_text'])).'\'';
 			}
 			echo '
 			],';
@@ -84,7 +91,8 @@ foreach($game['Question'] as $key=>$question):
 		insight: \''.$question['id'].'.png\'';
 		}else{
 			echo '
-		insight: \''.nl2br($question['insight_text']).'\'';
+		insight: \''.str_replace('
+','',nl2br($question['insight_text'])).'\'';
 		}
 		echo '
 	}';
