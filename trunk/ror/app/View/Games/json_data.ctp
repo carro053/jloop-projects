@@ -14,10 +14,10 @@ if($question['question_type'] == 'image')
 {
 $html .= 'question: \''.$question['id'].'.png\',';}else{$html .= 'question: \''.nl2br($question['question_text']).'\',';}if($question['answer_type'] == 'image'){$html .= 'answers: [\''.$question['id'].'_1.png\',\''.$question['id'].'_2.png\',\''.$question['id'].'_3.png\',\''.$question['id'].'_4.png\'],';}else{$html .= 'answers: [';if($question['answer_1_text'] == ''){$html .= 'null,';}else{$html .= '\''.nl2br($question['answer_1_text']).'\',';}if($question['answer_2_text'] == ''){$html .= 'null,';}else{$html .= '\''.nl2br($question['answer_2_text']).'\',';}if($question['answer_3_text'] == ''){$html .= 'null,';}else{$html .= '\''.nl2br($question['answer_3_text']).'\',';}if($question['answer_4_text'] == ''){$html .= 'null,';}else{$html .= '\''.nl2br($question['answer_4_text']).'\'';}$html .= '],';}$html .= 'correct_answer_index: '.$question['correct_answer'].',';if($question['insight_type'] == 'image'){$html .= 'insight: \''.$question['id'].'.png\'';}else{$html .= 'insight: \''.nl2br($question['insight_text']).'\'';}$html .= '}';
 endforeach;
-$html .= '];';
-//echo $html;
+$html .= ']';
+echo $html;
 $new_html = json_decode($html);
-//print_r($new_html);
+print_r($new_html);
 echo '
-var question = '.$html;
+var question = '.$html.';';
 ?>
