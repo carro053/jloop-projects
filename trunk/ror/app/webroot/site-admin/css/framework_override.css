@@ -1,0 +1,595 @@
+/* CSS Document */
+
+/*
+
+Organized by:
+
+Global Typography
+General Layout
+
+Navigation
+Header
+Content
+Footer
+
+Forms and Tables
+Misc.
+
+*/
+
+
+/* Global Typography
+-------------------------------------------------------------- */
+
+body { font-family: Arial, Helvetica, sans-serif; }
+
+a, a:visited {
+	color: #0178AE;
+	text-decoration: underline;
+	}
+a:hover { text-decoration: none; }
+
+h2 {
+	margin-bottom: 1em;
+	color: #00ACD8;
+	font-size: 3em;
+	font-weight: bold;
+	letter-spacing: -1px;
+	word-spacing: -4px;
+	}
+h2 span { color: #62CFEB; }
+h3 { color: #00ACD8; }
+h5 { color: #0178AE; }
+h6 { margin-bottom: 5px; }
+
+
+
+
+/* General Layout
+-------------------------------------------------------------- */
+
+body { background: #EDF0DF; }
+
+.container {
+	position: relative;
+	width: 950px;
+	margin: 0 auto;
+	}
+	
+#header {
+	width: 100%;
+	height: 100px;
+	padding: 20px 0 0;
+	background: url(/site-admin/img/bg_pattern.gif) repeat-x top left;
+	}
+	
+#navbar {
+	width: 100%;
+	height: 40px;
+	background: #00ACD8;
+	}
+#navbar .container { z-index: 5; }
+	
+#content {
+	width: 100%;
+	padding: 50px 0;
+	background: #FFF;
+	}
+	
+#footer {
+	width: 100%; 
+	height: 110px;
+	padding: 20px 0;
+	background: #EDF0DF url(/site-admin/img/bg_footer.png) repeat-x top left;
+	font-size: 0.92em;
+	}
+	
+p.breadcrumbs{
+	/* todo - fix breadcrumb placement */
+	}
+
+
+
+/* Navigation
+-------------------------------------------------------------- */
+
+#navbar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	}
+#navbar li { float: left; }
+#navbar li:hover, #navbar li.selected { background: #2ABFE5; }
+#navbar a {
+	display: block;
+	height: 32px;
+	padding: 8px 10px 0;
+	color: #FFF;
+	font-size: 1.33em;
+	font-weight: bold;
+	text-decoration: none;
+	}
+
+/* First-level dropdowns */
+
+#navbar li ul {
+	position: absolute;
+	left: -999em;
+	z-index: 5;
+	height: auto;
+	background: #EDF0DF url(/site-admin/img/bg_navbar_dropdown.png) repeat-x top left;
+	border: 1px solid #A6C9E2;
+	border-top: none;
+	}
+#navbar li:hover ul, #navbar li.sfhover ul { left: auto; }
+#navbar li ul li { float: none; }
+#navbar li ul a {
+	height: auto;
+	padding: 5px 10px;
+	color: #666; 
+	font-size: 1em;
+	}
+#navbar li ul a:hover { color: #FFF; }
+
+#page-nav {
+	width: 484px;
+	margin: 20px 0;
+	padding: 0;
+	list-style: none;
+	}
+#page-nav li {
+	float: left; 
+	margin: 10px 20px 10px 0;
+	}
+#page-nav a {
+	display: block;
+	width: 200px;
+	height: 32px;
+	padding: 8px 10px 0;
+	color: #FFF;
+	font-size: 1.33em;
+	font-weight: bold;
+	text-decoration: none;
+	}
+
+	
+
+/* Header
+-------------------------------------------------------------- */
+
+#header h1 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 200px;
+	height: 80px;
+	margin: 0;
+	text-indent: -999em;
+	overflow: hidden;
+	}
+#header h1 a {
+	display: block;
+	height: 80px;
+	background: url(/site-admin/img/logo.gif) no-repeat top left;
+	}
+	
+p.tools-nav {
+	float: right;
+	height: 25px;
+	margin-top: -20px;
+	padding: 0;
+	color: #FFF;
+	font-weight: bold;
+	}
+p.tools-nav a {
+	display: block;
+	float: right;
+	margin-left: 10px;
+	padding: 8px 10px;
+	background: #00ACD8;
+	color: #FFF;
+	text-decoration: none;
+	}
+p.tools-nav a:hover {
+	background: #2ABFE5;
+	color: #FFF;
+	}
+
+
+
+/* Content
+-------------------------------------------------------------- */
+
+#accordion h5 { margin-top: 20px; }
+	
+	
+
+/* Footer
+-------------------------------------------------------------- */
+
+
+
+/* Forms and Tables
+-------------------------------------------------------------- */
+
+form { margin: 20px 0; }
+div#tabs form, div#accordion form { padding: 30px 20px; }
+label {
+	display: block;
+	float: left;
+	width: 125px;
+	margin-right: 10px;
+	text-align: right;
+	font-weight: normal;
+	}
+input, textarea {
+	width: 170px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	padding: 5px;
+	background: #FFF url(/site-admin/img/bg_input.gif) repeat-x top left;
+	border: 1px solid #999;
+	border-top: none;
+	font-size: 1em;
+	}
+textarea {
+	width: 300px;
+	height: 100px; 
+	overflow: auto;
+	}
+input#submit,input#save_or_update {
+	width: auto;
+	margin-top: 15px;
+	margin-left: 135px;
+	padding: 8px 10px;
+	background: #00ACD8;
+	border: none;
+	color: #FFF;
+	font-weight: bold;
+	}
+input#submit:hover {
+	background: #2ABFE5; 
+	cursor: pointer;
+	}
+	
+form p { margin-left: 135px; }
+	
+table input {
+	width: auto;
+	margin: 0;
+	padding: 0;
+	}
+	
+form div.multi-option { padding-left: 135px; }
+form div.multi-option div { margin-bottom: 5px; }	
+form div.multi-option input {
+	width: auto;
+	margin: 0;
+	padding: 0;
+	background: none;
+	border: none;
+	}
+form div.multi-option label {
+	display: inline;
+	float: none;
+	width: auto;
+	text-align: left;
+	}
+	
+form .input:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+	}
+form .input { display: block; }
+
+.table-tools {
+	clear: both; 
+	margin: 10px 0;
+	}
+.table-tools form {
+	float: left;
+	margin: 0;
+	padding: 0;
+	}
+.table-tools label {
+	display: inline;
+	float: none;
+	width: auto;
+	}
+.table-tools div.multi-option { padding-left: 20px; }
+.table-tools input#submit {
+	width: auto;
+	margin-top: 0;
+	margin-left: 0;
+	padding: 8px 10px;
+	}
+
+table {
+	clear: both;
+	margin-bottom: 0;
+	background: #DAD7C3;
+	border: 1px solid #00ACD8;
+	border-bottom: none;
+	}
+tr { background: #EDF0DF; }
+th {
+	padding: 5px 10px;
+	border: none !important;
+	background-color: #FFF;
+	}
+th.ui-widget-header {
+	border-top: none;
+	color: #FFF; 
+	}
+td {
+	padding: 5px 10px;
+	border-bottom: 1px solid #00ACD8;
+	}
+td.ui-widget-header {
+	border-left: none;
+	border-right: none;
+	}
+td img.handleBar:hover { cursor: pointer; }
+	
+table a { color: #0178AE; }
+	
+.sortable-placeholder {
+	display: block;
+	background-color: transparent;
+	}
+	
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+}
+table.tablesorter thead tr .header {
+	background-image: url(/img/asc_desc.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(/img/asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(/img/desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+}
+
+
+
+/* Misc.
+-------------------------------------------------------------- */
+
+.left { float: left; }
+.right { float: right; }
+
+img.left { margin-right: 15px; }
+img.right { margin-left: 15px; }
+
+.bumper {
+	padding: 20px 0; 
+	border-top: 1px solid #00ACD8;
+	}
+
+.fineprint { font-size: 0.83em; }
+
+.pagination {
+	padding: 5px 10px 8px;
+	background: #2191C0;
+	}
+.pagination p {
+	margin: 0;
+	padding: 0;
+	}
+.pagination a {
+	color: #FFF !important; 
+	font-weight: bold;
+	}
+	
+#overlay form { padding: 0; }
+#overlay form input#active {
+	width: auto;
+	padding: 0;
+	border: none;
+	}
+	
+a.button {
+	display: inline-block;
+	margin-top: 15px;
+	padding: 8px 15px;
+	background: #00ACD8;
+	color: #FFF;
+	font-weight: bold;
+	text-decoration: none;
+	}
+a.button:hover { background: #2ABFE5; }
+
+table a.button {margin-top: 0px;}
+
+form a.button { margin: 0 0 10px 135px; }
+
+input {
+	width: 180px;
+	padding: 5px 10px;
+	background-color: #FFF;
+	border: 1px solid #A9ABAE;
+	}
+	
+form div.inline input {
+	float: left;
+	width: 30px;
+	margin-right: 10px;
+	}
+	
+form input#PaymentCcCvc, form input#AgentBillingPostalCode, form input#AgentPostalCode, form input#PaymentBillingPostalCode, form input#InsuranceClaimCarrierPostalCode {
+	width: 56px; 
+	margin-right: 0;
+	}
+	
+.errors h4 {
+	margin-bottom: 0;
+	padding: 5px 10px;
+	background-color: #D41D33;
+	color: #FFF;
+	}
+.errors ul {
+	margin: 0 0 20px;
+	padding: 15px;
+	list-style: none;
+	border: 2px solid #D41D33;
+	}
+.errors li { color: #D41D33; }
+
+/* Styles for jQuery menu widget
+Author:	Maggie Wachs, maggie@filamentgroup.com
+Date:		September 2008
+*/
+
+
+/* REQUIRED STYLES - the menus will only render correctly with these rules */	
+
+.fg-menu-container { position: absolute; top:0; left:-999px; padding: .4em;  overflow: hidden; }
+.fg-menu-container.fg-menu-flyout { overflow: visible; }
+
+.fg-menu, .fg-menu ul { list-style-type:none; padding: 0; margin:0; }
+
+.fg-menu { position:relative; }
+.fg-menu-flyout .fg-menu { position:static; }
+
+.fg-menu ul { position:absolute; top:0; }
+.fg-menu ul ul { top:-1px; }
+
+.fg-menu-container.fg-menu-ipod .fg-menu-content, 
+.fg-menu-container.fg-menu-ipod .fg-menu-content ul { background: none !important; }
+
+.fg-menu.fg-menu-scroll,
+.fg-menu ul.fg-menu-scroll { overflow: scroll;  overflow-x: hidden; }
+
+.fg-menu li { clear:both; float:left; width:100%; margin: 0; padding:0; border: 0; }	
+.fg-menu li li { font-size:1em; } /* inner li font size must be reset so that they don't blow up */
+
+.fg-menu-flyout ul ul { padding: .4em; }
+.fg-menu-flyout li { position:relative; }
+
+.fg-menu-scroll { overflow: scroll; overflow-x: hidden; }
+
+.fg-menu-breadcrumb { margin: 0; padding: 0; }
+
+.fg-menu-footer {  margin-top: .4em; padding: .4em; }
+.fg-menu-header {  margin-bottom: .4em; padding: .4em; }
+
+.fg-menu-breadcrumb li { float: left; list-style: none; margin: 0; padding: 0 .2em; font-size: .9em; opacity: .7; }
+.fg-menu-breadcrumb li.fg-menu-prev-list,
+.fg-menu-breadcrumb li.fg-menu-current-crumb { clear: left; float: none; opacity: 1; }
+.fg-menu-breadcrumb li.fg-menu-current-crumb { padding-top: .2em; }
+
+.fg-menu-breadcrumb a, 
+.fg-menu-breadcrumb span { float: left; }
+
+.fg-menu-footer a:link,
+.fg-menu-footer a:visited { float:left; width:100%; text-decoration: none; }
+.fg-menu-footer a:hover,
+.fg-menu-footer a:active {  }
+
+.fg-menu-footer a span { float:left; cursor: pointer; }
+
+.fg-menu-breadcrumb .fg-menu-prev-list a:link,
+.fg-menu-breadcrumb .fg-menu-prev-list a:visited,
+.fg-menu-breadcrumb .fg-menu-prev-list a:hover,
+.fg-menu-breadcrumb .fg-menu-prev-list a:active { background-image: none; text-decoration:none; }
+	
+.fg-menu-breadcrumb .fg-menu-prev-list a { float: left; padding-right: .4em; }
+.fg-menu-breadcrumb .fg-menu-prev-list a .ui-icon { float: left; }
+	
+.fg-menu-breadcrumb .fg-menu-current-crumb a:link,
+.fg-menu-breadcrumb .fg-menu-current-crumb a:visited,
+.fg-menu-breadcrumb .fg-menu-current-crumb a:hover,
+.fg-menu-breadcrumb .fg-menu-current-crumb a:active { display:block; background-image:none; font-size:1.3em; text-decoration:none; }
+
+
+
+/* REQUIRED LINK STYLES: links are "display:block" by default; if the menu options are split into 
+	selectable node links and 'next' links, the script floats the node links left and floats the 'next' links to the right	*/
+
+.fg-menu a:link,
+.fg-menu a:visited,
+.fg-menu a:hover,
+.fg-menu a:active { float:left; width:92%; padding:.3em 3%; text-decoration:none; outline: 0 !important; }
+
+.fg-menu a { border: 1px dashed transparent; }
+
+.fg-menu a.ui-state-default:link,
+.fg-menu a.ui-state-default:visited,
+.fg-menu a.ui-state-default:hover,
+.fg-menu a.ui-state-default:active,
+.fg-menu a.ui-state-hover:link,
+.fg-menu a.ui-state-hover:visited,
+.fg-menu a.ui-state-hover:hover,
+.fg-menu a.ui-state-hover:active,
+ .fg-menu a.ui-state-active:link,
+ .fg-menu a.ui-state-active:visited,
+ .fg-menu a.ui-state-active:hover,
+.fg-menu a.ui-state-active:active { border-style: solid; font-weight: normal; }
+
+.fg-menu a span { display:block; cursor:pointer; }
+
+
+ /* SUGGESTED STYLES - for use with jQuery UI Themeroller CSS */	
+ 
+.fg-menu-indicator span { float:left; }
+.fg-menu-indicator span.ui-icon { float:right; }
+
+.fg-menu-content.ui-widget-content, 
+.fg-menu-content ul.ui-widget-content { border:0; }
+
+
+/* ICONS AND DIVIDERS */
+
+.fg-menu.fg-menu-has-icons a:link,
+.fg-menu.fg-menu-has-icons a:visited,
+.fg-menu.fg-menu-has-icons a:hover,
+.fg-menu.fg-menu-has-icons a:active { padding-left:20px; }
+
+.fg-menu .horizontal-divider hr, .fg-menu .horizontal-divider span { padding:0; margin:5px .6em; }
+.fg-menu .horizontal-divider hr { border:0; height:1px; }
+.fg-menu .horizontal-divider span { font-size:.9em; text-transform: uppercase; padding-left:.2em; }
+
+
+
+input[type=submit] {
+	width: auto;
+	margin: 0 0 10px 135px;
+	padding: 8px 15px;
+	background: #00ACD8;
+	border: none;
+	color: #FFF;
+	font-weight: bold;
+	}
+input[type=submit]:hover {
+	background: #2ABFE5; 
+	cursor: pointer;
+	}
+	
+
+/*Translation Tabs*/
+
+div.translation {
+	padding: 0px;
+	border: none;
+	background: none;
+}
+.translation .ui-widget-content {
+	padding: 0px;
+}
+.translation .ui-widget-header {
+	border: none;
+	background: none;
+	padding: 0 0 0 135px;
+}
+.translation input, .translation textarea {
+	margin-top: 0px;
+	width: 400px;
+}
