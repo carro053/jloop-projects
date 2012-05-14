@@ -61,7 +61,7 @@
 				$('#'+theName+'2Image').hide();
 				$('#Question'+theName+'2Text').parent().show();
 				$('#Question'+theName+'3Image').parent().hide();
-				$('#'+theName+'31Image').hide();
+				$('#'+theName+'3Image').hide();
 				$('#Question'+theName+'3Text').parent().show();
 				$('#Question'+theName+'4Image').parent().hide();
 				$('#'+theName+'4Image').hide();
