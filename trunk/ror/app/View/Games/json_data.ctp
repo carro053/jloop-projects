@@ -41,7 +41,7 @@ foreach($game['Question'] as $key=>$question):
 		}else{
 			echo '
 		answers: [';
-			if($question['answer_1_text'] != '')
+			if($question['answer_1_text'] == '')
 			{
 				echo '
 			null,';
@@ -49,7 +49,7 @@ foreach($game['Question'] as $key=>$question):
 				echo '
 			\''.$question['answer_1_text'].'\',';
 			}
-			if($question['answer_2_text'] != '')
+			if($question['answer_2_text'] == '')
 			{
 				echo '
 			null,';
@@ -57,7 +57,7 @@ foreach($game['Question'] as $key=>$question):
 				echo '
 			\''.$question['answer_2_text'].'\',';
 			}
-			if($question['answer_3_text'] != '')
+			if($question['answer_3_text'] == '')
 			{
 				echo '
 			null,';
@@ -65,7 +65,7 @@ foreach($game['Question'] as $key=>$question):
 				echo '
 			\''.$question['answer_3_text'].'\',';
 			}
-			if($question['answer_4_text'] != '')
+			if($question['answer_4_text'] == '')
 			{
 				echo '
 			null,';
