@@ -40,7 +40,7 @@
 				//var image = new Image;
 				//image.src = '/img/animation/incorrect'+indexString+'.png';
 				var image_src = '/img/animation/incorrect'+indexString+'.png';
-				incorrectImageCache.push(image);
+				incorrectImageCache.push(image_src);
 			}
 			
 			var clueAudio = new Audio('/audio/ROR_ringtoneAB_combined.ogg');
