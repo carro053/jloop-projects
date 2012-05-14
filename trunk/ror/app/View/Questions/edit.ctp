@@ -2,6 +2,7 @@
     echo $this->Form->create('Question',array('url'=>'/questions/edit/'.$this->data['Question']['id'],'type' => 'file'));
     echo $this->Form->input('id');
     echo $this->Form->input('title');
+    echo $this->Form->input('time');
     echo $this->Form->input('clue_type',array('options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));
     echo $this->Form->input('clue_text');
     if(is_file(WWW_ROOT.'img'.DS.'clues'.DS.$this->data['Question']['id'].'.png')) echo '<img id="ClueImage" src="/img/clues/'.$this->data['Question']['id'].'.png" />';
