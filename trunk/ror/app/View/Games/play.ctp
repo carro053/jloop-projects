@@ -856,7 +856,7 @@
 		</style>
 	</head>
 	<body>
-		<img id="shadow" src="img/shadow.png" /> <!-- DESKTOP -->
+		<img id="shadow" src="/img/shadow.png" /> <!-- DESKTOP -->
 		<div id="timeline">
 			<div id="app">
 				<div id="backButton"></div>
@@ -875,11 +875,11 @@
 					</div>
 					<div id="contentQuestion">
 						<p id="textQuestion" class="textbox"></p>
-						<div id="answer0"><img src="img/bg_answer_image_green.png" /><p class="answer"></p></div>
-						<div id="answer1"><img src="img/bg_answer_image_green.png" /><p class="answer"></p></div>
-						<div id="answer2"><img src="img/bg_answer_image_green.png" /><p class="answer"></p></div>
-						<div id="answer3"><img src="img/bg_answer_image_green.png" /><p class="answer"></p></div>
-						<img id="answerAnimation" src="img/animation/incorrect0001.png" />
+						<div id="answer0"><img src="/img/bg_answer_image_green.png" /><p class="answer"></p></div>
+						<div id="answer1"><img src="/img/bg_answer_image_green.png" /><p class="answer"></p></div>
+						<div id="answer2"><img src="/img/bg_answer_image_green.png" /><p class="answer"></p></div>
+						<div id="answer3"><img src="/img/bg_answer_image_green.png" /><p class="answer"></p></div>
+						<img id="answerAnimation" src="/img/animation/incorrect0001.png" />
 					</div>
 					<div id="contentInsight">
 						<p id="textInsight" class="textbox"></p>
