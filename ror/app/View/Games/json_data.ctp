@@ -19,7 +19,7 @@ foreach($game['Question'] as $key=>$question):
 		clue: \''.$question['id'].'.png\',';
 		}else{
 			echo '
-		clue: \''.$question['clue_text'].'\',';
+		clue: \''.nl2br(str_replace("'","\\'",$question['clue_text'])).'\',';
 		}
 		if($question['clue_type'] == 'image')
 		{
@@ -27,7 +27,7 @@ foreach($game['Question'] as $key=>$question):
 		question: \''.$question['id'].'.png\',';
 		}else{
 			echo '
-		question: \''.$question['question_text'].'\',';
+		question: \''.nl2br(str_replace("'","\\'",$question['question_text'])).'\',';
 		}
 		if($question['answer_type'] == 'image')
 		{
@@ -47,7 +47,7 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.$question['answer_1_text'].'\',';
+			\''.str_replace("'","\\'",$question['answer_1_text']).'\',';
 			}
 			if($question['answer_2_text'] == '')
 			{
@@ -55,7 +55,7 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.$question['answer_2_text'].'\',';
+			\''.str_replace("'","\\'",$question['answer_2_text']).'\',';
 			}
 			if($question['answer_3_text'] == '')
 			{
@@ -63,7 +63,7 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.$question['answer_3_text'].'\',';
+			\''.str_replace("'","\\'",$question['answer_3_text']).'\',';
 			}
 			if($question['answer_4_text'] == '')
 			{
@@ -71,7 +71,7 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.$question['answer_4_text'].'\'';
+			\''.str_replace("'","\\'",$question['answer_4_text']).'\'';
 			}
 			echo '
 			],';
@@ -84,7 +84,7 @@ foreach($game['Question'] as $key=>$question):
 		insight: \''.$question['id'].'.png\'';
 		}else{
 			echo '
-		insight: \''.$question['insight_text'].'\'';
+		insight: \''.nl2br(str_replace("'","\\'",$question['insight_text'])).'\'';
 		}
 		echo ';
 	}';
