@@ -12,7 +12,11 @@ class GamesController extends AppController {
 	}
 	
 	public function play() {
-		
+		$this->layout = false;
+	}
+	
+	public function json_data() {
+		$this->layout = false;
 	}
 	
 }
