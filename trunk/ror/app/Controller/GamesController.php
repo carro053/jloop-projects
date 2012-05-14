@@ -30,7 +30,7 @@ class GamesController extends AppController {
 	function edit($game_id)
 	{
 		$game = $this->Game->findById($game_id);
-		if(isset($this->data))
+		if(isset($this->data['Game']))
 		{
 			if($this->data['Game']['icon']['error'] == 0 && $this->data['Game']['icon']['size'] > 0) $this->data['Game']['has_icon'] = 1;
 			if($this->Game->save($this->data))
