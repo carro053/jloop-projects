@@ -60,13 +60,13 @@
 					showAnswerImage = false;
 					
 					$('#content').css('left', 0);
-					$('#app').css('background-image', 'url(img/bg_game_offline.png)');
+					$('#app').css('background-image', 'url(/img/bg_game_offline.png)');
 					$('#meter').appendTo('#clue');
 					$('#meter').css('marginLeft', 0);
 					$('#meter').show();
-					$('#clue').css('background-image', 'url(img/btn_clue_blue.png)');
-					$('#question').css('background-image', 'url(img/btn_question_black.png)');
-					$('#insight').css('background-image', 'url(img/btn_insight_black.png)');
+					$('#clue').css('background-image', 'url(/img/btn_clue_blue.png)');
+					$('#question').css('background-image', 'url(/img/btn_question_black.png)');
+					$('#insight').css('background-image', 'url(/img/btn_insight_black.png)');
 					$('#subContentClue').show();
 					$('#subContentInsight').show();
 					$('#drawer').hide();
@@ -74,32 +74,32 @@
 					$('#category').html(question.category);
 					switch(question.clue_type) {
 						case 'text':
-							$('#contentClue').css('background-image', 'url(img/bg_white_textbox.png)');
+							$('#contentClue').css('background-image', 'url(/img/bg_white_textbox.png)');
 							$('#textClue').html(question.clue);
 							break;
 						case 'image':
 							$('#textClue').html('');
-							$('#contentClue').css('background-image', 'url(img/clues/'+question.clue+')');
+							$('#contentClue').css('background-image', 'url(/img/clues/'+question.clue+')');
 							break;
 					}
 					switch(question.question_type) {
 						case 'text':
-							$('#contentQuestion').css('background-image', 'url(img/bg_white_textbox.png)');
+							$('#contentQuestion').css('background-image', 'url(/img/bg_white_textbox.png)');
 							$('#textQuestion').html(question.question);
 							break;
 						case 'image':
 							$('#textQuestion').html('');
-							$('#contentQuestion').css('background-image', 'url(img/questions/'+question.question+')');
+							$('#contentQuestion').css('background-image', 'url(/img/questions/'+question.question+')');
 							break;
 					}
 					switch(question.insight_type) {
 						case 'text':
-							$('#contentInsight').css('background-image', 'url(img/bg_white_textbox.png)');
+							$('#contentInsight').css('background-image', 'url(/img/bg_white_textbox.png)');
 							$('#textInsight').html(question.insight);
 							break;
 						case 'image':
 							$('#textInsight').html('');
-							$('#contentInsight').css('background-image', 'url(img/insights/'+question.insight+')');
+							$('#contentInsight').css('background-image', 'url(/img/insights/'+question.insight+')');
 							break;
 					}
 					for(var i in question.answers) {
@@ -108,12 +108,12 @@
 							$('#answer'+i).show();
 							switch(question.answer_type) {
 								case 'text':
-									$('#answer'+i).css('background-image', 'url(img/bg_answer_grey.png)');
+									$('#answer'+i).css('background-image', 'url(/img/bg_answer_grey.png)');
 									$('#answer'+i+' p').html(question.answers[i]);
 									break;
 								case 'image':
 									$('#answer'+i+' p').html('');
-									$('#answer'+i).css('background-image', 'url(img/answers/'+question.answers[i]+')');
+									$('#answer'+i).css('background-image', 'url(/img/answers/'+question.answers[i]+')');
 									break;
 							}
 						}
@@ -168,7 +168,7 @@
 				$('#subContentClue').hide();
 				timerPosition = 2;
 				slideContent(2);
-				$('#question').css('background-image', 'url(img/btn_question_blue.png)');
+				$('#question').css('background-image', 'url(/img/btn_question_blue.png)');
 				var properties = {marginLeft: '131px'};
 				var options = {
 					duration: 20000,
@@ -185,8 +185,8 @@
 			function insightTimer() {
 				timerPosition = 3;
 				slideContent(3);
-				$('#insight').css('background-image', 'url(img/btn_insight_blue.png)');
-				$('#subContentInsight').css('background-image', 'url(img/bg_sub_compiling.gif)');
+				$('#insight').css('background-image', 'url(/img/btn_insight_blue.png)');
+				$('#subContentInsight').css('background-image', 'url(/img/bg_sub_compiling.gif)');
 				$('.personCounter').hide();
 				var properties = {marginLeft: '74px'};
 				var options = {
@@ -213,47 +213,47 @@
 					case 2:
 						if(position == 1 && !questionAnswered) {
 							properties = {left: '0px'};
-							$('#clue').css('background-image', 'url(img/btn_clue_blue.png)');
-							$('#question').css('background-image', 'url(img/btn_question_grey.png)');
-							$('#insight').css('background-image', 'url(img/btn_insight_black.png)');
+							$('#clue').css('background-image', 'url(/img/btn_clue_blue.png)');
+							$('#question').css('background-image', 'url(/img/btn_question_grey.png)');
+							$('#insight').css('background-image', 'url(/img/btn_insight_black.png)');
 						}
 						if(position == 2 && !questionAnswered) {
 							properties = {left: '-320px'};
-							$('#clue').css('background-image', 'url(img/btn_clue_grey.png)');
-							$('#question').css('background-image', 'url(img/btn_question_blue.png)');
-							$('#insight').css('background-image', 'url(img/btn_insight_black.png)');
+							$('#clue').css('background-image', 'url(/img/btn_clue_grey.png)');
+							$('#question').css('background-image', 'url(/img/btn_question_blue.png)');
+							$('#insight').css('background-image', 'url(/img/btn_insight_black.png)');
 						}
 						if(position == 3 && questionAnswered) {
 							properties = {left: '-640px'};
-							$('#clue').css('background-image', 'url(img/btn_clue_black.png)');
-							$('#question').css('background-image', 'url(img/btn_question_black.png)');
-							$('#insight').css('background-image', 'url(img/btn_insight_blue.png)');
+							$('#clue').css('background-image', 'url(/img/btn_clue_black.png)');
+							$('#question').css('background-image', 'url(/img/btn_question_black.png)');
+							$('#insight').css('background-image', 'url(/img/btn_insight_blue.png)');
 						}
 						break;
 					case 3:
 						properties = {left: '-640px'};
-						$('#clue').css('background-image', 'url(img/btn_clue_black.png)');
-						$('#question').css('background-image', 'url(img/btn_question_black.png)');
-						$('#insight').css('background-image', 'url(img/btn_insight_blue.png)');
+						$('#clue').css('background-image', 'url(/img/btn_clue_black.png)');
+						$('#question').css('background-image', 'url(/img/btn_question_black.png)');
+						$('#insight').css('background-image', 'url(/img/btn_insight_blue.png)');
 						break;
 					default:
 						if(position == 1) {
 							properties = {left: '0px'};
-							$('#clue').css('background-image', 'url(img/btn_clue_blue.png)');
-							$('#question').css('background-image', 'url(img/btn_question_grey.png)');
-							$('#insight').css('background-image', 'url(img/btn_insight_grey.png)');
+							$('#clue').css('background-image', 'url(/img/btn_clue_blue.png)');
+							$('#question').css('background-image', 'url(/img/btn_question_grey.png)');
+							$('#insight').css('background-image', 'url(/img/btn_insight_grey.png)');
 						}
 						if(position == 2) {
 							properties = {left: '-320px'};
-							$('#clue').css('background-image', 'url(img/btn_clue_grey.png)');
-							$('#question').css('background-image', 'url(img/btn_question_blue.png)');
-							$('#insight').css('background-image', 'url(img/btn_insight_grey.png)');
+							$('#clue').css('background-image', 'url(/img/btn_clue_grey.png)');
+							$('#question').css('background-image', 'url(/img/btn_question_blue.png)');
+							$('#insight').css('background-image', 'url(/img/btn_insight_grey.png)');
 						}
 						if(position == 3) {
 							properties = {left: '-640px'};
-							$('#clue').css('background-image', 'url(img/btn_clue_grey.png)');
-							$('#question').css('background-image', 'url(img/btn_question_grey.png)');
-							$('#insight').css('background-image', 'url(img/btn_insight_blue.png)');
+							$('#clue').css('background-image', 'url(/img/btn_clue_grey.png)');
+							$('#question').css('background-image', 'url(/img/btn_question_grey.png)');
+							$('#insight').css('background-image', 'url(/img/btn_insight_blue.png)');
 						}
 						break;
 				}
@@ -294,28 +294,28 @@
 				switch(question.answer_type) {
 					case 'text':
 						if(answerClicked == question.correct_answer_index) {
-							$('#answer'+answerClicked).css('background-image', 'url(img/bg_answer_green.png)');
-							$('#drawer').css('background-image', 'url(img/bg_leaderboard_drawer_correct.png)');
+							$('#answer'+answerClicked).css('background-image', 'url(/img/bg_answer_green.png)');
+							$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_correct.png)');
 						}else{
-							$('#answer'+question.correct_answer_index).css('background-image', 'url(img/bg_answer_green.png)');
-							$('#answer'+answerClicked).css('background-image', 'url(img/bg_answer_red.png)');
-							$('#drawer').css('background-image', 'url(img/bg_leaderboard_drawer_incorrect.png)');
+							$('#answer'+question.correct_answer_index).css('background-image', 'url(/img/bg_answer_green.png)');
+							$('#answer'+answerClicked).css('background-image', 'url(/img/bg_answer_red.png)');
+							$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_incorrect.png)');
 						}
 						break;
 					case 'image':
 						if(answerClicked == question.correct_answer_index) {
-							//$('#answer'+answerClicked).css('background-image', 'url(img/bg_answer_image_green.png)');
+							//$('#answer'+answerClicked).css('background-image', 'url(/img/bg_answer_image_green.png)');
 							$('#answer'+answerClicked+' img').attr('src', 'img/bg_answer_image_green.png');
 							$('#answer'+answerClicked+' img').show();
-							$('#drawer').css('background-image', 'url(img/bg_leaderboard_drawer_correct.png)');
+							$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_correct.png)');
 						}else{
-							//$('#answer'+question.correct_answer_index).css('background-image', 'url(img/bg_answer_image_green.png)');
-							//$('#answer'+answerClicked).css('background-image', 'url(img/bg_answer_image_red.png)');
+							//$('#answer'+question.correct_answer_index).css('background-image', 'url(/img/bg_answer_image_green.png)');
+							//$('#answer'+answerClicked).css('background-image', 'url(/img/bg_answer_image_red.png)');
 							$('#answer'+question.correct_answer_index+' img').attr('src', 'img/bg_answer_image_green.png');
 							$('#answer'+question.correct_answer_index+' img').show();
 							$('#answer'+answerClicked+' img').attr('src', 'img/bg_answer_image_red.png');
 							$('#answer'+answerClicked+' img').show();
-							$('#drawer').css('background-image', 'url(img/bg_leaderboard_drawer_incorrect.png)');
+							$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_incorrect.png)');
 						}
 						break;
 				}
@@ -323,7 +323,7 @@
 				{
 					drawer_top = '120';
 					drawer_bottom = '468';
-					$('#drawer').css('background-image', 'url(img/prizes/'+question.prize+')');
+					$('#drawer').css('background-image', 'url(/img/prizes/'+question.prize+')');
 				}else{
 					drawer_top = '408';
 					drawer_bottom = '468';
@@ -331,7 +331,7 @@
 			}
 			
 			function animateAnswerImage() {
-				$('#app').css('background-image', 'url(img/bg_game_back.png)');
+				$('#app').css('background-image', 'url(/img/bg_game_back.png)');
 				
 				if(answerClicked == question.correct_answer_index) {
 					var audio = correctAudio;
@@ -405,11 +405,11 @@
 					switch(question.answer_type) {
 						case 'text':
 							if(!questionAnswered)
-								$(this).css('background-image', 'url(img/bg_answer_grey_selected.png)');
+								$(this).css('background-image', 'url(/img/bg_answer_grey_selected.png)');
 							break;
 						case 'image':
 							//if(!questionAnswered)
-							//	$(this).css('background-image', 'url(img/bg_answer_image_blank_clicked.png)');
+							//	$(this).css('background-image', 'url(/img/bg_answer_image_blank_clicked.png)');
 							break;
 					}
 				});
@@ -417,11 +417,11 @@
 					switch(question.answer_type) {
 						case 'text':
 							if(!questionAnswered)
-								$(this).css('background-image', 'url(img/bg_answer_grey.png)');
+								$(this).css('background-image', 'url(/img/bg_answer_grey.png)');
 							break;
 						case 'image':
 							//if(!questionAnswered)
-							//	$(this).css('background-image', 'url(img/bg_answer_image_blank.png)');
+							//	$(this).css('background-image', 'url(/img/bg_answer_image_blank.png)');
 							break;
 					}
 				});
@@ -487,8 +487,8 @@
 			
 			body {
 				background-color: #000;
-				background-image: url(img/bg_2.png); /* DESKTOP */
-				/* background-image: url(img/iphone_ringorang.png); */ /* IPHONE */
+				background-image: url(/img/bg_2.png); /* DESKTOP */
+				/* background-image: url(/img/iphone_ringorang.png); */ /* IPHONE */
 				background-position: 0 0;
 				background-repeat: no-repeat;
 				overflow: hidden;
@@ -504,8 +504,8 @@
 			#timeline {
 				width: 320px;
 				height: 486px;
-				background-image: url(img/bg_desktop_timeline.png); /* DESKTOP */
-				/* background-image: url(img/bg_app_timeline_ios.png); */ /* IPHONE */
+				background-image: url(/img/bg_desktop_timeline.png); /* DESKTOP */
+				/* background-image: url(/img/bg_app_timeline_ios.png); */ /* IPHONE */
 				background-repeat: no-repeat;
 				background-position: 0 0;
 				/* margin: 145px 488px; */ /* IPHONE */
@@ -516,7 +516,7 @@
 			#app {
 				width: 320px;
 				height: 486px;
-				background-image: url(img/bg_game_offline.png);
+				background-image: url(/img/bg_game_offline.png);
 				background-repeat: no-repeat;
 				background-position: bottom;
 				overflow: hidden;
@@ -553,7 +553,7 @@
 			#clue {
 				width: 83px;
 				height: 52px;
-				background: url(img/btn_clue_blue.png);
+				background: url(/img/btn_clue_blue.png);
 				float: left;
 				overflow: hidden;
 			}
@@ -561,7 +561,7 @@
 			#question {
 				width: 143px;
 				height: 52px;
-				background: url(img/btn_question_black.png);
+				background: url(/img/btn_question_black.png);
 				float: left;
 				overflow: hidden;
 			}
@@ -569,7 +569,7 @@
 			#insight {
 				width: 84px;
 				height: 52px;
-				background: url(img/btn_insight_black.png);
+				background: url(/img/btn_insight_black.png);
 				float: left;
 				overflow: hidden;
 			}
@@ -577,7 +577,7 @@
 			#meter {
 				width: 312px;
 				height: 12px;
-				background: url(img/red_meter.png);
+				background: url(/img/red_meter.png);
 				margin: 34px 0 0 0;
 			}
 			
@@ -591,7 +591,7 @@
 			#contentClue {
 				width: 320px;
 				height: 296px;
-				background-image: url(img/bg_white_textbox.png);
+				background-image: url(/img/bg_white_textbox.png);
 				background-repeat: no-repeat;
 				background-position: -9px 0;
 				float: left
@@ -600,7 +600,7 @@
 			#contentQuestion {
 				width: 320px;
 				height: 296px;
-				background-image: url(img/bg_white_textbox.png);
+				background-image: url(/img/bg_white_textbox.png);
 				background-repeat: no-repeat;
 				background-position: -9px 0;
 				float: left
@@ -609,7 +609,7 @@
 			#contentInsight {
 				width: 320px;
 				height: 127px;
-				background-image: url(img/bg_white_textbox.png);
+				background-image: url(/img/bg_white_textbox.png);
 				background-repeat: no-repeat;
 				background-position: -9px 0;
 				float: left
@@ -652,7 +652,7 @@
 			#answer0 {
 				width: 155px;
 				height: 96px;
-				background-image: url(img/bg_answer_grey.png);
+				background-image: url(/img/bg_answer_grey.png);
 				background-repeat: no-repeat;
 				background-position: 0px 0;
 				position: absolute;
@@ -663,7 +663,7 @@
 			#answer1 {
 				width: 155px;
 				height: 96px;
-				background-image: url(img/bg_answer_grey.png);
+				background-image: url(/img/bg_answer_grey.png);
 				background-repeat: no-repeat;
 				background-position: 0px 0;
 				position: absolute;
@@ -674,7 +674,7 @@
 			#answer2 {
 				width: 155px;
 				height: 96px;
-				background-image: url(img/bg_answer_grey.png);
+				background-image: url(/img/bg_answer_grey.png);
 				background-repeat: no-repeat;
 				background-position: 0px 0;
 				position: absolute;
@@ -685,7 +685,7 @@
 			#answer3 {
 				width: 155px;
 				height: 96px;
-				background-image: url(img/bg_answer_grey.png);
+				background-image: url(/img/bg_answer_grey.png);
 				background-repeat: no-repeat;
 				background-position: 0px 0;
 				position: absolute;
@@ -732,14 +732,14 @@
 			#subContentClue {
 				width: 320px;
 				height: 70px;
-				background-image: url(img/bg_sub_im_ready.png);
+				background-image: url(/img/bg_sub_im_ready.png);
 				margin: 228px 0 0 0;
 			}
 			
 			#subContentInsight {
 				width: 320px;
 				height: 51px;
-				background-image: url(img/bg_sub_answered.png);
+				background-image: url(/img/bg_sub_answered.png);
 				background-repeat: no-repeat;
 				margin: 243px 0 0 0;
 			}
@@ -771,7 +771,7 @@
 			#drawer {
 				width: 320px;
 				height: 365px;
-				background: url(img/bg_leaderboard_drawer_correct.png);
+				background: url(/img/bg_leaderboard_drawer_correct.png);
 				position: absolute;
 				top: 468px;
 				display: none;
@@ -780,7 +780,7 @@
 			#timelineButton {
 				width: 320px;
 				height: 51px;
-				background: url(img/time_line_button.png);
+				background: url(/img/time_line_button.png);
 				position: absolute;
 				margin: 314px 0 0 0;
 			}
@@ -795,7 +795,7 @@
 			#timelineDrawer {
 				width: 300px;
 				height: 346px;
-				background: url(img/time_line_drawer.png);
+				background: url(/img/time_line_drawer.png);
 				position: relative;
 				top: 0px;
 				padding: 20px 10px 0;
@@ -804,7 +804,7 @@
 			.unplayedQuestion {
 				width: 244px;
 				height: 40px;
-				background: url(img/desktop_drawer_item.png);
+				background: url(/img/desktop_drawer_item.png);
 				margin-top: 1px;
 				padding: 10px 0 0 56px;
 			}
