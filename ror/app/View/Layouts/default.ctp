@@ -23,9 +23,9 @@
 show up on all of your views, include it here -->
 <div id="header">
 	<div class="container"> 
-		<?php if($session->read('Auth.User.id') > 0) { ?>
+		<?php /*if($session->read('Auth.User.id') > 0) { ?>
 			<p class="tools-nav"><a href="/users/logout">Log Out</a>
-    	<?php } ?>
+    	<?php }*/ ?>
     	<h1><a href="/">JLOOP Admin</a></h1>
 	</div><!-- end .container -->
 </div><!-- end #header -->
@@ -33,9 +33,10 @@ show up on all of your views, include it here -->
 <div id="navbar"> 
 	<div class="container">
 		<ul>
-			<?php if($session->read('Auth.User.id') > 0) { ?>
+			<?php /*if($session->read('Auth.User.id') > 0) { ?>
 			<li><a href="/games">Games</a></li>
-			<?php } ?>
+			<?php }*/ ?>
+			<li><a href="/games">Games</a></li>
 		</ul>
 	</div><!-- end .container -->		
 </div><!-- end #navbar -->
