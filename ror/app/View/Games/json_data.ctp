@@ -1,8 +1,6 @@
-
-<?php pr($game); ?>
-
-var questions = [
 <?php
+echo '
+var questions = [';
 foreach($game['Question'] as $key=>$question):
 	if($key != 0) echo ',
 	';
