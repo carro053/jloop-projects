@@ -1,6 +1,7 @@
 <?php
     echo $this->Form->create('Question',array('url'=>'/questions/add/'.$game_id,'type' => 'file'));
     echo $this->Form->input('title');
+    echo $this->Form->input('time');
     echo $this->Form->input('clue_type',array('options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));
     echo $this->Form->input('clue_text');
     echo $this->Form->input('clue_image',array('type'=>'file'));
