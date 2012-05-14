@@ -897,8 +897,8 @@
 				<div id="timelineDrawer"></div>
 			</div>
 		</div>
-		<div id="title" onclick="titleFade();">
+		<?php /*<div id="title" onclick="titleFade();">
 			<h1>Wed-Fri Gameplay on the Desktop</h1>
-		</div>
+		</div> */ ?>
 	</body>
 </html>
