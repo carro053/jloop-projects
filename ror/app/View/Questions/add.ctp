@@ -1,7 +1,7 @@
 <?php
     echo $this->Form->create('Question',array('url'=>'/questions/add/'.$game_id,'type' => 'file'));
     echo $this->Form->input('title');
-    echo $this->Form->input('clue_type',array('options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this.value);'));
+    echo $this->Form->input('clue_type',array('options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));
     echo $this->Form->input('clue_text');
     echo $this->Form->input('clue_image');
     echo $this->Form->input('question_type',array('options'=>array('text'=>'Text','image'=>'Image')));
@@ -30,7 +30,7 @@
 	function change_type(item)
 	{
 		var theName = $(item).attr('id');
-		theName = theName.substr(8,item.length-12);
+		theName = theName.substr(8,theName.length-12);
 		var what = item.value;
 		if(what == 'image')
 		{
