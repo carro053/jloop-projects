@@ -891,6 +891,10 @@
 				<!--</div>-->
 			</div>
 			<div id="timelineDrawerParent">
+				<img src="/img/game_icons/default.png" style="position:absolute; top:0px; right:0px;" />
+				<img src="/img/game_icons/default.png" style="position:absolute; top:0px; right:0px;" />
+				<img src="/img/game_icons/default.png" style="position:absolute; top:0px; right:0px;" />
+				<img src="/img/game_icons/default.png" style="position:absolute; top:0px; right:0px;" />
 				<div id="timelineButton">
 					<p id="unplayedQuestionCount">8</p>
 				</div>
