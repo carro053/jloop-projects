@@ -37,7 +37,6 @@
 		var theName = $(item).attr('id');
 		theName = theName.substr(8,theName.length-12);
 		var what = $('#Question'+theName+'Type option:selected').val();
-		alert(what);
 		if(theName == 'Answer')
 		{
 			if(what == 'image')
