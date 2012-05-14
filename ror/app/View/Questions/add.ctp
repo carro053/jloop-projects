@@ -43,6 +43,7 @@
 	}
 	$(function(){
 		$('select').each(function(index) {
+			alert($(this).value);
 			if($(this).value == 'image' || $(this).value == 'text')
 			{
 				change_type($(this));
