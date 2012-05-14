@@ -2,27 +2,98 @@
 <?php pr($game); ?>
 
 var questions = [
+<?php
+foreach($game['Question'] as $key=>$question):
+	if($key != 0) echo ',
+	';
+	echo '
 	{
-		title: 'Unplayed Question 1',
-		time: 'Two days ago, 9:52am',
-		question_type: 'text',
-		answer_type: 'image',
-		clue_type: 'text',
-		insight_type: 'text',
-		category: 'How to Read Your Bill',
-		clue: 'New additions draw more power.',
-		question: 'What are some reasons electricity bills might suddenly rise? ',
+		title: \'Unplayed Question '.($key+1).'\',
+		time: \''.$question['time'].'\',
+		question_type: \''.$question['question_type'].'\',
+		answer_type: \''.$question['answer_type'].'\',
+		clue_type: \''.$question['clue_type'].'\',
+		insight_type: \''.$question['insight_type'].'\',
+		category: \''.$game['Game']['title'].'\',';
+		if($question['clue_type'] == 'image')
+		{
+			echo '
+		clue: \''.$question['id'].'.png\',';
+		}else{
+			echo '
+		clue: \''.$question['clue_text'].'\',';
+		}
+		if($question['clue_type'] == 'image')
+		{
+			echo '
+		question: \''.$question['id'].'.png\',';
+		}else{
+			echo '
+		question: \''.$question['question_text'].'\',';
+		}
+		if($question['clue_type'] == 'image')
+		{
+			echo '
 		answers: [
-			'desktop_answer_2_1.png',
-			'desktop_answer_2_2.png',
-			'desktop_answer_2_3.png',
-			'all_of_the_above.png'
-			],
-		correct_answer_index: 3,
-		insight: 'One way to lower the cost of new appliances is to turn them off when not in use.'
-	},
-	
-	{
+			\''.$question['id'].'_1.png\',
+			\''.$question['id'].'_2.png\',
+			\''.$question['id'].'_3.png\',
+			\''.$question['id'].'_4.png\'
+			],';
+		}else{
+			echo '
+		answers: [';
+			if($question['answer_1_text'] != '')
+			{
+				echo '
+			null,';
+			}else{
+				echo '
+			\''.$question['answer_1_text'].'\',';
+			}
+			if($question['answer_2_text'] != '')
+			{
+				echo '
+			null,';
+			}else{
+				echo '
+			\''.$question['answer_2_text'].'\',';
+			}
+			if($question['answer_3_text'] != '')
+			{
+				echo '
+			null,';
+			}else{
+				echo '
+			\''.$question['answer_3_text'].'\',';
+			}
+			if($question['answer_4_text'] != '')
+			{
+				echo '
+			null,';
+			}else{
+				echo '
+			\''.$question['answer_4_text'].'\',';
+			}
+			echo '
+			],';
+		}
+		echo '
+		correct_answer_index: '.$question['correct_answer'].',';
+		if($question['clue_type'] == 'image')
+		{
+			echo '
+		insight: \''.$question['id'].'.png\'';
+		}else{
+			echo '
+		insight: \''.$question['insight_text'].'\'';
+		}
+		echo ';
+	}';
+endforeach;
+echo '
+];';
+	/*{
 		title: 'Unplayed Question 2',
 		time: 'Two days ago, 1:22pm',
 		question_type: 'text',
@@ -211,4 +282,4 @@ var questions = [
 		insight: 'Take care when you compare. Use the column that shows average kilowatt hours (kWh) per day to compare.',
 	},
 
-];
+];*/ ?>
