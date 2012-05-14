@@ -25,10 +25,9 @@
 				while(indexString.length < 4) {
 					indexString = "0" + indexString;
 				}
-				//var image = new Image;
-				//image.src = '/img/animation/correct'+indexString+'.png';
-				var image_src = '/img/animation/correct'+indexString+'.png';
-				correctImageCache.push(image_src);
+				var image = new Image;
+				image.src = '/img/animation/correct'+indexString+'.png';
+				correctImageCache.push(image);
 			}
 			
 			var incorrectImageCache = [];
@@ -37,10 +36,9 @@
 				while(indexString.length < 4) {
 					indexString = "0" + indexString;
 				}
-				//var image = new Image;
-				//image.src = '/img/animation/incorrect'+indexString+'.png';
-				var image_src = '/img/animation/incorrect'+indexString+'.png';
-				incorrectImageCache.push(image_src);
+				var image = new Image;
+				image.src = '/img/animation/incorrect'+indexString+'.png';
+				incorrectImageCache.push(image);
 			}
 			
 			var clueAudio = new Audio('/audio/ROR_ringtoneAB_combined.ogg');
@@ -372,7 +370,6 @@
 						$('#drawer').animate(properties, options);
 						$('#answerAnimation').hide();
 					}
-					//$('#answerAnimation').attr('src', imageCache[index].src);
 					$('#answerAnimation').attr('src', imageCache[index]);
 					index++;
 				}, 50);
