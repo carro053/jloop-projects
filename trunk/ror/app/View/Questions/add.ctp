@@ -43,9 +43,11 @@
 	}
 	$(function(){
 		$('select').each(function(index) {
-			alert($(this).value);
-			if($(this).value == 'image' || $(this).value == 'text')
+			var theName = $(this).attr('id');
+			theName = theName.substr(theName.length-4);
+			if(theName == 'Type')
 			{
+				if(!$(this).value) $("#"+theName+" option[text=text]").attr("selected","selected");
 				change_type($(this));
 			}
 		});
