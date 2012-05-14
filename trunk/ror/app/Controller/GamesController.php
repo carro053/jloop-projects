@@ -4,7 +4,7 @@ App::uses('AppController', 'Controller');
 class GamesController extends AppController {
 	public $name = 'Games';
 	public $helpers = array('Html', 'Session');
-	public $uses = array();
+	public $uses = array('Game','Question');
 	
 	public function index() {
 		$games = $this->Game->find('all');
@@ -15,6 +15,7 @@ class GamesController extends AppController {
 	{
 		if(isset($this->data))
 		{
+			if($this->data['Game']['icon']['error'] == 0 && $this->data['Game']['icon']['size'] > 0) $this->data['Game']['has_icon'] = 1;
 			if($this->Game->save($this->data))
 			{
 				if($this->data['Game']['icon']['error'] == 0 && $this->data['Game']['icon']['size'] > 0)
@@ -31,6 +32,7 @@ class GamesController extends AppController {
 		$game = $this->Game->findById($game_id);
 		if(isset($this->data))
 		{
+			if($this->data['Game']['icon']['error'] == 0 && $this->data['Game']['icon']['size'] > 0) $this->data['Game']['has_icon'] = 1;
 			if($this->Game->save($this->data))
 			{
 				if($this->data['Game']['icon']['error'] == 0 && $this->data['Game']['icon']['size'] > 0)
@@ -44,8 +46,11 @@ class GamesController extends AppController {
 		}
 	}
 	
-	public function play() {
+	public function play($game_id,$question_id=false) {
 		$this->layout = false;
+		
+		$this->set('game',$this->Game->findById($game_id));
+		$this->set('question_id',$question_id);
 	}
 	
 	public function json_data() {
