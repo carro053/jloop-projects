@@ -32,6 +32,8 @@ class GamesController extends AppController {
 		$game = $this->Game->findById($game_id);
 		if(isset($this->data['Game']))
 		{
+			pr($this->data);
+			exit;
 			if($this->data['Game']['icon']['error'] == 0 && $this->data['Game']['icon']['size'] > 0) $this->data['Game']['has_icon'] = 1;
 			if($this->Game->save($this->data))
 			{
