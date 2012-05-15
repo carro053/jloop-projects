@@ -33,10 +33,10 @@ foreach($game['Question'] as $key=>$question):
 		{
 			echo '
 		answers: [
-			\''.$question['id'].'_1.png\',
-			\''.$question['id'].'_2.png\',
-			\''.$question['id'].'_3.png\',
-			\''.$question['id'].'_4.png\'
+			\''.$question['id'].'-1.png\',
+			\''.$question['id'].'-2.png\',
+			\''.$question['id'].'-3.png\',
+			\''.$question['id'].'-4.png\'
 			],';
 		}else{
 			echo '
