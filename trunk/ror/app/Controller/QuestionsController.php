@@ -26,6 +26,9 @@ class QuestionsController extends AppController {
 		if(isset($this->data['Question']))
 		{
 			$question = $this->data;
+			$question['Question']['clue_text'] = $this->removeInvis(nl2br($question['Question']['clue_text']));
+			$question['Question']['question_text'] = $this->removeInvis(nl2br($question['Question']['question_text']));
+			$question['Question']['insight_text'] = $this->removeInvis(nl2br($question['Question']['insight_text']));
 			$question['Question']['game_id'] = $game_id;
 			$question['Question']['order'] = $this->Question->find('count',array('conditions'=>'Question.game_id = '.$game_id));
 			if($this->Question->save($question))
@@ -77,6 +80,8 @@ class QuestionsController extends AppController {
 		{
 			$question = $this->data;
 			$question['Question']['clue_text'] = $this->removeInvis(nl2br($question['Question']['clue_text']));
+			$question['Question']['question_text'] = $this->removeInvis(nl2br($question['Question']['question_text']));
+			$question['Question']['insight_text'] = $this->removeInvis(nl2br($question['Question']['insight_text']));
 			if($this->Question->save($question))
 			{
 				if($this->data['Question']['clue_image']['error'] == 0 && $this->data['Question']['clue_image']['size'] > 0)
@@ -116,6 +121,10 @@ class QuestionsController extends AppController {
 		} else {
 			$question['Question']['clue_text'] = str_replace('<br />','
 ',$question['Question']['clue_text']);
+			$question['Question']['question_text'] = str_replace('<br />','
+',$question['Question']['question_text']);
+			$question['Question']['insight_text'] = str_replace('<br />','
+',$question['Question']['insight_text']);
 			$this->data = $question;
 		}
 	}
