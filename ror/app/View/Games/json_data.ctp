@@ -89,7 +89,8 @@ foreach($game['Question'] as $key=>$question):
 		if($question['has_prize'])
 		{
 			echo ',
-		prize: \''.$question['id'].'.png\'';
+		prize: \''.$question['id'].'.png\',
+		prize_text: \''.str_replace("'","\\'",$question['prize_text']).'\'';
 		}
 		echo '
 	}';
