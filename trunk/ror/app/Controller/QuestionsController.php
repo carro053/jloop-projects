@@ -114,6 +114,7 @@ class QuestionsController extends AppController {
 				$this->redirect('/questions/index/'.$game_id);
 			}
 		} else {
+			$question['Question']['clue_text'] = str_replace('<br />','\\n',$question['Question']['clue_text']);
 			$this->data = $question;
 		}
 	}
