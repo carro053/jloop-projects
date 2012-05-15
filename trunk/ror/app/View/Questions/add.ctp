@@ -23,7 +23,7 @@
     echo $this->Form->input('answer_4_image',array('type'=>'file'));
     echo $this->Form->input('correct_answer',array('options'=>array(0=>1,1=>2,2=>3,3=>4)));
     echo $this->Form->input('has_prize');
-    echo $this->Form->input('prize_image',array('type'=>'file'));
+    echo $this->Form->input('prize_image',array('type'=>'file','label'=>'Prize Image<br />(241×132)'));
     echo $this->Form->input('prize_text');
     echo $this->Form->end('Submit');
 ?>
