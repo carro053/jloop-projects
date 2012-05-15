@@ -76,6 +76,7 @@ class QuestionsController extends AppController {
 		if(isset($this->data['Question']))
 		{
 			$question = $this->data;
+			$question['Question']['clue_text'] = $this->removeInvis(nl2br($question['Question']['clue_text']));
 			if($this->Question->save($question))
 			{
 				if($this->data['Question']['clue_image']['error'] == 0 && $this->data['Question']['clue_image']['size'] > 0)

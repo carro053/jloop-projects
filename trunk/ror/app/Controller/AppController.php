@@ -32,4 +32,22 @@ App::uses('Controller', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+
+	function removeInvis($input)
+	{
+		$replaceArray = array(array(), array()); // this is a replace array for illegal SGML characters;
+		for ($i=0; $i<32; $i++)                  // produces a correct XML output
+		{
+		    $replaceArray[0][] = chr($i);
+		    $replaceArray[1][] = "";
+		}
+		for ($i=127; $i<160; $i++)
+		{
+		    $replaceArray[0][] = chr($i);
+		    $replaceArray[1][] = "";
+		}
+		$input = str_replace($replaceArray[0], $replaceArray[1], $input); // get rid of illegal SGML chars
+		return $input;
+	}
+
 }
