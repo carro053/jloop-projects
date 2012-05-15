@@ -86,6 +86,11 @@ foreach($game['Question'] as $key=>$question):
 			echo '
 		insight: \''.str_replace("'","\\'",$question['insight_text']).'\'';
 		}
+		if($question['has_prize'])
+		{
+			echo ',
+		prize: \''.$question['id'].'.png\'';
+		}
 		echo '
 	}';
 endforeach;
