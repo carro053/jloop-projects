@@ -90,7 +90,7 @@ var questions = [
 		insight_type: 'text',
 		category: 'How to Read Your Bill',
 		clue: 'desktop_clue_1.png',
-		question: 'What part of your bill shows conservation efforts over time?',
+		question: 'What part of your bill can illustrate conservation efforts over time?',
 		answers: [
 			'Total amount due.',
 			'Previous balance.',
@@ -156,7 +156,7 @@ var questions = [
 		insight_type: 'text',
 		category: 'How to Read Your Bill',
 		clue: 'clue_billing_2.png',
-		question: 'The billing usage field tells you how much energy you have used in a month.',
+		question: 'The billing usage field tells you how much energy you have used in the billing cycle.',
 		answers: [
 			null,
 			null,
