@@ -865,12 +865,12 @@ if($game['Game']['has_icon'])
 			#title h2 {
 				margin: 80px 0 0 0;
 			}
-			#prize-image {
+			.prize-image {
 				margin-left: 37px;
 				margin-top: 68px;
 				display: block;
 			}
-			#prize-text {
+			.prize-text {
 				display: block;
 				width: 235px;
 				margin-left: 39px;
