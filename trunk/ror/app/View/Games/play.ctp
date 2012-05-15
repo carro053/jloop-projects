@@ -332,10 +332,12 @@ if($game['Game']['has_icon'])
 				{
 					drawer_top = '120';
 					drawer_bottom = '468';
-					$('#drawer').css('background-image', 'url(/img/prizes/'+question.prize+')');
+					$('#drawer').css('background-image', 'url(/img/prizes/bg.png)');
+					$('#drawer').html('<img class="prize-image" src="/img/prizes/'+question.prize+'" /><span class="prize-text">'+question.prize_text+'</span>');
 				}else{
 					drawer_top = '408';
 					drawer_bottom = '468';
+					$('#drawer').html('');
 				}
 			}
 			

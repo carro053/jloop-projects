@@ -33,6 +33,7 @@
     echo $this->Form->input('has_prize');
     if(is_file(WWW_ROOT.'img'.DS.'prizes'.DS.$this->data['Question']['id'].'.png')) echo '<img id="PrizeImage" src="/img/prizes/'.$this->data['Question']['id'].'.png" />';
     echo $this->Form->input('prize_image',array('type'=>'file'));
+    echo $this->Form->input('prize_text');
     echo $this->Form->end('Submit');
 ?>
 <script type="text/javascript">
