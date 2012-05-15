@@ -865,6 +865,23 @@ if($game['Game']['has_icon'])
 			#title h2 {
 				margin: 80px 0 0 0;
 			}
+			#prize-image {
+				margin-left: 37px;
+				margin-top: 68px;
+				display: block;
+			}
+			#prize-text {
+				display: block;
+				width: 235px;
+				margin-left: 39px;
+				margin-top: 11px;
+				font-size: 11px;
+				font-family: Helvetica;
+				color: 
+				#666;
+				text-align: left;
+				line-height: 14px;
+			}
 		</style>
 	</head>
 	<body>
