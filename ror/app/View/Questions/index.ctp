@@ -16,7 +16,7 @@
 			<tr id="question_<?php echo $question['id']; ?>">
 				<td><?php echo $question['title']; ?></td>
 				<td width="90" style="text-align:center;"><img width="11" height="11" src="/site-admin/img/icon_reorder.png" class="handleBar"></td>
-				<td><a class="button" href="/games/play/<?php echo $game['Game']['id']; ?>/<?php echo $question['order']; ?>">Play Question</a>&nbsp;<a class="button" href="/questions/edit/<?php echo $question['id']; ?>">Edit</a>&nbsp;<a class="button" href="/questions/delete/<?php echo $question['id']; ?>" onclick="return confirm('Are you sure you want to delete this question?');">Delete</a></td>
+				<td><a class="button" href="/games/play/<?php echo $game['Game']['id']; ?>/<?php echo $question['order']; ?>" target="_blank">Play Question</a>&nbsp;<a class="button" href="/questions/edit/<?php echo $question['id']; ?>">Edit</a>&nbsp;<a class="button" href="/questions/delete/<?php echo $question['id']; ?>" onclick="return confirm('Are you sure you want to delete this question?');">Delete</a></td>
 			</tr>
 		<?php } ?>
 	<?php } else { ?>
