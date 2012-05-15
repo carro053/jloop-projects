@@ -19,8 +19,7 @@ foreach($game['Question'] as $key=>$question):
 		clue: \''.$question['id'].'.png\',';
 		}else{
 			echo '
-		clue: \''.str_replace(array("'",'
-','\\n','\\r'),array("\\'",'<br />','<br />','<br />'),$question['clue_text']).'\',';
+		clue: \''.$question['clue_text'].'\',';
 		}
 		if($question['question_type'] == 'image')
 		{
@@ -28,8 +27,7 @@ foreach($game['Question'] as $key=>$question):
 		question: \''.$question['id'].'.png\',';
 		}else{
 			echo '
-		question: \''.str_replace(array("'",'
-','\\n','\\r'),array("\\'",'<br />','<br />','<br />'),$question['question_text']).'\',';
+		question: \''.$question['question_text'].'\',';
 		}
 		if($question['answer_type'] == 'image')
 		{
@@ -49,8 +47,7 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.str_replace(array("'",'
-','\\n','\\r'),array("\\'",'<br />','<br />','<br />'),$question['answer_1_text']).'\',';
+			\''.$question['answer_1_text']).'\',';
 			}
 			if($question['answer_2_text'] == '')
 			{
@@ -58,8 +55,7 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.str_replace(array("'",'
-','\\n','\\r'),array("\\'",'<br />','<br />','<br />'),$question['answer_2_text']).'\',';
+			\''.$question['answer_2_text']).'\',';
 			}
 			if($question['answer_3_text'] == '')
 			{
@@ -67,8 +63,7 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.str_replace(array("'",'
-','\\n','\\r'),array("\\'",'<br />','<br />','<br />'),$question['answer_3_text']).'\',';
+			\''.$question['answer_3_text']).'\',';
 			}
 			if($question['answer_4_text'] == '')
 			{
@@ -76,8 +71,7 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.str_replace(array("'",'
-','\\n','\\r'),array("\\'",'<br />','<br />','<br />'),$question['answer_4_text']).'\'';
+			\''.$question['answer_4_text']).'\'';
 			}
 			echo '
 			],';
@@ -90,8 +84,7 @@ foreach($game['Question'] as $key=>$question):
 		insight: \''.$question['id'].'.png\'';
 		}else{
 			echo '
-		insight: \''.str_replace(array("'",'
-','\\n','\\r'),array("\\'",'<br />','<br />','<br />'),$question['insight_text']).'\'';
+		insight: \''.$question['insight_text'].'\'';
 		}
 		echo '
 	}';
