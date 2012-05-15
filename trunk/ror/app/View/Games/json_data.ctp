@@ -47,7 +47,7 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.$question['answer_1_text']).'\',';
+			\''.$question['answer_1_text'].'\',';
 			}
 			if($question['answer_2_text'] == '')
 			{
@@ -55,7 +55,7 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.$question['answer_2_text']).'\',';
+			\''.$question['answer_2_text'].'\',';
 			}
 			if($question['answer_3_text'] == '')
 			{
@@ -63,7 +63,7 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.$question['answer_3_text']).'\',';
+			\''.$question['answer_3_text'].'\',';
 			}
 			if($question['answer_4_text'] == '')
 			{
@@ -71,7 +71,7 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.$question['answer_4_text']).'\'';
+			\''.$question['answer_4_text'].'\'';
 			}
 			echo '
 			],';
