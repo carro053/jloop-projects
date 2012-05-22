@@ -184,6 +184,7 @@ class QuestionsController extends AppController {
 	function set_order()
     {
     	$i=0;
+    	pr($this->params['form']);
 		foreach($this->params['form']['question'] as $id):
 			$order['Question']['id'] = $id;
 			$order['Question']['order'] = $i;
