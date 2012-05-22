@@ -52,8 +52,7 @@ $(function(){
 				data: serial,
 				error: function(){
 					alert("theres an error with AJAX");
-				},
-				success: function(it) {console.log(it);}
+				}
 			});
 		}
 	});
