@@ -71,7 +71,7 @@ class AppController extends Controller {
 		
 		imagecopyresized(
 			$work, //resource dst_image
-			$blank, //resource src_image
+			$frame, //resource src_image
 			0, //int dst_x
 			0, //int dst_y
 			0, //int src_x
