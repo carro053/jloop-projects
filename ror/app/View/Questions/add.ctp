@@ -101,8 +101,8 @@
 			<td><?php ?></td>
 		</tr>
 		<tr>
-			<td><label>Prize Image</label></td>
-			<td><?php echo $this->Form->input('prize_image',array('label'=>false,'type'=>'file','label'=>'Prize Image<br />(241×132)')); ?></td>
+			<td><label>Prize Image (241×132)</label></td>
+			<td><?php echo $this->Form->input('prize_image',array('label'=>false,'type'=>'file')); ?></td>
 			<td><?php ?></td>
 		</tr>
 		<tr>
