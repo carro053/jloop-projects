@@ -116,8 +116,11 @@
 			<td class="note"><?php echo $this->Form->input('prize_note',array('label'=>false)); ?></td>
 		</tr>
 		<tr>
-			<td><a class="button" href="#" onclick="submit_form(0); return false;">Submit</a></td>
-			<td><a class="button" href="#" onclick="submit_form(1); return false;">Submit and Preview</a></td>
+			<td></td>
+			<td>
+				<a class="button" href="#" onclick="submit_form(0); return false;">Submit</a>
+				<a class="button" href="#" onclick="submit_form(1); return false;">Submit and Preview</a>
+			</td>
 			<td class="note"><?php ?></td>
 		</tr>
 		</form>
