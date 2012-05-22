@@ -46,6 +46,7 @@ $(function(){
 		tolerance: 'pointer',
 		update : function () {
 			serial = $('#sortable tbody').sortable('serialize');
+			alert(serial);
 			$.ajax({
 				url: "/questions/set_order",
 				type: "post",
