@@ -19,11 +19,11 @@ class QuestionsController extends AppController {
 	
 	public function index($game_id,$status_filter=null)
 	{
+		$this->set('status_filter',$status_filter);
 		$order = 'Question.order ASC';
 		if($status_filter)
 		{
 			$order = 'Question.status = "'.$status_filter.'" DESC';
-			$this->data['status'] = $status_filter;
 		}
 		$this->Game->bindModel(array(
 			'hasMany'=>array(
