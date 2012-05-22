@@ -164,8 +164,10 @@
 	}
 	function change_show_notes(checkbox)
 	{
-		alert(checkbox.checked);
-		$('.note').toggle();
+		if(checkbox.checked)
+			$('.note div').show();
+		else
+			$('.note div').hide();
 	}
 	$(function(){
 		$('select').each(function(index) {
