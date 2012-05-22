@@ -38,7 +38,7 @@ class QuestionsController extends AppController {
 		$this->set('game', $game);
 	}
 	
-	function add($game_id)
+	function add($game_id,$preview=false)
 	{
 		if(isset($this->data['Question']))
 		{
@@ -95,13 +95,19 @@ class QuestionsController extends AppController {
 				{
 					move_uploaded_file($this->data['Question']['prize_image']['tmp_name'], WWW_ROOT.'img'.DS.'prizes'.DS.$this->Question->id.'.png');
 				}
-				$this->redirect('/questions/index/'.$game_id);
+				if($preview)
+				{
+					$question = $this->Question->findById($this->Question->id);
+					$this->redirect('/games/play/'.$game_id.'/'.$question['Question']['order']);
+				}else{
+					$this->redirect('/questions/index/'.$game_id);
+				}
 			}
 		}
 		$this->set('game_id', $game_id);
 	}
 	
-	function edit($question_id)
+	function edit($question_id,$preview=false)
 	{
 		$question = $this->Question->findById($question_id);
 		$game_id = $question['Question']['game_id'];
@@ -159,7 +165,13 @@ class QuestionsController extends AppController {
 				{
 					move_uploaded_file($this->data['Question']['prize_image']['tmp_name'], WWW_ROOT.'img'.DS.'prizes'.DS.$this->Question->id.'.png');
 				}
-				$this->redirect('/questions/index/'.$game_id);
+				if($preview)
+				{
+					$question = $this->Question->findById($this->Question->id);
+					$this->redirect('/games/play/'.$game_id.'/'.$question['Question']['order']);
+				}else{
+					$this->redirect('/questions/index/'.$game_id);
+				}
 			}
 		} else {
 			$question['Question']['clue_text'] = str_replace('<br />','
