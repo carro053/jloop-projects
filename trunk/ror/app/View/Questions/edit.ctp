@@ -200,6 +200,9 @@
 				change_type($(this));
 			}
 		});
-		console.log( $('#QuestionShowNotes').attr('checked') );
+		if(<?php echo $this->data['Question']['show_notes']; ?>)
+			$('.note div').css('visibility','visible');
+		else
+			$('.note div').css('visibility','hidden');
 	});
 </script>
