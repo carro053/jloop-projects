@@ -1,11 +1,7 @@
 <h3><a href="/questions/index/<?php echo $game_id; ?>">&larr;Back To Question List</a></h3>
+<input type="checkbox" />
 <table>
 	<thead>
-		<tr>
-			<th></th>
-			<th></th>
-			<th><input type="checkbox" /></th>
-		</tr>
 	</thead>
 	<tbody>
 		<?php echo $this->Form->create('Question',array('url'=>'/questions/add/'.$game_id,'type' => 'file')); ?>
