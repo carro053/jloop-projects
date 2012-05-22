@@ -69,7 +69,7 @@ class AppController extends Controller {
 			79 //int src_h
 		);
 		
-		/*imagecopyresized(
+		imagecopyresized(
 			$work, //resource dst_image
 			$blank, //resource src_image
 			0, //int dst_x
@@ -80,7 +80,7 @@ class AppController extends Controller {
 			97, //int dst_h
 			156, //int src_w
 			97 //int src_h
-		);*/
+		);
 		
 		imagepng($work, $dst_name);
 		
