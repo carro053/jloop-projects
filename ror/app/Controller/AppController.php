@@ -72,8 +72,8 @@ class AppController extends Controller {
 			0, //int src_y
 			139, //int dst_w
 			79, //int dst_h
-			$src_width, //int src_w
-			$src_height //int src_h
+			139, //int src_w
+			79 //int src_h
 		);
 		
 		imagecopyresized(
@@ -105,6 +105,7 @@ class AppController extends Controller {
 		imagepng($work, $dst_name);
 		
 		imagedestroy($work);
+		imagedestroy($fill);
 		imagedestroy($frame);
 		imagedestroy($src);
 	}
