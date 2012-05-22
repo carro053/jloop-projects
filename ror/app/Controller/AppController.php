@@ -59,8 +59,8 @@ class AppController extends Controller {
 		imagecopyresized(
 			$work, //resource dst_image
 			$src, //resource src_image
-			9, //int dst_x
-			9, //int dst_y
+			8, //int dst_x
+			8, //int dst_y
 			0, //int src_x
 			0, //int src_y
 			139, //int dst_w
