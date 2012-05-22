@@ -3,8 +3,8 @@
 <table>
 	<thead>
 		<tr>
-			<th></th>
-			<th><?php echo $this->Form->input('status',array('options'=>$status_options)); ?></th>
+			<th><label>Status</label></th>
+			<th><?php echo $this->Form->input('status',array('label'=>false,'options'=>$status_options)); ?></th>
 			<th><?php echo $this->Form->input('show_notes',array('onclick'=>'change_show_notes(this);')); ?></th>
 		</tr>
 	</thead>
