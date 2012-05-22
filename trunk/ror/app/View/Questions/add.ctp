@@ -117,7 +117,7 @@
 		</tr>
 		<tr>
 			<td><?php echo $this->Form->end('Submit'); ?></td>
-			<td><?php  ?></td>
+			<td><a class="button" href="">Submit and Preview</a></td>
 			<td class="note"><?php ?></td>
 		</tr>
 	</tbody>
