@@ -10,7 +10,7 @@
 			<th>
 				<?php
 				if($status_filter)
-					echo '<a href="/questions/index/'.$game['Game']['id'].'">Enable Drag Order</a>';
+					echo '<a class="button" href="/questions/index/'.$game['Game']['id'].'">Enable Drag Order</a>';
 				else
 					echo 'Drag to Order';
 				?>
