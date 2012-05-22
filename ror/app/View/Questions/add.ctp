@@ -1,4 +1,5 @@
 <h3><a href="/questions/index/<?php echo $game_id; ?>">&larr;Back To Question List</a></h3>
+<?php echo $this->Form->create('Question',array('url'=>'/questions/add/'.$game_id,'type' => 'file')); ?>
 <table>
 	<thead>
 		<tr>
@@ -8,7 +9,6 @@
 		</tr>
 	</thead>
 	<tbody>
-		<?php echo $this->Form->create('Question',array('url'=>'/questions/add/'.$game_id,'type' => 'file')); ?>
 		<tr>
 			<td><label>Title</label></td>
 			<td><?php echo $this->Form->input('title',array('label'=>false)); ?></td>
