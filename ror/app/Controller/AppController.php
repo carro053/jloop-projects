@@ -49,5 +49,43 @@ class AppController extends Controller {
 		$input = str_replace($replaceArray[0], $replaceArray[1], $input); // get rid of illegal SGML chars
 		return $input;
 	}
-
+	
+	function generateAnswerImage($src_name, $dst_name)
+	{
+		$work = imagecreate(156, 97);
+		$blank = imagecreatefrompng(WWW_ROOT.'img'.DS.'blank.png');
+		$src = imagecreatefrompng($src_name);
+		
+		imagecopyresized(
+			$work, //resource dst_image
+			$src, //resource src_image
+			9, //int dst_x
+			9, //int dst_y
+			0, //int src_x
+			0, //int src_y
+			139, //int dst_w
+			79, //int dst_h
+			139, //int src_w
+			79 //int src_h
+		);
+		
+		imagecopyresized(
+			$work, //resource dst_image
+			$blank, //resource src_image
+			0, //int dst_x
+			0, //int dst_y
+			0, //int src_x
+			0, //int src_y
+			156, //int dst_w
+			97, //int dst_h
+			156, //int src_w
+			97 //int src_h
+		);
+		
+		imagepng($work, $dst_name);
+		
+		imagedestroy($work);
+		imagedestroy($blank);
+		imagedestroy($src);
+	}
 }
