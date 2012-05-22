@@ -6,6 +6,17 @@ class QuestionsController extends AppController {
 	public $helpers = array('Html', 'Session');
 	public $uses = array('Game','Question');
 	
+	public function beforeFilter()
+	{
+		$this->set('status_options',array(
+			'First Draft'=>'First Draft',
+			'Design Needed'=>'Design Needed',
+			'Second Draft'=>'Second Draft',
+			'Client Review'=>'Client Review',
+			'Client Approved'=>'Client Approved'
+		));
+	}
+	
 	public function index($game_id)
 	{
 		$this->Game->bindModel(array(

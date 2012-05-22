@@ -1,7 +1,11 @@
 <h3><a href="/questions/index/<?php echo $game_id; ?>">&larr;Back To Question List</a></h3>
-<div class="right">Show Notes<input type="checkbox" onchange="change_show_notes(this);" /></div>
 <table>
 	<thead>
+		<tr>
+			<th></th>
+			<th><?php echo $this->Form->input('status',array('options'=>$status_options)); ?></th>
+			<th><?php echo $this->Form->input('show_notes',array('onclick'=>'change_show_notes(this);')); ?></th>
+		</tr>
 	</thead>
 	<tbody>
 		<?php echo $this->Form->create('Question',array('url'=>'/questions/add/'.$game_id,'type' => 'file')); ?>
