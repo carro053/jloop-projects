@@ -85,7 +85,6 @@ class AppController extends Controller {
 		imagepng($work, $dst_name);
 		
 		imagedestroy($work);
-		imagedestroy($blank);
 		imagedestroy($frame);
 		imagedestroy($src);
 	}
