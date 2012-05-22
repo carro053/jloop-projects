@@ -20,13 +20,11 @@
 			<td><?php ?></td>
 		</tr>
 		<tr>
-			<td><label>Clue Text</label></td>
-			<td><?php echo $this->Form->input('clue_text',array('label'=>false)); ?></td>
-			<td><?php ?></td>
-		</tr>
-		<tr>
-			<td><label>Clue Image</label></td>
-			<td><?php echo $this->Form->input('clue_image',array('label'=>false,'type'=>'file')); ?></td>
+			<td><label>Clue</label></td>
+			<td>
+				<?php echo $this->Form->input('clue_text',array('label'=>false)); ?>
+				<?php echo $this->Form->input('clue_image',array('label'=>false,'type'=>'file')); ?>
+			</td>
 			<td><?php ?></td>
 		</tr>
 		<tr>
@@ -35,13 +33,11 @@
 			<td><?php ?></td>
 		</tr>
 		<tr>
-			<td><label>Question Text</label></td>
-			<td><?php echo $this->Form->input('question_text',array('label'=>false)); ?></td>
-			<td><?php ?></td>
-		</tr>
-		<tr>
-			<td><label>Question Image</label></td>
-			<td><?php echo $this->Form->input('question_image',array('label'=>false,'type'=>'file')); ?></td>
+			<td><label>Question</label></td>
+			<td>
+				<?php echo $this->Form->input('question_text',array('label'=>false)); ?>
+				<?php echo $this->Form->input('question_image',array('label'=>false,'type'=>'file')); ?>
+			</td>
 			<td><?php ?></td>
 		</tr>
 		<tr>
@@ -50,13 +46,11 @@
 			<td><?php ?></td>
 		</tr>
 		<tr>
-			<td><label>Insight Text</label></td>
-			<td><?php echo $this->Form->input('insight_text',array('label'=>false)); ?></td>
-			<td><?php ?></td>
-		</tr>
-		<tr>
-			<td><label>Insight Image</label></td>
-			<td><?php echo $this->Form->input('insight_image',array('label'=>false,'type'=>'file')); ?></td>
+			<td><label>Insight</label></td>
+			<td>
+				<?php echo $this->Form->input('insight_text',array('label'=>false)); ?>
+				<?php echo $this->Form->input('insight_image',array('label'=>false,'type'=>'file')); ?>
+			</td>
 			<td><?php ?></td>
 		</tr>
 		<tr>
