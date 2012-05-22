@@ -201,7 +201,7 @@
 				change_type($(this));
 			}
 		});
-		if(<?php echo $this->data['Question']['show_notes']; ?>)
+		if(<?php if($this->data['Question']['show_notes']) echo 1; else echo 0; ?>)
 			$('.note div').css('visibility','visible');
 		else
 			$('.note div').css('visibility','hidden');
