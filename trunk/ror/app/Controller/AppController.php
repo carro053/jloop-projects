@@ -52,26 +52,9 @@ class AppController extends Controller {
 	
 	function generateAnswerImage($src_name, $dst_name)
 	{
-		$work = imagecreatetruecolor(156, 97);
-		$blank = imagecreatefrompng(WWW_ROOT.'img'.DS.'blank.png');
+		$work = imagecreatefrompng(WWW_ROOT.'img'.DS.'templates'.DS.'blank.png');
+		$frame = imagecreatefrompng(WWW_ROOT.'img'.DS.'templates'.DS.'frame.png');
 		$src = imagecreatefrompng($src_name);
-		
-		$clear = imagecolorallocatealpha(
-			$work, //resource image
-			255, //int red
-			255, //int green
-			255, //int blue
-			127 //int alpha
-		);
-		
-		imagefilledrectangle(
-			$work, //resource image
-			0, //int x1
-			0, //int y1
-			156, //int x2
-			97, //int y2
-			$clear //int color
-		);
 		
 		imagecopyresized(
 			$work, //resource dst_image
@@ -103,6 +86,7 @@ class AppController extends Controller {
 		
 		imagedestroy($work);
 		imagedestroy($blank);
+		imagedestroy($frame);
 		imagedestroy($src);
 	}
 }
