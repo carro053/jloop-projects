@@ -25,7 +25,7 @@
 				<?php echo $this->Form->input('clue_text',array('label'=>false)); ?>
 				<?php echo $this->Form->input('clue_image',array('label'=>false,'type'=>'file')); ?>
 			</td>
-			<td><?php ?></td>
+			<td><?php echo $this->Form->input('clue_note',array('label'=>false)); ?></td>
 		</tr>
 		<tr>
 			<td><label>Question Type</label></td>
@@ -38,7 +38,7 @@
 				<?php echo $this->Form->input('question_text',array('label'=>false)); ?>
 				<?php echo $this->Form->input('question_image',array('label'=>false,'type'=>'file')); ?>
 			</td>
-			<td><?php ?></td>
+			<td><?php echo $this->Form->input('question_note',array('label'=>false)); ?></td>
 		</tr>
 		<tr>
 			<td><label>Insight Type</label></td>
@@ -51,7 +51,7 @@
 				<?php echo $this->Form->input('insight_text',array('label'=>false)); ?>
 				<?php echo $this->Form->input('insight_image',array('label'=>false,'type'=>'file')); ?>
 			</td>
-			<td><?php ?></td>
+			<td><?php echo $this->Form->input('insight_note',array('label'=>false)); ?></td>
 		</tr>
 		<tr>
 			<td><label>Answer Type</label></td>
@@ -64,7 +64,7 @@
 				<?php echo $this->Form->input('answer_1_text',array('label'=>false)); ?>
 				<?php echo $this->Form->input('answer_1_image',array('label'=>false,'type'=>'file')); ?>
 			</td>
-			<td><?php ?></td>
+			<td><?php echo $this->Form->input('answer_1_note',array('label'=>false)); ?></td>
 		</tr>
 		<tr>
 			<td><label>Answer 2</label></td>
@@ -72,7 +72,7 @@
 				<?php echo $this->Form->input('answer_2_text',array('label'=>false)); ?>
 				<?php echo $this->Form->input('answer_2_image',array('label'=>false,'type'=>'file')); ?>
 			</td>
-			<td><?php ?></td>
+			<td><?php echo $this->Form->input('answer_2_note',array('label'=>false)); ?></td>
 		</tr>
 		<tr>
 			<td><label>Answer 3</label></td>
@@ -80,7 +80,7 @@
 				<?php echo $this->Form->input('answer_3_text',array('label'=>false)); ?>
 				<?php echo $this->Form->input('answer_3_image',array('label'=>false,'type'=>'file')); ?>
 			</td>
-			<td><?php ?></td>
+			<td><?php echo $this->Form->input('answer_3_note',array('label'=>false)); ?></td>
 		</tr>
 		<tr>
 			<td><label>Answer 4</label></td>
@@ -88,7 +88,7 @@
 				<?php echo $this->Form->input('answer_4_text',array('label'=>false)); ?>
 				<?php echo $this->Form->input('answer_4_image',array('label'=>false,'type'=>'file')); ?>
 			</td>
-			<td><?php ?></td>
+			<td><?php echo $this->Form->input('answer_4_note',array('label'=>false)); ?></td>
 		</tr>
 		<tr>
 			<td><label>Correct Answer</label></td>
@@ -108,7 +108,7 @@
 		<tr>
 			<td><label>Prize Text</label></td>
 			<td><?php echo $this->Form->input('prize_text',array('label'=>false)); ?></td>
-			<td><?php ?></td>
+			<td><?php echo $this->Form->input('prize_note',array('label'=>false)); ?></td>
 		</tr>
 		<tr>
 			<td><?php echo $this->Form->end('Submit'); ?></td>
