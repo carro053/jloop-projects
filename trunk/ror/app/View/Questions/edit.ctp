@@ -200,6 +200,6 @@
 				change_type($(this));
 			}
 		});
-		console.log( $('#QuestionShowNotes').attr('checked') );
+		change_show_notes($('#QuestionShowNotes'));
 	});
 </script>
