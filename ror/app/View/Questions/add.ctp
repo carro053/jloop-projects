@@ -65,33 +65,65 @@
 			<td><?php ?></td>
 		</tr>
 		<tr>
-			<td><label>Answer 1 Text</label></td>
-			<td><?php echo $this->Form->input('answer_1_text',array('label'=>false)); ?></td>
+			<td><label>Answer 1</label></td>
+			<td>
+				<?php echo $this->Form->input('answer_1_text',array('label'=>false)); ?>
+				<?php echo $this->Form->input('answer_1_image',array('label'=>false,'type'=>'file')); ?>
+			</td>
 			<td><?php ?></td>
 		</tr>
 		<tr>
-			<td><label>Answer 1 Image</label></td>
-			<td><?php echo $this->Form->input('answer_1_image',array('label'=>false,'type'=>'file')); ?></td>
+			<td><label>Answer 2</label></td>
+			<td>
+				<?php echo $this->Form->input('answer_2_text',array('label'=>false)); ?>
+				<?php echo $this->Form->input('answer_2_image',array('label'=>false,'type'=>'file')); ?>
+			</td>
+			<td><?php ?></td>
+		</tr>
+		<tr>
+			<td><label>Answer 3</label></td>
+			<td>
+				<?php echo $this->Form->input('answer_3_text',array('label'=>false)); ?>
+				<?php echo $this->Form->input('answer_3_image',array('label'=>false,'type'=>'file')); ?>
+			</td>
+			<td><?php ?></td>
+		</tr>
+		<tr>
+			<td><label>Answer 4</label></td>
+			<td>
+				<?php echo $this->Form->input('answer_4_text',array('label'=>false)); ?>
+				<?php echo $this->Form->input('answer_4_image',array('label'=>false,'type'=>'file')); ?>
+			</td>
+			<td><?php ?></td>
+		</tr>
+		<tr>
+			<td><label>Correct Answer</label></td>
+			<td><?php echo $this->Form->input('correct_answer',array('label'=>false,'options'=>array(0=>1,1=>2,2=>3,3=>4))); ?></td>
+			<td><?php ?></td>
+		</tr>
+		<tr>
+			<td><label>Has Prize</label></td>
+			<td><?php  echo $this->Form->input('has_prize',array('label'=>false)); ?></td>
+			<td><?php ?></td>
+		</tr>
+		<tr>
+			<td><label>Prize Image</label></td>
+			<td><?php echo $this->Form->input('prize_image',array('type'=>'file','label'=>'Prize Image<br />(241×132)')); ?></td>
+			<td><?php ?></td>
+		</tr>
+		<tr>
+			<td><label>Prize Text</label></td>
+			<td><?php echo $this->Form->input('prize_text',array('label'=>false)); ?></td>
+			<td><?php ?></td>
+		</tr>
+		<tr>
+			<td><?php echo $this->Form->end('Submit'); ?></td>
+			<td><?php  ?></td>
 			<td><?php ?></td>
 		</tr>
 	</tbody>
 </table>
-<?php
-    
-    
-    
-    echo $this->Form->input('answer_2_text');
-    echo $this->Form->input('answer_2_image',array('type'=>'file'));
-    echo $this->Form->input('answer_3_text');
-    echo $this->Form->input('answer_3_image',array('type'=>'file'));
-    echo $this->Form->input('answer_4_text');
-    echo $this->Form->input('answer_4_image',array('type'=>'file'));
-    echo $this->Form->input('correct_answer',array('options'=>array(0=>1,1=>2,2=>3,3=>4)));
-    echo $this->Form->input('has_prize');
-    echo $this->Form->input('prize_image',array('type'=>'file','label'=>'Prize Image<br />(241×132)'));
-    echo $this->Form->input('prize_text');
-    echo $this->Form->end('Submit');
-?>
+
 <script type="text/javascript">
 	function change_type(item)
 	{
