@@ -58,9 +58,9 @@ class AppController extends Controller {
 		
 		$clear = imagecolorallocatealpha(
 			$work, //resource image
-			0, //int red
-			0, //int green
-			0, //int blue
+			255, //int red
+			255, //int green
+			255, //int blue
 			127 //int alpha
 		);
 		
