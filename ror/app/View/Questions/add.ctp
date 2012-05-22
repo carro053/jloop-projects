@@ -5,7 +5,7 @@
 		<tr>
 			<th><label>Status</label></th>
 			<th><?php echo $this->Form->input('status',array('label'=>false,'options'=>$status_options)); ?></th>
-			<th><?php echo $this->Form->input('show_notes',array('checked'=>'checked','onclick'=>'change_show_notes(this.value);')); ?></th>
+			<th><?php echo $this->Form->input('show_notes',array('checked'=>'checked','onclick'=>'change_show_notes(this);')); ?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -162,9 +162,9 @@
 			}
 		}
 	}
-	function change_show_notes(value)
+	function change_show_notes(checkbox)
 	{
-		alert(value);
+		alert(checkbox.checked);
 		$('.note').toggle();
 	}
 	$(function(){
