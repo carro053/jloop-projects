@@ -6,7 +6,7 @@
 	<thead>
 		<tr>
 			<th>Question</th>
-			<th>Status<?php echo $this->Form->input('status',array('label'=>false,'options'=>$status_options)); ?></th>
+			<th>Status<?php echo $this->Form->input('status',array('div'=>array('style'=>'display:inline'),'label'=>false,'options'=>$status_options)); ?></th>
 			<th>Drag to order</th>
 			<th width="240px">&nbsp;</th>
 		</tr>
