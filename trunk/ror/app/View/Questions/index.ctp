@@ -30,7 +30,7 @@
 <script type="text/javascript">
 function change_status_filter(value)
 {
-	alert(value);
+	window.location = "/questions/index/<?php echo $game['Game']['id']; ?>/"+value;
 }
 $(function(){
 	$("#sortable tbody").sortable({
