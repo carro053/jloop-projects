@@ -200,6 +200,6 @@
 				change_type($(this));
 			}
 		});
-		change_show_notes($('#QuestionShowNotes'));
+		console.log( $('#QuestionShowNotes').checked );
 	});
 </script>
