@@ -55,12 +55,26 @@ class AppController extends Controller {
 		list($src_width, $src_height) = getimagesize($src_name);
 		
 		$work = imagecreatetruecolor(156, 97);
+		$fill = imagecreatefrompng(WWW_ROOT.'img'.DS.'templates'.DS.'fill.png');
 		$frame = imagecreatefrompng(WWW_ROOT.'img'.DS.'templates'.DS.'frame.png');
 		$src = imagecreatefrompng($src_name);
 		
 		imagesavealpha($work, true);
 		$trans_colour = imagecolorallocatealpha($work, 0, 0, 0, 127);
 		imagefill($work, 0, 0, $trans_colour);
+		
+		imagecopyresized(
+			$work, //resource dst_image
+			$fill, //resource src_image
+			8, //int dst_x
+			8, //int dst_y
+			0, //int src_x
+			0, //int src_y
+			139, //int dst_w
+			79, //int dst_h
+			$src_width, //int src_w
+			$src_height //int src_h
+		);
 		
 		imagecopyresized(
 			$work, //resource dst_image
