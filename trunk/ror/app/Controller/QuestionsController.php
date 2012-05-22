@@ -17,14 +17,19 @@ class QuestionsController extends AppController {
 		));
 	}
 	
-	public function index($game_id)
+	public function index($game_id,$status_filter=null)
 	{
+		$order = 'Question.order ASC';
+		if($status_filter)
+		{
+			$order = 'Question.status = '.$status_filter;
+		}
 		$this->Game->bindModel(array(
 			'hasMany'=>array(
 				'Question'=>array(
 					'className'=>'Question',
 					'foreignKey'=>'game_id',
-					'order'=>'Question.order ASC'
+					'order'=>$order
 				)
 			)
 		));
