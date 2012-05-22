@@ -7,7 +7,14 @@
 		<tr>
 			<th>Question</th>
 			<th>Status <?php echo $this->Form->input('status',array('div'=>array('style'=>'display:inline'),'label'=>false,'options'=>$status_options,'onchange'=>'change_status_filter(this.value);','value'=>$status_filter)); ?></th>
-			<th>Drag to order</th>
+			<th>
+				<?php
+				if($status_filter)
+					echo '<a href="/questions/index/'.$game['Game']['id'].'">Enable Drag Order</a>';
+				else
+					echo 'Drag to Order';
+				?>
+			</th>
 			<th width="240px">&nbsp;</th>
 		</tr>
 	</thead>
