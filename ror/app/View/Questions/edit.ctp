@@ -1,7 +1,7 @@
 <h3><a href="/questions/index/<?php echo $game_id; ?>">&larr;Back To Question List</a></h3>
 <table>
 	<thead>
-		<?php echo $this->Form->create('Question',array('url'=>'/questions/add/'.$game_id,'type' => 'file')); ?>
+		<?php echo $this->Form->create('Question',array('url'=>'/questions/edit/'.$this->data['Question']['id'],'type' => 'file')); ?>
 		<?php echo $this->Form->input('id'); ?>
 		<tr>
 			<th><label>Status</label></th>
