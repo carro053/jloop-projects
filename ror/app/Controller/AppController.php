@@ -52,7 +52,7 @@ class AppController extends Controller {
 	
 	function generateAnswerImage($src_name, $dst_name)
 	{
-		$work = imagecreatetruecolor(156, 97);
+		$work = imagecreate(156, 97);
 		$blank = imagecreatefrompng(WWW_ROOT.'img'.DS.'blank.png');
 		$src = imagecreatefrompng($src_name);
 		
