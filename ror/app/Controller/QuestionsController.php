@@ -23,6 +23,7 @@ class QuestionsController extends AppController {
 		if($status_filter)
 		{
 			$order = 'Question.status = "'.$status_filter.'" DESC';
+			$this->data['status'] = $status_filter;
 		}
 		$this->Game->bindModel(array(
 			'hasMany'=>array(
