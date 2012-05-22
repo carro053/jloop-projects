@@ -1,20 +1,85 @@
 <h3><a href="/questions/index/<?php echo $game_id; ?>">&larr;Back To Question List</a></h3>
+<table>
+	<thead>
+	</thead>
+	<tbody>
+		<?php echo $this->Form->create('Question',array('url'=>'/questions/add/'.$game_id,'type' => 'file')); ?>
+		<tr>
+			<td><label>Title</label></td>
+			<td><?php echo $this->Form->input('title',array('label'=>false)); ?></td>
+			<td><?php ?></td>
+		</tr>
+		<tr>
+			<td><label>Time</label></td>
+			<td><?php echo $this->Form->input('time',array('label'=>false,'value'=>'Today, 12:00pm')); ?></td>
+			<td><?php ?></td>
+		</tr>
+		<tr>
+			<td><label>Clue Type</label></td>
+			<td><?php echo $this->Form->input('clue_type',array('label'=>false,'options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);')); ?></td>
+			<td><?php ?></td>
+		</tr>
+		<tr>
+			<td><label>Clue Text</label></td>
+			<td><?php echo $this->Form->input('clue_text',array('label'=>false)); ?></td>
+			<td><?php ?></td>
+		</tr>
+		<tr>
+			<td><label>Clue Image</label></td>
+			<td><?php echo $this->Form->input('clue_image',array('label'=>false,'type'=>'file')); ?></td>
+			<td><?php ?></td>
+		</tr>
+		<tr>
+			<td><label>Question Type</label></td>
+			<td><?php echo $this->Form->input('question_type',array('label'=>false,'options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));; ?></td>
+			<td><?php ?></td>
+		</tr>
+		<tr>
+			<td><label>Question Text</label></td>
+			<td><?php echo $this->Form->input('question_text',array('label'=>false)); ?></td>
+			<td><?php ?></td>
+		</tr>
+		<tr>
+			<td><label>Question Image</label></td>
+			<td><?php echo $this->Form->input('question_image',array('label'=>false,'type'=>'file')); ?></td>
+			<td><?php ?></td>
+		</tr>
+		<tr>
+			<td><label>Insight Type</label></td>
+			<td><?php echo $this->Form->input('insight_type',array('label'=>false,'options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));; ?></td>
+			<td><?php ?></td>
+		</tr>
+		<tr>
+			<td><label>Insight Text</label></td>
+			<td><?php echo $this->Form->input('insight_text',array('label'=>false)); ?></td>
+			<td><?php ?></td>
+		</tr>
+		<tr>
+			<td><label>Insight Image</label></td>
+			<td><?php echo $this->Form->input('insight_image',array('label'=>false,'type'=>'file')); ?></td>
+			<td><?php ?></td>
+		</tr>
+		<tr>
+			<td><label>Answer Type</label></td>
+			<td><?php echo $this->Form->input('answer_type',array('label'=>false,'options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);')); ?></td>
+			<td><?php ?></td>
+		</tr>
+		<tr>
+			<td><label>Answer 1 Text</label></td>
+			<td><?php echo $this->Form->input('answer_1_text',array('label'=>false)); ?></td>
+			<td><?php ?></td>
+		</tr>
+		<tr>
+			<td><label>Answer 1 Image</label></td>
+			<td><?php echo $this->Form->input('answer_1_image',array('label'=>false,'type'=>'file')); ?></td>
+			<td><?php ?></td>
+		</tr>
+	</tbody>
+</table>
 <?php
-    echo $this->Form->create('Question',array('url'=>'/questions/add/'.$game_id,'type' => 'file'));
-    echo $this->Form->input('title');
-    echo $this->Form->input('time',array('value'=>'Today, 12:00pm'));
-    echo $this->Form->input('clue_type',array('options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));
-    echo $this->Form->input('clue_text');
-    echo $this->Form->input('clue_image',array('type'=>'file'));
-    echo $this->Form->input('question_type',array('options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));
-    echo $this->Form->input('question_text');
-    echo $this->Form->input('question_image',array('type'=>'file'));
-    echo $this->Form->input('insight_type',array('options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));
-    echo $this->Form->input('insight_text');
-    echo $this->Form->input('insight_image',array('type'=>'file'));
-    echo $this->Form->input('answer_type',array('options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));
-    echo $this->Form->input('answer_1_text');
-    echo $this->Form->input('answer_1_image',array('type'=>'file'));
+    
+    
+    
     echo $this->Form->input('answer_2_text');
     echo $this->Form->input('answer_2_image',array('type'=>'file'));
     echo $this->Form->input('answer_3_text');
