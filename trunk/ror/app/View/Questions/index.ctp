@@ -22,7 +22,7 @@
 	<tbody>
 	<?php if(!empty($game['Question'])) { ?>
 		<?php foreach($game['Question'] as $question) { ?>
-			<tr id="question_<?php echo $question['id']; ?>" <?php if($question['status'] == $status_filter) echo 'class="success"'; ?>>
+			<tr id="question_<?php echo $question['id']; ?>" <?php if($question['status'] == $status_filter && $status_filter) echo 'class="success"'; ?>>
 				<td><?php echo $question['title']; ?></td>
 				<td><?php echo $question['status']; ?></td>
 				<td width="150" style="text-align:center;"><?php if(!$status_filter) echo '<img width="11" height="11" src="/site-admin/img/icon_reorder.png" class="handleBar">'; ?></td>
