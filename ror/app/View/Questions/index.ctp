@@ -46,14 +46,14 @@ $(function(){
 		tolerance: 'pointer',
 		update : function () {
 			serial = $('#sortable tbody').sortable('serialize');
-			alert(serial);
 			$.ajax({
 				url: "/questions/set_order",
 				type: "post",
 				data: serial,
 				error: function(){
 					alert("theres an error with AJAX");
-				}
+				},
+				success: function(it) {console.log(it);}
 			});
 		}
 	});
