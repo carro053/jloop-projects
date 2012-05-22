@@ -56,6 +56,23 @@ class AppController extends Controller {
 		$blank = imagecreatefrompng(WWW_ROOT.'img'.DS.'blank.png');
 		$src = imagecreatefrompng($src_name);
 		
+		$clear = imagecolorallocatealpha(
+			$work, //resource image
+			0, //int red
+			0, //int green
+			0, //int blue
+			127 //int alpha
+		);
+		
+		imagefilledrectangle(
+			$work, //resource image
+			0, //int x1
+			0, //int y1
+			156, //int x2
+			97, //int y2
+			$clear //int color
+		);
+		
 		imagecopyresized(
 			$work, //resource dst_image
 			$src, //resource src_image
