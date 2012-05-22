@@ -52,6 +52,8 @@ class AppController extends Controller {
 	
 	function generateAnswerImage($src_name, $dst_name)
 	{
+		list($src_width, $src_height) = getimagesize($src_name);
+		
 		$work = imagecreatetruecolor(156, 97);
 		$frame = imagecreatefrompng(WWW_ROOT.'img'.DS.'templates'.DS.'frame.png');
 		$src = imagecreatefrompng($src_name);
@@ -69,8 +71,8 @@ class AppController extends Controller {
 			0, //int src_y
 			139, //int dst_w
 			79, //int dst_h
-			139, //int src_w
-			79 //int src_h
+			$src_width, //int src_w
+			$src_height //int src_h
 		);
 		
 		imagecopyresized(
