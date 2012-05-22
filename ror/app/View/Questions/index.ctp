@@ -6,7 +6,7 @@
 	<thead>
 		<tr>
 			<th>Question</th>
-			<th>Status <?php echo $this->Form->input('status',array('div'=>array('style'=>'display:inline'),'label'=>false,'options'=>$status_options)); ?></th>
+			<th>Status <?php echo $this->Form->input('status',array('div'=>array('style'=>'display:inline'),'label'=>false,'options'=>$status_options,'onchange'=>'change_status_filter(this.value);')); ?></th>
 			<th>Drag to order</th>
 			<th width="240px">&nbsp;</th>
 		</tr>
@@ -28,6 +28,10 @@
 </table>
 
 <script type="text/javascript">
+function change_status_filter(value)
+{
+	alert(value);
+}
 $(function(){
 	$("#sortable tbody").sortable({
 		handle : '.handleBar',
