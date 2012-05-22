@@ -65,19 +65,31 @@ class QuestionsController extends AppController {
 				}
 				if($this->data['Question']['answer_1_image']['error'] == 0 && $this->data['Question']['answer_1_image']['size'] > 0)
 				{
-					move_uploaded_file($this->data['Question']['answer_1_image']['tmp_name'], WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-1.png');
+					if(move_uploaded_file($this->data['Question']['answer_1_image']['tmp_name'], WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-1-O.png'))
+					{
+						$this->generateAnswerImage(WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-1-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-1.png');
+					}
 				}
 				if($this->data['Question']['answer_2_image']['error'] == 0 && $this->data['Question']['answer_2_image']['size'] > 0)
 				{
-					move_uploaded_file($this->data['Question']['answer_2_image']['tmp_name'], WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-2.png');
+					if(move_uploaded_file($this->data['Question']['answer_2_image']['tmp_name'], WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-2-O.png'))
+					{
+						$this->generateAnswerImage(WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-2-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-2.png');
+					}
 				}
 				if($this->data['Question']['answer_3_image']['error'] == 0 && $this->data['Question']['answer_3_image']['size'] > 0)
 				{
-					move_uploaded_file($this->data['Question']['answer_3_image']['tmp_name'], WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-3.png');
+					if(move_uploaded_file($this->data['Question']['answer_3_image']['tmp_name'], WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-3-O.png'))
+					{
+						$this->generateAnswerImage(WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-3-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-3.png');
+					}
 				}
 				if($this->data['Question']['answer_4_image']['error'] == 0 && $this->data['Question']['answer_4_image']['size'] > 0)
 				{
-					move_uploaded_file($this->data['Question']['answer_4_image']['tmp_name'], WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-4.png');
+					if(move_uploaded_file($this->data['Question']['answer_4_image']['tmp_name'], WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-4-O.png'))
+					{
+						$this->generateAnswerImage(WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-4-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-4.png');
+					}
 				}
 				if($this->data['Question']['prize_image']['error'] == 0 && $this->data['Question']['prize_image']['size'] > 0)
 				{
