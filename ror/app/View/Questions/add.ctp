@@ -1,5 +1,5 @@
 <h3><a href="/questions/index/<?php echo $game_id; ?>">&larr;Back To Question List</a></h3>
-<div class="right">Show Notes<input type="checkbox" /></div>
+<div class="right">Show Notes<input type="checkbox" onchange="change_show_notes(this);" /></div>
 <table>
 	<thead>
 	</thead>
@@ -8,17 +8,17 @@
 		<tr>
 			<td><label>Title</label></td>
 			<td><?php echo $this->Form->input('title',array('label'=>false)); ?></td>
-			<td><?php ?></td>
+			<td class="note"><?php ?></td>
 		</tr>
 		<tr>
 			<td><label>Time</label></td>
 			<td><?php echo $this->Form->input('time',array('label'=>false,'value'=>'Today, 12:00pm')); ?></td>
-			<td><?php ?></td>
+			<td class="note"><?php ?></td>
 		</tr>
 		<tr>
 			<td><label>Clue Type</label></td>
 			<td><?php echo $this->Form->input('clue_type',array('label'=>false,'options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);')); ?></td>
-			<td><?php ?></td>
+			<td class="note"><?php ?></td>
 		</tr>
 		<tr>
 			<td><label>Clue</label></td>
@@ -26,12 +26,12 @@
 				<?php echo $this->Form->input('clue_text',array('label'=>false)); ?>
 				<?php echo $this->Form->input('clue_image',array('label'=>false,'type'=>'file')); ?>
 			</td>
-			<td><?php echo $this->Form->input('clue_note',array('label'=>false)); ?></td>
+			<td class="note"><?php echo $this->Form->input('clue_note',array('label'=>false)); ?></td>
 		</tr>
 		<tr>
 			<td><label>Question Type</label></td>
 			<td><?php echo $this->Form->input('question_type',array('label'=>false,'options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));; ?></td>
-			<td><?php ?></td>
+			<td class="note"><?php ?></td>
 		</tr>
 		<tr>
 			<td><label>Question</label></td>
@@ -39,12 +39,12 @@
 				<?php echo $this->Form->input('question_text',array('label'=>false)); ?>
 				<?php echo $this->Form->input('question_image',array('label'=>false,'type'=>'file')); ?>
 			</td>
-			<td><?php echo $this->Form->input('question_note',array('label'=>false)); ?></td>
+			<td class="note"><?php echo $this->Form->input('question_note',array('label'=>false)); ?></td>
 		</tr>
 		<tr>
 			<td><label>Insight Type</label></td>
 			<td><?php echo $this->Form->input('insight_type',array('label'=>false,'options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));; ?></td>
-			<td><?php ?></td>
+			<td class="note"><?php ?></td>
 		</tr>
 		<tr>
 			<td><label>Insight</label></td>
@@ -52,12 +52,12 @@
 				<?php echo $this->Form->input('insight_text',array('label'=>false)); ?>
 				<?php echo $this->Form->input('insight_image',array('label'=>false,'type'=>'file')); ?>
 			</td>
-			<td><?php echo $this->Form->input('insight_note',array('label'=>false)); ?></td>
+			<td class="note"><?php echo $this->Form->input('insight_note',array('label'=>false)); ?></td>
 		</tr>
 		<tr>
 			<td><label>Answer Type</label></td>
 			<td><?php echo $this->Form->input('answer_type',array('label'=>false,'options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);')); ?></td>
-			<td><?php ?></td>
+			<td class="note"><?php ?></td>
 		</tr>
 		<tr>
 			<td><label>Answer 1</label></td>
@@ -65,7 +65,7 @@
 				<?php echo $this->Form->input('answer_1_text',array('label'=>false)); ?>
 				<?php echo $this->Form->input('answer_1_image',array('label'=>false,'type'=>'file')); ?>
 			</td>
-			<td><?php echo $this->Form->input('answer_1_note',array('label'=>false)); ?></td>
+			<td class="note"><?php echo $this->Form->input('answer_1_note',array('label'=>false)); ?></td>
 		</tr>
 		<tr>
 			<td><label>Answer 2</label></td>
@@ -73,7 +73,7 @@
 				<?php echo $this->Form->input('answer_2_text',array('label'=>false)); ?>
 				<?php echo $this->Form->input('answer_2_image',array('label'=>false,'type'=>'file')); ?>
 			</td>
-			<td><?php echo $this->Form->input('answer_2_note',array('label'=>false)); ?></td>
+			<td class="note"><?php echo $this->Form->input('answer_2_note',array('label'=>false)); ?></td>
 		</tr>
 		<tr>
 			<td><label>Answer 3</label></td>
@@ -81,7 +81,7 @@
 				<?php echo $this->Form->input('answer_3_text',array('label'=>false)); ?>
 				<?php echo $this->Form->input('answer_3_image',array('label'=>false,'type'=>'file')); ?>
 			</td>
-			<td><?php echo $this->Form->input('answer_3_note',array('label'=>false)); ?></td>
+			<td class="note"><?php echo $this->Form->input('answer_3_note',array('label'=>false)); ?></td>
 		</tr>
 		<tr>
 			<td><label>Answer 4</label></td>
@@ -89,32 +89,32 @@
 				<?php echo $this->Form->input('answer_4_text',array('label'=>false)); ?>
 				<?php echo $this->Form->input('answer_4_image',array('label'=>false,'type'=>'file')); ?>
 			</td>
-			<td><?php echo $this->Form->input('answer_4_note',array('label'=>false)); ?></td>
+			<td class="note"><?php echo $this->Form->input('answer_4_note',array('label'=>false)); ?></td>
 		</tr>
 		<tr>
 			<td><label>Correct Answer</label></td>
 			<td><?php echo $this->Form->input('correct_answer',array('label'=>false,'options'=>array(0=>1,1=>2,2=>3,3=>4))); ?></td>
-			<td><?php ?></td>
+			<td class="note"><?php ?></td>
 		</tr>
 		<tr>
 			<td><label>Has Prize</label></td>
 			<td><?php  echo $this->Form->input('has_prize',array('label'=>false)); ?></td>
-			<td><?php ?></td>
+			<td class="note"><?php ?></td>
 		</tr>
 		<tr>
 			<td><label>Prize Image (241×132)</label></td>
 			<td><?php echo $this->Form->input('prize_image',array('label'=>false,'type'=>'file')); ?></td>
-			<td><?php ?></td>
+			<td class="note"><?php ?></td>
 		</tr>
 		<tr>
 			<td><label>Prize Text</label></td>
 			<td><?php echo $this->Form->input('prize_text',array('label'=>false)); ?></td>
-			<td><?php echo $this->Form->input('prize_note',array('label'=>false)); ?></td>
+			<td class="note"><?php echo $this->Form->input('prize_note',array('label'=>false)); ?></td>
 		</tr>
 		<tr>
 			<td><?php echo $this->Form->end('Submit'); ?></td>
 			<td><?php  ?></td>
-			<td><?php ?></td>
+			<td class="note"><?php ?></td>
 		</tr>
 	</tbody>
 </table>
@@ -157,6 +157,10 @@
 				$('#Question'+theName+'Text').parent().show();
 			}
 		}
+	}
+	function change_show_notes(checkbox)
+	{
+		$('.note').toggle();
 	}
 	$(function(){
 		$('select').each(function(index) {
