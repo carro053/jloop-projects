@@ -165,9 +165,9 @@
 	function change_show_notes(checkbox)
 	{
 		if(checkbox.checked)
-			$('.note div').show();
+			$('.note div').css('visibility','visible');
 		else
-			$('.note div').hide();
+			$('.note div').css('visibility','hidden');
 	}
 	$(function(){
 		$('select').each(function(index) {
