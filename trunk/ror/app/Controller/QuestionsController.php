@@ -185,6 +185,7 @@ class QuestionsController extends AppController {
     {
     	$i=0;
     	pr($this->params['form']);
+    	die;
 		foreach($this->params['form']['question'] as $id):
 			$order['Question']['id'] = $id;
 			$order['Question']['order'] = $i;
