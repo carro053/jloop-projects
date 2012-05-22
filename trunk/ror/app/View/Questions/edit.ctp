@@ -185,7 +185,10 @@
 	}
 	function change_show_notes(checkbox)
 	{
-		$('.note').toggle();
+		if(checkbox.checked)
+			$('.note div').css('visibility','visible');
+		else
+			$('.note div').css('visibility','hidden');
 	}
 	$(function(){
 		$('select').each(function(index) {
@@ -197,5 +200,6 @@
 				change_type($(this));
 			}
 		});
+		change_show_notes($('#QuestionShowNotes'));
 	});
 </script>
