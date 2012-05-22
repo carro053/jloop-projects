@@ -1,4 +1,3 @@
-<?php echo $this->data['Question']['show_notes']; ?>
 <h3><a href="/questions/index/<?php echo $game_id; ?>">&larr;Back To Question List</a></h3>
 <table>
 	<thead>
