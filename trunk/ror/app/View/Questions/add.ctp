@@ -5,7 +5,7 @@
 		<tr>
 			<th><label>Status</label></th>
 			<th><?php echo $this->Form->input('status',array('label'=>false,'options'=>$status_options)); ?></th>
-			<th><?php echo $this->Form->input('show_notes',array('onclick'=>'change_show_notes(this);')); ?></th>
+			<th><?php echo $this->Form->input('show_notes',array('value'=>1,'onclick'=>'change_show_notes(this.value);')); ?></th>
 		</tr>
 	</thead>
 	<tbody>
