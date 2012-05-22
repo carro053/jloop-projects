@@ -162,8 +162,9 @@
 			}
 		}
 	}
-	function change_show_notes(checkbox)
+	function change_show_notes(value)
 	{
+		alert(value);
 		$('.note').toggle();
 	}
 	$(function(){
