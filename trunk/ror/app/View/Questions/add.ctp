@@ -116,10 +116,11 @@
 			<td class="note"><?php echo $this->Form->input('prize_note',array('label'=>false)); ?></td>
 		</tr>
 		<tr>
-			<td><?php echo $this->Form->end('Submit'); ?></td>
-			<td><a class="button" href="">Submit and Preview</a></td>
+			<td><a class="button" href="#" onclick="submit_form(0);">Submit</a></td>
+			<td><a class="button" href="#" onclick="submit_form(1);">Submit and Preview</a></td>
 			<td class="note"><?php ?></td>
 		</tr>
+		</form>
 	</tbody>
 </table>
 
@@ -168,6 +169,15 @@
 			$('.note div').css('visibility','visible');
 		else
 			$('.note div').css('visibility','hidden');
+	}
+	function submit_form(preview)
+	{
+		alert(  $('#QuestionAddForm').attr('action')  );
+		if(preview)
+		{
+			
+		}
+		$('#QuestionAddForm').submit();
 	}
 	$(function(){
 		$('select').each(function(index) {
