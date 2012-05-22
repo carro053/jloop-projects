@@ -1,5 +1,5 @@
 <h3><a href="/questions/index/<?php echo $game_id; ?>">&larr;Back To Question List</a></h3>
-<div style="float:right;"><input type="checkbox" /></div>
+<div class="right">Show Notes<input type="checkbox" /></div>
 <table>
 	<thead>
 	</thead>
