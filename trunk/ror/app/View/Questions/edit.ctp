@@ -2,7 +2,7 @@
 <table>
 	<thead>
 		<?php echo $this->Form->create('Question',array('url'=>'/questions/add/'.$game_id,'type' => 'file')); ?>
-		<?php echo echo $this->Form->input('id'); ?>
+		<?php echo $this->Form->input('id'); ?>
 		<tr>
 			<th><label>Status</label></th>
 			<th><?php echo $this->Form->input('status',array('label'=>false,'options'=>$status_options)); ?></th>
