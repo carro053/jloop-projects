@@ -105,7 +105,7 @@ class AppController extends Controller {
 			$src_y = round(($src_height - $src_h) / 2);
 		}
 		
-		echo $ratio."/".$src_ratio."/".($src_w/$src_h);die;
+		echo $ratio."/".$src_ratio."/".($src_h/$src_w);die;
 		
 		imagecopyresized(
 			$work, //resource dst_image
