@@ -207,7 +207,7 @@ class QuestionsController extends AppController {
 	
 	function test()
 	{
-		$data = list($width, $height) = getimagesize(WWW_ROOT.'img'.DS.'bg_sub_compiling.gif');
+		$data = list($width, $height) = getimagesize(WWW_ROOT.'img'.DS.'test.jpg');
 		pr($data);
 		pr($height);
 		die;
