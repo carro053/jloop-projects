@@ -28,7 +28,7 @@
 			<td><label>Clue</label></td>
 			<td>
 				<?php echo $this->Form->input('clue_text',array('label'=>false)); ?>
-				<?php echo $this->Form->input('clue_image',array('label'=>false,'type'=>'file')); ?>
+				<?php echo $this->Form->input('clue_image',array('label'=>'(288x204)','type'=>'file')); ?>
 			</td>
 			<td class="note"><?php echo $this->Form->input('clue_note',array('label'=>false)); ?></td>
 		</tr>
@@ -41,7 +41,7 @@
 			<td><label>Question</label></td>
 			<td>
 				<?php echo $this->Form->input('question_text',array('label'=>false)); ?>
-				<?php echo $this->Form->input('question_image',array('label'=>false,'type'=>'file')); ?>
+				<?php echo $this->Form->input('question_image',array('label'=>'(289x97)','type'=>'file')); ?>
 			</td>
 			<td class="note"><?php echo $this->Form->input('question_note',array('label'=>false)); ?></td>
 		</tr>
@@ -54,7 +54,7 @@
 			<td><label>Insight</label></td>
 			<td>
 				<?php echo $this->Form->input('insight_text',array('label'=>false)); ?>
-				<?php echo $this->Form->input('insight_image',array('label'=>false,'type'=>'file')); ?>
+				<?php echo $this->Form->input('insight_image',array('label'=>'(288x204)','type'=>'file')); ?>
 			</td>
 			<td class="note"><?php echo $this->Form->input('insight_note',array('label'=>false)); ?></td>
 		</tr>
