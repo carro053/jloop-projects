@@ -72,7 +72,7 @@
 			<td>
 				<?php echo $this->Form->input('answer_1_text',array('label'=>false)); ?>
 				<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$this->data['Question']['id'].'-1.png')) echo '<img id="Answer1Image" src="/img/answers/'.$this->data['Question']['id'].'-1.png" />'; ?>
-				<?php echo $this->Form->input('answer_1_image',array('label'=>false,'type'=>'file')); ?>
+				<?php echo $this->Form->input('answer_1_image',array('label'=>'(139x79)','type'=>'file')); ?>
 			</td>
 			<td class="note"><?php echo $this->Form->input('answer_1_note',array('label'=>false)); ?></td>
 		</tr>
@@ -81,7 +81,7 @@
 			<td>
 				<?php echo $this->Form->input('answer_2_text',array('label'=>false)); ?>
 				<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$this->data['Question']['id'].'-2.png')) echo '<img id="Answer2Image" src="/img/answers/'.$this->data['Question']['id'].'-2.png" />'; ?>
-				<?php echo $this->Form->input('answer_2_image',array('label'=>false,'type'=>'file')); ?>
+				<?php echo $this->Form->input('answer_2_image',array('label'=>'(139x79)','type'=>'file')); ?>
 			</td>
 			<td class="note"><?php echo $this->Form->input('answer_2_note',array('label'=>false)); ?></td>
 		</tr>
@@ -90,7 +90,7 @@
 			<td>
 				<?php echo $this->Form->input('answer_3_text',array('label'=>false)); ?>
 				<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$this->data['Question']['id'].'-3.png')) echo '<img id="Answer3Image" src="/img/answers/'.$this->data['Question']['id'].'-3.png" />'; ?>
-				<?php echo $this->Form->input('answer_3_image',array('label'=>false,'type'=>'file')); ?>
+				<?php echo $this->Form->input('answer_3_image',array('label'=>'(139x79)','type'=>'file')); ?>
 			</td>
 			<td class="note"><?php echo $this->Form->input('answer_3_note',array('label'=>false)); ?></td>
 		</tr>
@@ -99,7 +99,7 @@
 			<td>
 				<?php echo $this->Form->input('answer_4_text',array('label'=>false)); ?>
 				<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$this->data['Question']['id'].'-4.png')) echo '<img id="Answer4Image" src="/img/answers/'.$this->data['Question']['id'].'-4.png" />'; ?>
-				<?php echo $this->Form->input('answer_4_image',array('label'=>false,'type'=>'file')); ?>
+				<?php echo $this->Form->input('answer_4_image',array('label'=>'(139x79)','type'=>'file')); ?>
 			</td>
 			<td class="note"><?php echo $this->Form->input('answer_4_note',array('label'=>false)); ?></td>
 		</tr>
