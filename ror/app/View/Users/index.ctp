@@ -1,4 +1,5 @@
-<h3>Users</h3>
+<h2>Users</h2>
+<a class="button" href="/users/add/">Add User</a>
 <table>
 	<thead>
 		<tr>
