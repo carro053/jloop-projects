@@ -1,8 +1,8 @@
 <h3><a href="/questions/index/<?php echo $game_id; ?>">&larr;Back To Question List</a></h3>
 <a class="button" href="/games/play/<?php echo $this->data['Question']['game_id']; ?>/<?php echo $this->data['Question']['order']; ?>" target="_blank">Play Question</a>
+<?php echo $this->Form->create('Question',array('url'=>'/questions/edit/'.$this->data['Question']['id'],'type' => 'file')); ?>
 <table>
 	<thead>
-		<?php echo $this->Form->create('Question',array('url'=>'/questions/edit/'.$this->data['Question']['id'],'type' => 'file')); ?>
 		<?php echo $this->Form->input('id'); ?>
 		<tr>
 			<th><label>Status</label></th>
@@ -135,9 +135,9 @@
 			</td>
 			<td class="note"><?php ?></td>
 		</tr>
-		</form>
 	</tbody>
 </table>
+</form>
 
 <script type="text/javascript">
 	function change_type(item)
