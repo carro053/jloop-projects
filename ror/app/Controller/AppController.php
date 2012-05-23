@@ -205,7 +205,7 @@ class AppController extends Controller {
 			$work, //resource dst_image
 			$src, //resource src_image
 			20, //int dst_x
-			20, //int dst_y
+			15, //int dst_y
 			$src_x, //int src_x
 			$src_y, //int src_y
 			288, //int dst_w
