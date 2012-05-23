@@ -620,7 +620,7 @@ if($game['Game']['has_icon'])
 			
 			#contentInsight {
 				width: 320px;
-				height: 127px;
+				height: 296px;
 				background-image: url(/img/bg_white_textbox.png);
 				background-repeat: no-repeat;
 				background-position: -9px 0;
