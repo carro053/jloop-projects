@@ -60,7 +60,10 @@ class QuestionsController extends AppController {
 				}
 				if($this->data['Question']['question_image']['error'] == 0 && $this->data['Question']['question_image']['size'] > 0)
 				{
-					move_uploaded_file($this->data['Question']['question_image']['tmp_name'], WWW_ROOT.'img'.DS.'questions'.DS.$this->Question->id.'.png');
+					if(move_uploaded_file($this->data['Question']['question_image']['tmp_name'], WWW_ROOT.'img'.DS.'questions'.DS.$this->Question->id.'-O.png'))
+					{
+						$this->generateQuestionImage(WWW_ROOT.'img'.DS.'questions'.DS.$this->Question->id.'-O.png', WWW_ROOT.'img'.DS.'questions'.DS.$this->Question->id.'.png');
+					}
 				}
 				if($this->data['Question']['insight_image']['error'] == 0 && $this->data['Question']['insight_image']['size'] > 0)
 				{
@@ -136,7 +139,10 @@ class QuestionsController extends AppController {
 				}
 				if($this->data['Question']['question_image']['error'] == 0 && $this->data['Question']['question_image']['size'] > 0)
 				{
-					move_uploaded_file($this->data['Question']['question_image']['tmp_name'], WWW_ROOT.'img'.DS.'questions'.DS.$this->Question->id.'.png');
+					if(move_uploaded_file($this->data['Question']['question_image']['tmp_name'], WWW_ROOT.'img'.DS.'questions'.DS.$this->Question->id.'-O.png'))
+					{
+						$this->generateQuestionImage(WWW_ROOT.'img'.DS.'questions'.DS.$this->Question->id.'-O.png', WWW_ROOT.'img'.DS.'questions'.DS.$this->Question->id.'.png');
+					}
 				}
 				if($this->data['Question']['insight_image']['error'] == 0 && $this->data['Question']['insight_image']['size'] > 0)
 				{
