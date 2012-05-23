@@ -209,7 +209,7 @@ class QuestionsController extends AppController {
 	{
 		$data = list($width, $height) = getimagesize(WWW_ROOT.'img'.DS.'bg_question.png');
 		pr($data);
-		pr($type);
+		pr($height);
 		die;
 	}
 }
