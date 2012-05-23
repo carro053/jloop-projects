@@ -262,7 +262,7 @@ class AppController extends Controller {
 		
 		$ratio = 289 / 97;
 		$src_ratio = $src_width / $src_height;
-		if($src_ratio > $ratio) //too wide
+		if($src_ratio < $ratio) //too wide
 		{
 			$src_w = round($src_height * $ratio);
 			$src_h = $src_height;
