@@ -131,7 +131,7 @@ class QuestionsController extends AppController {
 				{
 					if(move_uploaded_file($this->data['Question']['clue_image']['tmp_name'], WWW_ROOT.'img'.DS.'clues'.DS.$this->Question->id.'-O.png'))
 					{
-						$this->generateAnswerImage(WWW_ROOT.'img'.DS.'clues'.DS.$this->Question->id.'-O.png', WWW_ROOT.'img'.DS.'clues'.DS.$this->Question->id.'.png');
+						$this->generateClueInsightImage(WWW_ROOT.'img'.DS.'clues'.DS.$this->Question->id.'-O.png', WWW_ROOT.'img'.DS.'clues'.DS.$this->Question->id.'.png');
 					}
 				}
 				if($this->data['Question']['question_image']['error'] == 0 && $this->data['Question']['question_image']['size'] > 0)
@@ -142,7 +142,7 @@ class QuestionsController extends AppController {
 				{
 					if(move_uploaded_file($this->data['Question']['insight_image']['tmp_name'], WWW_ROOT.'img'.DS.'insights'.DS.$this->Question->id.'-O.png'))
 					{
-						$this->generateAnswerImage(WWW_ROOT.'img'.DS.'insights'.DS.$this->Question->id.'-O.png', WWW_ROOT.'img'.DS.'insights'.DS.$this->Question->id.'.png');
+						$this->generateClueInsightImage(WWW_ROOT.'img'.DS.'insights'.DS.$this->Question->id.'-O.png', WWW_ROOT.'img'.DS.'insights'.DS.$this->Question->id.'.png');
 					}
 				}
 				if($this->data['Question']['answer_1_image']['error'] == 0 && $this->data['Question']['answer_1_image']['size'] > 0)
