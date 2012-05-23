@@ -207,7 +207,7 @@ class QuestionsController extends AppController {
 	
 	function test()
 	{
-		list($src_width, $src_height, null, null, null, $type) = getimagesize(WWW_ROOT.'img'.DS.'bg_question.png');
+		list($width, $height, $type, $attr) = getimagesize(WWW_ROOT.'img'.DS.'bg_question.png');
 		pr($type);
 		die;
 	}
