@@ -146,4 +146,79 @@ class AppController extends Controller {
 		imagedestroy($frame);
 		imagedestroy($src);
 	}
+	
+	function generateClueInsightImage($src_name, $dst_name)
+	{
+		$src_data = list($src_width, $src_height) = getimagesize($src_name);
+		
+		$work = imagecreatetruecolor(328, 244);
+		$frame = imagecreatefrompng(WWW_ROOT.'img'.DS.'templates'.DS.'clue_insight_blank.png');
+		switch($src_data['mime'])
+		{
+			case 'image/gif':
+				$src = imagecreatefromgif($src_name);
+				break;
+			case 'image/jpeg':
+				$src = imagecreatefromjpeg($src_name);
+				break;
+			case 'image/png':
+				$src = imagecreatefrompng($src_name);
+				break;
+			default:
+				die('Error with uploaded image type');
+				break;
+		}
+		
+		imagesavealpha($work, true);
+		$trans_colour = imagecolorallocatealpha($work, 0, 0, 0, 127);
+		imagefill($work, 0, 0, $trans_colour);
+		
+		imagecopyresized(
+			$work, //resource dst_image
+			$frame, //resource src_image
+			0, //int dst_x
+			0, //int dst_y
+			0, //int src_x
+			0, //int src_y
+			328, //int dst_w
+			244, //int dst_h
+			328, //int src_w
+			244 //int src_h
+		);
+		
+		$ratio = 328 / 244;
+		$src_ratio = $src_width / $src_height;
+		if($src_ratio > $ratio) //too wide
+		{
+			$src_w = round($src_height * $ratio);
+			$src_h = $src_height;
+			$src_x = round(($src_width - $src_w) / 2);
+			$src_y = 0;
+		}else{ //too tall
+			$src_w = $src_width;
+			$src_h = round($src_width / $ratio);
+			$src_x = 0;
+			$src_y = round(($src_height - $src_h) / 2);
+		}
+		
+		imagecopyresized(
+			$work, //resource dst_image
+			$src, //resource src_image
+			20, //int dst_x
+			20, //int dst_y
+			$src_x, //int src_x
+			$src_y, //int src_y
+			288, //int dst_w
+			204, //int dst_h
+			$src_w, //int src_w
+			$src_h //int src_h
+		);
+		
+		imagepng($work, $dst_name);
+		
+		imagedestroy($work);
+		imagedestroy($frame);
+		imagedestroy($src);
+	}
+	
 }
