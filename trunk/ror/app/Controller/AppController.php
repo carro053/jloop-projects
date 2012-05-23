@@ -52,12 +52,26 @@ class AppController extends Controller {
 	
 	function generateAnswerImage($src_name, $dst_name)
 	{
-		list($src_width, $src_height) = getimagesize($src_name);
+		$src_data = list($src_width, $src_height) = getimagesize($src_name);
 		
 		$work = imagecreatetruecolor(156, 97);
 		$fill = imagecreatefrompng(WWW_ROOT.'img'.DS.'templates'.DS.'fill.png');
 		$frame = imagecreatefrompng(WWW_ROOT.'img'.DS.'templates'.DS.'frame.png');
-		$src = imagecreatefrompng($src_name);
+		switch($src_data['mime'])
+		{
+			case 'image/gif':
+				$src = imagecreatefromgif($src_name);
+				break;
+			case 'image/jpeg':
+				$src = imagecreatefromjpeg($src_name);
+				break;
+			case 'image/png':
+				$src = imagecreatefrompng($src_name);
+				break;
+			default:
+				die('Error with uploaded image type');
+				break;
+		}
 		
 		imagesavealpha($work, true);
 		$trans_colour = imagecolorallocatealpha($work, 0, 0, 0, 127);
