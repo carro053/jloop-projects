@@ -100,7 +100,7 @@ class AppController extends Controller {
 			$src_y = 0;
 		}else{ //too tall
 			$src_w = $src_width;
-			$src_h = round($src_height * $src_width / 139);
+			$src_h = round($src_height * 139 / $src_width);
 			$src_x = 0;
 			$src_y = round(($src_height - $src_h) / 2);
 		}
