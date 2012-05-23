@@ -196,12 +196,14 @@
 	}
 	function submit_form(preview)
 	{
+		action = "<?php echo '/questions/edit/'.$this->data['Question']['id']; ?>";
 		if(preview)
 		{
-			action = $('#QuestionEditForm').attr('action');
 			action += '/1';
-			$('#QuestionEditForm').attr('action',action);
+		}else{
+			action += '/0';
 		}
+		$('#QuestionEditForm').attr('action',action);
 		$('#QuestionEditForm').submit();
 	}
 	$(function(){

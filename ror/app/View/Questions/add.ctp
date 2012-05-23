@@ -175,12 +175,14 @@
 	}
 	function submit_form(preview)
 	{
+		action = "<?php echo '/questions/add/'.$game_id; ?>";
 		if(preview)
 		{
-			action = $('#QuestionAddForm').attr('action');
 			action += '/1';
-			$('#QuestionAddForm').attr('action',action);
+		}else{
+			action += '/0';
 		}
+		$('#QuestionAddForm').attr('action',action);
 		$('#QuestionAddForm').submit();
 	}
 	$(function(){
