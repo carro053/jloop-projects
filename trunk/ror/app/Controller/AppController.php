@@ -90,17 +90,32 @@ class AppController extends Controller {
 			79 //int src_h
 		);
 		
+		$ratio = 139 / 79;
+		$src_ratio = $src_width / $src_height;
+		if($src_ratio > $ratio) //too wide
+		{
+			$src_w = round($src_width * $src_height / 79);
+			$src_h = $src_height;
+			$src_x = round(($src_width - $src_w) / 2);
+			$src_y = 0;
+		}else{ //too tall
+			$src_w = $src_width;
+			$src_h = round($src_height * $src_width / 139);
+			$src_x = 0;
+			$src_y = round(($src_height - $src_h) / 2);
+		}
+		
 		imagecopyresized(
 			$work, //resource dst_image
 			$src, //resource src_image
 			8, //int dst_x
 			8, //int dst_y
-			0, //int src_x
-			0, //int src_y
+			$src_x, //int src_x
+			$src_y, //int src_y
 			139, //int dst_w
 			79, //int dst_h
-			$src_width, //int src_w
-			$src_height //int src_h
+			$src_w, //int src_w
+			$src_h //int src_h
 		);
 		
 		imagecopyresized(
