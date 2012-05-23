@@ -92,7 +92,7 @@ class AppController extends Controller {
 		
 		$ratio = 139 / 79;
 		$src_ratio = $src_width / $src_height;
-		if($src_ratio < $ratio) //too wide
+		if($src_ratio > $ratio) //too wide
 		{
 			$src_w = round($src_width * $src_height / 79);
 			$src_h = $src_height;
@@ -104,6 +104,8 @@ class AppController extends Controller {
 			$src_x = 0;
 			$src_y = round(($src_height - $src_h) / 2);
 		}
+		
+		echo $ratio."/".$src_ratio."/".($src_w/$src_h);
 		
 		imagecopyresized(
 			$work, //resource dst_image
