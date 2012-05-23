@@ -80,7 +80,7 @@
 			<td><label>Answer 2</label></td>
 			<td>
 				<?php echo $this->Form->input('answer_2_text',array('label'=>false)); ?>
-				<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$this->data['Question']['id'].'-2.png')) echo '<img id="Answer2Image" src="/img/answers/'.$this->data['Question']['id'].'-2.png" />'; ?>
+				<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$this->data['Question']['id'].'-2.png')) echo '<img id="Answer2Image" src="/img/answers/'.$this->data['Question']['id'].'-2.png" /><a target="_blank" href="/img/answers/'.$this->data['Question']['id'].'-2-O.png">Original</a>'; ?>
 				<?php echo $this->Form->input('answer_2_image',array('label'=>'(139x79)','type'=>'file')); ?>
 			</td>
 			<td class="note"><?php echo $this->Form->input('answer_2_note',array('label'=>false)); ?></td>
@@ -89,7 +89,7 @@
 			<td><label>Answer 3</label></td>
 			<td>
 				<?php echo $this->Form->input('answer_3_text',array('label'=>false)); ?>
-				<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$this->data['Question']['id'].'-3.png')) echo '<img id="Answer3Image" src="/img/answers/'.$this->data['Question']['id'].'-3.png" />'; ?>
+				<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$this->data['Question']['id'].'-3.png')) echo '<img id="Answer3Image" src="/img/answers/'.$this->data['Question']['id'].'-3.png" /><a target="_blank" href="/img/answers/'.$this->data['Question']['id'].'-3-O.png">Original</a>'; ?>
 				<?php echo $this->Form->input('answer_3_image',array('label'=>'(139x79)','type'=>'file')); ?>
 			</td>
 			<td class="note"><?php echo $this->Form->input('answer_3_note',array('label'=>false)); ?></td>
@@ -98,7 +98,7 @@
 			<td><label>Answer 4</label></td>
 			<td>
 				<?php echo $this->Form->input('answer_4_text',array('label'=>false)); ?>
-				<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$this->data['Question']['id'].'-4.png')) echo '<img id="Answer4Image" src="/img/answers/'.$this->data['Question']['id'].'-4.png" />'; ?>
+				<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$this->data['Question']['id'].'-4.png')) echo '<img id="Answer4Image" src="/img/answers/'.$this->data['Question']['id'].'-4.png" /><a target="_blank" href="/img/answers/'.$this->data['Question']['id'].'-4-O.png">Original</a>'; ?>
 				<?php echo $this->Form->input('answer_4_image',array('label'=>'(139x79)','type'=>'file')); ?>
 			</td>
 			<td class="note"><?php echo $this->Form->input('answer_4_note',array('label'=>false)); ?></td>
