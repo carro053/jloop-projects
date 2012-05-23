@@ -29,7 +29,7 @@
 			<td><label>Clue</label></td>
 			<td>
 				<?php echo $this->Form->input('clue_text',array('label'=>false)); ?>
-				<?php if(is_file(WWW_ROOT.'img'.DS.'clues'.DS.$this->data['Question']['id'].'.png')) echo '<img id="ClueImage" src="/img/clues/'.$this->data['Question']['id'].'.png" />'; ?>
+				<?php if(is_file(WWW_ROOT.'img'.DS.'clues'.DS.$this->data['Question']['id'].'.png')) echo '<img id="ClueImage" src="/img/clues/'.$this->data['Question']['id'].'.png" /><a target="_blank" href="/img/clues/'.$this->data['Question']['id'].'-O.png">Original</a>'; ?>
 				<?php echo $this->Form->input('clue_image',array('label'=>false,'type'=>'file')); ?>
 			</td>
 			<td class="note"><?php echo $this->Form->input('clue_note',array('label'=>false)); ?></td>
@@ -43,7 +43,7 @@
 			<td><label>Question</label></td>
 			<td>
 				<?php echo $this->Form->input('question_text',array('label'=>false)); ?>
-				<?php if(is_file(WWW_ROOT.'img'.DS.'questions'.DS.$this->data['Question']['id'].'.png')) echo '<img id="QuestionImage" src="/img/questions/'.$this->data['Question']['id'].'.png" />'; ?>
+				<?php if(is_file(WWW_ROOT.'img'.DS.'questions'.DS.$this->data['Question']['id'].'.png')) echo '<img id="QuestionImage" src="/img/questions/'.$this->data['Question']['id'].'.png" /><a target="_blank" href="/img/questions/'.$this->data['Question']['id'].'-O.png">Original</a>'; ?>
 				<?php echo $this->Form->input('question_image',array('label'=>false,'type'=>'file')); ?>
 			</td>
 			<td class="note"><?php echo $this->Form->input('question_note',array('label'=>false)); ?></td>
@@ -57,7 +57,7 @@
 			<td><label>Insight</label></td>
 			<td>
 				<?php echo $this->Form->input('insight_text',array('label'=>false)); ?>
-				<?php if(is_file(WWW_ROOT.'img'.DS.'insights'.DS.$this->data['Question']['id'].'.png')) echo '<img id="InsightImage" src="/img/insights/'.$this->data['Question']['id'].'.png" />'; ?>
+				<?php if(is_file(WWW_ROOT.'img'.DS.'insights'.DS.$this->data['Question']['id'].'.png')) echo '<img id="InsightImage" src="/img/insights/'.$this->data['Question']['id'].'.png" /><a target="_blank" href="/img/insights/'.$this->data['Question']['id'].'-O.png">Original</a>'; ?>
 				<?php echo $this->Form->input('insight_image',array('label'=>false,'type'=>'file')); ?>
 			</td>
 			<td class="note"><?php echo $this->Form->input('insight_note',array('label'=>false)); ?></td>
