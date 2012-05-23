@@ -188,7 +188,7 @@ class QuestionsController extends AppController {
 					$question = $this->Question->findById($this->Question->id);
 					$this->redirect('/games/play/'.$game_id.'/'.$question['Question']['order']);
 				}else{
-					$this->redirect('/questions/index/'.$game_id);
+					$this->redirect('/questions/edit/'.$this->Question->id);
 				}
 			}
 		} else {
