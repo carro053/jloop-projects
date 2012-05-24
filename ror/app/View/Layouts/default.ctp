@@ -37,6 +37,7 @@ show up on all of your views, include it here -->
 			<li><a href="/games">Games</a></li>
 			<?php }*/ ?>
 			<li><a href="/games">Games</a></li>
+			<li><a href="/users">Users</a></li>
 		</ul>
 	</div><!-- end .container -->		
 </div><!-- end #navbar -->
