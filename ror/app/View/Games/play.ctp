@@ -158,7 +158,7 @@ if($game['Game']['has_icon'])
 			}
 			
 			function clueTimer() {
-				timeout = setTimeout(function() {clueAudio.play();}, 1500);
+				timeout = setTimeout(function() {clueAudio.play();}, 1000);
 				var properties = {marginLeft: '74px'};
 				var options = {
 					duration: 3000,
@@ -199,7 +199,7 @@ if($game['Game']['has_icon'])
 				$('.personCounter').hide();
 				var properties = {marginLeft: '74px'};
 				var options = {
-					duration: 3000,
+					duration: 2000,
 					easing: 'linear',
 					complete: function() {
 						loadAnswerStates();
