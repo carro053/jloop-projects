@@ -43,10 +43,22 @@ class QuestionsController extends AppController {
 		if(isset($this->data['Question']))
 		{
 			$question = $this->data;
-			$question['Question']['clue_text'] = $this->removeInvis(nl2br($question['Question']['clue_text']));
-			$question['Question']['question_text'] = $this->removeInvis(nl2br($question['Question']['question_text']));
-			$question['Question']['insight_text'] = $this->removeInvis(nl2br($question['Question']['insight_text']));
-			$question['Question']['prize_text'] = $this->removeInvis(nl2br($question['Question']['prize_text']));
+			$question['Question']['clue_text'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['clue_text'])));
+			$question['Question']['question_text'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['question_text'])));
+			$question['Question']['insight_text'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['insight_text'])));
+			$question['Question']['prize_text'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['prize_text'])));
+			$question['Question']['answer_1_text'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['answer_1_text'])));
+			$question['Question']['answer_2_text'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['answer_2_text'])));
+			$question['Question']['answer_3_text'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['answer_3_text'])));
+			$question['Question']['answer_4_text'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['answer_4_text'])));
+			$question['Question']['clue_note'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['clue_note'])));
+			$question['Question']['question_note'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['question_note'])));
+			$question['Question']['insight_note'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['insight_note'])));
+			$question['Question']['prize_note'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['prize_note'])));
+			$question['Question']['answer_1_note'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['answer_1_note'])));
+			$question['Question']['answer_2_note'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['answer_2_note'])));
+			$question['Question']['answer_3_note'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['answer_3_note'])));
+			$question['Question']['answer_4_note'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['answer_4_note'])));
 			$question['Question']['game_id'] = $game_id;
 			$question['Question']['order'] = $this->Question->find('count',array('conditions'=>'Question.game_id = '.$game_id));
 			if($this->Question->save($question))
@@ -124,22 +136,22 @@ class QuestionsController extends AppController {
 		if(isset($this->data['Question']))
 		{
 			$question = $this->data;
-			$question['Question']['clue_text'] = htmlentities($this->removeInvis(nl2br($question['Question']['clue_text'])));
-			$question['Question']['question_text'] = htmlentities($this->removeInvis(nl2br($question['Question']['question_text'])));
-			$question['Question']['insight_text'] = htmlentities($this->removeInvis(nl2br($question['Question']['insight_text'])));
-			$question['Question']['prize_text'] = htmlentities($this->removeInvis(nl2br($question['Question']['prize_text'])));
-			$question['Question']['answer_1_text'] = htmlentities($this->removeInvis(nl2br($question['Question']['answer_1_text'])));
-			$question['Question']['answer_2_text'] = htmlentities($this->removeInvis(nl2br($question['Question']['answer_2_text'])));
-			$question['Question']['answer_3_text'] = htmlentities($this->removeInvis(nl2br($question['Question']['answer_3_text'])));
-			$question['Question']['answer_4_text'] = htmlentities($this->removeInvis(nl2br($question['Question']['answer_4_text'])));
-			$question['Question']['clue_note'] = htmlentities($this->removeInvis(nl2br($question['Question']['clue_note'])));
-			$question['Question']['question_note'] = htmlentities($this->removeInvis(nl2br($question['Question']['question_note'])));
-			$question['Question']['insight_note'] = htmlentities($this->removeInvis(nl2br($question['Question']['insight_note'])));
-			$question['Question']['prize_note'] = htmlentities($this->removeInvis(nl2br($question['Question']['prize_note'])));
-			$question['Question']['answer_1_note'] = htmlentities($this->removeInvis(nl2br($question['Question']['answer_1_note'])));
-			$question['Question']['answer_2_note'] = htmlentities($this->removeInvis(nl2br($question['Question']['answer_2_note'])));
-			$question['Question']['answer_3_note'] = htmlentities($this->removeInvis(nl2br($question['Question']['answer_3_note'])));
-			$question['Question']['answer_4_note'] = htmlentities($this->removeInvis(nl2br($question['Question']['answer_4_note'])));
+			$question['Question']['clue_text'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['clue_text'])));
+			$question['Question']['question_text'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['question_text'])));
+			$question['Question']['insight_text'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['insight_text'])));
+			$question['Question']['prize_text'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['prize_text'])));
+			$question['Question']['answer_1_text'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['answer_1_text'])));
+			$question['Question']['answer_2_text'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['answer_2_text'])));
+			$question['Question']['answer_3_text'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['answer_3_text'])));
+			$question['Question']['answer_4_text'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['answer_4_text'])));
+			$question['Question']['clue_note'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['clue_note'])));
+			$question['Question']['question_note'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['question_note'])));
+			$question['Question']['insight_note'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['insight_note'])));
+			$question['Question']['prize_note'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['prize_note'])));
+			$question['Question']['answer_1_note'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['answer_1_note'])));
+			$question['Question']['answer_2_note'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['answer_2_note'])));
+			$question['Question']['answer_3_note'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['answer_3_note'])));
+			$question['Question']['answer_4_note'] = htmlspecialchars($this->removeInvis(nl2br($question['Question']['answer_4_note'])));
 			if($this->Question->save($question))
 			{
 				if($this->data['Question']['clue_image']['error'] == 0 && $this->data['Question']['clue_image']['size'] > 0)
@@ -205,38 +217,38 @@ class QuestionsController extends AppController {
 			}
 		} else {
 			$question['Question']['clue_text'] = str_replace('<br />','
-',html_entity_decode($question['Question']['clue_text']));
+',htmlspecialchars_decode($question['Question']['clue_text']));
 			$question['Question']['question_text'] = str_replace('<br />','
-',html_entity_decode($question['Question']['question_text']));
+',htmlspecialchars_decode($question['Question']['question_text']));
 			$question['Question']['insight_text'] = str_replace('<br />','
-',html_entity_decode($question['Question']['insight_text']));
+',htmlspecialchars_decode($question['Question']['insight_text']));
 			$question['Question']['prize_text'] = str_replace('<br />','
-',html_entity_decode($question['Question']['prize_text']));
+',htmlspecialchars_decode($question['Question']['prize_text']));
 			$question['Question']['answer_1_text'] = str_replace('<br />','
-',html_entity_decode($question['Question']['answer_1_text']));
+',htmlspecialchars_decode($question['Question']['answer_1_text']));
 			$question['Question']['answer_2_text'] = str_replace('<br />','
-',html_entity_decode($question['Question']['answer_2_text']));
+',htmlspecialchars_decode($question['Question']['answer_2_text']));
 			$question['Question']['answer_3_text'] = str_replace('<br />','
-',html_entity_decode($question['Question']['answer_3_text']));
+',htmlspecialchars_decode($question['Question']['answer_3_text']));
 			$question['Question']['answer_4_text'] = str_replace('<br />','
-',html_entity_decode($question['Question']['answer_4_text']));
+',htmlspecialchars_decode($question['Question']['answer_4_text']));
 
 			$question['Question']['clue_note'] = str_replace('<br />','
-',html_entity_decode($question['Question']['clue_note']));
+',htmlspecialchars_decode($question['Question']['clue_note']));
 			$question['Question']['question_note'] = str_replace('<br />','
-',html_entity_decode($question['Question']['question_note']));
+',htmlspecialchars_decode($question['Question']['question_note']));
 			$question['Question']['insight_note'] = str_replace('<br />','
-',html_entity_decode($question['Question']['insight_note']));
+',htmlspecialchars_decode($question['Question']['insight_note']));
 			$question['Question']['prize_note'] = str_replace('<br />','
-',html_entity_decode($question['Question']['prize_note']));
+',htmlspecialchars_decode($question['Question']['prize_note']));
 			$question['Question']['answer_1_note'] = str_replace('<br />','
-',html_entity_decode($question['Question']['answer_1_note']));
+',htmlspecialchars_decode($question['Question']['answer_1_note']));
 			$question['Question']['answer_2_note'] = str_replace('<br />','
-',html_entity_decode($question['Question']['answer_2_note']));
+',htmlspecialchars_decode($question['Question']['answer_2_note']));
 			$question['Question']['answer_3_note'] = str_replace('<br />','
-',html_entity_decode($question['Question']['answer_3_note']));
+',htmlspecialchars_decode($question['Question']['answer_3_note']));
 			$question['Question']['answer_4_note'] = str_replace('<br />','
-',html_entity_decode($question['Question']['answer_4_note']));
+',htmlspecialchars_decode($question['Question']['answer_4_note']));
 			$this->data = $question;
 		}
 	}
