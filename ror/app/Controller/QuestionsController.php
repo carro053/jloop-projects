@@ -217,38 +217,38 @@ class QuestionsController extends AppController {
 			}
 		} else {
 			$question['Question']['clue_text'] = str_replace('<br />','
-',htmlspecialchars_decode($question['Question']['clue_text']));
+',htmlspecialchars_decode($question['Question']['clue_text'], ENT_QUOTES));
 			$question['Question']['question_text'] = str_replace('<br />','
-',htmlspecialchars_decode($question['Question']['question_text']));
+',htmlspecialchars_decode($question['Question']['question_text'], ENT_QUOTES));
 			$question['Question']['insight_text'] = str_replace('<br />','
-',htmlspecialchars_decode($question['Question']['insight_text']));
+',htmlspecialchars_decode($question['Question']['insight_text'], ENT_QUOTES));
 			$question['Question']['prize_text'] = str_replace('<br />','
-',htmlspecialchars_decode($question['Question']['prize_text']));
+',htmlspecialchars_decode($question['Question']['prize_text'], ENT_QUOTES));
 			$question['Question']['answer_1_text'] = str_replace('<br />','
-',htmlspecialchars_decode($question['Question']['answer_1_text']));
+',htmlspecialchars_decode($question['Question']['answer_1_text'], ENT_QUOTES));
 			$question['Question']['answer_2_text'] = str_replace('<br />','
-',htmlspecialchars_decode($question['Question']['answer_2_text']));
+',htmlspecialchars_decode($question['Question']['answer_2_text'], ENT_QUOTES));
 			$question['Question']['answer_3_text'] = str_replace('<br />','
-',htmlspecialchars_decode($question['Question']['answer_3_text']));
+',htmlspecialchars_decode($question['Question']['answer_3_text'], ENT_QUOTES));
 			$question['Question']['answer_4_text'] = str_replace('<br />','
-',htmlspecialchars_decode($question['Question']['answer_4_text']));
+',htmlspecialchars_decode($question['Question']['answer_4_text'], ENT_QUOTES));
 
 			$question['Question']['clue_note'] = str_replace('<br />','
-',htmlspecialchars_decode($question['Question']['clue_note']));
+',htmlspecialchars_decode($question['Question']['clue_note'], ENT_QUOTES));
 			$question['Question']['question_note'] = str_replace('<br />','
-',htmlspecialchars_decode($question['Question']['question_note']));
+',htmlspecialchars_decode($question['Question']['question_note'], ENT_QUOTES));
 			$question['Question']['insight_note'] = str_replace('<br />','
-',htmlspecialchars_decode($question['Question']['insight_note']));
+',htmlspecialchars_decode($question['Question']['insight_note'], ENT_QUOTES));
 			$question['Question']['prize_note'] = str_replace('<br />','
-',htmlspecialchars_decode($question['Question']['prize_note']));
+',htmlspecialchars_decode($question['Question']['prize_note'], ENT_QUOTES));
 			$question['Question']['answer_1_note'] = str_replace('<br />','
-',htmlspecialchars_decode($question['Question']['answer_1_note']));
+',htmlspecialchars_decode($question['Question']['answer_1_note'], ENT_QUOTES));
 			$question['Question']['answer_2_note'] = str_replace('<br />','
-',htmlspecialchars_decode($question['Question']['answer_2_note']));
+',htmlspecialchars_decode($question['Question']['answer_2_note'], ENT_QUOTES));
 			$question['Question']['answer_3_note'] = str_replace('<br />','
-',htmlspecialchars_decode($question['Question']['answer_3_note']));
+',htmlspecialchars_decode($question['Question']['answer_3_note'], ENT_QUOTES));
 			$question['Question']['answer_4_note'] = str_replace('<br />','
-',htmlspecialchars_decode($question['Question']['answer_4_note']));
+',htmlspecialchars_decode($question['Question']['answer_4_note'], ENT_QUOTES));
 			$this->data = $question;
 		}
 	}
