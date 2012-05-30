@@ -7,7 +7,9 @@
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
 <style type="text/css">
-
+	body {
+		margin:0 auto;
+	}
 	td {
 		width: 156px;
 		height: 96px;
