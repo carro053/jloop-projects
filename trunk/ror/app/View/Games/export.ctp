@@ -20,7 +20,10 @@
 		border: solid 3px;
 		border-color: green;
 	}
-	
+	div {
+		width: 326px;
+		text-align: center;
+	}
 </style>
 </head>
 <body>
@@ -28,26 +31,35 @@
 <?php foreach($game['Question'] as $question): ?>
 <h3><?php echo $question['title']; ?></h3>
 Clue:<br />
+<div>
 <?php if($question['clue_type'] == 'image')
 {
 	if(is_file(WWW_ROOT.'img'.DS.'clues'.DS.$question['id'].'.png')) echo '<img id="ClueImage" src="/img/clues/'.$question['id'].'.png?t='.time().'" />';
 }else{
 	echo $question['clue_text'];
-} ?><br />
+} ?>
+</div>
+<br />
 Question:<br />
+<div>
 <?php if($question['question_type'] == 'image')
 {
 	if(is_file(WWW_ROOT.'img'.DS.'questions'.DS.$question['id'].'.png')) echo '<img id="QuestionImage" src="/img/questions/'.$question['id'].'.png?t='.time().'" />';
 }else{
 	echo $question['question_text'];
-} ?><br />
+} ?>
+</div>
+<br />
 Insight:<br />
+<div>
 <?php if($question['insight_type'] == 'image')
 {
 	if(is_file(WWW_ROOT.'img'.DS.'insights'.DS.$question['id'].'.png')) echo '<img id="InsightImage" src="/img/insights/'.$question['id'].'.png?t='.time().'" />';
 }else{
 	echo $question['insight_text'];
-} ?><br />
+} ?>
+</div>
+<br />
 Answers:
 <?php if($question['answer_type'] == 'image') { ?>
 <table>
