@@ -6,6 +6,11 @@ class GamesController extends AppController {
 	public $helpers = array('Html', 'Session');
 	public $uses = array('Game','Question');
 	
+	public function befloreFilter()
+	{
+		$this->Auth->allow('play');
+	}
+	
 	public function index() {
 		$games = $this->Game->find('all');
 		$this->set('games',$games);
