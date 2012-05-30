@@ -67,6 +67,21 @@ class GamesController extends AppController {
 		if($question_index >= 0) $this->set('question_index',$question_index);
 	}
 	
+	public function export($game_id)
+	{
+		$this->layout = false;
+		$this->Game->bindModel(array(
+			'hasMany'=>array(
+				'Question'=>array(
+					'className'=>'Question',
+					'foreignKey'=>'game_id',
+					'order'=>'Question.order ASC'
+				)
+			)
+		));
+		$this->set('game',$this->Game->findById($game_id));
+	}
+	
 	public function json_data($game_id) {
 		$this->layout = false;
 		$this->Game->bindModel(array(
