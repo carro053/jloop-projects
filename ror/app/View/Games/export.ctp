@@ -8,7 +8,8 @@
 
 <style type="text/css">
 	body {
-		padding-left: 300px;
+		width: 800px;
+		text-align: center;
 	}
 	td {
 		width: 156px;
