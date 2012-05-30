@@ -10,6 +10,7 @@
 	body {
 		width: 800px;
 		text-align: center;
+		
 	}
 	td {
 		width: 156px;
@@ -25,7 +26,11 @@
 	}
 	div {
 		width: 326px;
+		margin:0 auto;
 		text-align: center;
+	}
+	table { 
+		margin:0 auto;
 	}
 </style>
 </head>
