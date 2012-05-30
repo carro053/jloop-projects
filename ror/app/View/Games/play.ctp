@@ -158,10 +158,10 @@ if($game['Game']['has_icon'])
 			}
 			
 			function clueTimer() {
-				timeout = setTimeout(function() {clueAudio.play();}, 1000); //17500
+				timeout = setTimeout(function() {clueAudio.play();}, 17500); //100
 				var properties = {marginLeft: '74px'};
 				var options = {
-					duration: 3000, //20000
+					duration: 20000, //3000
 					easing: 'linear',
 					complete: function() {
 						$('#meter').appendTo('#question');
@@ -180,7 +180,7 @@ if($game['Game']['has_icon'])
 				$('#question').css('background-image', 'url(/img/btn_question_blue.png)');
 				var properties = {marginLeft: '131px'};
 				var options = {
-					duration: 3000, //20000
+					duration: 20000, //3000
 					easing: 'linear',
 					complete: function() {
 						$('#meter').appendTo('#insight');
@@ -199,7 +199,7 @@ if($game['Game']['has_icon'])
 				$('.personCounter').hide();
 				var properties = {marginLeft: '74px'};
 				var options = {
-					duration: 2000, //10000
+					duration: 10000, //1000
 					easing: 'linear',
 					complete: function() {
 						loadAnswerStates();
