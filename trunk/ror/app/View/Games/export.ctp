@@ -36,18 +36,18 @@ Answers:
 <table>
 	<tr>
 		<td<?php if($question['correct_answer'] == 0)  echo ' class="correct"'; ?>>
-			<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$this->data['Question']['id'].'-1.png')) echo '<img id="Answer1Image" src="/img/answers/'.$this->data['Question']['id'].'-1.png?t='.time().'" />'; ?>
+			<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question['id'].'-1.png')) echo '<img id="Answer1Image" src="/img/answers/'.$question['id'].'-1.png?t='.time().'" />'; ?>
 		</td>
 		<td<?php if($question['correct_answer'] == 1)  echo ' class="correct"'; ?>>
-			<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$this->data['Question']['id'].'-2.png')) echo '<img id="Answer1Image" src="/img/answers/'.$this->data['Question']['id'].'-2.png?t='.time().'" />'; ?>
+			<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question['id'].'-2.png')) echo '<img id="Answer1Image" src="/img/answers/'.$question['id'].'-2.png?t='.time().'" />'; ?>
 		</td>
 	</tr>
 	<tr>
 		<td<?php if($question['correct_answer'] == 2)  echo ' class="correct"'; ?>>
-			<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$this->data['Question']['id'].'-3.png')) echo '<img id="Answer1Image" src="/img/answers/'.$this->data['Question']['id'].'-3.png?t='.time().'" />'; ?>
+			<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question['id'].'-3.png')) echo '<img id="Answer1Image" src="/img/answers/'.$question['id'].'-3.png?t='.time().'" />'; ?>
 		</td>
 		<td<?php if($question['correct_answer'] == 3)  echo ' class="correct"'; ?>>
-			<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$this->data['Question']['id'].'-4.png')) echo '<img id="Answer1Image" src="/img/answers/'.$this->data['Question']['id'].'-4.png?t='.time().'" />'; ?>
+			<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question['id'].'-4.png')) echo '<img id="Answer1Image" src="/img/answers/'.$question['id'].'-4.png?t='.time().'" />'; ?>
 		</td>
 	</tr>
 </table>
