@@ -14,6 +14,7 @@
 		overflow: hidden;
 		border: solid 1px;
 		border-color: black;
+		text-align: center;
 	}
 	td.correct {
 		border: solid 3px;
