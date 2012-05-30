@@ -71,8 +71,6 @@ Answers:
 	</tr>
 </table>
 <?php } ?>
-
-
 <?php endforeach; ?>
 </body>
 </html>
