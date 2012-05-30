@@ -1,6 +1,7 @@
 <h2>Questions for <?php echo $game['Game']['title']; ?></h2>
 <h3><a href="/games">&larr;Back To Games List</a></h3>
 <a class="button" href="/questions/add/<?php echo $game['Game']['id']; ?>">Add Question</a>
+<a class="button" href="/games/export/<?php echo $game['Game']['id']; ?>">Export Game</a>
 
 <table id="sortable">
 	<thead>
