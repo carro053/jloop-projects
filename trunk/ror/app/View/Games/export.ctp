@@ -9,6 +9,7 @@
 <style type="text/css">
 	body {
 		margin:0 auto;
+		width: 800px;
 	}
 	td {
 		width: 156px;
