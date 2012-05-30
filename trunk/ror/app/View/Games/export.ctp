@@ -12,10 +12,11 @@
 		width: 156px;
 		height: 96px;
 		overflow: hidden;
-		border: 1px;
+		border: solid 1px;
 		border-color: black;
 	}
 	td.correct {
+		border: solid 3px;
 		border-color: green;
 	}
 	
