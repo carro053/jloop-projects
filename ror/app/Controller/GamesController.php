@@ -6,7 +6,7 @@ class GamesController extends AppController {
 	public $helpers = array('Html', 'Session');
 	public $uses = array('Game','Question');
 	
-	public function befloreFilter()
+	public function beforeFilter()
 	{
 		$this->Auth->allow('play');
 	}
