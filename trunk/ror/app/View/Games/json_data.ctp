@@ -19,7 +19,7 @@ foreach($game['Question'] as $key=>$question):
 		clue: \''.$question['id'].'.png\',';
 		}else{
 			echo '
-		clue: \''.str_replace("'","\\'",$question['clue_text']).'\',';
+		clue: \''.str_replace("'","\\'",htmlspecialchars_decode($question['clue_text'], ENT_QUOTES)).'\',';
 		}
 		if($question['question_type'] == 'image')
 		{
@@ -27,7 +27,7 @@ foreach($game['Question'] as $key=>$question):
 		question: \''.$question['id'].'.png\',';
 		}else{
 			echo '
-		question: \''.str_replace("'","\\'",$question['question_text']).'\',';
+		question: \''.str_replace("'","\\'",htmlspecialchars_decode($question['question_text'], ENT_QUOTES)).'\',';
 		}
 		if($question['answer_type'] == 'image')
 		{
@@ -47,7 +47,7 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.str_replace("'","\\'",$question['answer_1_text']).'\',';
+			\''.str_replace("'","\\'",htmlspecialchars_decode($question['answer_1_text'], ENT_QUOTES)).'\',';
 			}
 			if($question['answer_2_text'] == '')
 			{
@@ -55,7 +55,7 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.str_replace("'","\\'",$question['answer_2_text']).'\',';
+			\''.str_replace("'","\\'",htmlspecialchars_decode($question['answer_2_text'], ENT_QUOTES)).'\',';
 			}
 			if($question['answer_3_text'] == '')
 			{
@@ -63,7 +63,7 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.str_replace("'","\\'",$question['answer_3_text']).'\',';
+			\''.str_replace("'","\\'",htmlspecialchars_decode($question['answer_3_text'], ENT_QUOTES)).'\',';
 			}
 			if($question['answer_4_text'] == '')
 			{
@@ -71,7 +71,7 @@ foreach($game['Question'] as $key=>$question):
 			null,';
 			}else{
 				echo '
-			\''.str_replace("'","\\'",$question['answer_4_text']).'\'';
+			\''.str_replace("'","\\'",htmlspecialchars_decode($question['answer_4_text'], ENT_QUOTES)).'\'';
 			}
 			echo '
 			],';
@@ -84,13 +84,13 @@ foreach($game['Question'] as $key=>$question):
 		insight: \''.$question['id'].'.png\'';
 		}else{
 			echo '
-		insight: \''.str_replace("'","\\'",$question['insight_text']).'\'';
+		insight: \''.str_replace("'","\\'",htmlspecialchars_decode($question['insight_text'], ENT_QUOTES)).'\'';
 		}
 		if($question['has_prize'])
 		{
 			echo ',
 		prize: \''.$question['id'].'.png\',
-		prize_text: \''.str_replace("'","\\'",$question['prize_text']).'\'';
+		prize_text: \''.str_replace("'","\\'",htmlspecialchars_decode($question['prize_text'], ENT_QUOTES)).'\'';
 		}
 		echo '
 	}';
