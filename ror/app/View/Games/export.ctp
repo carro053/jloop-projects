@@ -36,9 +36,9 @@
 </head>
 <body>
 <h2><?php echo $game['Game']['title']; ?></h2>
-<?php foreach($game['Question'] as $question): ?>
+<?php foreach($game['Question'] as $i=>$question): ?>
 <div style="page-break-after:always">
-<h3><?php echo $question['title']; ?></h3>
+<h3>Question #<?php echo ($i + 1); ?>: <?php echo $question['title']; ?></h3>
 Clue:<br />
 <div>
 <?php if($question['clue_type'] == 'image')
