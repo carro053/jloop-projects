@@ -210,7 +210,7 @@ class QuestionsController extends AppController {
 				if($preview)
 				{
 					$question = $this->Question->findById($this->Question->id);
-					$this->redirect('/games/play/'.$game_id.'/'.$question['Question']['order']);
+					$this->redirect('/games/preview/'.$game_id.'/'.$question['Question']['order']);
 				}else{
 					$this->redirect('/questions/edit/'.$this->Question->id);
 				}
@@ -257,7 +257,14 @@ class QuestionsController extends AppController {
 	{
 		$question = $this->Question->findById($question_id);
 		if($this->Question->delete($question_id))
+		{
+			$questions = $this->Question->find('all',array('conditions'=>'Question.game_id = '.$game_id));
+			foreach($questions as $i=>$question):
+				$question['Question']['order'] = $i;
+				$this->Question->save($question);
+			endforeach;
 			$this->redirect('/questions/index/'.$question['Question']['game_id']);
+		}
 	}
 	
 	function set_order()

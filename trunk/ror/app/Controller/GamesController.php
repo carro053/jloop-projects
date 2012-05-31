@@ -57,24 +57,19 @@ class GamesController extends AppController {
 	{
 		if($this->Game->delete($game_id))
 			$this->Game->query('DELETE FROM `questions` WHERE `game_id` = '.$game_id);
-		$questions = $this->Question->find('all',array('conditions'=>'Question.game_id = '.$game_id));
-		foreach($questions as $i=>$question):
-			$question['Question']['order'] = $i;
-			$this->Question->save($question);
-		endforeach;
 		$this->redirect('/games');
 	}
 	
 	public function play($game_id,$question_index=-1) {
 		$this->layout = false;
-		
+		$this->set('preview_timers',0);
 		$this->set('game',$this->Game->findById($game_id));
 		if($question_index >= 0) $this->set('question_index',$question_index);
 	}
 	
 	public function preview($game_id,$question_index=-1) {
 		$this->layout = false;
-		
+		$this->set('preview_timers',1);
 		$this->set('game',$this->Game->findById($game_id));
 		if($question_index >= 0) $this->set('question_index',$question_index);
 		$this->render('play');
