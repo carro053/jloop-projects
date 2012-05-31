@@ -37,6 +37,7 @@
 <body>
 <h2><?php echo $game['Game']['title']; ?></h2>
 <?php foreach($game['Question'] as $question): ?>
+<div style="page-break-after:always">
 <h3><?php echo $question['title']; ?></h3>
 Clue:<br />
 <div>
@@ -55,16 +56,6 @@ Question:<br />
 	if(is_file(WWW_ROOT.'img'.DS.'questions'.DS.$question['id'].'.png')) echo '<img id="QuestionImage" src="/img/questions/'.$question['id'].'.png?t='.time().'" />';
 }else{
 	echo $question['question_text'];
-} ?>
-</div>
-<br />
-Insight:<br />
-<div>
-<?php if($question['insight_type'] == 'image')
-{
-	if(is_file(WWW_ROOT.'img'.DS.'insights'.DS.$question['id'].'.png')) echo '<img id="InsightImage" src="/img/insights/'.$question['id'].'.png?t='.time().'" />';
-}else{
-	echo $question['insight_text'];
 } ?>
 </div>
 <br />
@@ -108,6 +99,16 @@ Answers:
 	</tr>
 </table>
 <?php } ?>
+Insight:<br />
+<div>
+<?php if($question['insight_type'] == 'image')
+{
+	if(is_file(WWW_ROOT.'img'.DS.'insights'.DS.$question['id'].'.png')) echo '<img id="InsightImage" src="/img/insights/'.$question['id'].'.png?t='.time().'" />';
+}else{
+	echo $question['insight_text'];
+} ?>
+</div>
+</div>
 <?php endforeach; ?>
 </body>
 </html>
