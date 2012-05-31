@@ -2,7 +2,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title><?php echo $game['Game']['title']; ?></title>
+<title>Game: <?php echo $game['Game']['title']; ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
@@ -41,7 +41,7 @@
 </style>
 </head>
 <body>
-<h2>Game: <?php echo $game['Game']['title']; ?></h2>
+<?php /*<h2>Game: <?php echo $game['Game']['title']; ?></h2>*/ ?>
 <?php foreach($game['Question'] as $i=>$question): ?>
 <div class="question">
 <h3>Question #<?php echo ($i + 1); ?>: <?php echo $question['title']; ?></h3>
