@@ -57,6 +57,7 @@
 		<tr>
 			<td><label>Insight</label></td>
 			<td>
+				<?php echo $this->data['Question']['insight_text']; ?>
 				<?php echo $this->Form->input('insight_text',array('label'=>false)); ?>
 				<?php if(is_file(WWW_ROOT.'img'.DS.'insights'.DS.$this->data['Question']['id'].'.png')) echo '<img id="InsightImage" src="/img/insights/'.$this->data['Question']['id'].'.png?t='.time().'" /><a target="_blank" href="/img/insights/'.$this->data['Question']['id'].'-O.png">Original</a>'; ?>
 				<?php echo $this->Form->input('insight_image',array('label'=>'(288x204)','type'=>'file')); ?>
