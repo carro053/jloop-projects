@@ -72,7 +72,7 @@
 		<tr>
 			<td><label>Answer 1</label></td>
 			<td>
-				<?php echo $this->Form->input('answer_1_text',array('label'=>false,'value'=>$this->data['Question']['insight_text'])); ?>
+				<?php echo $this->Form->input('answer_1_text',array('label'=>false)); ?>
 				<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$this->data['Question']['id'].'-1.png')) echo '<img id="Answer1Image" src="/img/answers/'.$this->data['Question']['id'].'-1.png?t='.time().'" /><a target="_blank" href="/img/answers/'.$this->data['Question']['id'].'-1-O.png">Original</a>'; ?>
 				<?php echo $this->Form->input('answer_1_image',array('label'=>'(139x79)','type'=>'file')); ?>
 			</td>
