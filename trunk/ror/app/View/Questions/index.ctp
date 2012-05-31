@@ -17,7 +17,7 @@
 					echo 'Drag to Order';
 				?>
 			</th>
-			<th width="260px">&nbsp;</th>
+			<th width="300px">&nbsp;</th>
 		</tr>
 	</thead>
 	<tbody>
