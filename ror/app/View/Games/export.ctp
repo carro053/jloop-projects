@@ -99,6 +99,7 @@ Answers:
 	</tr>
 </table>
 <?php } ?>
+<br />
 Insight:<br />
 <div>
 <?php if($question['insight_type'] == 'image')
