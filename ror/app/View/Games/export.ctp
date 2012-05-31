@@ -8,6 +8,7 @@
 
 <style type="text/css">
 	body {
+		font-family: Arial;
 		width: 800px;
 		text-align: center;
 		
