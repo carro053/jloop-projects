@@ -38,12 +38,21 @@
 		text-align: center;
 		
 	}
+	div.last-question {
+		width: 800px;
+		text-align: center;
+		
+	}
 </style>
 </head>
 <body>
 <?php /*<h2>Game: <?php echo $game['Game']['title']; ?></h2>*/ ?>
 <?php foreach($game['Question'] as $i=>$question): ?>
+<?php if(($i + 1) == count($game['Question'])) { ?>
 <div class="question">
+<?php }else{ ?>
+<div class="last-question">
+<?php } ?>
 <h3>Question #<?php echo ($i + 1); ?>: <?php echo $question['title']; ?></h3>
 Clue:<br />
 <div>
