@@ -41,7 +41,7 @@
 </style>
 </head>
 <body>
-<h2><?php echo $game['Game']['title']; ?></h2>
+<h2>Game: <?php echo $game['Game']['title']; ?></h2>
 <?php foreach($game['Question'] as $i=>$question): ?>
 <div class="question">
 <h3>Question #<?php echo ($i + 1); ?>: <?php echo $question['title']; ?></h3>
