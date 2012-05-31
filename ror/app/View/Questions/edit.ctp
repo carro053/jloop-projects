@@ -43,7 +43,8 @@
 		<tr>
 			<td><label>Question</label></td>
 			<td>
-				<?php echo $this->Form->input('question_text',array('label'=>false)); ?>
+				<?php //echo $this->Form->input('question_text',array('label'=>false)); ?>
+				<div class="input textarea"><textarea id="QuestionQuestionText" rows="6" cols="30" name="data[Question][question_text]"><?php echo $this->data['Question']['question_text']; ?></textarea></div>
 				<?php if(is_file(WWW_ROOT.'img'.DS.'questions'.DS.$this->data['Question']['id'].'.png')) echo '<img id="QuestionImage" src="/img/questions/'.$this->data['Question']['id'].'.png?t='.time().'" /><a target="_blank" href="/img/questions/'.$this->data['Question']['id'].'-O.png">Original</a>'; ?>
 				<?php echo $this->Form->input('question_image',array('label'=>'(289x97)','type'=>'file')); ?>
 			</td>
@@ -57,7 +58,6 @@
 		<tr>
 			<td><label>Insight</label></td>
 			<td>
-				<?php //echo $this->data['Question']['insight_text']; ?>
 				<?php //echo $this->Form->input('insight_text',array('label'=>false)); ?>
 				<div class="input textarea"><textarea id="QuestionInsightText" rows="6" cols="30" name="data[Question][insight_text]"><?php echo $this->data['Question']['insight_text']; ?></textarea></div>
 				<?php if(is_file(WWW_ROOT.'img'.DS.'insights'.DS.$this->data['Question']['id'].'.png')) echo '<img id="InsightImage" src="/img/insights/'.$this->data['Question']['id'].'.png?t='.time().'" /><a target="_blank" href="/img/insights/'.$this->data['Question']['id'].'-O.png">Original</a>'; ?>
