@@ -17,7 +17,7 @@
 					echo 'Drag to Order';
 				?>
 			</th>
-			<th>Version</th>
+			<th style="text-align:center;">Version</th>
 			<th width="300px">&nbsp;</th>
 		</tr>
 	</thead>
@@ -28,7 +28,7 @@
 				<td><?php echo $question['title']; ?></td>
 				<td><?php echo $question['status']; ?></td>
 				<td width="150" style="text-align:center;"><?php if(!$status_filter) echo '<img width="11" height="11" src="/site-admin/img/icon_reorder.png" class="handleBar">'; ?></td>
-				<td>
+				<td style="text-align:center;">
 					<?php if($question['version'] > 1) { ?>
 					<a href="/questions/version_history/<?php echo $question['id']; ?>"><?php echo $question['version']; ?></a>
 					<?php }else{ ?>
