@@ -1,4 +1,4 @@
-<h2>Versions for <?php echo $question['Question']['title']; ?></h2>
+<h2>Versions for <?php echo $game['Game']['title']; ?></h2>
 <h3><a href="/questions/index/<?php echo $question['Question']['game_id']; ?>">&larr;Back To Question List</a></h3>
 <table id="sortable">
 	<thead>
@@ -13,7 +13,7 @@
 	<tbody>
 		<?php foreach($question['QuestionVersion'] as $key=>$version) { ?>
 			<tr>
-				<td><?php echo $version['version']; ?></td>
+				<td><?php echo (count($question['QuestionVersion']) - $key); ?></td>
 				<td><?php echo date('F jS, Y - g:ia',strtotime($version['created'])); ?></td>
 				<td><?php echo $version['status']; ?></td>
 				<td><?php echo $version['User']['username']; ?></td>

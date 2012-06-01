@@ -65,6 +65,7 @@ class GamesController extends AppController {
 		$game = $this->Game->findById($game_id);
 		$this->set('game',$game);
 		$versions = $this->QuestionVersion->find('all',array('conditions'=>'QuestionVersion.question_id IN (SELECT `id` FROM `questions` WHERE `game_id` = '.$game_id.')','order'=>'QuestionVersion.created DESC'));
+		$this->set('versions',$versions);
 	}
 	
 	public function play($game_id) {
