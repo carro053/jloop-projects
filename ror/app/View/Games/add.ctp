@@ -1,3 +1,4 @@
+<h2>Add Game</h2>
 <?php
     echo $this->Form->create('Game',array('url'=>'/games/add','type' => 'file'));
     echo $this->Form->input('title');

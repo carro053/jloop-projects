@@ -1,3 +1,4 @@
+<h2>Edit Game</h2>
 <?php
     echo $this->Form->create('Game',array('url'=>'/games/edit/'.$this->data['Game']['id'],'type' => 'file'));
     echo $this->Form->input('id');

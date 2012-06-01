@@ -34,7 +34,7 @@
 		</tr>
 		<tr>
 			<td><label>Question Type</label></td>
-			<td><?php echo $this->Form->input('question_type',array('label'=>false,'options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));; ?></td>
+			<td><?php echo $this->Form->input('question_type',array('label'=>false,'options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);')); ?></td>
 			<td class="note"><?php ?></td>
 		</tr>
 		<tr>
@@ -47,7 +47,7 @@
 		</tr>
 		<tr>
 			<td><label>Insight Type</label></td>
-			<td><?php echo $this->Form->input('insight_type',array('label'=>false,'options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);'));; ?></td>
+			<td><?php echo $this->Form->input('insight_type',array('label'=>false,'options'=>array('text'=>'Text','image'=>'Image'),'onchange'=>'change_type(this);')); ?></td>
 			<td class="note"><?php ?></td>
 		</tr>
 		<tr>
