@@ -43,7 +43,7 @@ class GamesController extends AppController {
 			if($version_id == 0)
 			{
 				$snapshot['GameSnapshot']['time'] = time();
-				$count = $this->QuestionVersion->find('count',array('conditions'=>'QuestionVersion.question_id IN (SELECT `id` FROM `questions` WHERE `game_id` = '.$game['Game']['id'].')'));
+				$count = $this->QuestionVersion->find('count',array('conditions'=>'QuestionVersion.question_id IN (SELECT `id` FROM `questions` WHERE `game_id` = '.$game_id.')'));
 				$snapshot['GameSnapshot']['version'] = $count;
 			}else{
 				$version = $this->QuestionVersion->findById($version_id);
