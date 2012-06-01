@@ -30,7 +30,23 @@ class QuestionsController extends AppController {
 				'Question'=>array(
 					'className'=>'Question',
 					'foreignKey'=>'game_id',
-					'order'=>$order
+					'order'=>$order,
+					'conditions'=>'Question.deleted = 0'
+				)
+			)
+		));
+		$game = $this->Game->findById($game_id);
+		$this->set('game', $game);
+	}
+	
+	public function deleted($game_id)
+	{
+		$this->Game->bindModel(array(
+			'hasMany'=>array(
+				'Question'=>array(
+					'className'=>'Question',
+					'foreignKey'=>'game_id',
+					'conditions'=>'Question.deleted = 1'
 				)
 			)
 		));
@@ -403,15 +419,25 @@ class QuestionsController extends AppController {
 	function delete($question_id)
 	{
 		$question = $this->Question->findById($question_id);
-		if($this->Question->delete($question_id))
-		{
-			$questions = $this->Question->find('all',array('conditions'=>'Question.game_id = '.$question['Question']['game_id'],'order'=>'Question.order ASC'));
-			foreach($questions as $i=>$question):
-				$question['Question']['order'] = $i;
-				$this->Question->save($question);
-			endforeach;
-			$this->redirect('/questions/index/'.$question['Question']['game_id']);
-		}
+		$question['Question']['deleted'] = 1;
+		$this->Question->save($question);
+		$this->version_up_question($question_id);
+		$questions = $this->Question->find('all',array('conditions'=>'Question.game_id = '.$question['Question']['game_id'].' AND Question.deleted = 0','order'=>'Question.order ASC'));
+		foreach($questions as $i=>$question):
+			$question['Question']['order'] = $i;
+			$this->Question->save($question);
+		endforeach;
+		$this->redirect('/questions/index/'.$question['Question']['game_id']);
+	}
+	
+	function undelete($question_id)
+	{
+		$question = $this->Question->findById($question_id);
+		$question['Question']['deleted'] = 0;
+		$question['Question']['order'] = $this->Question->find('count',array('conditions'=>'Question.game_id = '.$question['Question']['game_id'].' AND Question.deleted = 0'));
+		$this->Question->save($question);
+		$this->version_up_question($question_id);
+		$this->redirect('/questions/deleted/'.$question['Question']['game_id']);
 	}
 	
 	function set_order()
