@@ -15,7 +15,7 @@
 		<?php foreach($game['GameSnapshot'] as $snapshot) { ?>
 			<tr>
 				<td width="60px"><?php echo $snapshot['version']; ?></td>
-				<td><?php echo $snapshot['note']; ?></td>
+				<td><?php echo htmlspecialchars_decode($snapshot['note'], ENT_QUOTES); ?></td>
 				<td><?php if($snapshot['published'] == 1) { ?><a class="button" href="/games/play_version/<?php echo $game['Game']['id']; ?>/<?php echo $snapshot['id']; ?>" target="_blank">Play</a>&nbsp;<a class="button" href="/games/unpublish_snapshot/<?php echo $game['Game']['id']; ?>/<?php echo $snapshot['id']; ?>">Unpublish</a><?php }else{ ?><a class="button" href="/games/publish_snapshot/<?php echo $game['Game']['id']; ?>/<?php echo $snapshot['id']; ?>">Publish</a><?php } ?>&nbsp;<a class="button" href="/games/export/<?php echo $game['Game']['id']; ?>/<?php echo $snapshot['time']; ?>">Export</a>&nbsp;<a class="button" href="/games/edit_snapshot/<?php echo $game['Game']['id']; ?>/<?php echo $snapshot['id']; ?>">Edit</a>&nbsp;<a class="button" href="/games/delete_snapshot/<?php echo $game['Game']['id']; ?>/<?php echo $snapshot['id']; ?>" onclick="return confirm('Are you sure you want to delete this snapshot?');">Delete</a></td>
 			</tr>
 		<?php } ?>
