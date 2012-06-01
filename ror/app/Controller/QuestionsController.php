@@ -267,6 +267,8 @@ class QuestionsController extends AppController {
 	function version_up_question($question_id)
 	{
 		$question = $this->Question->findById($question_id);
+		$question['Question']['version']++;
+		$this->Question->save($question);
 		
 		$version['QuestionVersion'] = $question['Question'];
 		$version['QuestionVersion']['id'] = null;
