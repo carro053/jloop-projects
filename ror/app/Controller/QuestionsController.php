@@ -276,7 +276,7 @@ class QuestionsController extends AppController {
 	        	)
 	        )
 	    );
-		$this->Questionn->bindModel(
+		$this->Question->bindModel(
 			array(
 				'hasMany'=>array(
 	        		'QuestionVersion' => array(
