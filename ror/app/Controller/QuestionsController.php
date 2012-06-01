@@ -256,6 +256,8 @@ class QuestionsController extends AppController {
 	function initialVersions()
 	{
 		$questions = $this->Question->find('all');
+		pr($questions);
+		exit;
 		foreach($questions as $question):
 			$this->version_up_question($question['Question']['id']);
 		endforeach;
