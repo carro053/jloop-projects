@@ -14,15 +14,10 @@
 		<?php foreach($versions as $key=>$version) { ?>
 			<tr>
 				<td><?php echo (count($versions) - $key); ?></td>
-				<td><?php echo date('F jS, Y - g:ia',strtotime($version['created'])); ?></td>
-				<td><?php echo $version['title']; if($version['version'] == 1) { echo '(Created)'; }else{ echo '(Version '.$version['version'].')'; } ?></td>
+				<td><?php echo date('F jS, Y - g:ia',strtotime($version['QuestionVersion']['created'])); ?></td>
+				<td><?php echo $version['QuestionVersion']['title']; if($version['QuestionVersion']['version'] == 1) { echo '(Created)'; }else{ echo '(Version '.$version['QuestionVersion']['version'].')'; } ?></td>
 				<td><?php echo $version['User']['username']; ?></td>
-				<td><a class="button" href="/games/play_question/<?php echo $question['Question']['game_id']; ?>/<?php echo $question['Question']['id']; ?>/<?php echo $version['id']; ?>" target="_blank">Play</a>&nbsp;<a class="button" href="/games/preview_question/<?php echo $question['Question']['game_id']; ?>/<?php echo $question['Question']['id']; ?>/<?php echo $version['id']; ?>" target="_blank">Preview</a>
-				<?php if($key == 0) { ?>
-				&nbsp;<a class="button">Current Version</a>
-				<?php }else{ ?>
-				&nbsp;<a class="button" href="/questions/set_to_this_version/<?php echo $question['Question']['id']; ?>/<?php echo $version['id']; ?>" onclick="return confirm('This will make this version the current version for this question, okay?');">Make Current</a></td>
-				<?php } ?>
+				<td><a class="button" href="/games/snapshot/<?php echo $game['Game']['id']; ?>/<?php echo strtotime($version['QuestionVersion']['created']); ?>" target="_blank">Play Snapshot</a></td>
 			</tr>
 		<?php } ?>
 	</tbody>
