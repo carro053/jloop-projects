@@ -50,6 +50,7 @@ class GamesController extends AppController {
 		if(isset($this->data['GameSnapshot']))
 		{
 			$snapshot = $this->data;
+			$snapshot['GameSnapshot']['note'] = htmlspecialchars($this->removeInvis(nl2br($snapshot['GameSnapshot']['note'])), ENT_QUOTES);
 			if($version_id == 0)
 			{
 				$snapshot['GameSnapshot']['time'] = time();
@@ -78,11 +79,14 @@ class GamesController extends AppController {
 		if(isset($this->data['GameSnapshot']))
 		{
 			$snapshot = $this->data;
+			$snapshot['GameSnapshot']['note'] = htmlspecialchars($this->removeInvis(nl2br($snapshot['GameSnapshot']['note'])), ENT_QUOTES);
 			if($this->GameSnapshot->save($snapshot))
 			{
 				$this->redirect('/games/snapshots/'.$game_id);
 			}
 		} else {
+			$snapshot['GameSnapshot']['note'] = str_replace('<br />','
+',htmlspecialchars_decode($snapshot['GameSnapshot']['note'], ENT_QUOTES));
 			$this->data = $snapshot;
 		}
 	}
