@@ -5,7 +5,7 @@
 <table id="sortable">
 	<thead>
 		<tr>
-			<th>Version</th>
+			<th width="60px">Version</th>
 			<th>Note</th>
 			<th width="300px">&nbsp;</th>
 		</tr>
@@ -14,7 +14,7 @@
 	<?php if(!empty($game['GameSnapshot'])) { ?>
 		<?php foreach($game['GameSnapshot'] as $snapshot) { ?>
 			<tr>
-				<td><?php echo $snapshot['version']; ?></td>
+				<td width="60px"><?php echo $snapshot['version']; ?></td>
 				<td><?php echo $snapshot['note']; ?></td>
 				<td>
 					<?php if($snapshot['published'] == 1) { ?>
