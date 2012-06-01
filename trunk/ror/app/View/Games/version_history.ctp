@@ -17,7 +17,7 @@
 				<td><?php echo date('F jS, Y - g:ia',strtotime($version['QuestionVersion']['created'])); ?></td>
 				<td><?php echo $version['QuestionVersion']['title']; if($version['QuestionVersion']['version'] == 1) { echo ' (Created)'; }else{ echo ' (Version '.$version['QuestionVersion']['version'].')'; } ?></td>
 				<td><?php echo $version['User']['username']; ?></td>
-				<td><a class="button" href="/games/play/<?php echo $game['Game']['id']; ?>/<?php echo strtotime($version['QuestionVersion']['created']); ?>" target="_blank">Play</a>&nbsp;<a class="button" href="/games/add_snapshot/<?php echo $game['Game']['id']; ?>/<?php echo $version['QuestionVersion']['id']; ?>">Create Snapshot</a></td>
+				<td><a class="button" href="/games/play/<?php echo $game['Game']['id']; ?>/<?php echo strtotime($version['QuestionVersion']['created']); ?>" target="_blank">Play</a>&nbsp;<a class="button" href="/games/add_snapshot/<?php echo $game['Game']['id']; ?>/<?php echo $version['QuestionVersion']['id']; ?>">Create Snapshot</a>&nbsp;<a class="button" href="/games/export/<?php echo $game['Game']['id']; ?>/<?php echo strtotime($version['QuestionVersion']['created']); ?>">Export</a></td>
 			</tr>
 		<?php } ?>
 	</tbody>
