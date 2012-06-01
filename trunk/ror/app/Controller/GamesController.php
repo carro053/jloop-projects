@@ -161,6 +161,22 @@ class GamesController extends AppController {
 		$this->set('versions',$versions);
 	}
 	
+	
+	
+	public function play_version($game_id,$snapshot_id) {
+		$snapshot = $this->GameSnapshot->findById($snapshot_id);
+		if(isset($snapshot['GameSnapshot']['id']) && $snapshot['GameSnapshot']['published'] == 1)
+		{
+			$this->layout = false;
+			$this->set('preview_timers',0);
+			$this->set('game',$this->Game->findById($game_id));
+			$this->set('snapshot',$snapshot['GameSnapshot']['time']);
+		}else{
+			echo '<h2>This version of the game is no longer available.</h2>';
+			exit;
+		}
+	}
+	
 	public function play($game_id,$snapshot=0) {
 		$this->layout = false;
 		$this->set('preview_timers',0);
