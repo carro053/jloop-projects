@@ -8,7 +8,7 @@ class GamesController extends AppController {
 	
 	public function beforeFilter()
 	{
-		$this->Auth->allow('play','play_question');
+		$this->Auth->allow('play','play_question','play_version');
 	}
 	
 	public function index() {
