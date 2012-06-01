@@ -21,8 +21,9 @@
 				<?php if($key == 0) { ?>
 				&nbsp;<a class="button">Current Version</a>
 				<?php }else{ ?>
-				&nbsp;<a class="button" href="/questions/set_to_this_version/<?php echo $question['Question']['id']; ?>/<?php echo $version['id']; ?>" onclick="return confirm('This will make this version the current version for this question, okay?');">Make Current</a></td>
+				&nbsp;<a class="button" href="/questions/set_to_this_version/<?php echo $question['Question']['id']; ?>/<?php echo $version['id']; ?>" onclick="return confirm('This will make this version the current version for this question, okay?');">Make Current</a>
 				<?php } ?>
+				</td>
 			</tr>
 		<?php } ?>
 	</tbody>
