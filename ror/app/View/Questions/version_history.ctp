@@ -19,7 +19,7 @@
 				<td><?php echo $version['User']['username']; ?></td>
 				<td><a class="button" href="/games/play_question/<?php echo $question['Question']['game_id']; ?>/<?php echo $question['Question']['id']; ?>/<?php echo $version['id']; ?>" target="_blank">Play</a>&nbsp;<a class="button" href="/games/preview_question/<?php echo $question['Question']['game_id']; ?>/<?php echo $question['Question']['id']; ?>/<?php echo $version['id']; ?>" target="_blank">Preview</a>
 				<?php if($key == 0) { ?>
-				&nbsp;<a class="button" href="#">Current Version</a>
+				&nbsp;<a class="button">Current Version</a>
 				<?php }else{ ?>
 				&nbsp;<a class="button" href="/questions/set_to_this_version/<?php echo $question['Question']['id']; ?>/<?php echo $version['id']; ?>" onclick="return confirm('This will make this version the current version for this question, okay?');">Make Current</a></td>
 				<?php } ?>
