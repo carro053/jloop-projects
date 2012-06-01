@@ -7,7 +7,7 @@
 		<tr>
 			<th width="60px">Version</th>
 			<th>Note</th>
-			<th width="300px">&nbsp;</th>
+			<th width="400px">&nbsp;</th>
 		</tr>
 	</thead>
 	<tbody>
