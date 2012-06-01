@@ -9,7 +9,7 @@
 			<th>Question</th>
 			<?php array_unshift($status_options,array(''=>'')); ?>
 			<th>Status <?php echo $this->Form->input('status',array('div'=>array('style'=>'display:inline'),'label'=>false,'options'=>$status_options,'onchange'=>'change_status_filter(this.value);','value'=>$status_filter)); ?></th>
-			<th>
+			<th style="text-align:center;">
 				<?php
 				if($status_filter)
 					echo '<a class="button" href="/questions/index/'.$game['Game']['id'].'">Enable Drag Order</a>';
