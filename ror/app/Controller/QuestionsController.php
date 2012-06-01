@@ -267,13 +267,15 @@ class QuestionsController extends AppController {
 	function version_history($question_id)
 	{
 		$this->QuestionVersion->bindModel(
-			'belongsTo'=>array(
-        		'User' => array(
-            		'className' => 'User',
-            		'foreignKey' => 'user_id'
-        		)
-        	)
-        );
+			array(
+				'belongsTo'=> array(
+	        		'User' => array(
+	            		'className' => 'User',
+	            		'foreignKey' => 'user_id'
+	        		)
+	        	)
+	        )
+	    );
 		$this->Questionn->bindModel(
 			'hasMany'=>array(
         		'QuestionVersion' => array(
@@ -393,7 +395,7 @@ class QuestionsController extends AppController {
 		if(is_file(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-'.$version_id.'.png')) copy(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-'.$version_id.'.png',WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'.png');
 		if(is_file(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O-'.$version_id.'.png')) copy(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O-'.$version_id.'.png',WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O.png');
 		
-		return true;
+		$this->redirect('/questions/version_history/'.$question_id);
 		
 	}
 	
