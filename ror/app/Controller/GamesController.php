@@ -4,7 +4,7 @@ App::uses('AppController', 'Controller');
 class GamesController extends AppController {
 	public $name = 'Games';
 	public $helpers = array('Html', 'Session');
-	public $uses = array('Game','Question','QuestionVersion');
+	public $uses = array('Game','Question','QuestionVersion','GameSnapshot');
 	
 	public function beforeFilter()
 	{
@@ -18,6 +18,67 @@ class GamesController extends AppController {
 			$games[$key]['Game']['version'] = $count;		
 		endforeach;
 		$this->set('games',$games);
+	}
+	public function snapshots($game_id)
+	{
+		$this->Game->bindModel(array(
+			'hasMany'=>array(
+				'GameSnapshot'=>array(
+					'className'=>'GameSnapshot',
+					'foreignKey'=>'game_id',
+					'order'=>'GameSnapshot.time DESC'
+				)
+			)
+		));
+		$game = $this->Game->findById($game_id);
+		$this->set('game', $game);
+	}
+	public function add_snapshot($game_id,$version_id=0)
+	{
+		$this->set('game_id',$game_id);
+		$this->set('version_id',$version_id);
+		if(isset($this->data['GameSnapshot']))
+		{
+			$snapshot = $this->data;
+			if($version_id == 0)
+			{
+				$snapshot['GameSnapshot']['time'] = time();
+				$count = $this->QuestionVersion->find('count',array('conditions'=>'QuestionVersion.question_id IN (SELECT `id` FROM `questions` WHERE `game_id` = '.$game['Game']['id'].')'));
+				$snapshot['GameSnapshot']['version'] = $count;
+			}else{
+				$version = $this->QuestionVersion->findById($version_id);
+				$snapshot['GameSnapshot']['time'] = strtotime($version['QuestionVersion']['created']);
+				$snapshot['GameSnapshot']['version'] = $version['QuestionVersion']['version'];
+			}
+			$snapshot['GameSnapshot']['published'] = 1;
+			if($this->GameSnapshot->save($snapshot))
+			{
+				$this->redirect('/games/snapshots/'.$game_id);
+			}
+		}
+	}
+	
+	public function edit_snapshot($game_id,$snapshot_id)
+	{
+		$this->set('game_id',$game_id);
+		$this->set('snapshot_id',$snapshot_id);
+		$snapshot = $this->GameSnapshot->findById($snapshot_id);
+		if(isset($this->data['GameSnapshot']))
+		{
+			$snapshot = $this->data;
+			if($this->GameSnapshot->save($snapshot))
+			{
+				$this->redirect('/games/snapshots/'.$game_id);
+			}
+		} else {
+			$this->data = $snapshot;
+		}
+	}
+	
+	public function delete_snapshot($game_id,$snapshot_id)
+	{
+		$this->GameSnapshot->delete($snapshot_id);
+		$this->redirect('/games/snapshots/'.$game_id);
 	}
 	
 	public function add()

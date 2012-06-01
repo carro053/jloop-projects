@@ -75,7 +75,7 @@
 			<td><label>Answer 1</label></td>
 			<td>
 				<?php //echo $this->Form->input('answer_1_text',array('label'=>false)); ?>
-				<div class="input text" style=""><input name="data[Question][answer_1_text]" maxlength="255" type="text" value="<?php echo $this->data['Question']['answer_1_text']; ?>" id="QuestionAnswer1Text"></div>
+				<div class="input text" style=""><textarea id="QuestionAnswer1Text" rows="6" cols="30" name="data[Question][answer_1_text]"><?php echo $this->data['Question']['answer_1_text']; ?></textarea></div>
 				<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$this->data['Question']['id'].'-1.png')) echo '<img id="Answer1Image" src="/img/answers/'.$this->data['Question']['id'].'-1.png?t='.time().'" /><a target="_blank" href="/img/answers/'.$this->data['Question']['id'].'-1-O.png">Original</a>'; ?>
 				<?php echo $this->Form->input('answer_1_image',array('label'=>'(139x79)','type'=>'file')); ?>
 			</td>
@@ -85,7 +85,7 @@
 			<td><label>Answer 2</label></td>
 			<td>
 				<?php //echo $this->Form->input('answer_2_text',array('label'=>false)); ?>
-				<div class="input text" style=""><input name="data[Question][answer_2_text]" maxlength="255" type="text" value="<?php echo $this->data['Question']['answer_2_text']; ?>" id="QuestionAnswer2Text"></div>
+				<div class="input text" style=""><textarea id="QuestionAnswer2Text" rows="6" cols="30" name="data[Question][answer_2_text]"><?php echo $this->data['Question']['answer_2_text']; ?></textarea></div>
 				<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$this->data['Question']['id'].'-2.png')) echo '<img id="Answer2Image" src="/img/answers/'.$this->data['Question']['id'].'-2.png?t='.time().'" /><a target="_blank" href="/img/answers/'.$this->data['Question']['id'].'-2-O.png">Original</a>'; ?>
 				<?php echo $this->Form->input('answer_2_image',array('label'=>'(139x79)','type'=>'file')); ?>
 			</td>
@@ -95,7 +95,7 @@
 			<td><label>Answer 3</label></td>
 			<td>
 				<?php //echo $this->Form->input('answer_3_text',array('label'=>false)); ?>
-				<div class="input text" style=""><input name="data[Question][answer_3_text]" maxlength="255" type="text" value="<?php echo $this->data['Question']['answer_3_text']; ?>" id="QuestionAnswer3Text"></div>
+				<div class="input text" style=""><textarea id="QuestionAnswer3Text" rows="6" cols="30" name="data[Question][answer_3_text]"><?php echo $this->data['Question']['answer_3_text']; ?></textarea></div>
 				<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$this->data['Question']['id'].'-3.png')) echo '<img id="Answer3Image" src="/img/answers/'.$this->data['Question']['id'].'-3.png?t='.time().'" /><a target="_blank" href="/img/answers/'.$this->data['Question']['id'].'-3-O.png">Original</a>'; ?>
 				<?php echo $this->Form->input('answer_3_image',array('label'=>'(139x79)','type'=>'file')); ?>
 			</td>
@@ -105,7 +105,7 @@
 			<td><label>Answer 4</label></td>
 			<td>
 				<?php //echo $this->Form->input('answer_4_text',array('label'=>false)); ?>
-				<div class="input text" style=""><input name="data[Question][answer_4_text]" maxlength="255" type="text" value="<?php echo $this->data['Question']['answer_4_text']; ?>" id="QuestionAnswer4Text"></div>
+				<div class="input text" style=""><textarea id="QuestionAnswer4Text" rows="6" cols="30" name="data[Question][answer_4_text]"><?php echo $this->data['Question']['answer_4_text']; ?></textarea></div>
 				<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$this->data['Question']['id'].'-4.png')) echo '<img id="Answer4Image" src="/img/answers/'.$this->data['Question']['id'].'-4.png?t='.time().'" /><a target="_blank" href="/img/answers/'.$this->data['Question']['id'].'-4-O.png">Original</a>'; ?>
 				<?php echo $this->Form->input('answer_4_image',array('label'=>'(139x79)','type'=>'file')); ?>
 			</td>
