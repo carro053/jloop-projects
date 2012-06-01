@@ -48,69 +48,72 @@
 </head>
 <body>
 <?php /*<h2>Game: <?php echo $game['Game']['title']; ?></h2>*/ ?>
-<?php foreach($game['Question'] as $i=>$question): ?>
-<?php if(($i + 1) == count($game['Question'])) { ?>
+<?php
+$i = 0;
+foreach($game['Question'] as $question):
+if(isset($question['QuestionVersion'][0]['QuestionVersion'][0]['id']) && $question['QuestionVersion'][0]['QuestionVersion'][0]['deleted'] == 0) {
+if(($i + 1) == count($game['Question'])) { ?>
 <div class="last-question">
 <?php }else{ ?>
 <div class="question">
 <?php } ?>
-<h3>Question #<?php echo ($i + 1); ?>: <?php echo $question['title']; ?> (Version <?php echo count($question['QuestionVersion']); ?>)</h3>
+<h3>Question #<?php echo ($i + 1); ?>: <?php echo $question['QuestionVersion'][0]['title']; ?> (Version <?php echo $question['QuestionVersion'][0]['QuestionVersion'][0]['version']; ?>)</h3>
 Clue:<br />
 <div>
-<?php if($question['clue_type'] == 'image')
+<?php if($question['QuestionVersion'][0]['clue_type'] == 'image')
 {
-	if(is_file(WWW_ROOT.'img'.DS.'clues'.DS.$question['id'].'.png')) echo '<img id="ClueImage" src="/img/clues/'.$question['id'].'.png?t='.time().'" />';
+	if(is_file(WWW_ROOT.'img'.DS.'clues'.DS.$question['id'].'-'.$question['QuestionVersion'][0]['id'].'.png')) echo '<img id="ClueImage" src="/img/clues/'.$question['id'].'-'.$question['QuestionVersion'][0]['id'].'.png?t='.time().'" />';
 }else{
-	echo $question['clue_text'];
+	echo $question['QuestionVersion'][0]['clue_text'];
 } ?>
 </div>
 <br />
 Question:<br />
 <div>
-<?php if($question['question_type'] == 'image')
+<?php if($question['QuestionVersion'][0]['question_type'] == 'image')
 {
-	if(is_file(WWW_ROOT.'img'.DS.'questions'.DS.$question['id'].'.png')) echo '<img id="QuestionImage" src="/img/questions/'.$question['id'].'.png?t='.time().'" />';
+	if(is_file(WWW_ROOT.'img'.DS.'questions'.DS.$question['id'].'-'.$question['QuestionVersion'][0]['id'].'.png')) echo '<img id="QuestionImage" src="/img/questions/'.$question['id'].'-'.$question['QuestionVersion'][0]['id'].'.png?t='.time().'" />';
 }else{
-	echo $question['question_text'];
+	echo $question['QuestionVersion'][0]['question_text'];
 } ?>
 </div>
 <br />
 Answers:
-<?php if($question['answer_type'] == 'image') { ?>
+<?php if($question['QuestionVersion'][0]['answer_type'] == 'image') { ?>
 <table>
 	<tr>
-		<td<?php if($question['correct_answer'] == 0)  echo ' class="correct"'; ?>>
-			<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question['id'].'-1.png')) echo '<img id="Answer1Image" src="/img/answers/'.$question['id'].'-1.png?t='.time().'" />'; ?>
+		<td<?php if($question['QuestionVersion'][0]['correct_answer'] == 0)  echo ' class="correct"'; ?>>
+			<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question['id'].'-1-'.$question['QuestionVersion'][0]['id'].'.png')) echo '<img id="Answer1Image" src="/img/answers/'.$question['id'].'-1-'.$question['QuestionVersion'][0]['id'].'.png?t='.time().'" />'; ?>
 		</td>
-		<td<?php if($question['correct_answer'] == 1)  echo ' class="correct"'; ?>>
-			<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question['id'].'-2.png')) echo '<img id="Answer1Image" src="/img/answers/'.$question['id'].'-2.png?t='.time().'" />'; ?>
+		<td<?php if($question['QuestionVersion'][0]['correct_answer'] == 1)  echo ' class="correct"'; ?>>
+			<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question['id'].'-2-'.$question['QuestionVersion'][0]['id'].'.png')) echo '<img id="Answer1Image" src="/img/answers/'.$question['id'].'-2-'.$question['QuestionVersion'][0]['id'].'.png?t='.time().'" />'; ?>
 		</td>
 	</tr>
 	<tr>
-		<td<?php if($question['correct_answer'] == 2)  echo ' class="correct"'; ?>>
-			<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question['id'].'-3.png')) echo '<img id="Answer1Image" src="/img/answers/'.$question['id'].'-3.png?t='.time().'" />'; ?>
+		<td<?php if($question['QuestionVersion'][0]['correct_answer'] == 2)  echo ' class="correct"'; ?>>
+			<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question['id'].'-3-'.$question['QuestionVersion'][0]['id'].'.png')) echo '<img id="Answer1Image" src="/img/answers/'.$question]['id'].'-3-'.$question['QuestionVersion'][0]['id'].'.png?t='.time().'" />'; ?>
 		</td>
-		<td<?php if($question['correct_answer'] == 3)  echo ' class="correct"'; ?>>
-			<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question['id'].'-4.png')) echo '<img id="Answer1Image" src="/img/answers/'.$question['id'].'-4.png?t='.time().'" />'; ?>
+		<td<?php if($question['QuestionVersion'][0]['correct_answer'] == 3)  echo ' class="correct"'; ?>>
+			<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question['id'].'-4-'.$question['QuestionVersion'][0]['id'].'.png')) echo '<img id="Answer1Image" src="/img/answers/'.$question['id'].'-4-'.$question['QuestionVersion'][0]['id'].'.png?t='.time().'" />'; ?>
 		</td>
 	</tr>
 </table>
 <?php }else{ ?>
 <table>
 	<tr>
-		<td<?php if($question['correct_answer'] == 0)  echo ' class="correct"'; ?>>
-			<?php echo $question['answer_1_text']; ?>
+		<td<?php if($question['QuestionVersion'][0]['correct_answer'] == 0)  echo ' class="correct"'; ?>>
+			<?php echo $question['QuestionVersion'][0]['answer_1_text']; ?>
 		</td>
-		<td<?php if($question['correct_answer'] == 1)  echo ' class="correct"'; ?>>
-			<?php echo $question['answer_2_text']; ?>
+		<td<?php if($question['QuestionVersion'][0]['correct_answer'] == 1)  echo ' class="correct"'; ?>>
+			<?php echo $question['QuestionVersion'][0]['answer_2_text']; ?>
 		</td>
 	</tr>
 	<tr>
-		<td<?php if($question['correct_answer'] == 2)  echo ' class="correct"'; ?>>
-			<?php echo $question['answer_3_text']; ?>
+		<td<?php if($question['QuestionVersion'][0]['correct_answer'] == 2)  echo ' class="correct"'; ?>>
+			<?php echo $question['QuestionVersion'][0]['answer_3_text']; ?>
 		</td>
-		<td<?php if($question['correct_answer'] == 3)  echo ' class="correct"'; ?>>
-			<?php echo $question['answer_4_text']; ?>
+		<td<?php if($question['QuestionVersion'][0]['correct_answer'] == 3)  echo ' class="correct"'; ?>>
+			<?php echo $question['QuestionVersion'][0]['answer_4_text']; ?>
 		</td>
 	</tr>
 </table>
@@ -118,14 +121,17 @@ Answers:
 <br />
 Insight:<br />
 <div>
-<?php if($question['insight_type'] == 'image')
+<?php if($question['QuestionVersion'][0]['insight_type'] == 'image')
 {
-	if(is_file(WWW_ROOT.'img'.DS.'insights'.DS.$question['id'].'.png')) echo '<img id="InsightImage" src="/img/insights/'.$question['id'].'.png?t='.time().'" />';
+	if(is_file(WWW_ROOT.'img'.DS.'insights'.DS.$question['id'].'-'.$question['QuestionVersion'][0]['id'].'.png')) echo '<img id="InsightImage" src="/img/insights/'.$question['id'].'-'.$question['QuestionVersion'][0]['id'].'.png?t='.time().'" />';
 }else{
-	echo $question['insight_text'];
+	echo $question['QuestionVersion'][0]['insight_text'];
 } ?>
 </div>
 </div>
-<?php endforeach; ?>
+<?php 
+	$i++;
+}
+endforeach; ?>
 </body>
 </html>
