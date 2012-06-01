@@ -210,7 +210,7 @@ class QuestionsController extends AppController {
 				$this->version_up_question($this->Question->id);
 				if($preview)
 				{
-					$this->redirect('/questions/preview/'.$this->Question->id);
+					$this->redirect('/games/preview_question/'.$game_id.'/'.$this->Question->id);
 				}else{
 					$this->redirect('/questions/edit/'.$this->Question->id);
 				}
