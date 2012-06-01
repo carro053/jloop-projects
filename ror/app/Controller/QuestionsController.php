@@ -404,7 +404,7 @@ class QuestionsController extends AppController {
 		$question = $this->Question->findById($question_id);
 		if($this->Question->delete($question_id))
 		{
-			$questions = $this->Question->find('all',array('conditions'=>'Question.game_id = '.$game_id));
+			$questions = $this->Question->find('all',array('conditions'=>'Question.game_id = '.$question['Question']['game_id']));
 			foreach($questions as $i=>$question):
 				$question['Question']['order'] = $i;
 				$this->Question->save($question);
