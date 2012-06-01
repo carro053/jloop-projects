@@ -335,6 +335,7 @@ class QuestionsController extends AppController {
 		$version = $this->QuestionVersion->findById($to_id);
 		$version['QuestionVersion']['id'] = null;
 		$version['QuestionVersion']['user_id'] = $this->Auth->user('id');
+		$version['QuestionVersion']['version']++;
 		unset($version['QuestionVersion']['created']);
 		unset($version['QuestionVersion']['modified']);
 		$this->QuestionVersion->save($version);
