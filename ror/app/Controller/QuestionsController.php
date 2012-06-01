@@ -264,6 +264,28 @@ class QuestionsController extends AppController {
 		exit;
 	}*/
 	
+	function version_history($question_id)
+	{
+		$this->QuestionVersion->bindModel(
+			'belongsTo'=>array(
+        		'User' => array(
+            		'className' => 'User',
+            		'foreignKey' => 'user_id'
+        		)
+        	)
+        );
+		$this->Questionn->bindModel(
+			'hasMany'=>array(
+        		'QuestionVersion' => array(
+            		'className' => 'QuestionVersion',
+            		'foreignKey' => 'question_id',
+            		'order' => 'QuestionVersion.created DESC'
+        		)
+        	)
+        );
+		$this->set('question',$this->Question->find('first',array('conditions'=>'Question.id = '.$question_id,'recursive'=>2)));
+	}
+	
 	function version_up_question($question_id)
 	{
 		$question = $this->Question->findById($question_id);
