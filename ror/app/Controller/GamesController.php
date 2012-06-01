@@ -218,27 +218,53 @@ class GamesController extends AppController {
 		$this->render('play');
 	}
 	
-	public function export($game_id)
+	public function export($game_id,$time=0)
 	{
 		$this->layout = false;
-		$this->Question->bindModel(array(
-			'hasMany'=>array(
-				'QuestionVersion'=>array(
-					'className'=>'QuestionVersion',
-					'foreignKey'=>'question_id',
-					'order'=>'QuestionVersion.created DESC'
+		if($time > 0)
+		{
+			$this->Question->bindModel(array(
+				'hasMany'=>array(
+					'QuestionVersion'=>array(
+						'className'=>'QuestionVersion',
+						'foreignKey'=>'question_id',
+						'order'=>'QuestionVersion.created DESC',
+						'limit'=>1,
+						'conditions'=>'QuestionVersion.created <= "'.date('Y-m-d H:i:s',$time).'"'
+					)
 				)
-			)
-		));
-		$this->Game->bindModel(array(
-			'hasMany'=>array(
-				'Question'=>array(
-					'className'=>'Question',
-					'foreignKey'=>'game_id',
-					'order'=>'Question.order ASC'
+			));
+			$this->Game->bindModel(array(
+				'hasMany'=>array(
+					'Question'=>array(
+						'className'=>'Question',
+						'foreignKey'=>'game_id',
+						'order'=>'Question.order ASC',
+						'conditions'=>'Question.id = '.$version['QuestionVersion']['question_id']
+					)
 				)
-			)
-		));
+			));
+		}else{
+			$this->Question->bindModel(array(
+				'hasMany'=>array(
+					'QuestionVersion'=>array(
+						'className'=>'QuestionVersion',
+						'foreignKey'=>'question_id',
+						'order'=>'QuestionVersion.created DESC',
+						'limit'=>1
+					)
+				)
+			));
+			$this->Game->bindModel(array(
+				'hasMany'=>array(
+					'Question'=>array(
+						'className'=>'Question',
+						'foreignKey'=>'game_id',
+						'order'=>'Question.order ASC'
+					)
+				)
+			));
+		}
 		$this->set('game',$this->Game->find('first',array('conditions'=>'Game.id = '.$game_id,'recursive'=>2)));
 	}
 	
