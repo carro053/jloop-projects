@@ -57,7 +57,7 @@ if(($i + 1) == count($game['Question'])) { ?>
 <?php }else{ ?>
 <div class="question">
 <?php } ?>
-<h3>Question #<?php echo ($i + 1); ?>: <?php echo $question['QuestionVersion'][0]['title']; ?> (Version <?php echo $question['QuestionVersion'][0]['QuestionVersion'][0]['version']; ?>)</h3>
+<h3>Question #<?php echo ($i + 1); ?>: <?php echo $question['QuestionVersion'][0]['title']; ?> (Version <?php echo $question['QuestionVersion'][0]['version']; ?>)</h3>
 Clue:<br />
 <div>
 <?php if($question['QuestionVersion'][0]['clue_type'] == 'image')
