@@ -82,6 +82,22 @@ class GamesController extends AppController {
 		$this->redirect('/games/snapshots/'.$game_id);
 	}
 	
+	public function publish_snapshot($game_id,$snapshot_id)
+	{
+		$snapshot['GameSnapshot']['id'] = $snapshot_id;
+		$snapshot['GameSnapshot']['published'] = 1;
+		$this->GameSnapshot->save($snapshot);
+		$this->redirect('/games/snapshots/'.$game_id);
+	}
+	
+	public function unpublish_snapshot($game_id,$snapshot_id)
+	{
+		$snapshot['GameSnapshot']['id'] = $snapshot_id;
+		$snapshot['GameSnapshot']['published'] = 0;
+		$this->GameSnapshot->save($snapshot);
+		$this->redirect('/games/snapshots/'.$game_id);
+	}
+	
 	public function add()
 	{
 		if(isset($this->data['Game']))
