@@ -51,7 +51,7 @@
 <?php
 $i = 0;
 foreach($game['Question'] as $question):
-if(isset($question['QuestionVersion'][0]['QuestionVersion'][0]['id']) && $question['QuestionVersion'][0]['QuestionVersion'][0]['deleted'] == 0) {
+if(isset($question['QuestionVersion'][0]['id']) && $question['QuestionVersion'][0]['deleted'] == 0) {
 if(($i + 1) == count($game['Question'])) { ?>
 <div class="last-question">
 <?php }else{ ?>
