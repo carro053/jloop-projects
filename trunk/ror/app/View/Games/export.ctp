@@ -91,7 +91,7 @@ Answers:
 	</tr>
 	<tr>
 		<td<?php if($question['QuestionVersion'][0]['correct_answer'] == 2)  echo ' class="correct"'; ?>>
-			<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question['id'].'-3-'.$question['QuestionVersion'][0]['id'].'.png')) echo '<img id="Answer1Image" src="/img/answers/'.$question]['id'].'-3-'.$question['QuestionVersion'][0]['id'].'.png?t='.time().'" />'; ?>
+			<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question['id'].'-3-'.$question['QuestionVersion'][0]['id'].'.png')) echo '<img id="Answer1Image" src="/img/answers/'.$question['id'].'-3-'.$question['QuestionVersion'][0]['id'].'.png?t='.time().'" />'; ?>
 		</td>
 		<td<?php if($question['QuestionVersion'][0]['correct_answer'] == 3)  echo ' class="correct"'; ?>>
 			<?php if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question['id'].'-4-'.$question['QuestionVersion'][0]['id'].'.png')) echo '<img id="Answer1Image" src="/img/answers/'.$question['id'].'-4-'.$question['QuestionVersion'][0]['id'].'.png?t='.time().'" />'; ?>
