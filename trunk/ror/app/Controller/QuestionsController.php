@@ -253,14 +253,14 @@ class QuestionsController extends AppController {
 		}
 	}
 	
-	function initialVersions()
+	/*function initialVersions()
 	{
 		$questions = $this->Question->find('all');
 		foreach($questions as $question):
 			$this->version_up_question($question['Question']['id']);
 		endforeach;
 		exit;
-	}
+	}*/
 	
 	function version_up_question($question_id)
 	{
@@ -366,7 +366,8 @@ class QuestionsController extends AppController {
 		
 		if(is_file(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-'.$version_id.'.png')) copy(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-'.$version_id.'.png',WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'.png');
 		if(is_file(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O-'.$version_id.'.png')) copy(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O-'.$version_id.'.png',WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O.png');
-		exit;
+		
+		return true;
 		
 	}
 	
