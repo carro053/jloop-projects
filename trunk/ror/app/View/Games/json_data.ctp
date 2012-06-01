@@ -1,12 +1,15 @@
 <?php
 echo '
 var questions = [';
+$i=0;
 foreach($game['Question'] as $key=>$question):
-	if($key != 0) echo ',
+	if(isset($question['QuestionVersion'][0]['id']))
+	{
+	if($i != 0) echo ',
 	';
 	echo '
 	{
-		title: \'Unplayed Question '.($key+1).'\',
+		title: \'Unplayed Question '.($i+1).'\',
 		time: \''.$question['QuestionVersion'][0]['time'].'\',
 		question_type: \''.$question['QuestionVersion'][0]['question_type'].'\',
 		answer_type: \''.$question['QuestionVersion'][0]['answer_type'].'\',
@@ -94,6 +97,8 @@ foreach($game['Question'] as $key=>$question):
 		}
 		echo '
 	}';
+	$i++;
+	}
 endforeach;
 echo '
 ];';
