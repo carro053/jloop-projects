@@ -277,13 +277,15 @@ class QuestionsController extends AppController {
 	        )
 	    );
 		$this->Questionn->bindModel(
-			'hasMany'=>array(
-        		'QuestionVersion' => array(
-            		'className' => 'QuestionVersion',
-            		'foreignKey' => 'question_id',
-            		'order' => 'QuestionVersion.created DESC'
-        		)
-        	)
+			array(
+				'hasMany'=>array(
+	        		'QuestionVersion' => array(
+	            		'className' => 'QuestionVersion',
+	            		'foreignKey' => 'question_id',
+	            		'order' => 'QuestionVersion.created DESC'
+	        		)
+	        	)
+	        )
         );
 		$this->set('question',$this->Question->find('first',array('conditions'=>'Question.id = '.$question_id,'recursive'=>2)));
 	}
