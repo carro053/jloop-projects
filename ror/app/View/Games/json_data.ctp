@@ -3,7 +3,7 @@ echo '
 var questions = [';
 $i=0;
 foreach($game['Question'] as $key=>$question):
-	if(isset($question['QuestionVersion'][0]['id']) && ($question['QuestionVersion'][0]['deleted'] == 1 || count($game['Question']) == 1))
+	if(isset($question['QuestionVersion'][0]['id']) && ($question['QuestionVersion'][0]['deleted'] == 0 || count($game['Question']) == 1))
 	{
 	if($i != 0) echo ',
 	';
