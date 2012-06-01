@@ -17,7 +17,7 @@
 				<td><?php echo date('F jS, Y - g:ia',strtotime($version['QuestionVersion']['created'])); ?></td>
 				<td><?php echo $version['QuestionVersion']['title']; if($version['QuestionVersion']['version'] == 1) { echo '(Created)'; }else{ echo '(Version '.$version['QuestionVersion']['version'].')'; } ?></td>
 				<td><?php echo $version['User']['username']; ?></td>
-				<td><a class="button" href="/games/snapshot/<?php echo $game['Game']['id']; ?>/<?php echo strtotime($version['QuestionVersion']['created']); ?>" target="_blank">Play Snapshot</a></td>
+				<td><a class="button" href="/games/play/<?php echo $game['Game']['id']; ?>/<?php echo strtotime($version['QuestionVersion']['created']); ?>" target="_blank">Play Snapshot</a></td>
 			</tr>
 		<?php } ?>
 	</tbody>

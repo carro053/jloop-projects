@@ -78,10 +78,11 @@ class GamesController extends AppController {
 		$this->set('versions',$versions);
 	}
 	
-	public function play($game_id) {
+	public function play($game_id,$snapshot=0) {
 		$this->layout = false;
 		$this->set('preview_timers',0);
 		$this->set('game',$this->Game->findById($game_id));
+		if($snapshot > 0) $this->set('snapshot',$snapshot);
 	}
 	
 	public function preview($game_id) {
@@ -141,9 +142,31 @@ class GamesController extends AppController {
 		$this->set('game',$this->Game->find('first',array('conditions'=>'Game.id = '.$game_id,'recursive'=>2)));
 	}
 	
-	public function json_data($game_id,$version_id=0) {
+	public function json_data($game_id,$snapshot=0,$version_id=0) {
 		$this->layout = false;
-		if($version_id > 0)
+		if($snapshot > 0)
+		{
+			$this->Question->bindModel(array(
+				'hasMany'=>array(
+					'QuestionVersion'=>array(
+						'className'=>'QuestionVersion',
+						'foreignKey'=>'question_id',
+						'order'=>'QuestionVersion.created DESC',
+						'limit'=>1,
+						'conditions'=>'QuestionVersion.created <= '.date('Y-m-d H:i:s',$snapshot)
+					)
+				)
+			));
+			$this->Game->bindModel(array(
+				'hasMany'=>array(
+					'Question'=>array(
+						'className'=>'Question',
+						'foreignKey'=>'game_id',
+						'order'=>'Question.order ASC'
+					)
+				)
+			));
+		}elseif($version_id > 0)
 		{
 			$version = $this->QuestionVersion->findById($version_id);
 			$this->Question->bindModel(array(
