@@ -153,7 +153,7 @@ class GamesController extends AppController {
 						'foreignKey'=>'question_id',
 						'order'=>'QuestionVersion.created DESC',
 						'limit'=>1,
-						'conditions'=>'QuestionVersion.created <= '.date('Y-m-d H:i:s',$snapshot)
+						'conditions'=>'QuestionVersion.created <= "'.date('Y-m-d H:i:s',$snapshot).'"'
 					)
 				)
 			));
