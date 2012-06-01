@@ -13,7 +13,7 @@
 		<?php foreach($question['QuestionVersion'] as $key=>$version) { ?>
 			<tr>
 				<td><?php echo ($key + 1); ?></td>
-				<td><?php echo date('F jS, Y - H:i:s',strtotime($version['created'])); ?></td>
+				<td><?php echo date('F jS, Y - g:ia',strtotime($version['created'])); ?></td>
 				<td><?php echo $version['User']['username']; ?></td>
 				<td><a class="button" href="/games/play_version/<?php echo $question['Question']['game_id']; ?>/<?php echo $version['id']; ?>" target="_blank">Play</a>&nbsp;<a class="button" href="/games/preview_version/<?php echo $question['Question']['game_id']; ?>/<?php echo $version['id']; ?>" target="_blank">Preview</a>
 				<?php if($key + 1 == count($question['QuestionVersion'])) { ?>
