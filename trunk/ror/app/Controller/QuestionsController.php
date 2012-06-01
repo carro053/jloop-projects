@@ -332,10 +332,11 @@ class QuestionsController extends AppController {
 	
 	function set_to_this_version($question_id,$to_id)
 	{
+		$question = $this->Question->findById($question_id);
 		$version = $this->QuestionVersion->findById($to_id);
 		$version['QuestionVersion']['id'] = null;
 		$version['QuestionVersion']['user_id'] = $this->Auth->user('id');
-		$version['QuestionVersion']['version']++;
+		$version['QuestionVersion']['version'] = $question['Question']['version'] + 1;
 		unset($version['QuestionVersion']['created']);
 		unset($version['QuestionVersion']['modified']);
 		$this->QuestionVersion->save($version);
@@ -365,7 +366,6 @@ class QuestionsController extends AppController {
 		if(is_file(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-'.$to_id.'.png')) copy(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-'.$to_id.'.png',WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-'.$version_id.'.png');
 		if(is_file(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O-'.$to_id.'.png')) copy(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O-'.$to_id.'.png',WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O-'.$version_id.'.png');
 		
-		$question = $this->Question->findById($question_id);
 		$save['Question'] = $version['QuestionVersion'];
 		$save['Question']['id'] = $question_id;
 		$save['Question']['created'] = $question['Question']['created'];
