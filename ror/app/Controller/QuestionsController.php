@@ -256,8 +256,6 @@ class QuestionsController extends AppController {
 	function initialVersions()
 	{
 		$questions = $this->Question->find('all');
-		pr($questions);
-		exit;
 		foreach($questions as $question):
 			$this->version_up_question($question['Question']['id']);
 		endforeach;
@@ -301,7 +299,7 @@ class QuestionsController extends AppController {
 		if(is_file(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'.png')) copy(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'.png',WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-'.$version_id.'.png');
 		if(is_file(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O.png')) copy(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O.png',WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O-'.$version_id.'.png');
 		
-		exit;
+		return true;
 	}
 	
 	function set_to_this_version($question_id,$to_id)
