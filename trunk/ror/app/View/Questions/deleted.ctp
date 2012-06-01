@@ -14,7 +14,7 @@
 		<?php foreach($game['Question'] as $question) { ?>
 			<tr>
 				<td><?php echo $question['title']; ?></td>
-				<td><a class="button" href="/games/play_question/<?php echo $game['Game']['id']; ?>/<?php echo $question['id']; ?>" target="_blank">Play</a>&nbsp;<a class="button" href="/questions/undelete/<?php echo $question['id']; ?>" onclick="return confirm('Are you sure you want to undelete this question?');">Undelete</a></td>
+				<td><a class="button" href="/games/preview_question/<?php echo $game['Game']['id']; ?>/<?php echo $question['id']; ?>" target="_blank">Preview</a>&nbsp;<a class="button" href="/questions/undelete/<?php echo $question['id']; ?>" onclick="return confirm('Are you sure you want to undelete this question?');">Undelete</a></td>
 			</tr>
 		<?php } ?>
 	<?php } else { ?>
