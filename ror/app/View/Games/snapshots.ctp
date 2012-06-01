@@ -18,10 +18,10 @@
 				<td><?php echo $snapshot['note']; ?></td>
 				<td>
 					<?php if($snapshot['published'] == 1) { ?>
-					<a class="button" href="/games/play_version/<?php echo $game['Game']['id']; ?>/<?php echo $snapshot['id']; ?>" target="_blank">Play</a>&nbsp;<a class="button" href="/games/publish_snapshot/<?php echo $game['Game']['id']; ?>/<?php echo $snapshot['id']; ?>" target="_blank">Publish</a>
+					<a class="button" href="/games/play_version/<?php echo $game['Game']['id']; ?>/<?php echo $snapshot['id']; ?>" target="_blank">Play</a>&nbsp;<a class="button" href="/games/unpublish_snapshot/<?php echo $game['Game']['id']; ?>/<?php echo $snapshot['id']; ?>" target="_blank">Unpublish</a>
 					
 					<?php }else{ ?>
-					<a class="button" href="/games/publish_snapshot/<?php echo $game['Game']['id']; ?>/<?php echo $snapshot['id']; ?>" target="_blank">Unpublish</a>
+					<a class="button" href="/games/publish_snapshot/<?php echo $game['Game']['id']; ?>/<?php echo $snapshot['id']; ?>" target="_blank">Publish</a>
 					<?php } ?>
 				&nbsp;<a class="button" href="/games/edit_snapshot/<?php echo $game['Game']['id']; ?>/<?php echo $snapshot['id']; ?>">Edit</a>&nbsp;<a class="button" href="/games/delete_snapshot/<?php echo $game['Game']['id']; ?>/<?php echo $snapshot['id']; ?>" onclick="return confirm('Are you sure you want to delete this snapshot?');">Delete</a></td>
 			</tr>
