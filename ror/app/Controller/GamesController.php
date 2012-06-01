@@ -12,6 +12,16 @@ class GamesController extends AppController {
 	}
 	
 	public function index() {
+		
+		$this->Game->bindModel(array(
+			'hasMany'=>array(
+				'Question'=>array(
+					'className'=>'Question',
+					'foreignKey'=>'game_id',
+					'conditions'=>'Question.deleted = 0'
+				)
+			)
+		));
 		$games = $this->Game->find('all');
 		foreach($games as $key=>$game):
 			$count = $this->QuestionVersion->find('count',array('conditions'=>'QuestionVersion.question_id IN (SELECT `id` FROM `questions` WHERE `game_id` = '.$game['Game']['id'].')'));
