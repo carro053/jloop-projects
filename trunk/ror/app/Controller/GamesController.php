@@ -8,7 +8,7 @@ class GamesController extends AppController {
 	
 	public function beforeFilter()
 	{
-		$this->Auth->allow('play');
+		$this->Auth->allow('play','play_question');
 	}
 	
 	public function index() {
@@ -58,6 +58,13 @@ class GamesController extends AppController {
 		if($this->Game->delete($game_id))
 			$this->Game->query('DELETE FROM `questions` WHERE `game_id` = '.$game_id);
 		$this->redirect('/games');
+	}
+	
+	public function version_history($game_id)
+	{
+		$game = $this->Game->findById($game_id);
+		$this->set('game',$game);
+		$versions = $this->QuestionVersion->find('all',array('conditions'=>'QuestionVersion.question_id IN (SELECT `id` FROM `questions` WHERE `game_id` = '.$game_id.')','order'=>'QuestionVersion.created DESC')
 	}
 	
 	public function play($game_id) {

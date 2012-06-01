@@ -280,7 +280,7 @@ class QuestionsController extends AppController {
 	        		'QuestionVersion' => array(
 	            		'className' => 'QuestionVersion',
 	            		'foreignKey' => 'question_id',
-	            		'order' => 'QuestionVersion.created ASC'
+	            		'order' => 'QuestionVersion.created DESC'
 	        		)
 	        	)
 	        )
