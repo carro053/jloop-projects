@@ -17,6 +17,7 @@
 					echo 'Drag to Order';
 				?>
 			</th>
+			<th>Version</th>
 			<th width="300px">&nbsp;</th>
 		</tr>
 	</thead>
@@ -27,6 +28,13 @@
 				<td><?php echo $question['title']; ?></td>
 				<td><?php echo $question['status']; ?></td>
 				<td width="150" style="text-align:center;"><?php if(!$status_filter) echo '<img width="11" height="11" src="/site-admin/img/icon_reorder.png" class="handleBar">'; ?></td>
+				<td>
+					<?php if($question['version'] > 1) { ?>
+					<a href="/questions/version_history/<?php echo $question['id']; ?>"><?php echo $question['version']; ?></a>
+					<?php }else{ ?>
+					1					
+					<?php } ?>
+				</td>
 				<td><a class="button" href="/games/play/<?php echo $game['Game']['id']; ?>/<?php echo $question['order']; ?>" target="_blank">Play</a>&nbsp;<a class="button" href="/games/preview/<?php echo $game['Game']['id']; ?>/<?php echo $question['order']; ?>" target="_blank">Preview</a>&nbsp;<a class="button" href="/questions/edit/<?php echo $question['id']; ?>">Edit</a>&nbsp;<a class="button" href="/questions/delete/<?php echo $question['id']; ?>" onclick="return confirm('Are you sure you want to delete this question?');">Delete</a></td>
 			</tr>
 		<?php } ?>
