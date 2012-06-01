@@ -7,90 +7,90 @@ foreach($game['Question'] as $key=>$question):
 	echo '
 	{
 		title: \'Unplayed Question '.($key+1).'\',
-		time: \''.$question['time'].'\',
-		question_type: \''.$question['question_type'].'\',
-		answer_type: \''.$question['answer_type'].'\',
-		clue_type: \''.$question['clue_type'].'\',
-		insight_type: \''.$question['insight_type'].'\',
+		time: \''.$question['QuestionVersion'][0]['time'].'\',
+		question_type: \''.$question['QuestionVersion'][0]['question_type'].'\',
+		answer_type: \''.$question['QuestionVersion'][0]['answer_type'].'\',
+		clue_type: \''.$question['QuestionVersion'][0]['clue_type'].'\',
+		insight_type: \''.$question['QuestionVersion'][0]['insight_type'].'\',
 		category: \''.$game['Game']['title'].'\',';
-		if($question['clue_type'] == 'image')
+		if($question['QuestionVersion'][0]['clue_type'] == 'image')
 		{
 			echo '
-		clue: \''.$question['id'].'.png\',';
+		clue: \''.$question['id'].'-'.$question['QuestionVersion'][0]['id'].'.png\',';
 		}else{
 			echo '
-		clue: \''.str_replace("'","\\'",htmlspecialchars_decode($question['clue_text'], ENT_QUOTES)).'\',';
+		clue: \''.str_replace("'","\\'",htmlspecialchars_decode($question['QuestionVersion'][0]['clue_text'], ENT_QUOTES)).'\',';
 		}
-		if($question['question_type'] == 'image')
+		if($question['QuestionVersion'][0]['question_type'] == 'image')
 		{
 			echo '
-		question: \''.$question['id'].'.png\',';
+		question: \''.$question['id'].'-'.$question['QuestionVersion'][0]['id'].'.png\',';
 		}else{
 			echo '
-		question: \''.str_replace("'","\\'",htmlspecialchars_decode($question['question_text'], ENT_QUOTES)).'\',';
+		question: \''.str_replace("'","\\'",htmlspecialchars_decode($question['QuestionVersion'][0]['question_text'], ENT_QUOTES)).'\',';
 		}
-		if($question['answer_type'] == 'image')
+		if($question['QuestionVersion'][0]['answer_type'] == 'image')
 		{
 			echo '
 		answers: [
-			\''.$question['id'].'-1.png\',
-			\''.$question['id'].'-2.png\',
-			\''.$question['id'].'-3.png\',
-			\''.$question['id'].'-4.png\'
+			\''.$question['id'].'-1-'.$question['QuestionVersion'][0]['id'].'.png\',
+			\''.$question['id'].'-2-'.$question['QuestionVersion'][0]['id'].'.png\',
+			\''.$question['id'].'-3-'.$question['QuestionVersion'][0]['id'].'.png\',
+			\''.$question['id'].'-4-'.$question['QuestionVersion'][0]['id'].'.png\'
 			],';
 		}else{
 			echo '
 		answers: [';
-			if($question['answer_1_text'] == '')
+			if($question['QuestionVersion'][0]['answer_1_text'] == '')
 			{
 				echo '
 			null,';
 			}else{
 				echo '
-			\''.str_replace("'","\\'",htmlspecialchars_decode($question['answer_1_text'], ENT_QUOTES)).'\',';
+			\''.str_replace("'","\\'",htmlspecialchars_decode($question['QuestionVersion'][0]['answer_1_text'], ENT_QUOTES)).'\',';
 			}
-			if($question['answer_2_text'] == '')
+			if($question['QuestionVersion'][0]['answer_2_text'] == '')
 			{
 				echo '
 			null,';
 			}else{
 				echo '
-			\''.str_replace("'","\\'",htmlspecialchars_decode($question['answer_2_text'], ENT_QUOTES)).'\',';
+			\''.str_replace("'","\\'",htmlspecialchars_decode($question['QuestionVersion'][0]['answer_2_text'], ENT_QUOTES)).'\',';
 			}
-			if($question['answer_3_text'] == '')
+			if($question['QuestionVersion'][0]['answer_3_text'] == '')
 			{
 				echo '
 			null,';
 			}else{
 				echo '
-			\''.str_replace("'","\\'",htmlspecialchars_decode($question['answer_3_text'], ENT_QUOTES)).'\',';
+			\''.str_replace("'","\\'",htmlspecialchars_decode($question['QuestionVersion'][0]['answer_3_text'], ENT_QUOTES)).'\',';
 			}
-			if($question['answer_4_text'] == '')
+			if($question['QuestionVersion'][0]['answer_4_text'] == '')
 			{
 				echo '
 			null,';
 			}else{
 				echo '
-			\''.str_replace("'","\\'",htmlspecialchars_decode($question['answer_4_text'], ENT_QUOTES)).'\'';
+			\''.str_replace("'","\\'",htmlspecialchars_decode($question['QuestionVersion'][0]['answer_4_text'], ENT_QUOTES)).'\'';
 			}
 			echo '
 			],';
 		}
 		echo '
-		correct_answer_index: '.$question['correct_answer'].',';
-		if($question['insight_type'] == 'image')
+		correct_answer_index: '.$question['QuestionVersion'][0]['correct_answer'].',';
+		if($question['QuestionVersion'][0]['insight_type'] == 'image')
 		{
 			echo '
-		insight: \''.$question['id'].'.png\'';
+		insight: \''.$question['id'].'-'.$question['QuestionVersion'][0]['id'].'.png\'';
 		}else{
 			echo '
-		insight: \''.str_replace("'","\\'",htmlspecialchars_decode($question['insight_text'], ENT_QUOTES)).'\'';
+		insight: \''.str_replace("'","\\'",htmlspecialchars_decode($question['QuestionVersion'][0]['insight_text'], ENT_QUOTES)).'\'';
 		}
-		if($question['has_prize'])
+		if($question['QuestionVersion'][0]['has_prize'])
 		{
 			echo ',
-		prize: \''.$question['id'].'.png\',
-		prize_text: \''.str_replace("'","\\'",htmlspecialchars_decode($question['prize_text'], ENT_QUOTES)).'\'';
+		prize: \''.$question['id'].'-'.$question['QuestionVersion'][0]['id'].'.png\',
+		prize_text: \''.str_replace("'","\\'",htmlspecialchars_decode($question['QuestionVersion'][0]['prize_text'], ENT_QUOTES)).'\'';
 		}
 		echo '
 	}';

@@ -15,7 +15,7 @@ class QuestionsController extends AppController {
 			'Client Review'=>'Client Review',
 			'Client Approved'=>'Client Approved'
 		));
-	}
+	}	
 	
 	public function index($game_id,$status_filter=null)
 	{
@@ -119,8 +119,7 @@ class QuestionsController extends AppController {
 				$this->version_up_question($this->Question->id);
 				if($preview)
 				{
-					$question = $this->Question->findById($this->Question->id);
-					$this->redirect('/games/play/'.$game_id.'/'.$question['Question']['order']);
+					$this->redirect('/games/preview_question/'.$game_id.'/'.$this->Question->id);
 				}else{
 					$this->redirect('/questions/index/'.$game_id);
 				}
@@ -211,8 +210,7 @@ class QuestionsController extends AppController {
 				$this->version_up_question($this->Question->id);
 				if($preview)
 				{
-					$question = $this->Question->findById($this->Question->id);
-					$this->redirect('/games/preview/'.$game_id.'/'.$question['Question']['order']);
+					$this->redirect('/questions/preview/'.$this->Question->id);
 				}else{
 					$this->redirect('/questions/edit/'.$this->Question->id);
 				}

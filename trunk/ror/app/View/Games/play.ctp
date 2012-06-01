@@ -12,7 +12,7 @@ if($game['Game']['has_icon'])
 	<head>
 		<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
 		<script type="text/javascript" src="/js/jquery-ui-1.8.19.custom.min.js"></script>
-		<script type="text/javascript" src="/games/json_data/<?php echo $game['Game']['id']; ?>/data.js?t=<?php echo time(); ?>"></script>
+		<script type="text/javascript" src="/games/json_data/<?php echo $game['Game']['id']; ?>/<?php if(isset($question['QuestionVersion']['id'])) { echo $question['QuestionVersion']['id']; }else{ echo 0; } ?>/data.js?t=<?php echo time(); ?>"></script>
 		<script type="text/javascript">
 			//alert( parseInt(location.hash.substr(1))  );
 			var prize = false;
