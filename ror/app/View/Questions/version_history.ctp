@@ -1,5 +1,5 @@
 <h2>Versions for <?php echo $question['Question']['title']; ?></h2>
-<h3><a href="/questions/index/<?php echo $question['Question']['id']; ?>">&larr;Back To Question List</a></h3>
+<h3><a href="/questions/index/<?php echo $question['Question']['game_id']; ?>">&larr;Back To Question List</a></h3>
 <table id="sortable">
 	<thead>
 		<tr>
