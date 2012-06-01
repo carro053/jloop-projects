@@ -259,9 +259,106 @@ class QuestionsController extends AppController {
 		
 		$version['QuestionVersion'] = $question['Question'];
 		$version['QuestionVersion']['id'] = null;
+		$version['QuestionVersion']['question_id'] = $question_id;
 		$version['QuestionVersion']['user_id'] = $this->Auth->user('id');
-		pr($version);
+		unset($version['QuestionVersion']['created']);
+		unset($version['QuestionVersion']['modified']);
+		$this->QuestionVersion->save($version);
+		$version_id = $this->QuestionVersion->id;
+		
+		if(is_file(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'.png')) copy(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'.png',WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-'.$version_id.'.png');
+		if(is_file(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-O.png')) copy(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-O.png',WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-O-'.$version_id.'.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'.png')) copy(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'.png',WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'-'.$version_id.'.png');
+		if(is_file(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'-O.png')) copy(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'-O.png',WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'-O-'.$version_id.'.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'.png')) copy(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'.png',WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'-'.$version_id.'.png');
+		if(is_file(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'-O.png')) copy(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'-O.png',WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'-O-'.$version_id.'.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-'.$version_id.'.png');
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-O.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-O.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-O-'.$version_id.'.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-'.$version_id.'.png');
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-O.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-O.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-O-'.$version_id.'.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3-'.$version_id.'.png');
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3-O.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3-O.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3-O-'.$version_id.'.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4-'.$version_id.'.png');
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4-O.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4-O.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4-O-'.$version_id.'.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'.png')) copy(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'.png',WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-'.$version_id.'.png');
+		if(is_file(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O.png')) copy(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O.png',WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O-'.$version_id.'.png');
+		
 		exit;
+	}
+	
+	function set_to_this_version($question_id,$to_id)
+	{
+		$version = $this->QuestionVersion->findById($to_id);
+		$version['QuestionVersion']['id'] = null;
+		$version['QuestionVersion']['user_id'] = $this->Auth->user('id');
+		unset($version['QuestionVersion']['created']);
+		unset($version['QuestionVersion']['modified']);
+		$this->QuestionVersion->save($version);
+		$version_id = $this->QuestionVersion->id;
+		
+		if(is_file(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-'.$to_id.'.png')) copy(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-'.$to_id.'.png',WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-'.$version_id.'.png');
+		if(is_file(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-O-'.$to_id.'.png')) copy(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-O-'.$to_id.'.png',WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-O-'.$version_id.'.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'-'.$to_id.'.png')) copy(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'-'.$to_id.'.png',WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'-'.$version_id.'.png');
+		if(is_file(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'-O-'.$to_id.'.png')) copy(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'-O-'.$to_id.'.png',WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'-O-'.$version_id.'.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'-'.$to_id.'.png')) copy(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'-'.$to_id.'.png',WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'-'.$version_id.'.png');
+		if(is_file(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'-O-'.$to_id.'.png')) copy(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'-O-'.$to_id.'.png',WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'-O-'.$version_id.'.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-'.$to_id.'.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-'.$to_id.'.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-'.$version_id.'.png');
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-O-'.$to_id.'.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-O-'.$to_id.'.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-O-'.$version_id.'.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-'.$to_id.'.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-'.$to_id.'.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-'.$version_id.'.png');
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-O-'.$to_id.'.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-O-'.$to_id.'.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-O-'.$version_id.'.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3-'.$to_id.'.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3-'.$to_id.'.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3-'.$version_id.'.png');
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3-O-'.$to_id.'.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3-O-'.$to_id.'.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3-O-'.$version_id.'.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4-'.$to_id.'.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4-'.$to_id.'.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4-'.$version_id.'.png');
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4-O-'.$to_id.'.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4-O-'.$to_id.'.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4-O-'.$version_id.'.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-'.$to_id.'.png')) copy(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-'.$to_id.'.png',WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-'.$version_id.'.png');
+		if(is_file(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O-'.$to_id.'.png')) copy(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O-'.$to_id.'.png',WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O-'.$version_id.'.png');
+		
+		$question = $this->Question->findById($question_id);
+		$save['Question'] = $version['QuestionVersion'];
+		$save['Question']['id'] = $question_id;
+		$save['Question']['created'] = $question['Question']['created'];
+		$this->Question->save($save);
+		
+		
+		if(is_file(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-'.$version_id.'.png')) copy(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-'.$version_id.'.png',WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'.png');
+		if(is_file(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-O-'.$version_id.'.png')) copy(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-O-'.$version_id.'.png',WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-O.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'-'.$version_id.'.png')) copy(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'-'.$version_id.'.png',WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'.png');
+		if(is_file(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'-O-'.$version_id.'.png')) copy(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'-O-'.$version_id.'.png',WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'-O.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'-'.$version_id.'.png')) copy(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'-'.$version_id.'.png',WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'.png');
+		if(is_file(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'-O-'.$version_id.'.png')) copy(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'-O-'.$version_id.'.png',WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'-O.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-'.$version_id.'.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-'.$version_id.'.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1.png');
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-O-'.$version_id.'.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-O-'.$version_id.'.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-O.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-'.$version_id.'.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-'.$version_id.'.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2.png');
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-O-'.$version_id.'.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-O-'.$version_id.'.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-O.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3-'.$version_id.'.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3-'.$version_id.'.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3.png');
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3-O-'.$version_id.'.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3-O-'.$version_id.'.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3-O.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4-'.$version_id.'.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4-'.$version_id.'.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4.png');
+		if(is_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4-O-'.$version_id.'.png')) copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4-O-'.$version_id.'.png',WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4-O.png');
+		
+		if(is_file(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-'.$version_id.'.png')) copy(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-'.$version_id.'.png',WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'.png');
+		if(is_file(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O-'.$version_id.'.png')) copy(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O-'.$version_id.'.png',WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'-O.png');
+		exit;
+		
 	}
 	
 	function delete($question_id)
