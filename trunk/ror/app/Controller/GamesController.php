@@ -239,8 +239,7 @@ class GamesController extends AppController {
 					'Question'=>array(
 						'className'=>'Question',
 						'foreignKey'=>'game_id',
-						'order'=>'Question.order ASC',
-						'conditions'=>'Question.id = '.$version['QuestionVersion']['question_id']
+						'order'=>'Question.order ASC'
 					)
 				)
 			));
