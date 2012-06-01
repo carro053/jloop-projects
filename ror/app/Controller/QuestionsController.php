@@ -4,7 +4,7 @@ App::uses('AppController', 'Controller');
 class QuestionsController extends AppController {
 	public $name = 'Questions';
 	public $helpers = array('Html', 'Session');
-	public $uses = array('Game','Question');
+	public $uses = array('Game','Question','QuestionVersion');
 	
 	public function beforeFilter()
 	{
@@ -251,6 +251,17 @@ class QuestionsController extends AppController {
 ',htmlspecialchars_decode($question['Question']['answer_4_note'], ENT_QUOTES));
 			$this->data = $question;
 		}
+	}
+	
+	function version_up_question($question_id)
+	{
+		$question = $this->Question->findById($question_id);
+		
+		$version['QuestionVersion'] = $question['Question'];
+		$version['QuestionVersion']['id'] = null;
+		$version['QuestionVersion']['user_id'] = $this->Auth->user('id');
+		pr($version);
+		exit;
 	}
 	
 	function delete($question_id)
