@@ -2,6 +2,7 @@
 <h3><a href="/games">&larr;Back To Games List</a></h3>
 <a class="button" href="/questions/add/<?php echo $game['Game']['id']; ?>">Add Question</a>
 <a class="button" href="/games/export/<?php echo $game['Game']['id']; ?>">Export Game</a>
+<a class="button" href="/games/add_snapshot/<?php echo $game['Game']['id']; ?>">Create Snapshot of Current Version</a>
 
 <table id="sortable">
 	<thead>
