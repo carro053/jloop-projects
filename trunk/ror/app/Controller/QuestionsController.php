@@ -116,6 +116,7 @@ class QuestionsController extends AppController {
 				{
 					move_uploaded_file($this->data['Question']['prize_image']['tmp_name'], WWW_ROOT.'img'.DS.'prizes'.DS.$this->Question->id.'.png');
 				}
+				$this->version_up_question($this->Question->id);
 				if($preview)
 				{
 					$question = $this->Question->findById($this->Question->id);
@@ -207,6 +208,7 @@ class QuestionsController extends AppController {
 				{
 					move_uploaded_file($this->data['Question']['prize_image']['tmp_name'], WWW_ROOT.'img'.DS.'prizes'.DS.$this->Question->id.'.png');
 				}
+				$this->version_up_question($this->Question->id);
 				if($preview)
 				{
 					$question = $this->Question->findById($this->Question->id);
