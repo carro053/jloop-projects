@@ -1,21 +1,21 @@
 <h2>Versions for <?php echo $game['Game']['title']; ?></h2>
-<h3><a href="/questions/index/<?php echo $question['Question']['game_id']; ?>">&larr;Back To Question List</a></h3>
+<h3><a href="/games/index/">&larr;Back To Game List</a></h3>
 <table id="sortable">
 	<thead>
 		<tr>
 			<th>#</th>
 			<th>Created</th>
-			<th>Status</th>
+			<th>Question</th>
 			<th>User</th>
 			<th width="300px">&nbsp;</th>
 		</tr>
 	</thead>
 	<tbody>
-		<?php foreach($question['QuestionVersion'] as $key=>$version) { ?>
+		<?php foreach($versions as $key=>$version) { ?>
 			<tr>
-				<td><?php echo (count($question['QuestionVersion']) - $key); ?></td>
+				<td><?php echo (count($versions) - $key); ?></td>
 				<td><?php echo date('F jS, Y - g:ia',strtotime($version['created'])); ?></td>
-				<td><?php echo $version['status']; ?></td>
+				<td><?php echo $version['title']; if($version['version'] == 1) { echo '(Created)'; }else{ echo '(Version '.$version['version'].')'; } ?></td>
 				<td><?php echo $version['User']['username']; ?></td>
 				<td><a class="button" href="/games/play_question/<?php echo $question['Question']['game_id']; ?>/<?php echo $question['Question']['id']; ?>/<?php echo $version['id']; ?>" target="_blank">Play</a>&nbsp;<a class="button" href="/games/preview_question/<?php echo $question['Question']['game_id']; ?>/<?php echo $question['Question']['id']; ?>/<?php echo $version['id']; ?>" target="_blank">Preview</a>
 				<?php if($key == 0) { ?>
