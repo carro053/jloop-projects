@@ -54,7 +54,7 @@
 <?php }else{ ?>
 <div class="question">
 <?php } ?>
-<h3>Question #<?php echo ($i + 1); ?>: <?php echo $question['title']; ?></h3>
+<h3>Question #<?php echo ($i + 1); ?>: <?php echo $question['title']; ?> - Revision #<?php echo count($question['QuestionVersion']); ?></h3>
 Clue:<br />
 <div>
 <?php if($question['clue_type'] == 'image')

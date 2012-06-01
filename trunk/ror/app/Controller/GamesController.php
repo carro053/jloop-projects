@@ -102,6 +102,15 @@ class GamesController extends AppController {
 	public function export($game_id)
 	{
 		$this->layout = false;
+		$this->Question->bindModel(array(
+			'hasMany'=>array(
+				'QuestionVersion'=>array(
+					'className'=>'QuestionVersion',
+					'foreignKey'=>'question_id',
+					'order'=>'QuestionVersion.created DESC'
+				)
+			)
+		));
 		$this->Game->bindModel(array(
 			'hasMany'=>array(
 				'Question'=>array(
@@ -111,7 +120,7 @@ class GamesController extends AppController {
 				)
 			)
 		));
-		$this->set('game',$this->Game->findById($game_id));
+		$this->set('game',$this->Game->find('first',array('conditions'=>'Game.id = '.$game_id,'recursive'=>2)));
 	}
 	
 	public function json_data($game_id,$version_id=0) {
