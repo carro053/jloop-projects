@@ -51,6 +51,7 @@ class GamesController extends AppController {
 				$snapshot['GameSnapshot']['version'] = $version['QuestionVersion']['version'];
 			}
 			$snapshot['GameSnapshot']['published'] = 1;
+			$snapshot['GameSnapshot']['game_id'] = $game_id;
 			if($this->GameSnapshot->save($snapshot))
 			{
 				$this->redirect('/games/snapshots/'.$game_id);
