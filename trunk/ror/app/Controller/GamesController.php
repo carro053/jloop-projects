@@ -171,6 +171,7 @@ class GamesController extends AppController {
 			$this->set('preview_timers',0);
 			$this->set('game',$this->Game->findById($game_id));
 			$this->set('snapshot',$snapshot['GameSnapshot']['time']);
+			$this->render('play');
 		}else{
 			echo '<h2>This version of the game is no longer available.</h2>';
 			exit;
