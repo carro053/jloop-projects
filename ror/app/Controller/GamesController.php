@@ -81,7 +81,7 @@ class GamesController extends AppController {
 		{
 			$this->set('question',$this->QuestionVersion->findById($version_id));
 		}else{
-			$this->set('question',$this->QuestionVersion->find('first',array('conditions'=>'QuestionVersion.question_id '.$question_id,'order'=>'QuestionVersion.created DESC')));
+			$this->set('question',$this->QuestionVersion->find('first',array('conditions'=>'QuestionVersion.question_id = '.$question_id,'order'=>'QuestionVersion.created DESC')));
 		}
 		$this->render('play');
 	}
@@ -94,7 +94,7 @@ class GamesController extends AppController {
 		{
 			$this->set('question',$this->QuestionVersion->findById($version_id));
 		}else{
-			$this->set('question',$this->QuestionVersion->find('first',array('conditions'=>'QuestionVersion.question_id '.$question_id,'order'=>'QuestionVersion.created DESC')));
+			$this->set('question',$this->QuestionVersion->find('first',array('conditions'=>'QuestionVersion.question_id = '.$question_id,'order'=>'QuestionVersion.created DESC')));
 		}
 		$this->render('play');
 	}
