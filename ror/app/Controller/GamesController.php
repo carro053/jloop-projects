@@ -11,6 +11,12 @@ class GamesController extends AppController {
 		$this->Auth->allow('play','play_question','play_version');
 	}
 	
+	public function refresher()
+	{
+		echo '<meta http-equiv="refresh" content="120;url=/games/refresher"><h2>Here is a random number:'.(rand() % 100  + 1).'</h2>';
+		exit;
+	}
+	
 	public function index() {
 		
 		$this->Game->bindModel(array(
