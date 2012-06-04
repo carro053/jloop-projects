@@ -13,7 +13,7 @@ class GamesController extends AppController {
 	
 	public function refresher()
 	{
-		echo '<meta http-equiv="refresh" content="10;url=/games/refresher"><h2>Here is a random number: '.(rand() % 100  + 1).'</h2>';
+		echo '<meta http-equiv="refresh" content="60;url=/games/refresher"><h2>Here is a random number: '.(rand() % 100  + 1).'</h2>';
 		exit;
 	}
 	
