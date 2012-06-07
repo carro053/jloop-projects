@@ -33,11 +33,11 @@
 				background: #888;
 			}
 			
-			header {
+			#header {
 				background: #aaa;
 			}
 			
-			header h1 {
+			#header h1 {
 				font-size: 120px;
 				display: block;
 				vertical-align: bottom;
@@ -46,40 +46,40 @@
 				padding-left: 20px;
 			}
 			
-			header nav {
+			#header nav {
 				display: block;
 				vertical-align: bottom;
 				text-align: right;
 				padding-right: 20px;
 			}
 			
-			article {
+			#article {
 				background: #222;
 			}
 			
-			article a#close {
+			#article a#close {
 				float: right;
 				margin: 20px;
 			}
 			
-			article h2 {
+			#article h2 {
 				margin-bottom: 20px;
 			}
 			
-			article div {
+			#article div {
 				padding: 20px;
 			}
 			
-			article p {
+			#article p {
 				margin: 3px 0;
 			}
 			
-			article span {
+			#article span {
 				padding: 20px;
 				vertical-align: 20px;
 			}
 			
-			article div.result {
+			#article div.result {
 				margin: 3px 0;
 				background: #000;
 				padding: 0;
@@ -93,16 +93,16 @@
 				height: 80px;
 			}
 			
-			article div.result span{
+			#article div.result span{
 				display: block;
 				padding: 28px;
 			}
 			
-			section {
+			#section {
 				padding: 20px;
 			}
 			
-			section a {
+			#section a {
 				display: block;
 				background: #444;
 				margin: 3px 0;
@@ -110,7 +110,7 @@
 				font-size: 20px;
 			}
 			
-			section a:hover {
+			#section a:hover {
 				background: #555;
 			}
 			
@@ -163,15 +163,15 @@
 		</script>
 	</head>
 	<body>
-		<header>
+		<div id="header">
 			<h1>Vote</h1>
 			<nav>
 				<a class="touch" href="">+</a>
 				<a class="touch" href="">?</a>
 				<a class="touch" href="">*</a>
 			</nav>
-		</header>
-		<article>
+		</div>
+		<div id="article">
 			<a id="close" class="touch" href="">×</a>
 			<div>
 				<h2>What is Chris doing?</h2>
@@ -213,8 +213,8 @@
 					<input type="submit" value="✓" />
 				</form>
 			</div>
-		</article>
-		<section>
+		</div>
+		<div id="section">
 			<a href="">What is Chris doing?</a>
 			<a href="">How many times has Chris seen this?</a>
 			<a href="">Pick your favorite feature about Chris.</a>
@@ -248,6 +248,6 @@
 			<a href="">What is Chris doing?</a>
 			<a href="">How many times has Chris seen this?</a>
 			<a href="">Pick your favorite feature about Chris.</a>
-		</section>
+		</div>
 	</body>
 </html>
