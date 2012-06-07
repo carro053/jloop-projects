@@ -31,4 +31,18 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
+
+	public function identical($field=array(),$confirm=null)
+	{
+		foreach($field as $key=>$value)
+		{
+			if($value !== $this->data[$this->name][$confirm])
+			{
+				return false;
+			}else{
+				continue;
+			}
+		}
+		return true;
+	}
 }
