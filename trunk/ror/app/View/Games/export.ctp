@@ -64,7 +64,7 @@ Clue:<br />
 {
 	if(is_file(WWW_ROOT.'img'.DS.'clues'.DS.$question['id'].'-'.$question['QuestionVersion'][0]['id'].'.png')) echo '<img id="ClueImage" src="/img/clues/'.$question['id'].'-'.$question['QuestionVersion'][0]['id'].'.png?t='.time().'" />';
 }else{
-	echo $question['QuestionVersion'][0]['clue_text'];
+	echo htmlspecialchars_decode($question['QuestionVersion'][0]['clue_text'], ENT_QUOTES);
 } ?>
 </div>
 <br />
@@ -74,7 +74,7 @@ Question:<br />
 {
 	if(is_file(WWW_ROOT.'img'.DS.'questions'.DS.$question['id'].'-'.$question['QuestionVersion'][0]['id'].'.png')) echo '<img id="QuestionImage" src="/img/questions/'.$question['id'].'-'.$question['QuestionVersion'][0]['id'].'.png?t='.time().'" />';
 }else{
-	echo $question['QuestionVersion'][0]['question_text'];
+	echo htmlspecialchars_decode($question['QuestionVersion'][0]['question_text'], ENT_QUOTES);
 } ?>
 </div>
 <br />
@@ -102,18 +102,18 @@ Answers:
 <table>
 	<tr>
 		<td<?php if($question['QuestionVersion'][0]['correct_answer'] == 0)  echo ' class="correct"'; ?>>
-			<?php echo $question['QuestionVersion'][0]['answer_1_text']; ?>
+			<?php echo htmlspecialchars_decode($question['QuestionVersion'][0]['answer_1_text'], ENT_QUOTES); ?>
 		</td>
 		<td<?php if($question['QuestionVersion'][0]['correct_answer'] == 1)  echo ' class="correct"'; ?>>
-			<?php echo $question['QuestionVersion'][0]['answer_2_text']; ?>
+			<?php echo htmlspecialchars_decode($question['QuestionVersion'][0]['answer_2_text'], ENT_QUOTES); ?>
 		</td>
 	</tr>
 	<tr>
 		<td<?php if($question['QuestionVersion'][0]['correct_answer'] == 2)  echo ' class="correct"'; ?>>
-			<?php echo $question['QuestionVersion'][0]['answer_3_text']; ?>
+			<?php echo htmlspecialchars_decode($question['QuestionVersion'][0]['answer_3_text'], ENT_QUOTES); ?>
 		</td>
 		<td<?php if($question['QuestionVersion'][0]['correct_answer'] == 3)  echo ' class="correct"'; ?>>
-			<?php echo $question['QuestionVersion'][0]['answer_4_text']; ?>
+			<?php echo htmlspecialchars_decode($question['QuestionVersion'][0]['answer_4_text'], ENT_QUOTES); ?>
 		</td>
 	</tr>
 </table>
@@ -125,7 +125,7 @@ Insight:<br />
 {
 	if(is_file(WWW_ROOT.'img'.DS.'insights'.DS.$question['id'].'-'.$question['QuestionVersion'][0]['id'].'.png')) echo '<img id="InsightImage" src="/img/insights/'.$question['id'].'-'.$question['QuestionVersion'][0]['id'].'.png?t='.time().'" />';
 }else{
-	echo $question['QuestionVersion'][0]['insight_text'];
+	echo htmlspecialchars_decode($question['QuestionVersion'][0]['insight_text'], ENT_QUOTES);
 } ?>
 </div>
 </div>
