@@ -263,6 +263,9 @@ class GamesController extends AppController {
 					)
 				)
 			));
+			
+			$snap = $this->GameSnapshot->find('first',array('conditions'=>'GameSnapshot.time = '.$time));
+			if(isset($snap['GameSnapshot']['id'])) $this->set('snapshot',$snap);
 		}else{
 			$this->Question->bindModel(array(
 				'hasMany'=>array(

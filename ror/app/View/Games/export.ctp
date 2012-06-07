@@ -2,7 +2,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Game: <?php echo $game['Game']['title']; ?></title>
+<title>Game: <?php echo $game['Game']['title']; ?> <?php if(isset($snapshot['GameSnapshot']['id'])) echo 'Snapshot: '.$snapshot['GameSnapshot']['note']; ?></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
