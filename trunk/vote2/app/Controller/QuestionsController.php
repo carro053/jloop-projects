@@ -2,7 +2,10 @@
 class QuestionsController extends AppController {
 
 	public function index() {
-		$this->layout = 'main';
+		
 	}
 	
+	public function view() {
+		
+	}
 }
