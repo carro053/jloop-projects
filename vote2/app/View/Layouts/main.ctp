@@ -142,11 +142,6 @@
 		<script type="text/javascript">
 			$(function() {
 				
-				$('section a').click(function(){
-					$('article').show();
-					return false;
-				});
-				
 				$('article a#close').click(function(){
 					$('article').hide();
 					return false;

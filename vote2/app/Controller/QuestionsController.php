@@ -8,4 +8,8 @@ class QuestionsController extends AppController {
 	public function view() {
 		
 	}
+	
+	public function create() {
+		
+	}
 }
