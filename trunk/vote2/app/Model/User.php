@@ -13,9 +13,15 @@ class User extends AppModel {
 				'message' => 'Between 3 and 12 characters'
 			)
 		),
-		'password1' => array(
-			'rule' => array('identical', 'password2'),
-			'message' => 'Match passwords'
+		'password1' => array(	
+			array(
+				'rule' => array('notEmpty'),
+				'message' => 'A password is required'
+			),
+			array(
+				'rule' => array('identical', 'password2'),
+				'message' => 'Match passwords'
+			)
 		)
 	);
 	
