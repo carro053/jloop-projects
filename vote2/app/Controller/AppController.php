@@ -33,5 +33,5 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-	public $layout = false;
+	$this->layout = 'main';
 }
