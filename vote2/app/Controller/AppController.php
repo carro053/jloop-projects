@@ -34,4 +34,11 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 
 	public $layout = 'main';
+	
+	public $components = array(
+		'Session',
+		'Auth' => array(
+			
+		)
+	);
 }
