@@ -3,7 +3,7 @@
 			<div>
 				<form>
 					<h2>Login</h2>
-					<input type="text" placeholder="Email" />
+					<input type="text" placeholder="Username" />
 					<input type="password" placeholder="Password" />
 					<input type="submit" value="✓" />
 				</form>
