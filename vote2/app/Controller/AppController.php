@@ -39,4 +39,8 @@ class AppController extends Controller {
 		'Session',
 		'Auth'
 	);
+	
+	public function beforeFilter() {
+		
+	}
 }

@@ -18,4 +18,11 @@ class User extends AppModel {
 			'message' => 'Match passwords'
 		)
 	);
+	
+	public function beforeSave() {
+	    if(isset($this->data[$this->alias]['password'])) {
+	        $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
+	    }
+	    return true;
+	}
 }
