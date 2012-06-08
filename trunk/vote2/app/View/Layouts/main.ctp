@@ -161,7 +161,8 @@
 		<header>
 			<h1>Vote</h1>
 			<nav>
-				<a class="touch" href="">+</a>
+				<a class="touch" href="/questions/index">=</a>
+				<a class="touch" href="/questions/create">+</a>
 				<a class="touch" href="">?</a>
 				<a class="touch" href="">*</a>
 			</nav>
