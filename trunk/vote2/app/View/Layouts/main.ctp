@@ -163,8 +163,8 @@
 			<nav>
 				<a class="touch" href="/questions/index">=</a>
 				<a class="touch" href="/questions/create">+</a>
-				<a class="touch" href="">?</a>
-				<a class="touch" href="">*</a>
+				<a class="touch" href="/users/login">?</a>
+				<a class="touch" href="/users/register">*</a>
 			</nav>
 		</header>
 		
