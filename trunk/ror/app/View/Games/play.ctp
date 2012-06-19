@@ -57,7 +57,7 @@ if($game['Game']['has_icon'])
 			imageI.src = '/img/animation/incorrect0065.png';
 			imageCache.push(imageI);
 			
-			var audioCheck = $.browser.msie; 
+			var audioCheck = !($.browser.msie); 
 			if(audioCheck) {
 				var clueAudio = new Audio('/audio/ROR_ringtoneAB_combined.ogg');
 				var correctAudio = new Audio('/audio/correct.ogg');
