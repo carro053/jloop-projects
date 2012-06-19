@@ -49,6 +49,13 @@ if($game['Game']['has_icon'])
 				image.src = '/img/animation/incorrect'+indexString+'.png';
 				incorrectImageCache.push(image);
 			}*/
+			var imageCache = [];
+			var imageC = new Image;
+			imageC.src = '/img/animation/correct0065.png';
+			imageCache.push(imageC);
+			var imageI = new Image;
+			imageI.src = '/img/animation/incorrect0065.png';
+			imageCache.push(imageI);
 			
 			var clueAudio = new Audio('/audio/ROR_ringtoneAB_combined.ogg');
 			var correctAudio = new Audio('/audio/correct.ogg');
