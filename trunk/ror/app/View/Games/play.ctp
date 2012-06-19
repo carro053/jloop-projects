@@ -383,6 +383,7 @@ if($game['Game']['has_icon'])
 				};
 				
 				$('#answerAnimation').fadeIn(2000, function() {
+					alert(123);
 					$('#answerAnimation').fadeOut(2000, function() {
 						$('#drawer').show();
 						$('#drawer').animate(properties, options);
