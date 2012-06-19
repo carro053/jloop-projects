@@ -57,10 +57,12 @@ if($game['Game']['has_icon'])
 			imageI.src = '/img/animation/incorrect0065.png';
 			imageCache.push(imageI);
 			
-			var clueAudio = new Audio('/audio/ROR_ringtoneAB_combined.ogg');
-			var correctAudio = new Audio('/audio/correct.ogg');
-			var incorrectAudio = new Audio('/audio/incorrect.ogg');
-			var timeout;
+			if(Audio) {
+				var clueAudio = new Audio('/audio/ROR_ringtoneAB_combined.ogg');
+				var correctAudio = new Audio('/audio/correct.ogg');
+				var incorrectAudio = new Audio('/audio/incorrect.ogg');
+				var timeout;
+			}
 			
 			var question;
 			
@@ -165,7 +167,9 @@ if($game['Game']['has_icon'])
 			}
 			
 			function clueTimer() {
-				timeout = setTimeout(function() {clueAudio.play();}, <?php if($preview_timers) { echo '100'; }else{ echo '17500'; } ?>); //100
+				if(Audio) {
+					timeout = setTimeout(function() {clueAudio.play();}, <?php if($preview_timers) { echo '100'; }else{ echo '17500'; } ?>); //100
+				}
 				var properties = {marginLeft: '74px'};
 				var options = {
 					duration: <?php if($preview_timers) { echo '3000'; }else{ echo '20000'; } ?>, //3000
@@ -287,7 +291,9 @@ if($game['Game']['has_icon'])
 			}
 			
 			function imReady() {
-				clearTimeout(timeout);
+				if(Audio) {
+					clearTimeout(timeout);
+				}
 				$('#meter').stop();
 				$('#meter').appendTo('#question');
 				$('#meter').css('marginLeft', 0);
@@ -352,16 +358,22 @@ if($game['Game']['has_icon'])
 				$('#app').css('background-image', 'url(/img/bg_game_back.png)');
 				
 				if(answerClicked == question.correct_answer_index) {
-					var audio = correctAudio;
+					if(Audio) {
+						var audio = correctAudio;
+					}
 					//var imageCache = correctImageCache;
 					$('#answerAnimation').attr('src', '/img/animation/correct0065.png');
 				}else{
-					var audio = incorrectAudio;
+					if(Audio) {
+						var audio = incorrectAudio;
+					}
 					//var imageCache = incorrectImageCache;
 					$('#answerAnimation').attr('src', '/img/animation/incorrect0065.png');
 				}
 				
-				audio.play();
+				if(Audio) {
+					audio.play();
+				}
 				
 				showAnswerImage = false;
 				$('#answerAnimation').show();
