@@ -498,8 +498,9 @@ if($game['Game']['has_icon'])
 			}
 			
 			body {
-				background-color: #000;
-				/*background-image: url(/img/bg_2.png); /* DESKTOP */
+				background: #aaa;
+				/*background-color: #000;
+				background-image: url(/img/bg_2.png); /* DESKTOP */
 				/* background-image: url(/img/iphone_ringorang.png); */ /* IPHONE */
 				background-position: 0 0;
 				background-repeat: no-repeat;
