@@ -382,8 +382,8 @@ if($game['Game']['has_icon'])
 					}
 				};
 				
-				$('#answerAnimation').fadeIn(1000, function() {
-					$('#answerAnimation').fadeOut(1000, function() {
+				$('#answerAnimation').fadeIn(2000, function() {
+					$('#answerAnimation').fadeOut(2000, function() {
 						$('#drawer').show();
 						$('#drawer').animate(properties, options);
 					});
