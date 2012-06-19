@@ -133,6 +133,7 @@ class PuzzlesController extends AppController {
  		}
  		
  		$puzzle['Puzzle']['account_id'] = $account_id;
+ 		$puzzle['Puzzle']['title'] = $json_data->title;
  		$puzzle['Puzzle']['total_fuel'] = $json_data->total_fuel;
  		$puzzle['Puzzle']['start_x'] = $json_data->startPoint[0];
  		$puzzle['Puzzle']['start_y'] = $json_data->startPoint[1];
@@ -257,6 +258,7 @@ class PuzzlesController extends AppController {
  	{
  		$return = array();
  		$puzzle = $this->Puzzle->find('first',array('conditions'=>'Puzzle.id = '.$puzzle_id));
+ 		$return['title'] = $puzzle['Puzzle']['title'];
  		$return['startData'] = array($puzzle['Puzzle']['start_x'],$puzzle['Puzzle']['start_y']);
  		$return['endData'] = array($puzzle['Puzzle']['end_x'],$puzzle['Puzzle']['end_y']);
  		$return['total_fuel'] = $puzzle['Puzzle']['total_fuel'];
@@ -288,6 +290,7 @@ class PuzzlesController extends AppController {
  	{
  		$return = array();
  		$puzzle = $this->Puzzle->find('first',array('conditions'=>'Puzzle.id = '.$puzzle_id));
+ 		$return['title'] = $puzzle['Puzzle']['title'];
  		$return['startData'] = array($puzzle['Puzzle']['start_x'],$puzzle['Puzzle']['start_y']);
  		$return['endData'] = array($puzzle['Puzzle']['end_x'],$puzzle['Puzzle']['end_y']);
  		$return['total_fuel'] = $puzzle['Puzzle']['total_fuel'];
