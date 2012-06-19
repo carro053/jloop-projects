@@ -382,12 +382,9 @@ if($game['Game']['has_icon'])
 					}
 				};
 				
-				$('#answerAnimation').fadeIn("slow", function() {
-					alert(123);
-					$('#answerAnimation').fadeOut("slow", function() {
-						$('#drawer').show();
-						$('#drawer').animate(properties, options);
-					});
+				$('#answerAnimation').fadeOut(5000, function() {
+					$('#drawer').show();
+					$('#drawer').animate(properties, options);
 				});
 				
 				/*var index = 0;
