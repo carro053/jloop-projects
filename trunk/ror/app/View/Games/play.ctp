@@ -28,7 +28,7 @@ if($game['Game']['has_icon'])
 			var readyPersonCount = answeredPersonCount = 0;
 			var showAnswerImage = false;
 			
-			var correctImageCache = [];
+			/*var correctImageCache = [];
 			for(var index = 1; index < 101; index++) {
 				var indexString = index.toString();
 				while(indexString.length < 4) {
@@ -48,7 +48,7 @@ if($game['Game']['has_icon'])
 				var image = new Image;
 				image.src = '/img/animation/incorrect'+indexString+'.png';
 				incorrectImageCache.push(image);
-			}
+			}*/
 			
 			var clueAudio = new Audio('/audio/ROR_ringtoneAB_combined.ogg');
 			var correctAudio = new Audio('/audio/correct.ogg');
@@ -346,10 +346,12 @@ if($game['Game']['has_icon'])
 				
 				if(answerClicked == question.correct_answer_index) {
 					var audio = correctAudio;
-					var imageCache = correctImageCache;
+					//var imageCache = correctImageCache;
+					$('#answerAnimation').attr('src', '/img/animation/correct0065.png');
 				}else{
 					var audio = incorrectAudio;
-					var imageCache = incorrectImageCache;
+					//var imageCache = incorrectImageCache;
+					$('#answerAnimation').attr('src', '/img/animation/incorrect0065.png');
 				}
 				
 				audio.play();
@@ -381,7 +383,7 @@ if($game['Game']['has_icon'])
 						$('#drawer').animate(properties, options);
 						$('#answerAnimation').hide();
 					}
-					$('#answerAnimation').attr('src', imageCache[index].src);
+					//$('#answerAnimation').attr('src', imageCache[index].src);
 					index++;
 				}, 50);
 			}
