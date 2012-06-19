@@ -346,6 +346,7 @@ class PuzzlesController extends AppController {
  		}else{
  			$return['vote'] = 0;
  		}
+ 		$return['title'] = $puzzle['Puzzle']['title'];
  		$return['least_fuel'] = $puzzle['Puzzle']['least_fuel_used'];
  		$return['fastest_time'] = $puzzle['Puzzle']['fastest_solution'];
  		$fastest_time = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'PuzzleSolution.time ASC'));
