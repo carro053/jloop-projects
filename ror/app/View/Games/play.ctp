@@ -57,7 +57,8 @@ if($game['Game']['has_icon'])
 			imageI.src = '/img/animation/incorrect0065.png';
 			imageCache.push(imageI);
 			
-			if(Audio) {
+			var audioCheck = document.createElement('audio'); 
+			if(audioCheck.canPlayType) {
 				var clueAudio = new Audio('/audio/ROR_ringtoneAB_combined.ogg');
 				var correctAudio = new Audio('/audio/correct.ogg');
 				var incorrectAudio = new Audio('/audio/incorrect.ogg');
@@ -167,7 +168,7 @@ if($game['Game']['has_icon'])
 			}
 			
 			function clueTimer() {
-				if(Audio) {
+				if(audioCheck.canPlayType) {
 					timeout = setTimeout(function() {clueAudio.play();}, <?php if($preview_timers) { echo '100'; }else{ echo '17500'; } ?>); //100
 				}
 				var properties = {marginLeft: '74px'};
@@ -291,7 +292,7 @@ if($game['Game']['has_icon'])
 			}
 			
 			function imReady() {
-				if(Audio) {
+				if(audioCheck.canPlayType) {
 					clearTimeout(timeout);
 				}
 				$('#meter').stop();
@@ -358,20 +359,20 @@ if($game['Game']['has_icon'])
 				$('#app').css('background-image', 'url(/img/bg_game_back.png)');
 				
 				if(answerClicked == question.correct_answer_index) {
-					if(Audio) {
+					if(audioCheck.canPlayType) {
 						var audio = correctAudio;
 					}
 					//var imageCache = correctImageCache;
 					$('#answerAnimation').attr('src', '/img/animation/correct0065.png');
 				}else{
-					if(Audio) {
+					if(audioCheck.canPlayType) {
 						var audio = incorrectAudio;
 					}
 					//var imageCache = incorrectImageCache;
 					$('#answerAnimation').attr('src', '/img/animation/incorrect0065.png');
 				}
 				
-				if(Audio) {
+				if(audioCheck.canPlayType) {
 					audio.play();
 				}
 				
