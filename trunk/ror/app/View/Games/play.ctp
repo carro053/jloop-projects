@@ -382,7 +382,14 @@ if($game['Game']['has_icon'])
 					}
 				};
 				
-				var index = 0;
+				$('#answerAnimation').fadeIn(1000, function() {
+					$('#answerAnimation').fadeOut(1000, function() {
+						$('#drawer').show();
+						$('#drawer').animate(properties, options);
+					});
+				});
+				
+				/*var index = 0;
 				var interval = setInterval(function() {
 					if(index >= 99) {
 						clearInterval(interval);
@@ -390,9 +397,9 @@ if($game['Game']['has_icon'])
 						$('#drawer').animate(properties, options);
 						$('#answerAnimation').hide();
 					}
-					//$('#answerAnimation').attr('src', imageCache[index].src);
+					$('#answerAnimation').attr('src', imageCache[index].src);
 					index++;
-				}, 50);
+				}, 50);*/
 			}
 			
 			$(function() {
