@@ -313,8 +313,6 @@ if($game['Game']['has_icon'])
 			}
 			
 			function loadAnswerStates() {
-				//alert(question.learn_more_url);
-				$('#drawer').append('<a href="'+question.learn_more_url+'">Click here to learn more!</a>');
 				
 				switch(question.answer_type) {
 					case 'text':
@@ -355,6 +353,8 @@ if($game['Game']['has_icon'])
 					drawer_bottom = '468';
 					$('#drawer').html('');
 				}
+				
+				$('#drawer').append('<a href="'+question.learn_more_url+'">Click here to learn more!</a>');
 			}
 			
 			function animateAnswerImage() {
