@@ -860,7 +860,7 @@ if($game['Game']['has_icon'])
 				position: absolute;
 				top: 24px;
 				background: url(/img/learn_more_loading.png);
-				display: none;
+				/* display: none; */
 			}
 			
 			#timelineButton {
