@@ -837,7 +837,7 @@ if($game['Game']['has_icon'])
 			}
 			
 			#learnMoreButton {
-				width: 300px;
+				width: 280px;
 				height: 30px;
 				position: absolute;
 				top: 28px;
