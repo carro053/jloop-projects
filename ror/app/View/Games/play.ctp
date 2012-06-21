@@ -948,7 +948,7 @@ if($game['Game']['has_icon'])
 					</div>
 				</div>
 				<!--<div id="drawerParent">-->
-					<div id="drawer"><a id="learn-more-link" style="display: none;">Click here to Learn More!</a></div>
+					<div id="drawer"><a id="learn-more-link">Click here to Learn More!</a></div>
 				<!--</div>-->
 			</div>
 			<div id="timelineDrawerParent">
