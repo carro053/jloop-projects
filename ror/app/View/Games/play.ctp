@@ -963,6 +963,5 @@ if($game['Game']['has_icon'])
 		<?php /*<div id="title" onclick="titleFade();">
 			<h1>Wed-Fri Gameplay on the Desktop</h1>
 		</div> */ ?>
-		<?php pr($game); ?>
 	</body>
 </html>
