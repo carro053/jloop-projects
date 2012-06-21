@@ -313,7 +313,9 @@ if($game['Game']['has_icon'])
 			}
 			
 			function loadAnswerStates() {
-			
+				$('#drawer').html('<a href="'+question.learn_more_url+'">Click to Learn More!</a>');
+				
+				
 				switch(question.answer_type) {
 					case 'text':
 						if(answerClicked == question.correct_answer_index) {
