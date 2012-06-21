@@ -370,7 +370,7 @@ if($game['Game']['has_icon'])
 				{
 					//$('#drawer').append('<a target="_blank" href="'+question.learn_more_url+'">Click here to learn more!</a>');
 					//$('#drawer').attr('onclick', function() {setTimeout(function() { window.open(question.learn_more_url,'_blank') }, 2000);});
-					$('#drawer').append('<div id="learnMoreButton" onclick="setTimeout(function() { window.open(question.learn_more_url,\'_blank\') }, 2000);"></div>');
+					$('#drawer').append('<div id="learnMoreButton" onclick="setTimeout(function() { window.open(question.learn_more_url) }, 2000);"></div>');
 				}
 			}
 			
@@ -838,9 +838,10 @@ if($game['Game']['has_icon'])
 			
 			#learnMoreButton {
 				width: 300px;
-				height: 40px;
+				height: 30px;
 				position: absolute;
-				top: 20px;
+				top: 28px;
+				left: 18px
 			}
 			
 			#timelineButton {
