@@ -357,7 +357,7 @@ if($game['Game']['has_icon'])
 				if(question.learn_more_url)
 				{
 					//$('#drawer').append('<a target="_blank" href="'+question.learn_more_url+'">Click here to learn more!</a>');
-					$('#drawer').attr('onclick', function() {setTimeout(function() { window.open(question.learn_more_url,'_blank') }, 2000);});
+					//$('#drawer').attr('onclick', function() {setTimeout(function() { window.open(question.learn_more_url,'_blank') }, 2000);});
 				}
 			}
 			
