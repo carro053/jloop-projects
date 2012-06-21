@@ -962,7 +962,7 @@ if($game['Game']['has_icon'])
 		<img id="shadow" src="/img/shadow.png" /> <!-- DESKTOP -->
 		<div id="timeline">
 			<div id="learnMoreLoading">
-					<p>Learn More About Stuff!</p>
+				<p>Learn More About Stuff!</p>
 			</div>
 			<div id="app">
 				<div id="backButton"></div>
