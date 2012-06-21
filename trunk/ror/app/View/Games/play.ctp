@@ -314,9 +314,7 @@ if($game['Game']['has_icon'])
 			
 			function loadAnswerStates() {
 				//alert(question.learn_more_url);
-				$('#learn-more-link').attr('href', 'question.learn_more_url');
-				$('#learn-more-link').show();
-				
+				$('#drawer').append('<a href="'+question.learn_more_url+'">Click here to learn more!</a>');
 				
 				switch(question.answer_type) {
 					case 'text':
@@ -948,7 +946,7 @@ if($game['Game']['has_icon'])
 					</div>
 				</div>
 				<!--<div id="drawerParent">-->
-					<div id="drawer"><a id="learn-more-link">Click here to Learn More!</a></div>
+					<div id="drawer"></div>
 				<!--</div>-->
 			</div>
 			<div id="timelineDrawerParent">
