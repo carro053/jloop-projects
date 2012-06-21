@@ -138,6 +138,14 @@
 			<td class="note"><?php echo $this->Form->input('prize_note',array('label'=>false)); ?></td>
 		</tr>
 		<tr>
+			<td><label>Learn More URL</label></td>
+			<td>
+			<?php //echo $this->Form->input('prize_text',array('label'=>false)); ?>
+			<div class="input textarea"><textarea id="QuestionPrizeText" rows="6" cols="30" name="data[Question][learn_more_url]"><?php echo $this->data['Question']['learn_more_url']; ?></textarea></div>
+			</td>
+			<td class="note"><?php echo $this->Form->input('learn_more_url_note',array('label'=>false)); ?></td>
+		</tr>
+		<tr>
 			<td></td>
 			<td>
 				<a class="button" href="#" onclick="submit_form(0); return false;">Submit</a>
