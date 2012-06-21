@@ -354,7 +354,7 @@ if($game['Game']['has_icon'])
 					$('#drawer').html('');
 				}
 				
-				if(question.learn_more_url != null)
+				if(question.learn_more_url)
 					$('#drawer').append('<a target="_blank" href="'+question.learn_more_url+'">Click here to learn more!</a>');
 			}
 			
