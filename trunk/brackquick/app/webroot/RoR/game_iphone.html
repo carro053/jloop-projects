@@ -289,15 +289,23 @@
 			
 			function loadAnswerStates() {
 			
+				$('#drawer').html('');
+			
 				switch(question.answer_type) {
 					case 'text':
 						if(answerClicked == question.correct_answer_index) {
 							$('#answer'+answerClicked).css('background-image', 'url(img/bg_answer_green.png)');
-							$('#drawer').css('background-image', 'url(img/bg_leaderboard_drawer_correct.png)');
+							if(question.learn_more_url)
+								$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_correct_learn_more.png)');
+							else
+								$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_correct.png)');
 						}else{
 							$('#answer'+question.correct_answer_index).css('background-image', 'url(img/bg_answer_green.png)');
 							$('#answer'+answerClicked).css('background-image', 'url(img/bg_answer_red.png)');
-							$('#drawer').css('background-image', 'url(img/bg_leaderboard_drawer_incorrect.png)');
+							if(question.learn_more_url)
+								$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_incorrect_learn_more.png)');
+							else
+								$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_incorrect.png)');
 						}
 						break;
 					case 'image':
@@ -305,7 +313,10 @@
 							//$('#answer'+answerClicked).css('background-image', 'url(img/bg_answer_image_green.png)');
 							$('#answer'+answerClicked+' img').attr('src', 'img/bg_answer_image_green.png');
 							$('#answer'+answerClicked+' img').show();
-							$('#drawer').css('background-image', 'url(img/bg_leaderboard_drawer_correct.png)');
+							if(question.learn_more_url)
+								$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_correct_learn_more.png)');
+							else
+								$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_correct.png)');
 						}else{
 							//$('#answer'+question.correct_answer_index).css('background-image', 'url(img/bg_answer_image_green.png)');
 							//$('#answer'+answerClicked).css('background-image', 'url(img/bg_answer_image_red.png)');
@@ -313,7 +324,10 @@
 							$('#answer'+question.correct_answer_index+' img').show();
 							$('#answer'+answerClicked+' img').attr('src', 'img/bg_answer_image_red.png');
 							$('#answer'+answerClicked+' img').show();
-							$('#drawer').css('background-image', 'url(img/bg_leaderboard_drawer_incorrect.png)');
+							if(question.learn_more_url)
+								$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_incorrect_learn_more.png)');
+							else
+								$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_incorrect.png)');
 						}
 						break;
 				}	
@@ -325,7 +339,14 @@
 				}else{
 					drawer_top = '408';
 					drawer_bottom = '468';
-				}	
+				}
+				
+				//Learn More button
+				if(question.learn_more_url)
+				{
+					$('#drawer').append('<div id="learnMoreButton" onclick="learnMoreLoadScreen();"></div>');
+				}
+
 			}
 			
 			function animateAnswerImage() {
@@ -770,6 +791,30 @@
 				display: none;
 			}
 			
+			#learnMoreButton {
+				width: 280px;
+				height: 30px;
+				position: absolute;
+				top: 28px;
+				left: 18px
+			}
+			
+			#learnMoreLoading {
+				width: 320px;
+				height: 480px;
+				z-index: 5;
+				position: relative;
+				top: 24px;
+				background: url(/img/learn_more_loading.png);
+				display: none;
+			}
+			
+			#learnMoreTitle {
+				color: white;
+				text-align: center;
+				padding-top: 200px;
+			}
+			
 			#timelineButton {
 				width: 320px;
 				height: 51px;
@@ -851,6 +896,9 @@
 	<body>
 		<!--<img id="shadow" src="img/shadow.png" />--> <!-- DESKTOP -->
 		<div id="timeline">
+			<div id="learnMoreLoading">
+				<h2 id="learnMoreTitle">Learn More About Stuff!</h2>
+			</div>
 			<div id="app">
 				<div id="backButton"></div>
 				<div id="buttons">
