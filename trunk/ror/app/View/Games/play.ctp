@@ -313,8 +313,9 @@ if($game['Game']['has_icon'])
 			}
 			
 			function loadAnswerStates() {
-				alert(question.learn_more_url);
-				$('#drawer').html('<a href="'+question.learn_more_url+'">Click to Learn More!</a>');
+				//alert(question.learn_more_url);
+				$('#learn-more-link').attr('href', 'question.learn_more_url');
+				$('#learn-more-link').show();
 				
 				
 				switch(question.answer_type) {
@@ -947,7 +948,7 @@ if($game['Game']['has_icon'])
 					</div>
 				</div>
 				<!--<div id="drawerParent">-->
-					<div id="drawer"></div>
+					<div id="drawer"><a id="learn-more-link" style="display: none;">Click here to Learn More!</a></div>
 				<!--</div>-->
 			</div>
 			<div id="timelineDrawerParent">
