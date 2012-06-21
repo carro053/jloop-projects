@@ -325,7 +325,10 @@ if($game['Game']['has_icon'])
 						}else{
 							$('#answer'+question.correct_answer_index).css('background-image', 'url(/img/bg_answer_green.png)');
 							$('#answer'+answerClicked).css('background-image', 'url(/img/bg_answer_red.png)');
-							$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_incorrect.png)');
+							if(question.learn_more_url)
+								$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_incorrect_learn_more.png)');
+							else
+								$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_incorrect.png)');
 						}
 						break;
 					case 'image':
@@ -345,9 +348,9 @@ if($game['Game']['has_icon'])
 							$('#answer'+answerClicked+' img').attr('src', '/img/bg_answer_image_red.png');
 							$('#answer'+answerClicked+' img').show();
 							if(question.learn_more_url)
-								$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_correct_learn_more.png)');
+								$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_incorrect_learn_more.png)');
 							else
-								$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_correct.png)');
+								$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_incorrect.png)');
 						}
 						break;
 				}
