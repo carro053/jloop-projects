@@ -16,6 +16,7 @@ foreach($game['Question'] as $key=>$question):
 		clue_type: \''.$question['QuestionVersion'][0]['clue_type'].'\',
 		insight_type: \''.$question['QuestionVersion'][0]['insight_type'].'\',
 		category: \''.$game['Game']['title'].'\',';
+		echo 'learn_more_url: \''.$question['QuestionVersion'][0]['learn_more_url'].'\',';
 		if($question['QuestionVersion'][0]['clue_type'] == 'image')
 		{
 			echo '
@@ -95,7 +96,6 @@ foreach($game['Question'] as $key=>$question):
 		prize: \''.$question['id'].'-'.$question['QuestionVersion'][0]['id'].'.png\',
 		prize_text: \''.str_replace("'","\\'",htmlspecialchars_decode($question['QuestionVersion'][0]['prize_text'], ENT_QUOTES)).'\'';
 		}
-		echo 'learn_more_url: \''.$question['QuestionVersion'][0]['learn_more_url'].'\'';
 		echo '
 	}';
 	$i++;
