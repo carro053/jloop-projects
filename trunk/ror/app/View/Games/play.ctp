@@ -963,7 +963,7 @@ if($game['Game']['has_icon'])
 		<div id="timeline">
 			<div id="learnMoreLoading">
 				<div id="learnMoreTitle">
-					<h2>Learn More About Stuff!</h2>
+					<p>Learn More About Stuff!</p>
 				</div>
 			</div>
 			<div id="app">
