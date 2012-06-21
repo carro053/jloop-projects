@@ -866,7 +866,7 @@ if($game['Game']['has_icon'])
 			#learnMoreTitle {
 				color: white;
 				text-align: center;
-				top: 200px;
+				padding-top: 200px;
 			}
 			
 			#timelineButton {
