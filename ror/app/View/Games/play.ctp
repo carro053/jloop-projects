@@ -370,6 +370,7 @@ if($game['Game']['has_icon'])
 				{
 					//$('#drawer').append('<a target="_blank" href="'+question.learn_more_url+'">Click here to learn more!</a>');
 					//$('#drawer').attr('onclick', function() {setTimeout(function() { window.open(question.learn_more_url,'_blank') }, 2000);});
+					$('#drawer').append('<div id="learnMoreButton" onclick="setTimeout(function() { window.open(question.learn_more_url,\'_blank\') }, 2000);"></div>');
 				}
 			}
 			
@@ -833,6 +834,13 @@ if($game['Game']['has_icon'])
 				position: absolute;
 				top: 468px;
 				display: none;
+			}
+			
+			#learnMoreButton {
+				width: 300px;
+				height: 40px;
+				position: absolute;
+				top: 20px;
 			}
 			
 			#timelineButton {
