@@ -313,6 +313,7 @@ if($game['Game']['has_icon'])
 			}
 			
 			function loadAnswerStates() {
+				alert(question.learn_more_url);
 				$('#drawer').html('<a href="'+question.learn_more_url+'">Click to Learn More!</a>');
 				
 				
