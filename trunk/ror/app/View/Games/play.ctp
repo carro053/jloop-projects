@@ -961,6 +961,7 @@ if($game['Game']['has_icon'])
 		<img id="shadow" src="/img/shadow.png" /> <!-- DESKTOP -->
 		<div id="timeline">
 			<div id="app">
+				<div id="learnMoreLoading"></div>
 				<div id="backButton"></div>
 				<div id="buttons">
 					<p id="category"></p>
@@ -1000,8 +1001,6 @@ if($game['Game']['has_icon'])
 				</div>
 				<div id="timelineDrawer"></div>
 			</div>
-			
-			<div id="learnMoreLoading"></div>
 		</div>
 		<?php /*<div id="title" onclick="titleFade();">
 			<h1>Wed-Fri Gameplay on the Desktop</h1>
