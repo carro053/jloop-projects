@@ -314,6 +314,8 @@ if($game['Game']['has_icon'])
 			
 			function loadAnswerStates() {
 				
+				$('#drawer').html('');
+				
 				switch(question.answer_type) {
 					case 'text':
 						if(answerClicked == question.correct_answer_index) {
@@ -366,12 +368,19 @@ if($game['Game']['has_icon'])
 					$('#drawer').html('');
 				}
 				
+				//Learn More button
 				if(question.learn_more_url)
 				{
-					//$('#drawer').append('<a target="_blank" href="'+question.learn_more_url+'">Click here to learn more!</a>');
-					//$('#drawer').attr('onclick', function() {setTimeout(function() { window.open(question.learn_more_url,'_blank') }, 2000);});
-					$('#drawer').append('<div id="learnMoreButton" onclick="setTimeout(function() { window.open(question.learn_more_url) }, 2000);"></div>');
+					$('#drawer').append('<div id="learnMoreButton" onclick="learnMoreLoadScreen();"></div>');
 				}
+			}
+			
+			function learnMoreLoadScreen()
+			{
+				setTimeout(function() { 
+					window.open(question.learn_more_url);
+					
+				}, 2000);
 			}
 			
 			function animateAnswerImage() {
@@ -844,6 +853,15 @@ if($game['Game']['has_icon'])
 				left: 18px
 			}
 			
+			#learnMoreLoading {
+				width: 320px;
+				height: 480px;
+				z-index: 20;
+				position: absolute;
+				top: 20px;
+				background: url(/img/learn_more_loading.png);		
+			}
+			
 			#timelineButton {
 				width: 320px;
 				height: 51px;
@@ -970,9 +988,7 @@ if($game['Game']['has_icon'])
 						<div id="subContentInsight"></div>
 					</div>
 				</div>
-				<!--<div id="drawerParent">-->
-					<div id="drawer"></div>
-				<!--</div>-->
+				<div id="drawer"></div>
 			</div>
 			<div id="timelineDrawerParent">
 				<img src="/img/game_icons/<?php echo $icon_src; ?>" style="position:absolute; top:9px; left:16px; width:36px; height:36px;" />
@@ -984,6 +1000,8 @@ if($game['Game']['has_icon'])
 				</div>
 				<div id="timelineDrawer"></div>
 			</div>
+			
+			<div id="learnMoreLoading"></div>
 		</div>
 		<?php /*<div id="title" onclick="titleFade();">
 			<h1>Wed-Fri Gameplay on the Desktop</h1>
