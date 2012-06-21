@@ -318,7 +318,10 @@ if($game['Game']['has_icon'])
 					case 'text':
 						if(answerClicked == question.correct_answer_index) {
 							$('#answer'+answerClicked).css('background-image', 'url(/img/bg_answer_green.png)');
-							$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_correct.png)');
+							if(question.learn_more_url)
+								$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_correct_learn_more.png)');
+							else
+								$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_correct.png)');
 						}else{
 							$('#answer'+question.correct_answer_index).css('background-image', 'url(/img/bg_answer_green.png)');
 							$('#answer'+answerClicked).css('background-image', 'url(/img/bg_answer_red.png)');
@@ -330,7 +333,10 @@ if($game['Game']['has_icon'])
 							//$('#answer'+answerClicked).css('background-image', 'url(/img/bg_answer_image_green.png)');
 							$('#answer'+answerClicked+' img').attr('src', '/img/bg_answer_image_green.png');
 							$('#answer'+answerClicked+' img').show();
-							$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_correct.png)');
+							if(question.learn_more_url)
+								$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_correct_learn_more.png)');
+							else
+								$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_correct.png)');
 						}else{
 							//$('#answer'+question.correct_answer_index).css('background-image', 'url(/img/bg_answer_image_green.png)');
 							//$('#answer'+answerClicked).css('background-image', 'url(/img/bg_answer_image_red.png)');
@@ -338,7 +344,10 @@ if($game['Game']['has_icon'])
 							$('#answer'+question.correct_answer_index+' img').show();
 							$('#answer'+answerClicked+' img').attr('src', '/img/bg_answer_image_red.png');
 							$('#answer'+answerClicked+' img').show();
-							$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_incorrect.png)');
+							if(question.learn_more_url)
+								$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_correct_learn_more.png)');
+							else
+								$('#drawer').css('background-image', 'url(/img/bg_leaderboard_drawer_correct.png)');
 						}
 						break;
 				}
