@@ -856,12 +856,11 @@ if($game['Game']['has_icon'])
 			#learnMoreLoading {
 				width: 320px;
 				height: 480px;
-				top: 5px;
 				z-index: 5;
 				position: absolute;
-				top: 20px;
+				top: 24px;
 				background: url(/img/learn_more_loading.png);
-				/* display: none; */
+				display: none;
 			}
 			
 			#timelineButton {
@@ -962,7 +961,11 @@ if($game['Game']['has_icon'])
 	<body>
 		<img id="shadow" src="/img/shadow.png" /> <!-- DESKTOP -->
 		<div id="timeline">
-			<div id="learnMoreLoading"></div>
+			<div id="learnMoreLoading">
+				<div id="learnMoreTitle">
+					<h2>Learn More About Stuff!</h2>
+				</div>
+			</div>
 			<div id="app">
 				<div id="backButton"></div>
 				<div id="buttons">
