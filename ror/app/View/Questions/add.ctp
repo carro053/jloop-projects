@@ -115,14 +115,11 @@
 			<td><?php echo $this->Form->input('prize_text',array('label'=>false)); ?></td>
 			<td class="note"><?php echo $this->Form->input('prize_note',array('label'=>false)); ?></td>
 		</tr>
-		
-		
 		<tr>
 			<td><label>Learn More URL</label></td>
 			<td><?php echo $this->Form->input('learn_more_url',array('label'=>false)); ?></td>
 			<td class="note"><?php echo $this->Form->input('learn_more_url_note',array('label'=>false)); ?></td>
 		</tr>
-		
 		<tr>
 			<td></td>
 			<td>
