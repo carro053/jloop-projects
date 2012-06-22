@@ -7,7 +7,7 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'Air Leaks',
-		learn_more_url: 'TEST',
+		learn_more_url: '',
 		clue: 'John from N. Las Vegas is sweating his high power bill in summer, and draftiness in winter. So he\'s headed to the home improvement store...',
 		question: 'Which of these is an easy-to-install, inexpensive money saver that keeps the heat and cold where they belong?',
 		answers: [
