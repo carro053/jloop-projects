@@ -381,6 +381,8 @@ if($game['Game']['has_icon'])
 			
 			function learnMoreLoadScreen()
 			{
+				$('#browserIframe').attr('src',question.learn_more_url);
+			
 				$('#learnMoreGameTitle').html(question.category);
 				$('#learnMoreTitle').html(question.learn_more_title);
 				$('#learnMoreLoading').fadeIn(1000);
@@ -906,7 +908,7 @@ if($game['Game']['has_icon'])
 			}
 			
 			#browserIframe {
-				height: 400px;
+				height: 416px;
 				width: 320px;
 				zoom: 0.5;
 				padding-top: 44px;
