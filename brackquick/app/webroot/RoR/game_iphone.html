@@ -336,6 +336,9 @@
 					drawer_top = '120';
 					drawer_bottom = '468';
 					$('#drawer').css('background-image', 'url(img/prizes/'+question.prize+')');
+				}else if (question.learn_more_url) {
+					drawer_top = '364';
+					drawer_bottom = '468';
 				}else{
 					drawer_top = '408';
 					drawer_bottom = '468';
@@ -354,7 +357,7 @@
 			{
 				$('#learnMoreLoading').fadeIn(1000);
 				setTimeout(function() { 
-					window.open(question.learn_more_url);
+					//window.open(question.learn_more_url);
 					$('#learnMoreLoading').fadeOut(1000);
 					
 					
