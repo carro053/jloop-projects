@@ -381,7 +381,7 @@ if($game['Game']['has_icon'])
 			
 			function learnMoreLoadScreen()
 			{
-				//$('#browserIframe').attr('src',question.learn_more_url);
+				$('#browser').html('<iframe id="browserIframe" src="'+question.learn_more_url+'"></iframe>');
 			
 				$('#learnMoreGameTitle').html(question.category);
 				$('#learnMoreTitle').html(question.learn_more_title);
@@ -1036,9 +1036,7 @@ if($game['Game']['has_icon'])
 		<img id="shadow" src="/img/shadow.png" /> <!-- DESKTOP -->
 		<div id="timeline">
 			<div id="app">
-				<div id="browser" onclick="closeBrowser();">
-					<iframe id="browserIframe" src="http://www.w3schools.com"></iframe>
-				</div>
+				<div id="browser" onclick="closeBrowser();"></div>
 				<div id="learnMoreLoading">
 					<p id="learnMoreGameTitle">Game Title</p>
 					<h2 id="learnMoreTitle">Learn More About Stuff!</h2>
