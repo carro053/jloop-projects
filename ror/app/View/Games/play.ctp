@@ -362,6 +362,9 @@ if($game['Game']['has_icon'])
 					drawer_bottom = '468';
 					$('#drawer').css('background-image', 'url(/img/prizes/bg.png)');
 					$('#drawer').html('<img class="prize-image" src="/img/prizes/'+question.prize+'" /><span class="prize-text">'+question.prize_text+'</span>');
+				}else if (question.learn_more_url) {
+					drawer_top = '364';
+					drawer_bottom = '468';
 				}else{
 					drawer_top = '408';
 					drawer_bottom = '468';
