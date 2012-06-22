@@ -1031,7 +1031,7 @@ if($game['Game']['has_icon'])
 				<div id="learnMoreLoading">
 					<p id="learnMoreGameTitle">Game Title</p>
 					<h2 id="learnMoreTitle">Learn More About Stuff!</h2>
-					<img id="loadingGif" src="/img/loading.gif" />
+					<img id="loadingGif" src="/img/loading_learn.gif" />
 				</div>
 				<div id="backButton"></div>
 				<div id="buttons">
