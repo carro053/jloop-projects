@@ -860,10 +860,10 @@ if($game['Game']['has_icon'])
 			
 			#learnMoreLoading {
 				width: 320px;
-				height: 480px;
+				height: 365px;
 				z-index: 5;
 				position: relative;
-				top: 24px;
+				top: 120px;
 				background: url(/img/learn_more_loading.png);
 				display: none;
 			}
