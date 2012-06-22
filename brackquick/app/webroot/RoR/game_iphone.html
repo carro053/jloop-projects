@@ -356,6 +356,17 @@
 				setTimeout(function() { 
 					window.open(question.learn_more_url);
 					$('#learnMoreLoading').fadeOut(1000);
+					
+					var properties = {top: '6px'};
+					var options = {
+						duration: 500,
+						easing: 'swing',
+						complete: function() {
+							
+						}
+					};
+					$('#browser').animate(properties, options);
+					
 				}, 2000);
 			}
 			
@@ -826,7 +837,7 @@
 				z-index: 10;
 				position: relative;
 				background: url(img/browser.png);
-				top: 480px;
+				top: 486px;
 			}
 			
 			#learnMoreTitle {
