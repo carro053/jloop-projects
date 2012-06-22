@@ -357,6 +357,8 @@
 					window.open(question.learn_more_url);
 					$('#learnMoreLoading').fadeOut(1000);
 					
+					
+					$('#browser').show();
 					var properties = {top: '6px'};
 					var options = {
 						duration: 500,
@@ -838,6 +840,7 @@
 				position: relative;
 				background: url(img/browser.png);
 				top: 486px;
+				display: none;
 			}
 			
 			#learnMoreTitle {
