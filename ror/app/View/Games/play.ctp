@@ -372,14 +372,16 @@ if($game['Game']['has_icon'])
 				if(question.learn_more_url)
 				{
 					$('#drawer').append('<div id="learnMoreButton" onclick="learnMoreLoadScreen();"></div>');
+					$('#learnMoreTitle').html(question.learn_more_title);
 				}
 			}
 			
 			function learnMoreLoadScreen()
 			{
+				$('#learnMoreLoading').fadeIn(1000);
 				setTimeout(function() { 
 					window.open(question.learn_more_url);
-					
+					$('#learnMoreLoading').fadeOut(1000);
 				}, 2000);
 			}
 			

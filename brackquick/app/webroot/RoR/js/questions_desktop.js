@@ -1,5 +1,218 @@
 var questions = [
+	{
+		title: 'Unplayed Question 1',
+		time: 'Today, 12:00pm',
+		question_type: 'text',
+		answer_type: 'image',
+		clue_type: 'text',
+		insight_type: 'text',
+		category: 'How to Read Your Bill',
+		learn_more_url: 'http://google.com',
+		clue: 'Joe from Carson City is "upgrading" his stuff. (Translation: he\'s reliving his youth). Joe\'s wife warns him that his new stuff may be more expensive than the pricetags show...',
+		question: 'Which of these new additions will likely mean a change in the electric bill?',
+		answers: [
+			'1-1-508.png',
+			'1-2-508.png',
+			'1-3-508.png',
+			'1-4-508.png'
+			],
+		correct_answer_index: 3,
+		insight: 'Joe doesn\'t actually read his electric bill. But his wife does. (Better duck, Joe.) She finds it at nvenergy.com<br />'
+	},
+	
+	{
+		title: 'Unplayed Question 2',
+		time: 'Today, 12:00pm',
+		question_type: 'text',
+		answer_type: 'text',
+		clue_type: 'text',
+		insight_type: 'text',
+		category: 'How to Read Your Bill',
+		learn_more_url: '',
+		clue: 'Lisa in Las Vegas knows her phone carrier charges differently in daytime (onpeak) than in evening (off-peak). Lisa goes online to see if her electric bill works the same way.',
+		question: 'Which hours apply to the optional Time Of Use (TOU) plan:',
+		answers: [
+			'On-Peak hours',
+			'Off-Peak hours',
+			'Standard',
+			'All of the above'
+			],
+		correct_answer_index: 3,
+		insight: 'On the nvenergy.com bill calculator, Lisa sees her summer On-Peak rate is 57&cent; for every consumed energy unit (kWh). Her Off-Peak rate is just 8.2¢! All other hours are 10.9¢.'
+	},
+	
+	{
+		title: 'Unplayed Question 3',
+		time: 'Today, 12:00pm',
+		question_type: 'text',
+		answer_type: 'text',
+		clue_type: 'text',
+		insight_type: 'text',
+		category: 'How to Read Your Bill',
+		learn_more_url: '',
+		clue: 'Jason from Lovelock loves things to be predictable. Seriously, if we gave away the answer to this question up front, Jason would be a happy man.',
+		question: 'Why might your electricity bill be the exact same amount month after month?',
+		answers: [
+			'the weather doesn\'t change',
+			'you only turn lights on at night',
+			'you\'re on Equal Payment Plan',
+			'you\'re in the movie Groundhog Day'
+			],
+		correct_answer_index: 2,
+		insight: 'Jason stays predictably on budget with Equal Payment Plan. Being a creature of habit has its perks.'
+	},
+	
+	{
+		title: 'Unplayed Question 4',
+		time: 'Today, 12:00pm',
+		question_type: 'text',
+		answer_type: 'text',
+		clue_type: 'image',
+		insight_type: 'text',
+		category: 'How to Read Your Bill',
+		learn_more_url: '',
+		clue: '4-448.png',
+		question: 'True or False? In the clue shown, the customer used LESS electricity in July 2011 than in July of the previous year.',
+		answers: [
+			null,
+			null,
+			'True',
+			'False'
+			],
+		correct_answer_index: 3,
+		insight: 'The bar graph on your bill is a good way to spot how well you\'re saving energy. Melt down those bars and save money by using even just one of the tips at nvenergy.com<br />'
+	},
+	
+	{
+		title: 'Unplayed Question 5',
+		time: 'Today, 12:00pm',
+		question_type: 'text',
+		answer_type: 'text',
+		clue_type: 'text',
+		insight_type: 'text',
+		category: 'How to Read Your Bill',
+		learn_more_url: '',
+		clue: 'Amber at UNLV is on a budget. Her dad\'s budget, to be precise. He asks his daughter to reduce her monthly power bill by $10.',
+		question: 'What is an online bill calculator?',
+		answers: [
+			'A money-saving tool at nvenergy.com',
+			'A money-saving tool on your bill',
+			'A money-saving app for your desktop',
+			'A money-saving desk for your laptop'
+			],
+		correct_answer_index: 0,
+		insight: 'Amber played with the bill calculator until it showed her $10/mo less than her real bill. Now she knows how much less power to use to get her dad that $10. Try it for yourself.'
+	},
+	
+	{
+		title: 'Unplayed Question 6',
+		time: 'Today, 12:00pm',
+		question_type: 'text',
+		answer_type: 'text',
+		clue_type: 'text',
+		insight_type: 'text',
+		category: 'How to Read Your Bill',
+		learn_more_url: '',
+		clue: 'Helen and Gracie from Henderson won\'t touch computers. But they love to compete for who can find the best rebates!',
+		question: 'When paying your bill online, where do you find out if you qualify for rebates?',
+		answers: [
+			'type "rebate" in the search box at nvenergy.com',
+			'reach for the phone and call NV Energy',
+			'look for the link at the bottom of NVE\'s webpage',
+			'all of the above'
+			],
+		correct_answer_index: 3,
+		insight: 'Helen called by phone. But Gracie found more rebates by asking her grandson to go online. True, the ice cream bribe was a bit unfair. Visit nvenergy.com to see what he found.'
+	},
+	
+	{
+		title: 'Unplayed Question 7',
+		time: 'Today, 12:00pm',
+		question_type: 'text',
+		answer_type: 'text',
+		clue_type: 'image',
+		insight_type: 'text',
+		category: 'How to Read Your Bill',
+		learn_more_url: '',
+		clue: '7-473.png',
+		question: 'True or False? The Billing Usage column on your bill shows how many units of energy (kWh) your household consumed.',
+		answers: [
+			null,
+			null,
+			'True',
+			'False'
+			],
+		correct_answer_index: 2,
+		insight: 'Enter this Billing Usage number into your bill calculator at nvenergy.com. Manage the amount you\'re charged by managing the energy units (kWh) you consume.'
+	},
+	
+	{
+		title: 'Unplayed Question 8',
+		time: 'Today, 12:00pm',
+		question_type: 'text',
+		answer_type: 'text',
+		clue_type: 'image',
+		insight_type: 'text',
+		category: 'How to Read Your Bill',
+		learn_more_url: '',
+		clue: '179-518.png',
+		question: 'True or False? In Nevada\'s Mojave Desert, the Sand Flibbert can live its entire life without drinking a drop of liquid.',
+		answers: [
+			null,
+			null,
+			'True',
+			'False'
+			],
+		correct_answer_index: 3,
+		insight: 'Actually the Kangaroo Rat of Death Valley can go all its life without drinking. Now that\'s conservation. We suggest you hydrate. But try these tips: energysavers.gov/tips'
+	},
+	
+	{
+		title: 'Unplayed Question 9',
+		time: 'Today, 12:00pm',
+		question_type: 'text',
+		answer_type: 'text',
+		clue_type: 'text',
+		insight_type: 'image',
+		category: 'How to Read Your Bill',
+		learn_more_url: '',
+		clue: 'David from Duckwater pays $4/gal for gas, and 8¢/min to call home. But he doesn\'t know what rate he pays for each unit of energy (kWh) that his house consumes.',
+		question: 'In the Electric Consumption row of your bill, which of the following would mean a rate of almost 11 cents per unit of energy (kWh)?',
+		answers: [
+			'200 kWH x .10209',
+			'200 kWH x 11.029',
+			'200 kWH x 110009',
+			'200 KFC for $100.99'
+			],
+		correct_answer_index: 0,
+		insight: '180-515.png'
+	},
+	
+	{
+		title: 'Unplayed Question 10',
+		time: 'Today, 12:00pm',
+		question_type: 'text',
+		answer_type: 'text',
+		clue_type: 'text',
+		insight_type: 'text',
+		category: 'How to Read Your Bill',
+		learn_more_url: '',
+		clue: 'Jennifer from Tahoe is a conspiracy theorist. She is convinced that big brother is messing with her mind by fluctuating her bill monthly.',
+		question: 'If your energy use routine never changed, why might your bill amount differ from month to month?',
+		answers: [
+			'The number of days in the month differs',
+			'Rates adjust daily like stock prices',
+			'Big Brother IS messing with our minds',
+			'None of the above'
+			],
+		correct_answer_index: 0,
+		insight: 'Jennifer may not solve the mystery of the Western calendar. But she can save on her bill by comparing her average DAILY consumption month to month.'
+	}
+];
+
+
 /*
+var questions = [
 	{
 		title: 'Unplayed Question 1',
 		time: '12/03/12 10:16am',
@@ -19,7 +232,6 @@ var questions = [
 		correct_answer_index: 1,
 		insight: 'Your bill has great information to save you money and improve energy efficiency. A picture of it, with each section explained, can be found the FAQ section of the NV energy website.'
 	},
-*/	
 	{
 		title: 'Unplayed Question 1',
 		time: 'Two days ago, 9:52am',
@@ -230,3 +442,4 @@ var questions = [
 	},
 
 ];
+*/

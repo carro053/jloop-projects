@@ -352,11 +352,9 @@
 			
 			function learnMoreLoadScreen()
 			{
-				//$('#learnMoreLoading').show();
 				$('#learnMoreLoading').fadeIn(1000);
 				setTimeout(function() { 
 					window.open(question.learn_more_url);
-					//$('#learnMoreLoading').hide();
 					$('#learnMoreLoading').fadeOut(1000);
 				}, 2000);
 			}
@@ -634,7 +632,8 @@
 			
 			#contentInsight {
 				width: 320px;
-				height: 127px;
+				/* height: 127px; */
+				height: 222px;
 				background-image: url(img/bg_white_textbox.png);
 				background-repeat: no-repeat;
 				background-position: -9px 0;
