@@ -344,6 +344,7 @@
 				//Learn More button
 				if(question.learn_more_url)
 				{
+					
 					$('#drawer').append('<div id="learnMoreButton" onclick="learnMoreLoadScreen();"></div>');
 				}
 
@@ -351,9 +352,10 @@
 			
 			function learnMoreLoadScreen()
 			{
+				$('#learnMoreLoading').show();
 				setTimeout(function() { 
 					window.open(question.learn_more_url);
-					
+					$('#learnMoreLoading').hide();
 				}, 2000);
 			}
 			
