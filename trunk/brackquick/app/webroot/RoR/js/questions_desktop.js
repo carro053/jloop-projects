@@ -28,8 +28,9 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'How to Read Your Bill',
-		learn_more_url: 'https://www.nvenergy.com/home/paymentbilling/toucalc.cfm',
-		clue: 'Lisa in Las Vegas knows her phone carrier charges differently in daytime (onpeak) than in evening (off-peak). Lisa goes online to see if her electric bill works the same way.',
+		learn_more_title: '',
+		learn_more_url: 'TEST',
+		clue: 'Lisa in Las Vegas knows her phone carrier charges differently in daytime (On-Peak) than in evening (Off-Peak). Lisa goes online to see if her electric bill works the same way.',
 		question: 'Which hours apply to the optional Time Of Use (TOU) plan:',
 		answers: [
 			'On-Peak hours',
@@ -38,7 +39,7 @@ var questions = [
 			'All of the above'
 			],
 		correct_answer_index: 3,
-		insight: 'On the nvenergy.com bill calculator, Lisa sees her summer On-Peak rate is 57&cent; for every consumed energy unit (kWh). Her Off-Peak rate is just 8.2¢! All other hours are 10.9¢.'
+		insight: 'On the nvenergy.com bill calculator, Lisa sees her summer On-Peak rate is 57&cent; for every consumed energy unit (kWh). Her Off-Peak rate is just 8.2&cent;! All other hours are 10.9&cent;.'
 	},
 	
 	{
@@ -91,7 +92,8 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'How to Read Your Bill',
-		learn_more_url: 'https://www.nvenergy.com/home/customercare/index.cfm',
+		learn_more_title: '',
+		learn_more_url: 'TEST',
 		clue: 'Amber at UNLV is on a budget. Her dad\'s budget, to be precise. He asks his daughter to reduce her monthly power bill by $10.',
 		question: 'What is an online bill calculator?',
 		answers: [
@@ -101,7 +103,7 @@ var questions = [
 			'A money-saving desk for your laptop'
 			],
 		correct_answer_index: 0,
-		insight: 'Amber played with the bill calculator until it showed her $10/mo less than her real bill. Now she knows how much less power to use to get her dad that $10. Try it for yourself.'
+		insight: 'Amber played with the bill calculator until it showed her $10/mo less than her real bill. Now she knows how to get her dad that $10. Follow the "learn more" link and try it for yourself.'
 	},
 	
 	{
@@ -175,8 +177,9 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'image',
 		category: 'How to Read Your Bill',
+		learn_more_title: '',
 		learn_more_url: '',
-		clue: 'David from Duckwater pays $4/gal for gas, and 8¢/min to call home. But he doesn\'t know what rate he pays for each unit of energy (kWh) that his house consumes.',
+		clue: 'David from Duckwater pays $4/gal for gas, and 8&cent;/min to call home. But he doesn\'t know what rate he pays for each unit of energy (kWh) that his house consumes.',
 		question: 'In the Electric Consumption row of your bill, which of the following would mean a rate of almost 11 cents per unit of energy (kWh)?',
 		answers: [
 			'200 kWH x .10209',
