@@ -375,6 +375,19 @@
 				}, 2000);
 			}
 			
+			function closeBrowser()
+			{
+				var properties = {left: '320px'};
+				var options = {
+					duration: 500,
+					easing: 'swing',
+					complete: function() {
+						$('#browser').hide();
+					}
+				};
+				$('#browser').animate(properties, options);
+			}
+			
 			function animateAnswerImage() {
 				$('#app').css('background-image', 'url(img/bg_game_back_nerccip.png)');
 				
