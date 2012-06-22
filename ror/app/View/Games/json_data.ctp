@@ -16,6 +16,7 @@ foreach($game['Question'] as $key=>$question):
 		clue_type: \''.$question['QuestionVersion'][0]['clue_type'].'\',
 		insight_type: \''.$question['QuestionVersion'][0]['insight_type'].'\',
 		category: \''.$game['Game']['title'].'\',
+		learn_more_title: \''.$question['QuestionVersion'][0]['learn_more_title'].'\',
 		learn_more_url: \''.$question['QuestionVersion'][0]['learn_more_url'].'\',';
 		if($question['QuestionVersion'][0]['clue_type'] == 'image')
 		{

@@ -381,11 +381,37 @@ if($game['Game']['has_icon'])
 			
 			function learnMoreLoadScreen()
 			{
+				$('#learnMoreGameTitle').html(question.category);
+				$('#learnMoreTitle').html(question.learn_more_title);
 				$('#learnMoreLoading').fadeIn(1000);
 				setTimeout(function() { 
-					window.open(question.learn_more_url);
+					//window.open(question.learn_more_url);
 					$('#learnMoreLoading').fadeOut(1000);
+					
+					$('#browser').show();
+					var properties = {left: '0px'};
+					var options = {
+						duration: 500,
+						easing: 'swing',
+						complete: function() {
+							
+						}
+					};
+					$('#browser').animate(properties, options);
 				}, 2000);
+			}
+			
+			function closeBrowser()
+			{
+				var properties = {left: '320px'};
+				var options = {
+					duration: 500,
+					easing: 'swing',
+					complete: function() {
+						$('#browser').hide();
+					}
+				};
+				$('#browser').animate(properties, options);
 			}
 			
 			function animateAnswerImage() {
@@ -864,7 +890,18 @@ if($game['Game']['has_icon'])
 				z-index: 5;
 				position: relative;
 				top: 120px;
-				background: url(/img/learn_more_loading.png);
+				background: url(img/learn_more_loading.png);
+				display: none;
+			}
+			
+			#browser {
+				width: 320px;
+				height: 462px;
+				z-index: 10;
+				position: relative;
+				background: url(img/browser.png);
+				top: 24px;
+				left: 320px;
 				display: none;
 			}
 			
