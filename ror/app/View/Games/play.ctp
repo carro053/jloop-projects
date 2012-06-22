@@ -890,7 +890,7 @@ if($game['Game']['has_icon'])
 				z-index: 5;
 				position: relative;
 				top: 120px;
-				background: url(img/learn_more_loading.png);
+				background: url(/img/learn_more_loading.png);
 				display: none;
 			}
 			
