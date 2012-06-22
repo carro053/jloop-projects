@@ -349,6 +349,14 @@
 
 			}
 			
+			function learnMoreLoadScreen()
+			{
+				setTimeout(function() { 
+					window.open(question.learn_more_url);
+					
+				}, 2000);
+			}
+			
 			function animateAnswerImage() {
 				$('#app').css('background-image', 'url(img/bg_game_back.png)');
 				
