@@ -28,7 +28,7 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'Air Leaks',
-		learn_more_url: '',
+		learn_more_url: 'http://www.youtube.com/watch?v=Kz5obdcraY4',
 		clue: 'Only 15 percent of air leakage is through windows and doors',
 		question: 'Which of these sealing actions can lower your bill, even more so than replacing windows?',
 		answers: [
@@ -70,7 +70,7 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'Air Leaks',
-		learn_more_url: 'TEST',
+		learn_more_url: 'http://www.energystar.gov/index.cfm?c=diy.diy_index',
 		learn_more_title: 'Likely Source for Energy Loss',
 		clue: 'Air is money',
 		question: 'Which of these pictures shows money being wasted?',
@@ -113,7 +113,7 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'Air Leaks',
-		learn_more_url: '',
+		learn_more_url: 'http://www.energyefficientsolutions.com/smoke_pen.asp',
 		clue: 'James from Fernley learned an inexpensive trick from his brother on how to detect a leak, while keeping things fragrant...',
 		question: 'Is an incense stick an effective and inexpensive tool to save energy?',
 		answers: [

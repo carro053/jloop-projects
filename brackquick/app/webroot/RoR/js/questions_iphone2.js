@@ -7,7 +7,7 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'NERC-CIP',
-		learn_more_url: '',
+		learn_more_url: 'http://www.nerc.com/files/CIP-005-4.pdf',
 		clue: 'From personal to digital',
 		question: 'What does NERC CIP Standard CIP-005 focus on? ',
 		answers: [
@@ -28,7 +28,7 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'NERC-CIP',
-		learn_more_url: '',
+		learn_more_url: 'http://www.nerc.com/files/CIP-007-4.pdf',
 		clue: 'Keep it lean',
 		question: 'What must be done with ports and services not used for normal operations or emergencies?',
 		answers: [
