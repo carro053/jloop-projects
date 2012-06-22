@@ -363,7 +363,7 @@
 					$('#learnMoreLoading').fadeOut(1000);
 					
 					$('#browser').show();
-					var properties = {top: '6px'};
+					var properties = {left: '0px'};
 					var options = {
 						duration: 500,
 						easing: 'swing',
@@ -377,8 +377,20 @@
 			
 			function closeBrowser()
 			{
-				$('#browser').hide();
-				$('#browser').css('top','486px');
+				setTimeout(function() { 
+					var properties = {left: '320px'};
+					var options = {
+						duration: 500,
+						easing: 'swing',
+						complete: function() {
+							$('#browser').hide();
+						}
+					};
+					$('#browser').animate(properties, options);
+				}, 2000);
+				
+				
+				//$('#browser').css('left','486px');
 			}
 			
 			function animateAnswerImage() {
@@ -848,8 +860,9 @@
 				z-index: 10;
 				position: relative;
 				background: url(img/browser.png);
-				top: 486px;
-				/* display: none; */
+				top: 24px;
+				left: 320px;
+				display: none;
 			}
 			
 			#learnMoreGameTitle {
