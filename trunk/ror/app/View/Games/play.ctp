@@ -381,7 +381,7 @@ if($game['Game']['has_icon'])
 			
 			function learnMoreLoadScreen()
 			{
-				$('#browserIframe').attr('src',question.learn_more_url);
+				//$('#browserIframe').attr('src',question.learn_more_url);
 			
 				$('#learnMoreGameTitle').html(question.category);
 				$('#learnMoreTitle').html(question.learn_more_title);
