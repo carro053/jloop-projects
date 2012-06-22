@@ -909,7 +909,7 @@ if($game['Game']['has_icon'])
 				height: 400px;
 				width: 320px;
 				zoom: 0.5;
-				top: 40px;
+				padding-top: 44px;
 			}
 			
 			#learnMoreGameTitle {
