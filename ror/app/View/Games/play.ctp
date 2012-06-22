@@ -907,7 +907,7 @@ if($game['Game']['has_icon'])
 			
 			#browserIframe {
 				height: 400px;
-				widows: 320px;
+				width: 320px;
 				zoom: 0.5;
 				top: 40px;
 			}
