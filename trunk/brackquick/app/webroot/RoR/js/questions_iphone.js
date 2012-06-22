@@ -16,7 +16,7 @@ var questions = [
 			'11-3-514.png',
 			'11-4-514.png'
 			],
-		correct_answer_index: 1,
+		correct_answer_index: 2,
 		insight: 'Door-sweeps screw in easily to the bottom of the door.  In summer they keep John\'s cool air in, warm air out and money in his pocket.'
 	},
 	
@@ -28,7 +28,8 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'Air Leaks',
-		learn_more_url: 'http://www.youtube.com/watch?v=Kz5obdcraY4',
+		learn_more_title: '',
+		learn_more_url: 'TEST',
 		clue: 'Only 15 percent of air leakage is through windows and doors',
 		question: 'Which of these sealing actions can lower your bill, even more so than replacing windows?',
 		answers: [
@@ -38,7 +39,7 @@ var questions = [
 			'Wearing full-body spandex'
 			],
 		correct_answer_index: 0,
-		insight: 'Caulking the attic and foundation is often neglected as an impactful money saver.  Check and don\'t neglect: http://www.youtube.comwatch?v=Kz5obdcraY4'
+		insight: 'Caulking the attic and foundation is often neglected as an impactful money saver.  Check and don\'t neglect (follow the "learn more" link).'
 	},
 	
 	{
@@ -113,7 +114,8 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'Air Leaks',
-		learn_more_url: 'http://www.energyefficientsolutions.com/smoke_pen.asp',
+		learn_more_title: '',
+		learn_more_url: 'TEST',
 		clue: 'James from Fernley learned an inexpensive trick from his brother on how to detect a leak, while keeping things fragrant...',
 		question: 'Is an incense stick an effective and inexpensive tool to save energy?',
 		answers: [
@@ -123,7 +125,7 @@ var questions = [
 			'It\'s groovy.  Just groovy.'
 			],
 		correct_answer_index: 1,
-		insight: 'When James holds up the lit incense, the smoke moves horizontally instead of upward, indicating an airleak that needs sealing.  Click "learn more" for an alternative.'
+		insight: 'When James holds up the lit incense, the smoke moves horizontally instead of upward, indicating an air leak that needs sealing.  Click "learn more" for an alternative.'
 	},
 	
 	{
