@@ -138,6 +138,13 @@
 			<td class="note"><?php echo $this->Form->input('prize_note',array('label'=>false)); ?></td>
 		</tr>
 		<tr>
+			<td><label>Learn More Title</label></td>
+			<td>
+			<?php echo $this->Form->input('learn_more_title',array('label'=>false)); ?>
+			</td>
+			<td class="note"><?php echo $this->Form->input('learn_more_title_note',array('label'=>false)); ?></td>
+		</tr>
+		<tr>
 			<td><label>Learn More URL</label></td>
 			<td>
 			<?php echo $this->Form->input('learn_more_url',array('label'=>false)); ?>
