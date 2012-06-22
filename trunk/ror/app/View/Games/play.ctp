@@ -868,10 +868,27 @@ if($game['Game']['has_icon'])
 				display: none;
 			}
 			
-			#learnMoreTitle {
-				color: white;
+			#learnMoreGameTitle {
+				color: gray;
 				text-align: center;
-				padding-top: 200px;
+				padding-top: 3px;
+				font-family: sans-serif;
+				font-weight: bold;
+				font-size: 12px;
+			}
+			
+			#learnMoreTitle {
+				color: gray;
+				text-align: center;
+				padding-top: 50px;
+				font-family: sans-serif;
+				font-weight: bold;
+				font-size: 14px;
+			}
+			
+			#loadingGif {
+				padding-left: 66px;
+				padding-top: 12px;
 			}
 			
 			#timelineButton {
@@ -973,7 +990,9 @@ if($game['Game']['has_icon'])
 		<img id="shadow" src="/img/shadow.png" /> <!-- DESKTOP -->
 		<div id="timeline">
 			<div id="learnMoreLoading">
+				<p id="learnMoreGameTitle">Game Title</p>
 				<h2 id="learnMoreTitle">Learn More About Stuff!</h2>
+				<img id="loadingGif" src="img/loading.gif" />
 			</div>
 			<div id="app">
 				<div id="backButton"></div>
