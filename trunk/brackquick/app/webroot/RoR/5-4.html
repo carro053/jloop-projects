@@ -75,7 +75,9 @@
 			$('#title').fadeIn(1000, function() { $('#mailPiece').hide(); $('#title').fadeOut(1000, function() { $('#oPower').attr('onclick','fadeToBlack();'); }); } );
 		}
 		function fadeToBlack() {
-			$('#title').fadeIn(1000);
+			$('#title').fadeIn(1000, function() {
+				window.location = '5-5.html';
+			});
 		}
 	</script>
 </html>
