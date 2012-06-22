@@ -899,7 +899,7 @@ if($game['Game']['has_icon'])
 				height: 462px;
 				z-index: 10;
 				position: relative;
-				background: url(img/browser.png);
+				background: url(/img/browser.png);
 				top: 24px;
 				left: 320px;
 				display: none;
@@ -1029,7 +1029,7 @@ if($game['Game']['has_icon'])
 			<div id="learnMoreLoading">
 				<p id="learnMoreGameTitle">Game Title</p>
 				<h2 id="learnMoreTitle">Learn More About Stuff!</h2>
-				<img id="loadingGif" src="img/loading.gif" />
+				<img id="loadingGif" src="/img/loading.gif" />
 			</div>
 			<div id="app">
 				<div id="backButton"></div>
