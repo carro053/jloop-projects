@@ -7,7 +7,7 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'How to Read Your Bill',
-		learn_more_url: 'http://google.com',
+		learn_more_url: 'https://www.nvenergy.com/home/paymentbilling/myaccount.cfm',
 		clue: 'Joe from Carson City is "upgrading" his stuff. (Translation: he\'s reliving his youth). Joe\'s wife warns him that his new stuff may be more expensive than the pricetags show...',
 		question: 'Which of these new additions will likely mean a change in the electric bill?',
 		answers: [
@@ -28,7 +28,7 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'How to Read Your Bill',
-		learn_more_url: '',
+		learn_more_url: 'https://www.nvenergy.com/home/paymentbilling/toucalc.cfm',
 		clue: 'Lisa in Las Vegas knows her phone carrier charges differently in daytime (onpeak) than in evening (off-peak). Lisa goes online to see if her electric bill works the same way.',
 		question: 'Which hours apply to the optional Time Of Use (TOU) plan:',
 		answers: [
@@ -49,7 +49,7 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'How to Read Your Bill',
-		learn_more_url: '',
+		learn_more_url: 'https://www.nvenergy.com/home/paymentbilling/equalpayment.cfm',
 		clue: 'Jason from Lovelock loves things to be predictable. Seriously, if we gave away the answer to this question up front, Jason would be a happy man.',
 		question: 'Why might your electricity bill be the exact same amount month after month?',
 		answers: [
@@ -70,7 +70,7 @@ var questions = [
 		clue_type: 'image',
 		insight_type: 'text',
 		category: 'How to Read Your Bill',
-		learn_more_url: '',
+		learn_more_url: 'https://www.nvenergy.com/home/saveenergy/energytips.cfm',
 		clue: '4-448.png',
 		question: 'True or False? In the clue shown, the customer used LESS electricity in July 2011 than in July of the previous year.',
 		answers: [
@@ -91,7 +91,7 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'How to Read Your Bill',
-		learn_more_url: '',
+		learn_more_url: 'https://www.nvenergy.com/home/customercare/index.cfm',
 		clue: 'Amber at UNLV is on a budget. Her dad\'s budget, to be precise. He asks his daughter to reduce her monthly power bill by $10.',
 		question: 'What is an online bill calculator?',
 		answers: [
@@ -112,7 +112,7 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'How to Read Your Bill',
-		learn_more_url: '',
+		learn_more_url: 'https://www.nvenergy.com/home/saveenergy/rebates/index.cfm',
 		clue: 'Helen and Gracie from Henderson won\'t touch computers. But they love to compete for who can find the best rebates!',
 		question: 'When paying your bill online, where do you find out if you qualify for rebates?',
 		answers: [
@@ -133,7 +133,7 @@ var questions = [
 		clue_type: 'image',
 		insight_type: 'text',
 		category: 'How to Read Your Bill',
-		learn_more_url: '',
+		learn_more_url: 'https://www.nvenergy.com/home/customercare/understandyourbill.cfm',
 		clue: '7-473.png',
 		question: 'True or False? The Billing Usage column on your bill shows how many units of energy (kWh) your household consumed.',
 		answers: [
@@ -154,7 +154,7 @@ var questions = [
 		clue_type: 'image',
 		insight_type: 'text',
 		category: 'How to Read Your Bill',
-		learn_more_url: '',
+		learn_more_url: 'http://www.energysavers.gov/tips/',
 		clue: '179-518.png',
 		question: 'True or False? In Nevada\'s Mojave Desert, the Sand Flibbert can live its entire life without drinking a drop of liquid.',
 		answers: [
