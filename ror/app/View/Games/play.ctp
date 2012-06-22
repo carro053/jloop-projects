@@ -1035,7 +1035,7 @@ if($game['Game']['has_icon'])
 		<div id="timeline">
 			<div id="app">
 				<div id="browser" onclick="closeBrowser();">
-					<iframe src="http://www.w3schools.com"></iframe>
+					<iframe id="browserIframe" src="http://www.w3schools.com"></iframe>
 				</div>
 				<div id="learnMoreLoading">
 					<p id="learnMoreGameTitle">Game Title</p>
