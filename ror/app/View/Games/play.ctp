@@ -449,7 +449,7 @@ if($game['Game']['has_icon'])
 									{top: drawer_bottom+'px'},
 									{duration: 1000, easing: 'swing'}
 								);
-							}, 5000);
+							}, 2000);
 						}
 					}
 				};
