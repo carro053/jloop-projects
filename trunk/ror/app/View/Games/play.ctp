@@ -1026,12 +1026,13 @@ if($game['Game']['has_icon'])
 	<body>
 		<img id="shadow" src="/img/shadow.png" /> <!-- DESKTOP -->
 		<div id="timeline">
-			<div id="learnMoreLoading">
-				<p id="learnMoreGameTitle">Game Title</p>
-				<h2 id="learnMoreTitle">Learn More About Stuff!</h2>
-				<img id="loadingGif" src="/img/loading.gif" />
-			</div>
 			<div id="app">
+				<div id="browser" onclick="closeBrowser();"></div>
+				<div id="learnMoreLoading">
+					<p id="learnMoreGameTitle">Game Title</p>
+					<h2 id="learnMoreTitle">Learn More About Stuff!</h2>
+					<img id="loadingGif" src="/img/loading.gif" />
+				</div>
 				<div id="backButton"></div>
 				<div id="buttons">
 					<p id="category"></p>
