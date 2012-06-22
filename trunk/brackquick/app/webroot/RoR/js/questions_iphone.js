@@ -70,7 +70,7 @@ var questions = [
 		clue_type: 'text',
 		insight_type: 'text',
 		category: 'Air Leaks',
-		learn_more_url: '',
+		learn_more_url: 'TEST',
 		clue: 'Air is money',
 		question: 'Which of these pictures shows money being wasted?',
 		answers: [
