@@ -71,6 +71,7 @@ var questions = [
 		insight_type: 'text',
 		category: 'Air Leaks',
 		learn_more_url: 'TEST',
+		learn_more_title: 'Likely Source for Energy Loss',
 		clue: 'Air is money',
 		question: 'Which of these pictures shows money being wasted?',
 		answers: [

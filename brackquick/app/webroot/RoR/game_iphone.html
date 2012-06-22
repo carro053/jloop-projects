@@ -344,8 +344,8 @@
 				//Learn More button
 				if(question.learn_more_url)
 				{
-					
 					$('#drawer').append('<div id="learnMoreButton" onclick="learnMoreLoadScreen();"></div>');
+					$('#learnMoreTitle').html(question.learn_more_title);
 				}
 
 			}
