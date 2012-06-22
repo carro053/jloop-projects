@@ -335,7 +335,8 @@
 				{
 					drawer_top = '120';
 					drawer_bottom = '468';
-					$('#drawer').css('background-image', 'url(img/prizes/'+question.prize+')');
+					$('#drawer').css('background-image', 'url(img/prizes/bg.png)');
+					$('#drawer').html('<img class="prize-image" src="img/prizes/'+question.prize+'" /><span class="prize-text">'+question.prize_text+'</span>');
 				}else if (question.learn_more_url) {
 					drawer_top = '364';
 					drawer_bottom = '468';
@@ -962,6 +963,23 @@
 			}
 			#title h2 {
 				margin: 80px 0 0 0;
+			}
+			.prize-image {
+				margin-left: 37px;
+				margin-top: 68px;
+				display: block;
+			}
+			.prize-text {
+				display: block;
+				width: 235px;
+				margin-left: 39px;
+				margin-top: 11px;
+				font-size: 11px;
+				font-family: Helvetica;
+				color: 
+				#666;
+				text-align: left;
+				line-height: 14px;
 			}
 		</style>
 	</head>
