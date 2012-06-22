@@ -352,10 +352,12 @@
 			
 			function learnMoreLoadScreen()
 			{
-				$('#learnMoreLoading').show();
+				//$('#learnMoreLoading').show();
+				$('#learnMoreLoading').fadeIn(1000);
 				setTimeout(function() { 
 					window.open(question.learn_more_url);
-					$('#learnMoreLoading').hide();
+					//$('#learnMoreLoading').hide();
+					$('#learnMoreLoading').fadeOut(1000);
 				}, 2000);
 			}
 			
