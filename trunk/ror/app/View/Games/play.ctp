@@ -905,6 +905,13 @@ if($game['Game']['has_icon'])
 				display: none;
 			}
 			
+			#browserIframe {
+				height: 400px;
+				widows: 320px;
+				zoom: 0.5;
+				top: 40px;
+			}
+			
 			#learnMoreGameTitle {
 				color: gray;
 				text-align: center;
@@ -1027,7 +1034,9 @@ if($game['Game']['has_icon'])
 		<img id="shadow" src="/img/shadow.png" /> <!-- DESKTOP -->
 		<div id="timeline">
 			<div id="app">
-				<div id="browser" onclick="closeBrowser();"></div>
+				<div id="browser" onclick="closeBrowser();">
+					<iframe src="http://www.w3schools.com"></iframe>
+				</div>
 				<div id="learnMoreLoading">
 					<p id="learnMoreGameTitle">Game Title</p>
 					<h2 id="learnMoreTitle">Learn More About Stuff!</h2>
