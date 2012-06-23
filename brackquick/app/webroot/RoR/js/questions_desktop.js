@@ -123,7 +123,7 @@ var questions = [
 			'look for the link at the bottom of NVE\'s webpage',
 			'all of the above'
 			],
-		correct_answer_index: 4,
+		correct_answer_index: 3,
 		insight: 'Helen called by phone. But Gracie found more rebates by asking her grandson to go online. True, the ice cream bribe was a bit unfair. Visit nvenergy.com to see what he found.'
 	},
 	
