@@ -30,16 +30,19 @@ class TwilioController extends AppController {
 	}
 	
 	public function registerTwilioUser() {
+		$this->log('registerTwilioUser', 'debug');
 		$this->TwilioUser->create();
 		$user['TwilioUser']['number'] = $_REQUEST['From'];
 		$this->TwilioUser->save($user);
 	}
 	
 	public function updateTwilioUser() {
+		$this->log('updateTwilioUser', 'debug');
 		$this->log($user, 'debug');
 	}
 	
 	public function conversation($destroy=false) {
+		$this->log('conversation', 'debug');
 		$conversation = array(
 			0 => array(
 				'message' => 'Text "answer"',
