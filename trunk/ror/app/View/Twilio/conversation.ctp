@@ -1,5 +1,8 @@
-<?php header("content-type: text/xml"); ?>
-<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<?php
+	header("content-type: text/xml");
+	echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+?>
+
 <Response>
 	<Sms>Count: <?php echo $counter; ?></Sms>
 </Response>
