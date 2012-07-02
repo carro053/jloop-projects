@@ -25,7 +25,8 @@ class TwilioController extends AppController {
 			}
 		} else {
 			echo 'Not SMS';
-			die;
+			//die;
+			$this->updateTwilioUser();
 		}
 	}
 	
