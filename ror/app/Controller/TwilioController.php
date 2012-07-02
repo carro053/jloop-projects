@@ -48,6 +48,4 @@ class TwilioController extends AppController {
 			echo "Sent message to $name";
 		}
 	}
-	
-	die;
 }
