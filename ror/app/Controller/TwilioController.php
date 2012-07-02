@@ -15,16 +15,16 @@ class TwilioController extends AppController {
 	
 	public function conversation() {
 		//App::import('Vendor', 'Twilio', array('file' => 'Twilio' . DS . 'Services' . DS . 'Twilio.php'));
-		/*if(isset($_REQUEST['From'])) {
+		if(isset($_REQUEST['From'])) {
 			$user = $this->TwilioUser->findByNumber($_REQUEST['From']);
 			if(!$user) {
-				$this->TwilioUser->create();
-				$user['TwilioUser']['number'] = $_REQUEST['From'];
-				$this->TwilioUser->save($user);
+				//$this->TwilioUser->create();
+				//$user['TwilioUser']['number'] = $_REQUEST['From'];
+				//$this->TwilioUser->save($user);
 				$text = 'Please enter your name.';
 			} elseif(empty($user['TwilioUser']['name'])) {
-				$user['TwilioUser']['name'] = $_REQUEST['Body'];
-				$this->TwilioUser->save($user);
+				//$user['TwilioUser']['name'] = $_REQUEST['Body'];
+				//$this->TwilioUser->save($user);
 				$text = 'Thank you for updating your name!';
 			} else {
 				$text = 'You are all set';
@@ -33,7 +33,7 @@ class TwilioController extends AppController {
 		} else {
 			echo 'Not SMS';
 			die;
-		}*/
+		}
 		
 		//logic
 		$text = 'You are all set';
