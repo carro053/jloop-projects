@@ -14,6 +14,17 @@ class TwilioController extends AppController {
 		die;
 	}
 	
+	public function conversation() {
+		$counter = $this->Session->read('Counter');
+		if(!$counter)
+			$counter = 0;
+		
+		$this->Session->write('Counter', $counter);
+		
+		$this->log("Something", 'debug');
+		die;
+	}
+	
 	public function sendTest() {
 	
 		$AccountSid = "AC381c7e26c9a5de66108a8fd7f46f841a";
