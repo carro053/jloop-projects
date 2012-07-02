@@ -15,8 +15,10 @@ class TwilioController extends AppController {
 		die;
 	}
 	
-	public function conversation() {
-		/*$conversation = array(
+	public function conversation($destroy=false) {
+		if($destroy)
+			$this->Session->destroy();
+		$conversation = array(
 			0 => array(
 				'message' => 'Text "answer"',
 				'answer' => 'answer',
@@ -38,18 +40,18 @@ class TwilioController extends AppController {
 				'error' => 'You are already entered to win.'
 			),
 		);
-	
 		$counter = $this->Session->read('Counter');
 		if(!$counter)
 			$counter = 0;
 		
-		$check = $conversation[$counter];
-		if($check['answer'] == $_REQUEST)
-		
-		$counter++;
-		
-		$this->Session->write('Counter', $counter);*/
-		
+		if($conversation[$counter]['answer'] == $_REQUEST['Body']) {
+			$counter++;
+			$text = $conversation[$counter]['error'];
+		} else {
+			$text = $conversation[$counter]['message'];
+		}
+		$this->set('text', $text);
+		$this->Session->write('Counter', $counter);
 		$this->log($_REQUEST, 'debug');
 	}
 	
