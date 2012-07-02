@@ -1,7 +1,7 @@
 <?php
 class TwilioController extends AppController {
 
-	public $name = "TwilioController";
+	public $name = "Twilio";
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
