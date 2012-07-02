@@ -11,40 +11,35 @@ class TwilioController extends AppController {
 	public function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow('*');
-		$this->getTwilioUser();
-		App::import('Vendor', 'Twilio', array('file' => 'Twilio' . DS . 'Services' . DS . 'Twilio.php'));
 	}
 	
-	private function getTwilioUser() {
+	public function conversation() {
+		App::import('Vendor', 'Twilio', array('file' => 'Twilio' . DS . 'Services' . DS . 'Twilio.php'));
 		if(isset($_REQUEST['From'])) {
 			$user = $this->TwilioUser->findByNumber($_REQUEST['From']);
 			if(!$user) {
-				$this->registerTwilioUser();
+				$this->TwilioUser->create();
+				$user['TwilioUser']['number'] = $_REQUEST['From'];
+				$this->TwilioUser->save($user);
+				$this->render('registerTwilioUser');
 			} elseif(empty($user['TwilioUser']['name'])) {
-				$this->updateTwilioUser();
+				$user['TwilioUser']['name'] = $_REQUEST['Body'];
+				$this->TwilioUser->save($user);
+				$this->render('updateTwilioUser');
+			} else {
+				$this->set('text', 'testing');
 			}
 		} else {
 			echo 'Not SMS';
-			//die;
-			$this->updateTwilioUser();
+			die;
 		}
-	}
 	
-	public function registerTwilioUser() {
-		$this->log('registerTwilioUser', 'debug');
-		$this->TwilioUser->create();
-		$user['TwilioUser']['number'] = $_REQUEST['From'];
-		$this->TwilioUser->save($user);
-		$this->render('registerTwilioUser');
-	}
 	
-	public function updateTwilioUser() {
-		$this->log('updateTwilioUser', 'debug');
-		$this->render('updateTwilioUser');
-		die;
-	}
 	
-	public function conversation($destroy=false) {
+	/*
+	
+	
+	
 		$this->log('conversation', 'debug');
 		$conversation = array(
 			0 => array(
@@ -78,7 +73,7 @@ class TwilioController extends AppController {
 		} else {
 			$text = $conversation[$counter]['error'];
 		}
-		$this->set('text', $text);
+		$this->set('text', $text);*/
 		//$this->log($_REQUEST, 'debug');
 	}
 	
