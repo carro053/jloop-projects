@@ -16,7 +16,7 @@ class TwilioController extends AppController {
 	}
 	
 	public function conversation($destroy=false) {
-		if($destroy)
+		if($destroy || $_REQUEST['Body'] == 'destroy')
 			$this->Session->destroy();
 		$conversation = array(
 			0 => array(
