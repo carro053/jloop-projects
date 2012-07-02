@@ -28,7 +28,6 @@ class TwilioController extends AppController {
 	}
 	
 	public function sendTest() {
-	
 		$AccountSid = "AC381c7e26c9a5de66108a8fd7f46f841a";
 		$AuthToken = "2616c3dda6897aa8f1dc3c0f346f18b1";
 		
