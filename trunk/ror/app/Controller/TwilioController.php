@@ -16,7 +16,7 @@ class TwilioController extends AppController {
 	public function conversation() {
 		//App::import('Vendor', 'Twilio', array('file' => 'Twilio' . DS . 'Services' . DS . 'Twilio.php'));
 		if(isset($_REQUEST['From'])) {
-			$user = $this->TwilioUser->findByNumber($_REQUEST['From']);
+			//$user = $this->TwilioUser->findByNumber($_REQUEST['From']);
 			if(!$user) {
 				//$this->TwilioUser->create();
 				//$user['TwilioUser']['number'] = $_REQUEST['From'];
