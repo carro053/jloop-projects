@@ -4,5 +4,5 @@
 ?>
 
 <Response>
-	<Sms><?php echo "test!"; ?></Sms>
+	<Sms><?php echo $text; ?></Sms>
 </Response>
