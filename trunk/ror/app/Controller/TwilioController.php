@@ -46,9 +46,9 @@ class TwilioController extends AppController {
 		
 		if($conversation[$counter]['answer'] == $_REQUEST['Body']) {
 			$counter++;
-			$text = $conversation[$counter]['error'];
-		} else {
 			$text = $conversation[$counter]['message'];
+		} else {
+			$text = $conversation[$counter]['error'];
 		}
 		$this->set('text', $text);
 		$this->Session->write('Counter', $counter);
