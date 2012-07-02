@@ -16,6 +16,29 @@ class TwilioController extends AppController {
 	}
 	
 	public function conversation() {
+		$conversation = array(
+			0 => array(
+				'message' => 'Text "answer"',
+				'answer' => 'answer',
+				'error' => 'Please try again. Text "answer"'
+			),
+			1 => array(
+				'message' => 'Please text the words/numbers in the orange box. [123]',
+				'answer' => '123',
+				'error' => 'Please try again. [123]'
+			),
+			2 => array(
+				'message' => 'Great! Now text "321"',
+				'answer' => '321',
+				'error' => 'Please try again. [321]'
+			),
+			3 => array(
+				'message' => 'Fantastic! You are entered to win this week\'s prize!',
+				'answer' => '987643',
+				'error' => 'You are already entered to win.'
+			),
+		);
+	
 		$counter = $this->Session->read('Counter');
 		if(!$counter)
 			$counter = 0;
