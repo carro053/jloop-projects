@@ -2,6 +2,7 @@
 class TwilioController extends AppController {
 
 	public $name = 'Twilio';
+	public $layout = false;
 	
 	public function beforeFilter() {
 		parent::beforeFilter();
@@ -24,7 +25,6 @@ class TwilioController extends AppController {
 		$this->Session->write('Counter', $counter);
 		
 		$this->log("Coutner: $counter", 'debug');
-		die;
 	}
 	
 	public function sendTest() {
