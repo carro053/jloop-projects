@@ -36,7 +36,7 @@ class TwilioController extends AppController {
 	}
 	
 	public function updateTwilioUser() {
-		
+		$this->log($user, 'debug');
 	}
 	
 	public function conversation($destroy=false) {
