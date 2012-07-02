@@ -4,5 +4,5 @@
 ?>
 
 <Response>
-	<Sms>Count: <?php echo $counter; ?></Sms>
+	<Sms>Count: <?php echo "test!"; ?></Sms>
 </Response>
