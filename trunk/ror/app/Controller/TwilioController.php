@@ -16,7 +16,7 @@ class TwilioController extends AppController {
 	}
 	
 	public function conversation() {
-		$conversation = array(
+		/*$conversation = array(
 			0 => array(
 				'message' => 'Text "answer"',
 				'answer' => 'answer',
@@ -43,13 +43,14 @@ class TwilioController extends AppController {
 		if(!$counter)
 			$counter = 0;
 		
+		$check = $conversation[$counter];
+		if($check['answer'] == $_REQUEST)
+		
 		$counter++;
 		
-		$this->Session->write('Counter', $counter);
+		$this->Session->write('Counter', $counter);*/
 		
-		$this->log("Coutner: $counter", 'debug');
-		
-		$this->set('counter', $counter);
+		$this->log($_REQUEST, 'debug');
 	}
 	
 	public function sendTest() {
