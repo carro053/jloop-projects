@@ -21,19 +21,23 @@ class TwilioController extends AppController {
 				$this->TwilioUser->create();
 				$user['TwilioUser']['number'] = $_REQUEST['From'];
 				$this->TwilioUser->save($user);
-				$this->render('register');
+				$text = 'Please enter your name.';
 			} elseif(empty($user['TwilioUser']['name'])) {
 				$user['TwilioUser']['name'] = $_REQUEST['Body'];
 				$this->TwilioUser->save($user);
-				$this->render('update');
+				$text = 'Thank you for updating your name!';
 			} else {
-				$this->set('text', 'testing');
+				$text = 'You are all set';
+				
 			}
 		} else {
 			echo 'Not SMS';
 			die;
 		}
-	
+		
+		//logic
+		
+		$this->set('text', $text);
 	
 	
 	/*
