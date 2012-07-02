@@ -25,6 +25,8 @@ class TwilioController extends AppController {
 		$this->Session->write('Counter', $counter);
 		
 		$this->log("Coutner: $counter", 'debug');
+		
+		$this->set('counter', $counter);
 	}
 	
 	public function sendTest() {
