@@ -40,7 +40,6 @@ class TwilioController extends AppController {
 	
 	public function updateTwilioUser() {
 		$this->log('updateTwilioUser', 'debug');
-		$this->log($user, 'debug');
 		$this->render('updateTwilioUser');
 	}
 	
