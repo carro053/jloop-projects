@@ -30,9 +30,8 @@ class TwilioController extends AppController {
 				$this->set('text', 'testing');
 			}
 		} else {
-			$this->render('register');
-			//echo 'Not SMS';
-			//die;
+			echo 'Not SMS';
+			die;
 		}
 	
 	
