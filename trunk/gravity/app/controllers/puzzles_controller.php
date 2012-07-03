@@ -110,7 +110,7 @@ class PuzzlesController extends AppController {
  		echo 'YES';
  		if($hd)
  		{
- 			$hd_part = '-hd';
+ 			$hd_part = '@2x';
  		}else{
  			$hd_part = '';
  		}
