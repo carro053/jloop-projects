@@ -14,7 +14,7 @@ class TwilioController extends AppController {
 	}
 	
 	public function conversation() {
-		if(isset($_REQUEST['From'])) {
+		if(/*isset($_REQUEST['From'])*/true) {
 			$user = $this->TwilioUser->findByNumber($_REQUEST['From']);
 			if(!$user) {
 				$this->TwilioUser->create();
