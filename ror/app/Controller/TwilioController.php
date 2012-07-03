@@ -14,7 +14,7 @@ class TwilioController extends AppController {
 	}
 	
 	public function conversation() {
-		/*if(isset($_REQUEST['From'])) {
+		if(isset($_REQUEST['From'])) {
 			//$user = $this->TwilioUser->findByNumber($_REQUEST['From']);
 			if(!$user) {
 				//$this->TwilioUser->create();
@@ -32,10 +32,10 @@ class TwilioController extends AppController {
 		} else {
 			echo 'Not SMS';
 			die;
-		}*/
+		}
 		
 		//logic
-		$text = 'You are all set';
+		//$text = 'You are all set';
 		$this->set('text', $text);
 	
 	
