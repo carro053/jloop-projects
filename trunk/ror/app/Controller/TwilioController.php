@@ -16,8 +16,6 @@ class TwilioController extends AppController {
 	public function conversation() {
 		header("content-type: text/xml");
 		echo '<?xml version="1.0" encoding="UTF-8"?>'."\n";
-		$_REQUEST['From'] = 123456789;
-		$_REQUEST['Body'] = 'yes';
 		if(isset($_REQUEST['From']) && !empty($_REQUEST['From'])) {
 			$user = $this->TwilioUser->findByNumber($_REQUEST['From']);
 			if(!$user) {
@@ -43,7 +41,7 @@ class TwilioController extends AppController {
 		}
 		
 		//logic
-		$text = 'You are all set';
+		//$text = 'You are all set';
 		$this->set('text', $text);
 	
 	
