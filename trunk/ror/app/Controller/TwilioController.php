@@ -16,33 +16,7 @@ class TwilioController extends AppController {
 	public function conversation() {
 		header("content-type: text/xml");
 		echo '<?xml version="1.0" encoding="UTF-8"?>'."\n";
-		$conversation = array(
-			0 => array(
-				'check' => 'answer',
-				'right_text' => 'Please text the word "chicken"',
-				'wrong_text' => 'To play, text the word "answer"'
-			),
-			1 => array(
-				'check' => 'chicken',
-				'right_text' => 'Great! Please text the word "bacon"',
-				'wrong_text' => 'Sorry, that is incorrect. Text "chicken"'
-			),
-			2 => array(
-				'check' => 'bacon',
-				'right_text' => 'Excellent! Please text the word "avocado"',
-				'wrong_text' => 'Sorry, that is incorrect. Text "bacon"'
-			),
-			3 => array(
-				'check' => 'avocado',
-				'right_text' => 'Awesome! Please text the word "bread"',
-				'wrong_text' => 'Sorry, that is incorrect. Text "avocado"'
-			),
-			4 => array(
-				'check' => 'bread',
-				'right_text' => 'Fantastic! You are entered to win this weeks prize!',
-				'wrong_text' => 'Sorry, that is incorrect. Text "bread"'
-			),
-		);
+		
 		if(isset($_REQUEST['From']) && !empty($_REQUEST['From'])) {
 			$user = $this->TwilioUser->findByNumber($_REQUEST['From']);
 			if(!$user) {
@@ -54,11 +28,38 @@ class TwilioController extends AppController {
 				if(isset($_REQUEST['Body']) && !empty($_REQUEST['Body'])) {
 					$user['TwilioUser']['name'] = $_REQUEST['Body'];
 					$this->TwilioUser->save($user);
-					$text = 'Thank you for updating your name! Text "answer" to play.';
+					$text = 'Thank you, '.$user['TwilioUser']['name'].', for updating your name! Text "answer" to play.';
 				} else {
 					$text = 'Enter your name';
 				}
 			} else {
+				$conversation = array(
+					0 => array(
+						'check' => 'answer',
+						'right_text' => 'Please text the word "chicken"',
+						'wrong_text' => 'To play, text the word "answer"'
+					),
+					1 => array(
+						'check' => 'chicken',
+						'right_text' => 'Great job '.$user['TwilioUser']['name'].'! Please text the word "bacon"',
+						'wrong_text' => 'Sorry, that is incorrect. Text "chicken"'
+					),
+					2 => array(
+						'check' => 'bacon',
+						'right_text' => 'Excellent '.$user['TwilioUser']['name'].'! Please text the word "avocado"',
+						'wrong_text' => 'Sorry, that is incorrect. Text "bacon"'
+					),
+					3 => array(
+						'check' => 'avocado',
+						'right_text' => 'Awesome '.$user['TwilioUser']['name'].'! Please text the word "bread"',
+						'wrong_text' => 'Sorry, that is incorrect. Text "avocado"'
+					),
+					4 => array(
+						'check' => 'bread',
+						'right_text' => 'Fantastic '.$user['TwilioUser']['name'].'! You are entered to win this weeks prize!',
+						'wrong_text' => 'Sorry, that is incorrect. Text "bread"'
+					),
+				);
 				if(!isset($conversation[$user['TwilioUser']['stage']])) {
 					if($user['TwilioUser']['stage'] >= count($conversation)) {
 						$text = 'You are already entered to win this week!';
