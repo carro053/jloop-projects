@@ -14,8 +14,7 @@ class TwilioController extends AppController {
 	}
 	
 	public function conversation() {
-		//App::import('Vendor', 'Twilio', array('file' => 'Twilio' . DS . 'Services' . DS . 'Twilio.php'));
-		if(isset($_REQUEST['From'])) {
+		/*if(isset($_REQUEST['From'])) {
 			//$user = $this->TwilioUser->findByNumber($_REQUEST['From']);
 			if(!$user) {
 				//$this->TwilioUser->create();
@@ -33,7 +32,7 @@ class TwilioController extends AppController {
 		} else {
 			echo 'Not SMS';
 			die;
-		}
+		}*/
 		
 		//logic
 		$text = 'You are all set';
@@ -88,6 +87,8 @@ class TwilioController extends AppController {
 	}
 	
 	public function sendTest() {
+		App::import('Vendor', 'Twilio', array('file' => 'Twilio' . DS . 'Services' . DS . 'Twilio.php'));
+		
 		$AccountSid = "AC381c7e26c9a5de66108a8fd7f46f841a";
 		$AuthToken = "2616c3dda6897aa8f1dc3c0f346f18b1";
 		
