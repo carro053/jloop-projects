@@ -54,7 +54,7 @@ class TwilioController extends AppController {
 				if(isset($_REQUEST['Body']) && !empty($_REQUEST['Body'])) {
 					$user['TwilioUser']['name'] = $_REQUEST['Body'];
 					$this->TwilioUser->save($user);
-					$text = 'Thank you for updating your name!';
+					$text = 'Thank you for updating your name! Text "answer" to play.';
 				} else {
 					$text = 'Enter your name';
 				}
