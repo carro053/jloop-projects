@@ -16,27 +16,6 @@ class TwilioController extends AppController {
 	public function conversation() {
 		header("content-type: text/xml");
 		echo '<?xml version="1.0" encoding="UTF-8"?>'."\n";
-		if(isset($_REQUEST['From']) && !empty($_REQUEST['From'])) {
-			$user = $this->TwilioUser->findByNumber($_REQUEST['From']);
-			if(!$user) {
-				$this->TwilioUser->create();
-				$user['TwilioUser']['number'] = $_REQUEST['From'];
-				$this->TwilioUser->save($user);
-				$text = 'Please enter your name.';
-			} elseif(empty($user['TwilioUser']['name'])) {
-				if(isset($_REQUEST['Body']) && !empty($_REQUEST['Body'])) {
-					$user['TwilioUser']['name'] = $_REQUEST['Body'];
-					$this->TwilioUser->save($user);
-					$text = 'Thank you for updating your name!';
-				} else {
-					$text = 'Enter your name';
-				}
-			}
-		} else {
-			echo 'Not SMS';
-			die;
-		}
-		
 		$conversation = array(
 			0 => array(
 				'check' => 'answer',
@@ -64,21 +43,40 @@ class TwilioController extends AppController {
 				'wrong_text' => 'Sorry, that is incorrect. Text "bread"'
 			),
 		);
-		
-		if(!isset($conversation[$user['TwilioUser']['stage']])) {
-			if($user['TwilioUser']['stage'] >= count($conversation)) {
-				$text = 'You are already entered to win this week!';
+		if(isset($_REQUEST['From']) && !empty($_REQUEST['From'])) {
+			$user = $this->TwilioUser->findByNumber($_REQUEST['From']);
+			if(!$user) {
+				$this->TwilioUser->create();
+				$user['TwilioUser']['number'] = $_REQUEST['From'];
+				$this->TwilioUser->save($user);
+				$text = 'Please enter your name.';
+			} elseif(empty($user['TwilioUser']['name'])) {
+				if(isset($_REQUEST['Body']) && !empty($_REQUEST['Body'])) {
+					$user['TwilioUser']['name'] = $_REQUEST['Body'];
+					$this->TwilioUser->save($user);
+					$text = 'Thank you for updating your name!';
+				} else {
+					$text = 'Enter your name';
+				}
 			} else {
-				$text = 'Something went wrong...';
+				if(!isset($conversation[$user['TwilioUser']['stage']])) {
+					if($user['TwilioUser']['stage'] >= count($conversation)) {
+						$text = 'You are already entered to win this week!';
+					} else {
+						$text = 'Something went wrong...';
+					}
+				}elseif($conversation[$user['TwilioUser']['stage']]['check'] == $_REQUEST['Body']) {
+					$text = $conversation[$user['TwilioUser']['stage']]['right_text'];
+					$user['TwilioUser']['stage']++;
+					$this->TwilioUser->save($user);
+				} else {
+					$text = $conversation[$user['TwilioUser']['stage']]['wrong_text'];
+				}
 			}
-		}elseif($conversation[$user['TwilioUser']['stage']]['check'] == $_REQUEST['Body']) {
-			$text = $conversation[$user['TwilioUser']['stage']]['right_text'];
-			$user['TwilioUser']['stage']++;
-			$this->TwilioUser->save($user);
 		} else {
-			$text = $conversation[$user['TwilioUser']['stage']]['wrong_text'];
+			echo 'Not SMS';
+			die;
 		}
-		
 		$this->set('text', $text);
 		//$this->log($_REQUEST, 'debug');
 	}
