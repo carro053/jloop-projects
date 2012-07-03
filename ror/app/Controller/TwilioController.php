@@ -31,58 +31,55 @@ class TwilioController extends AppController {
 				} else {
 					$text = 'Enter your name';
 				}
-			} else {
-				$text = 'You are all set';
-				
 			}
 		} else {
 			echo 'Not SMS';
 			die;
 		}
 		
-		//logic
-		//$text = 'You are all set';
-		$this->set('text', $text);
-	
-	
-	/*
-	
-	
-	
-		$this->log('conversation', 'debug');
 		$conversation = array(
 			0 => array(
-				'message' => 'Text "answer"',
-				'answer' => 'answer',
-				'error' => 'Please try again. Text "answer"'
+				'check' => 'answer',
+				'right_text' => 'Please text the word "chicken"',
+				'wrong_text' => 'To play, text the word "answer"'
 			),
 			1 => array(
-				'message' => 'Please text the words/numbers in the orange box. [123]',
-				'answer' => '123',
-				'error' => 'Please try again. [123]'
+				'check' => 'chicken',
+				'right_text' => 'Great! Please text the word "bacon"',
+				'wrong_text' => 'Sorry, that is incorrect. Text "chicken"'
 			),
 			2 => array(
-				'message' => 'Great! Now text "321"',
-				'answer' => '321',
-				'error' => 'Please try again. [321]'
+				'check' => 'bacon',
+				'right_text' => 'Excellent! Please text the word "avocado"',
+				'wrong_text' => 'Sorry, that is incorrect. Text "bacon"'
 			),
 			3 => array(
-				'message' => 'Fantastic! You are entered to win this week\'s prize!',
-				'answer' => '987643',
-				'error' => 'You are already entered to win.'
+				'check' => 'avocado',
+				'right_text' => 'Awesome! Please text the word "bread"',
+				'wrong_text' => 'Sorry, that is incorrect. Text "avocado"'
+			),
+			4 => array(
+				'check' => 'bread',
+				'right_text' => 'Fantastic! You are entered to win this weeks prize!',
+				'wrong_text' => 'Sorry, that is incorrect. Text "bread"'
 			),
 		);
-		$counter = $this->Session->read('Counter');
-		if(!$counter)
-			$counter = 0;
 		
-		if($conversation[$counter]['answer'] == $_REQUEST['Body']) {
-			$counter++;
-			$text = $conversation[$counter]['message'];
+		if(!isset($conversation[$user['TwilioUser']['stage']])) {
+			if($user['TwilioUser']['stage'] >= count($conversation)) {
+				$text = 'You are already entered to win this week!';
+			} else {
+				$text = 'Something went wrong...';
+			}
+		}elseif($conversation[$user['TwilioUser']['stage']]['check'] == $_REQUEST['Body']) {
+			$text = $conversation[$user['TwilioUser']['stage']]['right_text'];
+			$user['TwilioUser']['stage']++;
+			$this->TwilioUser->save($user);
 		} else {
-			$text = $conversation[$counter]['error'];
+			$text = $conversation[$user['TwilioUser']['stage']]['wrong_text'];
 		}
-		$this->set('text', $text);*/
+		
+		$this->set('text', $text);
 		//$this->log($_REQUEST, 'debug');
 	}
 	
