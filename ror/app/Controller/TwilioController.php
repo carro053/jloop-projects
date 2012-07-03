@@ -102,15 +102,15 @@ class TwilioController extends AppController {
 		
 		$people = array(
 			//"+18183899197" => "Chris",
-			"+13105031577" => "Todd",
-			//"+14246341622" => "Mike",
+			//"+13105031577" => "Todd",
+			"+14246341622" => "Mike",
 		);
 		
 		foreach ($people as $number => $name) {
 			$sms = $client->account->sms_messages->create(
 				"+14155992671",
 				$number,
-				"Hey $name, Monkey Party at 6PM. Bring Bananas!"
+				"Hey $name, all texts you send must begin with 34734314 please respond to this and try the signup process"
 			);
 			
 			echo "Sent message to $name";
