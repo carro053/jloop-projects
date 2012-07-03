@@ -107,7 +107,7 @@ class TwilioController extends AppController {
 			$sms = $client->account->sms_messages->create(
 				"+14155992671",
 				$number,
-				"Hey $name, all texts you send must begin with 34734314 please respond to this and try the signup process"
+				"Hey $name, want to find out what I ate for lunch? Text \"34734314 answer\" to begin your EPIC journey!"
 			);
 			
 			echo "Sent message to $name";
