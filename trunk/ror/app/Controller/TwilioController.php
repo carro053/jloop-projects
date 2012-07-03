@@ -15,15 +15,15 @@ class TwilioController extends AppController {
 	
 	public function conversation() {
 		if(isset($_REQUEST['From'])) {
-			//$user = $this->TwilioUser->findByNumber($_REQUEST['From']);
+			$user = $this->TwilioUser->findByNumber($_REQUEST['From']);
 			if(!$user) {
-				//$this->TwilioUser->create();
-				//$user['TwilioUser']['number'] = $_REQUEST['From'];
-				//$this->TwilioUser->save($user);
+				$this->TwilioUser->create();
+				$user['TwilioUser']['number'] = $_REQUEST['From'];
+				$this->TwilioUser->save($user);
 				$text = 'Please enter your name.';
 			} elseif(empty($user['TwilioUser']['name'])) {
-				//$user['TwilioUser']['name'] = $_REQUEST['Body'];
-				//$this->TwilioUser->save($user);
+				$user['TwilioUser']['name'] = $_REQUEST['Body'];
+				$this->TwilioUser->save($user);
 				$text = 'Thank you for updating your name!';
 			} else {
 				$text = 'You are all set';
