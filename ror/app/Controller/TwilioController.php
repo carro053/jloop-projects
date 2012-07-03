@@ -85,7 +85,9 @@ class TwilioController extends AppController {
 	
 	public function test() {
 		$users = $this->TwilioUser->find('all');
+		echo '<pre>';
 		print_r($users);
+		echo '</pre>';
 		die;
 	}
 	
