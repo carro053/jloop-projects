@@ -133,7 +133,7 @@ class PuzzlesController extends AppController {
  		}
  		
  		$puzzle['Puzzle']['account_id'] = $account_id;
- 		$puzzle['Puzzle']['title'] = $json_data->title;
+ 		$puzzle['Puzzle']['title'] = $json_data->name;
  		$puzzle['Puzzle']['total_fuel'] = $json_data->total_fuel;
  		$puzzle['Puzzle']['start_x'] = $json_data->startPoint[0];
  		$puzzle['Puzzle']['start_y'] = $json_data->startPoint[1];
