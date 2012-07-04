@@ -115,4 +115,54 @@ class TwilioController extends AppController {
 		}
 		die;
 	}
+	
+	public function sms() {
+		header("content-type: text/xml");
+		echo '<?xml version="1.0" encoding="UTF-8"?>'."\n";
+		
+		if(isset($_REQUEST['From']) && !empty($_REQUEST['From'])) {
+			$user = $this->TwilioUser->findByNumber($_REQUEST['From']);
+			if(!$user) {
+				$this->TwilioUser->create();
+				$user['TwilioUser']['number'] = $_REQUEST['From'];
+				$this->TwilioUser->save($user);
+				$text = 'Welcome! To enter: please text your answer from the orange box.';
+			} elseif(empty($user['TwilioUser']['orange'])) {
+				if(isset($_REQUEST['Body']) && !empty($_REQUEST['Body'])) {
+					$user['TwilioUser']['orange'] = $_REQUEST['Body'];
+					$this->TwilioUser->save($user);
+					$text = 'Great job! Almost done: please text your answer from the blue box.';
+				} else {
+					$text = 'Please text your answer from the orange box.';
+				}
+			} elseif(empty($user['TwilioUser']['blue'])) {
+				if(isset($_REQUEST['Body']) && !empty($_REQUEST['Body'])) {
+					$user['TwilioUser']['blue'] = $_REQUEST['Body'];
+					$this->TwilioUser->save($user);
+					//look up user to see if in database to skip code part
+					$text = 'Awesome! To complete your entry, please text the 5-digit code on the bottom of your form.';
+				} else {
+					$text = 'Please text your answer from the blue box.';
+				}
+			} elseif(empty($user['TwilioUser']['code'])) {
+				if(isset($_REQUEST['Body']) && !empty($_REQUEST['Body'])) {
+					$user['TwilioUser']['code'] = $_REQUEST['Body'];
+					$this->TwilioUser->save($user);
+					//look up user from codes in database
+					$text = 'Thanks [NAME]. You are entered in this week’s contest. Winners announced Feb 14.';
+					//error message if user not found
+					//Sorry, we could not find that code in our database.
+				} else {
+					$text = 'Please text the 5-digit code on the bottom of your form.';
+				}
+			} else {
+				$text = 'You are already entered in this week’s contest. Winners announced Feb 14.';
+			}
+		} else {
+			echo 'Not SMS';
+			die;
+		}
+		$this->set('text', $text);
+		//$this->log($_REQUEST, 'debug');
+	}
 }
