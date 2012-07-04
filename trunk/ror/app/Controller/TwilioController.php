@@ -156,7 +156,7 @@ class TwilioController extends AppController {
 					$text = 'Please text the 5-digit code on the bottom of your form.';
 				}
 			} else {
-				$text = 'You are already entered in this week’s contest. Winners announced Feb 14.';
+				$text = 'You are already entered in this week\'s contest. Winners announced Feb 14.';
 			}
 		} else {
 			echo 'Not SMS';
