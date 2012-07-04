@@ -257,11 +257,14 @@ class PuzzlesController extends AppController {
  	function getPuzzle($puzzle_id)
  	{
  		$return = array();
+		$this->Puzzle->bindModel(array('belongsTo'=>array('Account'=>array('className'=>'Account','foreign_key'=>'account_id'))));
  		$puzzle = $this->Puzzle->find('first',array('conditions'=>'Puzzle.id = '.$puzzle_id));
  		$return['title'] = $puzzle['Puzzle']['title'];
  		$return['startData'] = array($puzzle['Puzzle']['start_x'],$puzzle['Puzzle']['start_y']);
  		$return['endData'] = array($puzzle['Puzzle']['end_x'],$puzzle['Puzzle']['end_y']);
  		$return['total_fuel'] = $puzzle['Puzzle']['total_fuel'];
+ 		$return['made_by'] = 'SpaceCadet #'.$puzzle['Account']['id'];
+ 		if($puzzle['Account']['username'] != '') $return['made_by'] = $puzzle['Account']['username'];
  		$return['least_fuel'] = $puzzle['Puzzle']['least_fuel_used'];
  		$return['fastest_time'] = $puzzle['Puzzle']['fastest_solution'];
  		$astronauts = $this->PuzzleAstronaut->find('all',array('conditions'=>'PuzzleAstronaut.puzzle_id = '.$puzzle_id));
@@ -289,14 +292,11 @@ class PuzzlesController extends AppController {
  	function getPuzzleWithSolution($puzzle_id,$solution_id)
  	{
  		$return = array();
-		$this->Puzzle->bindModel(array('belongsTo'=>array('Account'=>array('className'=>'Account','foreign_key'=>'account_id'))));
  		$puzzle = $this->Puzzle->find('first',array('conditions'=>'Puzzle.id = '.$puzzle_id));
  		$return['title'] = $puzzle['Puzzle']['title'];
  		$return['startData'] = array($puzzle['Puzzle']['start_x'],$puzzle['Puzzle']['start_y']);
  		$return['endData'] = array($puzzle['Puzzle']['end_x'],$puzzle['Puzzle']['end_y']);
  		$return['total_fuel'] = $puzzle['Puzzle']['total_fuel'];
- 		$return['made_by'] = 'SpaceCadet #'.$puzzle['Account']['id'];
- 		if($puzzle['Account']['username'] != '') $return['made_by'] = $puzzle['Account']['username'];
  		$return['least_fuel'] = $puzzle['Puzzle']['least_fuel_used'];
  		$return['fastest_time'] = $puzzle['Puzzle']['fastest_solution'];
  		$astronauts = $this->PuzzleAstronaut->find('all',array('conditions'=>'PuzzleAstronaut.puzzle_id = '.$puzzle_id));
