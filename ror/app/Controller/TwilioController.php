@@ -149,7 +149,7 @@ class TwilioController extends AppController {
 					$user['TwilioUser']['code'] = $_REQUEST['Body'];
 					$this->TwilioUser->save($user);
 					//look up user from codes in database
-					$text = 'Thanks [NAME]. You are entered in this week’s contest. Winners announced Feb 14.';
+					$text = 'Thanks [NAME]. You are entered in this week\'s contest. Winners announced Feb 14.';
 					//error message if user not found
 					//Sorry, we could not find that code in our database.
 				} else {
