@@ -342,7 +342,6 @@ class PuzzlesController extends AppController {
  		}
  		$return = array();
 		$this->Puzzle->bindModel(array('belongsTo'=>array('Account'=>array('className'=>'Account','foreign_key'=>'account_id'))));
- 		$puzzle = $this->Puzzle->find('first',array('conditions'=>'Puzzle.id = '.$puzzle_id));
 		$this->Puzzle->bindModel(array('hasOne'=>array('PuzzleVote'=>array('className'=>'PuzzleVote','foreign_key'=>'puzzle_id','conditions'=>'PuzzleVote.account_id = '.$account_id))));
  		$puzzle = $this->Puzzle->find('first',array('conditions'=>'Puzzle.id = '.$puzzle_id));
  		if($puzzle['PuzzleVote']['id'] > 0)
