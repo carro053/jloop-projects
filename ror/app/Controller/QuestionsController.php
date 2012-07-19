@@ -40,10 +40,10 @@ class QuestionsController extends AppController {
 				}else{
 					$data['type'] = 'NormalQuestion';
 					$data['answer'] = $question['Question']['correct_answer'];
-					$data['answer1_en_us'] = $question['Question']['answer_1_text'];
-					$data['answer2_en_us'] = $question['Question']['answer_2_text'];
-					$data['answer3_en_us'] = $question['Question']['answer_3_text'];
-					$data['answer4_en_us'] = $question['Question']['answer_4_text'];
+					$data['answer1_en_us'] = htmlspecialchars_decode($question['Question']['answer_1_text'], ENT_QUOTES);
+					$data['answer2_en_us'] = htmlspecialchars_decode($question['Question']['answer_2_text'], ENT_QUOTES);
+					$data['answer3_en_us'] = htmlspecialchars_decode($question['Question']['answer_3_text'], ENT_QUOTES);
+					$data['answer4_en_us'] = htmlspecialchars_decode($question['Question']['answer_4_text'], ENT_QUOTES);
 				}
 			}
 			$data['clueType'] = ucwords($question['Question']['clue_type']);
@@ -52,7 +52,7 @@ class QuestionsController extends AppController {
 			
 			if($question['Question']['clue_type'] == 'text')
 			{
-				$data['clueText_en_us'] = $question['Question']['clue_text'];
+				$data['clueText_en_us'] = htmlspecialchars_decode($question['Question']['clue_text'], ENT_QUOTES;
 			}else{
 				$data['clueText_en_us'] = null;
 				//image stuff goes here
@@ -60,7 +60,7 @@ class QuestionsController extends AppController {
 			
 			if($question['Question']['question_type'] == 'text')
 			{
-				$data['questionText_en_us'] = $question['Question']['question_text'];
+				$data['questionText_en_us'] = htmlspecialchars_decode($question['Question']['question_text'], ENT_QUOTES;
 			}else{
 				$data['questionText_en_us'] = null;
 				//image stuff goes here
@@ -68,7 +68,7 @@ class QuestionsController extends AppController {
 			
 			if($question['Question']['insight_type'] == 'text')
 			{
-				$data['insightText_en_us'] = $question['Question']['insight_text'];
+				$data['insightText_en_us'] = htmlspecialchars_decode($question['Question']['insight_text'], ENT_QUOTES;
 			}else{
 				$data['insightText_en_us'] = null;
 				//image stuff goes here
