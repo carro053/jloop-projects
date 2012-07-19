@@ -25,7 +25,10 @@ class QuestionsController extends AppController {
 			{
 				$data['type'] = 'PictureQuestion';
 				$data['answer'] = $question['Question']['correct_answer'];
-				
+				$data['answer1Image'] = '@'.WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-1-O.png';
+				$data['answer2Image'] = '@'.WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-2-O.png';
+				$data['answer3Image'] = '@'.WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-3-O.png';
+				$data['answer4Image'] = '@'.WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-4-O.png';
 				//image stuff
 			}else{
 				if(trim($question['Question']['answer_1_text']) == '' && trim($question['Question']['answer_2_text']) == '' && trim($question['Question']['answer_3_text']) == 'True' && trim($question['Question']['answer_4_text']) == 'False')
@@ -55,6 +58,7 @@ class QuestionsController extends AppController {
 				$data['clueText_en_us'] = htmlspecialchars_decode($question['Question']['clue_text'], ENT_QUOTES);
 			}else{
 				$data['clueText_en_us'] = null;
+				$data['clueImage'] = '@'.WWW_ROOT.'img'.DS.'clues'.DS.$question['Question']['id'].'-O.png';
 				//image stuff goes here
 			}
 			
@@ -63,6 +67,7 @@ class QuestionsController extends AppController {
 				$data['questionText_en_us'] = htmlspecialchars_decode($question['Question']['question_text'], ENT_QUOTES);
 			}else{
 				$data['questionText_en_us'] = null;
+				$data['questionImage'] = '@'.WWW_ROOT.'img'.DS.'questions'.DS.$question['Question']['id'].'-O.png';
 				//image stuff goes here
 			}
 			
@@ -71,16 +76,18 @@ class QuestionsController extends AppController {
 				$data['insightText_en_us'] = htmlspecialchars_decode($question['Question']['insight_text'], ENT_QUOTES);
 			}else{
 				$data['insightText_en_us'] = null;
+				$data['insightImage'] = '@'.WWW_ROOT.'img'.DS.'insights'.DS.$question['Question']['id'].'-O.png';
 				//image stuff goes here
 			}
 			$data['state'] = 'Draft';
 			pr($data);
 			echo '<hr>';
-			
+			/*
 			$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/addQuestions/230', 'POST', $data);
 			$request->execute();
 			$response = $request->getResponseBody();
 			pr($response);
+			*/
 		endforeach;
 		exit;
 	}
