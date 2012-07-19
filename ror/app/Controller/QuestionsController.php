@@ -463,7 +463,9 @@ class QuestionsController extends AppController {
 	function export()
 	{
 		App::import('Vendor', 'RestRequest', array('file' => 'RestRequest.inc.php'));
-		echo 1;
+		
+		$request = new RestRequest();
+		pr($request);
 		die;
 	}
 }
