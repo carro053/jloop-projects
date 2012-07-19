@@ -64,9 +64,9 @@ class QuestionsController extends AppController {
 			
 			if($question['Question']['question_type'] == 'text')
 			{
-				$data['questionText_en_us'] = htmlspecialchars_decode($question['Question']['question_text'], ENT_QUOTES);
+				$data['question_en_us'] = htmlspecialchars_decode($question['Question']['question_text'], ENT_QUOTES);
 			}else{
-				$data['questionText_en_us'] = null;
+				$data['question_en_us'] = null;
 				$data['questionImage'] = '@'.WWW_ROOT.'img'.DS.'questions'.DS.$question['Question']['id'].'-O.png';
 				//image stuff goes here
 			}
@@ -81,10 +81,11 @@ class QuestionsController extends AppController {
 			}
 			$data['state'] = 'Draft';
 			$data['gameId'] = 231;
+			$xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><question><answer>'.$data['answer'].'</answer><answer1>'.$data['answer1_en_us'].'</answer1><answer2>'.$data['answer2_en_us'].'</answer2><answer3>'.$data['answer3_en_us'].'</answer3><answer4>'.$data['answer4_en_us'].'</answer4><approved>false</approved><clueText>'.$data['clueText_en_us'].'</clueText><gameId>'.$data['gameId'].'</gameId><insightText>'.$data['insightText_en_us'].'</insightText><langs>en_us</langs><question>'.$data['question_en_us'].'</question><state>'.$data['state'].'</state><type>'.$data['type'].'</type></question>';
 			pr($data);
 			echo '<hr>';
 			
-			$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/createQuestion', 'POST', $data);
+			$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/createQuestion', 'POST', $xml);
 			$request->execute();
 			$response = $request->getResponseBody();
 			pr($response);

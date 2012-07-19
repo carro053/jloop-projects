@@ -24,7 +24,7 @@ class RestRequest
 		$this->responseBody		= null;
 		$this->responseInfo		= null;
 		
-		if ($this->requestBody !== null)
+		if ($this->requestBody !== null && is_array($this->requestBody))
 		{
 			$this->buildPostBody();
 		}
