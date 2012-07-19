@@ -86,9 +86,9 @@ class QuestionsController extends AppController {
 			echo '<hr>';
 			
 			$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/createQuestion', 'POST', $xml);
-			pr($response);
 			$request->execute();
 			$response = $request->getResponseBody();
+			pr($request);
 			
 		endforeach;
 		exit;
