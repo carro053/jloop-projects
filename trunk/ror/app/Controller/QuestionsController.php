@@ -55,7 +55,7 @@ class QuestionsController extends AppController {
 			
 			if($question['Question']['clue_type'] == 'text')
 			{
-				$data['clueText_en_us'] = htmlspecialchars_decode($question['Question']['clue_text'], ENT_QUOTES);
+				$data['clueText_en_us'] = $question['Question']['clue_text'];
 			}else{
 				$data['clueText_en_us'] = null;
 				$data['clueImage'] = '@'.WWW_ROOT.'img'.DS.'clues'.DS.$question['Question']['id'].'-O.png';
