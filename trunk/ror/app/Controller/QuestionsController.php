@@ -80,7 +80,7 @@ class QuestionsController extends AppController {
 			//$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/addQuestions/192', 'POST', $data);
 			//$request->execute();
 			//$response = $request->getResponseBody();
-		}
+		endforeach;
 		exit;
 	}
 	
