@@ -464,9 +464,9 @@ class QuestionsController extends AppController {
 	{
 		App::import('Vendor', 'RestRequest', array('file' => 'RestRequest.inc.php'));
 		
-		$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getList?appId=22&offset=0&count=10', 'GET');
-		//$request->setUsername('admin');
-		//$request->setPassword('MyAdminPass87');
+		$request = new RestRequest('http://50.56.194.198:8282/RingorangWebService/rservice/game/getList?appId=22&offset=0&count=10', 'GET');
+		$request->setUsername('admin');
+		$request->setPassword('MyAdminPass87');
 		$request->execute();
 		
 		pr($request);
