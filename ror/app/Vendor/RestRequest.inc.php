@@ -20,7 +20,7 @@ class RestRequest
 		$this->requestLength	= 0;
 		$this->username			= null;
 		$this->password			= null;
-		$this->acceptType		= 'application/json';
+		$this->acceptType		= 'application/xml';
 		$this->responseBody		= null;
 		$this->responseInfo		= null;
 		
@@ -152,9 +152,6 @@ class RestRequest
 		curl_setopt($curlHandle, CURLOPT_URL, $this->url);
 		curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($curlHandle, CURLOPT_HTTPHEADER, array ('Accept: ' . $this->acceptType));
-		curl_setopt($curlHandle, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0');
-		curl_setopt($curlHandle, CURLOPT_COOKIESESSION, true);
-        curl_setopt($curlHandle, CURLOPT_COOKIEJAR, ROOT.'/app/tmp/sessions/cookiejar'.time().'.txt');
 	}
 	
 	protected function setAuth (&$curlHandle)
