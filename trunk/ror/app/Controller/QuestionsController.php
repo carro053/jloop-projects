@@ -52,7 +52,7 @@ class QuestionsController extends AppController {
 			
 			if($question['Question']['clue_type'] == 'text')
 			{
-				$data['clueText_en_us'] = htmlspecialchars_decode($question['Question']['clue_text'], ENT_QUOTES;
+				$data['clueText_en_us'] = htmlspecialchars_decode($question['Question']['clue_text'], ENT_QUOTES);
 			}else{
 				$data['clueText_en_us'] = null;
 				//image stuff goes here
@@ -60,7 +60,7 @@ class QuestionsController extends AppController {
 			
 			if($question['Question']['question_type'] == 'text')
 			{
-				$data['questionText_en_us'] = htmlspecialchars_decode($question['Question']['question_text'], ENT_QUOTES;
+				$data['questionText_en_us'] = htmlspecialchars_decode($question['Question']['question_text'], ENT_QUOTES);
 			}else{
 				$data['questionText_en_us'] = null;
 				//image stuff goes here
@@ -68,7 +68,7 @@ class QuestionsController extends AppController {
 			
 			if($question['Question']['insight_type'] == 'text')
 			{
-				$data['insightText_en_us'] = htmlspecialchars_decode($question['Question']['insight_text'], ENT_QUOTES;
+				$data['insightText_en_us'] = htmlspecialchars_decode($question['Question']['insight_text'], ENT_QUOTES);
 			}else{
 				$data['insightText_en_us'] = null;
 				//image stuff goes here
