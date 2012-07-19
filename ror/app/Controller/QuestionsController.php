@@ -17,7 +17,7 @@ class QuestionsController extends AppController {
 		$response = $request->getResponseBody();
 		echo $response;*/
 		
-		$questions = $this->Question->find('all',array('conditions'=>'Question.game_id = '.$game_id,'limit'=>0));
+		$questions = $this->Question->find('all',array('conditions'=>'Question.game_id = '.$game_id,'limit'=>1));
 		
 		foreach($questions as $question):
 			$data = array();
@@ -80,14 +80,15 @@ class QuestionsController extends AppController {
 				//image stuff goes here
 			}
 			$data['state'] = 'Draft';
+			$data['gameId'] = 231;
 			pr($data);
 			echo '<hr>';
-			/*
-			$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/addQuestions/230', 'POST', $data);
+			
+			$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/createQuestion', 'POST', $data);
 			$request->execute();
 			$response = $request->getResponseBody();
 			pr($response);
-			*/
+			
 		endforeach;
 		exit;
 	}
