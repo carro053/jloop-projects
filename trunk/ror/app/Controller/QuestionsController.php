@@ -459,5 +459,11 @@ class QuestionsController extends AppController {
 		pr($height);
 		die;
 	}
+	
+	function export() {
+		App::import('Vendor', 'RestRequest', array('file' => 'RestRequest.inc.php'));
+		echo 1;
+		die;
+	}
 }
 ?>
