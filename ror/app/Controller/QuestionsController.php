@@ -467,7 +467,6 @@ class QuestionsController extends AppController {
 		$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getList?appId=22&offset=0&count=10', 'GET');
 		$request->execute();
 		
-		pr($request);
 		die;
 	}
 }
