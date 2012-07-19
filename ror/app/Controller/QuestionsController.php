@@ -17,7 +17,7 @@ class QuestionsController extends AppController {
 		$response = $request->getResponseBody();
 		echo $response;*/
 		
-		$questions = $this->Question->find('all',array('conditions'=>'Question.game_id = '.$game_id,'limit'=>1));
+		$questions = $this->Question->find('all',array('conditions'=>'Question.game_id = '.$game_id,'limit'=>0));
 		
 		foreach($questions as $question):
 			$data = array();
