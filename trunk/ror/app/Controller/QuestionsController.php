@@ -33,9 +33,9 @@ class QuestionsController extends AppController {
 					$data['type'] = 'YesNoQuestion';
 					if($question['Question']['correct_answer'] == 2)
 					{
-						$data['yesNo'] = true;
+						$data['yesNo'] = 'true';
 					}else{
-						$data['yesNo'] = false;
+						$data['yesNo'] = 'false';
 					}
 				}else{
 					$data['type'] = 'NormalQuestion';
