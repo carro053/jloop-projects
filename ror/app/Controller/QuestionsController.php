@@ -469,7 +469,7 @@ class QuestionsController extends AppController {
 		$request->setPassword('MyAdminPass87');
 		$request->execute();
 		
-		pr($request);
+		//pr($request);
 		die;
 	}
 }
