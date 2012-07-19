@@ -8,7 +8,7 @@ class QuestionsController extends AppController {
 	
 	
 	
-	function mexport()
+	function mexport($game_id)
 	{
 		App::import('Vendor', 'RestRequest', array('file' => 'RestRequest.inc.php'));
 		
@@ -17,14 +17,71 @@ class QuestionsController extends AppController {
 		$response = $request->getResponseBody();
 		echo $response;*/
 		
-		$data = array(
+		$questions = $this->Question->find('all',array('conditions'=>'Question.game_id = '.$game_id,'limit'=>1));
+		
+		foreach($questions as $question):
+			$data = array();
+			if($question['Question']['answer_type'] == 'image')
+			{
+				$data['type'] = 'PictureQuestion';
+				$data['answer'] = $question['Question']['correct_answer'];
+				
+				//image stuff
+			}else{
+				if(trim($question['Question']['answer_1_text']) == '' && trim($question['Question']['answer_2_text']) == '' && trim($question['Question']['answer_3_text']) == 'True' && trim($question['Question']['answer_4_text']) == 'False')
+				{
+					$data['type'] = 'YesNoQuestion';
+					if($question['Question']['correct_answer'] == 2)
+					{
+						$data['yesNo'] = true;
+					}else{
+						$data['yesNo'] = false;
+					}
+				}else{
+					$data['type'] = 'NormalQuestion';
+					$data['answer'] = $question['Question']['correct_answer'];
+					$data['answer1_en_us'] = $question['Question']['answer_1_text'];
+					$data['answer2_en_us'] = $question['Question']['answer_2_text'];
+					$data['answer3_en_us'] = $question['Question']['answer_3_text'];
+					$data['answer4_en_us'] = $question['Question']['answer_4_text'];
+				}
+			}
+			$data['clueType'] = ucwords($question['Question']['clue_type']);
+			$data['questionType'] = ucwords($question['Question']['question_type']);
+			$data['insightType'] = ucwords($question['Question']['insight_type']);
 			
-		);
-		$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/addQuestions/192', 'POST', $data);
-		$request->execute();
-		$response = $request->getResponseBody();
-		echo $response;
-		die;
+			if($question['Question']['clue_type'] == 'text')
+			{
+				$data['clueText_en_us'] = $question['Question']['clue_text'];
+			}else{
+				$data['clueText_en_us'] = null;
+				//image stuff goes here
+			}
+			
+			if($question['Question']['question_type'] == 'text')
+			{
+				$data['questionText_en_us'] = $question['Question']['question_text'];
+			}else{
+				$data['questionText_en_us'] = null;
+				//image stuff goes here
+			}
+			
+			if($question['Question']['insight_type'] == 'text')
+			{
+				$data['insightText_en_us'] = $question['Question']['insight_text'];
+			}else{
+				$data['insightText_en_us'] = null;
+				//image stuff goes here
+			}
+			$data['state'] = 'Draft';
+			pr($data);
+			echo '<hr>';
+			
+			//$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/addQuestions/192', 'POST', $data);
+			//$request->execute();
+			//$response = $request->getResponseBody();
+		}
+		exit;
 	}
 	
 	public function beforeFilter()
