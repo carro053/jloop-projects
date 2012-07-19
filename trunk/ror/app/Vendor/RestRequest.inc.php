@@ -151,7 +151,7 @@ class RestRequest
 		curl_setopt($curlHandle, CURLOPT_TIMEOUT, 10);
 		curl_setopt($curlHandle, CURLOPT_URL, $this->url);
 		curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($curlHandle, CURLOPT_HTTPHEADER, array ('Accept: ' . $this->acceptType));
+		curl_setopt($curlHandle, CURLOPT_HTTPHEADER, array ('Accept: ' . $this->acceptType .' Content-Type: text/xml'));
 	}
 	
 	protected function setAuth (&$curlHandle)
