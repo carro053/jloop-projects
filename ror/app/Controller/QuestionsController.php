@@ -460,7 +460,8 @@ class QuestionsController extends AppController {
 		die;
 	}
 	
-	function export() {
+	function export()
+	{
 		App::import('Vendor', 'RestRequest', array('file' => 'RestRequest.inc.php'));
 		echo 1;
 		die;
