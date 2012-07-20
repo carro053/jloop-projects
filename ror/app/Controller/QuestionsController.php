@@ -87,11 +87,11 @@ class QuestionsController extends AppController {
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/game/createQuestion");
 			curl_setopt($ch, CURLOPT_PORT, 8282);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/xml","Content-Length: ".strlen($xml)));
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/xml","Content-Length: ".strlen(urlencode($xml))));
 			curl_setopt($ch, CURLOPT_VERBOSE, true);
 			curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 			curl_setopt($ch, CURLOPT_POST, true);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, urlencode($xml));
 			$result = curl_exec($ch);
 			pr($result);
 			
