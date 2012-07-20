@@ -83,19 +83,59 @@ class QuestionsController extends AppController {
 			$data['gameId'] = 231;
 			$data['lang'] = 'en_us';
 			/*<?xml version="1.0" encoding="UTF-8" standalone="yes"?>*/
-			$xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><question><answer>'.$data['answer'].'</answer><answer1>'.$data['answer1'].'</answer1><answer2>'.$data['answer2'].'</answer2><answer3>'.$data['answer3'].'</answer3><answer4>'.$data['answer4'].'</answer4><approved>false</approved><clueText>'.$data['clueText'].'</clueText><game><appId>29</appId><id>'.$data['gameId'].'</id></game><id>0</id><insightText>'.$data['insightText'].'</insightText><langs>en_us</langs><question>'.$data['question'].'</question><state>'.$data['state'].'</state><type>'.$data['type'].'</type></question>';
+			$xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<question>
+	<answer>'.$data['answer'].'</answer>
+	<answer1>'.$data['answer1'].'</answer1>
+	<answer2>'.$data['answer2'].'</answer2>
+	<answer3>'.$data['answer3'].'</answer3>
+	<answer4>'.$data['answer4'].'</answer4>
+	<id>0</id>
+	<clueText>'.$data['clueText'].'</clueText>
+	<question>'.$data['question'].'</question>
+	<game>
+		<id>'.$data['gameId'].'</id>
+	</game>
+	<insightText>'.$data['insightText'].'</insightText>
+	<langs>en_us</langs>
+	<type>'.$data['type'].'</type>
+	<state>'.$data['state'].'</state>
+</question>';
+			
+			
+			
+			$data = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<question>
+	<answer>0</answer>
+	<answer1>1 ans</answer1>
+	<answer2>2 ans</answer2>
+	<answer3>3 ans</answer3>
+	<answer4>4 ans</answer4>
+	<id>0</id>
+	<clueText>1</clueText>
+	<question>this is a question%3F</question>
+	<game>
+		<id>230</id>
+	</game>
+	<insightText>5</insightText>
+	<langs>en_us</langs>
+	<type>SimpleQuestion</type>
+	<state>Draft</state>
+</question>';
+
+			//$data = $xml;
+
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/game/createQuestion");
 			curl_setopt($ch, CURLOPT_PORT, 8282);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/xml","Content-Length: ".strlen(urlencode($xml))));
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/xml", "Content-Length: ".strlen($data)));
 			curl_setopt($ch, CURLOPT_VERBOSE, true);
 			curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 			curl_setopt($ch, CURLOPT_POST, true);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, urlencode($xml));
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 			$result = curl_exec($ch);
-			pr($result);
 			
-			//pr($data);
+			pr($result);
 			echo '<hr>';
 			
 			//$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/createQuestion', 'POST',$xml);
