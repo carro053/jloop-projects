@@ -20,7 +20,7 @@ class RestRequest
 		$this->requestLength	= 0;
 		$this->username			= null;
 		$this->password			= null;
-		$this->acceptType		= 'application/json';
+		$this->acceptType		= 'application/xml';
 		$this->responseBody		= null;
 		$this->responseInfo		= null;
 		
