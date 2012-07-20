@@ -138,7 +138,7 @@ class QuestionsController extends AppController {
 				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 				curl_setopt($ch, CURLOPT_POST, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $data['answer1Image']);
-				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
 				$result = curl_exec($ch);
 				curl_close($ch);
 			}
@@ -152,6 +152,7 @@ class QuestionsController extends AppController {
 				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 				curl_setopt($ch, CURLOPT_POST, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $data['answer2Image']);
+				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
 				$result = curl_exec($ch);
 				curl_close($ch);
 			}
@@ -166,6 +167,7 @@ class QuestionsController extends AppController {
 				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 				curl_setopt($ch, CURLOPT_POST, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $data['answer3Image']);
+				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
 				$result = curl_exec($ch);
 				curl_close($ch);
 			}
@@ -180,6 +182,7 @@ class QuestionsController extends AppController {
 				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 				curl_setopt($ch, CURLOPT_POST, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $data['answer4Image']);
+				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
 				$result = curl_exec($ch);
 				curl_close($ch);
 			}
@@ -194,6 +197,7 @@ class QuestionsController extends AppController {
 				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 				curl_setopt($ch, CURLOPT_POST, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $data['clueImage']);
+				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
 				$result = curl_exec($ch);
 				curl_close($ch);
 			}
@@ -201,13 +205,14 @@ class QuestionsController extends AppController {
 			if(isset($data['questionImage']))
 			{
 				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$clueImageId);
+				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$questionImageId);
 				curl_setopt($ch, CURLOPT_PORT, 8282);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".filesize(substr($data['clueImage'],1))));
+				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".filesize(substr($data['questionImage'],1))));
 				curl_setopt($ch, CURLOPT_VERBOSE, true);
 				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 				curl_setopt($ch, CURLOPT_POST, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, $data['clueImage']);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, $data['questionImage']);
+				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
 				$result = curl_exec($ch);
 				curl_close($ch);
 			}
@@ -222,6 +227,7 @@ class QuestionsController extends AppController {
 				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 				curl_setopt($ch, CURLOPT_POST, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $data['insightImage']);
+				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
 				$result = curl_exec($ch);
 				curl_close($ch);
 			}
