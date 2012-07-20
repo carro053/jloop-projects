@@ -362,5 +362,23 @@ class GamesController extends AppController {
 		$this->set('game',$this->Game->find('first',array('conditions'=>'Game.id = '.$game_id,'recursive'=>2)));
 	}
 	
+	function check_image_folders() {
+		$formatted_file_count = 0;
+		$original_file_count = 0;
+		
+		$dir = ROOT.'/app/webroot/clues';
+		if($resource = opendir($dir)) {
+			while(($file = readdir($resource)) !== false) {
+				$parts = explode('.', $file);
+				if(is_numeric($parts[0]))
+					$formatted_file_count++;
+			}
+			closedir($resource);
+		}
+		echo "formatted files: ".$formatted_file_count."<br>";
+		echo "original files: ".$original_file_count."<br>";
+		die;
+	}
+	
 }
 ?>
