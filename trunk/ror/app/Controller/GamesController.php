@@ -574,7 +574,7 @@ class GamesController extends AppController {
 				}
 			}
 		endforeach;
-		echo 'Success!';
+		echo 'Success!<br /><a href="http://50.56.194.198:8383/RingorangAdminPanel-0.1/question/unapprovedList?currentGameId='.$game_id.'">Link to Questions</a>';
 		exit;
 	}
 	
