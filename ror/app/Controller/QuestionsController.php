@@ -129,6 +129,7 @@ class QuestionsController extends AppController {
 			if(isset($data['answer1Image']))
 			{
 				echo "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer1ImageId;
+				echo substr($data['answer1Image'],1);
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer1ImageId);
 				curl_setopt($ch, CURLOPT_PORT, 8282);
@@ -137,6 +138,7 @@ class QuestionsController extends AppController {
 				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 				curl_setopt($ch, CURLOPT_POST, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $data['answer1Image']);
+				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
 				$result = curl_exec($ch);
 				curl_close($ch);
 			}
