@@ -35,7 +35,8 @@ class QuestionsController extends AppController {
 				)
 			));
 		$game = $this->Game->find('first',array('conditions'=>'Game.id = '.$snapshot['GameSnapshot']['game_id'],'recursive'=>2));
-		
+		pr($game);
+		exit;
 		$gameXML = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <gameExtended>
 	<application>
