@@ -22,10 +22,10 @@ class QuestionsController extends AppController {
 			{
 				$data['type'] = 'PictureQuestion';
 				$data['answer'] = $question['Question']['correct_answer'];
-				$data['answer1Image'] = '@'.WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-1-O.png';
-				$data['answer2Image'] = '@'.WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-2-O.png';
-				$data['answer3Image'] = '@'.WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-3-O.png';
-				$data['answer4Image'] = '@'.WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-4-O.png';
+				$data['answer1Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-1-O.png';
+				$data['answer2Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-2-O.png';
+				$data['answer3Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-3-O.png';
+				$data['answer4Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-4-O.png';
 				//image stuff
 			}else{
 				if(trim($question['Question']['answer_1_text']) == '' && trim($question['Question']['answer_2_text']) == '' && trim($question['Question']['answer_3_text']) == 'True' && trim($question['Question']['answer_4_text']) == 'False')
@@ -55,7 +55,7 @@ class QuestionsController extends AppController {
 				$data['clueText'] = $question['Question']['clue_text'];
 			}else{
 				$data['clueText'] = null;
-				$data['clueImage'] = '@'.WWW_ROOT.'img'.DS.'clues'.DS.$question['Question']['id'].'-O.png';
+				$data['clueImage'] = WWW_ROOT.'img'.DS.'clues'.DS.$question['Question']['id'].'-O.png';
 				//image stuff goes here
 			}
 			
@@ -64,7 +64,7 @@ class QuestionsController extends AppController {
 				$data['question'] = $question['Question']['question_text'];
 			}else{
 				$data['question'] = null;
-				$data['questionImage'] = '@'.WWW_ROOT.'img'.DS.'questions'.DS.$question['Question']['id'].'-O.png';
+				$data['questionImage'] = WWW_ROOT.'img'.DS.'questions'.DS.$question['Question']['id'].'-O.png';
 				//image stuff goes here
 			}
 			
@@ -73,7 +73,7 @@ class QuestionsController extends AppController {
 				$data['insightText'] = $question['Question']['insight_text'];
 			}else{
 				$data['insightText'] = null;
-				$data['insightImage'] = '@'.WWW_ROOT.'img'.DS.'insights'.DS.$question['Question']['id'].'-O.png';
+				$data['insightImage'] = WWW_ROOT.'img'.DS.'insights'.DS.$question['Question']['id'].'-O.png';
 				//image stuff goes here
 			}
 			$data['state'] = 'Draft';
@@ -127,18 +127,16 @@ class QuestionsController extends AppController {
 			$questionImageId = $response->questionImage->id;
 			if(isset($data['answer1Image']))
 			{
-				//echo "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer1ImageId;
-				//echo substr($data['answer1Image'],1);
-				echo '|'.filesize(substr($data['answer1Image'],1)).'|';
+				echo strlen(file_get_contents($data['answer1Image']));
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer1ImageId);
 				curl_setopt($ch, CURLOPT_PORT, 8282);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents(substr($data['answer1Image'],1)))));
+				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer1Image']))));
 				curl_setopt($ch, CURLOPT_VERBOSE, true);
         		curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible;)");
 				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 				curl_setopt($ch, CURLOPT_POST, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents(substr($data['answer1Image'],1)));
+				curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer1Image']));
 				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
 				$result = curl_exec($ch);
 				curl_close($ch);
@@ -149,12 +147,11 @@ class QuestionsController extends AppController {
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer2ImageId);
 				curl_setopt($ch, CURLOPT_PORT, 8282);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".filesize(substr($data['answer2Image'],1))));
+				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer2Image'])));
 				curl_setopt($ch, CURLOPT_VERBOSE, true);
 				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 				curl_setopt($ch, CURLOPT_POST, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, $data['answer2Image']);
-				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer2Image']));
 				$result = curl_exec($ch);
 				curl_close($ch);
 			}
@@ -164,12 +161,11 @@ class QuestionsController extends AppController {
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer3ImageId);
 				curl_setopt($ch, CURLOPT_PORT, 8282);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".filesize(substr($data['answer3Image'],1))));
+				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer3Image'])));
 				curl_setopt($ch, CURLOPT_VERBOSE, true);
 				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 				curl_setopt($ch, CURLOPT_POST, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, $data['answer3Image']);
-				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer3Image']));
 				$result = curl_exec($ch);
 				curl_close($ch);
 			}
@@ -179,12 +175,11 @@ class QuestionsController extends AppController {
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer4ImageId);
 				curl_setopt($ch, CURLOPT_PORT, 8282);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".filesize(substr($data['answer4Image'],1))));
+				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer4Image'])));
 				curl_setopt($ch, CURLOPT_VERBOSE, true);
 				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 				curl_setopt($ch, CURLOPT_POST, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, $data['answer4Image']);
-				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer4Image']));
 				$result = curl_exec($ch);
 				curl_close($ch);
 			}
@@ -194,12 +189,11 @@ class QuestionsController extends AppController {
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$clueImageId);
 				curl_setopt($ch, CURLOPT_PORT, 8282);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".filesize(substr($data['clueImage'],1))));
+				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['clueImage'])));
 				curl_setopt($ch, CURLOPT_VERBOSE, true);
 				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 				curl_setopt($ch, CURLOPT_POST, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, $data['clueImage']);
-				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['clueImage']));
 				$result = curl_exec($ch);
 				curl_close($ch);
 			}
@@ -209,12 +203,11 @@ class QuestionsController extends AppController {
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$questionImageId);
 				curl_setopt($ch, CURLOPT_PORT, 8282);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".filesize(substr($data['questionImage'],1))));
+				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['questionImage'])));
 				curl_setopt($ch, CURLOPT_VERBOSE, true);
 				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 				curl_setopt($ch, CURLOPT_POST, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, $data['questionImage']);
-				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['questionImage']));
 				$result = curl_exec($ch);
 				curl_close($ch);
 			}
@@ -224,12 +217,11 @@ class QuestionsController extends AppController {
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$insightImageId);
 				curl_setopt($ch, CURLOPT_PORT, 8282);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".filesize(substr($data['insightImage'],1))));
+				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['insightImage'])));
 				curl_setopt($ch, CURLOPT_VERBOSE, true);
 				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 				curl_setopt($ch, CURLOPT_POST, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, $data['insightImage']);
-				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['insightImage']));
 				$result = curl_exec($ch);
 				curl_close($ch);
 			}
