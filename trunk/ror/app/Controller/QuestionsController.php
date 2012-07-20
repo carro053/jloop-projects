@@ -62,7 +62,7 @@ class QuestionsController extends AppController {
 </gameExtended>';
 
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/game/createQuestion");
+		curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/game/createGame");
 		curl_setopt($ch, CURLOPT_PORT, 8282);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/xml", "Content-Length: ".strlen($gameXML)));
 		curl_setopt($ch, CURLOPT_VERBOSE, true);
