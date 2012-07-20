@@ -101,7 +101,6 @@ class RestRequest
 		{
 			$this->buildPostBody();
 		}
-		echo $this->requestBody;
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $this->requestBody);
 		curl_setopt($ch, CURLOPT_POST, 1);
 		
