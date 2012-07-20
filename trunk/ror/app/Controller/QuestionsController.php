@@ -111,6 +111,7 @@ class QuestionsController extends AppController {
 			curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 			curl_setopt($ch, CURLOPT_POST, true);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
+  			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
 			$result = curl_exec($ch);
 			curl_close($ch);
 			echo '|'.$result.'|';
