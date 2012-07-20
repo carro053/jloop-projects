@@ -128,8 +128,9 @@ class QuestionsController extends AppController {
 			$questionImageId = $response->questionImage->id;
 			if(isset($data['answer1Image']))
 			{
-				echo "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer1ImageId;
-				echo substr($data['answer1Image'],1);
+				//echo "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer1ImageId;
+				//echo substr($data['answer1Image'],1);
+				echo '|'.filesize(substr($data['answer1Image'],1)).'|';
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer1ImageId);
 				curl_setopt($ch, CURLOPT_PORT, 8282);
