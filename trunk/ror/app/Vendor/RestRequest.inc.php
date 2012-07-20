@@ -103,7 +103,7 @@ class RestRequest
 			$this->buildPostBody();
 		}
 		$this->requestLength = strlen($this->requestBody);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, array ('Accept: ' . $this->acceptType,'Content-Type:application/xml'));
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array ('Accept: ' . $this->acceptType));
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $this->requestBody);
 		curl_setopt($ch, CURLOPT_POST, 1);
 		
