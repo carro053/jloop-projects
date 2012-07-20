@@ -363,9 +363,9 @@ class GamesController extends AppController {
 	}
 	
 	function check_image_folders() {
+		echo "/img/clues<br>"
 		$formatted_file_count = 0;
 		$original_file_count = 0;
-		
 		$dir = ROOT.'/app/webroot/img/clues';
 		if($resource = opendir($dir)) {
 			while(($file = readdir($resource)) !== false) {
