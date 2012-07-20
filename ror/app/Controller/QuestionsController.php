@@ -13,27 +13,48 @@ class QuestionsController extends AppController {
 		App::import('Vendor', 'RestRequest', array('file' => 'RestRequest.inc.php'));
 		
 		$snapshot = $this->GameSnapshot->findById($snapshot_id);
-		
+		pr($snapshot);
+		exit;
 		$this->Question->bindModel(array(
-				'hasMany'=>array(
-					'QuestionVersion'=>array(
-						'className'=>'QuestionVersion',
-						'foreignKey'=>'question_id',
-						'order'=>'QuestionVersion.created DESC',
-						'limit'=>1,
-						'conditions'=>'QuestionVersion.created <= "'.date('Y-m-d H:i:s',$snapshot['GameSnapshot']['time']).'"'
-					)
+			'hasMany'=>array(
+				'QuestionVersion'=>array(
+					'className'=>'QuestionVersion',
+					'foreignKey'=>'question_id',
+					'order'=>'QuestionVersion.created DESC',
+					'limit'=>1,
+					'conditions'=>'QuestionVersion.created <= "'.date('Y-m-d H:i:s',$snapshot['GameSnapshot']['time']).'"'
 				)
-			));
-			$this->Game->bindModel(array(
-				'hasMany'=>array(
-					'Question'=>array(
-						'className'=>'Question',
-						'foreignKey'=>'game_id',
-						'order'=>'Question.order ASC'
-					)
+			)
+		));
+		$this->Game->bindModel(array(
+			'hasMany'=>array(
+				'Question'=>array(
+					'className'=>'Question',
+					'foreignKey'=>'game_id',
+					'order'=>'Question.order ASC'
 				)
-			));
+			)
+		));
+		$this->Question->bindModel(array(
+			'hasMany'=>array(
+				'QuestionVersion'=>array(
+					'className'=>'QuestionVersion',
+					'foreignKey'=>'question_id',
+					'order'=>'QuestionVersion.created DESC',
+					'limit'=>1,
+					'conditions'=>'QuestionVersion.created <= "'.date('Y-m-d H:i:s',$time).'"'
+				)
+			)
+		));
+		$this->Game->bindModel(array(
+			'hasMany'=>array(
+				'Question'=>array(
+					'className'=>'Question',
+					'foreignKey'=>'game_id',
+					'order'=>'Question.order ASC'
+				)
+			)
+		));
 		$game = $this->Game->find('first',array('conditions'=>'Game.id = '.$snapshot['GameSnapshot']['game_id'],'recursive'=>2));
 		pr($game);
 		exit;
