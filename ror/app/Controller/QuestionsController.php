@@ -113,6 +113,7 @@ class QuestionsController extends AppController {
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
 			$result = curl_exec($ch);
 			curl_close($ch);
+			echo '|'.$result.'|';
 			$data = simplexml_load_string($result);
 			echo $data->l;
 			echo 'http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getQuestionDetails/'.$data->l;
