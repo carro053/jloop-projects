@@ -121,13 +121,14 @@ class QuestionsController extends AppController {
 			$response = simplexml_load_string($response);
 			$clueImageId = $response->clueImage->id;
 			$insightImageId = $response->insightImage->id;
-			$anwer1ImageId = $response->pictureAnswer1->id;
-			$anwer2ImageId = $response->pictureAnswer2->id;
-			$anwer3ImageId = $response->pictureAnswer3->id;
-			$anwer4ImageId = $response->pictureAnswer4->id;
+			$answer1ImageId = $response->pictureAnswer1->id;
+			$answer2ImageId = $response->pictureAnswer2->id;
+			$answer3ImageId = $response->pictureAnswer3->id;
+			$answer4ImageId = $response->pictureAnswer4->id;
 			$questionImageId = $response->questionImage->id;
 			if(isset($data['answer1Image']))
 			{
+				echo "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer1ImageId;
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer1ImageId);
 				curl_setopt($ch, CURLOPT_PORT, 8282);
