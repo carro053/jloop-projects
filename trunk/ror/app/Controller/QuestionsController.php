@@ -41,7 +41,7 @@ class QuestionsController extends AppController {
 						$data['yesNo'] = 'false';
 					}
 				}else{
-					$data['type'] = 'NormalQuestion';
+					$data['type'] = 'SimpleQuestion';
 					$data['answer'] = $question['Question']['correct_answer'];
 					$data['answer1'] = htmlspecialchars_decode($question['Question']['answer_1_text'], ENT_QUOTES);
 					$data['answer2'] = htmlspecialchars_decode($question['Question']['answer_2_text'], ENT_QUOTES);
@@ -102,7 +102,8 @@ class QuestionsController extends AppController {
 	<state>'.$data['state'].'</state>
 </question>';
 			
-			
+			echo $xml;
+						
 			
 			$data = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <question>
