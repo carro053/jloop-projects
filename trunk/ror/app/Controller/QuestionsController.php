@@ -123,7 +123,7 @@ class QuestionsController extends AppController {
 	<state>Draft</state>
 </question>';
 
-			//$data = $xml;
+			$data = $xml;
 
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/game/createQuestion");
