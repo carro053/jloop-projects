@@ -366,10 +366,10 @@ Imported: '.date('F jS, Y').'</descr>
 				{
 					$data['type'] = 'PictureQuestion';
 					$data['answer'] = $question['Question']['correct_answer'];
-					$data['answer1Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-1-O.png';
-					$data['answer2Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-2-O.png';
-					$data['answer3Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-3-O.png';
-					$data['answer4Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-4-O.png';
+					$data['answer1Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-1-O-'.$question['QuestionVersion'][0]['id'].'.png';
+					$data['answer2Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-2-O-'.$question['QuestionVersion'][0]['id'].'.png';
+					$data['answer3Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-3-O-'.$question['QuestionVersion'][0]['id'].'.png';
+					$data['answer4Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-4-O-'.$question['QuestionVersion'][0]['id'].'.png';
 					$data['answer1'] = '';
 					$data['answer2'] = '';
 					$data['answer3'] = '';
@@ -407,7 +407,7 @@ Imported: '.date('F jS, Y').'</descr>
 					$data['clueText'] = $question['Question']['clue_text'];
 				}else{
 					$data['clueText'] = null;
-					$data['clueImage'] = WWW_ROOT.'img'.DS.'clues'.DS.$question['Question']['id'].'-O.png';
+					$data['clueImage'] = WWW_ROOT.'img'.DS.'clues'.DS.$question['Question']['id'].'-O-'.$question['QuestionVersion'][0]['id'].'.png';
 					//image stuff goes here
 				}
 				
@@ -416,7 +416,7 @@ Imported: '.date('F jS, Y').'</descr>
 					$data['question'] = $question['Question']['question_text'];
 				}else{
 					$data['question'] = null;
-					$data['questionImage'] = WWW_ROOT.'img'.DS.'questions'.DS.$question['Question']['id'].'-O.png';
+					$data['questionImage'] = WWW_ROOT.'img'.DS.'questions'.DS.$question['Question']['id'].'-O-'.$question['QuestionVersion'][0]['id'].'.png';
 					//image stuff goes here
 				}
 				
@@ -425,7 +425,7 @@ Imported: '.date('F jS, Y').'</descr>
 					$data['insightText'] = $question['Question']['insight_text'];
 				}else{
 					$data['insightText'] = null;
-					$data['insightImage'] = WWW_ROOT.'img'.DS.'insights'.DS.$question['Question']['id'].'-O.png';
+					$data['insightImage'] = WWW_ROOT.'img'.DS.'insights'.DS.$question['Question']['id'].'-O-'.$question['QuestionVersion'][0]['id'].'.png';
 					//image stuff goes here
 				}
 				$data['state'] = 'Draft';
