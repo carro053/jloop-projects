@@ -85,6 +85,9 @@ class QuestionsController extends AppController {
 			/*<?xml version="1.0" encoding="UTF-8" standalone="yes"?>*/
 			$xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <question>
+	<clueType>'.$data['clueType'].'</clueType>
+	<questionType>'.$data['questionType'].'</questionType>
+	<insightType>'.$data['insightType'].'</insightType>
 	<yesNo>'.$data['yesNo'].'</yesNo>
 	<answer>'.$data['answer'].'</answer>
 	<answer1>'.$data['answer1'].'</answer1>
