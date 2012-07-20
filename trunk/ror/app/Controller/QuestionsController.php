@@ -114,6 +114,7 @@ class QuestionsController extends AppController {
 			$result = curl_exec($ch);
 			curl_close($ch);
 			$data = simplexml_load_string($result);
+			echo $data->l;
 			echo 'http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getQuestionDetails/'.$data->l;
 			$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getQuestionDetails/'.$data->l, 'GET');
 			$request->execute();
