@@ -139,8 +139,9 @@ class QuestionsController extends AppController {
 			curl_setopt($ch, CURLOPT_POST, true);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 			$result = curl_exec($ch);
-			
-			pr($result);
+			$result = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><longwrapper><l>1309</l></longwrapper>';
+			$data = simplexml_load_string($xml);
+			echo $data->l;
 			echo '<hr>';
 			
 			//$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/createQuestion', 'POST',$xml);
@@ -618,7 +619,7 @@ class QuestionsController extends AppController {
 		$data = array(
 			
 		);
-		$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getList?appId=22&offset=0&count=10', 'POST', $data);
+		$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getQuestionDetails/1301', 'GET');
 		$request->execute();
 		$response = $request->getResponseBody();
 		echo $response;
