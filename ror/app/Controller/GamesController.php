@@ -300,6 +300,7 @@ class GamesController extends AppController {
 		$response = simplexml_load_string($response);
 		pr($response);
 		$this->set('snapshot_id',$snapshot_id);
+		exit;
 	
 	}
 	
