@@ -92,7 +92,7 @@ class RestRequest
 	
 	protected function executeGet ($ch)
 	{		
-		curl_setopt($curlHandle, CURLOPT_HTTPHEADER, array ('Accept: ' . $this->acceptType));
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array ('Accept: ' . $this->acceptType));
 		$this->doExecute($ch);	
 	}
 	
@@ -103,7 +103,7 @@ class RestRequest
 			$this->buildPostBody();
 		}
 		$this->requestLength = strlen($this->requestBody);
-		curl_setopt($curlHandle, CURLOPT_HTTPHEADER, array ('Content-Type:application/xml'));
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array ('Content-Type:application/xml'));
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $this->requestBody);
 		curl_setopt($ch, CURLOPT_POST, 1);
 		
