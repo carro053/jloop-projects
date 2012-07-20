@@ -71,9 +71,7 @@ class QuestionsController extends AppController {
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
 		$result = curl_exec($ch);
 		curl_close($ch);
-		//$result = simplexml_load_string($result);
-		pr($result);
-		exit;
+		$result = simplexml_load_string($result);
 		$game_id = $result->l;
 		
 		foreach($game['Question'] as $quest):
