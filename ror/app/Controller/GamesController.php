@@ -326,7 +326,8 @@ class GamesController extends AppController {
 	<clueTimer>30</clueTimer>
 	<dayStartTime>1342796400000</dayStartTime>
 	<dayStopTime>1342850400000</dayStopTime>
-	<descr>Imported: '.date('F jS, Y').'</descr>
+	<descr>'.$snapshot['GameSnapshot']['note'].'
+Imported: '.date('F jS, Y').'</descr>
 	<endDate>1343199600000</endDate>
 	<id>0</id>
 	<insightTimer>30</insightTimer>
@@ -335,7 +336,7 @@ class GamesController extends AppController {
 	<makeupPercent>75</makeupPercent>
 	<maxDallions>300</maxDallions>
 	<minDallions>100</minDallions>
-	<name>'.$game['Game']['title'].' - '.$snapshot['GameSnapshot']['note'].'</name>
+	<name>'.$game['Game']['title'].'</name>
 	<questionTimer>30</questionTimer>
 	<state>Active</state>
 </gameExtended>';
