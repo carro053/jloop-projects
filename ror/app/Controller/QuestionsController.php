@@ -36,9 +36,9 @@ class QuestionsController extends AppController {
 					$data['type'] = 'YesNoQuestion';
 					if($question['Question']['correct_answer'] == 2)
 					{
-						$data['yesNo'] = '1';
+						$data['answer'] = '0';
 					}else{
-						$data['yesNo'] = '0';
+						$data['answer'] = '1';
 					}
 				}else{
 					$data['type'] = 'SimpleQuestion';
@@ -85,10 +85,6 @@ class QuestionsController extends AppController {
 			/*<?xml version="1.0" encoding="UTF-8" standalone="yes"?>*/
 			$xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <question>
-	<clueType>'.$data['clueType'].'</clueType>
-	<questionType>'.$data['questionType'].'</questionType>
-	<insightType>'.$data['insightType'].'</insightType>
-	<yesNo>'.$data['yesNo'].'</yesNo>
 	<answer>'.$data['answer'].'</answer>
 	<answer1>'.$data['answer1'].'</answer1>
 	<answer2>'.$data['answer2'].'</answer2>
