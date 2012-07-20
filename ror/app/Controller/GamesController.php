@@ -372,6 +372,8 @@ class GamesController extends AppController {
 				$parts = explode('.', $file);
 				if(is_numeric($parts[0]))
 					$formatted_file_count++;
+				elseif(preg_match(/-O$/, $parts[0]))
+					$original_file_count++;
 			}
 			closedir($resource);
 		}
