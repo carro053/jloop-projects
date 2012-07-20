@@ -101,42 +101,18 @@ class QuestionsController extends AppController {
 	<type>'.$data['type'].'</type>
 	<state>'.$data['state'].'</state>
 </question>';
-			
-			echo $xml;
-						
-			
-			$data = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<question>
-	<answer>0</answer>
-	<answer1>1 ans</answer1>
-	<answer2>2 ans</answer2>
-	<answer3>3 ans</answer3>
-	<answer4>4 ans</answer4>
-	<id>0</id>
-	<clueText>1</clueText>
-	<question>this is a question%3F</question>
-	<game>
-		<id>230</id>
-	</game>
-	<insightText>5</insightText>
-	<langs>en_us</langs>
-	<type>SimpleQuestion</type>
-	<state>Draft</state>
-</question>';
 
-			$data = $xml;
 
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/game/createQuestion");
 			curl_setopt($ch, CURLOPT_PORT, 8282);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/xml", "Content-Length: ".strlen($data)));
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/xml", "Content-Length: ".strlen($xml)));
 			curl_setopt($ch, CURLOPT_VERBOSE, true);
 			curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 			curl_setopt($ch, CURLOPT_POST, true);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
 			$result = curl_exec($ch);
-			$result = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><longwrapper><l>1309</l></longwrapper>';
-			$data = simplexml_load_string($xml);
+			$data = simplexml_load_string($result);
 			echo $data->l;
 			echo '<hr>';
 			
