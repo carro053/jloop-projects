@@ -33,26 +33,6 @@ class QuestionsController extends AppController {
 				)
 			)
 		));
-		$this->Question->bindModel(array(
-			'hasMany'=>array(
-				'QuestionVersion'=>array(
-					'className'=>'QuestionVersion',
-					'foreignKey'=>'question_id',
-					'order'=>'QuestionVersion.created DESC',
-					'limit'=>1,
-					'conditions'=>'QuestionVersion.created <= "'.date('Y-m-d H:i:s',$time).'"'
-				)
-			)
-		));
-		$this->Game->bindModel(array(
-			'hasMany'=>array(
-				'Question'=>array(
-					'className'=>'Question',
-					'foreignKey'=>'game_id',
-					'order'=>'Question.order ASC'
-				)
-			)
-		));
 		$game = $this->Game->find('first',array('conditions'=>'Game.id = '.$snapshot['GameSnapshot']['game_id'],'recursive'=>2));
 		$gameXML = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <gameExtended>
