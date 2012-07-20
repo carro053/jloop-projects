@@ -113,7 +113,6 @@ class QuestionsController extends AppController {
   			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
 			$result = curl_exec($ch);
 			curl_close($ch);
-			echo '|'.$result.'|';
 			$result = simplexml_load_string($result);
 			$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getQuestionDetails/'.$result->l, 'GET');
 			$request->execute();
@@ -136,12 +135,14 @@ class QuestionsController extends AppController {
 				curl_setopt($ch, CURLOPT_PORT, 8282);
 				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".filesize(substr($data['answer1Image'],1))));
 				curl_setopt($ch, CURLOPT_VERBOSE, true);
+        		curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible;)");
 				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 				curl_setopt($ch, CURLOPT_POST, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $data['answer1Image']);
 				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
 				$result = curl_exec($ch);
 				curl_close($ch);
+				exit;
 			}
 			if(isset($data['answer2Image']))
 			{
