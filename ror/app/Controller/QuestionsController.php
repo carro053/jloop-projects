@@ -143,10 +143,10 @@ class QuestionsController extends AppController {
 				curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer1Image']));
 				$result = curl_exec($ch);
 				curl_close($ch);
-				exit;
 			}
 			if(isset($data['answer2Image']))
 			{
+				echo strlen(file_get_contents($data['answer2Image']));
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer2ImageId);
 				curl_setopt($ch, CURLOPT_PORT, 8282);
