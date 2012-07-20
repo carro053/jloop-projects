@@ -11,6 +11,11 @@ class QuestionsController extends AppController {
 	function mexport($game_id)
 	{
 		App::import('Vendor', 'RestRequest', array('file' => 'RestRequest.inc.php'));
+		$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getDetails/231', 'GET');
+			$request->execute();
+			$response = $request->getResponseBody();
+		pr($response);
+		exit;
 		
 		$questions = $this->Question->find('all',array('conditions'=>'Question.game_id = '.$game_id,'limit'=>1));
 		
