@@ -84,10 +84,9 @@ class QuestionsController extends AppController {
 			/*<?xml version="1.0" encoding="UTF-8" standalone="yes"?>*/
 			$xml = '<question><answer>'.$data['answer'].'</answer><answer1>'.$data['answer1_en_us'].'</answer1><answer2>'.$data['answer2_en_us'].'</answer2><answer3>'.$data['answer3_en_us'].'</answer3><answer4>'.$data['answer4_en_us'].'</answer4><approved>false</approved><clueText>'.$data['clueText_en_us'].'</clueText><gameId>'.$data['gameId'].'</gameId><insightText>'.$data['insightText_en_us'].'</insightText><langs>en_us</langs><question>'.$data['question_en_us'].'</question><state>'.$data['state'].'</state><type>'.$data['type'].'</type></question>';
 			//pr($data);
-			echo $xml;
 			echo '<hr>';
 			
-			$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/createQuestion', 'POST', $xml);
+			$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/createQuestion', 'POST', array('xml'=>$xml));
 			$request->execute();
 			$response = $request->getResponseBody();
 			pr($request);
