@@ -26,7 +26,7 @@ class RestRequest
 		
 		if ($this->requestBody !== null)
 		{
-			//$this->buildPostBody();
+			$this->buildPostBody();
 		}
 	}
 	
