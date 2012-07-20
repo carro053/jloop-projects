@@ -141,7 +141,6 @@ class QuestionsController extends AppController {
 				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 				curl_setopt($ch, CURLOPT_POST, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer1Image']));
-				curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
 				$result = curl_exec($ch);
 				curl_close($ch);
 				exit;
@@ -153,6 +152,7 @@ class QuestionsController extends AppController {
 				curl_setopt($ch, CURLOPT_PORT, 8282);
 				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer2Image']))));
 				curl_setopt($ch, CURLOPT_VERBOSE, true);
+        		curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible;)");
 				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 				curl_setopt($ch, CURLOPT_POST, true);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer2Image']));
