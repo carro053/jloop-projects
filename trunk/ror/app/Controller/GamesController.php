@@ -363,6 +363,7 @@ class GamesController extends AppController {
 	}
 	
 	function check_image_folders() {
+		echo '<hr>';
 		echo "/img/clues<br>";
 		$formatted_file_count = 0;
 		$original_file_count = 0;
@@ -379,6 +380,61 @@ class GamesController extends AppController {
 		}
 		echo "formatted files: ".$formatted_file_count."<br>";
 		echo "original files: ".$original_file_count."<br>";
+		
+		echo '<hr>';
+		echo "/img/questions<br>";
+		$formatted_file_count = 0;
+		$original_file_count = 0;
+		$dir = ROOT.'/app/webroot/img/questions';
+		if($resource = opendir($dir)) {
+			while(($file = readdir($resource)) !== false) {
+				$parts = explode('.', $file);
+				if(is_numeric($parts[0]))
+					$formatted_file_count++;
+				elseif(preg_match('/-O$/', $parts[0]))
+					$original_file_count++;
+			}
+			closedir($resource);
+		}
+		echo "formatted files: ".$formatted_file_count."<br>";
+		echo "original files: ".$original_file_count."<br>";
+		
+		echo '<hr>';
+		echo "/img/insights<br>";
+		$formatted_file_count = 0;
+		$original_file_count = 0;
+		$dir = ROOT.'/app/webroot/img/insights';
+		if($resource = opendir($dir)) {
+			while(($file = readdir($resource)) !== false) {
+				$parts = explode('.', $file);
+				if(is_numeric($parts[0]))
+					$formatted_file_count++;
+				elseif(preg_match('/-O$/', $parts[0]))
+					$original_file_count++;
+			}
+			closedir($resource);
+		}
+		echo "formatted files: ".$formatted_file_count."<br>";
+		echo "original files: ".$original_file_count."<br>";
+		
+		echo '<hr>';
+		echo "/img/answers<br>";
+		$formatted_file_count = 0;
+		$original_file_count = 0;
+		$dir = ROOT.'/app/webroot/img/answers';
+		if($resource = opendir($dir)) {
+			while(($file = readdir($resource)) !== false) {
+				$parts = explode('.', $file);
+				if(substr_count($parts[0], "-") == 1)
+					$formatted_file_count++;
+				elseif(preg_match('/-O$/', $parts[0]))
+					$original_file_count++;
+			}
+			closedir($resource);
+		}
+		echo "formatted files: ".$formatted_file_count."<br>";
+		echo "original files: ".$original_file_count."<br>";
+		
 		die;
 	}
 	
