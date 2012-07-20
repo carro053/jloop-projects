@@ -366,7 +366,7 @@ class GamesController extends AppController {
 		$formatted_file_count = 0;
 		$original_file_count = 0;
 		
-		$dir = ROOT.'/app/webroot/clues';
+		$dir = ROOT.'/app/webroot/img/clues';
 		if($resource = opendir($dir)) {
 			while(($file = readdir($resource)) !== false) {
 				$parts = explode('.', $file);
