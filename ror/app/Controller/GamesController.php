@@ -300,12 +300,8 @@ class GamesController extends AppController {
 		$response = simplexml_load_string($response);
 		$hosts = array();
 		foreach($response->list as $ahost):
-			$id = '';
-			$name = '';
-			foreach($ahost->attributes() as $a => $b):
-				if($a == 'name') $name = $b;
-				if($a == 'id') $id = $b;
-			endforeach;
+			pr($ahost);
+			exit;
 			$hosts[$id] = $name;
 		endforeach;
 		$this->set('hosts',$hosts);
