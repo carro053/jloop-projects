@@ -133,7 +133,7 @@ class QuestionsController extends AppController {
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer1ImageId);
 				curl_setopt($ch, CURLOPT_PORT, 8282);
-				//curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".filesize(substr($data['answer1Image'],1))));
+				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png"));
 				curl_setopt($ch, CURLOPT_VERBOSE, true);
         		curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible;)");
 				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
