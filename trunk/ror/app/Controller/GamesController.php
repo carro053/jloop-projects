@@ -300,7 +300,13 @@ class GamesController extends AppController {
 		$response = simplexml_load_string($response);
 		$hosts = array();
 		foreach($response->list as $ahost):
-			$hosts[$ahost->id] = $ahost->name;
+			$id = '';
+			$name = '';
+			foreach($ahost->attributes() as $a => $b):
+				if($a == 'name') $name = $b;
+				if($a == 'id') $id = $b;
+			endforeach;
+			$hosts[$id] = $name;
 		endforeach;
 		$this->set('hosts',$hosts);
 		$this->set('snapshot_id',$snapshot_id);
