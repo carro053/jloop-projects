@@ -79,7 +79,9 @@ class QuestionsController extends AppController {
 			$data['state'] = 'Draft';
 			$data['gameId'] = 231;
 			$data['lang'] = 'en_us';
-			/*<?xml version="1.0" encoding="UTF-8" standalone="yes"?>*/
+			
+			pr($data);
+			
 			$xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <question>
 	<answer>'.$data['answer'].'</answer>
