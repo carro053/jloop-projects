@@ -43,10 +43,10 @@ class QuestionsController extends AppController {
 				}else{
 					$data['type'] = 'NormalQuestion';
 					$data['answer'] = $question['Question']['correct_answer'];
-					$data['answer1_en_us'] = htmlspecialchars_decode($question['Question']['answer_1_text'], ENT_QUOTES);
-					$data['answer2_en_us'] = htmlspecialchars_decode($question['Question']['answer_2_text'], ENT_QUOTES);
-					$data['answer3_en_us'] = htmlspecialchars_decode($question['Question']['answer_3_text'], ENT_QUOTES);
-					$data['answer4_en_us'] = htmlspecialchars_decode($question['Question']['answer_4_text'], ENT_QUOTES);
+					$data['answer1'] = htmlspecialchars_decode($question['Question']['answer_1_text'], ENT_QUOTES);
+					$data['answer2'] = htmlspecialchars_decode($question['Question']['answer_2_text'], ENT_QUOTES);
+					$data['answer3'] = htmlspecialchars_decode($question['Question']['answer_3_text'], ENT_QUOTES);
+					$data['answer4'] = htmlspecialchars_decode($question['Question']['answer_4_text'], ENT_QUOTES);
 				}
 			}
 			$data['clueType'] = ucwords($question['Question']['clue_type']);
@@ -55,39 +55,40 @@ class QuestionsController extends AppController {
 			
 			if($question['Question']['clue_type'] == 'text')
 			{
-				$data['clueText_en_us'] = $question['Question']['clue_text'];
+				$data['clueText'] = $question['Question']['clue_text'];
 			}else{
-				$data['clueText_en_us'] = null;
+				$data['clueText'] = null;
 				$data['clueImage'] = '@'.WWW_ROOT.'img'.DS.'clues'.DS.$question['Question']['id'].'-O.png';
 				//image stuff goes here
 			}
 			
 			if($question['Question']['question_type'] == 'text')
 			{
-				$data['question_en_us'] = htmlspecialchars_decode($question['Question']['question_text'], ENT_QUOTES);
+				$data['question'] = htmlspecialchars_decode($question['Question']['question_text'], ENT_QUOTES);
 			}else{
-				$data['question_en_us'] = null;
+				$data['question'] = null;
 				$data['questionImage'] = '@'.WWW_ROOT.'img'.DS.'questions'.DS.$question['Question']['id'].'-O.png';
 				//image stuff goes here
 			}
 			
 			if($question['Question']['insight_type'] == 'text')
 			{
-				$data['insightText_en_us'] = htmlspecialchars_decode($question['Question']['insight_text'], ENT_QUOTES);
+				$data['insightText'] = htmlspecialchars_decode($question['Question']['insight_text'], ENT_QUOTES);
 			}else{
-				$data['insightText_en_us'] = null;
+				$data['insightText'] = null;
 				$data['insightImage'] = '@'.WWW_ROOT.'img'.DS.'insights'.DS.$question['Question']['id'].'-O.png';
 				//image stuff goes here
 			}
 			$data['state'] = 'Draft';
 			$data['gameId'] = 231;
+			$data['lang'] = 'en_us';
 			/*<?xml version="1.0" encoding="UTF-8" standalone="yes"?>*/
-			$xml = '<question><answer>'.$data['answer'].'</answer><answer1>'.$data['answer1_en_us'].'</answer1><answer2>'.$data['answer2_en_us'].'</answer2><answer3>'.$data['answer3_en_us'].'</answer3><answer4>'.$data['answer4_en_us'].'</answer4><approved>false</approved><clueText>'.$data['clueText_en_us'].'</clueText><game><appId>29</appId><id>'.$data['gameId'].'</id></game><insightText>'.$data['insightText_en_us'].'</insightText><langs>en_us</langs><question>'.$data['question_en_us'].'</question><state>'.$data['state'].'</state><type>'.$data['type'].'</type></question>';
+			$xml = '<question><answer>'.$data['answer'].'</answer><answer1>'.$data['answer1'].'</answer1><answer2>'.$data['answer2'].'</answer2><answer3>'.$data['answer3'].'</answer3><answer4>'.$data['answer4'].'</answer4><approved>false</approved><clueText>'.$data['clueText'].'</clueText><game><appId>29</appId><id>'.$data['gameId'].'</id></game><insightText>'.$data['insightText'].'</insightText><langs>en_us</langs><question>'.$data['question'].'</question><state>'.$data['state'].'</state><type>'.$data['type'].'</type></question>';
 			echo $xml;
 			//pr($data);
 			echo '<hr>';
 			
-			$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/createQuestion', 'POST', array('question'=>$xml));
+			$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/createQuestion', 'POST', array('question'=>json_encode($data)));
 			$request->execute();
 			$response = $request->getResponseBody();
 			pr($request);
