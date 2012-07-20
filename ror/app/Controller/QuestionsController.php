@@ -69,15 +69,17 @@ class QuestionsController extends AppController {
 		curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 		curl_setopt($ch, CURLOPT_POST, true);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $gameXML);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
 		$result = curl_exec($ch);
 		curl_close($ch);
-		$result = simplexml_load_string($result);
+		//$result = simplexml_load_string($result);
 		pr($result);
 		exit;
 		$game_id = $result->l;
 		
-		foreach($questions as $question):
+		foreach($game['Question'] as $quest):
+			$question['Question'] = $quest['QuestionVersion'][0];
+			$question['Question']['id'] = $quest['id'];
 			$data = array();
 			unset($data);
 			$data = array();
