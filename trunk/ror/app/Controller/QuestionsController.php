@@ -26,6 +26,11 @@ class QuestionsController extends AppController {
 				$data['answer2Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-2-O.png';
 				$data['answer3Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-3-O.png';
 				$data['answer4Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-4-O.png';
+				$data['answer'] = '';
+				$data['answer1'] = '';
+				$data['answer2'] = '';
+				$data['answer3'] = '';
+				$data['answer4'] = '';
 				//image stuff
 			}else{
 				if(trim($question['Question']['answer_1_text']) == '' && trim($question['Question']['answer_2_text']) == '' && trim($question['Question']['answer_3_text']) == 'True' && trim($question['Question']['answer_4_text']) == 'False')
@@ -79,8 +84,6 @@ class QuestionsController extends AppController {
 			$data['state'] = 'Draft';
 			$data['gameId'] = 231;
 			$data['lang'] = 'en_us';
-			
-			pr($data);
 			
 			$xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <question>
