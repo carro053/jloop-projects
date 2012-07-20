@@ -46,7 +46,7 @@ class QuestionsController extends AppController {
 	<clueTimer>30</clueTimer>
 	<dayStartTime>1342796400000</dayStartTime>
 	<dayStopTime>1342850400000</dayStopTime>
-	<descr>'.$game['Game']['title'].'</descr>
+	<descr>'.$game['Game']['title'].' - '.$snapshot['GameSnapshot']['note'].'</descr>
 	<endDate>1343199600000</endDate>
 	<id>0</id>
 	<insightTimer>30</insightTimer>
