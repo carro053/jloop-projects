@@ -88,7 +88,6 @@ class QuestionsController extends AppController {
 				$data['answer2Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-2-O.png';
 				$data['answer3Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-3-O.png';
 				$data['answer4Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-4-O.png';
-				$data['answer'] = '';
 				$data['answer1'] = '';
 				$data['answer2'] = '';
 				$data['answer3'] = '';
@@ -103,7 +102,11 @@ class QuestionsController extends AppController {
 						$data['answer'] = '0';
 					}else{
 						$data['answer'] = '1';
-					}
+					}					
+					$data['answer1'] = '';
+					$data['answer2'] = '';
+					$data['answer3'] = '';
+					$data['answer4'] = '';
 				}else{
 					$data['type'] = 'SimpleQuestion';
 					$data['answer'] = $question['Question']['correct_answer'];
