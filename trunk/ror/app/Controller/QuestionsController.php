@@ -35,7 +35,6 @@ class QuestionsController extends AppController {
 				)
 			));
 		$game = $this->Game->find('first',array('conditions'=>'Game.id = '.$snapshot['GameSnapshot']['game_id'],'recursive'=>2));
-		pr($game);
 		
 		$gameXML = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <gameExtended>
@@ -62,7 +61,7 @@ class QuestionsController extends AppController {
 </gameExtended>';
 
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/game/createGame");
+		curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/game/create");
 		curl_setopt($ch, CURLOPT_PORT, 8282);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/xml", "Content-Length: ".strlen($gameXML)));
 		curl_setopt($ch, CURLOPT_VERBOSE, true);
