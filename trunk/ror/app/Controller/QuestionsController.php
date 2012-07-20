@@ -83,11 +83,11 @@ class QuestionsController extends AppController {
 			$data['gameId'] = 231;
 			$data['lang'] = 'en_us';
 			/*<?xml version="1.0" encoding="UTF-8" standalone="yes"?>*/
-			$xml = '<question><answer>'.$data['answer'].'</answer><answer1>'.$data['answer1'].'</answer1><answer2>'.$data['answer2'].'</answer2><answer3>'.$data['answer3'].'</answer3><answer4>'.$data['answer4'].'</answer4><approved>false</approved><clueText>'.$data['clueText'].'</clueText><game><appId>29</appId><id>'.$data['gameId'].'</id></game><insightText>'.$data['insightText'].'</insightText><langs>en_us</langs><question>'.$data['question'].'</question><state>'.$data['state'].'</state><type>'.$data['type'].'</type></question>';
+			$xml = '<question><answer>'.$data['answer'].'</answer><answer1>'.$data['answer1'].'</answer1><answer2>'.$data['answer2'].'</answer2><answer3>'.$data['answer3'].'</answer3><answer4>'.$data['answer4'].'</answer4><approved>false</approved><clueText>'.$data['clueText'].'</clueText><game><appId>29</appId><id>'.$data['gameId'].'</id></game><id>0</id><insightText>'.$data['insightText'].'</insightText><langs>en_us</langs><question>'.$data['question'].'</question><state>'.$data['state'].'</state><type>'.$data['type'].'</type></question>';
 			//pr($data);
 			echo '<hr>';
 			
-			$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/createQuestion', 'POST','question='.json_encode($data));
+			$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/createQuestion', 'POST',$xml));
 			$request->execute();
 			$response = $request->getResponseBody();
 			pr($request);
