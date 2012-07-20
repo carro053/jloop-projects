@@ -292,10 +292,6 @@ class QuestionsController extends AppController {
 				$result = curl_exec($ch);
 				curl_close($ch);
 			}
-			
-			
-			echo '<hr>';
-			
 		endforeach;
 		exit;
 	}
