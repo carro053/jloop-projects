@@ -46,7 +46,7 @@ class QuestionsController extends AppController {
 	<clueTimer>30</clueTimer>
 	<dayStartTime>1342796400000</dayStartTime>
 	<dayStopTime>1342850400000</dayStopTime>
-	<descr>'.$game['Game']['title'].' - '.$snapshot['GameSnapshot']['note'].'</descr>
+	<descr>Imported: '.date('F jS, Y').'</descr>
 	<endDate>1343199600000</endDate>
 	<id>0</id>
 	<insightTimer>30</insightTimer>
@@ -55,7 +55,7 @@ class QuestionsController extends AppController {
 	<makeupPercent>75</makeupPercent>
 	<maxDallions>300</maxDallions>
 	<minDallions>100</minDallions>
-	<name>How to Read Your Bill</name>
+	<name>'.$game['Game']['title'].' - '.$snapshot['GameSnapshot']['note'].'</name>
 	<questionTimer>30</questionTimer>
 	<state>Active</state>
 </gameExtended>';
@@ -209,7 +209,6 @@ class QuestionsController extends AppController {
 			}
 			if(isset($data['answer2Image']))
 			{
-				echo strlen(file_get_contents($data['answer2Image']));
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer2ImageId);
 				curl_setopt($ch, CURLOPT_PORT, 8282);
