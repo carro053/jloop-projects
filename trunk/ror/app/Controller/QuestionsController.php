@@ -183,7 +183,6 @@ class QuestionsController extends AppController {
 			curl_close($ch);
 			$result = simplexml_load_string($result);
 			$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getQuestionDetails/'.$result->l, 'GET');
-			pr($data);
 			$request->execute();
 			$response = $request->getResponseBody();
 			$response = simplexml_load_string($response);
@@ -196,7 +195,6 @@ class QuestionsController extends AppController {
 			$questionImageId = $response->questionImage->id;
 			if(isset($data['answer1Image']))
 			{
-				echo strlen(file_get_contents($data['answer1Image']));
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer1ImageId);
 				curl_setopt($ch, CURLOPT_PORT, 8282);
@@ -297,11 +295,6 @@ class QuestionsController extends AppController {
 			
 			
 			echo '<hr>';
-			
-			//$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/createQuestion', 'POST',$xml);
-			//$request->execute();
-			//$response = $request->getResponseBody();
-			//pr($request);
 			
 		endforeach;
 		exit;
