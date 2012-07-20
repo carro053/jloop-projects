@@ -292,6 +292,7 @@ class GamesController extends AppController {
 	
 	public function import($snapshot_id)
 	{
+		set_time_limit(0);
 		App::import('Vendor', 'RestRequest', array('file' => 'RestRequest.inc.php'));
 		
 		$snapshot = $this->GameSnapshot->findById($snapshot_id);
