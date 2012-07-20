@@ -13,8 +13,6 @@ class QuestionsController extends AppController {
 		App::import('Vendor', 'RestRequest', array('file' => 'RestRequest.inc.php'));
 		
 		$snapshot = $this->GameSnapshot->findById($snapshot_id);
-		pr($snapshot);
-		exit;
 		$this->Question->bindModel(array(
 			'hasMany'=>array(
 				'QuestionVersion'=>array(
@@ -56,8 +54,6 @@ class QuestionsController extends AppController {
 			)
 		));
 		$game = $this->Game->find('first',array('conditions'=>'Game.id = '.$snapshot['GameSnapshot']['game_id'],'recursive'=>2));
-		pr($game);
-		exit;
 		$gameXML = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <gameExtended>
 	<application>
@@ -97,221 +93,223 @@ class QuestionsController extends AppController {
 		$game_id = $result->l;
 		
 		foreach($game['Question'] as $quest):
-			$question['Question'] = $quest['QuestionVersion'][0];
-			$question['Question']['id'] = $quest['id'];
-			$data = array();
-			unset($data);
-			$data = array();
-			if($question['Question']['answer_type'] == 'image')
-			{
-				$data['type'] = 'PictureQuestion';
-				$data['answer'] = $question['Question']['correct_answer'];
-				$data['answer1Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-1-O.png';
-				$data['answer2Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-2-O.png';
-				$data['answer3Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-3-O.png';
-				$data['answer4Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-4-O.png';
-				$data['answer1'] = '';
-				$data['answer2'] = '';
-				$data['answer3'] = '';
-				$data['answer4'] = '';
-				//image stuff
-			}else{
-				if(trim($question['Question']['answer_1_text']) == '' && trim($question['Question']['answer_2_text']) == '' && trim($question['Question']['answer_3_text']) == 'True' && trim($question['Question']['answer_4_text']) == 'False')
+			if(isset($quest['QuestionVersion'][0]['id']) && $quest['QuestionVersion'][0]['deleted'] == 0) {
+				$question['Question'] = $quest['QuestionVersion'][0];
+				$question['Question']['id'] = $quest['id'];
+				$data = array();
+				unset($data);
+				$data = array();
+				if($question['Question']['answer_type'] == 'image')
 				{
-					$data['type'] = 'YesNoQuestion';
-					if($question['Question']['correct_answer'] == 2)
-					{
-						$data['answer'] = '0';
-					}else{
-						$data['answer'] = '1';
-					}					
+					$data['type'] = 'PictureQuestion';
+					$data['answer'] = $question['Question']['correct_answer'];
+					$data['answer1Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-1-O.png';
+					$data['answer2Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-2-O.png';
+					$data['answer3Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-3-O.png';
+					$data['answer4Image'] = WWW_ROOT.'img'.DS.'answers'.DS.$question['Question']['id'].'-4-O.png';
 					$data['answer1'] = '';
 					$data['answer2'] = '';
 					$data['answer3'] = '';
 					$data['answer4'] = '';
+					//image stuff
 				}else{
-					$data['type'] = 'SimpleQuestion';
-					$data['answer'] = $question['Question']['correct_answer'];
-					$data['answer1'] = $question['Question']['answer_1_text'];
-					$data['answer2'] = $question['Question']['answer_2_text'];
-					$data['answer3'] = $question['Question']['answer_3_text'];
-					$data['answer4'] = $question['Question']['answer_4_text'];
+					if(trim($question['Question']['answer_1_text']) == '' && trim($question['Question']['answer_2_text']) == '' && trim($question['Question']['answer_3_text']) == 'True' && trim($question['Question']['answer_4_text']) == 'False')
+					{
+						$data['type'] = 'YesNoQuestion';
+						if($question['Question']['correct_answer'] == 2)
+						{
+							$data['answer'] = '0';
+						}else{
+							$data['answer'] = '1';
+						}					
+						$data['answer1'] = '';
+						$data['answer2'] = '';
+						$data['answer3'] = '';
+						$data['answer4'] = '';
+					}else{
+						$data['type'] = 'SimpleQuestion';
+						$data['answer'] = $question['Question']['correct_answer'];
+						$data['answer1'] = $question['Question']['answer_1_text'];
+						$data['answer2'] = $question['Question']['answer_2_text'];
+						$data['answer3'] = $question['Question']['answer_3_text'];
+						$data['answer4'] = $question['Question']['answer_4_text'];
+					}
 				}
-			}
-			$data['clueType'] = ucwords($question['Question']['clue_type']);
-			$data['questionType'] = ucwords($question['Question']['question_type']);
-			$data['insightType'] = ucwords($question['Question']['insight_type']);
-			
-			if($question['Question']['clue_type'] == 'text')
-			{
-				$data['clueText'] = $question['Question']['clue_text'];
-			}else{
-				$data['clueText'] = null;
-				$data['clueImage'] = WWW_ROOT.'img'.DS.'clues'.DS.$question['Question']['id'].'-O.png';
-				//image stuff goes here
-			}
-			
-			if($question['Question']['question_type'] == 'text')
-			{
-				$data['question'] = $question['Question']['question_text'];
-			}else{
-				$data['question'] = null;
-				$data['questionImage'] = WWW_ROOT.'img'.DS.'questions'.DS.$question['Question']['id'].'-O.png';
-				//image stuff goes here
-			}
-			
-			if($question['Question']['insight_type'] == 'text')
-			{
-				$data['insightText'] = $question['Question']['insight_text'];
-			}else{
-				$data['insightText'] = null;
-				$data['insightImage'] = WWW_ROOT.'img'.DS.'insights'.DS.$question['Question']['id'].'-O.png';
-				//image stuff goes here
-			}
-			$data['state'] = 'Draft';
-			$data['gameId'] = $game_id;
-			$data['lang'] = 'en_us';
-			
-			$xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<question>
-	<answer>'.$data['answer'].'</answer>
-	<answer1>'.$data['answer1'].'</answer1>
-	<answer2>'.$data['answer2'].'</answer2>
-	<answer3>'.$data['answer3'].'</answer3>
-	<answer4>'.$data['answer4'].'</answer4>
-	<id>0</id>
-	<clueText>'.$data['clueText'].'</clueText>
-	<question>'.$data['question'].'</question>
-	<game>
-		<id>'.$data['gameId'].'</id>
-	</game>
-	<insightText>'.$data['insightText'].'</insightText>
-	<langs>en_us</langs>
-	<type>'.$data['type'].'</type>
-	<state>'.$data['state'].'</state>
-</question>';
-
-
-			$ch = curl_init();
-			curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/game/createQuestion");
-			curl_setopt($ch, CURLOPT_PORT, 8282);
-			curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/xml", "Content-Length: ".strlen($xml)));
-			curl_setopt($ch, CURLOPT_VERBOSE, true);
-			curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
-			curl_setopt($ch, CURLOPT_POST, true);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
-  			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
-			$result = curl_exec($ch);
-			curl_close($ch);
-			$result = simplexml_load_string($result);
-			$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getQuestionDetails/'.$result->l, 'GET');
-			$request->execute();
-			$response = $request->getResponseBody();
-			$response = simplexml_load_string($response);
-			$clueImageId = $response->clueImage->id;
-			$insightImageId = $response->insightImage->id;
-			$answer1ImageId = $response->pictureAnswer1->id;
-			$answer2ImageId = $response->pictureAnswer2->id;
-			$answer3ImageId = $response->pictureAnswer3->id;
-			$answer4ImageId = $response->pictureAnswer4->id;
-			$questionImageId = $response->questionImage->id;
-			if(isset($data['answer1Image']))
-			{
+				$data['clueType'] = ucwords($question['Question']['clue_type']);
+				$data['questionType'] = ucwords($question['Question']['question_type']);
+				$data['insightType'] = ucwords($question['Question']['insight_type']);
+				
+				if($question['Question']['clue_type'] == 'text')
+				{
+					$data['clueText'] = $question['Question']['clue_text'];
+				}else{
+					$data['clueText'] = null;
+					$data['clueImage'] = WWW_ROOT.'img'.DS.'clues'.DS.$question['Question']['id'].'-O.png';
+					//image stuff goes here
+				}
+				
+				if($question['Question']['question_type'] == 'text')
+				{
+					$data['question'] = $question['Question']['question_text'];
+				}else{
+					$data['question'] = null;
+					$data['questionImage'] = WWW_ROOT.'img'.DS.'questions'.DS.$question['Question']['id'].'-O.png';
+					//image stuff goes here
+				}
+				
+				if($question['Question']['insight_type'] == 'text')
+				{
+					$data['insightText'] = $question['Question']['insight_text'];
+				}else{
+					$data['insightText'] = null;
+					$data['insightImage'] = WWW_ROOT.'img'.DS.'insights'.DS.$question['Question']['id'].'-O.png';
+					//image stuff goes here
+				}
+				$data['state'] = 'Draft';
+				$data['gameId'] = $game_id;
+				$data['lang'] = 'en_us';
+				
+				$xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+	<question>
+		<answer>'.$data['answer'].'</answer>
+		<answer1>'.$data['answer1'].'</answer1>
+		<answer2>'.$data['answer2'].'</answer2>
+		<answer3>'.$data['answer3'].'</answer3>
+		<answer4>'.$data['answer4'].'</answer4>
+		<id>0</id>
+		<clueText>'.$data['clueText'].'</clueText>
+		<question>'.$data['question'].'</question>
+		<game>
+			<id>'.$data['gameId'].'</id>
+		</game>
+		<insightText>'.$data['insightText'].'</insightText>
+		<langs>en_us</langs>
+		<type>'.$data['type'].'</type>
+		<state>'.$data['state'].'</state>
+	</question>';
+	
+	
 				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer1ImageId);
+				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/game/createQuestion");
 				curl_setopt($ch, CURLOPT_PORT, 8282);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer1Image']))));
-				curl_setopt($ch, CURLOPT_VERBOSE, true);
-        		curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible;)");
-				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
-				curl_setopt($ch, CURLOPT_POST, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer1Image']));
-				$result = curl_exec($ch);
-				curl_close($ch);
-			}
-			if(isset($data['answer2Image']))
-			{
-				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer2ImageId);
-				curl_setopt($ch, CURLOPT_PORT, 8282);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer2Image']))));
-				curl_setopt($ch, CURLOPT_VERBOSE, true);
-        		curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible;)");
-				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
-				curl_setopt($ch, CURLOPT_POST, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer2Image']));
-				$result = curl_exec($ch);
-				curl_close($ch);
-			}
-			
-			if(isset($data['answer3Image']))
-			{
-				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer3ImageId);
-				curl_setopt($ch, CURLOPT_PORT, 8282);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer3Image']))));
+				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/xml", "Content-Length: ".strlen($xml)));
 				curl_setopt($ch, CURLOPT_VERBOSE, true);
 				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
 				curl_setopt($ch, CURLOPT_POST, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer3Image']));
+				curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
+	  			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
 				$result = curl_exec($ch);
 				curl_close($ch);
-			}
-			
-			if(isset($data['answer4Image']))
-			{
-				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer4ImageId);
-				curl_setopt($ch, CURLOPT_PORT, 8282);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer4Image']))));
-				curl_setopt($ch, CURLOPT_VERBOSE, true);
-				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
-				curl_setopt($ch, CURLOPT_POST, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer4Image']));
-				$result = curl_exec($ch);
-				curl_close($ch);
-			}
-			
-			if(isset($data['clueImage']))
-			{
-				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$clueImageId);
-				curl_setopt($ch, CURLOPT_PORT, 8282);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['clueImage']))));
-				curl_setopt($ch, CURLOPT_VERBOSE, true);
-				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
-				curl_setopt($ch, CURLOPT_POST, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['clueImage']));
-				$result = curl_exec($ch);
-				curl_close($ch);
-			}
-			
-			if(isset($data['questionImage']))
-			{
-				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$questionImageId);
-				curl_setopt($ch, CURLOPT_PORT, 8282);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['questionImage']))));
-				curl_setopt($ch, CURLOPT_VERBOSE, true);
-				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
-				curl_setopt($ch, CURLOPT_POST, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['questionImage']));
-				$result = curl_exec($ch);
-				curl_close($ch);
-			}
-			
-			if(isset($data['insightImage']))
-			{
-				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$insightImageId);
-				curl_setopt($ch, CURLOPT_PORT, 8282);
-				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['insightImage']))));
-				curl_setopt($ch, CURLOPT_VERBOSE, true);
-				curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
-				curl_setopt($ch, CURLOPT_POST, true);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['insightImage']));
-				$result = curl_exec($ch);
-				curl_close($ch);
+				$result = simplexml_load_string($result);
+				$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getQuestionDetails/'.$result->l, 'GET');
+				$request->execute();
+				$response = $request->getResponseBody();
+				$response = simplexml_load_string($response);
+				$clueImageId = $response->clueImage->id;
+				$insightImageId = $response->insightImage->id;
+				$answer1ImageId = $response->pictureAnswer1->id;
+				$answer2ImageId = $response->pictureAnswer2->id;
+				$answer3ImageId = $response->pictureAnswer3->id;
+				$answer4ImageId = $response->pictureAnswer4->id;
+				$questionImageId = $response->questionImage->id;
+				if(isset($data['answer1Image']))
+				{
+					$ch = curl_init();
+					curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer1ImageId);
+					curl_setopt($ch, CURLOPT_PORT, 8282);
+					curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer1Image']))));
+					curl_setopt($ch, CURLOPT_VERBOSE, true);
+	        		curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible;)");
+					curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
+					curl_setopt($ch, CURLOPT_POST, true);
+					curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer1Image']));
+					$result = curl_exec($ch);
+					curl_close($ch);
+				}
+				if(isset($data['answer2Image']))
+				{
+					$ch = curl_init();
+					curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer2ImageId);
+					curl_setopt($ch, CURLOPT_PORT, 8282);
+					curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer2Image']))));
+					curl_setopt($ch, CURLOPT_VERBOSE, true);
+	        		curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible;)");
+					curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
+					curl_setopt($ch, CURLOPT_POST, true);
+					curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer2Image']));
+					$result = curl_exec($ch);
+					curl_close($ch);
+				}
+				
+				if(isset($data['answer3Image']))
+				{
+					$ch = curl_init();
+					curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer3ImageId);
+					curl_setopt($ch, CURLOPT_PORT, 8282);
+					curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer3Image']))));
+					curl_setopt($ch, CURLOPT_VERBOSE, true);
+					curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
+					curl_setopt($ch, CURLOPT_POST, true);
+					curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer3Image']));
+					$result = curl_exec($ch);
+					curl_close($ch);
+				}
+				
+				if(isset($data['answer4Image']))
+				{
+					$ch = curl_init();
+					curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer4ImageId);
+					curl_setopt($ch, CURLOPT_PORT, 8282);
+					curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer4Image']))));
+					curl_setopt($ch, CURLOPT_VERBOSE, true);
+					curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
+					curl_setopt($ch, CURLOPT_POST, true);
+					curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer4Image']));
+					$result = curl_exec($ch);
+					curl_close($ch);
+				}
+				
+				if(isset($data['clueImage']))
+				{
+					$ch = curl_init();
+					curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$clueImageId);
+					curl_setopt($ch, CURLOPT_PORT, 8282);
+					curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['clueImage']))));
+					curl_setopt($ch, CURLOPT_VERBOSE, true);
+					curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
+					curl_setopt($ch, CURLOPT_POST, true);
+					curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['clueImage']));
+					$result = curl_exec($ch);
+					curl_close($ch);
+				}
+				
+				if(isset($data['questionImage']))
+				{
+					$ch = curl_init();
+					curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$questionImageId);
+					curl_setopt($ch, CURLOPT_PORT, 8282);
+					curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['questionImage']))));
+					curl_setopt($ch, CURLOPT_VERBOSE, true);
+					curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
+					curl_setopt($ch, CURLOPT_POST, true);
+					curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['questionImage']));
+					$result = curl_exec($ch);
+					curl_close($ch);
+				}
+				
+				if(isset($data['insightImage']))
+				{
+					$ch = curl_init();
+					curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$insightImageId);
+					curl_setopt($ch, CURLOPT_PORT, 8282);
+					curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['insightImage']))));
+					curl_setopt($ch, CURLOPT_VERBOSE, true);
+					curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
+					curl_setopt($ch, CURLOPT_POST, true);
+					curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['insightImage']));
+					$result = curl_exec($ch);
+					curl_close($ch);
+				}
 			}
 		endforeach;
 		exit;
