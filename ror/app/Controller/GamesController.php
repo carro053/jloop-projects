@@ -298,16 +298,20 @@ class GamesController extends AppController {
 		$request->execute();
 		$response = $request->getResponseBody();
 		$response = simplexml_load_string($response);
-		pr($response);
+		$hosts = array();
+		foreach($response->list as $ahost):
+			$hosts[$ahost->id] = $ahost->name;
+		endforeach;
+		$this->set('hosts',$hosts);
 		$this->set('snapshot_id',$snapshot_id);
-		exit;
-	
 	}
 	
-	public function import_to_host($snapshot_id,$host_id)
+	public function import_to_host($snapshot_id)
 	{
 		set_time_limit(0);
 		App::import('Vendor', 'RestRequest', array('file' => 'RestRequest.inc.php'));
+		
+		$host_id = $this->data['Game']['host_id'];
 		
 		$snapshot = $this->GameSnapshot->findById($snapshot_id);
 		$this->Question->bindModel(array(
@@ -334,7 +338,7 @@ class GamesController extends AppController {
 		$gameXML = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <gameExtended>
 	<application>
-		<id>29</id>
+		<id>'.$host_id.'</id>
 	</application>
 	<beginDate>1342767600000</beginDate>
 	<canUserUnsubscribe>true</canUserUnsubscribe>
