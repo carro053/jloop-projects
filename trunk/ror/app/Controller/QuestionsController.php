@@ -4,20 +4,78 @@ App::uses('AppController', 'Controller');
 class QuestionsController extends AppController {
 	public $name = 'Questions';
 	public $helpers = array('Html', 'Session');
-	public $uses = array('Game','Question','QuestionVersion');
+	public $uses = array('Game','Question','QuestionVersion','GameSnapshot');
 	
 	
 	
-	function mexport($game_id)
+	function mexport($snapshot_id)
 	{
 		App::import('Vendor', 'RestRequest', array('file' => 'RestRequest.inc.php'));
-		$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getDetails/231', 'GET');
-			$request->execute();
-			$response = $request->getResponseBody();
-		pr($response);
-		exit;
 		
-		$questions = $this->Question->find('all',array('conditions'=>'Question.game_id = '.$game_id,'limit'=>1));
+		$snapshot = $this->GameSnapshot->findById($snapshot_id);
+		
+		$this->Question->bindModel(array(
+				'hasMany'=>array(
+					'QuestionVersion'=>array(
+						'className'=>'QuestionVersion',
+						'foreignKey'=>'question_id',
+						'order'=>'QuestionVersion.created DESC',
+						'limit'=>1,
+						'conditions'=>'QuestionVersion.created <= "'.date('Y-m-d H:i:s',$snapshot['GameSnapshot']['time']).'"'
+					)
+				)
+			));
+			$this->Game->bindModel(array(
+				'hasMany'=>array(
+					'Question'=>array(
+						'className'=>'Question',
+						'foreignKey'=>'game_id',
+						'order'=>'Question.order ASC'
+					)
+				)
+			));
+		$game = $this->Game->find('first',array('conditions'=>'Game.id = '.$snapshot['GameSnapshot']['game_id'],'recursive'=>2));
+		pr($game);
+		
+		$gameXML = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<gameExtended>
+	<application>
+		<id>29</id>
+	</application>
+	<beginDate>1342767600000</beginDate>
+	<canUserUnsubscribe>true</canUserUnsubscribe>
+	<clueTimer>30</clueTimer>
+	<dayStartTime>1342796400000</dayStartTime>
+	<dayStopTime>1342850400000</dayStopTime>
+	<descr>'.$game['Game']['title'].'</descr>
+	<endDate>1343199600000</endDate>
+	<id>0</id>
+	<insightTimer>30</insightTimer>
+	<isAgeRequired>false</isAgeRequired>
+	<isRecurringGame>false</isRecurringGame>
+	<makeupPercent>75</makeupPercent>
+	<maxDallions>300</maxDallions>
+	<minDallions>100</minDallions>
+	<name>How to Read Your Bill</name>
+	<questionTimer>30</questionTimer>
+	<state>Active</state>
+</gameExtended>';
+
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/game/createQuestion");
+		curl_setopt($ch, CURLOPT_PORT, 8282);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/xml", "Content-Length: ".strlen($gameXML)));
+		curl_setopt($ch, CURLOPT_VERBOSE, true);
+		curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $gameXML);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+		$result = curl_exec($ch);
+		curl_close($ch);
+		$result = simplexml_load_string($result);
+		pr($result);
+		exit;
+		$game_id = $result->l;
 		
 		foreach($questions as $question):
 			$data = array();
@@ -87,7 +145,7 @@ class QuestionsController extends AppController {
 				//image stuff goes here
 			}
 			$data['state'] = 'Draft';
-			$data['gameId'] = 231;
+			$data['gameId'] = $game_id;
 			$data['lang'] = 'en_us';
 			
 			$xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
