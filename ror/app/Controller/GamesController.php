@@ -304,7 +304,7 @@ class GamesController extends AppController {
 			echo 'test';
 			echo $ahost->name;
 			echo $ahost->id;
-			$hosts[intval($ahost->id)] = $ahost->name;
+			$hosts[intval($ahost->id)] = strval($ahost->name);
 		endforeach;
 		$this->set('hosts',$hosts);
 		$this->set('snapshot_id',$snapshot_id);
