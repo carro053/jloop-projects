@@ -300,6 +300,10 @@ class GamesController extends AppController {
 		$response = simplexml_load_string($response);
 		$hosts = array();
 		foreach($response->list as $ahost):
+		
+			echo 'test';
+			echo $ahost->name;
+			echo $ahost->id;
 			pr($ahost);
 			exit;
 			$hosts[$id] = $name;
