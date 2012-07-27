@@ -394,7 +394,7 @@ class GamesController extends AppController {
 					$data['answer4'] = '';
 					//image stuff
 				}else{
-					if(trim($question['Question']['answer_1_text']) == '' && trim($question['Question']['answer_2_text']) == '' && trim($question['Question']['answer_3_text']) == 'True' && trim($question['Question']['answer_4_text']) == 'False')
+					if(trim($question['Question']['answer_1_text']) == '' && trim($question['Question']['answer_2_text']) == '')
 					{
 						$data['type'] = 'YesNoQuestion';
 						if($question['Question']['correct_answer'] == 2)
@@ -403,8 +403,8 @@ class GamesController extends AppController {
 						}else{
 							$data['answer'] = '1';
 						}					
-						$data['answer1'] = '';
-						$data['answer2'] = '';
+						$data['answer1'] = $question['Question']['answer_3_text'];
+						$data['answer2'] = $question['Question']['answer_4_text'];
 						$data['answer3'] = '';
 						$data['answer4'] = '';
 					}else{
