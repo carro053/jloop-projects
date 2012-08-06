@@ -446,7 +446,7 @@ class GamesController extends AppController {
 					$data['insightImage'] = WWW_ROOT.'img'.DS.'insights'.DS.$question['Question']['id'].'-O-'.$quest['QuestionVersion'][0]['id'].'.png';
 					//image stuff goes here
 				}
-				$data['state'] = 'Active';
+				$data['state'] = 'Draft';
 				$data['gameId'] = $game_id;
 				$data['lang'] = 'en_us';
 				
