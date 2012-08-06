@@ -482,6 +482,8 @@ class GamesController extends AppController {
 				$result = curl_exec($ch);
 				curl_close($ch);
 				$result = simplexml_load_string($result);
+				pr($result);
+				echo '<hr>';
 				$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getQuestionDetails/'.$result->l, 'GET');
 				$request->execute();
 				$response = $request->getResponseBody();
@@ -495,6 +497,7 @@ class GamesController extends AppController {
 				$questionImageId = $response->questionImage->id;
 				if(isset($data['answer1Image']))
 				{
+					echo '1';
 					$ch = curl_init();
 					curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer1ImageId);
 					curl_setopt($ch, CURLOPT_PORT, 8282);
@@ -509,6 +512,7 @@ class GamesController extends AppController {
 				}
 				if(isset($data['answer2Image']))
 				{
+					echo '2';
 					$ch = curl_init();
 					curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer2ImageId);
 					curl_setopt($ch, CURLOPT_PORT, 8282);
@@ -524,6 +528,7 @@ class GamesController extends AppController {
 				
 				if(isset($data['answer3Image']))
 				{
+					echo '3';
 					$ch = curl_init();
 					curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer3ImageId);
 					curl_setopt($ch, CURLOPT_PORT, 8282);
@@ -538,6 +543,7 @@ class GamesController extends AppController {
 				
 				if(isset($data['answer4Image']))
 				{
+					echo '4';
 					$ch = curl_init();
 					curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer4ImageId);
 					curl_setopt($ch, CURLOPT_PORT, 8282);
