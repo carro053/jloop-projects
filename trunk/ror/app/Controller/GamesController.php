@@ -446,7 +446,12 @@ class GamesController extends AppController {
 					$data['insightImage'] = WWW_ROOT.'img'.DS.'insights'.DS.$question['Question']['id'].'-O-'.$quest['QuestionVersion'][0]['id'].'.png';
 					//image stuff goes here
 				}
-				$data['state'] = 'Draft';
+				if($data['type'] == 'PictureQuestion')
+				{
+					$data['state'] = 'Draft';
+				}else{
+					$data['state'] = 'Active';
+				}
 				$data['gameId'] = $game_id;
 				$data['lang'] = 'en_us';
 				
@@ -469,7 +474,6 @@ class GamesController extends AppController {
 		<state>'.$data['state'].'</state>
 	</question>';
 	
-				echo $xml;
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/game/createQuestion");
 				curl_setopt($ch, CURLOPT_PORT, 8282);
@@ -482,120 +486,117 @@ class GamesController extends AppController {
 				$result = curl_exec($ch);
 				curl_close($ch);
 				$result = simplexml_load_string($result);
-				pr($result);
-				echo '<hr>';
-				$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getQuestionDetails/'.$result->l, 'GET');
-				$request->execute();
-				$response = $request->getResponseBody();
-				$response = simplexml_load_string($response);
-				$clueImageId = $response->clueImage->id;
-				$insightImageId = $response->insightImage->id;
-				$answer1ImageId = $response->pictureAnswer1->id;
-				$answer2ImageId = $response->pictureAnswer2->id;
-				$answer3ImageId = $response->pictureAnswer3->id;
-				$answer4ImageId = $response->pictureAnswer4->id;
-				$questionImageId = $response->questionImage->id;
-				if(isset($data['answer1Image']))
+				if($result->l > 0)
 				{
-					echo '1';
-					$ch = curl_init();
-					curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer1ImageId);
-					curl_setopt($ch, CURLOPT_PORT, 8282);
-					curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer1Image']))));
-					curl_setopt($ch, CURLOPT_VERBOSE, true);
-	        		curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible;)");
-					curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
-					curl_setopt($ch, CURLOPT_POST, true);
-					curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer1Image']));
-					$result = curl_exec($ch);
-					curl_close($ch);
-				}
-				if(isset($data['answer2Image']))
-				{
-					echo '2';
-					$ch = curl_init();
-					curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer2ImageId);
-					curl_setopt($ch, CURLOPT_PORT, 8282);
-					curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer2Image']))));
-					curl_setopt($ch, CURLOPT_VERBOSE, true);
-	        		curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible;)");
-					curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
-					curl_setopt($ch, CURLOPT_POST, true);
-					curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer2Image']));
-					$result = curl_exec($ch);
-					curl_close($ch);
-				}
-				
-				if(isset($data['answer3Image']))
-				{
-					echo '3';
-					$ch = curl_init();
-					curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer3ImageId);
-					curl_setopt($ch, CURLOPT_PORT, 8282);
-					curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer3Image']))));
-					curl_setopt($ch, CURLOPT_VERBOSE, true);
-					curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
-					curl_setopt($ch, CURLOPT_POST, true);
-					curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer3Image']));
-					$result = curl_exec($ch);
-					curl_close($ch);
-				}
-				
-				if(isset($data['answer4Image']))
-				{
-					echo '4';
-					$ch = curl_init();
-					curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer4ImageId);
-					curl_setopt($ch, CURLOPT_PORT, 8282);
-					curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer4Image']))));
-					curl_setopt($ch, CURLOPT_VERBOSE, true);
-					curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
-					curl_setopt($ch, CURLOPT_POST, true);
-					curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer4Image']));
-					$result = curl_exec($ch);
-					curl_close($ch);
-				}
-				
-				if(isset($data['clueImage']))
-				{
-					$ch = curl_init();
-					curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$clueImageId);
-					curl_setopt($ch, CURLOPT_PORT, 8282);
-					curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['clueImage']))));
-					curl_setopt($ch, CURLOPT_VERBOSE, true);
-					curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
-					curl_setopt($ch, CURLOPT_POST, true);
-					curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['clueImage']));
-					$result = curl_exec($ch);
-					curl_close($ch);
-				}
-				
-				if(isset($data['questionImage']))
-				{
-					$ch = curl_init();
-					curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$questionImageId);
-					curl_setopt($ch, CURLOPT_PORT, 8282);
-					curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['questionImage']))));
-					curl_setopt($ch, CURLOPT_VERBOSE, true);
-					curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
-					curl_setopt($ch, CURLOPT_POST, true);
-					curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['questionImage']));
-					$result = curl_exec($ch);
-					curl_close($ch);
-				}
-				
-				if(isset($data['insightImage']))
-				{
-					$ch = curl_init();
-					curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$insightImageId);
-					curl_setopt($ch, CURLOPT_PORT, 8282);
-					curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['insightImage']))));
-					curl_setopt($ch, CURLOPT_VERBOSE, true);
-					curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
-					curl_setopt($ch, CURLOPT_POST, true);
-					curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['insightImage']));
-					$result = curl_exec($ch);
-					curl_close($ch);
+					$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getQuestionDetails/'.$result->l, 'GET');
+					$request->execute();
+					$response = $request->getResponseBody();
+					$response = simplexml_load_string($response);
+					$clueImageId = $response->clueImage->id;
+					$insightImageId = $response->insightImage->id;
+					$answer1ImageId = $response->pictureAnswer1->id;
+					$answer2ImageId = $response->pictureAnswer2->id;
+					$answer3ImageId = $response->pictureAnswer3->id;
+					$answer4ImageId = $response->pictureAnswer4->id;
+					$questionImageId = $response->questionImage->id;
+					if(isset($data['answer1Image']))
+					{
+						$ch = curl_init();
+						curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer1ImageId);
+						curl_setopt($ch, CURLOPT_PORT, 8282);
+						curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer1Image']))));
+						curl_setopt($ch, CURLOPT_VERBOSE, true);
+		        		curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible;)");
+						curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
+						curl_setopt($ch, CURLOPT_POST, true);
+						curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer1Image']));
+						$result = curl_exec($ch);
+						curl_close($ch);
+					}
+					if(isset($data['answer2Image']))
+					{
+						$ch = curl_init();
+						curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer2ImageId);
+						curl_setopt($ch, CURLOPT_PORT, 8282);
+						curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer2Image']))));
+						curl_setopt($ch, CURLOPT_VERBOSE, true);
+		        		curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/4.0 (compatible;)");
+						curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
+						curl_setopt($ch, CURLOPT_POST, true);
+						curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer2Image']));
+						$result = curl_exec($ch);
+						curl_close($ch);
+					}
+					
+					if(isset($data['answer3Image']))
+					{
+						$ch = curl_init();
+						curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer3ImageId);
+						curl_setopt($ch, CURLOPT_PORT, 8282);
+						curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer3Image']))));
+						curl_setopt($ch, CURLOPT_VERBOSE, true);
+						curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
+						curl_setopt($ch, CURLOPT_POST, true);
+						curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer3Image']));
+						$result = curl_exec($ch);
+						curl_close($ch);
+					}
+					
+					if(isset($data['answer4Image']))
+					{
+						$ch = curl_init();
+						curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer4ImageId);
+						curl_setopt($ch, CURLOPT_PORT, 8282);
+						curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer4Image']))));
+						curl_setopt($ch, CURLOPT_VERBOSE, true);
+						curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
+						curl_setopt($ch, CURLOPT_POST, true);
+						curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['answer4Image']));
+						$result = curl_exec($ch);
+						curl_close($ch);
+					}
+					
+					if(isset($data['clueImage']))
+					{
+						$ch = curl_init();
+						curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$clueImageId);
+						curl_setopt($ch, CURLOPT_PORT, 8282);
+						curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['clueImage']))));
+						curl_setopt($ch, CURLOPT_VERBOSE, true);
+						curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
+						curl_setopt($ch, CURLOPT_POST, true);
+						curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['clueImage']));
+						$result = curl_exec($ch);
+						curl_close($ch);
+					}
+					
+					if(isset($data['questionImage']))
+					{
+						$ch = curl_init();
+						curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$questionImageId);
+						curl_setopt($ch, CURLOPT_PORT, 8282);
+						curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['questionImage']))));
+						curl_setopt($ch, CURLOPT_VERBOSE, true);
+						curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
+						curl_setopt($ch, CURLOPT_POST, true);
+						curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['questionImage']));
+						$result = curl_exec($ch);
+						curl_close($ch);
+					}
+					
+					if(isset($data['insightImage']))
+					{
+						$ch = curl_init();
+						curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$insightImageId);
+						curl_setopt($ch, CURLOPT_PORT, 8282);
+						curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['insightImage']))));
+						curl_setopt($ch, CURLOPT_VERBOSE, true);
+						curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
+						curl_setopt($ch, CURLOPT_POST, true);
+						curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents($data['insightImage']));
+						$result = curl_exec($ch);
+						curl_close($ch);
+					}
 				}
 			}
 		endforeach;
