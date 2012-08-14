@@ -356,7 +356,7 @@ class GamesController extends AppController {
 	<minDallions>100</minDallions>
 	<name>'.$game['Game']['title'].'</name>
 	<questionTimer>30</questionTimer>
-	<state>Active</state>
+	<state>Draft</state>
 </gameExtended>';
 
 		$ch = curl_init();
