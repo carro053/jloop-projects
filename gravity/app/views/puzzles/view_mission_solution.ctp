@@ -86,6 +86,8 @@
 		
 		var canvasFront = new Object();
 		var contextFront = new Object();
+		var canvasScene = new Object();
+		var contextScene = new Object();
 		var canvasBack = new Object();
 		var contextBack = new Object();
 		var canvasUI = new Object();
@@ -94,34 +96,17 @@
 		window.onload = function() {
 			
 			canvasBack = document.getElementById('canvasBack');
-			contextBack = canvasBack.getContext('2d');
+			contextBack = canvasBack.getContext('2d');			
 			
-			var planet = new Image();
-			planet.src = "/img/planet_4.png";
-			contextBack.drawImage(planet, 0, 0);
-			contextBack.scale(0.5, 0.5);
-			contextBack.drawImage(planet, 150, 0);
-			
-			
-			canvasBack.width = window.innerWidth;
-			canvasBack.height = window.innerHeight;
+			canvasScene = document.getElementById('canvasScene');
+			contextScene = canvasFront.getContext('2d');
 			
 			canvasFront = document.getElementById('canvasFront');
 			contextFront = canvasFront.getContext('2d');
-			canvasFront.width = window.innerWidth;
-			canvasFront.height = window.innerHeight;
-			
-			var planetw = new Image();
-			planetw.src = "/img/planet_4.png";
-			contextFront.drawImage(planetw, 0, 0);
-			contextFront.scale(0.5, 0.5);
-			contextFront.drawImage(planetw, 150, 0);
 			
 			
 			canvasUI = document.getElementById('canvasUI');
 			contextUI = canvasUI.getContext('2d');
-			canvasUI.width = window.innerWidth;
-			canvasUI.height = window.innerHeight;
 			
 			canvasUI.onmousedown = function(e) {
 			};
@@ -136,9 +121,8 @@
 			scene = 'select';
 			reset_game();
 			contextUI.clearRect(0, 0, canvasUI.width, canvasUI.height);
-			//contextFront.clearRect(0, 0, canvasFront.width, canvasFront.height);
+			contextFront.clearRect(0, 0, canvasFront.width, canvasFront.height);
 			drawBackground();
-			//shipSelect();
 		}
 		
 		function startGame()
@@ -150,6 +134,11 @@
 		}
 		function drawBackground()
 		{
+			var planet = new Image();
+			planet.src = "/img/planet_4.png";
+			contextScene.drawImage(planet, 0, 0);
+			contextScene.scale(0.5, 0.5);
+			contextScene.drawImage(planet, 150, 0);
 		}
 		
 		function drawUI()
@@ -176,7 +165,7 @@
 		}
 		function clearCanvas()
 		{
-			//contextFront.clearRect(0, 0, canvasFront.width, canvasFront.height);
+			contextFront.clearRect(0, 0, canvasFront.width, canvasFront.height);
 		}
 
 		function drawObjects()
@@ -193,6 +182,7 @@
 	</script>
 	<div style="position:absolute;width:1024px;height:768px;">
 		<canvas id="canvasBack" style="position:absolute;width:1024px;height:768px;background:url(/img/stars.jpg);"></canvas>
+		<canvas id="canvasScene" style="position:absolute;width:1024px;height:768px;"></canvas>
 		<canvas id="canvasFront" style="position:absolute;width:1024px;height:768px;"></canvas>
 		<canvas id="canvasUI" style="position:absolute;width:1024px;height:768px;"></canvas>
 	</div>
