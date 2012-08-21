@@ -95,6 +95,14 @@
 			
 			canvasBack = document.getElementById('canvasBack');
 			contextBack = canvasBack.getContext('2d');
+			
+			var planet = new Image();
+			planet.src = "/img/planet_4.png";
+			contextBack.drawImage(planet, 0, 0);
+			contextBack.scale(0.5, 0.5);
+			contextBack.drawImage(planet, 150, 0);
+			
+			
 			canvasBack.width = window.innerWidth;
 			canvasBack.height = window.innerHeight;
 			
@@ -102,6 +110,12 @@
 			contextFront = canvasFront.getContext('2d');
 			canvasFront.width = window.innerWidth;
 			canvasFront.height = window.innerHeight;
+			
+			var planetw = new Image();
+			planetw.src = "/img/planet_4.png";
+			contextFront.drawImage(planetw, 0, 0);
+			contextFront.scale(0.5, 0.5);
+			contextFront.drawImage(planetw, 150, 0);
 			
 			
 			canvasUI = document.getElementById('canvasUI');
@@ -122,7 +136,7 @@
 			scene = 'select';
 			reset_game();
 			contextUI.clearRect(0, 0, canvasUI.width, canvasUI.height);
-			contextFront.clearRect(0, 0, canvasUI.width, canvasUI.height);
+			//contextFront.clearRect(0, 0, canvasFront.width, canvasFront.height);
 			drawBackground();
 			//shipSelect();
 		}
@@ -136,11 +150,6 @@
 		}
 		function drawBackground()
 		{
-			var planet = new Image();
-			planet.src = "/img/planet_4.png";
-			contextBack.drawImage(planet, 0, 0);
-			contextBack.scale(0.5, 0.5);
-			contextBack.drawImage(planet, 150, 0);
 		}
 		
 		function drawUI()
@@ -167,7 +176,7 @@
 		}
 		function clearCanvas()
 		{
-			contextFront.clearRect(0, 0, canvasFront.width, canvasFront.height);
+			//contextFront.clearRect(0, 0, canvasFront.width, canvasFront.height);
 		}
 
 		function drawObjects()
