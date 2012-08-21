@@ -291,7 +291,6 @@ class PuzzlesController extends AppController {
  	
  	function getPuzzleWithSolution($puzzle_id,$solution_id)
  	{
- 		$this->set('menuTab','Magic Decks');
  		$return = array();
  		$puzzle = $this->Puzzle->find('first',array('conditions'=>'Puzzle.id = '.$puzzle_id));
  		$return['title'] = $puzzle['Puzzle']['title'];
@@ -330,6 +329,7 @@ class PuzzlesController extends AppController {
  	
  	function viewMissionSolution($puzzle_id,$solution_id)
  	{
+ 		$this->set('menuTab','Magic Decks');
  		$return = array();
  		$puzzle = $this->Puzzle->find('first',array('conditions'=>'Puzzle.id = '.$puzzle_id));
  		$return['title'] = $puzzle['Puzzle']['title'];
