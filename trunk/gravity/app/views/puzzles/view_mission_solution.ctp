@@ -136,13 +136,28 @@
 		{
 			var planet = new Image();
 			planet.src = "/img/planet_4.png";
-			contextScene.save();
+			
+			var anti = new Image();
+			anti.src = "/img/anti_gravity.png";
+			
+			var astro = new Image();
+			astro.src = "/img/astronaut.png";
+			
+			var fuel = new Image();
+			fuel.src = "/img/fuel.png";
+			
 			<?php foreach($data['planets'] as $planet): ?>
 			contextScene.save();
 			contextScene.scale(<?php echo ($planet['radius'] / 70 / 2); ?>, <?php echo ($planet['radius'] / 70 / 2); ?>);
-			contextScene.drawImage(planet, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>);
+			contextScene.drawImage(<?php if($planet['antiGravity']) { echo 'anti'; }else{ echo 'planet'; ?>, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>);
 			contextScene.restore();
+			<?php endforeach; ?>
 			
+			<?php foreach($data['astronauts'] as $astro): ?>
+			contextScene.save();
+			contextScene.scale(<?php echo (0.5); ?>, <?php echo (0.5); ?>);
+			contextScene.drawImage(astro, <?php echo (($astro['x']) / (0.5)); ?>, <?php echo ((768 - $astro['y']) / (0.5)); ?>);
+			contextScene.restore();
 			<?php endforeach; ?>
 		}
 		
