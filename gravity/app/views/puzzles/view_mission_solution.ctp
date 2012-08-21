@@ -237,37 +237,10 @@
 		}
 		function drawBackground()
 		{
-			contextBack.fillStyle =  '#000000';
-			contextBack.fillRect(0, 0, canvasBack.width, canvasBack.height);
-			
-			contextBack.fillStyle =  '#FFFFFF';
-			for(var i = 0; i < canvasBack.width * canvasBack.height / 10000; i++)
-			{
-				var x = Math.floor(Math.random() * canvasBack.width);
-				var y = Math.floor(Math.random() * canvasBack.height);
-				var r = 0.5;
-				stars.push({ x: x, y: y, r: r });
-				contextBack.beginPath();
-				contextBack.arc(x, y, r, 0, Math.PI*2, true); 
-				contextBack.closePath();
-				contextBack.fill();
-			}
-			for(var i = 0; i < canvasBack.width * canvasBack.height / 10000; i++)
-			{
-				var x = Math.floor(Math.random() * canvasBack.width);
-				var y = Math.floor(Math.random() * canvasBack.height);
-				var r = (Math.floor(Math.random() * 2) + 1) / 2;
-				stars.push({ x: x, y: y, r: r });
-				contextBack.beginPath();
-				contextBack.arc(x, y, r, 0, Math.PI*2, true); 
-				contextBack.closePath();
-				contextBack.fill();
-			}
-			contextBack.strokeStyle =  '#FFFFFF';
-			
-			//var planet = new Image();
-			//planet.src = 'planet_6.png';
-			//contextBack.drawImage(planet,canvasBack.width / 2 - 100,200);
+			var planet = new Image();
+			planet.src = "/img/planet_4.png";
+			ccontextBack.scale(2.0, 2.0);
+			ccontextBack.drawImage(planet, 150, 0);
 		}
 		
 		function drawUI()
