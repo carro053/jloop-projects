@@ -156,7 +156,7 @@
 			<?php foreach($data['astronauts'] as $astro): ?>
 			contextScene.save();
 			contextScene.scale(<?php echo (0.5); ?>, <?php echo (0.5); ?>);
-			contextScene.drawImage(astro, <?php echo (($astro['x']) / (0.5)); ?>, <?php echo ((768 - $astro['y']) / (0.5)); ?>);
+			contextScene.drawImage(astro, <?php echo (($astro['x'] - 8) / (0.5)); ?>, <?php echo ((768 - $astro['y'] - 12) / (0.5)); ?>);
 			contextScene.restore();
 			<?php endforeach; ?>
 		}
