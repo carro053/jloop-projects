@@ -136,9 +136,12 @@
 		{
 			var planet = new Image();
 			planet.src = "/img/planet_4.png";
-			contextScene.drawImage(planet, 0, 0);
-			contextScene.scale(0.5, 0.5);
-			contextScene.drawImage(planet, 150, 0);
+			<?php foreach($data['planets'] as $planet): ?>
+			
+			contextScene.scale(0.5 * <?php echo ($planet['radius'] / 70); ?>, 0.5 * <?php echo ($planet['radius'] / 70); ?>);
+			contextScene.drawImage(planet, <?php echo $planet['x']; ?>, <?php echo (768 - $planet['x']); ?>);
+			
+			<?php endforeach; ?>
 		}
 		
 		function drawUI()
