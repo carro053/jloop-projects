@@ -202,15 +202,15 @@
 			
 			for(var b in beacons)
 			{
-				contextFront.save();
-				contextFront.scale(<?php echo (0.5); ?>, <?php echo (0.5); ?>);
+				contextScene.save();
+				contextScene.scale(<?php echo (0.5); ?>, <?php echo (0.5); ?>);
 				if(seconds % 2 == 0)
 				{
-					contextFront.drawImage(beacon_1, beacons[b].x / 0.5, beacons[b].y / 0.5);
+					contextScene.drawImage(beacon_1, beacons[b].x / 0.5, beacons[b].y / 0.5);
 				}else{
-					contextFront.drawImage(beacon_2, beacons[b].x / 0.5, beacons[b].y / 0.5);
+					contextScene.drawImage(beacon_2, beacons[b].x / 0.5, beacons[b].y / 0.5);
 				}
-				contextFront.restore();
+				contextScene.restore();
 			}
 		}
 		
