@@ -78,7 +78,7 @@
 		);
 		
 		var shipSprites = new Image();
-		shipSprites.src = 'ship_sprites.png';
+		shipSprites.src = '/ship_sprites.png';
 
 		
 		
