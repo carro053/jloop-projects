@@ -224,7 +224,7 @@
 			reset_game();
 			contextUI.clearRect(0, 0, canvasUI.width, canvasUI.height);
 			contextFront.clearRect(0, 0, canvasUI.width, canvasUI.height);
-			//drawBackground();
+			drawBackground();
 			//shipSelect();
 		}
 		
