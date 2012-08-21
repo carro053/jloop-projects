@@ -164,12 +164,13 @@
 			<?php endforeach; ?>
 			
 			contextScene.save();
-			contextScene.scale(<?php echo (0.5); ?>, <?php echo (0.5); ?>);
-			contextScene.drawImage(space_station, <?php echo (($data['startData']['0'] - 8) / (0.5)); ?>, <?php echo ((768 - $data['startData']['1'] - 8) / (0.5)); ?>);
+			contextScene.scale(<?php echo (1); ?>, <?php echo (1); ?>);
+			contextScene.drawImage(space_station, <?php echo (($data['startData']['0'] - 16) / (1)); ?>, <?php echo ((768 - $data['startData']['1'] - 16) / (1)); ?>);
 			contextScene.restore();
+			
 			contextScene.save();
 			contextScene.scale(<?php echo (1); ?>, <?php echo (1); ?>);
-			contextScene.drawImage(space_station, <?php echo (($data['endData']['0'] - 8) / (1)); ?>, <?php echo ((768 - $data['endData']['1'] - 8) / (1)); ?>);
+			contextScene.drawImage(space_station, <?php echo (($data['endData']['0'] - 16) / (1)); ?>, <?php echo ((768 - $data['endData']['1'] - 16) / (1)); ?>);
 			contextScene.restore();
 		}
 		
