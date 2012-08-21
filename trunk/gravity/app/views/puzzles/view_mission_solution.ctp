@@ -119,6 +119,7 @@
 			};
 			
 			shipSprites.onload = initialize();
+			startGame();
 		};
 		function initialize()
 		{
