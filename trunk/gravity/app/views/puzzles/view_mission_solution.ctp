@@ -146,6 +146,9 @@
 			var fuel = new Image();
 			fuel.src = "/img/fuel.png";
 			
+			var space_station = new Image();
+			space_station.src = "/img/space_station.png";
+			
 			<?php foreach($data['planets'] as $planet): ?>
 			contextScene.save();
 			contextScene.scale(<?php echo ($planet['radius'] / 70 / 2); ?>, <?php echo ($planet['radius'] / 70 / 2); ?>);
@@ -159,6 +162,15 @@
 			contextScene.drawImage(astro, <?php echo (($astro['x'] - 8) / (0.5)); ?>, <?php echo ((768 - $astro['y'] - 12) / (0.5)); ?>);
 			contextScene.restore();
 			<?php endforeach; ?>
+			
+			contextScene.save();
+			contextScene.scale(<?php echo (0.5); ?>, <?php echo (0.5); ?>);
+			contextScene.drawImage(space_station, <?php echo (($data['startData']['0'] - 8) / (0.5)); ?>, <?php echo ((768 - $data['startData']['1'] - 8) / (0.5)); ?>);
+			contextScene.restore();
+			contextScene.save();
+			contextScene.scale(<?php echo (0.5); ?>, <?php echo (0.5); ?>);
+			contextScene.drawImage(space_station, <?php echo (($data['endData']['0'] - 8) / (0.5)); ?>, <?php echo ((768 - $data['endData']['1'] - 8) / (0.5)); ?>);
+			contextScene.restore();
 		}
 		
 		function drawUI()
