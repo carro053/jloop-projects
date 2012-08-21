@@ -239,8 +239,8 @@
 		{
 			var planet = new Image();
 			planet.src = "/img/planet_4.png";
-			ccontextBack.scale(2.0, 2.0);
-			ccontextBack.drawImage(planet, 150, 0);
+			contextBack.scale(2.0, 2.0);
+			contextBack.drawImage(planet, 150, 0);
 		}
 		
 		function drawUI()
