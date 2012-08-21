@@ -181,10 +181,10 @@
 		
 	</script>
 	<div style="position:absolute;width:1024px;height:768px;">
-		<canvas id="canvasBack" style="position:absolute;width:1024px;height:768px;background:url(/img/stars.jpg);"></canvas>
-		<canvas id="canvasScene" style="position:absolute;width:1024px;height:768px;"></canvas>
-		<canvas id="canvasFront" style="position:absolute;width:1024px;height:768px;"></canvas>
-		<canvas id="canvasUI" style="position:absolute;width:1024px;height:768px;"></canvas>
+		<canvas id="canvasBack" style="position:absolute;width:1024px;height:768px;background:url(/img/stars.jpg);" width="1024" height="768"></canvas>
+		<canvas id="canvasScene" style="position:absolute;width:1024px;height:768px;" width="1024" height="768"></canvas>
+		<canvas id="canvasFront" style="position:absolute;width:1024px;height:768px;" width="1024" height="768"></canvas>
+		<canvas id="canvasUI" style="position:absolute;width:1024px;height:768px;" width="1024" height="768"></canvas>
 	</div>
 </body>
 </html>
