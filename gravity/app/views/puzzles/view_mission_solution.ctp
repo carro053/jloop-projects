@@ -99,7 +99,7 @@
 			contextBack = canvasBack.getContext('2d');			
 			
 			canvasScene = document.getElementById('canvasScene');
-			contextScene = canvasFront.getContext('2d');
+			contextScene = canvasScene.getContext('2d');
 			
 			canvasFront = document.getElementById('canvasFront');
 			contextFront = canvasFront.getContext('2d');
