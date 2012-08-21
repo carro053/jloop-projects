@@ -170,15 +170,6 @@
 			contextScene.restore();
 			<?php endforeach; ?>
 			
-			
-			
-			<?php foreach($data['way_points'] as $astro): ?>
-			contextScene.save();
-			contextScene.scale(<?php echo (0.5); ?>, <?php echo (0.5); ?>);
-			contextScene.drawImage(astro, <?php echo (($astro['x'] - 8) / (0.5)); ?>, <?php echo ((768 - $astro['y'] - 12) / (0.5)); ?>);
-			contextScene.restore();
-			<?php endforeach; ?>
-			
 			contextScene.save();
 			contextScene.scale(<?php echo (1); ?>, <?php echo (1); ?>);
 			contextScene.drawImage(space_station, <?php echo (($data['startData']['0'] - 16) / (1)); ?>, <?php echo ((768 - $data['startData']['1'] - 16) / (1)); ?>);
