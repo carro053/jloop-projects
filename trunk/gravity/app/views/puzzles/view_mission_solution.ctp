@@ -183,7 +183,7 @@
 		}
 		
 	</script>
-	<div style="position:absolute;width:1024px;height:768px;">
+	<div style="position:block;width:1024px;height:768px;">
 		<canvas id="canvasBack" style="position:absolute;width:1024px;height:768px;background:url(/img/stars.jpg);" width="1024" height="768"></canvas>
 		<canvas id="canvasScene" style="position:absolute;width:1024px;height:768px;" width="1024" height="768"></canvas>
 		<canvas id="canvasFront" style="position:absolute;width:1024px;height:768px;" width="1024" height="768"></canvas>
