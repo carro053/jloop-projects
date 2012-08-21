@@ -359,6 +359,7 @@ class PuzzlesController extends AppController {
  		$fastest_time = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'PuzzleSolution.time ASC'));
  		if(isset($fastest_time['PuzzleSolution']['id']))
  		{
+ 			$return['fastest_time'] = $fastest_time['PuzzleSolution']['time'];
  			$return['fastest_time_id'] = $fastest_time['PuzzleSolution']['id'];
  		}else{
  			$return['fastest_time_id'] = 0;
@@ -366,6 +367,7 @@ class PuzzlesController extends AppController {
  		$most_fuel = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'PuzzleSolution.fuel_remaining DESC'));
  		if(isset($most_fuel['PuzzleSolution']['id']))
  		{
+ 			$return['most_fuel_remaining'] = $most_fuel['PuzzleSolution']['fuel_remaining'];
  			$return['most_fuel_id'] = $most_fuel['PuzzleSolution']['id'];
  		}else{
  			$return['most_fuel_id'] = 0;
