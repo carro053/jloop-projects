@@ -65,6 +65,10 @@
 		var gameInterval;
 		var gameTime = 0;
 		var timer = new Timer();
+		var beacons = new Array();			
+		<?php foreach($data['way_points'] as $beacon): ?>
+		addBeacon(<?php echo ($beacon['x']); ?>,<?php echo (768 - $beacon['y']); ?>);
+		<?php endforeach; ?>
 		//var soundExplosion = new Audio('/explosion.mp3');
 		var shipSpritesheet = new SpriteSheet(
 			[
@@ -146,6 +150,9 @@
 			var fuel = new Image();
 			fuel.src = "/img/fuel.png";
 			
+			var beacon = new Image();
+			beacon.src = "/img/beacon_1.png";
+			
 			var space_station = new Image();
 			space_station.src = "/img/space_station.png";
 			
@@ -163,6 +170,15 @@
 			contextScene.restore();
 			<?php endforeach; ?>
 			
+			
+			
+			<?php foreach($data['way_points'] as $astro): ?>
+			contextScene.save();
+			contextScene.scale(<?php echo (0.5); ?>, <?php echo (0.5); ?>);
+			contextScene.drawImage(astro, <?php echo (($astro['x'] - 8) / (0.5)); ?>, <?php echo ((768 - $astro['y'] - 12) / (0.5)); ?>);
+			contextScene.restore();
+			<?php endforeach; ?>
+			
 			contextScene.save();
 			contextScene.scale(<?php echo (1); ?>, <?php echo (1); ?>);
 			contextScene.drawImage(space_station, <?php echo (($data['startData']['0'] - 16) / (1)); ?>, <?php echo ((768 - $data['startData']['1'] - 16) / (1)); ?>);
@@ -172,6 +188,38 @@
 			contextScene.scale(<?php echo (1); ?>, <?php echo (1); ?>);
 			contextScene.drawImage(space_station, <?php echo (($data['endData']['0'] - 16) / (1)); ?>, <?php echo ((768 - $data['endData']['1'] - 16) / (1)); ?>);
 			contextScene.restore();
+		}
+		
+		function addBeacon(x,y)
+		{
+			var beacon = new Object;
+			beacon.x = x;
+			beacon.y = y;
+			beacons.push(beacon);
+		}
+		
+		function updateBeacons()
+		{
+			
+			var beacon_1 = new Image();
+			beacon_1.src = "/img/beacon_1.png";
+			
+			var beacon_2 = new Image();
+			beacon_2.src = "/img/beacon_2.png";
+			var seconds = new Date().getSeconds()
+			
+			for(var b in beacons)
+			{
+				contextFront.save();
+				contextFront.scale(<?php echo (0.5); ?>, <?php echo (0.5); ?>);
+				if(seconds % 2 == 0)
+				{
+					contextFront.drawImage(beacon_1, beacons[b].x / 0.5, beacons[b].y / 0.5);
+				}else{
+					contextFront.drawImage(beacon_2, beacons[b].x / 0.5, beacons[b].y / 0.5);
+				}
+				contextFront.restore();
+			}
 		}
 		
 		function drawUI()
@@ -194,7 +242,7 @@
 
 		function updateObjects()
 		{
-				
+			updateBeacons();	
 		}
 		function clearCanvas()
 		{
@@ -203,7 +251,7 @@
 
 		function drawObjects()
 		{
-		
+			
 			
 		}
 		function reset_game()
