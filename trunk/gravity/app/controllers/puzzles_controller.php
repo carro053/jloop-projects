@@ -329,7 +329,7 @@ class PuzzlesController extends AppController {
  	
  	function viewMissionSolution($puzzle_id,$solution_id)
  	{
- 		$this->set('menuTab','Magic Decks');
+ 		$this->layout = false;
  		$return = array();
  		$puzzle = $this->Puzzle->find('first',array('conditions'=>'Puzzle.id = '.$puzzle_id));
  		$return['title'] = $puzzle['Puzzle']['title'];
