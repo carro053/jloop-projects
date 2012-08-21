@@ -136,8 +136,9 @@
 		{
 			var planet = new Image();
 			planet.src = "/img/planet_4.png";
+			contextScene.save();
 			<?php foreach($data['planets'] as $planet): ?>
-			
+			contextScene.restore();
 			contextScene.scale(<?php echo ($planet['radius'] / 70 / 2); ?>, <?php echo ($planet['radius'] / 70 / 2); ?>);
 			contextScene.drawImage(planet, <?php echo $planet['x']; ?>, <?php echo (768 - $planet['y']); ?>);
 			
