@@ -327,6 +327,43 @@ class PuzzlesController extends AppController {
  		exit;
  	}
  	
+ 	function viewMissionSolution($puzzle_id,$solution_id)
+ 	{
+ 		$return = array();
+ 		$puzzle = $this->Puzzle->find('first',array('conditions'=>'Puzzle.id = '.$puzzle_id));
+ 		$return['title'] = $puzzle['Puzzle']['title'];
+ 		$return['startData'] = array($puzzle['Puzzle']['start_x'],$puzzle['Puzzle']['start_y']);
+ 		$return['endData'] = array($puzzle['Puzzle']['end_x'],$puzzle['Puzzle']['end_y']);
+ 		$return['total_fuel'] = $puzzle['Puzzle']['total_fuel'];
+ 		$return['most_fuel_remaining'] = $puzzle['Puzzle']['most_fuel_remaining'];
+ 		$return['fastest_time'] = $puzzle['Puzzle']['fastest_solution'];
+ 		$astronauts = $this->PuzzleAstronaut->find('all',array('conditions'=>'PuzzleAstronaut.puzzle_id = '.$puzzle_id));
+ 		$return_astros = array();
+ 		foreach($astronauts as $astronaut):
+ 			$return_astros[] = array('x'=>$astronaut['PuzzleAstronaut']['x'],'y'=>$astronaut['PuzzleAstronaut']['y']);	
+ 		endforeach;
+ 		$return['astronauts'] = $return_astros;
+ 		$planets = $this->PuzzlePlanet->find('all',array('conditions'=>'PuzzlePlanet.puzzle_id = '.$puzzle_id));
+ 		$return_planets = array();
+ 		foreach($planets as $planet):
+ 			$return_planets[] = array('x'=>$planet['PuzzlePlanet']['x'],'y'=>$planet['PuzzlePlanet']['y'],'radius'=>$planet['PuzzlePlanet']['radius'],'density'=>$planet['PuzzlePlanet']['density'],'antiGravity'=>$planet['PuzzlePlanet']['anti_gravity'],'hasMoon'=>$planet['PuzzlePlanet']['hasMoon'],'moonAngle'=>$planet['PuzzlePlanet']['moonAngle']);	
+ 		endforeach;
+ 		$return['planets'] = $return_planets;
+ 		$items = $this->PuzzleItem->find('all',array('conditions'=>'PuzzleItem.puzzle_id = '.$puzzle_id));
+ 		$return_items = array();
+ 		foreach($items as $item):
+ 			$return_items[] = array('type'=>$item['PuzzleItem']['type'],'x'=>$item['PuzzleItem']['x'],'y'=>$item['PuzzleItem']['y']);	
+ 		endforeach;
+ 		$return['items'] = $return_items;
+ 		$solution_points = array();
+ 		$solution_way_points = $this->PuzzleSolutionWayPoint->find('all',array('conditions'=>'PuzzleSolutionWayPoint.puzzle_solution_id = '.$solution_id,'order'=>'PuzzleSolutionWayPoint.order ASC'));
+ 		foreach($solution_way_points as $way_point):
+ 			$solution_points[] = array('x'=>$way_point['PuzzleSolutionWayPoint']['x'],'y'=>$way_point['PuzzleSolutionWayPoint']['y']);
+ 		endforeach;
+ 		$return['way_points'] = $solution_points;
+ 		$this->set('data',$return); 	
+ 	}
+ 	
  	
  	function getPuzzleTimes($puzzle_id,$device_id)
  	{
