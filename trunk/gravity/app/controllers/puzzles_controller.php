@@ -202,7 +202,7 @@ class PuzzlesController extends AppController {
  		}
  		
  		$puzzle = $this->Puzzle->find('first',array('conditions'=>'Puzzle.id = '.$puzzle_id));
- 		if($puzzle['Puzzle']['most_fuel_remaining'] == 0 || $puzzle['Puzzle']['most_fuel_remaining'] > $json_data->fuel_remaining) $puzzle['Puzzle']['most_fuel_remaining'] = $json_data->fuel_remaining;
+ 		if($puzzle['Puzzle']['most_fuel_remaining'] == 0 || $puzzle['Puzzle']['most_fuel_remaining'] < $json_data->fuel_remaining) $puzzle['Puzzle']['most_fuel_remaining'] = $json_data->fuel_remaining;
  		if($puzzle['Puzzle']['fastest_solution'] == 0 || $puzzle['Puzzle']['fastest_solution'] > $json_data->travelTime) $puzzle['Puzzle']['fastest_solution'] = $json_data->travelTime;
  		$this->Puzzle->save($puzzle);
  		
