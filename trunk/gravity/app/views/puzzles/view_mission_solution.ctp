@@ -140,7 +140,7 @@
 			<?php foreach($data['planets'] as $planet): ?>
 			contextScene.save();
 			contextScene.scale(<?php echo ($planet['radius'] / 70 / 2); ?>, <?php echo ($planet['radius'] / 70 / 2); ?>);
-			contextScene.drawImage(planet, <?php echo (($planet['x'] + $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>);
+			contextScene.drawImage(planet, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] + $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>);
 			contextScene.restore();
 			
 			<?php endforeach; ?>
