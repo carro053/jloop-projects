@@ -186,5 +186,8 @@
 		<canvas id="canvasFront" style="position:absolute;width:1024px;height:768px;" width="1024" height="768"></canvas>
 		<canvas id="canvasUI" style="position:absolute;width:1024px;height:768px;" width="1024" height="768"></canvas>
 	</div>
+	<pre>
+	<?php print_r($data); ?>
+	</pre>
 </body>
 </html>
