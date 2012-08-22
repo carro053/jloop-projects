@@ -67,7 +67,7 @@
 		var timer = new Timer();
 		var beacons = new Array();			
 		<?php foreach($data['way_points'] as $beacon): ?>
-		addBeacon(<?php echo ($beacon['x']); ?>,<?php echo (768 - $beacon['y']); ?>);
+		addBeacon(<?php echo ($beacon['x'] - 11); ?>,<?php echo (768 - $beacon['y'] - 11); ?>);
 		<?php endforeach; ?>
 		//var soundExplosion = new Audio('/explosion.mp3');
 		var shipSpritesheet = new SpriteSheet(
