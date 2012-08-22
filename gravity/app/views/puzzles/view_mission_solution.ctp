@@ -216,11 +216,7 @@
 		
 		function drawUI()
 		{
-			contextUI.clearRect(0, 0, canvasUI.width, canvasUI.height);
-			contextUI.font = '24px Arial';
-			contextUI.fillStyle =  '#FFFFFF';
-    		contextUI.textAlign = "left";
-			contextUI.fillRect(150,canvasUI.height - 57,20,20);
+		
 		}
 
 		function gameLoop()
@@ -234,7 +230,7 @@
 
 		function updateObjects()
 		{
-			//updateBeacons();	
+			updateBeacons();	
 		}
 		function clearCanvas()
 		{
