@@ -234,7 +234,7 @@
 
 		function updateObjects()
 		{
-			updateBeacons();	
+			//updateBeacons();	
 		}
 		function clearCanvas()
 		{
