@@ -229,8 +229,8 @@
 		}
 
 		function updateObjects()
-		{
-			updateBeacons();	
+		{	
+		
 		}
 		function clearCanvas()
 		{
@@ -239,8 +239,7 @@
 
 		function drawObjects()
 		{
-			
-			
+			updateBeacons();		
 		}
 		function reset_game()
 		{
