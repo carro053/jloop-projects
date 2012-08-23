@@ -232,13 +232,14 @@ class PuzzlesController extends AppController {
 	 			$order++;
 	 		}
 	 		
-		 	$best_fuel = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id,'order'=>'PuzzleSolution.fuel_remaining DESC'));
+		 	/*$best_fuel = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id,'order'=>'PuzzleSolution.fuel_remaining DESC'));
 		 	$best_time = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id,'order'=>'PuzzleSolution.time ASC'));
 		 	$remove_these = $this->PuzzleSolution->find('all',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id.' AND PuzzleSolution.id != '.$best_fuel['PuzzleSolution']['id'].' AND PuzzleSolution.id != '.$best_time['PuzzleSolution']['id']));
 		 	foreach($remove_these as $these):
  				$this->PuzzleSolutionWayPoint->query('DELETE FROM `puzzle_solution_way_points` WHERE `puzzle_solution_id` = '.$these['PuzzleSolution']['id']);
  				$this->PuzzleSolution->delete($these['PuzzleSolution']['id']);
 		 	endforeach;
+		 	*/
 	 	}
  		exit;
  	}
