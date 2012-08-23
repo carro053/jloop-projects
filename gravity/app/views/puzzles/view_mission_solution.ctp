@@ -1010,7 +1010,7 @@ function v2Negate(v)
 }
 		
 	</script>
-	<div style="width:1331px;height:1017px;margin:0 auto;background-image:url('/img/ipad.jpg');background-repeat:no-repeat;background-color:#FFF;padding-top:115px;padding-left:160px;">
+	<div style="width:1171px;height:902px;margin:0 auto;background-image:url('/img/ipad.jpg');background-repeat:no-repeat;background-color:#FFF;padding-top:115px;padding-left:160px;">
 		<div style="position:block;width:1024px;height:768px;;">
 			<canvas id="canvasBack" style="position:absolute;width:1024px;height:768px;background:url(/img/stars.jpg);" width="1024" height="768"></canvas>
 			<canvas id="canvasScene" style="position:absolute;width:1024px;height:768px;" width="1024" height="768"></canvas>
