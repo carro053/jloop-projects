@@ -208,7 +208,7 @@
 			addAstronaut(<?php echo ($astro['x']); ?>, <?php echo (768 - $astro['y']); ?>);
 			<?php endforeach; ?>
 			<?php foreach($data['items'] as $item): ?>
-			addAstronaut(<?php echo ($item['x']); ?>, <?php echo (768 - $item['y']); ?>);
+			addItem(<?php echo ($item['x']); ?>, <?php echo (768 - $item['y']); ?>);
 			<?php endforeach; ?>
 			
 			var temp_beacons = new Array();
