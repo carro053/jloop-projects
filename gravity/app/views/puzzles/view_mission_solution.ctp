@@ -349,7 +349,7 @@
 			}
 			for(i in items)
 			{
-				if(items[1].collected == 0)
+				if(items[i].collected == 0)
 				{
 					contextFront.save();
 					contextFront.scale(0.5, 0.5);
