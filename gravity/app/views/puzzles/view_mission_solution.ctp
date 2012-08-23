@@ -324,7 +324,7 @@
 			var found = false;
 			for(t in time_locations)
 			{
-				if(time_locations[t].timestamp <= gameTime)
+				if(time_locations[t].timestamp < gameTime)
 				{
 				for(a in astronauts)
 				{
@@ -348,9 +348,7 @@
             			}
 					}
 				}
-				}
-				if(time_locations[t].timestamp >= gameTime)
-				{
+				}else{
 					contextFront.save();
 					contextFront.scale(0.5, 0.5);
 					contextFront.translate((time_locations[t].x) / 0.5, (time_locations[t].y) / 0.5);
