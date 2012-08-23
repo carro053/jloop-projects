@@ -333,6 +333,30 @@
 					contextFront.drawImage(shipImage, -22, -18);
 					contextFront.restore();
 					found = true;
+					
+					for(a in astronauts)
+					{
+						if(astronauts[a].collected == 0)
+						{
+							var separation = Math.sqrt(Math.pow(astronauts[a].x - time_locations[t].x,2) + Math.pow(astronauts[a].y - time_locations[t].y,2));
+            				if(separation < saveThreshold)
+            				{
+                				astronauts[a].collected = 1;
+                			}
+						}
+					}
+					for(i in items)
+					{
+						if(items[i].collected == 0)
+						{
+							var separation = Math.sqrt(Math.pow(items[i].x - time_locations[t].x,2) + Math.pow(items[i].y - time_locations[t].y,2));
+            				if(separation < saveThreshold)
+            				{
+                				items[i].collected = 1;
+                			}
+						}
+					}
+					
 					break;					
 				}
 				
