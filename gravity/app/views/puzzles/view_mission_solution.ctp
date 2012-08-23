@@ -68,6 +68,8 @@
 		var timer = new Timer();
 		var beacons = new Array();	
 		var planets = new Array();
+		var astronauts = new Array();
+		var items = new Array();
 		var minSpeed = 10.0;
 		var currentSpeed = minSpeed;
 		var total_travel_time = 0;
@@ -114,6 +116,30 @@
 		var canvasUI = new Object();
 		var contextUI = new Object();
 		
+		var planetImage = new Image();
+		planetImage.src = "/img/planet_4.png";
+		
+		var antiImage = new Image();
+		antiImage.src = "/img/anti_gravity.png";
+		
+		var astroImage = new Image();
+		astroImage.src = "/img/astronaut.png";
+		
+		var fuelImage = new Image();
+		fuelImage.src = "/img/fuel.png";
+		
+		var beacon_1Image = new Image();
+		beacon_1Image.src = "/img/beacon_1.png";
+		
+		var beacon_2Image = new Image();
+		beacon_2Image.src = "/img/beacon_2.png";
+		
+		var space_stationImage = new Image();
+		space_stationImage.src = "/img/space_station.png";
+		
+		var shipImage = new Image();
+		shipImage.src = "/img/fury.png";
+		
 		window.onload = function() {
 			
 			canvasBack = document.getElementById('canvasBack');
@@ -156,49 +182,34 @@
 		}
 		function drawBackground()
 		{
-			var planet = new Image();
-			planet.src = "/img/planet_4.png";
-			
-			var anti = new Image();
-			anti.src = "/img/anti_gravity.png";
-			
-			var astro = new Image();
-			astro.src = "/img/astronaut.png";
-			
-			var fuel = new Image();
-			fuel.src = "/img/fuel.png";
-			
-			var beacon = new Image();
-			beacon.src = "/img/beacon_1.png";
-			
-			var space_station = new Image();
-			space_station.src = "/img/space_station.png";
 			
 			<?php foreach($data['planets'] as $planet): ?>
 			contextScene.save();
 			contextScene.scale(<?php echo ($planet['radius'] / 70 / 2); ?>, <?php echo ($planet['radius'] / 70 / 2); ?>);
-			contextScene.drawImage(<?php if($planet['antiGravity']) { echo 'anti'; }else{ echo 'planet'; } ?>, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>);
+			contextScene.drawImage(<?php if($planet['antiGravity']) { echo 'antiImage'; }else{ echo 'planetImage'; } ?>, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>);
 			contextScene.restore();
 			
 			addPlanet(<?php echo $planet['x']; ?>,<?php echo (768 - $planet['y']); ?>,<?php echo $planet['radius']; ?>,<?php echo $planet['density']; ?>,<?php echo $planet['antiGravity']; ?>,<?php echo $planet['hasMoon']; ?>,<?php echo $planet['moonAngle']; ?>);
 			<?php endforeach; ?>
 			
+			contextScene.save();
+			contextScene.scale(<?php echo (1); ?>, <?php echo (1); ?>);
+			contextScene.drawImage(space_stationImage, <?php echo (($data['startData']['0'] - 16) / (1)); ?>, <?php echo ((768 - $data['startData']['1'] - 16) / (1)); ?>);
+			contextScene.restore();
+			
+			contextScene.save();
+			contextScene.scale(<?php echo (1); ?>, <?php echo (1); ?>);
+			contextScene.drawImage(space_stationImage, <?php echo (($data['endData']['0'] - 16) / (1)); ?>, <?php echo ((768 - $data['endData']['1'] - 16) / (1)); ?>);
+			contextScene.restore();
+			
+			
+			
 			<?php foreach($data['astronauts'] as $astro): ?>
-			contextScene.save();
-			contextScene.scale(<?php echo (0.5); ?>, <?php echo (0.5); ?>);
-			contextScene.drawImage(astro, <?php echo (($astro['x'] - 8) / (0.5)); ?>, <?php echo ((768 - $astro['y'] - 12) / (0.5)); ?>);
-			contextScene.restore();
+			addAstronaut(<?php echo (($astro['x']); ?>, <?php echo (768 - $astro['y']); ?>);
 			<?php endforeach; ?>
-			
-			contextScene.save();
-			contextScene.scale(<?php echo (1); ?>, <?php echo (1); ?>);
-			contextScene.drawImage(space_station, <?php echo (($data['startData']['0'] - 16) / (1)); ?>, <?php echo ((768 - $data['startData']['1'] - 16) / (1)); ?>);
-			contextScene.restore();
-			
-			contextScene.save();
-			contextScene.scale(<?php echo (1); ?>, <?php echo (1); ?>);
-			contextScene.drawImage(space_station, <?php echo (($data['endData']['0'] - 16) / (1)); ?>, <?php echo ((768 - $data['endData']['1'] - 16) / (1)); ?>);
-			contextScene.restore();
+			<?php foreach($data['items'] as $item): ?>
+			addAstronaut(<?php echo (($item['x']); ?>, <?php echo (768 - $item['y']); ?>);
+			<?php endforeach; ?>
 			
 			var temp_beacons = new Array();
 			var temp_beacon_start = new Object();
@@ -240,6 +251,24 @@
 			planets.push(planet);
 		}
 		
+		function addItem(x,y)
+		{
+			var item = new Object();
+			item.x = x;
+			item.y = y;
+			item.collected = 0;
+			items.push(item);
+		}
+		
+		function addAstronaut(x,y)
+		{
+			var astronaut = new Object();
+			astronaut.x = x;
+			astronaut.y = y;
+			astronaut.collected = 0;
+			astronauts.push(astronaut);
+		}
+		
 		function addBeacon(x,y)
 		{
 			var beacon = new Object();
@@ -250,12 +279,6 @@
 		
 		function updateBeacons()
 		{
-			
-			var beacon_1 = new Image();
-			beacon_1.src = "/img/beacon_1.png";
-			
-			var beacon_2 = new Image();
-			beacon_2.src = "/img/beacon_2.png";
 			var seconds = new Date().getSeconds()
 			
 			for(var b in beacons)
@@ -264,9 +287,9 @@
 				contextFront.scale(<?php echo (0.5); ?>, <?php echo (0.5); ?>);
 				if(seconds % 2 == 0)
 				{
-					contextFront.drawImage(beacon_1, (beacons[b].x - 11) / 0.5, (beacons[b].y - 11) / 0.5);
+					contextFront.drawImage(beacon_1Image, (beacons[b].x - 11) / 0.5, (beacons[b].y - 11) / 0.5);
 				}else{
-					contextFront.drawImage(beacon_2, (beacons[b].x - 11) / 0.5, (beacons[b].y - 11) / 0.5);
+					contextFront.drawImage(beacon_2Image, (beacons[b].x - 11) / 0.5, (beacons[b].y - 11) / 0.5);
 				}
 				contextFront.restore();
 			}
@@ -303,26 +326,53 @@
 			{
 				if(time_locations[t].timestamp >= gameTime)
 				{
-					var ship = new Image();
-					ship.src = "/img/fury.png";
 					contextFront.save();
 					contextFront.scale(0.5, 0.5);
 					contextFront.translate((time_locations[t].x) / 0.5, (time_locations[t].y) / 0.5);
 					contextFront.rotate(2 * Math.PI - time_locations[t].angle + Math.PI / 2);
-					contextFront.drawImage(ship, -22, -18);
+					contextFront.drawImage(shipImage, -22, -18);
 					contextFront.restore();
 					found = true;
 					break;					
 				}
 				
 			}
+			for(a in astronauts)
+			{
+				if(astronauts[a].collected == 0)
+				{
+					contextFront.save();
+					contextFront.scale(0.5, 0.5);
+					contextFront.drawImage(astroImage, (astronauts[a].x - 8) / (0.5), (astronauts[a].y - 12) / (0.5));
+					contextFront.restore();
+				}
+			}
+			for(i in items)
+			{
+				if(items[1].collected == 0)
+				{
+					contextFront.save();
+					contextFront.scale(0.5, 0.5);
+					contextFront.drawImage(fuelImage, (items[i].x - 8) / (0.5), (items[i].y - 12) / (0.5));
+					contextFront.restore();
+				}
+			}
 			if(!found)
 			{
-				gameTime = 0.0;
+				reset_game();
 			}
 		}
 		function reset_game()
 		{
+			for(a in astronauts)
+			{
+				astronauts[a].collected = 0;
+			}
+			for(i in items)
+			{
+				items[i].collected = 0;
+			}
+			gameTime = 0.0;
 			timer.previousTime = new Date().getTime();
 			timer.currentTime = new Date().getTime();
 		}
