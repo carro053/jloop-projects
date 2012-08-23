@@ -326,28 +326,28 @@
 			{
 				if(time_locations[t].timestamp < gameTime)
 				{
-				for(a in astronauts)
-				{
-					if(astronauts[a].collected == 0)
+					for(a in astronauts)
 					{
-						var separation = Math.sqrt(Math.pow(astronauts[a].x - time_locations[t].x,2) + Math.pow(astronauts[a].y - time_locations[t].y,2));
-        				if(separation < saveThreshold)
-        				{
-            				astronauts[a].collected = 1;
-            			}
+						if(astronauts[a].collected == 0)
+						{
+							var separation = Math.sqrt(Math.pow(astronauts[a].x - time_locations[t].x,2) + Math.pow(astronauts[a].y - time_locations[t].y,2));
+	        				if(separation < saveThreshold)
+	        				{
+	            				astronauts[a].collected = 1;
+	            			}
+						}
 					}
-				}
-				for(i in items)
-				{
-					if(items[i].collected == 0)
+					for(i in items)
 					{
-						var separation = Math.sqrt(Math.pow(items[i].x - time_locations[t].x,2) + Math.pow(items[i].y - time_locations[t].y,2));
-        				if(separation < saveThreshold)
-        				{
-            				items[i].collected = 1;
-            			}
+						if(items[i].collected == 0)
+						{
+							var separation = Math.sqrt(Math.pow(items[i].x - time_locations[t].x,2) + Math.pow(items[i].y - time_locations[t].y,2));
+	        				if(separation < saveThreshold)
+	        				{
+	            				items[i].collected = 1;
+	            			}
+						}
 					}
-				}
 				}else{
 					contextFront.save();
 					contextFront.scale(0.5, 0.5);
