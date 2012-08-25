@@ -433,7 +433,7 @@ class PuzzlesController extends AppController {
  		}
  		
  		
- 		$fastest_times = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'PuzzleSolution.time ASC','group' => 'PuzzleSolution.account_id'));
+ 		$fastest_times = $this->PuzzleSolution->find('all',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'PuzzleSolution.time ASC','group' => 'PuzzleSolution.account_id'));
  		$return['fastest_times'] = $fastest_times;
  		
  		
