@@ -434,7 +434,9 @@ class PuzzlesController extends AppController {
  		
  		$return['your_account_id'] = $account_id;
  		
- 		$fastest_times = $this->PuzzleSolution->find('all',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'PuzzleSolution.time ASC','group' => 'PuzzleSolution.account_id','limit'=>10));
+ 		$fastest_times = $this->PuzzleSolution->find('all',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'PuzzleSolution.time ASC','group' => 'PuzzleSolution.account_id','limit'=>10,'fields' => array(' MAX(PuzzleSolution.time) AS PuzzleSolution.best_time','PuzzleSolution.id','PuzzleSolution.account_id','PuzzleSolution.puzzle_id','PuzzleSolution.time'));
+ 		print_r($fastest_times);
+ 		exit;
  		$return['fastest_times'] = array();
  		foreach($fastest_times  as $time):
  			$return['fastest_times'][] = array('time'=>$time['PuzzleSolution']['time'],'id'=>$time['PuzzleSolution']['id'],'account_id'=>$time['PuzzleSolution']['account_id']);
