@@ -431,6 +431,12 @@ class PuzzlesController extends AppController {
  			$return['your_most_fuel'] = 0;
  			$return['your_most_fuel_id'] = 0;
  		}
+ 		
+ 		
+ 		$fastest_times = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'PuzzleSolution.time ASC','group' => 'PuzzleSolution.account_id'));
+ 		$return['fastest_times'] = $fastest_times;
+ 		
+ 		
  		echo json_encode($return);
  		exit;
  	}

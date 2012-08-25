@@ -83,7 +83,7 @@
 		
         var xOrbit = 11.0 / 8.0;
         var yOrbit = 3.0 / 2.0;
-        var moonRadius = 2.0 / 7.0;
+        var theMoonRadius = 2.0 / 7.0;
         var MAXPOINTS = 10000;
 		<?php foreach($data['way_points'] as $beacon): ?>
 		addBeacon(<?php echo ($beacon['x']); ?>,<?php echo (768 - $beacon['y']); ?>);
@@ -178,7 +178,7 @@
 			reset_game();
 			drawUI();
 			timer.tick();
-			gameInterval = setInterval(gameLoop, 20);
+			gameInterval = setInterval(gameLoop, 33);
 		}
 		function drawBackground()
 		{
@@ -441,7 +441,8 @@ function drawBezierCurve(n,curve)
                 var shipMass = 1.0;
                 var u_x = (previous_dot.x - previous_previous_dot.x) / Math.sqrt(Math.pow(previous_dot.x - previous_previous_dot.x, 2) + Math.pow(previous_dot.y - previous_previous_dot.y, 2));
                 var u_y = (previous_dot.y - previous_previous_dot.y) / Math.sqrt(Math.pow(previous_dot.x - previous_previous_dot.x, 2) + Math.pow(previous_dot.y - previous_previous_dot.y, 2));
-                var new_x = u_x * currentSpeed;
+                
+				var new_x = u_x * currentSpeed;
                 var new_y = u_y * currentSpeed;
                 for(var p in planets)
                 {
@@ -458,16 +459,17 @@ function drawBezierCurve(n,curve)
                     new_x -= g_x * travel_time * gravity;
                     new_y -= g_y * travel_time * gravity;
                     if (planets[p].hasMoon) {
-                        var currentMoonAngle = planet.startingMoonAngle + Math.PI / planet.radius * (planet.density + 0.012) / 0.03 / 2.0 * 60.0 * total_travel_time;
-                        var moonX = planets[p].x + Math.cos(currentMoonAngle) * planets[p].radius * xOrbit;
+                        var currentMoonAngle = planets[p].moonAngle + Math.PI / planets[p].radius * (planets[p].density + 0.012) / 0.03 / 2.0 * 60.0 * total_travel_time;
+						var moonX = planets[p].x + Math.cos(currentMoonAngle) * planets[p].radius * xOrbit;
                         var moonY = planets[p].y + Math.sin(currentMoonAngle) * planets[p].radius * yOrbit;
-                        var moonRadius = planets[p].radius * moonRadius;
+                        var moonRadius = planets[p].radius * theMoonRadius;
                         var moonDensity = moon_density;
                         var moonMass = moonDensity * 4 / 3 * Math.PI * Math.pow(moonRadius, 3);
-                        var moonGravity = gConstant * moonMass * shipMass / (Math.pow(previous_dot.x - moonX,2) + Math.pow(previous_dot.y - moonY,2));
+						var moonGravity = gConstant * moonMass * shipMass / (Math.pow(previous_dot.x - moonX,2) + Math.pow(previous_dot.y - moonY,2));
                         var mg_x = (previous_dot.x - moonX) / Math.sqrt(Math.pow(previous_dot.x - moonX, 2) + Math.pow(previous_dot.y - moonY, 2));
                         var mg_y = (previous_dot.y - moonY) / Math.sqrt(Math.pow(previous_dot.x - moonX, 2) + Math.pow(previous_dot.y - moonY, 2));
-                        new_x -= mg_x * travel_time * moonGravity;
+                        
+						new_x -= mg_x * travel_time * moonGravity;
                         new_y -= mg_y * travel_time * moonGravity;
                     }
                     
@@ -480,12 +482,12 @@ function drawBezierCurve(n,curve)
                 var scalar = newSpeed * (n_x * v_x + n_y * v_y);
                 var w = Math.sqrt(Math.pow(newSpeed,2) - Math.pow(scalar,2));
                 var fuelSpent = 0;
-                if(scalar < minSpeed)
+                if(scalar >= minSpeed)
                 {
+                    currentSpeed = scalar;
+                }else {
                     fuelSpent += minSpeed - scalar;
                     currentSpeed = minSpeed;
-                }else {
-                    currentSpeed = scalar;
                 }
                 if(w > 0)
                 {
