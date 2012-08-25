@@ -433,13 +433,13 @@ class PuzzlesController extends AppController {
  		}
  		
  		$return['your_account_id'] = $account_id;
- 		$fastest_times = $this->PuzzleSolution->find('all',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'PuzzleSolution__best_time ASC','group' => 'PuzzleSolution.account_id','limit'=>10,'fields' => array('MIN(PuzzleSolution.time) AS PuzzleSolution__best_time','PuzzleSolution.id','PuzzleSolution.account_id','PuzzleSolution.puzzle_id','PuzzleSolution.time')));
+ 		$fastest_times = $this->PuzzleSolution->find('all',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'MIN(PuzzleSolution.time) ASC','group' => 'PuzzleSolution.account_id','limit'=>10,'fields' => array('MIN(PuzzleSolution.time) AS PuzzleSolution__best_time','PuzzleSolution.id','PuzzleSolution.account_id','PuzzleSolution.puzzle_id','PuzzleSolution.time')));
  		$return['fastest_times'] = array();
  		foreach($fastest_times  as $time):
  			$return['fastest_times'][] = array('time'=>$time[0]['PuzzleSolution__best_time'],'id'=>$time['PuzzleSolution']['id'],'account_id'=>$time['PuzzleSolution']['account_id']);
  		endforeach;
  		
- 		$most_fuels = $this->PuzzleSolution->find('all',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'PuzzleSolution__best_fuel DESC','group' => 'PuzzleSolution.account_id','limit'=>10,'fields' => array('MAX(PuzzleSolution.fuel_remaining) AS PuzzleSolution__best_fuel','PuzzleSolution.id','PuzzleSolution.account_id','PuzzleSolution.puzzle_id','PuzzleSolution.fuel_remaining')));
+ 		$most_fuels = $this->PuzzleSolution->find('all',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'MAX(PuzzleSolution.fuel_remaining) DESC','group' => 'PuzzleSolution.account_id','limit'=>10,'fields' => array('MAX(PuzzleSolution.fuel_remaining) AS PuzzleSolution__best_fuel','PuzzleSolution.id','PuzzleSolution.account_id','PuzzleSolution.puzzle_id','PuzzleSolution.fuel_remaining')));
  		$return['most_fuels'] = array();
  		foreach($most_fuels  as $fuel):
  			$return['most_fuels'][] = array('fuel'=>$fuel[0]['PuzzleSolution__best_fuel'],'id'=>$fuel['PuzzleSolution']['id'],'account_id'=>$fuel['PuzzleSolution']['account_id']);
