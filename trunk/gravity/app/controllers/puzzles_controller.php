@@ -243,6 +243,13 @@ class PuzzlesController extends AppController {
 	 	}
  		exit;
  	}
+ 	function getTotalMissions()
+ 	{
+ 		
+ 		$return = $this->Puzzle->find('count');
+ 		echo json_encode($return);
+ 		exit;
+ 	}
  	
  	function getPuzzles($order=1,$index = 0, $per_page = 15)
  	{
