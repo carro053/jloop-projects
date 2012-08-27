@@ -244,7 +244,7 @@ class PuzzlesController extends AppController {
  		exit;
  	}
  	
- 	function getPuzzles($order='rating',$index = 0, $per_page = 5)
+ 	function getPuzzles($order='rating',$index = 5, $per_page = 5)
  	{
  		$order_condition = 'Puzzle.hot_rating DESC';
  		if($order == 'rating')
