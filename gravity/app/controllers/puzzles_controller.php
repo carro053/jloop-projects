@@ -244,14 +244,13 @@ class PuzzlesController extends AppController {
  		exit;
  	}
  	
- 	function getPuzzles($order='rating',$index = 0, $per_page = 15)
+ 	function getPuzzles($order=1,$index = 0, $per_page = 15)
  	{
  		$order_condition = 'Puzzle.hot_rating DESC';
- 		if($order == 'rating')
+ 		if($order)
  		{
  			$order_condition = 'Puzzle.hot_rating DESC';
- 		}elseif($order == 'newest')
- 		{
+ 		}else{
  			$order_condition = 'Puzzle.created DESC';
  		}
  		$puzzles = $this->Puzzle->find('all',array('order'=>$order_condition,'limit'=>$per_page,'offset'=>$index));
