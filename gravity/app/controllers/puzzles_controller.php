@@ -443,7 +443,7 @@ class PuzzlesController extends AppController {
  		$most_fuels = $this->PuzzleSolution->find('all',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'MAX(PuzzleSolution.fuel_remaining) DESC','group' => 'PuzzleSolution.account_id','limit'=>10,'fields' => array('MAX(PuzzleSolution.fuel_remaining) AS PuzzleSolution__best_fuel','PuzzleSolution.id','PuzzleSolution.account_id','PuzzleSolution.puzzle_id','PuzzleSolution.fuel_remaining')));
  		$return['most_fuels'] = array();
  		foreach($most_fuels  as $fuel):
- 			$solution = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$fuel['PuzzleSolution']['account_id'].' AND PuzzleSolution.time = '.$fuel[0]['PuzzleSolution__best_fuel']));
+ 			$solution = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$fuel['PuzzleSolution']['account_id'].' AND PuzzleSolution.fuel_remaining = '.$fuel[0]['PuzzleSolution__best_fuel']));
  			$return['most_fuels'][] = array('fuel'=>$fuel[0]['PuzzleSolution__best_fuel'],'id'=>$solution['PuzzleSolution']['id'],'account_id'=>$fuel['PuzzleSolution']['account_id']);
  		endforeach;
  		
