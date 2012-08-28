@@ -256,7 +256,7 @@ class PuzzlesController extends AppController {
 				$payload['aps'] = array('alert' => 'Your username has been approved.', 'sound' => 'default');
 				$payload['push_data'] = array();
 				$payload = json_encode($payload);
-				$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$notification['Notification']['device_token'])).chr(0).chr(strlen($payload)).$payload;
+				$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$current_token)).chr(0).chr(strlen($payload)).$payload;
 				fwrite($apns, $apnsMessage);
 			}
 			socket_close($apns);
