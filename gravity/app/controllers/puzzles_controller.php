@@ -217,6 +217,19 @@ class PuzzlesController extends AppController {
  		mail('michael@jloop.com','SF Account Name Submitted','A new account name has been submitted: '.$json_data->username.'.');
  		exit;	
  	}
+ 	function manage_usernames()
+ 	{
+ 		$this->set('accounts',$this->Account->find('all',array('conditions'=>'Account.temp_username != ""')));
+ 	}
+ 	
+ 	function approve_username($account_id)
+ 	{
+ 		$account = $this->Account->findById($account_id);
+ 		$account['Account']['username'] = $account['Account']['temp_username'];
+ 		$account['Account']['temp_username'] = '';
+ 		$this->Account->save($account);
+ 		exit;
+ 	}
  	
  	function saveSolution($puzzle_id)
  	{
