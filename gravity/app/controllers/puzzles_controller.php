@@ -477,7 +477,7 @@ class PuzzlesController extends AppController {
  		{
  			$return['your_most_fuel'] = $your_most_fuel['PuzzleSolution']['fuel_remaining'];
  			$return['your_most_fuel_id'] = $your_most_fuel['PuzzleSolution']['id'];
- 			$return['your_most_fuel_placement'] = ($this->PuzzleSolution->find('count',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.fuel_remaining > = '.$your_most_fuel['PuzzleSolution']['fuel_remaining'])) + 1);
+ 			$return['your_most_fuel_placement'] = ($this->PuzzleSolution->find('count',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.fuel_remaining > '.$your_most_fuel['PuzzleSolution']['fuel_remaining'])) + 1);
  		}else{
  			$return['your_most_fuel'] = 0;
  			$return['your_most_fuel_id'] = 0;
