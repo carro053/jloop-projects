@@ -484,15 +484,29 @@ class PuzzlesController extends AppController {
  		$fastest_times = $this->PuzzleSolution->find('all',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'MIN(PuzzleSolution.time) ASC','group' => 'PuzzleSolution.account_id','limit'=>10,'fields' => array('MIN(PuzzleSolution.time) AS PuzzleSolution__best_time','PuzzleSolution.id','PuzzleSolution.account_id','PuzzleSolution.puzzle_id','PuzzleSolution.time')));
  		$return['fastest_times'] = array();
  		foreach($fastest_times  as $time):
+ 			$this->PuzzleSolution->bindModel(array('belongsTo'=>array('Account'=>array('className'=>'Account','foreign_key'=>'account_id'))));
  			$solution = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$time['PuzzleSolution']['account_id'].' AND PuzzleSolution.time = '.$time[0]['PuzzleSolution__best_time']));
- 			$return['fastest_times'][] = array('time'=>$time[0]['PuzzleSolution__best_time'],'id'=>$solution['PuzzleSolution']['id'],'account_id'=>$time['PuzzleSolution']['account_id']);
+ 			if($solution['Account']['username'] == '')
+ 			{
+ 				$username = 'SpaceCadet #'.$solution['Account']['id'];
+ 			}else{
+ 				$username = $solution['Account']['username'];
+ 			}
+ 			$return['fastest_times'][] = array('time'=>$time[0]['PuzzleSolution__best_time'],'id'=>$solution['PuzzleSolution']['id'],'account_id'=>$time['PuzzleSolution']['account_id'],'username'=>$username);
  		endforeach;
  		
  		$most_fuels = $this->PuzzleSolution->find('all',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'MAX(PuzzleSolution.fuel_remaining) DESC','group' => 'PuzzleSolution.account_id','limit'=>10,'fields' => array('MAX(PuzzleSolution.fuel_remaining) AS PuzzleSolution__best_fuel','PuzzleSolution.id','PuzzleSolution.account_id','PuzzleSolution.puzzle_id','PuzzleSolution.fuel_remaining')));
  		$return['most_fuels'] = array();
  		foreach($most_fuels  as $fuel):
+ 			$this->PuzzleSolution->bindModel(array('belongsTo'=>array('Account'=>array('className'=>'Account','foreign_key'=>'account_id'))));
  			$solution = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$fuel['PuzzleSolution']['account_id'].' AND PuzzleSolution.fuel_remaining = '.$fuel[0]['PuzzleSolution__best_fuel']));
- 			$return['most_fuels'][] = array('fuel'=>$fuel[0]['PuzzleSolution__best_fuel'],'id'=>$solution['PuzzleSolution']['id'],'account_id'=>$fuel['PuzzleSolution']['account_id']);
+ 			if($solution['Account']['username'] == '')
+ 			{
+ 				$username = 'SpaceCadet #'.$solution['Account']['id'];
+ 			}else{
+ 				$username = $solution['Account']['username'];
+ 			}
+ 			$return['most_fuels'][] = array('fuel'=>$fuel[0]['PuzzleSolution__best_fuel'],'id'=>$solution['PuzzleSolution']['id'],'account_id'=>$fuel['PuzzleSolution']['account_id'],'username'=>$username);
  		endforeach;
  		
  		echo json_encode($return);
