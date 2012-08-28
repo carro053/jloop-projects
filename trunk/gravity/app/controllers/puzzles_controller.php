@@ -466,7 +466,7 @@ class PuzzlesController extends AppController {
  		{
  			$return['your_fastest_time'] = $your_fastest_time['PuzzleSolution']['time'];
  			$return['your_fastest_time_id'] = $your_fastest_time['PuzzleSolution']['id'];
- 			$return['your_fastest_time_placement'] = ($this->PuzzleSolution->find('count',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.time < '.$your_fastest_time['PuzzleSolution']['time'])) + 1);
+ 			$return['your_fastest_time_placement'] = ($this->PuzzleSolution->find('count',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.time < '.$your_fastest_time['PuzzleSolution']['time'],'group'=>'PuzzleSolution.account_id')) + 1);
  		}else{
  			$return['your_fastest_time'] = 0;
  			$return['your_fastest_time_id'] = 0;
@@ -477,7 +477,7 @@ class PuzzlesController extends AppController {
  		{
  			$return['your_most_fuel'] = $your_most_fuel['PuzzleSolution']['fuel_remaining'];
  			$return['your_most_fuel_id'] = $your_most_fuel['PuzzleSolution']['id'];
- 			$return['your_most_fuel_placement'] = ($this->PuzzleSolution->find('count',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.fuel_remaining > '.$your_most_fuel['PuzzleSolution']['fuel_remaining'])) + 1);
+ 			$return['your_most_fuel_placement'] = ($this->PuzzleSolution->find('count',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.fuel_remaining > '.$your_most_fuel['PuzzleSolution']['fuel_remaining'],'group'=>'PuzzleSolution.account_id')) + 1);
  		}else{
  			$return['your_most_fuel'] = 0;
  			$return['your_most_fuel_id'] = 0;
