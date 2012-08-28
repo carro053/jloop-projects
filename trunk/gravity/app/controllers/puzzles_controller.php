@@ -213,6 +213,7 @@ class PuzzlesController extends AppController {
  		$json_data = json_decode($_POST['json_data']);
  		$this->Account->id = $json_data->account_id;
  		$this->Account->saveField('temp_username',$json_data->username,false);
+ 		$this->Account->saveField('username','',false);
  		exit;	
  	}
  	
