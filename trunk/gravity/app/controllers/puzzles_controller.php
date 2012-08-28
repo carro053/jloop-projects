@@ -215,7 +215,7 @@ class PuzzlesController extends AppController {
  		$this->Account->saveField('temp_username',$json_data->username,false);
  		$this->Account->saveField('username','',false);
  		
- 		mail('michael@jloop.com','SF Account Name Submitted','A new account name has been submitted.');
+ 		mail('michael@jloop.com','SF Account Name Submitted','A new account name has been submitted: '.$json_data->username.'.');
  		exit;	
  	}
  	
