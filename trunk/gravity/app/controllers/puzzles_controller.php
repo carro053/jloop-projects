@@ -219,6 +219,7 @@ class PuzzlesController extends AppController {
  	}
  	function manage_usernames()
  	{
+ 		$this->layout = 'default';
  		$this->set('accounts',$this->Account->find('all',array('conditions'=>'Account.temp_username != ""')));
  	}
  	
