@@ -234,11 +234,11 @@ class PuzzlesController extends AppController {
 			if (1 == 1) {
 				$apnsHost = 'gateway.sandbox.push.apple.com';
 				$apnsPort = 2195;
-				$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-dev-cert.pem';
+				$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-dev.pem';
 			} else {
 				$apnsHost = 'gateway.push.apple.com';
 				$apnsPort = 2195;
-				$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-prod-cert.pem';
+				$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-prod.pem';
 			}
 	
 			$streamContext = stream_context_create();
