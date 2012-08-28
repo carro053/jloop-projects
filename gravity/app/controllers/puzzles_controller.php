@@ -185,6 +185,32 @@ class PuzzlesController extends AppController {
  		exit;
  	}
  	
+ 	function getAccountInfo($device_id)
+ 	{
+ 		$account = $this->Account->find('first',array('conditions'=>'Account.device_id = "'.$device_id.'"'));
+ 		if(isset($account['Account']['id']))
+ 		{
+ 			$account_id = $account['Account']['id'];
+ 			$username = $account['Account']['username'];
+ 		}else{
+ 			$account['Account']['id'] = null;
+ 			$account['Account']['device_id'] = $device_id;
+ 			$this->Account->save($account);
+ 			$account_id = $this->Account->id;
+ 			$username = "";
+ 		}
+ 		echo json_encode(array('account_id'=>$account_id,'username'=>$username));
+ 		exit;	
+ 	}
+ 	
+ 	function saveAccountInfo()
+ 	{
+ 		$json_data = json_decode($_POST['json_data']);
+ 		$this->Account->id = $json_data->account_id;
+ 		$this->Account->saveField('temp_username',$json_data->username,false);
+ 		exit;	
+ 	}
+ 	
  	function saveSolution($puzzle_id)
  	{
  		$json_data = json_decode($_POST['json_data']);
