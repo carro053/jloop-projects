@@ -234,7 +234,8 @@ class PuzzlesController extends AppController {
  	
  	function savePushToken()
  	{
- 		$this->Account->id = $_POST['account_id'];
+ 		$account = $this->Account->findByDeviceId($_POST['device_id'])
+ 		$this->Account->id = $account['Account']['id'];
  		$this->Account->saveField('push_token',$_POST['token'],false);
  		exit;
  	}
