@@ -503,7 +503,7 @@ class PuzzlesController extends AppController {
  		
  		$most_fuels = $this->PuzzleSolution->find('all',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'MAX(PuzzleSolution.fuel_remaining) DESC','group' => 'PuzzleSolution.account_id','limit'=>10,'fields' => array('MAX(PuzzleSolution.fuel_remaining) AS PuzzleSolution__best_fuel','PuzzleSolution.id','PuzzleSolution.account_id','PuzzleSolution.puzzle_id','PuzzleSolution.fuel_remaining')));
  		$return['most_fuels'] = array();
- 		foreach($most_fuels  as $fuel):
+ 		foreach($most_fuels  as $key=>$fuel):
  			if($fuel['PuzzleSolution']['account_id'] == $account_id)
  			{
  				$return['your_most_fuel_placement'] = $key + 1;
