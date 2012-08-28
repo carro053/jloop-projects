@@ -229,6 +229,39 @@ class PuzzlesController extends AppController {
  		$account['Account']['username'] = $account['Account']['temp_username'];
  		$account['Account']['temp_username'] = '';
  		$this->Account->save($account);
+ 		if($account['Account']['push_token'])
+ 		{
+			if (1 == 1) {
+				$apnsHost = 'gateway.sandbox.push.apple.com';
+				$apnsPort = 2195;
+				$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-dev-cert.pem';
+			} else {
+				$apnsHost = 'gateway.push.apple.com';
+				$apnsPort = 2195;
+				$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-prod-cert.pem';
+			}
+	
+			$streamContext = stream_context_create();
+			stream_context_set_option($streamContext, 'ssl', 'local_cert', $apnsCert);
+			//stream_context_set_option($streamContext, 'ssl', 'passphrase', 'a4d6s5');
+			//stream_context_set_option($streamContext, 'ssl', 'verify_peer', false);
+			$apns = stream_socket_client('ssl://' . $apnsHost . ':' . $apnsPort, $error, $errorString, 2, STREAM_CLIENT_CONNECT,$streamContext);
+			if (!$apns)
+			{
+				print "Failed to connect".$error." ".$errorString;
+			}else{
+				$current_token = '';
+				$payload = '';
+				$current_token = $account['Account']['push_token'];
+				$payload['aps'] = array('alert' => 'Your username has been approved.', 'sound' => 'default');
+				$payload['push_data'] = array();
+				$payload = json_encode($payload);
+				$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$notification['Notification']['device_token'])).chr(0).chr(strlen($payload)).$payload;
+				fwrite($apns, $apnsMessage);
+			}
+			socket_close($apns);
+			fclose($apns);
+		}
  		exit;
  	}
  	
