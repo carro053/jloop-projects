@@ -256,7 +256,6 @@ class PuzzlesController extends AppController {
 				$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$account['Account']['push_token'])).chr(0).chr(strlen($payload)).$payload;
 				fwrite($apns, $apnsMessage);
 			}
-			socket_close($apns);
 			fclose($apns);
 		}
  		exit;
