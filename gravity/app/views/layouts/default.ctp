@@ -25,15 +25,11 @@
 		<?php __('CakePHP: the rapid development php framework:'); ?>
 		<?php echo $title_for_layout; ?>
 	</title>
-	<?php
-		echo $this->Html->meta('icon');
-
-		echo $this->Html->css('cake.generic');
-		echo $this->Html->script('/forum/js/jquery-1.5.min.js');
-		echo $this->Html->script('/forum/js/script.js');
-
-		echo $scripts_for_layout;
-	?>
+	<link href="/favicon.ico" type="image/x-icon" rel="icon" />
+	<link href="/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+	<link rel="stylesheet" type="text/css" href="/css/cake.generic.css" />
+	<script type="text/javascript" src="/forum/js/jquery-1.5.min.js"></script>
+	<script type="text/javascript" src="/forum/js/script.js"></script>
 </head>
 <body>
 	<div id="container">
