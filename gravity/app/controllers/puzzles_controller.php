@@ -191,7 +191,12 @@ class PuzzlesController extends AppController {
  		if(isset($account['Account']['id']))
  		{
  			$account_id = $account['Account']['id'];
- 			$username = $account['Account']['username'];
+ 			if($account['Account']['username'] == '')
+ 			{
+ 				$username = $account['Account']['temp_username'];
+ 			}else{
+ 				$username = $account['Account']['username'];
+ 			}
  		}else{
  			$account['Account']['id'] = null;
  			$account['Account']['device_id'] = $device_id;
