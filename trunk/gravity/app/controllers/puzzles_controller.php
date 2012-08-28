@@ -8,7 +8,7 @@ class PuzzlesController extends AppController {
 	
 	function beforeFilter()
  	{
- 		$this->Auth->allow('savePuzzle','getPuzzles','getPuzzle','getPuzzleWithSolution','saveSolution','saveImage','getPuzzleTimes','voteForPuzzle','updateAllPuzzles','viewMissionSolution','getTotalMissions','getAccountInfo','saveAccountInfo');
+ 		$this->Auth->allow('savePuzzle','getPuzzles','getPuzzle','getPuzzleWithSolution','saveSolution','saveImage','getPuzzleTimes','voteForPuzzle','updateAllPuzzles','viewMissionSolution','getTotalMissions','getAccountInfo','saveAccountInfo','savePushToken');
  		parent::beforeFilter();
  	}
  	
@@ -229,6 +229,13 @@ class PuzzlesController extends AppController {
  		$account['Account']['username'] = $account['Account']['temp_username'];
  		$account['Account']['temp_username'] = '';
  		$this->Account->save($account);
+ 		exit;
+ 	}
+ 	
+ 	function savePushToken()
+ 	{
+ 		$this->Account->id = $_POST['account_id'];
+ 		$this->Account->saveField('push_token',$_POST['token'],false);
  		exit;
  	}
  	
