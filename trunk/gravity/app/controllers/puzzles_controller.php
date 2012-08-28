@@ -250,9 +250,6 @@ class PuzzlesController extends AppController {
 			{
 				print "Failed to connect".$error." ".$errorString;
 			}else{
-				$current_token = '';
-				$payload = '';
-				$current_token = $account['Account']['push_token'];
 				$payload['aps'] = array('alert' => 'Your username has been approved.', 'sound' => 'default');
 				$payload['push_data'] = array();
 				$payload = json_encode($payload);
