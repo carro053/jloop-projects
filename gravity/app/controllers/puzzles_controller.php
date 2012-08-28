@@ -250,10 +250,10 @@ class PuzzlesController extends AppController {
 			{
 				print "Failed to connect".$error." ".$errorString;
 			}else{
-				$payload['aps'] = array('alert' => 'Your username has been approved.', 'sound' => 'default');
+				$payload['aps'] = array('alert' => 'Your username, '.$account['Account']['username'].', has been approved.', 'sound' => 'default');
 				$payload['push_data'] = array();
 				$payload = json_encode($payload);
-				$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$current_token)).chr(0).chr(strlen($payload)).$payload;
+				$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$account['Account']['push_token'])).chr(0).chr(strlen($payload)).$payload;
 				fwrite($apns, $apnsMessage);
 			}
 			socket_close($apns);
