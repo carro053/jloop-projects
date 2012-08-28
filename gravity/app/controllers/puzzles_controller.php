@@ -466,7 +466,6 @@ class PuzzlesController extends AppController {
  		{
  			$return['your_fastest_time'] = $your_fastest_time['PuzzleSolution']['time'];
  			$return['your_fastest_time_id'] = $your_fastest_time['PuzzleSolution']['id'];
- 			$return['your_fastest_time_placement'] = ($this->PuzzleSolution->find('count',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.time < '.$your_fastest_time['PuzzleSolution']['time'],'group'=>'PuzzleSolution.account_id')) + 1);
  		}else{
  			$return['your_fastest_time'] = 0;
  			$return['your_fastest_time_id'] = 0;
@@ -477,7 +476,6 @@ class PuzzlesController extends AppController {
  		{
  			$return['your_most_fuel'] = $your_most_fuel['PuzzleSolution']['fuel_remaining'];
  			$return['your_most_fuel_id'] = $your_most_fuel['PuzzleSolution']['id'];
- 			$return['your_most_fuel_placement'] = ($this->PuzzleSolution->find('count',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.fuel_remaining > '.$your_most_fuel['PuzzleSolution']['fuel_remaining'],'group'=>'PuzzleSolution.account_id')) + 1);
  		}else{
  			$return['your_most_fuel'] = 0;
  			$return['your_most_fuel_id'] = 0;
@@ -487,7 +485,11 @@ class PuzzlesController extends AppController {
  		$return['your_account_id'] = $account_id;
  		$fastest_times = $this->PuzzleSolution->find('all',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'MIN(PuzzleSolution.time) ASC','group' => 'PuzzleSolution.account_id','limit'=>10,'fields' => array('MIN(PuzzleSolution.time) AS PuzzleSolution__best_time','PuzzleSolution.id','PuzzleSolution.account_id','PuzzleSolution.puzzle_id','PuzzleSolution.time')));
  		$return['fastest_times'] = array();
- 		foreach($fastest_times  as $time):
+ 		foreach($fastest_times  as $key=>$time):
+ 			if($time['PuzzleSolution']['account_id'] == $account_id)
+ 			{
+ 				$return['your_fastest_time_placement'] = $key + 1;
+ 			}
  			$this->PuzzleSolution->bindModel(array('belongsTo'=>array('Account'=>array('className'=>'Account','foreign_key'=>'account_id'))));
  			$solution = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$time['PuzzleSolution']['account_id'].' AND PuzzleSolution.time = '.$time[0]['PuzzleSolution__best_time']));
  			if($solution['Account']['username'] == '')
@@ -502,6 +504,10 @@ class PuzzlesController extends AppController {
  		$most_fuels = $this->PuzzleSolution->find('all',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'MAX(PuzzleSolution.fuel_remaining) DESC','group' => 'PuzzleSolution.account_id','limit'=>10,'fields' => array('MAX(PuzzleSolution.fuel_remaining) AS PuzzleSolution__best_fuel','PuzzleSolution.id','PuzzleSolution.account_id','PuzzleSolution.puzzle_id','PuzzleSolution.fuel_remaining')));
  		$return['most_fuels'] = array();
  		foreach($most_fuels  as $fuel):
+ 			if($fuel['PuzzleSolution']['account_id'] == $account_id)
+ 			{
+ 				$return['your_most_fuel_placement'] = $key + 1;
+ 			}
  			$this->PuzzleSolution->bindModel(array('belongsTo'=>array('Account'=>array('className'=>'Account','foreign_key'=>'account_id'))));
  			$solution = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$fuel['PuzzleSolution']['account_id'].' AND PuzzleSolution.fuel_remaining = '.$fuel[0]['PuzzleSolution__best_fuel']));
  			if($solution['Account']['username'] == '')
