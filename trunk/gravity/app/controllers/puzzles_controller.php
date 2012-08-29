@@ -211,7 +211,21 @@ class PuzzlesController extends AppController {
  	function saveAccountInfo()
  	{
  		$json_data = json_decode($_POST['json_data']);
- 		$this->Account->id = $json_data->account_id;
+ 		if(isset($json_data->account_id))
+ 		{
+ 			$this->Account->id = $json_data->account_id;
+ 		}else{
+	 		$device_id = $json_data->device_id;
+	 		$account = $this->Account->find('first',array('conditions'=>'Account.device_id = "'.$device_id.'"'));
+	 		if(isset($account['Account']['id']))
+	 		{
+	 			$this->Account->id = $account['Account']['id'];
+	 		}else{
+	 			$account['Account']['id'] = null;
+	 			$account['Account']['device_id'] = $device_id;
+	 			$this->Account->save($account);
+	 		}
+ 		}
  		$this->Account->saveField('temp_username',$json_data->username,false);
  		
  		mail('michael@jloop.com','SF Account Name Submitted','A new account name has been submitted: '.$json_data->username.'.');
