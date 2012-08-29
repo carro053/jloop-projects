@@ -283,6 +283,16 @@ class PuzzlesController extends AppController {
  		exit;
  	}
  	
+ 	function teststuff($puzzle_id)
+ 	{
+ 	$this->Puzzle->bindModel(array('belongsTo'=>array('Account'=>array('className'=>'Account','foreign_key'=>'account_id'))));
+ 		$this->PuzzleSolution->bindModel(array('belongsTo'=>array('Puzzle'=>array('className'=>'Puzzle','foreign_key'=>'puzzle_id'))));
+ 		$fastest_time = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'PuzzleSolution.time ASC','recursive'=>2));
+ 		echo '<pre>';
+ 		print_r($fastest_time);
+ 		exit;
+ 	}
+ 	
  	function saveSolution($puzzle_id)
  	{
  		$json_data = json_decode($_POST['json_data']);
