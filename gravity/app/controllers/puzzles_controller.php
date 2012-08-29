@@ -329,16 +329,99 @@ class PuzzlesController extends AppController {
 	 			$this->PuzzleSolutionWayPoint->save($newpoint);
 	 			$order++;
 	 		}
-	 		
-		 	/*$best_fuel = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id,'order'=>'PuzzleSolution.fuel_remaining DESC'));
-		 	$best_time = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id,'order'=>'PuzzleSolution.time ASC'));
-		 	$remove_these = $this->PuzzleSolution->find('all',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id.' AND PuzzleSolution.account_id = '.$account_id.' AND PuzzleSolution.id != '.$best_fuel['PuzzleSolution']['id'].' AND PuzzleSolution.id != '.$best_time['PuzzleSolution']['id']));
-		 	foreach($remove_these as $these):
- 				$this->PuzzleSolutionWayPoint->query('DELETE FROM `puzzle_solution_way_points` WHERE `puzzle_solution_id` = '.$these['PuzzleSolution']['id']);
- 				$this->PuzzleSolution->delete($these['PuzzleSolution']['id']);
-		 	endforeach;
-		 	*/
 	 	}
+	 	
+ 		$this->Puzzle->bindModel(array('belongsTo'=>array('Account'=>array('className'=>'Account','foreign_key'=>'account_id'))));
+ 		$this->PuzzleSolution->bindModel(array('belongsTo'=>array('Puzzle'=>array('className'=>'Puzzle','foreign_key'=>'puzzle_id'))));
+ 		$fastest_time = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'PuzzleSolution.time ASC','recursive'=>2));
+ 		$this->Puzzle->bindModel(array('belongsTo'=>array('Account'=>array('className'=>'Account','foreign_key'=>'account_id'))));
+ 		$this->PuzzleSolution->bindModel(array('belongsTo'=>array('Puzzle'=>array('className'=>'Puzzle','foreign_key'=>'puzzle_id'))));
+ 		$most_fuel = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'PuzzleSolution.fuel_remaining DESC','recursive'=>2));
+ 		if($puzzle_solution_id == $fastest_time['PuzzleSolution']['id'] && $puzzle_solution_id == $most_fuel['PuzzleSolution']['id'])
+ 		{
+ 			if (1 == 1) {
+				$apnsHost = 'gateway.sandbox.push.apple.com';
+				$apnsPort = 2195;
+				$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-dev.pem';
+			} else {
+				$apnsHost = 'gateway.push.apple.com';
+				$apnsPort = 2195;
+				$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-prod.pem';
+			}
+	
+			$streamContext = stream_context_create();
+			stream_context_set_option($streamContext, 'ssl', 'local_cert', $apnsCert);
+			stream_context_set_option($streamContext, 'ssl', 'passphrase', 'a4d6s5');
+			//stream_context_set_option($streamContext, 'ssl', 'verify_peer', false);
+			$apns = stream_socket_client('ssl://' . $apnsHost . ':' . $apnsPort, $error, $errorString, 2, STREAM_CLIENT_CONNECT,$streamContext);
+			if (!$apns)
+			{
+				print "Failed to connect".$error." ".$errorString;
+			}else{
+				$payload['aps'] = array('alert' => 'Someone has set a new Fuel and Time record for one of your Missions!', 'sound' => 'default');
+				$payload['push_data'] = array();
+				$payload = json_encode($payload);
+				$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$fastest_time['Puzzle']['account']['push_token'])).chr(0).chr(strlen($payload)).$payload;
+				fwrite($apns, $apnsMessage);
+			}
+			fclose($apns);
+ 		}elseif($puzzle_solution_id == $fastest_time['PuzzleSolution']['id'])
+ 		{
+ 			if (1 == 1) {
+				$apnsHost = 'gateway.sandbox.push.apple.com';
+				$apnsPort = 2195;
+				$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-dev.pem';
+			} else {
+				$apnsHost = 'gateway.push.apple.com';
+				$apnsPort = 2195;
+				$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-prod.pem';
+			}
+	
+			$streamContext = stream_context_create();
+			stream_context_set_option($streamContext, 'ssl', 'local_cert', $apnsCert);
+			stream_context_set_option($streamContext, 'ssl', 'passphrase', 'a4d6s5');
+			//stream_context_set_option($streamContext, 'ssl', 'verify_peer', false);
+			$apns = stream_socket_client('ssl://' . $apnsHost . ':' . $apnsPort, $error, $errorString, 2, STREAM_CLIENT_CONNECT,$streamContext);
+			if (!$apns)
+			{
+				print "Failed to connect".$error." ".$errorString;
+			}else{
+				$payload['aps'] = array('alert' => 'Someone has set a new Time record for one of your Missions!', 'sound' => 'default');
+				$payload['push_data'] = array();
+				$payload = json_encode($payload);
+				$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$fastest_time['Puzzle']['account']['push_token'])).chr(0).chr(strlen($payload)).$payload;
+				fwrite($apns, $apnsMessage);
+			}
+			fclose($apns);
+ 		}elseif($puzzle_solution_id == $most_fuel['PuzzleSolution']['id'])
+ 		{
+ 			if (1 == 1) {
+				$apnsHost = 'gateway.sandbox.push.apple.com';
+				$apnsPort = 2195;
+				$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-dev.pem';
+			} else {
+				$apnsHost = 'gateway.push.apple.com';
+				$apnsPort = 2195;
+				$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-prod.pem';
+			}
+	
+			$streamContext = stream_context_create();
+			stream_context_set_option($streamContext, 'ssl', 'local_cert', $apnsCert);
+			stream_context_set_option($streamContext, 'ssl', 'passphrase', 'a4d6s5');
+			//stream_context_set_option($streamContext, 'ssl', 'verify_peer', false);
+			$apns = stream_socket_client('ssl://' . $apnsHost . ':' . $apnsPort, $error, $errorString, 2, STREAM_CLIENT_CONNECT,$streamContext);
+			if (!$apns)
+			{
+				print "Failed to connect".$error." ".$errorString;
+			}else{
+				$payload['aps'] = array('alert' => 'Someone has set a new Fuel record for one of your Missions!', 'sound' => 'default');
+				$payload['push_data'] = array();
+				$payload = json_encode($payload);
+				$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$most_fuel['Puzzle']['account']['push_token'])).chr(0).chr(strlen($payload)).$payload;
+				fwrite($apns, $apnsMessage);
+			}
+			fclose($apns);
+ 		}
  		exit;
  	}
  	function getTotalMissions()
