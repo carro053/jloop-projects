@@ -283,40 +283,6 @@ class PuzzlesController extends AppController {
  		exit;
  	}
  	
- 	function teststuff($puzzle_id)
- 	{
- 	$this->Puzzle->bindModel(array('belongsTo'=>array('Account'=>array('className'=>'Account','foreign_key'=>'account_id'))));
- 		$this->PuzzleSolution->bindModel(array('belongsTo'=>array('Puzzle'=>array('className'=>'Puzzle','foreign_key'=>'puzzle_id'))));
- 		$fastest_time = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'PuzzleSolution.time ASC','recursive'=>2));
- 		if (1 == 2) {
-					$apnsHost = 'gateway.sandbox.push.apple.com';
-					$apnsPort = 2195;
-					$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-dev.pem';
-				} else {
-					$apnsHost = 'gateway.push.apple.com';
-					$apnsPort = 2195;
-					$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-prod.pem';
-				}
-		
-				$streamContext = stream_context_create();
-				stream_context_set_option($streamContext, 'ssl', 'local_cert', $apnsCert);
-				stream_context_set_option($streamContext, 'ssl', 'passphrase', 'a4d6s5');
-				//stream_context_set_option($streamContext, 'ssl', 'verify_peer', false);
-				$apns = stream_socket_client('ssl://' . $apnsHost . ':' . $apnsPort, $error, $errorString, 2, STREAM_CLIENT_CONNECT,$streamContext);
-				if (!$apns)
-				{
-					print "Failed to connect".$error." ".$errorString;
-				}else{
-					$payload['aps'] = array('alert' => 'Someone has set a new Time record for one of your Missions!', 'sound' => 'default');
-					$payload['push_data'] = array();
-					$payload = json_encode($payload);
-					$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$fastest_time['Puzzle']['Account']['push_token'])).chr(0).chr(strlen($payload)).$payload;
-					fwrite($apns, $apnsMessage);
-				}
-				fclose($apns);
- 		exit;
- 	}
- 	
  	function saveSolution($puzzle_id)
  	{
  		$json_data = json_decode($_POST['json_data']);
@@ -406,7 +372,6 @@ class PuzzlesController extends AppController {
  		{
  			if($fastest_time['Puzzle']['Account']['push_token'] != "")
  			{
- 				mail('michael@jloop.com','New Time Record','There was a new record');
 	 			if (1 == 2) {
 					$apnsHost = 'gateway.sandbox.push.apple.com';
 					$apnsPort = 2195;
