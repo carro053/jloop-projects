@@ -245,7 +245,7 @@ class PuzzlesController extends AppController {
  		$this->Account->save($account);
  		if($account['Account']['push_token'])
  		{
-			if (1 == 1) {
+			if (1 == 2) {
 				$apnsHost = 'gateway.sandbox.push.apple.com';
 				$apnsPort = 2195;
 				$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-dev.pem';
@@ -288,7 +288,7 @@ class PuzzlesController extends AppController {
  	$this->Puzzle->bindModel(array('belongsTo'=>array('Account'=>array('className'=>'Account','foreign_key'=>'account_id'))));
  		$this->PuzzleSolution->bindModel(array('belongsTo'=>array('Puzzle'=>array('className'=>'Puzzle','foreign_key'=>'puzzle_id'))));
  		$fastest_time = $this->PuzzleSolution->find('first',array('conditions'=>'PuzzleSolution.puzzle_id = '.$puzzle_id,'order'=>'PuzzleSolution.time ASC','recursive'=>2));
- 		if (1 == 1) {
+ 		if (1 == 2) {
 					$apnsHost = 'gateway.sandbox.push.apple.com';
 					$apnsPort = 2195;
 					$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-dev.pem';
@@ -375,7 +375,7 @@ class PuzzlesController extends AppController {
  		{
  			if($fastest_time['Puzzle']['Account']['push_token'] != "")
  			{
-	 			if (1 == 1) {
+	 			if (1 == 2) {
 					$apnsHost = 'gateway.sandbox.push.apple.com';
 					$apnsPort = 2195;
 					$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-dev.pem';
@@ -407,7 +407,7 @@ class PuzzlesController extends AppController {
  			if($fastest_time['Puzzle']['Account']['push_token'] != "")
  			{
  				mail('michael@jloop.com','New Time Record','There was a new record');
-	 			if (1 == 1) {
+	 			if (1 == 2) {
 					$apnsHost = 'gateway.sandbox.push.apple.com';
 					$apnsPort = 2195;
 					$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-dev.pem';
@@ -438,7 +438,7 @@ class PuzzlesController extends AppController {
  		{
  			if($most_fuel['Puzzle']['Account']['push_token'] != "")
  			{
-	 			if (1 == 1) {
+	 			if (1 == 2) {
 					$apnsHost = 'gateway.sandbox.push.apple.com';
 					$apnsPort = 2195;
 					$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-dev.pem';
