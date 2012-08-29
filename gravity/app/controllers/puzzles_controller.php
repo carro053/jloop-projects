@@ -380,6 +380,7 @@ class PuzzlesController extends AppController {
 			}
  		}elseif($puzzle_solution_id == $fastest_time['PuzzleSolution']['id'])
  		{
+ 			mail('michael@jloop.com','New Time Record','There was a new record');
  			if($fastest_time['Puzzle']['Account']['push_token'] != "")
  			{
 	 			if (1 == 1) {
