@@ -148,7 +148,7 @@
 			if(isiPhone > -1 || isiPad > -1 || isiPod > -1)
 			{
 				alert('test');
-				$('#applink').click();
+				//$('#applink').click();
 			}
 			
 			canvasBack = document.getElementById('canvasBack');
