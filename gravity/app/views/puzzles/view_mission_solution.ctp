@@ -7,7 +7,7 @@
 		var isiPhone = navigator.userAgent.toLowerCase().indexOf("iphone");
 		var isiPad = navigator.userAgent.toLowerCase().indexOf("ipad");
 		var isiPod = navigator.userAgent.toLowerCase().indexOf("ipod");
-		if(isiPhone > -1 || isiPad > -1 || isiPod > -1 || 1 == 1)
+		if(isiPhone > -1 || isiPad > -1 || isiPod > -1)
 		{
 			document.location = 'spaceflight://viewSolution/<?php echo $puzzle_id; ?>/<?php echo $solution_id; ?>';
 			  setTimeout(function(){
