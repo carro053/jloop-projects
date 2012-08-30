@@ -1040,13 +1040,13 @@ function applink(fail){
 			<canvas id="canvasFront" style="position:absolute;width:1024px;height:768px;" width="1024" height="768"></canvas>
 			<canvas id="canvasUI" style="position:absolute;width:1024px;height:768px;" width="1024" height="768"></canvas>
 		</div>
+		<a id="applink" href="spaceflight://viewSolution/<?php echo $puzzle_id; ?>/<?php echo $solution_id; ?>" onclick="applink('itms://itunes.apple.com/us/app/tortilla-soup-surfer/id476450448?mt=8');">open spaceflight with fallback to appstore</a>
 		<div style="display:none;">
 			<img src="/img/planet_4.png" />
 			<img src="/img/anti_gravity.png" />
 			<img src="/img/astronaut.png" />
 			<img src="/img/fuel.png" />
 			<img src="/img/space_station.png" />
-			<a id="applink" href="spaceflight://viewSolution/<?php echo $puzzle_id; ?>/<?php echo $solution_id; ?>" onclick="applink('itms://itunes.apple.com/us/app/tortilla-soup-surfer/id476450448?mt=8');">open spaceflight with fallback to appstore</a>
 		</div>
 	</div>
 </body>
