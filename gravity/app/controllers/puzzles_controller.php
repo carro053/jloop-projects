@@ -540,7 +540,9 @@ class PuzzlesController extends AppController {
  			$solution_points[] = array('x'=>$way_point['PuzzleSolutionWayPoint']['x'],'y'=>$way_point['PuzzleSolutionWayPoint']['y']);
  		endforeach;
  		$return['way_points'] = $solution_points;
- 		$this->set('data',$return); 	
+ 		$this->set('data',$return);
+ 		$this->set('puzzle_id',$puzzle_id);
+ 		$this->set('solution_id',$solution_id);
  	}
  	
  	
