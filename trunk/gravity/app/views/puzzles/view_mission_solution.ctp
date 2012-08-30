@@ -59,7 +59,6 @@
 			}
 		};
 	</script>
-	<script type="text/javascript" src="/forum/js/jquery-1.5.min.js"></script>
 </head>
 <body>
 	<script type="text/javascript">
