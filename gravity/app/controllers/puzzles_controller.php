@@ -131,7 +131,7 @@ class PuzzlesController extends AppController {
  			$this->Account->save($account);
  			$account_id = $this->Account->id;
  		}
- 		
+ 		$puzzle['Puzzle']['version'] = $version;
  		$puzzle['Puzzle']['account_id'] = $account_id;
  		$puzzle['Puzzle']['title'] = $json_data->name;
  		$puzzle['Puzzle']['total_fuel'] = $json_data->total_fuel;
