@@ -147,6 +147,7 @@
 			var isiPod = navigator.userAgent.toLowerCase().indexOf("ipod");
 			if(isiPhone > -1 || isiPad > -1 || isiPod > -1)
 			{
+				alert('test');
 				$('#applink').click();
 			}
 			
