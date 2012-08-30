@@ -434,6 +434,13 @@ class PuzzlesController extends AppController {
  			$return_planets[] = array('x'=>$planet['PuzzlePlanet']['x'],'y'=>$planet['PuzzlePlanet']['y'],'radius'=>$planet['PuzzlePlanet']['radius'],'density'=>$planet['PuzzlePlanet']['density'],'antiGravity'=>$planet['PuzzlePlanet']['anti_gravity'],'hasMoon'=>$planet['PuzzlePlanet']['hasMoon'],'moonAngle'=>$planet['PuzzlePlanet']['moonAngle']);	
  		endforeach;
  		$return['planets'] = $return_planets;
+ 		
+ 		$wells = $this->PuzzleWell->find('all',array('conditions'=>'PuzzleWell.puzzle_id = '.$puzzle_id));
+ 		$return_wells = array();
+ 		foreach($wells as $well):
+ 			$return_wells[] = array('x'=>$well['PuzzleWell']['x'],'y'=>$well['PuzzleWell']['y'],'power'=>$well['PuzzleWell']['power']);	
+ 		endforeach;
+ 		$return['wells'] = $return_wells;
  		$items = $this->PuzzleItem->find('all',array('conditions'=>'PuzzleItem.puzzle_id = '.$puzzle_id));
  		$return_items = array();
  		foreach($items as $item):
@@ -466,6 +473,14 @@ class PuzzlesController extends AppController {
  			$return_planets[] = array('x'=>$planet['PuzzlePlanet']['x'],'y'=>$planet['PuzzlePlanet']['y'],'radius'=>$planet['PuzzlePlanet']['radius'],'density'=>$planet['PuzzlePlanet']['density'],'antiGravity'=>$planet['PuzzlePlanet']['anti_gravity'],'hasMoon'=>$planet['PuzzlePlanet']['hasMoon'],'moonAngle'=>$planet['PuzzlePlanet']['moonAngle']);	
  		endforeach;
  		$return['planets'] = $return_planets;
+ 		
+ 		$wells = $this->PuzzleSolutionWell->find('all',array('conditions'=>'PuzzleSolutionWell.puzzle_solution_id = '.$solution_id));
+ 		$return_wells = array();
+ 		foreach($wells as $well):
+ 			$return_wells[] = array('x'=>$well['PuzzleSolutionWell']['x'],'y'=>$well['PuzzleSolutionWell']['y'],'power'=>$well['PuzzleSolutionWell']['power']);	
+ 		endforeach;
+ 		$return['wells'] = $return_wells;
+ 		
  		$items = $this->PuzzleItem->find('all',array('conditions'=>'PuzzleItem.puzzle_id = '.$puzzle_id));
  		$return_items = array();
  		foreach($items as $item):
@@ -505,6 +520,14 @@ class PuzzlesController extends AppController {
  			$return_planets[] = array('x'=>$planet['PuzzlePlanet']['x'],'y'=>$planet['PuzzlePlanet']['y'],'radius'=>$planet['PuzzlePlanet']['radius'],'density'=>$planet['PuzzlePlanet']['density'],'antiGravity'=>$planet['PuzzlePlanet']['anti_gravity'],'hasMoon'=>$planet['PuzzlePlanet']['hasMoon'],'moonAngle'=>$planet['PuzzlePlanet']['moonAngle']);	
  		endforeach;
  		$return['planets'] = $return_planets;
+ 		
+ 		$wells = $this->PuzzleSolutionWell->find('all',array('conditions'=>'PuzzleSolutionWell.puzzle_solution_id = '.$solution_id));
+ 		$return_wells = array();
+ 		foreach($wells as $well):
+ 			$return_wells[] = array('x'=>$well['PuzzleSolutionWell']['x'],'y'=>$well['PuzzleSolutionWell']['y'],'power'=>$well['PuzzleSolutionWell']['power']);	
+ 		endforeach;
+ 		$return['wells'] = $return_wells;
+ 		
  		$items = $this->PuzzleItem->find('all',array('conditions'=>'PuzzleItem.puzzle_id = '.$puzzle_id));
  		$return_items = array();
  		foreach($items as $item):
