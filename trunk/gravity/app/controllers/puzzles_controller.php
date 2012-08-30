@@ -499,6 +499,12 @@ class PuzzlesController extends AppController {
  	
  	function viewMissionSolution($puzzle_id,$solution_id)
  	{
+ 		$this->set('puzzle_id',$puzzle_id);
+ 		$this->set('solution_id',$solution_id);
+ 	}
+ 	
+ 	function viewSolution($puzzle_id,$solution_id)
+ 	{
  		$this->layout = false;
  		$return = array();
  		$puzzle = $this->Puzzle->find('first',array('conditions'=>'Puzzle.id = '.$puzzle_id));
