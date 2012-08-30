@@ -33,5 +33,6 @@
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 	Router::connect('/forum', array('plugin' => 'forum', 'controller' => 'home', 'action' => 'index'));
 	Router::connect('/viewMissionSolution/*', array('controller' => 'puzzles', 'action' => 'viewMissionSolution'));
+	Router::connect('/viewSolution/*', array('controller' => 'puzzles', 'action' => 'viewSolution'));
 	
 	Router::parseExtensions('rss');
