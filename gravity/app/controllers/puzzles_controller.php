@@ -383,15 +383,15 @@ class PuzzlesController extends AppController {
 		}
 		fclose($apns);
  	}
- 	function getTotalMissions()
+ 	function getTotalMissions($version = 100000)
  	{
  		
- 		$return = array($this->Puzzle->find('count'));
+ 		$return = array($this->Puzzle->find('count',array('conditions'=>'Puzzle.version <= '.$version)));
  		echo json_encode($return);
  		exit;
  	}
  	
- 	function getPuzzles($order=1,$index = 0, $per_page = 15)
+ 	function getPuzzles($order=1,$index = 0, $per_page = 15,$version = 100000)
  	{
  		$order_condition = 'Puzzle.hot_rating DESC';
  		if($order)
@@ -400,7 +400,7 @@ class PuzzlesController extends AppController {
  		}else{
  			$order_condition = 'Puzzle.created DESC';
  		}
- 		$puzzles = $this->Puzzle->find('all',array('order'=>$order_condition,'limit'=>$per_page,'offset'=>$index));
+ 		$puzzles = $this->Puzzle->find('all',array('order'=>$order_condition,'limit'=>$per_page,'offset'=>$index,'conditions'=>'Puzzle.version <= '.$version));
  		$return = array();
  		foreach($puzzles as $puzzle):
  			$return[] = $puzzle['Puzzle'];
