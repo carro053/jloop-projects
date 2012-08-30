@@ -14,7 +14,7 @@
 			    if(confirm('You do not seem to have Space Flight installed, do you want to go download it now?')){
 			      document.location = 'http://itunes.apple.com/us/app/tortilla-soup-surfer/id476450448?mt=8';
 			    }
-			  }, 300);
+			  }, 5000);
 	
 		}
 		var Timer = function() {
