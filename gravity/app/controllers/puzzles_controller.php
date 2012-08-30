@@ -8,7 +8,7 @@ class PuzzlesController extends AppController {
 	
 	function beforeFilter()
  	{
- 		$this->Auth->allow('savePuzzle','getPuzzles','getPuzzle','getPuzzleWithSolution','saveSolution','saveImage','getPuzzleTimes','voteForPuzzle','updateAllPuzzles','viewMissionSolution','getTotalMissions','getAccountInfo','saveAccountInfo','savePushToken','manage_usernames','approve_username');
+ 		$this->Auth->allow('savePuzzle','getPuzzles','getPuzzle','getPuzzleWithSolution','saveSolution','saveImage','getPuzzleTimes','voteForPuzzle','updateAllPuzzles','viewMissionSolution','viewSolution','getTotalMissions','getAccountInfo','saveAccountInfo','savePushToken','manage_usernames','approve_username');
  		parent::beforeFilter();
  	}
  	
