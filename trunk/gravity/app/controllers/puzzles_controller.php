@@ -3,7 +3,7 @@
 class PuzzlesController extends AppController {
 
 
-	var $uses = array('Puzzle','Account','PuzzlePlanet','PuzzleAstronaut','PuzzleSolution','PuzzleSolutionWayPoint','PuzzleItem','PuzzleVote');
+	var $uses = array('Puzzle','Account','PuzzlePlanet','PuzzleWell','PuzzleSolutionWell','PuzzleAstronaut','PuzzleSolution','PuzzleSolutionWayPoint','PuzzleItem','PuzzleVote');
 	var $components = array('Auth');
 	
 	function beforeFilter()
@@ -164,6 +164,16 @@ class PuzzlesController extends AppController {
  			$newplanet['PuzzlePlanet']['moonAngle'] = $planet->moonAngle;
  			$this->PuzzlePlanet->save($newplanet);
  		}
+ 		
+ 		foreach($json_data->wells as $well)
+ 		{
+ 			$newwell['PuzzlePlanet']['id'] = null;
+ 			$newwell['PuzzlePlanet']['puzzle_id'] = $puzzle_id;
+ 			$newwell['PuzzlePlanet']['x'] = $well->x;
+ 			$newwell['PuzzlePlanet']['y'] = $well->y;
+ 			$newwell['PuzzlePlanet']['power'] = $well->power;
+ 			$this->PuzzleWell->save($newwell);
+ 		}
  		foreach($json_data->astronauts as $astronaut)
  		{
  			$newastro['PuzzleAstronaut']['id'] = null;
@@ -245,32 +255,7 @@ class PuzzlesController extends AppController {
  		$this->Account->save($account);
  		if($account['Account']['push_token'])
  		{
-			if (1 == 2) {
-				$apnsHost = 'gateway.sandbox.push.apple.com';
-				$apnsPort = 2195;
-				$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-dev.pem';
-			} else {
-				$apnsHost = 'gateway.push.apple.com';
-				$apnsPort = 2195;
-				$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-prod.pem';
-			}
-	
-			$streamContext = stream_context_create();
-			stream_context_set_option($streamContext, 'ssl', 'local_cert', $apnsCert);
-			stream_context_set_option($streamContext, 'ssl', 'passphrase', 'a4d6s5');
-			//stream_context_set_option($streamContext, 'ssl', 'verify_peer', false);
-			$apns = stream_socket_client('ssl://' . $apnsHost . ':' . $apnsPort, $error, $errorString, 2, STREAM_CLIENT_CONNECT,$streamContext);
-			if (!$apns)
-			{
-				print "Failed to connect".$error." ".$errorString;
-			}else{
-				$payload['aps'] = array('alert' => 'Your username, '.$account['Account']['username'].', has been approved.', 'sound' => 'default');
-				$payload['push_data'] = array();
-				$payload = json_encode($payload);
-				$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$account['Account']['push_token'])).chr(0).chr(strlen($payload)).$payload;
-				fwrite($apns, $apnsMessage);
-			}
-			fclose($apns);
+ 			$this->sendNotification($account['Account']['push_token'],'Your username, '.$account['Account']['username'].', has been approved.');
 		}
  		exit;
  	}
@@ -329,6 +314,15 @@ class PuzzlesController extends AppController {
 	 			$this->PuzzleSolutionWayPoint->save($newpoint);
 	 			$order++;
 	 		}
+	 		foreach($json_data->wells as $well)
+	 		{
+	 			$newwell['PuzzleSolutionWell']['id'] = null;
+	 			$newwell['PuzzleSolutionWell']['puzzle_solution_id'] = $puzzle_solution_id;
+	 			$newwell['PuzzleSolutionWell']['power'] = $well->power;
+	 			$newwell['PuzzleSolutionWell']['x'] = $well->x;
+	 			$newwell['PuzzleSolutionWell']['y'] = $well->y;
+	 			$this->PuzzleSolutionWayPoint->save($newwell);
+	 		}
 	 	}
 	 	
  		$this->Puzzle->bindModel(array('belongsTo'=>array('Account'=>array('className'=>'Account','foreign_key'=>'account_id'))));
@@ -341,97 +335,53 @@ class PuzzlesController extends AppController {
  		{
  			if($fastest_time['Puzzle']['Account']['push_token'] != "")
  			{
-	 			if (1 == 2) {
-					$apnsHost = 'gateway.sandbox.push.apple.com';
-					$apnsPort = 2195;
-					$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-dev.pem';
-				} else {
-					$apnsHost = 'gateway.push.apple.com';
-					$apnsPort = 2195;
-					$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-prod.pem';
-				}
-		
-				$streamContext = stream_context_create();
-				stream_context_set_option($streamContext, 'ssl', 'local_cert', $apnsCert);
-				stream_context_set_option($streamContext, 'ssl', 'passphrase', 'a4d6s5');
-				//stream_context_set_option($streamContext, 'ssl', 'verify_peer', false);
-				$apns = stream_socket_client('ssl://' . $apnsHost . ':' . $apnsPort, $error, $errorString, 2, STREAM_CLIENT_CONNECT,$streamContext);
-				if (!$apns)
-				{
-					print "Failed to connect".$error." ".$errorString;
-				}else{
-					$payload['aps'] = array('alert' => 'Someone has set a new Fuel and Time record for one of your Missions!', 'sound' => 'default');
-					$payload['push_data'] = array();
-					$payload = json_encode($payload);
-					$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$fastest_time['Puzzle']['Account']['push_token'])).chr(0).chr(strlen($payload)).$payload;
-					fwrite($apns, $apnsMessage);
-				}
-				fclose($apns);
+	 			$this->sendNotification($fastest_time['Puzzle']['Account']['push_token'],'Someone has set a new Fuel and Time record for one of your Missions!');
 			}
  		}elseif($puzzle_solution_id == $fastest_time['PuzzleSolution']['id'])
  		{
  			if($fastest_time['Puzzle']['Account']['push_token'] != "")
  			{
-	 			if (1 == 2) {
-					$apnsHost = 'gateway.sandbox.push.apple.com';
-					$apnsPort = 2195;
-					$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-dev.pem';
-				} else {
-					$apnsHost = 'gateway.push.apple.com';
-					$apnsPort = 2195;
-					$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-prod.pem';
-				}
-		
-				$streamContext = stream_context_create();
-				stream_context_set_option($streamContext, 'ssl', 'local_cert', $apnsCert);
-				stream_context_set_option($streamContext, 'ssl', 'passphrase', 'a4d6s5');
-				//stream_context_set_option($streamContext, 'ssl', 'verify_peer', false);
-				$apns = stream_socket_client('ssl://' . $apnsHost . ':' . $apnsPort, $error, $errorString, 2, STREAM_CLIENT_CONNECT,$streamContext);
-				if (!$apns)
-				{
-					print "Failed to connect".$error." ".$errorString;
-				}else{
-					$payload['aps'] = array('alert' => 'Someone has set a new Time record for one of your Missions!', 'sound' => 'default');
-					$payload['push_data'] = array();
-					$payload = json_encode($payload);
-					$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$fastest_time['Puzzle']['Account']['push_token'])).chr(0).chr(strlen($payload)).$payload;
-					fwrite($apns, $apnsMessage);
-				}
-				fclose($apns);
+	 			$this->sendNotification($fastest_time['Puzzle']['Account']['push_token'],'Someone has set a new Time record for one of your Missions!');
 			}
  		}elseif($puzzle_solution_id == $most_fuel['PuzzleSolution']['id'])
  		{
  			if($most_fuel['Puzzle']['Account']['push_token'] != "")
  			{
-	 			if (1 == 2) {
-					$apnsHost = 'gateway.sandbox.push.apple.com';
-					$apnsPort = 2195;
-					$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-dev.pem';
-				} else {
-					$apnsHost = 'gateway.push.apple.com';
-					$apnsPort = 2195;
-					$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-prod.pem';
-				}
-		
-				$streamContext = stream_context_create();
-				stream_context_set_option($streamContext, 'ssl', 'local_cert', $apnsCert);
-				stream_context_set_option($streamContext, 'ssl', 'passphrase', 'a4d6s5');
-				//stream_context_set_option($streamContext, 'ssl', 'verify_peer', false);
-				$apns = stream_socket_client('ssl://' . $apnsHost . ':' . $apnsPort, $error, $errorString, 2, STREAM_CLIENT_CONNECT,$streamContext);
-				if (!$apns)
-				{
-					print "Failed to connect".$error." ".$errorString;
-				}else{
-					$payload['aps'] = array('alert' => 'Someone has set a new Fuel record for one of your Missions!', 'sound' => 'default');
-					$payload['push_data'] = array();
-					$payload = json_encode($payload);
-					$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$most_fuel['Puzzle']['Account']['push_token'])).chr(0).chr(strlen($payload)).$payload;
-					fwrite($apns, $apnsMessage);
-				}
-				fclose($apns);
+	 			$this->sendNotification($most_fuel['Puzzle']['Account']['push_token'],'Someone has set a new Fuel record for one of your Missions!');
 			}
  		}
  		exit;
+ 	}
+ 	
+ 	function sendNotification($push_token,$message)
+ 	{
+ 		mail('michael@jloop.com','SF Push Notification Sent','Token: '.$push_token.' Message: '.$message);
+ 		if (1 == 2) {
+			$apnsHost = 'gateway.sandbox.push.apple.com';
+			$apnsPort = 2195;
+			$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-dev.pem';
+		} else {
+			$apnsHost = 'gateway.push.apple.com';
+			$apnsPort = 2195;
+			$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-prod.pem';
+		}
+
+		$streamContext = stream_context_create();
+		stream_context_set_option($streamContext, 'ssl', 'local_cert', $apnsCert);
+		stream_context_set_option($streamContext, 'ssl', 'passphrase', 'a4d6s5');
+		//stream_context_set_option($streamContext, 'ssl', 'verify_peer', false);
+		$apns = stream_socket_client('ssl://' . $apnsHost . ':' . $apnsPort, $error, $errorString, 2, STREAM_CLIENT_CONNECT,$streamContext);
+		if (!$apns)
+		{
+			print "Failed to connect".$error." ".$errorString;
+		}else{
+			$payload['aps'] = array('alert' => $message, 'sound' => 'default');
+			$payload['push_data'] = array();
+			$payload = json_encode($payload);
+			$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$push_token)).chr(0).chr(strlen($payload)).$payload;
+			fwrite($apns, $apnsMessage);
+		}
+		fclose($apns);
  	}
  	function getTotalMissions()
  	{
