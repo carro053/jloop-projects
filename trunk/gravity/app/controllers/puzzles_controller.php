@@ -167,11 +167,11 @@ class PuzzlesController extends AppController {
  		
  		foreach($json_data->wells as $well)
  		{
- 			$newwell['PuzzlePlanet']['id'] = null;
- 			$newwell['PuzzlePlanet']['puzzle_id'] = $puzzle_id;
- 			$newwell['PuzzlePlanet']['x'] = $well->x;
- 			$newwell['PuzzlePlanet']['y'] = $well->y;
- 			$newwell['PuzzlePlanet']['power'] = $well->power;
+ 			$newwell['PuzzleWell']['id'] = null;
+ 			$newwell['PuzzleWell']['puzzle_id'] = $puzzle_id;
+ 			$newwell['PuzzleWell']['x'] = $well->x;
+ 			$newwell['PuzzleWell']['y'] = $well->y;
+ 			$newwell['PuzzleWell']['power'] = $well->power;
  			$this->PuzzleWell->save($newwell);
  		}
  		foreach($json_data->astronauts as $astronaut)
