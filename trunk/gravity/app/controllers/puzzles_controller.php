@@ -321,7 +321,7 @@ class PuzzlesController extends AppController {
 	 			$newwell['PuzzleSolutionWell']['power'] = $well->power;
 	 			$newwell['PuzzleSolutionWell']['x'] = $well->x;
 	 			$newwell['PuzzleSolutionWell']['y'] = $well->y;
-	 			$this->PuzzleSolutionWayPoint->save($newwell);
+	 			$this->PuzzleSolutionWell->save($newwell);
 	 		}
 	 	}
 	 	
