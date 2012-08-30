@@ -356,7 +356,7 @@ class PuzzlesController extends AppController {
  	function sendNotification($push_token,$message)
  	{
  		mail('michael@jloop.com','SF Push Notification Sent','Token: '.$push_token.' Message: '.$message);
- 		if (1 == 2) {
+ 		if (1 == 1) {
 			$apnsHost = 'gateway.sandbox.push.apple.com';
 			$apnsPort = 2195;
 			$apnsCert = '/var/www/vhosts/jloop.com/subdomains/gravity/httpdocs/apns-dev.pem';
