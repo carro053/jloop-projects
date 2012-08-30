@@ -9,7 +9,7 @@
 		var isiPod = navigator.userAgent.toLowerCase().indexOf("ipod");
 		if(isiPhone > -1 || isiPad > -1 || isiPod > -1)
 		{
-			document.location = 'spaceflight://viewSolution.com/<?php echo $puzzle_id; ?>/<?php echo $solution_id; ?>';
+			document.location = 'spaceflight://viewSolution/<?php echo $puzzle_id; ?>/<?php echo $solution_id; ?>';
 			  setTimeout(function(){
 			    if(confirm('You do not seem to have Space Flight installed, do you want to go download it now?')){
 			      document.location = 'http://itunes.apple.com/us/app/tortilla-soup-surfer/id476450448?mt=8';
