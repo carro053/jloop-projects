@@ -117,7 +117,7 @@ class PuzzlesController extends AppController {
         move_uploaded_file($_FILES['uploaded']['tmp_name'], $this->webroot.'files/puzzles/puzzle_'.$puzzle_id.$hd_part.'.jpg');
  		exit;
  	}
- 	function savePuzzle()
+ 	function savePuzzle($version = 10000)
  	{
  		$json_data = json_decode($_POST['json_data']);
  		$device_id = $json_data->device_id;
