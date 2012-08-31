@@ -400,9 +400,16 @@ class PuzzlesController extends AppController {
  		}else{
  			$order_condition = 'Puzzle.created DESC';
  		}
+		$this->Puzzle->bindModel(array('belongsTo'=>array('Account'=>array('className'=>'Account','foreign_key'=>'account_id'))));
  		$puzzles = $this->Puzzle->find('all',array('order'=>$order_condition,'limit'=>$per_page,'offset'=>$index,'conditions'=>'Puzzle.version <= '.$version));
  		$return = array();
  		foreach($puzzles as $puzzle):
+ 			if($puzzle['Account']['username'] != '')
+ 			{
+ 				$puzzle['Puzzle']['account_username'] = $puzzle['Account']['username'];
+ 			}else{
+ 				$puzzle['Puzzle']['account_username'] = 'SpaceCadet #'.$puzzle['Account']['id'];
+ 			}
  			$return[] = $puzzle['Puzzle'];
  		endforeach;
  		echo json_encode($return);
