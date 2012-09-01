@@ -576,6 +576,7 @@ class PuzzlesController extends AppController {
  		}else{
  			$return['vote'] = 0;
  		}
+ 		$return['featured'] = $puzzle['Puzzle']['featured'];
  		$return['title'] = $puzzle['Puzzle']['title'];
  		$return['made_by'] = 'SpaceCadet #'.$puzzle['Account']['id'];
  		if($puzzle['Account']['username'] != '') $return['made_by'] = $puzzle['Account']['username'];
