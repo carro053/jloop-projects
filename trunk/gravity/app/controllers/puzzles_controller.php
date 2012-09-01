@@ -3,12 +3,12 @@
 class PuzzlesController extends AppController {
 
 
-	var $uses = array('Puzzle','Account','PuzzlePlanet','PuzzleWell','PuzzleSolutionWell','PuzzleAstronaut','PuzzleSolution','PuzzleSolutionWayPoint','PuzzleItem','PuzzleVote');
+	var $uses = array('Puzzle','Account','AccountsPuzzle','PuzzlePlanet','PuzzleWell','PuzzleSolutionWell','PuzzleAstronaut','PuzzleSolution','PuzzleSolutionWayPoint','PuzzleItem','PuzzleVote');
 	var $components = array('Auth');
 	
 	function beforeFilter()
  	{
- 		$this->Auth->allow('savePuzzle','getPuzzles','getPuzzle','getPuzzleWithSolution','saveSolution','saveImage','getPuzzleTimes','voteForPuzzle','updateAllPuzzles','viewMissionSolution','viewSolution','getTotalMissions','getAccountInfo','saveAccountInfo','savePushToken','manage_usernames','approve_username');
+ 		$this->Auth->allow('savePuzzle','getPuzzles','getPuzzle','getPuzzleWithSolution','saveSolution','saveImage','getPuzzleTimes','voteForPuzzle','updateAllPuzzles','viewMissionSolution','viewSolution','getTotalMissions','getAccountInfo','saveAccountInfo','savePushToken','manage_usernames','approve_username','deployFido');
  		parent::beforeFilter();
  	}
  	
@@ -416,9 +416,64 @@ class PuzzlesController extends AppController {
  		exit;
  	}
  	
- 	function getPuzzle($puzzle_id)
+ 	function deployFido($puzzle_id,$device_id)
+ 	{
+ 		$account = $this->Account->find('first',array('conditions'=>'Account.device_id = "'.$device_id.'"'));
+ 		$puzzle = $this->Puzzle->findById($puzzle_id);
+ 		if($account['Account']['currency'] > 0 && isset($puzzle['Puzzle']['id']))
+ 		{
+	 		$habtm = $this->AccountsPuzzle->find('first',array('conditions'=>'AccountsPuzzle.account_id = '>$account['Account']['id'].' AND AccountsPuzzle.puzzle_id = '.$puzzle_id));
+	 		if(isset($habtm['AccountsPuzzle']['id']))
+	 		{
+	 			if($habtm['AccountsPuzzle']['fido'] == 0)
+	 			{
+	 				$habtm['AccountsPuzzle']['fido'] = 1;
+	 				$this->AccountsPuzzle->save($habtm,false);
+	 				$account['Account']['currency']--;
+	 				$this->Account->save($account,false);
+	 				echo 1;
+	 			}else{
+	 				echo 2;
+	 			}
+	 		}else{
+	 			$habtm['AccountsPuzzle']['id'] = null;
+	 			$habtm['AccountsPuzzle']['account_id'] = $account['Account']['id'];
+	 			$habtm['AccountsPuzzle']['puzzle_id'] = $puzzle_id;
+	 			$habtm['AccountsPuzzle']['fido'] = 1;
+	 			$this->AccountsPuzzle->save($habtm);
+	 			$account['Account']['currency']--;
+	 			$this->Account->save($account,false);
+	 			echo 1;
+	 		}
+ 		}else{
+ 			echo 0;
+ 		}
+ 		exit;
+ 	}
+ 	
+ 	function getPuzzle($puzzle_id,$device_id=null)
  	{
  		$return = array();
+ 		if($device_id)
+ 		{
+ 			$account = $this->Account->find('first',array('conditions'=>'Account.device_id = "'.$device_id.'"'));
+	 		if(!isset($account['Account']['id']))
+	 		{
+	 			$account['Account']['id'] = null;
+	 			$account['Account']['device_id'] = $device_id;
+	 			$this->Account->save($account);
+	 			$account = $this->Account->findById($this->Account->id);
+	 		}
+	 		$habtm = $this->AccountsPuzzle->find('first',array('conditions'=>'AccountsPuzzle.account_id = '>$account['Account']['id'].' AND AccountsPuzzle.puzzle_id = '.$puzzle_id));
+	 		if(isset($habtm['AccountsPuzzle']['id']) && $habtm['AccountsPuzzle']['fido'])
+	 		{
+	 			$return['fido'] = 1;
+	 		}else{
+	 			$return['fido'] = 0;
+	 		}
+	 		$return['account_id'] = $account['Account']['id'];
+	 		$return['currency'] = $account['Account']['currency'];
+ 		}
 		$this->Puzzle->bindModel(array('belongsTo'=>array('Account'=>array('className'=>'Account','foreign_key'=>'account_id'))));
  		$puzzle = $this->Puzzle->find('first',array('conditions'=>'Puzzle.id = '.$puzzle_id));
  		$return['title'] = $puzzle['Puzzle']['title'];
