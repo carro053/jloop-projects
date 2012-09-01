@@ -393,12 +393,12 @@ class PuzzlesController extends AppController {
  	
  	function getPuzzles($order=1,$index = 0, $per_page = 15,$version = 100000)
  	{
- 		$order_condition = 'Puzzle.hot_rating DESC';
+ 		$order_condition = 'Puzzle.featured DESC, Puzzle.hot_rating DESC';
  		if($order)
  		{
- 			$order_condition = 'Puzzle.hot_rating DESC';
+ 			$order_condition = 'Puzzle.featured DESC, Puzzle.hot_rating DESC';
  		}else{
- 			$order_condition = 'Puzzle.created DESC';
+ 			$order_condition = 'Puzzle.featured DESC, Puzzle.created DESC';
  		}
 		$this->Puzzle->bindModel(array('belongsTo'=>array('Account'=>array('className'=>'Account','foreign_key'=>'account_id'))));
  		$puzzles = $this->Puzzle->find('all',array('order'=>$order_condition,'limit'=>$per_page,'offset'=>$index,'conditions'=>'Puzzle.version <= '.$version));
