@@ -418,6 +418,7 @@ class PuzzlesController extends AppController {
  	
  	function deployFido($puzzle_id,$device_id)
  	{
+ 		$response = 0;
  		$account = $this->Account->find('first',array('conditions'=>'Account.device_id = "'.$device_id.'"'));
  		$puzzle = $this->Puzzle->findById($puzzle_id);
  		if($account['Account']['currency'] > 0 && isset($puzzle['Puzzle']['id']))
@@ -431,9 +432,9 @@ class PuzzlesController extends AppController {
 	 				$this->AccountsPuzzle->save($habtm,false);
 	 				$account['Account']['currency']--;
 	 				$this->Account->save($account,false);
-	 				echo 1;
+	 				$response = 1;
 	 			}else{
-	 				echo 2;
+	 				$response = 2;
 	 			}
 	 		}else{
 	 			$habtm['AccountsPuzzle']['id'] = null;
@@ -443,11 +444,12 @@ class PuzzlesController extends AppController {
 	 			$this->AccountsPuzzle->save($habtm);
 	 			$account['Account']['currency']--;
 	 			$this->Account->save($account,false);
-	 			echo 1;
+	 			$response = 1;
 	 		}
  		}else{
- 			echo 0;
+ 			$response = 0;
  		}
+ 		echo json_encode(array($response));
  		exit;
  	}
  	
