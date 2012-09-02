@@ -542,6 +542,10 @@ function drawBezierCurve(n,curve)
                 fuelSpent *= travel_time / fuelPower;
                 total_fuel_spent += fuelSpent;
                 var energyMeter = Math.min(Math.log(fuelSpent / travel_time / 5) / Math.log(10), 2);
+                if(energyMeter < 0)
+                {
+                	energyMeter = 0.0;
+                }
                 if(energyMeter > 1)
                 {
                     energyMeter -= 1;
