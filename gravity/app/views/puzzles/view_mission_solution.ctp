@@ -82,15 +82,24 @@
 		var timer = new Timer();
 		var beacons = new Array();	
 		var planets = new Array();
+		var wells = new Array();
 		var astronauts = new Array();
 		var items = new Array();
-		var minSpeed = 10.0;
+		var minSpeed = 150.0
+		var gConstant = 28.0
+		var fuelPower = 0.15
+		var saveThreshold = 15
+		var moon_density = 0.020
+		var minFuel = 50.0
+		var maxFuel = 400.0
+		var shipMass = 1.0
+		var MAXPOINTS = 10000
+		var point_threshold = 40
+		var gDistanceConstant = 0.85
+		var abyssDistance = 1300
 		var currentSpeed = minSpeed;
 		var total_travel_time = 0;
 		var total_fuel_spent = 0;
-		var gConstant = 300.0;
-		var saveThreshold = 15;
-		var moon_density = 0.020;
 		var time_locations = new Array();
 		var images = new Array();
 		
@@ -98,7 +107,6 @@
         var xOrbit = 11.0 / 8.0;
         var yOrbit = 3.0 / 2.0;
         var theMoonRadius = 2.0 / 7.0;
-        var MAXPOINTS = 10000;
 		<?php foreach($data['way_points'] as $beacon): ?>
 		addBeacon(<?php echo ($beacon['x']); ?>,<?php echo (768 - $beacon['y']); ?>);
 		<?php endforeach; ?>
@@ -216,6 +224,9 @@
 			contextScene.drawImage(space_stationImage, <?php echo (($data['endData']['0'] - 16) / (1)); ?>, <?php echo ((768 - $data['endData']['1'] - 16) / (1)); ?>);
 			contextScene.restore();
 			
+			<?php foreach($data['wells'] as $well): ?>
+			addWell(<?php echo $well['x']; ?>,<?php echo (768 - $well['y']); ?>,<?php echo $well['power']; ?>);
+			<?php endforeach; ?>
 			
 			
 			<?php foreach($data['astronauts'] as $astro): ?>
@@ -244,7 +255,7 @@
             	temp_beacons.push(temp_beacons[temp_beacons.length - 1]);
             }
         	var sz = temp_beacons.length;
-        	var	error = 10;
+        	var	error = 50;
         	currentSpeed = minSpeed;
         	if (sz > 0)
         	{
@@ -263,6 +274,15 @@
 			planet.hasMoon = hasMoon;
 			planet.moonAngle = moonAngle;
 			planets.push(planet);
+		}
+		
+		function addPlanet(x,y,power)
+		{
+			var well = new Object();
+			well.x = x;
+			well.y = y;
+			well.power = power;
+			wells.push(well);
 		}
 		
 		function addItem(x,y)
@@ -432,6 +452,8 @@ function drawBezierCurve(n,curve)
     previous_previous_dot.x = 0.0;
     previous_previous_dot.y = 0.0;
     steps = 100;
+    var running_time = 0;
+    var running_fuel = 0;
     for (i = 0; i <= steps; i++) {
         var this_length;
         t = i / steps;
@@ -449,15 +471,14 @@ function drawBezierCurve(n,curve)
                 point = new Array();
                 point.push(previous_dot.x);
                 point.push(previous_dot.y);
-                var travel_time = this_length / currentSpeed / 10.0;
+                var travel_time = this_length / currentSpeed;
                 total_time += travel_time;
                 total_travel_time += travel_time;
-                var shipMass = 1.0;
                 var u_x = (previous_dot.x - previous_previous_dot.x) / Math.sqrt(Math.pow(previous_dot.x - previous_previous_dot.x, 2) + Math.pow(previous_dot.y - previous_previous_dot.y, 2));
                 var u_y = (previous_dot.y - previous_previous_dot.y) / Math.sqrt(Math.pow(previous_dot.x - previous_previous_dot.x, 2) + Math.pow(previous_dot.y - previous_previous_dot.y, 2));
                 
-				var new_x = u_x * currentSpeed;
-                var new_y = u_y * currentSpeed;
+				var new_x = u_x * currentSpeed * travel_time;
+                var new_y = u_y * currentSpeed * travel_time;
                 for(var p in planets)
                 {
                     var planetX = planets[p].x;
@@ -465,7 +486,7 @@ function drawBezierCurve(n,curve)
                     var planetRadius = planets[p].radius;
                     var planetDensity = planets[p].density;
                     var planetMass = planetDensity * 4 / 3 * Math.PI * Math.pow(planetRadius, 3);
-                    var gravity = gConstant * planetMass * shipMass / (Math.pow(previous_dot.x - planetX,2) + Math.pow(previous_dot.y - planetY,2));
+                    var gravity = gConstant * planetMass * shipMass / Math.pow(Math.sqrt(Math.pow(previous_dot.x - planetX,2) + Math.pow(previous_dot.y - planetY,2)) * gDistanceConstant, 2);
                     if(planets[p].antiGravity)
                         gravity = gravity * -1.0;
                     var g_x = (previous_dot.x - planetX) / Math.sqrt(Math.pow(previous_dot.x - planetX, 2) + Math.pow(previous_dot.y - planetY, 2));
@@ -479,7 +500,7 @@ function drawBezierCurve(n,curve)
                         var moonRadius = planets[p].radius * theMoonRadius;
                         var moonDensity = moon_density;
                         var moonMass = moonDensity * 4 / 3 * Math.PI * Math.pow(moonRadius, 3);
-						var moonGravity = gConstant * moonMass * shipMass / (Math.pow(previous_dot.x - moonX,2) + Math.pow(previous_dot.y - moonY,2));
+						var moonGravity = gConstant * moonMass * shipMass / Math.pow(Math.sqrt(Math.pow(previous_dot.x - moonX,2) + Math.pow(previous_dot.y - moonY,2)) * gDistanceConstant, 2);
                         var mg_x = (previous_dot.x - moonX) / Math.sqrt(Math.pow(previous_dot.x - moonX, 2) + Math.pow(previous_dot.y - moonY, 2));
                         var mg_y = (previous_dot.y - moonY) / Math.sqrt(Math.pow(previous_dot.x - moonX, 2) + Math.pow(previous_dot.y - moonY, 2));
                         
@@ -488,7 +509,18 @@ function drawBezierCurve(n,curve)
                     }
                     
                 }
-                var newSpeed = Math.sqrt(Math.pow(new_x,2) + Math.pow(new_y,2));
+                
+                for (var w in wells) {
+                    var wellX = well[w].x;
+                    var wellY = well[w].y;
+                    var wellPower = well[w].power;
+                    var gravity = gConstant * wellPower * shipMass / Math.pow(Math.sqrt(Math.pow(previous_dot.x - wellX,2) + Math.pow(previous_dot.y - wellY,2)) * gDistanceConstant,2);
+                    var g_x = (previous_dot.x - wellX) / Math.sqrt(Math.pow(previous_dot.x - wellX, 2) + Math.pow(previous_dot.y - wellY, 2));
+                    var g_y = (previous_dot.y - wellY) / Math.sqrt(Math.pow(previous_dot.x - wellX, 2) + Math.pow(previous_dot.y - wellY, 2));
+                    new_x -= g_x * travel_time * gravity;
+                    new_y -= g_y * travel_time * gravity;
+                }
+                var newSpeed = Math.sqrt(Math.pow(new_x,2) + Math.pow(new_y,2)) / travel_time;
                 var n_x = new_x / Math.sqrt(Math.pow(new_x, 2) + Math.pow(new_y, 2));
                 var n_y = new_y / Math.sqrt(Math.pow(new_x, 2) + Math.pow(new_y, 2));
                 var v_x = (dot.x - previous_dot.x) / Math.sqrt(Math.pow(dot.x - previous_dot.x, 2) + Math.pow(dot.y - previous_dot.y, 2));
@@ -507,8 +539,9 @@ function drawBezierCurve(n,curve)
                 {
                 	fuelSpent += w;
                 }
+                fuelSpent *= travel_time / fuelPower;
                 total_fuel_spent += fuelSpent;
-                var energyMeter = Math.min(fuelSpent / 100 * 500 / this_length, 2);
+                var energyMeter = Math.min(Math.log(fuelSpent / travel_time / 5) / Math.log(10), 2);
                 if(energyMeter > 1)
                 {
                     energyMeter -= 1;
