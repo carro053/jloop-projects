@@ -511,9 +511,9 @@ function drawBezierCurve(n,curve)
                 }
                 
                 for (var w in wells) {
-                    var wellX = well[w].x;
-                    var wellY = well[w].y;
-                    var wellPower = well[w].power;
+                    var wellX = wells[w].x;
+                    var wellY = wells[w].y;
+                    var wellPower = wells[w].power;
                     var gravity = gConstant * wellPower * shipMass / Math.pow(Math.sqrt(Math.pow(previous_dot.x - wellX,2) + Math.pow(previous_dot.y - wellY,2)) * gDistanceConstant,2);
                     var g_x = (previous_dot.x - wellX) / Math.sqrt(Math.pow(previous_dot.x - wellX, 2) + Math.pow(previous_dot.y - wellY, 2));
                     var g_y = (previous_dot.y - wellY) / Math.sqrt(Math.pow(previous_dot.x - wellX, 2) + Math.pow(previous_dot.y - wellY, 2));
