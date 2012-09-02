@@ -141,6 +141,10 @@
 		var planetImage = new Image();
 		planetImage.src = "/img/planet_4.png";
 		
+		
+		var wellImage = new Image();
+		wellImage.src = "/img/gravity_well.png";
+		
 		var antiImage = new Image();
 		antiImage.src = "/img/anti_gravity.png";
 		
@@ -225,6 +229,11 @@
 			contextScene.restore();
 			
 			<?php foreach($data['wells'] as $well): ?>
+			
+			contextScene.save();
+			contextScene.scale(<?php echo (1 / 2); ?>, <?php echo (1 / 2); ?>);
+			contextScene.drawImage(wellImage, <?php echo (($well['x'] - 32) / (1 / 2)); ?>, <?php echo ((768 - $well['y'] - 32) / (1 / 2)); ?>);
+			contextScene.restore();
 			addWell(<?php echo $well['x']; ?>,<?php echo (768 - $well['y']); ?>,<?php echo $well['power']; ?>);
 			<?php endforeach; ?>
 			
@@ -1084,6 +1093,7 @@ function applink(fail){
 		</div>
 		<div style="display:none;">
 			<img src="/img/planet_4.png" />
+			<img src="/img/gravity_well.png" />
 			<img src="/img/anti_gravity.png" />
 			<img src="/img/astronaut.png" />
 			<img src="/img/fuel.png" />
