@@ -456,6 +456,8 @@ class PuzzlesController extends AppController {
  	function getPuzzle($puzzle_id,$device_id=null)
  	{
  		$return = array();
+ 		$return['fido'] = 0;
+ 		$return['currency'] = 0;
  		if($device_id)
  		{
  			$account = $this->Account->find('first',array('conditions'=>'Account.device_id = "'.$device_id.'"'));
