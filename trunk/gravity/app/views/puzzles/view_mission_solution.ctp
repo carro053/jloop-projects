@@ -285,7 +285,7 @@
 			planets.push(planet);
 		}
 		
-		function addPlanet(x,y,power)
+		function addWell(x,y,power)
 		{
 			var well = new Object();
 			well.x = x;
