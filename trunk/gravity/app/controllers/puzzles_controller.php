@@ -471,8 +471,6 @@ class PuzzlesController extends AppController {
 	 		$habtm = $this->AccountsPuzzle->find('first',array('conditions'=>'AccountsPuzzle.account_id = '.$account['Account']['id'].' AND AccountsPuzzle.puzzle_id = '.$puzzle_id));
 	 		if(isset($habtm['AccountsPuzzle']['id']) && $habtm['AccountsPuzzle']['fido'])
 	 		{
-	 		echo 'test';
-	 		exit;
 	 			$return['fido'] = 1;
 	 		}else{
 	 			$return['fido'] = 0;
