@@ -423,7 +423,7 @@ class PuzzlesController extends AppController {
  		$puzzle = $this->Puzzle->findById($puzzle_id);
  		if($account['Account']['currency'] > 0 && isset($puzzle['Puzzle']['id']))
  		{
-	 		$habtm = $this->AccountsPuzzle->find('first',array('conditions'=>'AccountsPuzzle.account_id = '>$account['Account']['id'].' AND AccountsPuzzle.puzzle_id = '.$puzzle_id));
+	 		$habtm = $this->AccountsPuzzle->find('first',array('conditions'=>'AccountsPuzzle.account_id = '.$account['Account']['id'].' AND AccountsPuzzle.puzzle_id = '.$puzzle_id));
 	 		if(isset($habtm['AccountsPuzzle']['id']))
 	 		{
 	 			if($habtm['AccountsPuzzle']['fido'] == 0)
