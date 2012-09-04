@@ -85,12 +85,12 @@
 		var wells = new Array();
 		var astronauts = new Array();
 		var items = new Array();
-		var minSpeed = 150.0
-		var gConstant = 28.0
-		var fuelPower = 0.15
+		var minSpeed = 125.0
+		var gConstant = 6000000.0
+		var fuelPower = 14.0
 		var saveThreshold = 15
 		var moon_density = 0.020
-		var minFuel = 50.0
+		var minFuel = 0.0
 		var maxFuel = 400.0
 		var shipMass = 1.0
 		var MAXPOINTS = 10000
@@ -486,8 +486,10 @@ function drawBezierCurve(n,curve)
                 var u_x = (previous_dot.x - previous_previous_dot.x) / Math.sqrt(Math.pow(previous_dot.x - previous_previous_dot.x, 2) + Math.pow(previous_dot.y - previous_previous_dot.y, 2));
                 var u_y = (previous_dot.y - previous_previous_dot.y) / Math.sqrt(Math.pow(previous_dot.x - previous_previous_dot.x, 2) + Math.pow(previous_dot.y - previous_previous_dot.y, 2));
                 
-				var new_x = u_x * currentSpeed * travel_time;
-                var new_y = u_y * currentSpeed * travel_time;
+				var new_v_x = u_x * currentSpeed;
+                var new_v_y = u_y * currentSpeed;
+                var gx = 0.0;
+                var gy = 0.0;
                 for(var p in planets)
                 {
                     var planetX = planets[p].x;
@@ -500,8 +502,8 @@ function drawBezierCurve(n,curve)
                         gravity = gravity * -1.0;
                     var g_x = (previous_dot.x - planetX) / Math.sqrt(Math.pow(previous_dot.x - planetX, 2) + Math.pow(previous_dot.y - planetY, 2));
                     var g_y = (previous_dot.y - planetY) / Math.sqrt(Math.pow(previous_dot.x - planetX, 2) + Math.pow(previous_dot.y - planetY, 2));
-                    new_x -= g_x * travel_time * gravity;
-                    new_y -= g_y * travel_time * gravity;
+                    gx += g_x * gravity;
+                    gy += g_y * gravity;
                     if (planets[p].hasMoon) {
                         var currentMoonAngle = planets[p].moonAngle + Math.PI / planets[p].radius * (planets[p].density + 0.012) / 0.03 / 2.0 * 60.0 * total_travel_time;
 						var moonX = planets[p].x + Math.cos(currentMoonAngle) * planets[p].radius * xOrbit;
@@ -513,8 +515,8 @@ function drawBezierCurve(n,curve)
                         var mg_x = (previous_dot.x - moonX) / Math.sqrt(Math.pow(previous_dot.x - moonX, 2) + Math.pow(previous_dot.y - moonY, 2));
                         var mg_y = (previous_dot.y - moonY) / Math.sqrt(Math.pow(previous_dot.x - moonX, 2) + Math.pow(previous_dot.y - moonY, 2));
                         
-						new_x -= mg_x * travel_time * moonGravity;
-                        new_y -= mg_y * travel_time * moonGravity;
+						gx += mg_x * moonGravity;
+                        gy += mg_y * moonGravity;
                     }
                     
                 }
@@ -526,10 +528,25 @@ function drawBezierCurve(n,curve)
                     var gravity = gConstant * wellPower * shipMass / Math.pow(Math.sqrt(Math.pow(previous_dot.x - wellX,2) + Math.pow(previous_dot.y - wellY,2)) * gDistanceConstant,2);
                     var g_x = (previous_dot.x - wellX) / Math.sqrt(Math.pow(previous_dot.x - wellX, 2) + Math.pow(previous_dot.y - wellY, 2));
                     var g_y = (previous_dot.y - wellY) / Math.sqrt(Math.pow(previous_dot.x - wellX, 2) + Math.pow(previous_dot.y - wellY, 2));
-                    new_x -= g_x * travel_time * gravity;
-                    new_y -= g_y * travel_time * gravity;
+                    gx += g_x * gravity;
+                    gy += g_y * gravity;
                 }
-                var newSpeed = Math.sqrt(Math.pow(new_x,2) + Math.pow(new_y,2)) / travel_time;
+                
+                if(gx < 0)
+                {
+                    new_v_x += Math.sqrt(gx * -1.0 / shipMass) * travel_time;
+                }else{
+                    new_v_x -= Math.sqrt(gx * 1.0 / shipMass) * travel_time;
+                }
+                if(gy < 0)
+                {
+                    new_v_y += Math.sqrt(gy * -1.0 / shipMass) * travel_time;
+                }else{
+                    new_v_y -= Math.sqrt(gy * 1.0 / shipMass) * travel_time;
+                }
+                var new_x = new_v_x * travel_time;
+                var new_y = new_v_y * travel_time;
+                var newSpeed = Math.sqrt(Math.pow(new_v_x,2) + Math.pow(new_v_y,2));
                 var n_x = new_x / Math.sqrt(Math.pow(new_x, 2) + Math.pow(new_y, 2));
                 var n_y = new_y / Math.sqrt(Math.pow(new_x, 2) + Math.pow(new_y, 2));
                 var v_x = (dot.x - previous_dot.x) / Math.sqrt(Math.pow(dot.x - previous_dot.x, 2) + Math.pow(dot.y - previous_dot.y, 2));
@@ -541,14 +558,14 @@ function drawBezierCurve(n,curve)
                 {
                     currentSpeed = scalar;
                 }else {
-                    fuelSpent += minSpeed - scalar;
+                    fuelSpent += Math.pow(minSpeed - scalar,2) * shipMass / 2;
                     currentSpeed = minSpeed;
                 }
                 if(w > 0)
                 {
-                	fuelSpent += w;
+                	fuelSpent += Math.pow(w,2) * shipMass / 2;;
                 }
-                fuelSpent *= travel_time / fuelPower;
+                fuelSpent /= fuelPower;
                 total_fuel_spent += fuelSpent;
                 var energyMeter = Math.min(Math.log(fuelSpent / travel_time / 5) / Math.log(10), 2);
                 if(energyMeter < 0)
