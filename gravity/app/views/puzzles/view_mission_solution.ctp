@@ -506,6 +506,7 @@ function drawBezierCurve(n,curve)
                     var g_y = (previous_dot.y - planetY) / Math.sqrt(Math.pow(previous_dot.x - planetX, 2) + Math.pow(previous_dot.y - planetY, 2));
                     gx += g_x * gravity;
                     gy += g_y * gravity;
+                    /*
                     if (planets[p].hasMoon) {
                         var currentMoonAngle = planets[p].moonAngle + Math.PI / planets[p].radius * (planets[p].density + 0.012) / 0.03 / 2.0 * 60.0 * total_travel_time;
 						var moonX = planets[p].x + Math.cos(currentMoonAngle) * planets[p].radius * xOrbit;
@@ -520,7 +521,7 @@ function drawBezierCurve(n,curve)
 						gx += mg_x * moonGravity;
                         gy += mg_y * moonGravity;
                     }
-                    
+                    */
                 }
                 
                 for (var w in wells) {
