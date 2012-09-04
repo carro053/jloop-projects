@@ -322,6 +322,7 @@
 		
 		function updateBeacons()
 		{
+			/*
 			var seconds = new Date().getSeconds()
 			
 			for(var b in beacons)
@@ -336,6 +337,7 @@
 				}
 				contextFront.restore();
 			}
+			*/
 		}
 		
 		function drawUI()
