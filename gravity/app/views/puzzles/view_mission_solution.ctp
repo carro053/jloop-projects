@@ -196,7 +196,7 @@
 		    var height = img.height;
 		    canvas.width = width;
 		    canvas.height = height;
-		
+			console.log(width+" "+height);
 		    // Copy the image contents to the canvas
 		    var ctx = canvas.getContext("2d");
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -208,6 +208,7 @@
 		
 		    // run through the image, increasing blue, but filtering
 		    // down red and green:
+		    /*
 			var random_color = Math.floor(Math.random() * 3);
 			var r_val;
 			var g_val;
@@ -246,6 +247,28 @@
 		            imageData.data[index + 3] = a;
 		        }
 		    }
+		    */
+		    
+			var r_val = Math.floor(Math.random() * 205) + 50;
+			var g_val = Math.floor(Math.random() * 205) + 50;
+			var b_val = Math.floor(Math.random() * 205) + 50;
+		    for (y = 0; y < height; y++) {
+		        for (x = 0; x < width; x++) {
+		        	var index = y * width + x * 4;
+		            r = Math.floor((imageData.data[index + 0] + r_val) / 2);
+		            g = Math.floor((imageData.data[index + 1] + g_val) / 2);
+		            b = Math.floor((imageData.data[index + 2] + b_val) / 2);
+		            a = imageData.data[index + 3];
+					r = Math.min(255, r);
+		            g = Math.min(255, g);
+					b = Math.min(255, b);
+		            imageData.data[index + 0] = r;
+		            imageData.data[index + 1] = g;
+		            imageData.data[index + 2] = b;
+		            imageData.data[index + 3] = a;
+		        }
+		    }
+
 		    contextScene.putImageData(imageData, pos_x, pos_y);
 		}
 		function initialize()
