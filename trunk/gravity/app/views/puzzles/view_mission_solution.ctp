@@ -191,7 +191,7 @@
 		};
 		
 		function imageLoaded(img,pos_x,pos_y) {
-		    var canvas = document.createElement("color-canvas");
+		    var canvas = document.getElementById('color-canvas');
 		    var width = img.width;
 		    var height = img.height;
 		    canvas.width = width;
