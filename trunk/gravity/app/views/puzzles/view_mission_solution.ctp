@@ -268,11 +268,9 @@
 		            imageData.data[index + 3] = a;
 		        }
 		    }
-			var newCanvas = $("<canvas>")
-    .attr("width", imageData.width)
-    .attr("height", imageData.height)[0];
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-			newCanvas.getContext("2d").putImageData(imageData, 0, 0);
+			ctx.putImageData(imageData, 0, 0);
 		    contextScene.drawImage(newCanvas, pos_x, pos_y);
 		}
 		function initialize()
