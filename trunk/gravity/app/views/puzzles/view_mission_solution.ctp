@@ -190,7 +190,7 @@
 			shipSprites.onload = initialize();
 		};
 		
-		function imageLoaded(img,pos_x,pos_y) {
+		function imageLoaded(img,planet_x,planet_y,radius) {
 		    var canvas = document.getElementById('color-canvas');
 		    var width = img.width;
 		    var height = img.height;
@@ -295,7 +295,7 @@
 		{
 			
 			<?php foreach($data['planets'] as $planet): ?>
-			imageLoaded(<?php if($planet['antiGravity']) { echo 'antiImage'; }else{ echo 'planetImage'; } ?>, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>)
+			imageLoaded(<?php if($planet['antiGravity']) { echo 'antiImage'; }else{ echo 'planetImage'; } ?>, <?php echo $planet['x']; ?>,<?php echo $planet['y']; ?>,<?php echo $planet['radius']; ?>)
 			//contextScene.drawImage(<?php if($planet['antiGravity']) { echo 'antiImage'; }else{ echo 'planetImage'; } ?>, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>);
 			//contextScene.restore();
 			
