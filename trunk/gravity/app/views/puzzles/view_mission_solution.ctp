@@ -189,6 +189,65 @@
 			
 			shipSprites.onload = initialize();
 		};
+		
+		function imageLoaded(img,pos_x,pos_y) {
+		    var canvas = document.createElement("color-canvas");
+		    var width = img.width;
+		    var height = img.height;
+		    canvas.width = width;
+		    canvas.height = height;
+		
+		    // Copy the image contents to the canvas
+		    var ctx = canvas.getContext("2d");
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+		    ctx.drawImage(img, 0, 0);
+		
+		    // get all canvas pixel data
+		    var imageData = ctx.getImageData(0, 0, width, height);
+		
+		
+		    // run through the image, increasing blue, but filtering
+		    // down red and green:
+			var random_color = Math.floor(Math.random() * 3);
+			var r_val;
+			var g_val;
+			var b_val;
+			if(random_color == 0)
+			{
+				r_val = Math.floor(Math.random() * 3 + 2);
+			}else{
+				r_val = 1 / Math.floor(Math.random() * 3 + 2);
+			}
+			if(random_color == 1)
+			{
+				g_val = Math.floor(Math.random() * 3 + 2);
+			}else{
+				g_val = 1 / Math.floor(Math.random() * 3 + 2);
+			}
+			if(random_color == 2)
+			{
+				b_val = Math.floor(Math.random() * 3 + 2);
+			}else{
+				b_val = 1 / Math.floor(Math.random() * 3 + 2);
+			}
+		    for (y = 0; y < height; y++) {
+		        for (x = 0; x < width; x++) {
+		        	var index = y * width + x * 4;
+		            r = imageData.data[index + 0] * r_val;
+		            g = imageData.data[index + 1] * g_val;
+		            b = imageData.data[index + 2] * b_val;
+		            a = imageData.data[index + 3];     // same alpha
+					r = Math.min(255, r);
+		            g = Math.min(255, g); // clamp to [0..255]
+					b = Math.min(255, b);
+		            imageData.data[index + 0] = r;
+		            imageData.data[index + 1] = g;
+		            imageData.data[index + 2] = b;
+		            imageData.data[index + 3] = a;
+		        }
+		    }
+		    contextScene.putImageData(imageData, pos_x, pos_y);
+		}
 		function initialize()
 		{
 			scene = 'select';
@@ -212,7 +271,8 @@
 			<?php foreach($data['planets'] as $planet): ?>
 			contextScene.save();
 			contextScene.scale(<?php echo ($planet['radius'] / 70 / 2); ?>, <?php echo ($planet['radius'] / 70 / 2); ?>);
-			contextScene.drawImage(<?php if($planet['antiGravity']) { echo 'antiImage'; }else{ echo 'planetImage'; } ?>, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>);
+			imageLoaded(<?php if($planet['antiGravity']) { echo 'antiImage'; }else{ echo 'planetImage'; } ?>, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>)
+			//contextScene.drawImage(<?php if($planet['antiGravity']) { echo 'antiImage'; }else{ echo 'planetImage'; } ?>, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>);
 			contextScene.restore();
 			
 			addPlanet(<?php echo $planet['x']; ?>,<?php echo (768 - $planet['y']); ?>,<?php echo $planet['radius']; ?>,<?php echo $planet['density']; ?>,<?php echo $planet['antiGravity']; ?>,<?php echo $planet['hasMoon']; ?>,<?php echo $planet['moonAngle']; ?>);
@@ -1099,6 +1159,7 @@ function applink(fail){
 			<canvas id="canvasScene" style="position:absolute;width:1024px;height:768px;" width="1024" height="768"></canvas>
 			<canvas id="canvasFront" style="position:absolute;width:1024px;height:768px;" width="1024" height="768"></canvas>
 			<canvas id="canvasUI" style="position:absolute;width:1024px;height:768px;" width="1024" height="768"></canvas>
+			<canvas id="color-canvas"></canvas>
 		</div>
 		<div style="display:none;">
 			<img src="/img/planet_4.png" />
