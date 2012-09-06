@@ -86,8 +86,8 @@
 		var astronauts = new Array();
 		var items = new Array();
 		var minSpeed = 125.0
-		var gConstant = 6000000.0
-		var fuelPower = 14.0
+		var gConstant = 2700.0
+		var fuelPower = 15.0
 		var saveThreshold = 15
 		var moon_density = 0.020
 		var minFuel = 0.0
@@ -534,19 +534,8 @@ function drawBezierCurve(n,curve)
                     gx += g_x * gravity;
                     gy += g_y * gravity;
                 }
-                
-                if(gx < 0)
-                {
-                    new_v_x += Math.sqrt(gx * -1.0 / shipMass) * travel_time;
-                }else{
-                    new_v_x -= Math.sqrt(gx * 1.0 / shipMass) * travel_time;
-                }
-                if(gy < 0)
-                {
-                    new_v_y += Math.sqrt(gy * -1.0 / shipMass) * travel_time;
-                }else{
-                    new_v_y -= Math.sqrt(gy * 1.0 / shipMass) * travel_time;
-                }
+                new_v_x -= gx / shipMass * travel_time;
+                new_v_y -= gy / shipMass * travel_time;
                 var new_x = new_v_x * travel_time;
                 var new_y = new_v_y * travel_time;
                 var newSpeed = Math.sqrt(Math.pow(new_v_x,2) + Math.pow(new_v_y,2));
@@ -561,12 +550,12 @@ function drawBezierCurve(n,curve)
                 {
                     currentSpeed = scalar;
                 }else {
-                    fuelSpent += Math.pow(minSpeed - scalar,2) * shipMass / 2;
+                    fuelSpent += shipMass * (minSpeed - scalar);
                     currentSpeed = minSpeed;
                 }
                 if(w > 0)
                 {
-                	fuelSpent += Math.pow(w,2) * shipMass / 2;;
+                	fuelSpent += shipMass * w;
                 }
                 fuelSpent /= fuelPower;
                 total_fuel_spent += fuelSpent;
