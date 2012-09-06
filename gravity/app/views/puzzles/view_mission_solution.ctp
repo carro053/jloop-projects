@@ -271,7 +271,7 @@
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 			ctx.putImageData(imageData, 0, 0);
-		    contextScene.drawImage(ctx, pos_x, pos_y);
+		    contextScene.drawImage(ctx, pos_x, pos_y); 
 		}
 		function initialize()
 		{
