@@ -353,7 +353,7 @@ class PuzzlesController extends AppController {
  		exit;
  	}
  	
- 	function sendNotification($push_token,$message)
+ 	function sendNotification($push_token,$message,$type='name')
  	{
  		//mail('michael@jloop.com','SF Push Notification Sent','Token: '.$push_token.' Message: '.$message);
  		if (1 == 1) {
@@ -375,7 +375,8 @@ class PuzzlesController extends AppController {
 		{
 			print "Failed to connect".$error." ".$errorString;
 		}else{
-			$payload['aps'] = array('alert' => $message, 'sound' => 'default');
+			$payload['type'] = $type;
+			$payload['aps'] = array('alert' => $message, 'sound' => 'default','data');
 			$payload['push_data'] = array();
 			$payload = json_encode($payload);
 			$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$push_token)).chr(0).chr(strlen($payload)).$payload;
