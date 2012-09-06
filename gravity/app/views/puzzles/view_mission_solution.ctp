@@ -269,7 +269,10 @@
 		        }
 		    }
 
-		    contextScene.putImageData(imageData, pos_x, pos_y);
+			contextScene.save();
+			contextScene.scale((radius / 70 / 2), (radius / 70 / 2));
+		    contextScene.putImageData(imageData, ((planet_x - radius) / (radius / 70 / 2)), ((768 - planet_y - radius) / (radius / 70 / 2)));
+			contextScene.restore();
 		}
 		function initialize()
 		{
@@ -292,11 +295,9 @@
 		{
 			
 			<?php foreach($data['planets'] as $planet): ?>
-			contextScene.save();
-			contextScene.scale(<?php echo ($planet['radius'] / 70 / 2); ?>, <?php echo ($planet['radius'] / 70 / 2); ?>);
 			imageLoaded(<?php if($planet['antiGravity']) { echo 'antiImage'; }else{ echo 'planetImage'; } ?>, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>)
 			//contextScene.drawImage(<?php if($planet['antiGravity']) { echo 'antiImage'; }else{ echo 'planetImage'; } ?>, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>);
-			contextScene.restore();
+			//contextScene.restore();
 			
 			addPlanet(<?php echo $planet['x']; ?>,<?php echo (768 - $planet['y']); ?>,<?php echo $planet['radius']; ?>,<?php echo $planet['density']; ?>,<?php echo $planet['antiGravity']; ?>,<?php echo $planet['hasMoon']; ?>,<?php echo $planet['moonAngle']; ?>);
 			<?php endforeach; ?>
