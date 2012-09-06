@@ -214,21 +214,21 @@
 			var b_val;
 			if(random_color == 0)
 			{
-				r_val = Math.floor(Math.random() * 3 + 2);
+				r_val = Math.floor(Math.random() * 3 + 0);
 			}else{
-				r_val = 1 / Math.floor(Math.random() * 3 + 2);
+				r_val = 1 / Math.floor(Math.random() * 3 + 0);
 			}
 			if(random_color == 1)
 			{
-				g_val = Math.floor(Math.random() * 3 + 2);
+				g_val = Math.floor(Math.random() * 3 + 0);
 			}else{
-				g_val = 1 / Math.floor(Math.random() * 3 + 2);
+				g_val = 1 / Math.floor(Math.random() * 3 + 0);
 			}
 			if(random_color == 2)
 			{
-				b_val = Math.floor(Math.random() * 3 + 2);
+				b_val = Math.floor(Math.random() * 3 + 0);
 			}else{
-				b_val = 1 / Math.floor(Math.random() * 3 + 2);
+				b_val = 1 / Math.floor(Math.random() * 3 + 0);
 			}
 		    for (y = 0; y < height; y++) {
 		        for (x = 0; x < width; x++) {
