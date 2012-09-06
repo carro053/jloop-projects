@@ -335,19 +335,19 @@ class PuzzlesController extends AppController {
  		{
  			if($fastest_time['Puzzle']['Account']['push_token'] != "")
  			{
-	 			$this->sendNotification($fastest_time['Puzzle']['Account']['push_token'],'Someone has set a new Fuel and Time record for one of your Missions!');
+	 			$this->sendNotification($fastest_time['Puzzle']['Account']['push_token'],'Someone has set a new Fuel and Time record for one of your Missions!','new_record');
 			}
  		}elseif($puzzle_solution_id == $fastest_time['PuzzleSolution']['id'])
  		{
  			if($fastest_time['Puzzle']['Account']['push_token'] != "")
  			{
-	 			$this->sendNotification($fastest_time['Puzzle']['Account']['push_token'],'Someone has set a new Time record for one of your Missions!');
+	 			$this->sendNotification($fastest_time['Puzzle']['Account']['push_token'],'Someone has set a new Time record for one of your Missions!','new_record');
 			}
  		}elseif($puzzle_solution_id == $most_fuel['PuzzleSolution']['id'])
  		{
  			if($most_fuel['Puzzle']['Account']['push_token'] != "")
  			{
-	 			$this->sendNotification($most_fuel['Puzzle']['Account']['push_token'],'Someone has set a new Fuel record for one of your Missions!');
+	 			$this->sendNotification($most_fuel['Puzzle']['Account']['push_token'],'Someone has set a new Fuel record for one of your Missions!','new_record');
 			}
  		}
  		exit;
