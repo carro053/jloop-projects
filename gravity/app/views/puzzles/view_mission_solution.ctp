@@ -268,7 +268,7 @@
 		            imageData.data[index + 3] = a;
 		        }
 		    }
-		    console.log(image.data.length);
+		    console.log(imageData.data.length);
 
 		    contextScene.putImageData(imageData, 0, 0);
 		}
