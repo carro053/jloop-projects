@@ -255,7 +255,7 @@ class PuzzlesController extends AppController {
  		$this->Account->save($account);
  		if($account['Account']['push_token'])
  		{
- 			$this->sendNotification($account['Account']['push_token'],'Your username, '.$account['Account']['username'].', has been approved.');
+ 			$this->sendNotification($account['Account']['push_token'],'Your online name, '.$account['Account']['username'].', has been approved.','online_name_approved');
 		}
  		exit;
  	}
@@ -353,7 +353,7 @@ class PuzzlesController extends AppController {
  		exit;
  	}
  	
- 	function sendNotification($push_token,$message,$type='name')
+ 	function sendNotification($push_token,$message,$type='online_name_approved')
  	{
  		//mail('michael@jloop.com','SF Push Notification Sent','Token: '.$push_token.' Message: '.$message);
  		if (1 == 1) {
