@@ -254,7 +254,7 @@
 			var b_val = Math.floor(Math.random() * 205) + 50;
 		    for (y = 0; y < height; y++) {
 		        for (x = 0; x < width; x++) {
-		        	var index = y * width + x * 4;
+		        	var index = y * width * 4 + x * 4;
 		            r = Math.floor((imageData.data[index + 0] + r_val) / 2);
 		            g = Math.floor((imageData.data[index + 1] + g_val) / 2);
 		            b = Math.floor((imageData.data[index + 2] + b_val) / 2);
@@ -266,9 +266,9 @@
 		            imageData.data[index + 1] = g;
 		            imageData.data[index + 2] = b;
 		            imageData.data[index + 3] = a;
+		            if(index == 318093)
 		        }
 		    }
-		    console.log(imageData.data.length);
 
 		    contextScene.putImageData(imageData, 0, 0);
 		}
