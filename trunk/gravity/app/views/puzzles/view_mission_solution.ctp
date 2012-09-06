@@ -266,11 +266,10 @@
 		            imageData.data[index + 1] = g;
 		            imageData.data[index + 2] = b;
 		            imageData.data[index + 3] = a;
-		             console.log(index);
 		        }
 		    }
 
-		    contextScene.putImageData(imageData, pos_x, pos_y);
+		    contextScene.putImageData(imageData, 0, 0);
 		}
 		function initialize()
 		{
