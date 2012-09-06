@@ -266,7 +266,6 @@
 		            imageData.data[index + 1] = g;
 		            imageData.data[index + 2] = b;
 		            imageData.data[index + 3] = a;
-		            if(index == 318093)
 		        }
 		    }
 
