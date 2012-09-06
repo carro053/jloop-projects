@@ -269,7 +269,7 @@
 		        }
 		    }
 
-		    contextScene.putImageData(imageData, 0, 0);
+		    contextScene.putImageData(imageData, pos_x, pos_y);
 		}
 		function initialize()
 		{
