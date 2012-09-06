@@ -1159,7 +1159,7 @@ function applink(fail){
 			<canvas id="canvasScene" style="position:absolute;width:1024px;height:768px;" width="1024" height="768"></canvas>
 			<canvas id="canvasFront" style="position:absolute;width:1024px;height:768px;" width="1024" height="768"></canvas>
 			<canvas id="canvasUI" style="position:absolute;width:1024px;height:768px;" width="1024" height="768"></canvas>
-			<canvas id="color-canvas"></canvas>
+			<canvas id="color-canvas" style="position:absolute;"></canvas>
 		</div>
 		<div style="display:none;">
 			<img src="/img/planet_4.png" />
