@@ -190,7 +190,7 @@
 			shipSprites.onload = initialize();
 		};
 		
-		function imageLoaded(img,planet_x,planet_y,radius) {
+		function imageLoaded(img,pos_x,pos_y) {
 		    var canvas = document.getElementById('color-canvas');
 		    var width = img.width;
 		    var height = img.height;
@@ -268,11 +268,12 @@
 		            imageData.data[index + 3] = a;
 		        }
 		    }
+			var newCanvas = $("<canvas>")
+    .attr("width", imageData.width)
+    .attr("height", imageData.height)[0];
 
-			contextScene.save();
-			contextScene.scale((radius / 70 / 2), (radius / 70 / 2));
-		    contextScene.putImageData(imageData, ((planet_x - radius) / (radius / 70 / 2)), ((768 - planet_y - radius) / (radius / 70 / 2)));
-			contextScene.restore();
+			newCanvas.getContext("2d").putImageData(imageData, 0, 0);
+		    contextScene.drawImage(newCanvas, pos_x, pos_y);
 		}
 		function initialize()
 		{
@@ -295,9 +296,11 @@
 		{
 			
 			<?php foreach($data['planets'] as $planet): ?>
-			imageLoaded(<?php if($planet['antiGravity']) { echo 'antiImage'; }else{ echo 'planetImage'; } ?>, <?php echo $planet['x']; ?>,<?php echo $planet['y']; ?>,<?php echo $planet['radius']; ?>)
+			contextScene.save();
+			contextScene.scale(<?php echo ($planet['radius'] / 70 / 2); ?>, <?php echo ($planet['radius'] / 70 / 2); ?>);
+			imageLoaded(<?php if($planet['antiGravity']) { echo 'antiImage'; }else{ echo 'planetImage'; } ?>, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>)
 			//contextScene.drawImage(<?php if($planet['antiGravity']) { echo 'antiImage'; }else{ echo 'planetImage'; } ?>, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>);
-			//contextScene.restore();
+			contextScene.restore();
 			
 			addPlanet(<?php echo $planet['x']; ?>,<?php echo (768 - $planet['y']); ?>,<?php echo $planet['radius']; ?>,<?php echo $planet['density']; ?>,<?php echo $planet['antiGravity']; ?>,<?php echo $planet['hasMoon']; ?>,<?php echo $planet['moonAngle']; ?>);
 			<?php endforeach; ?>
