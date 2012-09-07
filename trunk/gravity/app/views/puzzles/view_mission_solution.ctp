@@ -291,7 +291,7 @@
 		}
 		function get_random_color() {
 		    //var letters = '0123456789ABCDEF'.split('');
-		    var letters = '0123456789ABC'.split('');
+		    var letters = '123456789A'.split('');
 		    var color = '#';
 		    for (var i = 0; i < 6; i++ ) {
 		        color += letters[Math.floor(Math.random() * letters.length)];
