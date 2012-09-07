@@ -291,7 +291,7 @@
 		}
 		function get_random_color() {
 		    //var letters = '0123456789ABCDEF'.split('');
-		    var letters = '12345678'.split('');
+		    var letters = '01234567'.split('');
 		    var color = '#';
 		    var r = '';
 		    var g = '';
