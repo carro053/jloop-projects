@@ -248,9 +248,9 @@
 		    }
 		    */
 		    
-			var r_val = Math.floor(Math.random() * 205) + 50;
-			var g_val = Math.floor(Math.random() * 205) + 50;
-			var b_val = Math.floor(Math.random() * 205) + 50;
+			var r_val = Math.floor(Math.random() * 205) + 0;
+			var g_val = Math.floor(Math.random() * 205) + 0;
+			var b_val = Math.floor(Math.random() * 205) + 0;
 		    for (y = 0; y < height; y++) {
 		        for (x = 0; x < width; x++) {
 		        	var index = y * width * 4 + x * 4; 
