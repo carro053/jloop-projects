@@ -275,7 +275,7 @@
 		    for (y = 0; y < height; y++) {
 		        for (x = 0; x < width; x++) {
 		        	var index = y * width * 4 + x * 4;
-		            imageData.data[index + 3] *= 0.6;
+		            imageData.data[index + 3] *= 0.8;
 		        }
 		    }
 		    ctx.clearRect(0, 0,width, height);
@@ -289,7 +289,7 @@
 		}
 		function get_random_color() {
 		    //var letters = '0123456789ABCDEF'.split('');
-		    var letters = '0123456789ABC'.split('');
+		    var letters = '456789ABCDEF'.split('');
 		    var color = '#';
 		    for (var i = 0; i < 6; i++ ) {
 		        color += letters[Math.round(Math.random() * 15)];
