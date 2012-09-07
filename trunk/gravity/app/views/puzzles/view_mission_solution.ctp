@@ -282,7 +282,7 @@
 			ctx.putImageData(imageData, 0, 0);
 			contextScene.beginPath();
 			contextScene.arc(pos_x+141,pos_y+141,141,0,2 * Math.PI,false);
-			contextScene.fillStyle = "#"+get_random_color();
+			contextScene.fillStyle = get_random_color();
 			contextScene.closePath();
 			contextScene.fill();
 		    contextScene.drawImage(canvas, pos_x, pos_y); 
