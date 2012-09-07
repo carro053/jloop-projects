@@ -293,10 +293,18 @@
 		    //var letters = '0123456789ABCDEF'.split('');
 		    var letters = '123456789A'.split('');
 		    var color = '#';
-		    for (var i = 0; i < 6; i++ ) {
-		        color += letters[Math.floor(Math.random() * letters.length)];
-		    }
-		    return color;
+		    var r = '';
+		    var g = '';
+		    var b = '';
+		    r = letters[Math.floor(Math.random() * letters.length)]+""+letters[Math.floor(Math.random() * letters.length)];
+		    while(g == r || g == "")
+		    	g = letters[Math.floor(Math.random() * letters.length)]+""+letters[Math.floor(Math.random() * letters.length)];
+		    while(b == g || b == r || b == "")
+		    	b = letters[Math.floor(Math.random() * letters.length)]+""+letters[Math.floor(Math.random() * letters.length)];
+		    //for (var i = 0; i < 6; i++ ) {
+		        //color += letters[Math.floor(Math.random() * letters.length)];
+		    //}
+		    return color+""+r+""+g+""+b;
 		}
 		function initialize()
 		{
