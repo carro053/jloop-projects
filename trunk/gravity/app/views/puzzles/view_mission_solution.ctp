@@ -275,13 +275,13 @@
 		    for (y = 0; y < height; y++) {
 		        for (x = 0; x < width; x++) {
 		        	var index = y * width * 4 + x * 4;
-		            imageData.data[index + 3] *= Math.min(1,(765 - imageData.data[index + 0] - imageData.data[index + 2] - imageData.data[index + 3]) / 765 * 0.7 + 0.3);
+		            imageData.data[index + 3] *= Math.min(1,(765 - imageData.data[index + 0] - imageData.data[index + 2] - imageData.data[index + 3]) / 765 * 0.8 + 0.2);
 		        }
 		    }
 		    ctx.clearRect(0, 0,width, height);
 			ctx.putImageData(imageData, 0, 0);
 			contextScene.beginPath();
-			contextScene.arc(pos_x+141,pos_y+141,145,0,2 * Math.PI,false);
+			contextScene.arc(pos_x+141,pos_y+141,141,0,2 * Math.PI,false);
 			var color = get_random_color();
 			console.log(color);
 			contextScene.fillStyle = color;
