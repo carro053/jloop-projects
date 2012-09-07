@@ -196,7 +196,6 @@
 		    var height = img.height;
 		    canvas.width = width;
 		    canvas.height = height;
-			console.log(width+" "+height);
 		    // Copy the image contents to the canvas
 		    var ctx = canvas.getContext("2d");
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -270,8 +269,7 @@
 		    }
 		    ctx.clearRect(0, 0,width, height);
 			ctx.putImageData(imageData, 0, 0);
-			console.log(pos_x+" "+pos_y);
-		    contextScene.drawImage(ctx, pos_x, pos_y); 
+		    contextScene.drawImage(canvas, pos_x, pos_y); 
 		}
 		function initialize()
 		{
