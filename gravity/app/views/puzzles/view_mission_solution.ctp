@@ -281,7 +281,7 @@
 		    ctx.clearRect(0, 0,width, height);
 			ctx.putImageData(imageData, 0, 0);
 			contextScene.beginPath();
-			contextScene.arc(pos_x+141,pos_y+141,143,0,2 * Math.PI,false);
+			contextScene.arc(pos_x+141,pos_y+141,145,0,2 * Math.PI,false);
 			var color = get_random_color();
 			console.log(color);
 			contextScene.fillStyle = color;
@@ -291,7 +291,7 @@
 		}
 		function get_random_color() {
 		    //var letters = '0123456789ABCDEF'.split('');
-		    var letters = '123456789A'.split('');
+		    var letters = '12345678'.split('');
 		    var color = '#';
 		    var r = '';
 		    var g = '';
