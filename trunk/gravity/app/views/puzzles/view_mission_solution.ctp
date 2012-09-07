@@ -288,7 +288,7 @@
 			contextScene.fillStyle = color;
 			contextScene.closePath();
 			contextScene.fill();
-		    contextScene.drawImage(canvas, pos_x - anti, pos_y + anti * 2); 
+		    contextScene.drawImage(canvas, pos_x - anti, pos_y + anti * 10); 
 		}
 		function get_random_color() {
 		    //var letters = '0123456789ABCDEF'.split('');
