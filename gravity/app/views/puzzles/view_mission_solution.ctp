@@ -190,7 +190,7 @@
 			shipSprites.onload = initialize();
 		};
 		
-		function imageLoaded(img,pos_x,pos_y) {
+		function imageLoaded(img,pos_x,pos_y,anti) {
 		    var canvas = document.getElementById('color-canvas');
 		    var width = img.width;
 		    var height = img.height;
@@ -288,7 +288,7 @@
 			contextScene.fillStyle = color;
 			contextScene.closePath();
 			contextScene.fill();
-		    contextScene.drawImage(canvas, pos_x, pos_y); 
+		    contextScene.drawImage(canvas, pos_x + anti, pos_y + anti); 
 		}
 		function get_random_color() {
 		    //var letters = '0123456789ABCDEF'.split('');
@@ -332,9 +332,9 @@
 			contextScene.save();
 			contextScene.scale(<?php echo ($planet['radius'] / 70 / 2); ?>, <?php echo ($planet['radius'] / 70 / 2); ?>);
 			<?php if($planet['antiGravity']) { ?>
-			imageLoaded(antiImage, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>);
+			imageLoaded(antiImage, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>,5);
 			<?php }else{ ?>
-			imageLoaded(planetImage, <?php echo (($planet['x'] + 5 - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] + 5 - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>);
+			imageLoaded(planetImage, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>,0);
 			<?php } ?>
 			//contextScene.drawImage(<?php if($planet['antiGravity']) { echo 'antiImage'; }else{ echo 'planetImage'; } ?>, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>);
 			contextScene.restore();
