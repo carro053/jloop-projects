@@ -292,7 +292,7 @@
 		}
 		function get_random_color() {
 		    //var letters = '0123456789ABCDEF'.split('');
-		    var letters = '012345'.split('');
+		    var letters = '012345EF'.split('');
 		    var color = '#';
 		    var r = '';
 		    var g = '';
