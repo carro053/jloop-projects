@@ -247,7 +247,7 @@
 		        }
 		    }
 		    */
-		    
+		    /*
 			var r_val = Math.floor(Math.random() * 205) + 0;
 			var g_val = Math.floor(Math.random() * 205) + 0;
 			var b_val = Math.floor(Math.random() * 205) + 0;
@@ -270,6 +270,30 @@
 		    ctx.clearRect(0, 0,width, height);
 			ctx.putImageData(imageData, 0, 0);
 		    contextScene.drawImage(canvas, pos_x, pos_y); 
+		    */
+		    
+		    for (y = 0; y < height; y++) {
+		        for (x = 0; x < width; x++) {
+		        	var index = y * width * 4 + x * 4;
+		            imageData.data[index + 3] *= 0.5;
+		        }
+		    }
+		    ctx.clearRect(0, 0,width, height);
+			ctx.putImageData(imageData, 0, 0);
+			contextScene.beginPath();
+			contextScene.arc(141,141,141,0,2 * Math.PI,false);
+			contextScene.fillStyle = "#"+get_random_color();
+			contextScene.closePath();
+			contextScene.fill();
+		    contextScene.drawImage(canvas, pos_x, pos_y); 
+		}
+		function get_random_color() {
+		    var letters = '0123456789ABCDEF'.split('');
+		    var color = '#';
+		    for (var i = 0; i < 6; i++ ) {
+		        color += letters[Math.round(Math.random() * 15)];
+		    }
+		    return color;
 		}
 		function initialize()
 		{
@@ -288,6 +312,7 @@
 			timer.tick();
 			gameInterval = setInterval(gameLoop, 33);
 		}
+		
 		function drawBackground()
 		{
 			
