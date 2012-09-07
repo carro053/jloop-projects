@@ -334,7 +334,7 @@
 			<?php if($planet['antiGravity']) { ?>
 			imageLoaded(antiImage, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>);
 			<?php }else{ ?>
-			imageLoaded(planetImage, <?php echo (($planet['x'] - 2 - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - 2 - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>);
+			imageLoaded(planetImage, <?php echo (($planet['x'] + 2 - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] + 2 - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>);
 			<?php } ?>
 			//contextScene.drawImage(<?php if($planet['antiGravity']) { echo 'antiImage'; }else{ echo 'planetImage'; } ?>, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>);
 			contextScene.restore();
