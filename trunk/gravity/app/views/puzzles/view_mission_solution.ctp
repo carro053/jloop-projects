@@ -281,7 +281,7 @@
 		    ctx.clearRect(0, 0,width, height);
 			ctx.putImageData(imageData, 0, 0);
 			contextScene.beginPath();
-			contextScene.arc(pos_x+141,pos_y+141,141,0,2 * Math.PI,false);
+			contextScene.arc(pos_x+141,pos_y+141,160,0,2 * Math.PI,false);
 			var color = get_random_color();
 			console.log(color);
 			contextScene.fillStyle = color;
