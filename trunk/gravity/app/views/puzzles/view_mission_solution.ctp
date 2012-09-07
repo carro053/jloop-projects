@@ -332,7 +332,7 @@
 			contextScene.save();
 			contextScene.scale(<?php echo ($planet['radius'] / 70 / 2); ?>, <?php echo ($planet['radius'] / 70 / 2); ?>);
 			<?php if($planet['antiGravity']) { ?>
-			imageLoaded(antiImage, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>,15);
+			imageLoaded(antiImage, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>,7);
 			<?php }else{ ?>
 			imageLoaded(planetImage, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>,0);
 			<?php } ?>
