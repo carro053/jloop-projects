@@ -276,9 +276,9 @@
 		        for (x = 0; x < width; x++) {
 		        	var index = y * width * 4 + x * 4;
 		        	var a = Math.min(1,(765 - imageData.data[index + 0] - imageData.data[index + 2] - imageData.data[index + 3]) / 765 * 0.8 + 0.2);
-		        	if(a < 0.4)
+		        	if(a < 0.5)
 		        	{
-		        		a = Math.max(0,a-0.2);
+		        		a = Math.max(0,a);
 		        	}else{ 
 		        		a = 1.0;
 		        	}
