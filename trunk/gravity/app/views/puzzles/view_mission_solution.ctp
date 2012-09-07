@@ -288,7 +288,7 @@
 			contextScene.fillStyle = color;
 			contextScene.closePath();
 			contextScene.fill();
-		    contextScene.drawImage(canvas, pos_x - anti, pos_y + anti * 2); 
+		    contextScene.drawImage(canvas, pos_x - anti, pos_y + anti / 2); 
 		}
 		function get_random_color() {
 		    //var letters = '0123456789ABCDEF'.split('');
@@ -332,7 +332,7 @@
 			contextScene.save();
 			contextScene.scale(<?php echo ($planet['radius'] / 70 / 2); ?>, <?php echo ($planet['radius'] / 70 / 2); ?>);
 			<?php if($planet['antiGravity']) { ?>
-			imageLoaded(antiImage, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>,2);
+			imageLoaded(antiImage, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>,3);
 			<?php }else{ ?>
 			imageLoaded(planetImage, <?php echo (($planet['x'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>, <?php echo ((768 - $planet['y'] - $planet['radius']) / ($planet['radius'] / 70 / 2)); ?>,0);
 			<?php } ?>
