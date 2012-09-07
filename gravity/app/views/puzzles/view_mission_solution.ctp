@@ -275,7 +275,7 @@
 		    for (y = 0; y < height; y++) {
 		        for (x = 0; x < width; x++) {
 		        	var index = y * width * 4 + x * 4;
-		            imageData.data[index + 3] *= Math.min(1,(765 - imageData.data[index + 0] - imageData.data[index + 2] - imageData.data[index + 3]) / 765 * 0.8 + 0.3);
+		            imageData.data[index + 3] *= Math.min(1,(765 - imageData.data[index + 0] - imageData.data[index + 2] - imageData.data[index + 3]) / 765 * 0.8 + 0.2);
 		        }
 		    }
 		    ctx.clearRect(0, 0,width, height);
