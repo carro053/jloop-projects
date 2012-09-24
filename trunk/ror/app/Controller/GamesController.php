@@ -663,9 +663,6 @@ class GamesController extends AppController {
 		header('Content-type: application/csv');
 		header('Content-Disposition: attachment; filename="'.str_replace(' ','_',$game['Game']['title']).'.csv"');
 		
-		
-		htmlspecialchars_decode($question['QuestionVersion'][0]['clue_text'], ENT_QUOTES)
-		
 		echo 'Title,Clue,Question,Insight,Answer 1,Answer 2,Answer 3,Answer 4,Correct Answer'."\n"; //CSV header
 		foreach($game['Question'] as $question)
 		{
