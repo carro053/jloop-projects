@@ -606,10 +606,54 @@ class GamesController extends AppController {
 	
 	public function export_to_csv($game_id,$snapshot=0) {
 		$this->layout = false;
-		$this->set('preview_timers',0);
-		$game = $this->Game->findById($game_id);
+		if($time > 0)
+		{
+			$this->Question->bindModel(array(
+				'hasMany'=>array(
+					'QuestionVersion'=>array(
+						'className'=>'QuestionVersion',
+						'foreignKey'=>'question_id',
+						'order'=>'QuestionVersion.created DESC',
+						'limit'=>1,
+						'conditions'=>'QuestionVersion.created <= "'.date('Y-m-d H:i:s',$time).'"'
+					)
+				)
+			));
+			$this->Game->bindModel(array(
+				'hasMany'=>array(
+					'Question'=>array(
+						'className'=>'Question',
+						'foreignKey'=>'game_id',
+						'order'=>'Question.order ASC'
+					)
+				)
+			));
+			
+			$snap = $this->GameSnapshot->find('first',array('conditions'=>'GameSnapshot.time = '.$time.' AND GameSnapshot.game_id = '.$game_id));
+			if(isset($snap['GameSnapshot']['id'])) $this->set('snapshot',$snap);
+		}else{
+			$this->Question->bindModel(array(
+				'hasMany'=>array(
+					'QuestionVersion'=>array(
+						'className'=>'QuestionVersion',
+						'foreignKey'=>'question_id',
+						'order'=>'QuestionVersion.created DESC',
+						'limit'=>1
+					)
+				)
+			));
+			$this->Game->bindModel(array(
+				'hasMany'=>array(
+					'Question'=>array(
+						'className'=>'Question',
+						'foreignKey'=>'game_id',
+						'order'=>'Question.order ASC'
+					)
+				)
+			));
+		}
+		$game = $this->Game->find('first',array('conditions'=>'Game.id = '.$game_id,'recursive'=>2));
 		$this->set('game', $game);
-		if($snapshot > 0) $this->set('snapshot',$snapshot);
 		
 		echo '<pre>';
 		print_r($game);
