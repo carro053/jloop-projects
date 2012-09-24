@@ -663,7 +663,7 @@ class GamesController extends AppController {
 		header('Content-Disposition: attachment; filename="'.str_replace(' ','_',$game['Game']['title']).'.csv"');
 		*/
 		
-		echo 'Title,Clue,Question,Insight,Answer_1,Answer_2,Answer_3,Answer_4,'."\n"; //CSV header
+		echo 'Title,Clue,Question,Insight,Answer 1,Answer 2,Answer 3,Answer 4,Correct Answer'."\n"; //CSV header
 		foreach($game['Question'] as $question)
 		{
 			echo '"'.str_replace('"', '\"', html_entity_decode($question['title'])).'",';
@@ -679,6 +679,19 @@ class GamesController extends AppController {
 				echo '"'.str_replace('"', '\"', html_entity_decode($question['insight_text'])).'",';
 			else
 				echo '"'.str_replace('"', '\"', 'image').'",';
+			
+			if($question['answer_type'] == 'text')
+			{
+				echo '"'.str_replace('"', '\"', html_entity_decode($question['answer_1_text'])).'",';
+				echo '"'.str_replace('"', '\"', html_entity_decode($question['answer_2_text'])).'",';
+				echo '"'.str_replace('"', '\"', html_entity_decode($question['answer_3_text'])).'",';
+				echo '"'.str_replace('"', '\"', html_entity_decode($question['answer_4_text'])).'",';
+			} else {
+				echo '"'.str_replace('"', '\"', 'image').'",';
+				echo '"'.str_replace('"', '\"', 'image').'",';
+				echo '"'.str_replace('"', '\"', 'image').'",';
+				echo '"'.str_replace('"', '\"', 'image').'",';
+			}
 			echo "\n";
 		}
 		exit;
