@@ -604,7 +604,7 @@ class GamesController extends AppController {
 		exit;
 	}
 	
-	public function export_to_csv($game_id,$snapshot=0) {
+	public function export_to_csv($game_id,$time=0) {
 		$this->layout = false;
 		if($time > 0)
 		{
