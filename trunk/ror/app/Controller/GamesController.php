@@ -670,33 +670,33 @@ class GamesController extends AppController {
 		echo 'Title,Clue,Question,Insight,Answer 1,Answer 2,Answer 3,Answer 4,Correct Answer'."\n"; //CSV header
 		foreach($game['Question'] as $question)
 		{
-			echo '"'.str_replace($quotes,"\'", htmlspecialchars_decode($question['title'], ENT_QUOTES)).'",';
+			echo '"'.str_replace($quotes,"'", htmlspecialchars_decode($question['title'], ENT_QUOTES)).'",';
 			if($question['clue_type'] == 'text')
-				echo '"'.str_replace($quotes,"\'", htmlspecialchars_decode($question['clue_text'], ENT_QUOTES)).'",';
+				echo '"'.str_replace($quotes,"'", htmlspecialchars_decode($question['clue_text'], ENT_QUOTES)).'",';
 			else
 				echo '"image",';
 			if($question['question_type'] == 'text')
-				echo '"'.str_replace($quotes,"\'", htmlspecialchars_decode($question['question_text'], ENT_QUOTES)).'",';
+				echo '"'.str_replace($quotes,"'", htmlspecialchars_decode($question['question_text'], ENT_QUOTES)).'",';
 			else
 				echo '"image",';
 			if($question['insight_type'] == 'text')
-				echo '"'.str_replace($quotes,"\'", htmlspecialchars_decode($question['insight_text'], ENT_QUOTES)).'",';
+				echo '"'.str_replace($quotes,"'", htmlspecialchars_decode($question['insight_text'], ENT_QUOTES)).'",';
 			else
 				echo '"image",';
 			
 			if($question['answer_type'] == 'text')
 			{
-				echo '"'.str_replace($quotes,"\'", htmlspecialchars_decode($question['answer_1_text'], ENT_QUOTES)).'",';
-				echo '"'.str_replace($quotes,"\'", htmlspecialchars_decode($question['answer_2_text'], ENT_QUOTES)).'",';
-				echo '"'.str_replace($quotes,"\'", htmlspecialchars_decode($question['answer_3_text'], ENT_QUOTES)).'",';
-				echo '"'.str_replace($quotes,"\'", htmlspecialchars_decode($question['answer_4_text'], ENT_QUOTES)).'",';
+				echo '"'.str_replace($quotes,"'", htmlspecialchars_decode($question['answer_1_text'], ENT_QUOTES)).'",';
+				echo '"'.str_replace($quotes,"'", htmlspecialchars_decode($question['answer_2_text'], ENT_QUOTES)).'",';
+				echo '"'.str_replace($quotes,"'", htmlspecialchars_decode($question['answer_3_text'], ENT_QUOTES)).'",';
+				echo '"'.str_replace($quotes,"'", htmlspecialchars_decode($question['answer_4_text'], ENT_QUOTES)).'",';
 			} else {
 				echo '"image",';
 				echo '"image",';
 				echo '"image",';
 				echo '"image",';
 			}
-			echo '"'.str_replace($quotes,"\'", (intval($question['correct_answer']) + 1)).'",';
+			echo '"'.str_replace($quotes,"'", (intval($question['correct_answer']) + 1)).'",';
 			echo "\n";
 		}
 		exit;
