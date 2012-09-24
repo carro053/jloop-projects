@@ -676,7 +676,7 @@ class GamesController extends AppController {
 			else
 				echo '"'.str_replace('"', '\"', 'image').'",';
 			if($question['insight_type'] == 'text')
-				echo '"'.html_entity_decode($question['insight_text']).'",';
+				echo '"'.str_replace('"', '\"', html_entity_decode($question['insight_text'])).'",';
 			else
 				echo '"'.str_replace('"', '\"', 'image').'",';
 			
@@ -692,6 +692,7 @@ class GamesController extends AppController {
 				echo '"'.str_replace('"', '\"', 'image').'",';
 				echo '"'.str_replace('"', '\"', 'image').'",';
 			}
+			echo '"'.str_replace('"', '\"', intval($question['correct_answer']) + 1.'",';
 			echo "\n";
 		}
 		exit;
