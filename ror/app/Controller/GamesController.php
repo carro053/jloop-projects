@@ -663,29 +663,32 @@ class GamesController extends AppController {
 		header('Content-type: application/csv');
 		header('Content-Disposition: attachment; filename="'.str_replace(' ','_',$game['Game']['title']).'.csv"');
 		
+		
+		htmlspecialchars_decode($question['QuestionVersion'][0]['clue_text'], ENT_QUOTES)
+		
 		echo 'Title,Clue,Question,Insight,Answer 1,Answer 2,Answer 3,Answer 4,Correct Answer'."\n"; //CSV header
 		foreach($game['Question'] as $question)
 		{
-			echo '"'.str_replace('"', '\"', html_entity_decode($question['title'])).'",';
-			if($question['clue_text'] == 'text')
-				echo '"'.str_replace('"', '\"', html_entity_decode($question['clue_text'])).'",';
+			echo '"'.str_replace('"', '\"', htmlspecialchars_decode($question['title'], ENT_QUOTES)).'",';
+			if($question['clue_type'] == 'text')
+				echo '"'.str_replace('"', '\"', htmlspecialchars_decode($question['clue_text'], ENT_QUOTES)).'",';
 			else
 				echo '"'.str_replace('"', '\"', 'image').'",';
 			if($question['question_type'] == 'text')
-				echo '"'.str_replace('"', '\"', html_entity_decode($question['question_text'])).'",';
+				echo '"'.str_replace('"', '\"', htmlspecialchars_decode($question['question_text'], ENT_QUOTES)).'",';
 			else
 				echo '"'.str_replace('"', '\"', 'image').'",';
 			if($question['insight_type'] == 'text')
-				echo '"'.str_replace('"', '\"', html_entity_decode($question['insight_text'])).'",';
+				echo '"'.str_replace('"', '\"', htmlspecialchars_decode($question['insight_text'], ENT_QUOTES)).'",';
 			else
 				echo '"'.str_replace('"', '\"', 'image').'",';
 			
 			if($question['answer_type'] == 'text')
 			{
-				echo '"'.str_replace('"', '\"', html_entity_decode($question['answer_1_text'])).'",';
-				echo '"'.str_replace('"', '\"', html_entity_decode($question['answer_2_text'])).'",';
-				echo '"'.str_replace('"', '\"', html_entity_decode($question['answer_3_text'])).'",';
-				echo '"'.str_replace('"', '\"', html_entity_decode($question['answer_4_text'])).'",';
+				echo '"'.str_replace('"', '\"', htmlspecialchars_decode($question['answer_1_text'], ENT_QUOTES)).'",';
+				echo '"'.str_replace('"', '\"', htmlspecialchars_decode($question['answer_2_text'], ENT_QUOTES)).'",';
+				echo '"'.str_replace('"', '\"', htmlspecialchars_decode($question['answer_3_text'], ENT_QUOTES)).'",';
+				echo '"'.str_replace('"', '\"', htmlspecialchars_decode($question['answer_4_text'], ENT_QUOTES)).'",';
 			} else {
 				echo '"'.str_replace('"', '\"', 'image').'",';
 				echo '"'.str_replace('"', '\"', 'image').'",';
