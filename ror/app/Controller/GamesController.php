@@ -654,9 +654,11 @@ class GamesController extends AppController {
 		}
 		$game = $this->Game->find('first',array('conditions'=>'Game.id = '.$game_id,'recursive'=>2));
 		
+		/*
 		echo '<pre>';
 		print_r($game);
 		exit;
+		*/
 		
 		/*
 		header('Content-type: application/csv');
