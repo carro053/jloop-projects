@@ -611,7 +611,8 @@ class GamesController extends AppController {
 		$this->set('game', $game);
 		if($snapshot > 0) $this->set('snapshot',$snapshot);
 		
-		pr($game);
+		echo '<pre>';
+		print_r($game);
 		exit;
 	}
 	
