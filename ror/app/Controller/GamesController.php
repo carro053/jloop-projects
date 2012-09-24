@@ -692,7 +692,7 @@ class GamesController extends AppController {
 				echo '"'.str_replace('"', '\"', 'image').'",';
 				echo '"'.str_replace('"', '\"', 'image').'",';
 			}
-			echo '"'.str_replace('"', '\"', (intval($question['correct_answer']) + 1).'",';
+			echo '"'.str_replace('"', '\"', (intval($question['correct_answer']) + 1)).'",';
 			echo "\n";
 		}
 		exit;
