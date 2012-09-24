@@ -653,11 +653,34 @@ class GamesController extends AppController {
 			));
 		}
 		$game = $this->Game->find('first',array('conditions'=>'Game.id = '.$game_id,'recursive'=>2));
-		$this->set('game', $game);
 		
+		/*
 		echo '<pre>';
 		print_r($game);
 		exit;
+		*/
+		
+		header('Content-type: application/csv');
+		header('Content-Disposition: attachment; filename="'.str_replace(' ','_',$game['Game']['title']).'.csv"');
+		
+		echo 'Title,Clue,Question,Insight,Answer_1,Answer_2,Answer_3,Answer_4,'."\n"; //CSV header
+		foreach($game['Question'] as $question)
+		{
+			echo '"'.str_replace('"', '\"', $question['title'].'",';
+			if($question['clue_text'] == 'text')
+				echo '"'.str_replace('"', '\"', $question['clue_text'].'",';
+			else
+				echo '"'.str_replace('"', '\"', 'image'.'",';
+			if($question['question_type'] == 'text')
+				echo '"'.str_replace('"', '\"', $question['question_text'].'",';
+			else
+				echo '"'.str_replace('"', '\"', 'image'.'",';
+			if($question['insight_type'] == 'text')
+				echo '"'.str_replace('"', '\"', $question['insight_text'].'",';
+			else
+				echo '"'.str_replace('"', '\"', 'image'.'",';
+			echo "\n";
+		}
 	}
 	
 	public function json_data($game_id,$snapshot=0,$version_id=0) {
