@@ -660,10 +660,8 @@ class GamesController extends AppController {
 		exit;
 		*/
 		
-		/*
 		header('Content-type: application/csv');
 		header('Content-Disposition: attachment; filename="'.str_replace(' ','_',$game['Game']['title']).'.csv"');
-		*/
 		
 		$quotes = array("'","\"");
 		
