@@ -607,8 +607,11 @@ class GamesController extends AppController {
 	public function export_to_csv($game_id,$snapshot=0) {
 		$this->layout = false;
 		$this->set('preview_timers',0);
-		$this->set('game',$this->Game->findById($game_id));
+		$game = $this->Game->findById($game_id);
+		$this->set('game', $game);
 		if($snapshot > 0) $this->set('snapshot',$snapshot);
+		
+		pr($game);
 		exit;
 	}
 	
