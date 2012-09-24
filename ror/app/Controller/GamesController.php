@@ -683,6 +683,7 @@ class GamesController extends AppController {
 				echo '"'.str_replace('"', '\"', 'image').'",';
 			echo "\n";
 		}
+		exit;
 	}
 	
 	public function json_data($game_id,$snapshot=0,$version_id=0) {
