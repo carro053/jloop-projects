@@ -666,26 +666,26 @@ class GamesController extends AppController {
 		echo 'Title,Clue,Question,Insight,Answer 1,Answer 2,Answer 3,Answer 4,Correct Answer'."\n"; //CSV header
 		foreach($game['Question'] as $question)
 		{
-			echo '"'.str_replace('"', '\"', html_entity_decode($question['title'])).'",';
+			echo '"'.str_replace('"', '\"', htmlspecialchars_decode($question['title'])).'",';
 			if($question['clue_text'] == 'text')
-				echo '"'.str_replace('"', '\"', html_entity_decode($question['clue_text'])).'",';
+				echo '"'.str_replace('"', '\"', htmlspecialchars_decode($question['clue_text'])).'",';
 			else
 				echo '"'.str_replace('"', '\"', 'image').'",';
 			if($question['question_type'] == 'text')
-				echo '"'.str_replace('"', '\"', html_entity_decode($question['question_text'])).'",';
+				echo '"'.str_replace('"', '\"', htmlspecialchars_decode($question['question_text'])).'",';
 			else
 				echo '"'.str_replace('"', '\"', 'image').'",';
 			if($question['insight_type'] == 'text')
-				echo '"'.str_replace('"', '\"', html_entity_decode($question['insight_text'])).'",';
+				echo '"'.str_replace('"', '\"', htmlspecialchars_decode($question['insight_text'])).'",';
 			else
 				echo '"'.str_replace('"', '\"', 'image').'",';
 			
 			if($question['answer_type'] == 'text')
 			{
-				echo '"'.str_replace('"', '\"', html_entity_decode($question['answer_1_text'])).'",';
-				echo '"'.str_replace('"', '\"', html_entity_decode($question['answer_2_text'])).'",';
-				echo '"'.str_replace('"', '\"', html_entity_decode($question['answer_3_text'])).'",';
-				echo '"'.str_replace('"', '\"', html_entity_decode($question['answer_4_text'])).'",';
+				echo '"'.str_replace('"', '\"', htmlspecialchars_decode($question['answer_1_text'])).'",';
+				echo '"'.str_replace('"', '\"', htmlspecialchars_decode($question['answer_2_text'])).'",';
+				echo '"'.str_replace('"', '\"', htmlspecialchars_decode($question['answer_3_text'])).'",';
+				echo '"'.str_replace('"', '\"', htmlspecialchars_decode($question['answer_4_text'])).'",';
 			} else {
 				echo '"'.str_replace('"', '\"', 'image').'",';
 				echo '"'.str_replace('"', '\"', 'image').'",';
