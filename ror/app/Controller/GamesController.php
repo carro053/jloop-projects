@@ -304,6 +304,17 @@ class GamesController extends AppController {
 		$this->set('hosts',$hosts);
 		$this->set('snapshot_id',$snapshot_id);
 	}
+	public function mike()
+	{
+		
+		$result = simplexml_load_string($result);
+		$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getDetails/264', 'GET');
+		$request->execute();
+		$response = $request->getResponseBody();
+		$response = simplexml_load_string($response);
+		print_r($response);
+		exit;
+	}
 	
 	public function import_to_host($snapshot_id)
 	{
