@@ -292,13 +292,18 @@ class GamesController extends AppController {
 	
 	public function import($snapshot_id)
 	{
-		
 		App::import('Vendor', 'RestRequest', array('file' => 'RestRequest.inc.php'));
 		$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/app/getList?count=1000&offset=0', 'GET');
 		$request->execute();
 		$response = $request->getResponseBody();
 		$response = simplexml_load_string($response);
 		$hosts = array();
+		
+		echo '<pre>';
+		var_dump($response);
+		exit;
+		
+		
 		foreach($response->list as $ahost):
 			$hosts[intval($ahost->id)] = strval($ahost->name);
 		endforeach;
