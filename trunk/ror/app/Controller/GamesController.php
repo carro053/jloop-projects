@@ -299,7 +299,7 @@ class GamesController extends AppController {
 		$response = simplexml_load_string($response);
 		$hosts = array();
 		
-		$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/app/getAvailableGameSeries?count=1000&offset=0', 'GET');
+		$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/app/getAvailableGameSeries/1?count=1000&offset=0', 'GET');
 		$request->execute();
 		$response = $request->getResponseBody();
 		$response = simplexml_load_string($response);
