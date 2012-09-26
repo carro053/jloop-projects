@@ -300,7 +300,7 @@ class GamesController extends AppController {
 		$hosts = array();
 		
 		echo '<pre>';
-		var_dump($response);
+		print_r($response);
 		exit;
 		
 		
