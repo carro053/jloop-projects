@@ -1,0 +1,1090 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7410472C16030A98009303A4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7410472B16030A98009303A4 /* AudioToolbox.framework */; };
+		7410472E16030AA2009303A4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7410472D16030AA2009303A4 /* AVFoundation.framework */; };
+		7410473116030AAC009303A4 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7410472F16030AAC009303A4 /* OpenAL.framework */; };
+		7410473216030AAC009303A4 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7410473016030AAC009303A4 /* OpenGLES.framework */; };
+		7410473416030AB9009303A4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7410473316030AB9009303A4 /* QuartzCore.framework */; };
+		741B2A571602CF6F00C59377 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 741B2A561602CF6F00C59377 /* Twitter.framework */; };
+		741B2A5E1602D0CA00C59377 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 741B2A5D1602D0CA00C59377 /* SystemConfiguration.framework */; };
+		741B2A601602D16200C59377 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 741B2A5F1602D16200C59377 /* libz.dylib */; };
+		743A7B041607CFE100042307 /* atlas.pvr.gz in Resources */ = {isa = PBXBuildFile; fileRef = 743A7B001607CFE100042307 /* atlas.pvr.gz */; };
+		743A7B051607CFE100042307 /* atlas.xml in Resources */ = {isa = PBXBuildFile; fileRef = 743A7B011607CFE100042307 /* atlas.xml */; };
+		743A7B061607CFE100042307 /* atlas@2x.pvr.gz in Resources */ = {isa = PBXBuildFile; fileRef = 743A7B021607CFE100042307 /* atlas@2x.pvr.gz */; };
+		743A7B071607CFE100042307 /* atlas@2x.xml in Resources */ = {isa = PBXBuildFile; fileRef = 743A7B031607CFE100042307 /* atlas@2x.xml */; };
+		74543ADA1607CA33004CDE7A /* sparrow_sheet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74543AD91607CA33004CDE7A /* sparrow_sheet@2x.png */; };
+		74543ADF1607CA43004CDE7A /* sparrow_sheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 74543ADE1607CA43004CDE7A /* sparrow_sheet.png */; };
+		745BEF101602B128008FE47F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 745BEF0F1602B128008FE47F /* UIKit.framework */; };
+		745BEF121602B128008FE47F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 745BEF111602B128008FE47F /* Foundation.framework */; };
+		745BEF141602B128008FE47F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 745BEF131602B128008FE47F /* CoreGraphics.framework */; };
+		745BEF1A1602B128008FE47F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 745BEF181602B128008FE47F /* InfoPlist.strings */; };
+		745BEF1C1602B128008FE47F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEF1B1602B128008FE47F /* main.m */; };
+		745BEF201602B128008FE47F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEF1F1602B128008FE47F /* AppDelegate.m */; };
+		745BEF381602B1B5008FE47F /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEF361602B1B5008FE47F /* MainMenuViewController.m */; };
+		745BEF391602B1B5008FE47F /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEF371602B1B5008FE47F /* MainMenuViewController.xib */; };
+		745BEF3B1602B1C7008FE47F /* MainMenuViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEF3A1602B1C7008FE47F /* MainMenuViewController~ipad.xib */; };
+		745BEF421602B235008FE47F /* EditMissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEF3F1602B235008FE47F /* EditMissionViewController.m */; };
+		745BEF431602B235008FE47F /* EditMissionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEF401602B235008FE47F /* EditMissionViewController.xib */; };
+		745BEF551602B23E008FE47F /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEF451602B23D008FE47F /* AsyncImageView.m */; };
+		745BEF6E1602B248008FE47F /* EPUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEF5E1602B248008FE47F /* EPUploader.m */; };
+		745BEF6F1602B248008FE47F /* FlightSchoolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEF601602B248008FE47F /* FlightSchoolCell.m */; };
+		745BEF701602B248008FE47F /* FlightSchoolCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEF611602B248008FE47F /* FlightSchoolCell.xib */; };
+		745BEF711602B248008FE47F /* FlightSchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEF631602B248008FE47F /* FlightSchoolViewController.m */; };
+		745BEF721602B248008FE47F /* FlightSchoolViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEF641602B248008FE47F /* FlightSchoolViewController.xib */; };
+		745BEF731602B248008FE47F /* GGVecLib.c in Sources */ = {isa = PBXBuildFile; fileRef = 745BEF661602B248008FE47F /* GGVecLib.c */; };
+		745BEF751602B248008FE47F /* IconDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEF6B1602B248008FE47F /* IconDownloader.m */; };
+		745BEF761602B248008FE47F /* LGViewHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEF6D1602B248008FE47F /* LGViewHUD.m */; };
+		745BEF851602B257008FE47F /* ManualViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEF791602B257008FE47F /* ManualViewController.xib */; };
+		745BEF861602B257008FE47F /* MoveArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEF7B1602B257008FE47F /* MoveArray.m */; };
+		745BEF871602B257008FE47F /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEF7D1602B257008FE47F /* NSString+MD5Addition.m */; };
+		745BEF881602B257008FE47F /* OnlineMissionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEF7F1602B257008FE47F /* OnlineMissionCell.m */; };
+		745BEF891602B257008FE47F /* OnlineMissionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEF801602B257008FE47F /* OnlineMissionCell.xib */; };
+		745BEF8A1602B257008FE47F /* OnlineMissionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEF821602B257008FE47F /* OnlineMissionsViewController.m */; };
+		745BEF8B1602B257008FE47F /* OnlineMissionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEF831602B257008FE47F /* OnlineMissionsViewController.xib */; };
+		745BEFB21602B266008FE47F /* PlayFlightSchoolMissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEF911602B266008FE47F /* PlayFlightSchoolMissionViewController.m */; };
+		745BEFB31602B266008FE47F /* PlayFlightSchoolMissionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEF921602B266008FE47F /* PlayFlightSchoolMissionViewController.xib */; };
+		745BEFB51602B266008FE47F /* PlayMissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEF961602B266008FE47F /* PlayMissionViewController.m */; };
+		745BEFB61602B266008FE47F /* PlayMissionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEF971602B266008FE47F /* PlayMissionViewController.xib */; };
+		745BEFB81602B266008FE47F /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEF9B1602B266008FE47F /* UIDevice+IdentifierAddition.m */; };
+		745BEFB91602B266008FE47F /* ViewFlightSchoolMissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEF9D1602B266008FE47F /* ViewFlightSchoolMissionViewController.m */; };
+		745BEFBA1602B266008FE47F /* ViewFlightSchoolMissionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEF9E1602B266008FE47F /* ViewFlightSchoolMissionViewController.xib */; };
+		745BEFBC1602B266008FE47F /* ViewMissionSolutionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEFA21602B266008FE47F /* ViewMissionSolutionViewController.m */; };
+		745BEFBD1602B266008FE47F /* ViewMissionSolutionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFA31602B266008FE47F /* ViewMissionSolutionViewController.xib */; };
+		745BEFBE1602B266008FE47F /* ViewOnlineMissionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEFA51602B266008FE47F /* ViewOnlineMissionCell.m */; };
+		745BEFBF1602B266008FE47F /* ViewOnlineMissionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFA61602B266008FE47F /* ViewOnlineMissionCell.xib */; };
+		745BEFC01602B266008FE47F /* ViewOnlineMissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEFA81602B266008FE47F /* ViewOnlineMissionViewController.m */; };
+		745BEFC11602B266008FE47F /* ViewOnlineMissionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFA91602B266008FE47F /* ViewOnlineMissionViewController.xib */; };
+		745BEFC21602B266008FE47F /* YourMissionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEFAB1602B266008FE47F /* YourMissionCell.m */; };
+		745BEFC31602B266008FE47F /* YourMissionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFAC1602B266008FE47F /* YourMissionCell.xib */; };
+		745BEFC41602B266008FE47F /* YourMissionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 745BEFAE1602B266008FE47F /* YourMissionsViewController.m */; };
+		745BEFC51602B266008FE47F /* YourMissionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFAF1602B266008FE47F /* YourMissionsViewController.xib */; };
+		745BEFD81602B39C008FE47F /* EditMissionViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFCA1602B39C008FE47F /* EditMissionViewController~ipad.xib */; };
+		745BEFD91602B39C008FE47F /* FlightSchoolCell~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFCB1602B39C008FE47F /* FlightSchoolCell~ipad.xib */; };
+		745BEFDA1602B39C008FE47F /* FlightSchoolViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFCC1602B39C008FE47F /* FlightSchoolViewController~ipad.xib */; };
+		745BEFDB1602B39C008FE47F /* ManualViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFCD1602B39C008FE47F /* ManualViewController~ipad.xib */; };
+		745BEFDC1602B39C008FE47F /* OnlineMissionCell~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFCE1602B39C008FE47F /* OnlineMissionCell~ipad.xib */; };
+		745BEFDD1602B39C008FE47F /* OnlineMissionsViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFCF1602B39C008FE47F /* OnlineMissionsViewController~ipad.xib */; };
+		745BEFDE1602B39C008FE47F /* PlayFlightSchoolMissionViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFD01602B39C008FE47F /* PlayFlightSchoolMissionViewController~ipad.xib */; };
+		745BEFDF1602B39C008FE47F /* PlayMissionViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFD11602B39C008FE47F /* PlayMissionViewController~ipad.xib */; };
+		745BEFE01602B39C008FE47F /* ViewFlightSchoolMissionViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFD21602B39C008FE47F /* ViewFlightSchoolMissionViewController~ipad.xib */; };
+		745BEFE11602B39C008FE47F /* ViewMissionSolutionViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFD31602B39C008FE47F /* ViewMissionSolutionViewController~ipad.xib */; };
+		745BEFE21602B39C008FE47F /* ViewOnlineMissionCell~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFD41602B39C008FE47F /* ViewOnlineMissionCell~ipad.xib */; };
+		745BEFE31602B39C008FE47F /* ViewOnlineMissionViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFD51602B39C008FE47F /* ViewOnlineMissionViewController~ipad.xib */; };
+		745BEFE41602B39C008FE47F /* YourMissionCell~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFD61602B39C008FE47F /* YourMissionCell~ipad.xib */; };
+		745BEFE51602B39C008FE47F /* YourMissionsViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFD71602B39C008FE47F /* YourMissionsViewController~ipad.xib */; };
+		745BF0281602B753008FE47F /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFF11602B753008FE47F /* fire.png */; };
+		745BF0291602B753008FE47F /* FlightSchool.plist in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFF21602B753008FE47F /* FlightSchool.plist */; };
+		745BF02A1602B753008FE47F /* FlightSchoolMission0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFF31602B753008FE47F /* FlightSchoolMission0.jpg */; };
+		745BF02B1602B753008FE47F /* FlightSchoolMission0@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFF41602B753008FE47F /* FlightSchoolMission0@2x.jpg */; };
+		745BF02C1602B753008FE47F /* FlightSchoolMission1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFF51602B753008FE47F /* FlightSchoolMission1.jpg */; };
+		745BF02D1602B753008FE47F /* FlightSchoolMission1@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFF61602B753008FE47F /* FlightSchoolMission1@2x.jpg */; };
+		745BF02E1602B753008FE47F /* FlightSchoolMission2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFF71602B753008FE47F /* FlightSchoolMission2.jpg */; };
+		745BF02F1602B753008FE47F /* FlightSchoolMission2@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFF81602B753008FE47F /* FlightSchoolMission2@2x.jpg */; };
+		745BF0301602B753008FE47F /* FlightSchoolMission3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFF91602B753008FE47F /* FlightSchoolMission3.jpg */; };
+		745BF0311602B753008FE47F /* FlightSchoolMission3@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFFA1602B753008FE47F /* FlightSchoolMission3@2x.jpg */; };
+		745BF0321602B753008FE47F /* FlightSchoolMission4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFFB1602B753008FE47F /* FlightSchoolMission4.jpg */; };
+		745BF0331602B753008FE47F /* FlightSchoolMission4@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFFC1602B753008FE47F /* FlightSchoolMission4@2x.jpg */; };
+		745BF0341602B753008FE47F /* FlightSchoolMission5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFFD1602B753008FE47F /* FlightSchoolMission5.jpg */; };
+		745BF0351602B753008FE47F /* FlightSchoolMission5@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFFE1602B753008FE47F /* FlightSchoolMission5@2x.jpg */; };
+		745BF0361602B753008FE47F /* FlightSchoolMission6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BEFFF1602B753008FE47F /* FlightSchoolMission6.jpg */; };
+		745BF0371602B753008FE47F /* FlightSchoolMission6@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0001602B753008FE47F /* FlightSchoolMission6@2x.jpg */; };
+		745BF0381602B753008FE47F /* FlightSchoolMission7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0011602B753008FE47F /* FlightSchoolMission7.jpg */; };
+		745BF0391602B753008FE47F /* FlightSchoolMission7@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0021602B753008FE47F /* FlightSchoolMission7@2x.jpg */; };
+		745BF03A1602B753008FE47F /* FlightSchoolMission8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0031602B753008FE47F /* FlightSchoolMission8.jpg */; };
+		745BF03B1602B753008FE47F /* FlightSchoolMission8@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0041602B753008FE47F /* FlightSchoolMission8@2x.jpg */; };
+		745BF03C1602B753008FE47F /* FlightSchoolMission9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0051602B753008FE47F /* FlightSchoolMission9.jpg */; };
+		745BF03D1602B753008FE47F /* FlightSchoolMission9@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0061602B753008FE47F /* FlightSchoolMission9@2x.jpg */; };
+		745BF03E1602B753008FE47F /* FlightSchoolMission10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0071602B753008FE47F /* FlightSchoolMission10.jpg */; };
+		745BF03F1602B753008FE47F /* FlightSchoolMission10@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0081602B753008FE47F /* FlightSchoolMission10@2x.jpg */; };
+		745BF0401602B753008FE47F /* FlightSchoolMission11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0091602B753008FE47F /* FlightSchoolMission11.jpg */; };
+		745BF0411602B753008FE47F /* FlightSchoolMission11@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF00A1602B753008FE47F /* FlightSchoolMission11@2x.jpg */; };
+		745BF0421602B753008FE47F /* FlightSchoolMission12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF00B1602B753008FE47F /* FlightSchoolMission12.jpg */; };
+		745BF0431602B753008FE47F /* FlightSchoolMission12@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF00C1602B753008FE47F /* FlightSchoolMission12@2x.jpg */; };
+		745BF0441602B753008FE47F /* FlightSchoolMission13.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF00D1602B753008FE47F /* FlightSchoolMission13.jpg */; };
+		745BF0451602B753008FE47F /* FlightSchoolMission13@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF00E1602B753008FE47F /* FlightSchoolMission13@2x.jpg */; };
+		745BF0461602B753008FE47F /* FlightSchoolMission14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF00F1602B753008FE47F /* FlightSchoolMission14.jpg */; };
+		745BF0471602B753008FE47F /* FlightSchoolMission14@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0101602B753008FE47F /* FlightSchoolMission14@2x.jpg */; };
+		745BF0481602B753008FE47F /* FlightSchoolMission15.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0111602B753008FE47F /* FlightSchoolMission15.jpg */; };
+		745BF0491602B753008FE47F /* FlightSchoolMission15@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0121602B753008FE47F /* FlightSchoolMission15@2x.jpg */; };
+		745BF04A1602B753008FE47F /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0131602B753008FE47F /* fps_images.png */; };
+		745BF0501602B753008FE47F /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0191602B753008FE47F /* Icon-Small-50.png */; };
+		745BF0511602B753008FE47F /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 745BF01A1602B753008FE47F /* Icon-Small-50@2x.png */; };
+		745BF0521602B753008FE47F /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 745BF01B1602B753008FE47F /* Icon-Small.png */; };
+		745BF0531602B753008FE47F /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 745BF01C1602B753008FE47F /* Icon-Small@2x.png */; };
+		745BF0561602B753008FE47F /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 745BF01F1602B753008FE47F /* iTunesArtwork */; };
+		745BF0571602B753008FE47F /* loading_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0201602B753008FE47F /* loading_image.jpg */; };
+		745BF0581602B753008FE47F /* loading_image@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0211602B753008FE47F /* loading_image@2x.jpg */; };
+		745BF0591602B753008FE47F /* space-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0221602B753008FE47F /* space-hd.png */; };
+		745BF05A1602B753008FE47F /* space.png in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0231602B753008FE47F /* space.png */; };
+		745BF05B1602B753008FE47F /* stars-hd.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0241602B753008FE47F /* stars-hd.jpg */; };
+		745BF05C1602B753008FE47F /* stars.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0251602B753008FE47F /* stars.jpg */; };
+		745BF05D1602B753008FE47F /* stars@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 745BF0261602B753008FE47F /* stars@2x.jpg */; };
+		74B6DF991602C27100345759 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B6DF811602C27100345759 /* NSObject+SBJson.m */; };
+		74B6DF9A1602C27100345759 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B6DF841602C27100345759 /* SBJsonParser.m */; };
+		74B6DF9B1602C27100345759 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B6DF861602C27100345759 /* SBJsonStreamParser.m */; };
+		74B6DF9C1602C27100345759 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B6DF881602C27100345759 /* SBJsonStreamParserAccumulator.m */; };
+		74B6DF9D1602C27100345759 /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B6DF8A1602C27100345759 /* SBJsonStreamParserAdapter.m */; };
+		74B6DF9E1602C27100345759 /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B6DF8C1602C27100345759 /* SBJsonStreamParserState.m */; };
+		74B6DF9F1602C27100345759 /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B6DF8E1602C27100345759 /* SBJsonStreamWriter.m */; };
+		74B6DFA01602C27100345759 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B6DF901602C27100345759 /* SBJsonStreamWriterAccumulator.m */; };
+		74B6DFA11602C27100345759 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B6DF921602C27100345759 /* SBJsonStreamWriterState.m */; };
+		74B6DFA21602C27100345759 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B6DF941602C27100345759 /* SBJsonTokeniser.m */; };
+		74B6DFA31602C27100345759 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B6DF961602C27100345759 /* SBJsonUTF8Stream.m */; };
+		74B6DFA41602C27100345759 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B6DF981602C27100345759 /* SBJsonWriter.m */; };
+		74B6DFA81602C81500345759 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B6DFA71602C81500345759 /* Reachability.m */; };
+		74DB11FD1603E95400C934F0 /* TouchSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DB11FC1603E94900C934F0 /* TouchSheet.m */; };
+		74EE6ED21602FE020048C198 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 74EE6ED11602FE020048C198 /* Icon.png */; };
+		74EE6ED41602FE0D0048C198 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74EE6ED31602FE0D0048C198 /* Icon@2x.png */; };
+		74EE6ED61602FE170048C198 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 74EE6ED51602FE170048C198 /* Default.png */; };
+		74EE6ED81602FE240048C198 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74EE6ED71602FE240048C198 /* Default@2x.png */; };
+		74EE6EDA1602FE2D0048C198 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74EE6ED91602FE2D0048C198 /* Default-568h@2x.png */; };
+		74EE6EDC1602FE390048C198 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 74EE6EDB1602FE390048C198 /* Icon-72.png */; };
+		74EE6EDE1602FE490048C198 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74EE6EDD1602FE490048C198 /* Icon-72@2x.png */; };
+		74EE6EE01602FE630048C198 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 74EE6EDF1602FE630048C198 /* Default-Portrait~ipad.png */; };
+		74EE6EE21602FE6E0048C198 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 74EE6EE11602FE6E0048C198 /* Default-Portrait@2x~ipad.png */; };
+		74EE6EE41602FE800048C198 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 74EE6EE31602FE7F0048C198 /* Default-Landscape~ipad.png */; };
+		74EE6EE61602FE930048C198 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 74EE6EE51602FE930048C198 /* Default-Landscape@2x~ipad.png */; };
+		74EE6EE8160301170048C198 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74EE6EE7160301170048C198 /* libTestFlight.a */; };
+		74FFF6C016039C7A0055BEB2 /* libSparrow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74FFF6BF16039C7A0055BEB2 /* libSparrow.a */; };
+		74FFF71E1603DC7C0055BEB2 /* GameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74FFF71B1603DBFA0055BEB2 /* GameController.m */; };
+		74FFF71F1603DC7C0055BEB2 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 74FFF71D1603DBFA0055BEB2 /* Game.m */; };
+		74FFF7261603DE430055BEB2 /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 74FFF7231603DDB60055BEB2 /* Media.m */; };
+		74FFF7271603DE430055BEB2 /* SPOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74FFF7251603DDCD0055BEB2 /* SPOverlayView.m */; };
+		74FFF7281603DE430055BEB2 /* SPResizeEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 74FFF7211603DD430055BEB2 /* SPResizeEvent.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		74DB11E91603DF0900C934F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 74FFF6CE16039E140055BEB2 /* Sparrow.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DEFE4BC2101B317600E22471;
+			remoteInfo = Sparrow;
+		};
+		74DB11EB1603DF0900C934F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 74FFF6CE16039E140055BEB2 /* Sparrow.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DEEA9335101E32A30071DD21;
+			remoteInfo = UnitTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7410472B16030A98009303A4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		7410472D16030AA2009303A4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		7410472F16030AAC009303A4 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		7410473016030AAC009303A4 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		7410473316030AB9009303A4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		741B2A561602CF6F00C59377 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		741B2A5D1602D0CA00C59377 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		741B2A5F1602D16200C59377 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		743A7B001607CFE100042307 /* atlas.pvr.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = atlas.pvr.gz; sourceTree = "<group>"; };
+		743A7B011607CFE100042307 /* atlas.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = atlas.xml; sourceTree = "<group>"; };
+		743A7B021607CFE100042307 /* atlas@2x.pvr.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = "atlas@2x.pvr.gz"; sourceTree = "<group>"; };
+		743A7B031607CFE100042307 /* atlas@2x.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "atlas@2x.xml"; sourceTree = "<group>"; };
+		74543AD91607CA33004CDE7A /* sparrow_sheet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sparrow_sheet@2x.png"; sourceTree = "<group>"; };
+		74543ADE1607CA43004CDE7A /* sparrow_sheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sparrow_sheet.png; sourceTree = "<group>"; };
+		745BEF0B1602B128008FE47F /* Orbital Mechanics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Orbital Mechanics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		745BEF0F1602B128008FE47F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		745BEF111602B128008FE47F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		745BEF131602B128008FE47F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		745BEF171602B128008FE47F /* Orbital Mechanics-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Orbital Mechanics-Info.plist"; sourceTree = "<group>"; };
+		745BEF191602B128008FE47F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		745BEF1B1602B128008FE47F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		745BEF1D1602B128008FE47F /* Orbital Mechanics-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Orbital Mechanics-Prefix.pch"; sourceTree = "<group>"; };
+		745BEF1E1602B128008FE47F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		745BEF1F1602B128008FE47F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		745BEF351602B1B5008FE47F /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		745BEF361602B1B5008FE47F /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		745BEF371602B1B5008FE47F /* MainMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenuViewController.xib; sourceTree = "<group>"; };
+		745BEF3A1602B1C7008FE47F /* MainMenuViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "MainMenuViewController~ipad.xib"; sourceTree = "<group>"; };
+		745BEF3E1602B235008FE47F /* EditMissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditMissionViewController.h; sourceTree = "<group>"; };
+		745BEF3F1602B235008FE47F /* EditMissionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditMissionViewController.m; sourceTree = "<group>"; };
+		745BEF401602B235008FE47F /* EditMissionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditMissionViewController.xib; sourceTree = "<group>"; };
+		745BEF441602B23D008FE47F /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
+		745BEF451602B23D008FE47F /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
+		745BEF541602B23E008FE47F /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		745BEF5D1602B248008FE47F /* EPUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPUploader.h; sourceTree = "<group>"; };
+		745BEF5E1602B248008FE47F /* EPUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPUploader.m; sourceTree = "<group>"; };
+		745BEF5F1602B248008FE47F /* FlightSchoolCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightSchoolCell.h; sourceTree = "<group>"; };
+		745BEF601602B248008FE47F /* FlightSchoolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightSchoolCell.m; sourceTree = "<group>"; };
+		745BEF611602B248008FE47F /* FlightSchoolCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlightSchoolCell.xib; sourceTree = "<group>"; };
+		745BEF621602B248008FE47F /* FlightSchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightSchoolViewController.h; sourceTree = "<group>"; };
+		745BEF631602B248008FE47F /* FlightSchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightSchoolViewController.m; sourceTree = "<group>"; };
+		745BEF641602B248008FE47F /* FlightSchoolViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlightSchoolViewController.xib; sourceTree = "<group>"; };
+		745BEF651602B248008FE47F /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
+		745BEF661602B248008FE47F /* GGVecLib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GGVecLib.c; sourceTree = "<group>"; };
+		745BEF671602B248008FE47F /* GraphicsGems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphicsGems.h; sourceTree = "<group>"; };
+		745BEF6A1602B248008FE47F /* IconDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconDownloader.h; sourceTree = "<group>"; };
+		745BEF6B1602B248008FE47F /* IconDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconDownloader.m; sourceTree = "<group>"; };
+		745BEF6C1602B248008FE47F /* LGViewHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGViewHUD.h; sourceTree = "<group>"; };
+		745BEF6D1602B248008FE47F /* LGViewHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGViewHUD.m; sourceTree = "<group>"; };
+		745BEF791602B257008FE47F /* ManualViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManualViewController.xib; sourceTree = "<group>"; };
+		745BEF7A1602B257008FE47F /* MoveArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveArray.h; sourceTree = "<group>"; };
+		745BEF7B1602B257008FE47F /* MoveArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveArray.m; sourceTree = "<group>"; };
+		745BEF7C1602B257008FE47F /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
+		745BEF7D1602B257008FE47F /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
+		745BEF7E1602B257008FE47F /* OnlineMissionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineMissionCell.h; sourceTree = "<group>"; };
+		745BEF7F1602B257008FE47F /* OnlineMissionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineMissionCell.m; sourceTree = "<group>"; };
+		745BEF801602B257008FE47F /* OnlineMissionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnlineMissionCell.xib; sourceTree = "<group>"; };
+		745BEF811602B257008FE47F /* OnlineMissionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OnlineMissionsViewController.h; sourceTree = "<group>"; };
+		745BEF821602B257008FE47F /* OnlineMissionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnlineMissionsViewController.m; sourceTree = "<group>"; };
+		745BEF831602B257008FE47F /* OnlineMissionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnlineMissionsViewController.xib; sourceTree = "<group>"; };
+		745BEF901602B266008FE47F /* PlayFlightSchoolMissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayFlightSchoolMissionViewController.h; sourceTree = "<group>"; };
+		745BEF911602B266008FE47F /* PlayFlightSchoolMissionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayFlightSchoolMissionViewController.m; sourceTree = "<group>"; };
+		745BEF921602B266008FE47F /* PlayFlightSchoolMissionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayFlightSchoolMissionViewController.xib; sourceTree = "<group>"; };
+		745BEF951602B266008FE47F /* PlayMissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayMissionViewController.h; sourceTree = "<group>"; };
+		745BEF961602B266008FE47F /* PlayMissionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayMissionViewController.m; sourceTree = "<group>"; };
+		745BEF971602B266008FE47F /* PlayMissionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayMissionViewController.xib; sourceTree = "<group>"; };
+		745BEF9B1602B266008FE47F /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
+		745BEF9C1602B266008FE47F /* ViewFlightSchoolMissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewFlightSchoolMissionViewController.h; sourceTree = "<group>"; };
+		745BEF9D1602B266008FE47F /* ViewFlightSchoolMissionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewFlightSchoolMissionViewController.m; sourceTree = "<group>"; };
+		745BEF9E1602B266008FE47F /* ViewFlightSchoolMissionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewFlightSchoolMissionViewController.xib; sourceTree = "<group>"; };
+		745BEFA11602B266008FE47F /* ViewMissionSolutionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewMissionSolutionViewController.h; sourceTree = "<group>"; };
+		745BEFA21602B266008FE47F /* ViewMissionSolutionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewMissionSolutionViewController.m; sourceTree = "<group>"; };
+		745BEFA31602B266008FE47F /* ViewMissionSolutionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewMissionSolutionViewController.xib; sourceTree = "<group>"; };
+		745BEFA41602B266008FE47F /* ViewOnlineMissionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewOnlineMissionCell.h; sourceTree = "<group>"; };
+		745BEFA51602B266008FE47F /* ViewOnlineMissionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewOnlineMissionCell.m; sourceTree = "<group>"; };
+		745BEFA61602B266008FE47F /* ViewOnlineMissionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewOnlineMissionCell.xib; sourceTree = "<group>"; };
+		745BEFA71602B266008FE47F /* ViewOnlineMissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewOnlineMissionViewController.h; sourceTree = "<group>"; };
+		745BEFA81602B266008FE47F /* ViewOnlineMissionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewOnlineMissionViewController.m; sourceTree = "<group>"; };
+		745BEFA91602B266008FE47F /* ViewOnlineMissionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewOnlineMissionViewController.xib; sourceTree = "<group>"; };
+		745BEFAA1602B266008FE47F /* YourMissionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YourMissionCell.h; sourceTree = "<group>"; };
+		745BEFAB1602B266008FE47F /* YourMissionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YourMissionCell.m; sourceTree = "<group>"; };
+		745BEFAC1602B266008FE47F /* YourMissionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YourMissionCell.xib; sourceTree = "<group>"; };
+		745BEFAD1602B266008FE47F /* YourMissionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YourMissionsViewController.h; sourceTree = "<group>"; };
+		745BEFAE1602B266008FE47F /* YourMissionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YourMissionsViewController.m; sourceTree = "<group>"; };
+		745BEFAF1602B266008FE47F /* YourMissionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YourMissionsViewController.xib; sourceTree = "<group>"; };
+		745BEFC91602B2F4008FE47F /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
+		745BEFCA1602B39C008FE47F /* EditMissionViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "EditMissionViewController~ipad.xib"; sourceTree = "<group>"; };
+		745BEFCB1602B39C008FE47F /* FlightSchoolCell~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "FlightSchoolCell~ipad.xib"; sourceTree = "<group>"; };
+		745BEFCC1602B39C008FE47F /* FlightSchoolViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "FlightSchoolViewController~ipad.xib"; sourceTree = "<group>"; };
+		745BEFCD1602B39C008FE47F /* ManualViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ManualViewController~ipad.xib"; sourceTree = "<group>"; };
+		745BEFCE1602B39C008FE47F /* OnlineMissionCell~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "OnlineMissionCell~ipad.xib"; sourceTree = "<group>"; };
+		745BEFCF1602B39C008FE47F /* OnlineMissionsViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "OnlineMissionsViewController~ipad.xib"; sourceTree = "<group>"; };
+		745BEFD01602B39C008FE47F /* PlayFlightSchoolMissionViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PlayFlightSchoolMissionViewController~ipad.xib"; sourceTree = "<group>"; };
+		745BEFD11602B39C008FE47F /* PlayMissionViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "PlayMissionViewController~ipad.xib"; sourceTree = "<group>"; };
+		745BEFD21602B39C008FE47F /* ViewFlightSchoolMissionViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ViewFlightSchoolMissionViewController~ipad.xib"; sourceTree = "<group>"; };
+		745BEFD31602B39C008FE47F /* ViewMissionSolutionViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ViewMissionSolutionViewController~ipad.xib"; sourceTree = "<group>"; };
+		745BEFD41602B39C008FE47F /* ViewOnlineMissionCell~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ViewOnlineMissionCell~ipad.xib"; sourceTree = "<group>"; };
+		745BEFD51602B39C008FE47F /* ViewOnlineMissionViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ViewOnlineMissionViewController~ipad.xib"; sourceTree = "<group>"; };
+		745BEFD61602B39C008FE47F /* YourMissionCell~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "YourMissionCell~ipad.xib"; sourceTree = "<group>"; };
+		745BEFD71602B39C008FE47F /* YourMissionsViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "YourMissionsViewController~ipad.xib"; sourceTree = "<group>"; };
+		745BEFF11602B753008FE47F /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
+		745BEFF21602B753008FE47F /* FlightSchool.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FlightSchool.plist; sourceTree = "<group>"; };
+		745BEFF31602B753008FE47F /* FlightSchoolMission0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FlightSchoolMission0.jpg; sourceTree = "<group>"; };
+		745BEFF41602B753008FE47F /* FlightSchoolMission0@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "FlightSchoolMission0@2x.jpg"; sourceTree = "<group>"; };
+		745BEFF51602B753008FE47F /* FlightSchoolMission1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FlightSchoolMission1.jpg; sourceTree = "<group>"; };
+		745BEFF61602B753008FE47F /* FlightSchoolMission1@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "FlightSchoolMission1@2x.jpg"; sourceTree = "<group>"; };
+		745BEFF71602B753008FE47F /* FlightSchoolMission2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FlightSchoolMission2.jpg; sourceTree = "<group>"; };
+		745BEFF81602B753008FE47F /* FlightSchoolMission2@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "FlightSchoolMission2@2x.jpg"; sourceTree = "<group>"; };
+		745BEFF91602B753008FE47F /* FlightSchoolMission3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FlightSchoolMission3.jpg; sourceTree = "<group>"; };
+		745BEFFA1602B753008FE47F /* FlightSchoolMission3@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "FlightSchoolMission3@2x.jpg"; sourceTree = "<group>"; };
+		745BEFFB1602B753008FE47F /* FlightSchoolMission4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FlightSchoolMission4.jpg; sourceTree = "<group>"; };
+		745BEFFC1602B753008FE47F /* FlightSchoolMission4@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "FlightSchoolMission4@2x.jpg"; sourceTree = "<group>"; };
+		745BEFFD1602B753008FE47F /* FlightSchoolMission5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FlightSchoolMission5.jpg; sourceTree = "<group>"; };
+		745BEFFE1602B753008FE47F /* FlightSchoolMission5@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "FlightSchoolMission5@2x.jpg"; sourceTree = "<group>"; };
+		745BEFFF1602B753008FE47F /* FlightSchoolMission6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FlightSchoolMission6.jpg; sourceTree = "<group>"; };
+		745BF0001602B753008FE47F /* FlightSchoolMission6@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "FlightSchoolMission6@2x.jpg"; sourceTree = "<group>"; };
+		745BF0011602B753008FE47F /* FlightSchoolMission7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FlightSchoolMission7.jpg; sourceTree = "<group>"; };
+		745BF0021602B753008FE47F /* FlightSchoolMission7@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "FlightSchoolMission7@2x.jpg"; sourceTree = "<group>"; };
+		745BF0031602B753008FE47F /* FlightSchoolMission8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FlightSchoolMission8.jpg; sourceTree = "<group>"; };
+		745BF0041602B753008FE47F /* FlightSchoolMission8@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "FlightSchoolMission8@2x.jpg"; sourceTree = "<group>"; };
+		745BF0051602B753008FE47F /* FlightSchoolMission9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FlightSchoolMission9.jpg; sourceTree = "<group>"; };
+		745BF0061602B753008FE47F /* FlightSchoolMission9@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "FlightSchoolMission9@2x.jpg"; sourceTree = "<group>"; };
+		745BF0071602B753008FE47F /* FlightSchoolMission10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FlightSchoolMission10.jpg; sourceTree = "<group>"; };
+		745BF0081602B753008FE47F /* FlightSchoolMission10@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "FlightSchoolMission10@2x.jpg"; sourceTree = "<group>"; };
+		745BF0091602B753008FE47F /* FlightSchoolMission11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FlightSchoolMission11.jpg; sourceTree = "<group>"; };
+		745BF00A1602B753008FE47F /* FlightSchoolMission11@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "FlightSchoolMission11@2x.jpg"; sourceTree = "<group>"; };
+		745BF00B1602B753008FE47F /* FlightSchoolMission12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FlightSchoolMission12.jpg; sourceTree = "<group>"; };
+		745BF00C1602B753008FE47F /* FlightSchoolMission12@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "FlightSchoolMission12@2x.jpg"; sourceTree = "<group>"; };
+		745BF00D1602B753008FE47F /* FlightSchoolMission13.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FlightSchoolMission13.jpg; sourceTree = "<group>"; };
+		745BF00E1602B753008FE47F /* FlightSchoolMission13@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "FlightSchoolMission13@2x.jpg"; sourceTree = "<group>"; };
+		745BF00F1602B753008FE47F /* FlightSchoolMission14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FlightSchoolMission14.jpg; sourceTree = "<group>"; };
+		745BF0101602B753008FE47F /* FlightSchoolMission14@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "FlightSchoolMission14@2x.jpg"; sourceTree = "<group>"; };
+		745BF0111602B753008FE47F /* FlightSchoolMission15.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FlightSchoolMission15.jpg; sourceTree = "<group>"; };
+		745BF0121602B753008FE47F /* FlightSchoolMission15@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "FlightSchoolMission15@2x.jpg"; sourceTree = "<group>"; };
+		745BF0131602B753008FE47F /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fps_images.png; sourceTree = "<group>"; };
+		745BF0191602B753008FE47F /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		745BF01A1602B753008FE47F /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50@2x.png"; sourceTree = "<group>"; };
+		745BF01B1602B753008FE47F /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		745BF01C1602B753008FE47F /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		745BF01F1602B753008FE47F /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		745BF0201602B753008FE47F /* loading_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loading_image.jpg; sourceTree = "<group>"; };
+		745BF0211602B753008FE47F /* loading_image@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "loading_image@2x.jpg"; sourceTree = "<group>"; };
+		745BF0221602B753008FE47F /* space-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "space-hd.png"; sourceTree = "<group>"; };
+		745BF0231602B753008FE47F /* space.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = space.png; sourceTree = "<group>"; };
+		745BF0241602B753008FE47F /* stars-hd.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "stars-hd.jpg"; sourceTree = "<group>"; };
+		745BF0251602B753008FE47F /* stars.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stars.jpg; sourceTree = "<group>"; };
+		745BF0261602B753008FE47F /* stars@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "stars@2x.jpg"; sourceTree = "<group>"; };
+		74B6DF801602C27100345759 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
+		74B6DF811602C27100345759 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
+		74B6DF821602C27100345759 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
+		74B6DF831602C27100345759 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		74B6DF841602C27100345759 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		74B6DF851602C27100345759 /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
+		74B6DF861602C27100345759 /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
+		74B6DF871602C27100345759 /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
+		74B6DF881602C27100345759 /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
+		74B6DF891602C27100345759 /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
+		74B6DF8A1602C27100345759 /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
+		74B6DF8B1602C27100345759 /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
+		74B6DF8C1602C27100345759 /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
+		74B6DF8D1602C27100345759 /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriter.h; sourceTree = "<group>"; };
+		74B6DF8E1602C27100345759 /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriter.m; sourceTree = "<group>"; };
+		74B6DF8F1602C27100345759 /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterAccumulator.h; sourceTree = "<group>"; };
+		74B6DF901602C27100345759 /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterAccumulator.m; sourceTree = "<group>"; };
+		74B6DF911602C27100345759 /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterState.h; sourceTree = "<group>"; };
+		74B6DF921602C27100345759 /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
+		74B6DF931602C27100345759 /* SBJsonTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonTokeniser.h; sourceTree = "<group>"; };
+		74B6DF941602C27100345759 /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
+		74B6DF951602C27100345759 /* SBJsonUTF8Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonUTF8Stream.h; sourceTree = "<group>"; };
+		74B6DF961602C27100345759 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
+		74B6DF971602C27100345759 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		74B6DF981602C27100345759 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		74B6DFA61602C81500345759 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		74B6DFA71602C81500345759 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		74DB11FB1603E94900C934F0 /* TouchSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TouchSheet.h; sourceTree = "<group>"; };
+		74DB11FC1603E94900C934F0 /* TouchSheet.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouchSheet.m; sourceTree = "<group>"; };
+		74EE6ED11602FE020048C198 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
+		74EE6ED31602FE0D0048C198 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
+		74EE6ED51602FE170048C198 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		74EE6ED71602FE240048C198 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		74EE6ED91602FE2D0048C198 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		74EE6EDB1602FE390048C198 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
+		74EE6EDD1602FE490048C198 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "../Icon-72@2x.png"; sourceTree = "<group>"; };
+		74EE6EDF1602FE630048C198 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait~ipad.png"; path = "../Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		74EE6EE11602FE6E0048C198 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "../Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		74EE6EE31602FE7F0048C198 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		74EE6EE51602FE930048C198 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "../Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		74EE6EE7160301170048C198 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		74EE6EE9160301410048C198 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		74FFF6BF16039C7A0055BEB2 /* libSparrow.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSparrow.a; sourceTree = "<group>"; };
+		74FFF6CE16039E140055BEB2 /* Sparrow.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Sparrow.xcodeproj; sourceTree = SPARROW_SRC; };
+		74FFF71A1603DBFA0055BEB2 /* GameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameController.h; sourceTree = "<group>"; };
+		74FFF71B1603DBFA0055BEB2 /* GameController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameController.m; sourceTree = "<group>"; };
+		74FFF71C1603DBFA0055BEB2 /* Game.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		74FFF71D1603DBFA0055BEB2 /* Game.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
+		74FFF7201603DD430055BEB2 /* SPResizeEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPResizeEvent.h; sourceTree = "<group>"; };
+		74FFF7211603DD430055BEB2 /* SPResizeEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPResizeEvent.m; sourceTree = "<group>"; };
+		74FFF7221603DDB60055BEB2 /* Media.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Media.h; sourceTree = "<group>"; };
+		74FFF7231603DDB60055BEB2 /* Media.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Media.m; sourceTree = "<group>"; };
+		74FFF7241603DDCD0055BEB2 /* SPOverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPOverlayView.h; sourceTree = "<group>"; };
+		74FFF7251603DDCD0055BEB2 /* SPOverlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPOverlayView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		745BEF081602B128008FE47F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7410473416030AB9009303A4 /* QuartzCore.framework in Frameworks */,
+				7410473116030AAC009303A4 /* OpenAL.framework in Frameworks */,
+				7410473216030AAC009303A4 /* OpenGLES.framework in Frameworks */,
+				7410472E16030AA2009303A4 /* AVFoundation.framework in Frameworks */,
+				7410472C16030A98009303A4 /* AudioToolbox.framework in Frameworks */,
+				741B2A601602D16200C59377 /* libz.dylib in Frameworks */,
+				741B2A5E1602D0CA00C59377 /* SystemConfiguration.framework in Frameworks */,
+				741B2A571602CF6F00C59377 /* Twitter.framework in Frameworks */,
+				745BEF101602B128008FE47F /* UIKit.framework in Frameworks */,
+				745BEF121602B128008FE47F /* Foundation.framework in Frameworks */,
+				745BEF141602B128008FE47F /* CoreGraphics.framework in Frameworks */,
+				74EE6EE8160301170048C198 /* libTestFlight.a in Frameworks */,
+				74FFF6C016039C7A0055BEB2 /* libSparrow.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		745BEF001602B128008FE47F = {
+			isa = PBXGroup;
+			children = (
+				74FFF6CE16039E140055BEB2 /* Sparrow.xcodeproj */,
+				745BEF151602B128008FE47F /* Orbital Mechanics */,
+				745BEF0E1602B128008FE47F /* Frameworks */,
+				745BEF0C1602B128008FE47F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		745BEF0C1602B128008FE47F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				745BEF0B1602B128008FE47F /* Orbital Mechanics.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		745BEF0E1602B128008FE47F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				74FFF6BF16039C7A0055BEB2 /* libSparrow.a */,
+				74EE6EE7160301170048C198 /* libTestFlight.a */,
+				741B2A5F1602D16200C59377 /* libz.dylib */,
+				7410473316030AB9009303A4 /* QuartzCore.framework */,
+				7410472F16030AAC009303A4 /* OpenAL.framework */,
+				7410473016030AAC009303A4 /* OpenGLES.framework */,
+				7410472D16030AA2009303A4 /* AVFoundation.framework */,
+				7410472B16030A98009303A4 /* AudioToolbox.framework */,
+				741B2A5D1602D0CA00C59377 /* SystemConfiguration.framework */,
+				741B2A561602CF6F00C59377 /* Twitter.framework */,
+				745BEF0F1602B128008FE47F /* UIKit.framework */,
+				745BEF111602B128008FE47F /* Foundation.framework */,
+				745BEF131602B128008FE47F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		745BEF151602B128008FE47F /* Orbital Mechanics */ = {
+			isa = PBXGroup;
+			children = (
+				74FFF6FC1603B1520055BEB2 /* Game */,
+				745BEFE71602B3C8008FE47F /* Resources */,
+				745BEFE61602B3B4008FE47F /* Controllers */,
+				745BEFC81602B290008FE47F /* iPad */,
+				745BEFC71602B28A008FE47F /* iPhone */,
+				745BEFC61602B281008FE47F /* Utilities */,
+				745BEF1E1602B128008FE47F /* AppDelegate.h */,
+				745BEF1F1602B128008FE47F /* AppDelegate.m */,
+				745BEF161602B128008FE47F /* Supporting Files */,
+			);
+			path = "Orbital Mechanics";
+			sourceTree = "<group>";
+		};
+		745BEF161602B128008FE47F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				745BEF171602B128008FE47F /* Orbital Mechanics-Info.plist */,
+				745BEF181602B128008FE47F /* InfoPlist.strings */,
+				745BEF1B1602B128008FE47F /* main.m */,
+				745BEF1D1602B128008FE47F /* Orbital Mechanics-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		745BEFC61602B281008FE47F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				74B6DF7E1602C27100345759 /* JSON */,
+				74EE6EE9160301410048C198 /* TestFlight.h */,
+				74B6DFA61602C81500345759 /* Reachability.h */,
+				74B6DFA71602C81500345759 /* Reachability.m */,
+				745BEF6A1602B248008FE47F /* IconDownloader.h */,
+				745BEF6B1602B248008FE47F /* IconDownloader.m */,
+				745BEF6C1602B248008FE47F /* LGViewHUD.h */,
+				745BEF6D1602B248008FE47F /* LGViewHUD.m */,
+				745BEF441602B23D008FE47F /* AsyncImageView.h */,
+				745BEF451602B23D008FE47F /* AsyncImageView.m */,
+				745BEF651602B248008FE47F /* GameConfig.h */,
+				745BEF661602B248008FE47F /* GGVecLib.c */,
+				745BEF671602B248008FE47F /* GraphicsGems.h */,
+				745BEF7C1602B257008FE47F /* NSString+MD5Addition.h */,
+				745BEF7D1602B257008FE47F /* NSString+MD5Addition.m */,
+				745BEF7A1602B257008FE47F /* MoveArray.h */,
+				745BEF7B1602B257008FE47F /* MoveArray.m */,
+				745BEFC91602B2F4008FE47F /* UIDevice+IdentifierAddition.h */,
+				745BEF9B1602B266008FE47F /* UIDevice+IdentifierAddition.m */,
+				745BEF5D1602B248008FE47F /* EPUploader.h */,
+				745BEF5E1602B248008FE47F /* EPUploader.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		745BEFC71602B28A008FE47F /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				745BEF401602B235008FE47F /* EditMissionViewController.xib */,
+				745BEF971602B266008FE47F /* PlayMissionViewController.xib */,
+				745BEF921602B266008FE47F /* PlayFlightSchoolMissionViewController.xib */,
+				745BEFA31602B266008FE47F /* ViewMissionSolutionViewController.xib */,
+				745BEF801602B257008FE47F /* OnlineMissionCell.xib */,
+				745BEF791602B257008FE47F /* ManualViewController.xib */,
+				745BEFAF1602B266008FE47F /* YourMissionsViewController.xib */,
+				745BEFAC1602B266008FE47F /* YourMissionCell.xib */,
+				745BEFA91602B266008FE47F /* ViewOnlineMissionViewController.xib */,
+				745BEFA61602B266008FE47F /* ViewOnlineMissionCell.xib */,
+				745BEF9E1602B266008FE47F /* ViewFlightSchoolMissionViewController.xib */,
+				745BEF831602B257008FE47F /* OnlineMissionsViewController.xib */,
+				745BEF611602B248008FE47F /* FlightSchoolCell.xib */,
+				745BEF641602B248008FE47F /* FlightSchoolViewController.xib */,
+				745BEF371602B1B5008FE47F /* MainMenuViewController.xib */,
+			);
+			name = iPhone;
+			sourceTree = "<group>";
+		};
+		745BEFC81602B290008FE47F /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				745BEFCA1602B39C008FE47F /* EditMissionViewController~ipad.xib */,
+				745BEFCB1602B39C008FE47F /* FlightSchoolCell~ipad.xib */,
+				745BEFCC1602B39C008FE47F /* FlightSchoolViewController~ipad.xib */,
+				745BEFCD1602B39C008FE47F /* ManualViewController~ipad.xib */,
+				745BEFCE1602B39C008FE47F /* OnlineMissionCell~ipad.xib */,
+				745BEFCF1602B39C008FE47F /* OnlineMissionsViewController~ipad.xib */,
+				745BEFD01602B39C008FE47F /* PlayFlightSchoolMissionViewController~ipad.xib */,
+				745BEFD11602B39C008FE47F /* PlayMissionViewController~ipad.xib */,
+				745BEFD21602B39C008FE47F /* ViewFlightSchoolMissionViewController~ipad.xib */,
+				745BEFD31602B39C008FE47F /* ViewMissionSolutionViewController~ipad.xib */,
+				745BEFD41602B39C008FE47F /* ViewOnlineMissionCell~ipad.xib */,
+				745BEFD51602B39C008FE47F /* ViewOnlineMissionViewController~ipad.xib */,
+				745BEFD61602B39C008FE47F /* YourMissionCell~ipad.xib */,
+				745BEFD71602B39C008FE47F /* YourMissionsViewController~ipad.xib */,
+				745BEF3A1602B1C7008FE47F /* MainMenuViewController~ipad.xib */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		745BEFE61602B3B4008FE47F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				745BEF541602B23E008FE47F /* Constants.h */,
+				745BEF351602B1B5008FE47F /* MainMenuViewController.h */,
+				745BEF361602B1B5008FE47F /* MainMenuViewController.m */,
+				745BEFAD1602B266008FE47F /* YourMissionsViewController.h */,
+				745BEFAE1602B266008FE47F /* YourMissionsViewController.m */,
+				745BEFAA1602B266008FE47F /* YourMissionCell.h */,
+				745BEFAB1602B266008FE47F /* YourMissionCell.m */,
+				745BEF3E1602B235008FE47F /* EditMissionViewController.h */,
+				745BEF3F1602B235008FE47F /* EditMissionViewController.m */,
+				745BEF951602B266008FE47F /* PlayMissionViewController.h */,
+				745BEF961602B266008FE47F /* PlayMissionViewController.m */,
+				745BEF811602B257008FE47F /* OnlineMissionsViewController.h */,
+				745BEF821602B257008FE47F /* OnlineMissionsViewController.m */,
+				745BEF7E1602B257008FE47F /* OnlineMissionCell.h */,
+				745BEF7F1602B257008FE47F /* OnlineMissionCell.m */,
+				745BEFA71602B266008FE47F /* ViewOnlineMissionViewController.h */,
+				745BEFA81602B266008FE47F /* ViewOnlineMissionViewController.m */,
+				745BEFA41602B266008FE47F /* ViewOnlineMissionCell.h */,
+				745BEFA51602B266008FE47F /* ViewOnlineMissionCell.m */,
+				745BEFA11602B266008FE47F /* ViewMissionSolutionViewController.h */,
+				745BEFA21602B266008FE47F /* ViewMissionSolutionViewController.m */,
+				745BEF621602B248008FE47F /* FlightSchoolViewController.h */,
+				745BEF631602B248008FE47F /* FlightSchoolViewController.m */,
+				745BEF5F1602B248008FE47F /* FlightSchoolCell.h */,
+				745BEF601602B248008FE47F /* FlightSchoolCell.m */,
+				745BEF9C1602B266008FE47F /* ViewFlightSchoolMissionViewController.h */,
+				745BEF9D1602B266008FE47F /* ViewFlightSchoolMissionViewController.m */,
+				745BEF901602B266008FE47F /* PlayFlightSchoolMissionViewController.h */,
+				745BEF911602B266008FE47F /* PlayFlightSchoolMissionViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		745BEFE71602B3C8008FE47F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				743A7B001607CFE100042307 /* atlas.pvr.gz */,
+				743A7B011607CFE100042307 /* atlas.xml */,
+				743A7B021607CFE100042307 /* atlas@2x.pvr.gz */,
+				743A7B031607CFE100042307 /* atlas@2x.xml */,
+				74543ADE1607CA43004CDE7A /* sparrow_sheet.png */,
+				74543AD91607CA33004CDE7A /* sparrow_sheet@2x.png */,
+				74EE6EE51602FE930048C198 /* Default-Landscape@2x~ipad.png */,
+				74EE6EE31602FE7F0048C198 /* Default-Landscape~ipad.png */,
+				74EE6EE11602FE6E0048C198 /* Default-Portrait@2x~ipad.png */,
+				74EE6EDF1602FE630048C198 /* Default-Portrait~ipad.png */,
+				74EE6EDD1602FE490048C198 /* Icon-72@2x.png */,
+				74EE6EDB1602FE390048C198 /* Icon-72.png */,
+				74EE6ED91602FE2D0048C198 /* Default-568h@2x.png */,
+				74EE6ED71602FE240048C198 /* Default@2x.png */,
+				74EE6ED51602FE170048C198 /* Default.png */,
+				74EE6ED31602FE0D0048C198 /* Icon@2x.png */,
+				74EE6ED11602FE020048C198 /* Icon.png */,
+				745BEFF11602B753008FE47F /* fire.png */,
+				745BEFF21602B753008FE47F /* FlightSchool.plist */,
+				745BEFF31602B753008FE47F /* FlightSchoolMission0.jpg */,
+				745BEFF41602B753008FE47F /* FlightSchoolMission0@2x.jpg */,
+				745BEFF51602B753008FE47F /* FlightSchoolMission1.jpg */,
+				745BEFF61602B753008FE47F /* FlightSchoolMission1@2x.jpg */,
+				745BEFF71602B753008FE47F /* FlightSchoolMission2.jpg */,
+				745BEFF81602B753008FE47F /* FlightSchoolMission2@2x.jpg */,
+				745BEFF91602B753008FE47F /* FlightSchoolMission3.jpg */,
+				745BEFFA1602B753008FE47F /* FlightSchoolMission3@2x.jpg */,
+				745BEFFB1602B753008FE47F /* FlightSchoolMission4.jpg */,
+				745BEFFC1602B753008FE47F /* FlightSchoolMission4@2x.jpg */,
+				745BEFFD1602B753008FE47F /* FlightSchoolMission5.jpg */,
+				745BEFFE1602B753008FE47F /* FlightSchoolMission5@2x.jpg */,
+				745BEFFF1602B753008FE47F /* FlightSchoolMission6.jpg */,
+				745BF0001602B753008FE47F /* FlightSchoolMission6@2x.jpg */,
+				745BF0011602B753008FE47F /* FlightSchoolMission7.jpg */,
+				745BF0021602B753008FE47F /* FlightSchoolMission7@2x.jpg */,
+				745BF0031602B753008FE47F /* FlightSchoolMission8.jpg */,
+				745BF0041602B753008FE47F /* FlightSchoolMission8@2x.jpg */,
+				745BF0051602B753008FE47F /* FlightSchoolMission9.jpg */,
+				745BF0061602B753008FE47F /* FlightSchoolMission9@2x.jpg */,
+				745BF0071602B753008FE47F /* FlightSchoolMission10.jpg */,
+				745BF0081602B753008FE47F /* FlightSchoolMission10@2x.jpg */,
+				745BF0091602B753008FE47F /* FlightSchoolMission11.jpg */,
+				745BF00A1602B753008FE47F /* FlightSchoolMission11@2x.jpg */,
+				745BF00B1602B753008FE47F /* FlightSchoolMission12.jpg */,
+				745BF00C1602B753008FE47F /* FlightSchoolMission12@2x.jpg */,
+				745BF00D1602B753008FE47F /* FlightSchoolMission13.jpg */,
+				745BF00E1602B753008FE47F /* FlightSchoolMission13@2x.jpg */,
+				745BF00F1602B753008FE47F /* FlightSchoolMission14.jpg */,
+				745BF0101602B753008FE47F /* FlightSchoolMission14@2x.jpg */,
+				745BF0111602B753008FE47F /* FlightSchoolMission15.jpg */,
+				745BF0121602B753008FE47F /* FlightSchoolMission15@2x.jpg */,
+				745BF0131602B753008FE47F /* fps_images.png */,
+				745BF0191602B753008FE47F /* Icon-Small-50.png */,
+				745BF01A1602B753008FE47F /* Icon-Small-50@2x.png */,
+				745BF01B1602B753008FE47F /* Icon-Small.png */,
+				745BF01C1602B753008FE47F /* Icon-Small@2x.png */,
+				745BF01F1602B753008FE47F /* iTunesArtwork */,
+				745BF0201602B753008FE47F /* loading_image.jpg */,
+				745BF0211602B753008FE47F /* loading_image@2x.jpg */,
+				745BF0221602B753008FE47F /* space-hd.png */,
+				745BF0231602B753008FE47F /* space.png */,
+				745BF0241602B753008FE47F /* stars-hd.jpg */,
+				745BF0251602B753008FE47F /* stars.jpg */,
+				745BF0261602B753008FE47F /* stars@2x.jpg */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		74B6DF7E1602C27100345759 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				74B6DF7F1602C27100345759 /* Classes */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		74B6DF7F1602C27100345759 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				74B6DF801602C27100345759 /* NSObject+SBJson.h */,
+				74B6DF811602C27100345759 /* NSObject+SBJson.m */,
+				74B6DF821602C27100345759 /* SBJson.h */,
+				74B6DF831602C27100345759 /* SBJsonParser.h */,
+				74B6DF841602C27100345759 /* SBJsonParser.m */,
+				74B6DF851602C27100345759 /* SBJsonStreamParser.h */,
+				74B6DF861602C27100345759 /* SBJsonStreamParser.m */,
+				74B6DF871602C27100345759 /* SBJsonStreamParserAccumulator.h */,
+				74B6DF881602C27100345759 /* SBJsonStreamParserAccumulator.m */,
+				74B6DF891602C27100345759 /* SBJsonStreamParserAdapter.h */,
+				74B6DF8A1602C27100345759 /* SBJsonStreamParserAdapter.m */,
+				74B6DF8B1602C27100345759 /* SBJsonStreamParserState.h */,
+				74B6DF8C1602C27100345759 /* SBJsonStreamParserState.m */,
+				74B6DF8D1602C27100345759 /* SBJsonStreamWriter.h */,
+				74B6DF8E1602C27100345759 /* SBJsonStreamWriter.m */,
+				74B6DF8F1602C27100345759 /* SBJsonStreamWriterAccumulator.h */,
+				74B6DF901602C27100345759 /* SBJsonStreamWriterAccumulator.m */,
+				74B6DF911602C27100345759 /* SBJsonStreamWriterState.h */,
+				74B6DF921602C27100345759 /* SBJsonStreamWriterState.m */,
+				74B6DF931602C27100345759 /* SBJsonTokeniser.h */,
+				74B6DF941602C27100345759 /* SBJsonTokeniser.m */,
+				74B6DF951602C27100345759 /* SBJsonUTF8Stream.h */,
+				74B6DF961602C27100345759 /* SBJsonUTF8Stream.m */,
+				74B6DF971602C27100345759 /* SBJsonWriter.h */,
+				74B6DF981602C27100345759 /* SBJsonWriter.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		74DB11E51603DF0800C934F0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				74DB11EA1603DF0900C934F0 /* libSparrow.a */,
+				74DB11EC1603DF0900C934F0 /* UnitTest.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		74FFF6FC1603B1520055BEB2 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				74DB11FB1603E94900C934F0 /* TouchSheet.h */,
+				74DB11FC1603E94900C934F0 /* TouchSheet.m */,
+				74FFF7221603DDB60055BEB2 /* Media.h */,
+				74FFF7231603DDB60055BEB2 /* Media.m */,
+				74FFF7241603DDCD0055BEB2 /* SPOverlayView.h */,
+				74FFF7251603DDCD0055BEB2 /* SPOverlayView.m */,
+				74FFF7201603DD430055BEB2 /* SPResizeEvent.h */,
+				74FFF7211603DD430055BEB2 /* SPResizeEvent.m */,
+				74FFF71A1603DBFA0055BEB2 /* GameController.h */,
+				74FFF71B1603DBFA0055BEB2 /* GameController.m */,
+				74FFF71C1603DBFA0055BEB2 /* Game.h */,
+				74FFF71D1603DBFA0055BEB2 /* Game.m */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		745BEF0A1602B128008FE47F /* Orbital Mechanics */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 745BEF321602B129008FE47F /* Build configuration list for PBXNativeTarget "Orbital Mechanics" */;
+			buildPhases = (
+				745BEF071602B128008FE47F /* Sources */,
+				745BEF081602B128008FE47F /* Frameworks */,
+				745BEF091602B128008FE47F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Orbital Mechanics";
+			productName = "Orbital Mechanics";
+			productReference = 745BEF0B1602B128008FE47F /* Orbital Mechanics.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		745BEF021602B128008FE47F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Michael Stratford";
+			};
+			buildConfigurationList = 745BEF051602B128008FE47F /* Build configuration list for PBXProject "Orbital Mechanics" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 745BEF001602B128008FE47F;
+			productRefGroup = 745BEF0C1602B128008FE47F /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 74DB11E51603DF0800C934F0 /* Products */;
+					ProjectRef = 74FFF6CE16039E140055BEB2 /* Sparrow.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				745BEF0A1602B128008FE47F /* Orbital Mechanics */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		74DB11EA1603DF0900C934F0 /* libSparrow.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSparrow.a;
+			remoteRef = 74DB11E91603DF0900C934F0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		74DB11EC1603DF0900C934F0 /* UnitTest.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = UnitTest.octest;
+			remoteRef = 74DB11EB1603DF0900C934F0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		745BEF091602B128008FE47F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				745BEF1A1602B128008FE47F /* InfoPlist.strings in Resources */,
+				745BEF391602B1B5008FE47F /* MainMenuViewController.xib in Resources */,
+				745BEF3B1602B1C7008FE47F /* MainMenuViewController~ipad.xib in Resources */,
+				745BEF431602B235008FE47F /* EditMissionViewController.xib in Resources */,
+				745BEF701602B248008FE47F /* FlightSchoolCell.xib in Resources */,
+				745BEF721602B248008FE47F /* FlightSchoolViewController.xib in Resources */,
+				745BEF851602B257008FE47F /* ManualViewController.xib in Resources */,
+				745BEF891602B257008FE47F /* OnlineMissionCell.xib in Resources */,
+				745BEF8B1602B257008FE47F /* OnlineMissionsViewController.xib in Resources */,
+				745BEFB31602B266008FE47F /* PlayFlightSchoolMissionViewController.xib in Resources */,
+				745BEFB61602B266008FE47F /* PlayMissionViewController.xib in Resources */,
+				745BEFBA1602B266008FE47F /* ViewFlightSchoolMissionViewController.xib in Resources */,
+				745BEFBD1602B266008FE47F /* ViewMissionSolutionViewController.xib in Resources */,
+				745BEFBF1602B266008FE47F /* ViewOnlineMissionCell.xib in Resources */,
+				745BEFC11602B266008FE47F /* ViewOnlineMissionViewController.xib in Resources */,
+				745BEFC31602B266008FE47F /* YourMissionCell.xib in Resources */,
+				745BEFC51602B266008FE47F /* YourMissionsViewController.xib in Resources */,
+				745BEFD81602B39C008FE47F /* EditMissionViewController~ipad.xib in Resources */,
+				745BEFD91602B39C008FE47F /* FlightSchoolCell~ipad.xib in Resources */,
+				745BEFDA1602B39C008FE47F /* FlightSchoolViewController~ipad.xib in Resources */,
+				745BEFDB1602B39C008FE47F /* ManualViewController~ipad.xib in Resources */,
+				745BEFDC1602B39C008FE47F /* OnlineMissionCell~ipad.xib in Resources */,
+				745BEFDD1602B39C008FE47F /* OnlineMissionsViewController~ipad.xib in Resources */,
+				745BEFDE1602B39C008FE47F /* PlayFlightSchoolMissionViewController~ipad.xib in Resources */,
+				745BEFDF1602B39C008FE47F /* PlayMissionViewController~ipad.xib in Resources */,
+				745BEFE01602B39C008FE47F /* ViewFlightSchoolMissionViewController~ipad.xib in Resources */,
+				745BEFE11602B39C008FE47F /* ViewMissionSolutionViewController~ipad.xib in Resources */,
+				745BEFE21602B39C008FE47F /* ViewOnlineMissionCell~ipad.xib in Resources */,
+				745BEFE31602B39C008FE47F /* ViewOnlineMissionViewController~ipad.xib in Resources */,
+				745BEFE41602B39C008FE47F /* YourMissionCell~ipad.xib in Resources */,
+				745BEFE51602B39C008FE47F /* YourMissionsViewController~ipad.xib in Resources */,
+				745BF0281602B753008FE47F /* fire.png in Resources */,
+				745BF0291602B753008FE47F /* FlightSchool.plist in Resources */,
+				745BF02A1602B753008FE47F /* FlightSchoolMission0.jpg in Resources */,
+				745BF02B1602B753008FE47F /* FlightSchoolMission0@2x.jpg in Resources */,
+				745BF02C1602B753008FE47F /* FlightSchoolMission1.jpg in Resources */,
+				745BF02D1602B753008FE47F /* FlightSchoolMission1@2x.jpg in Resources */,
+				745BF02E1602B753008FE47F /* FlightSchoolMission2.jpg in Resources */,
+				745BF02F1602B753008FE47F /* FlightSchoolMission2@2x.jpg in Resources */,
+				745BF0301602B753008FE47F /* FlightSchoolMission3.jpg in Resources */,
+				745BF0311602B753008FE47F /* FlightSchoolMission3@2x.jpg in Resources */,
+				745BF0321602B753008FE47F /* FlightSchoolMission4.jpg in Resources */,
+				745BF0331602B753008FE47F /* FlightSchoolMission4@2x.jpg in Resources */,
+				745BF0341602B753008FE47F /* FlightSchoolMission5.jpg in Resources */,
+				745BF0351602B753008FE47F /* FlightSchoolMission5@2x.jpg in Resources */,
+				745BF0361602B753008FE47F /* FlightSchoolMission6.jpg in Resources */,
+				745BF0371602B753008FE47F /* FlightSchoolMission6@2x.jpg in Resources */,
+				745BF0381602B753008FE47F /* FlightSchoolMission7.jpg in Resources */,
+				745BF0391602B753008FE47F /* FlightSchoolMission7@2x.jpg in Resources */,
+				745BF03A1602B753008FE47F /* FlightSchoolMission8.jpg in Resources */,
+				745BF03B1602B753008FE47F /* FlightSchoolMission8@2x.jpg in Resources */,
+				745BF03C1602B753008FE47F /* FlightSchoolMission9.jpg in Resources */,
+				745BF03D1602B753008FE47F /* FlightSchoolMission9@2x.jpg in Resources */,
+				745BF03E1602B753008FE47F /* FlightSchoolMission10.jpg in Resources */,
+				745BF03F1602B753008FE47F /* FlightSchoolMission10@2x.jpg in Resources */,
+				745BF0401602B753008FE47F /* FlightSchoolMission11.jpg in Resources */,
+				745BF0411602B753008FE47F /* FlightSchoolMission11@2x.jpg in Resources */,
+				745BF0421602B753008FE47F /* FlightSchoolMission12.jpg in Resources */,
+				745BF0431602B753008FE47F /* FlightSchoolMission12@2x.jpg in Resources */,
+				745BF0441602B753008FE47F /* FlightSchoolMission13.jpg in Resources */,
+				745BF0451602B753008FE47F /* FlightSchoolMission13@2x.jpg in Resources */,
+				745BF0461602B753008FE47F /* FlightSchoolMission14.jpg in Resources */,
+				745BF0471602B753008FE47F /* FlightSchoolMission14@2x.jpg in Resources */,
+				745BF0481602B753008FE47F /* FlightSchoolMission15.jpg in Resources */,
+				745BF0491602B753008FE47F /* FlightSchoolMission15@2x.jpg in Resources */,
+				745BF04A1602B753008FE47F /* fps_images.png in Resources */,
+				745BF0501602B753008FE47F /* Icon-Small-50.png in Resources */,
+				745BF0511602B753008FE47F /* Icon-Small-50@2x.png in Resources */,
+				745BF0521602B753008FE47F /* Icon-Small.png in Resources */,
+				745BF0531602B753008FE47F /* Icon-Small@2x.png in Resources */,
+				745BF0561602B753008FE47F /* iTunesArtwork in Resources */,
+				745BF0571602B753008FE47F /* loading_image.jpg in Resources */,
+				745BF0581602B753008FE47F /* loading_image@2x.jpg in Resources */,
+				745BF0591602B753008FE47F /* space-hd.png in Resources */,
+				745BF05A1602B753008FE47F /* space.png in Resources */,
+				745BF05B1602B753008FE47F /* stars-hd.jpg in Resources */,
+				745BF05C1602B753008FE47F /* stars.jpg in Resources */,
+				745BF05D1602B753008FE47F /* stars@2x.jpg in Resources */,
+				74EE6ED21602FE020048C198 /* Icon.png in Resources */,
+				74EE6ED41602FE0D0048C198 /* Icon@2x.png in Resources */,
+				74EE6ED61602FE170048C198 /* Default.png in Resources */,
+				74EE6ED81602FE240048C198 /* Default@2x.png in Resources */,
+				74EE6EDA1602FE2D0048C198 /* Default-568h@2x.png in Resources */,
+				74EE6EDC1602FE390048C198 /* Icon-72.png in Resources */,
+				74EE6EDE1602FE490048C198 /* Icon-72@2x.png in Resources */,
+				74EE6EE01602FE630048C198 /* Default-Portrait~ipad.png in Resources */,
+				74EE6EE21602FE6E0048C198 /* Default-Portrait@2x~ipad.png in Resources */,
+				74EE6EE41602FE800048C198 /* Default-Landscape~ipad.png in Resources */,
+				74EE6EE61602FE930048C198 /* Default-Landscape@2x~ipad.png in Resources */,
+				74543ADA1607CA33004CDE7A /* sparrow_sheet@2x.png in Resources */,
+				74543ADF1607CA43004CDE7A /* sparrow_sheet.png in Resources */,
+				743A7B041607CFE100042307 /* atlas.pvr.gz in Resources */,
+				743A7B051607CFE100042307 /* atlas.xml in Resources */,
+				743A7B061607CFE100042307 /* atlas@2x.pvr.gz in Resources */,
+				743A7B071607CFE100042307 /* atlas@2x.xml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		745BEF071602B128008FE47F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74DB11FD1603E95400C934F0 /* TouchSheet.m in Sources */,
+				74FFF7261603DE430055BEB2 /* Media.m in Sources */,
+				74FFF7271603DE430055BEB2 /* SPOverlayView.m in Sources */,
+				74FFF7281603DE430055BEB2 /* SPResizeEvent.m in Sources */,
+				74FFF71E1603DC7C0055BEB2 /* GameController.m in Sources */,
+				74FFF71F1603DC7C0055BEB2 /* Game.m in Sources */,
+				745BEF1C1602B128008FE47F /* main.m in Sources */,
+				745BEF201602B128008FE47F /* AppDelegate.m in Sources */,
+				745BEF381602B1B5008FE47F /* MainMenuViewController.m in Sources */,
+				745BEF421602B235008FE47F /* EditMissionViewController.m in Sources */,
+				745BEF551602B23E008FE47F /* AsyncImageView.m in Sources */,
+				745BEF6E1602B248008FE47F /* EPUploader.m in Sources */,
+				745BEF6F1602B248008FE47F /* FlightSchoolCell.m in Sources */,
+				745BEF711602B248008FE47F /* FlightSchoolViewController.m in Sources */,
+				745BEF731602B248008FE47F /* GGVecLib.c in Sources */,
+				745BEF751602B248008FE47F /* IconDownloader.m in Sources */,
+				745BEF761602B248008FE47F /* LGViewHUD.m in Sources */,
+				745BEF861602B257008FE47F /* MoveArray.m in Sources */,
+				745BEF871602B257008FE47F /* NSString+MD5Addition.m in Sources */,
+				745BEF881602B257008FE47F /* OnlineMissionCell.m in Sources */,
+				745BEF8A1602B257008FE47F /* OnlineMissionsViewController.m in Sources */,
+				745BEFB21602B266008FE47F /* PlayFlightSchoolMissionViewController.m in Sources */,
+				745BEFB51602B266008FE47F /* PlayMissionViewController.m in Sources */,
+				745BEFB81602B266008FE47F /* UIDevice+IdentifierAddition.m in Sources */,
+				745BEFB91602B266008FE47F /* ViewFlightSchoolMissionViewController.m in Sources */,
+				745BEFBC1602B266008FE47F /* ViewMissionSolutionViewController.m in Sources */,
+				745BEFBE1602B266008FE47F /* ViewOnlineMissionCell.m in Sources */,
+				745BEFC01602B266008FE47F /* ViewOnlineMissionViewController.m in Sources */,
+				745BEFC21602B266008FE47F /* YourMissionCell.m in Sources */,
+				745BEFC41602B266008FE47F /* YourMissionsViewController.m in Sources */,
+				74B6DF991602C27100345759 /* NSObject+SBJson.m in Sources */,
+				74B6DF9A1602C27100345759 /* SBJsonParser.m in Sources */,
+				74B6DF9B1602C27100345759 /* SBJsonStreamParser.m in Sources */,
+				74B6DF9C1602C27100345759 /* SBJsonStreamParserAccumulator.m in Sources */,
+				74B6DF9D1602C27100345759 /* SBJsonStreamParserAdapter.m in Sources */,
+				74B6DF9E1602C27100345759 /* SBJsonStreamParserState.m in Sources */,
+				74B6DF9F1602C27100345759 /* SBJsonStreamWriter.m in Sources */,
+				74B6DFA01602C27100345759 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				74B6DFA11602C27100345759 /* SBJsonStreamWriterState.m in Sources */,
+				74B6DFA21602C27100345759 /* SBJsonTokeniser.m in Sources */,
+				74B6DFA31602C27100345759 /* SBJsonUTF8Stream.m in Sources */,
+				74B6DFA41602C27100345759 /* SBJsonWriter.m in Sources */,
+				74B6DFA81602C81500345759 /* Reachability.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		745BEF181602B128008FE47F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				745BEF191602B128008FE47F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		745BEF301602B129008FE47F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "${SPARROW_SRC}/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		745BEF311602B129008FE47F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "${SPARROW_SRC}/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		745BEF331602B129008FE47F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Orbital Mechanics/Orbital Mechanics-Prefix.pch";
+				HEADER_SEARCH_PATHS = "${SPARROW_SRC}/**";
+				INFOPLIST_FILE = "Orbital Mechanics/Orbital Mechanics-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		745BEF341602B129008FE47F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Orbital Mechanics/Orbital Mechanics-Prefix.pch";
+				HEADER_SEARCH_PATHS = "${SPARROW_SRC}/**";
+				INFOPLIST_FILE = "Orbital Mechanics/Orbital Mechanics-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		745BEF051602B128008FE47F /* Build configuration list for PBXProject "Orbital Mechanics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				745BEF301602B129008FE47F /* Debug */,
+				745BEF311602B129008FE47F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		745BEF321602B129008FE47F /* Build configuration list for PBXNativeTarget "Orbital Mechanics" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				745BEF331602B129008FE47F /* Debug */,
+				745BEF341602B129008FE47F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 745BEF021602B128008FE47F /* Project object */;
+}
