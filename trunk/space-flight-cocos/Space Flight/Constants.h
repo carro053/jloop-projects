@@ -1,0 +1,16 @@
+#define minSpeed 125.0
+#define gConstant 2700.0
+#define fuelPower 15.00
+#define saveThreshold 15
+#define moon_density 0.020
+#define minFuel 0.0
+#define maxFuel 400.0
+#define shipMass 1.0
+#define MAXPOINTS	10000
+#define point_threshold 40
+#define gDistanceConstant 0.85
+#define abyssDistance 1300
+#define maxRadius 70.0
+#define minRadius 35.0
+#define maxDensity 0.012
+#define minDensity 0.003
