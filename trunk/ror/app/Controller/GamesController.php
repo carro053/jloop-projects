@@ -314,14 +314,33 @@ class GamesController extends AppController {
 		print_r($response);
 		exit;
 	}
-	
 	public function import_to_host($snapshot_id)
+	{
+		$host_id = $this->data['Game']['host_id'];
+		App::import('Vendor', 'RestRequest', array('file' => 'RestRequest.inc.php'));
+		$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getGameSerieList?appId='.$host_id.'&count=1000&offset=0', 'GET');
+		$request->execute();
+		$response = $request->getResponseBody();
+		print_r($response);
+		exit;
+		$response = simplexml_load_string($response);
+		$hosts = array();
+		foreach($response->list as $ahost):
+			$hosts[intval($ahost->id)] = strval($ahost->name);
+		endforeach;
+		$this->set('series',$series);
+		$this->set('host_id',$host_id);
+		$this->set('snapshot_id',$snapshot_id);
+		
+	}
+	
+	public function import_to_host_with_series($snapshot_id)
 	{
 		set_time_limit(0);
 		App::import('Vendor', 'RestRequest', array('file' => 'RestRequest.inc.php'));
 		
 		$host_id = $this->data['Game']['host_id'];
-		
+		$series_id = $this->data['Game']['series_id'];
 		$snapshot = $this->GameSnapshot->findById($snapshot_id);
 		$this->Question->bindModel(array(
 			'hasMany'=>array(
