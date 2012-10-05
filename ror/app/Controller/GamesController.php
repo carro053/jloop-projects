@@ -290,18 +290,8 @@ class GamesController extends AppController {
 		$this->set('game',$this->Game->find('first',array('conditions'=>'Game.id = '.$game_id,'recursive'=>2)));
 	}
 	
-	public function import($snapshot_id)
+	public function select_environment($snapshot_id)
 	{
-		App::import('Vendor', 'RestRequest', array('file' => 'RestRequest.inc.php'));
-		$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/app/getList?count=1000&offset=0', 'GET');
-		$request->execute();
-		$response = $request->getResponseBody();
-		$response = simplexml_load_string($response);
-		$hosts = array();
-		foreach($response->list as $ahost):
-			$hosts[intval($ahost->id)] = strval($ahost->name);
-		endforeach;
-		$this->set('hosts',$hosts);
 		$this->set('snapshot_id',$snapshot_id);
 	}
 	public function mike()
@@ -314,11 +304,45 @@ class GamesController extends AppController {
 		print_r($response);
 		exit;
 	}
-	public function import_to_host($snapshot_id)
+	public function import($snapshot_id)
 	{
+		$environment = $this->data['Game']['environment'];
+		if($environment == 'live')
+		{
+			$host = 'ringorangservice.com';
+		}elseif($environment == 'staging')
+		{
+			$host = '50.56.194.198';
+		}else{
+			$host = '50.56.194.198';
+		}
+		App::import('Vendor', 'RestRequest', array('file' => 'RestRequest.inc.php'));
+		$request = new RestRequest('http://admin:MyAdminPass87@'.$host.':8282/RingorangWebService/rservice/app/getList?count=1000&offset=0', 'GET');
+		$request->execute();
+		$response = $request->getResponseBody();
+		$response = simplexml_load_string($response);
+		$hosts = array();
+		foreach($response->list as $ahost):
+			$hosts[intval($ahost->id)] = strval($ahost->name);
+		endforeach;
+		$this->set('hosts',$hosts);
+		$this->set('environment',$environment);
+		$this->set('snapshot_id',$snapshot_id);
+	}
+	public function import_to_host($snapshot_id,$environment)
+	{
+		if($environment == 'live')
+		{
+			$host = 'ringorangservice.com';
+		}elseif($environment == 'staging')
+		{
+			$host = '50.56.194.198';
+		}else{
+			$host = '50.56.194.198';
+		}
 		$host_id = $this->data['Game']['host_id'];
 		App::import('Vendor', 'RestRequest', array('file' => 'RestRequest.inc.php'));
-		$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getGameSerieList?appId='.$host_id.'&count=1000&offset=0', 'GET');
+		$request = new RestRequest('http://admin:MyAdminPass87@'.$host.':8282/RingorangWebService/rservice/game/getGameSerieList?appId='.$host_id.'&count=1000&offset=0', 'GET');
 		$request->execute();
 		$response = $request->getResponseBody();
 		$response = simplexml_load_string($response);
@@ -328,15 +352,24 @@ class GamesController extends AppController {
 		endforeach;
 		$this->set('series',$series);
 		$this->set('host_id',$host_id);
+		$this->set('environment',$environment);
 		$this->set('snapshot_id',$snapshot_id);
 		
 	}
 	
-	public function import_to_host_with_series($snapshot_id,$host_id)
+	public function import_to_host_with_series($snapshot_id,$environment,$host_id)
 	{
+		if($environment == 'live')
+		{
+			$host = 'ringorangservice.com';
+		}elseif($environment == 'staging')
+		{
+			$host = '50.56.194.198';
+		}else{
+			$host = '50.56.194.198';
+		}
 		set_time_limit(0);
 		App::import('Vendor', 'RestRequest', array('file' => 'RestRequest.inc.php'));
-		
 		$series_id = $this->data['Game']['series_id'];
 		$snapshot = $this->GameSnapshot->findById($snapshot_id);
 		$this->Question->bindModel(array(
@@ -392,7 +425,7 @@ class GamesController extends AppController {
 	<state>Draft</state>
 </gameExtended>';
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/game/create");
+		curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/game/create");
 		curl_setopt($ch, CURLOPT_PORT, 8282);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/xml", "Content-Length: ".strlen($gameXML)));
 		curl_setopt($ch, CURLOPT_VERBOSE, true);
@@ -507,7 +540,7 @@ class GamesController extends AppController {
 	</question>';
 	
 				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/game/createQuestion");
+				curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/game/createQuestion");
 				curl_setopt($ch, CURLOPT_PORT, 8282);
 				curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/xml", "Content-Length: ".strlen($xml)));
 				curl_setopt($ch, CURLOPT_VERBOSE, true);
@@ -520,7 +553,7 @@ class GamesController extends AppController {
 				$result = simplexml_load_string($result);
 				if($result->l > 0)
 				{
-					$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getQuestionDetails/'.$result->l, 'GET');
+					$request = new RestRequest('http://admin:MyAdminPass87@'.$host.':8282/RingorangWebService/rservice/game/getQuestionDetails/'.$result->l, 'GET');
 					$request->execute();
 					$response = $request->getResponseBody();
 					$response = simplexml_load_string($response);
@@ -534,7 +567,7 @@ class GamesController extends AppController {
 					if(isset($data['answer1Image']))
 					{
 						$ch = curl_init();
-						curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer1ImageId);
+						curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/custom/updateCustomPicture/".$answer1ImageId);
 						curl_setopt($ch, CURLOPT_PORT, 8282);
 						curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer1Image']))));
 						curl_setopt($ch, CURLOPT_VERBOSE, true);
@@ -548,7 +581,7 @@ class GamesController extends AppController {
 					if(isset($data['answer2Image']))
 					{
 						$ch = curl_init();
-						curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer2ImageId);
+						curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/custom/updateCustomPicture/".$answer2ImageId);
 						curl_setopt($ch, CURLOPT_PORT, 8282);
 						curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer2Image']))));
 						curl_setopt($ch, CURLOPT_VERBOSE, true);
@@ -563,7 +596,7 @@ class GamesController extends AppController {
 					if(isset($data['answer3Image']))
 					{
 						$ch = curl_init();
-						curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer3ImageId);
+						curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/custom/updateCustomPicture/".$answer3ImageId);
 						curl_setopt($ch, CURLOPT_PORT, 8282);
 						curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer3Image']))));
 						curl_setopt($ch, CURLOPT_VERBOSE, true);
@@ -577,7 +610,7 @@ class GamesController extends AppController {
 					if(isset($data['answer4Image']))
 					{
 						$ch = curl_init();
-						curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$answer4ImageId);
+						curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/custom/updateCustomPicture/".$answer4ImageId);
 						curl_setopt($ch, CURLOPT_PORT, 8282);
 						curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['answer4Image']))));
 						curl_setopt($ch, CURLOPT_VERBOSE, true);
@@ -591,7 +624,7 @@ class GamesController extends AppController {
 					if(isset($data['clueImage']))
 					{
 						$ch = curl_init();
-						curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$clueImageId);
+						curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/custom/updateCustomPicture/".$clueImageId);
 						curl_setopt($ch, CURLOPT_PORT, 8282);
 						curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['clueImage']))));
 						curl_setopt($ch, CURLOPT_VERBOSE, true);
@@ -605,7 +638,7 @@ class GamesController extends AppController {
 					if(isset($data['questionImage']))
 					{
 						$ch = curl_init();
-						curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$questionImageId);
+						curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/custom/updateCustomPicture/".$questionImageId);
 						curl_setopt($ch, CURLOPT_PORT, 8282);
 						curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['questionImage']))));
 						curl_setopt($ch, CURLOPT_VERBOSE, true);
@@ -619,7 +652,7 @@ class GamesController extends AppController {
 					if(isset($data['insightImage']))
 					{
 						$ch = curl_init();
-						curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/custom/updateCustomPicture/".$insightImageId);
+						curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/custom/updateCustomPicture/".$insightImageId);
 						curl_setopt($ch, CURLOPT_PORT, 8282);
 						curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents($data['insightImage']))));
 						curl_setopt($ch, CURLOPT_VERBOSE, true);
@@ -632,7 +665,7 @@ class GamesController extends AppController {
 				}
 			}
 		endforeach;
-		echo 'Success!<br /><a href="http://50.56.194.198:8383/RingorangAdminPanel-0.1/question/unapprovedList?currentGameId='.$game_id.'">Link to Questions</a>';
+		echo 'Success!<br /><a href="http://'.$host.':8383/RingorangAdminPanel-0.1/question/unapprovedList?currentGameId='.$game_id.'">Link to Questions</a>';
 		exit;
 	}
 	
