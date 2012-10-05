@@ -321,12 +321,16 @@ class GamesController extends AppController {
 		$request->execute();
 		$response = $request->getResponseBody();
 		$response = simplexml_load_string($response);
-		print_r($response);
-		exit;
 		$hosts = array();
-		foreach($response->list as $ahost):
-			$hosts[intval($ahost->id)] = strval($ahost->name);
-		endforeach;
+		if(isset($response->list->name))
+		{
+			$hosts[intval($response->list->id)] = strval($response->list->name);
+		}else if(count($response->list) > 0)
+		{
+			foreach($response->list as $ahost):
+				$hosts[intval($ahost->id)] = strval($ahost->name);
+			endforeach;
+		}
 		$this->set('hosts',$hosts);
 		$this->set('environment',$environment);
 		$this->set('snapshot_id',$snapshot_id);
