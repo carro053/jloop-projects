@@ -320,9 +320,9 @@ class GamesController extends AppController {
 		$request = new RestRequest('http://admin:MyAdminPass87@'.$host.':8282/RingorangWebService/rservice/app/getList?count=1000&offset=0', 'GET');
 		$request->execute();
 		$response = $request->getResponseBody();
+		$response = simplexml_load_string($response);
 		print_r($response);
 		exit;
-		$response = simplexml_load_string($response);
 		$hosts = array();
 		foreach($response->list as $ahost):
 			$hosts[intval($ahost->id)] = strval($ahost->name);
