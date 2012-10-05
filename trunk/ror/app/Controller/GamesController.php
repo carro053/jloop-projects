@@ -324,7 +324,6 @@ class GamesController extends AppController {
 		$hosts = array();
 		if(intval($response->count) == 1)
 		{
-			pr($response);
 			$hosts[intval($response->list->id)] = strval($response->list->name);
 		}else if(intval($response->count) > 1)
 		{
@@ -354,9 +353,15 @@ class GamesController extends AppController {
 		$response = $request->getResponseBody();
 		$response = simplexml_load_string($response);
 		$series = array(0=>'Do not add to a series');
-		foreach($response->list as $ahost):
-			$series[intval($ahost->id)] = strval($ahost->name);
-		endforeach;
+		if(intval($response->count) == 1)
+		{
+			$series[intval($response->list->id)] = strval($response->list->name);
+		}else if(intval($response->count) > 1)
+		{
+			foreach($response->list as $ahost):
+				$series[intval($ahost->id)] = strval($ahost->name);
+			endforeach;
+		}
 		$this->set('series',$series);
 		$this->set('host_id',$host_id);
 		$this->set('environment',$environment);
