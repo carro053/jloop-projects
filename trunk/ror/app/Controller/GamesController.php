@@ -322,7 +322,7 @@ class GamesController extends AppController {
 		$response = $request->getResponseBody();
 		$response = simplexml_load_string($response);
 		$hosts = array();
-		if(isset($response->list->name))
+		if(!is_array($response->list) && strval($response->list->name) != '')
 		{
 			$hosts[intval($response->list->id)] = strval($response->list->name);
 		}else if(count($response->list) > 0)
