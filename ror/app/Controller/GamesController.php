@@ -392,7 +392,8 @@ class GamesController extends AppController {
 	<questionTimer>30</questionTimer>
 	<state>Draft</state>
 </gameExtended>';
-
+	echo $gameXML;
+	exit;
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "http://50.56.194.198/RingorangWebService/rservice/game/create");
 		curl_setopt($ch, CURLOPT_PORT, 8282);
