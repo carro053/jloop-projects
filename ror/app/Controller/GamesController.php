@@ -362,7 +362,15 @@ class GamesController extends AppController {
 		));
 		$game = $this->Game->find('first',array('conditions'=>'Game.id = '.$snapshot['GameSnapshot']['game_id'],'recursive'=>2));
 		$gameXML = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<gameExtended>
+<gameExtended>';
+	if($series_id > 0)
+	{
+		$gameXML .= '
+	<gameSerie>
+		<id>'.$series_id.'</id>
+	</gameSerie>';
+	}
+	$gameXML .= '
 	<application>
 		<id>'.$host_id.'</id>
 	</application>
