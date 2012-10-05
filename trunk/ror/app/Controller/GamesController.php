@@ -322,9 +322,9 @@ class GamesController extends AppController {
 		$request->execute();
 		$response = $request->getResponseBody();
 		$response = simplexml_load_string($response);
-		$hosts = array();
+		$series = array(0=>'Do not add to a series');
 		foreach($response->list as $ahost):
-			$hosts[intval($ahost->id)] = strval($ahost->name);
+			$series[intval($ahost->id)] = strval($ahost->name);
 		endforeach;
 		$this->set('series',$series);
 		$this->set('host_id',$host_id);
