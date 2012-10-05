@@ -324,6 +324,7 @@ class GamesController extends AppController {
 		$hosts = array();
 		if(!is_array($response->list) && strval($response->list->name) != '')
 		{
+			pr($response);
 			$hosts[intval($response->list->id)] = strval($response->list->name);
 		}else if(count($response->list) > 0)
 		{
