@@ -332,12 +332,11 @@ class GamesController extends AppController {
 		
 	}
 	
-	public function import_to_host_with_series($snapshot_id)
+	public function import_to_host_with_series($snapshot_id,$host_id)
 	{
 		set_time_limit(0);
 		App::import('Vendor', 'RestRequest', array('file' => 'RestRequest.inc.php'));
 		
-		$host_id = $this->data['Game']['host_id'];
 		$series_id = $this->data['Game']['series_id'];
 		$snapshot = $this->GameSnapshot->findById($snapshot_id);
 		$this->Question->bindModel(array(
