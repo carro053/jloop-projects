@@ -170,6 +170,7 @@
 		7469782614F5D23800B3910F /* checkbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7469782114F5D23800B3910F /* checkbox@2x.png */; };
 		7469782714F5D23800B3910F /* checkmark-open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7469782214F5D23800B3910F /* checkmark-open@2x.png */; };
 		7469782814F5D23800B3910F /* close_btn_over@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7469782314F5D23800B3910F /* close_btn_over@2x.png */; };
+		74B322A216092976004217E3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B322A116092976004217E3 /* Default-568h@2x.png */; };
 		74C2FCD11506F23D007DD607 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C2FCCD1506F23D007DD607 /* libTestFlight.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		74C2FCD21506F23D007DD607 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 74C2FCCE1506F23D007DD607 /* README.txt */; };
 		74C2FCD31506F23D007DD607 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 74C2FCCF1506F23D007DD607 /* release_notes.txt */; };
@@ -374,6 +375,7 @@
 		7469782114F5D23800B3910F /* checkbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox@2x.png"; sourceTree = "<group>"; };
 		7469782214F5D23800B3910F /* checkmark-open@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark-open@2x.png"; sourceTree = "<group>"; };
 		7469782314F5D23800B3910F /* close_btn_over@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_btn_over@2x.png"; sourceTree = "<group>"; };
+		74B322A116092976004217E3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		74C2FCCD1506F23D007DD607 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		74C2FCCE1506F23D007DD607 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		74C2FCCF1506F23D007DD607 /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.txt; sourceTree = "<group>"; };
@@ -559,6 +561,7 @@
 		695569D110B1F7C800A2B659 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				74B322A116092976004217E3 /* Default-568h@2x.png */,
 				7441553A15082DC20032E949 /* Icon-72.png */,
 				7441553B15082DC20032E949 /* Icon-Small-50.png */,
 				7441553C15082DC20032E949 /* Icon-Small.png */,
@@ -874,6 +877,7 @@
 				7441553F15082DC20032E949 /* Icon-Small-50.png in Resources */,
 				7441554015082DC20032E949 /* Icon-Small.png in Resources */,
 				7441554115082DC20032E949 /* Icon-Small@2x.png in Resources */,
+				74B322A216092976004217E3 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
