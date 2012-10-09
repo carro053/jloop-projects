@@ -284,7 +284,7 @@ class QuestionsController extends AppController {
 			$this->Question->create();
 			if($this->Question->save($question))
 			{
-				echo 'Question: ID: '.$this->Question-id;
+				echo 'Question:'.$question_id.' ID: '.$this->Question->id;
 				if(file_exists(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-O.png'))
 				{
 					if(move_uploaded_file(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-O.png', WWW_ROOT.'img'.DS.'clues'.DS.$this->Question->id.'-O.png'))
@@ -320,14 +320,18 @@ class QuestionsController extends AppController {
 				
 				if(file_exists(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-O.png'))
 				{
+					echo 'test1';
 					if(move_uploaded_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-1-O.png'))
 					{
+					echo 'test2';
 						$this->generateClueInsightImage(WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-1-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-1.png');
 					}
 				}elseif(file_exists(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1.png'))
 				{
+					echo 'test3';
 					move_uploaded_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-1.png');
 				}
+				echo WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1.png';
 				
 				
 				if(file_exists(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-O.png'))
