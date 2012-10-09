@@ -21,7 +21,7 @@
 				?>
 			</th>
 			<th style="text-align:center;">Version</th>
-			<th width="300px">&nbsp;</th>
+			<th width="350px">&nbsp;</th>
 		</tr>
 	</thead>
 	<tbody>
