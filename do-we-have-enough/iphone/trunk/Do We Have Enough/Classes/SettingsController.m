@@ -197,6 +197,14 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+    
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenHeight = screenSize.height;
+    if(screenHeight == 568.0)
+    {
+        scroller.frame = CGRectMake(scroller.frame.origin.x,scroller.frame.origin.y, 320.0, 548.0);
+    }
 	//[self setStage];
     [TestFlight passCheckpoint:@"SETTINGS VIEW"];
     [super viewDidLoad];

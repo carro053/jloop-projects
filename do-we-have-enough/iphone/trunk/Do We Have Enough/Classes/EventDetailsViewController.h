@@ -35,6 +35,7 @@ enum {
 };
 
 @interface EventDetailsViewController : UITableViewController <NSXMLParserDelegate>{
+	int myStatus;
 	NSMutableDictionary *memberItem;
 	NSMutableDictionary *eventDetails;
 	NSMutableArray *memberlist;
@@ -52,6 +53,7 @@ enum {
     NSURLConnection *conn;
 	LoadingView *loadingView;
 }
+@property (nonatomic, readwrite) int myStatus;
 @property (nonatomic, retain) NSMutableDictionary *eventDetails;
 @property (nonatomic, retain) NSMutableArray *memberlist;
 @property (nonatomic, retain) NSString *event_id;

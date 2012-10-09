@@ -25,7 +25,7 @@
 
 
 @implementation CreateEventViewController
-@synthesize grouplist, newGroup, selectedGroupID;
+@synthesize grouplist, freshGroup, selectedGroupID;
 @synthesize eventDetails;
 @synthesize inviteOthers, bringGuests, statusEmail, cancelEmail, whenSet;
 @synthesize statusEmailDate, cancelEmailDate, whenDate;
@@ -59,7 +59,6 @@
 }
 
 -(IBAction)selectWhenDatePressed {
-	NSLog(@"select when date pressed");
 	SelectDateViewController *selectDateController = [[SelectDateViewController alloc] initWithNibName:@"SelectDateViewController" bundle:nil];
 	selectDateController.theNotification = @"when";
 	[self.navigationController pushViewController:selectDateController animated:YES];
@@ -94,7 +93,7 @@
 		UIAlertView *needAlert = [[UIAlertView alloc] initWithTitle:@"Whoops!" message:@"How many people do you need for your event?" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		[needAlert show];
 		[needAlert release];
-	} else if ([selectedGroupID isEqualToString:@"0"] && [newGroup.groupMembers count] < 1) {
+	} else if ([selectedGroupID isEqualToString:@"0"] && [freshGroup.groupMembers count] < 1) {
         [TestFlight passCheckpoint:@"EVENT VALIDATION MISSING INVITEES"];
 			UIAlertView *inviteAlert = [[UIAlertView alloc] initWithTitle:@"Whoops!" message:@"You better invite some people or no one will show up." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 			[inviteAlert show];
@@ -112,7 +111,7 @@
             [TestFlight passCheckpoint:@"EVENT VALIDATED AND READY TO CREATE EVENT"];
 			//SHOW THE ACTION SHEET
 			UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Invitations will be sent now.  Ready?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Create Event" otherButtonTitles:nil];
-			[actionSheet showInView:self.view];
+            [actionSheet showFromToolbar:self.navigationController.toolbar];
 			[actionSheet release];
 			
 		}
@@ -160,8 +159,6 @@
 		}
 		
 	}
-	NSLog(@"eventName: %@", eventName);
-	NSLog(@"eventLocation: %@", eventLocation);
 }
 
 - (EditableCell *)newEditableCellWithTag:(NSInteger)tag
@@ -178,6 +175,7 @@
 
 
 - (void)viewDidLoad {
+    
 	[[self navigationController] setNavigationBarHidden:NO animated:YES];
 	NSString *myTitle = [[NSString alloc] initWithString:@"Event Creation"];
 	UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]
@@ -193,12 +191,12 @@
 	self.navigationItem.rightBarButtonItem = doneButton;
 	[doneButton release];
 	self.title = myTitle;
-	if (newGroup == nil) {
+	if (freshGroup == nil) {
 		UserGroup *newUserGroup = [[UserGroup alloc] init];
 		newUserGroup.groupMembers = [[NSMutableArray alloc] initWithObjects: nil];
 		newUserGroup.groupID = @"0";
 		selectedGroupID	= @"0";
-		self.newGroup = newUserGroup;
+		self.freshGroup = newUserGroup;
 		[newUserGroup release];
 	}
 	eventName = [[NSString alloc] initWithString:@""];
@@ -225,8 +223,12 @@
 	g = 155;
 	r = 39;
 	self.tableView.backgroundColor = [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0];*/
-	self.tableView.backgroundColor = [UIColor clearColor];
+	//self.tableView.backgroundColor = [UIColor clearColor];
     [TestFlight passCheckpoint:@"CREATE EVENT VIEW"];
+    self.tableView.backgroundView = nil;
+    self.tableView.backgroundView = [[[UIView alloc] init] autorelease];
+    [self.tableView setBackgroundColor:[UIColor colorWithRed:48.0/255.0f green:156.0/255.0f blue:203.0/255.0f alpha:1.0]];
+    
     [super viewDidLoad];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -236,7 +238,6 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
-	NSLog(@"viewWillAppear");
 	[self.tableView reloadData];
     [super viewWillAppear:animated];
 }
@@ -319,6 +320,10 @@ titleForHeaderInSection:(NSInteger)section
 	// create the parent view that will hold header Label
 	UIView* customView = [[[UIView alloc] initWithFrame:CGRectMake(10,0,320,44)] autorelease];
 	
+	UIImageView *bgImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"modal_bg.png"]] autorelease];
+	bgImageView.frame = CGRectMake(0,0,320,40);
+	[customView addSubview:bgImageView];
+	
 	// create image object
 	UIImage *myImage = nil;
 	switch (section)
@@ -351,13 +356,13 @@ titleForHeaderInSection:(NSInteger)section
 	if (section == EventDetailsSection) {
 		//
 	}
-
 	
 	return customView;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-	return 44;
+	return 48;
 }
 
 // Customize the number of rows in the table view.
@@ -385,7 +390,6 @@ titleForHeaderInSection:(NSInteger)section
 			NSInteger tag = INT_MIN;
 			//NSString *text = nil;
 			NSString *placeholder = nil;
-			NSLog(@"row is %d", row);
 			switch (row) {
 				case EventNameCell:
 				{
@@ -504,7 +508,7 @@ titleForHeaderInSection:(NSInteger)section
 					static NSString *InviteOthersCellIdentifier = @"InviteOthersCellIdentifier";
 					static NSString *InviteOthersDetailCellIdentifier = @"InviteOthersDetailCellIdentifier";
 					
-					NSUInteger numPeeps = [newGroup.groupMembers count];
+					NSUInteger numPeeps = [freshGroup.groupMembers count];
 					NSString *tempGroupName = [[NSString alloc] initWithString:@"New Group"];
 					//NSString *tempGroupName;
 					//NSString *btnTitle = nil;
@@ -521,9 +525,9 @@ titleForHeaderInSection:(NSInteger)section
 							}
 						}
 					} else {
-						//mygroup = newGroup;
+						//mygroup = freshGroup;
 						//[tempGroupName release];
-						if ([newGroup.groupName length] > 0) tempGroupName = [newGroup.groupName copy];
+						if ([freshGroup.groupName length] > 0) tempGroupName = [freshGroup.groupName copy];
 						//else tempGroupName = @"New Group";
 					}
 					if (numPeeps > 0) {
@@ -551,7 +555,7 @@ titleForHeaderInSection:(NSInteger)section
 						if (cell == nil) {
 							cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:InviteOthersCellIdentifier] autorelease];
 						}
-						NSString *btnTitle = [[NSString alloc] initWithFormat:@"You're Inviting . . .", numPeeps];
+						NSString *btnTitle = [[NSString alloc] initWithFormat:@"You're Inviting . . ."];
 						cell.textLabel.text = btnTitle;
 						[btnTitle release];
 					}
@@ -643,7 +647,6 @@ titleForHeaderInSection:(NSInteger)section
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSUInteger section = [indexPath section];
 	NSUInteger row = [indexPath row];
-	NSLog(@"its clicked");
     [self.view endEditing:YES];
 	//[self storeEventValues];
 	if (section == InvitePeopleSection) {
@@ -656,7 +659,7 @@ titleForHeaderInSection:(NSInteger)section
 			if ([grouplist count] > 0) {
 				ChooseGroupController *chooseGroupController = [[ChooseGroupController alloc] initWithStyle:UITableViewStyleGrouped];
 				chooseGroupController.grouplist = self.grouplist;
-				chooseGroupController.newGroup = self.newGroup;
+				chooseGroupController.freshGroup = self.freshGroup;
 				chooseGroupController.parentController = self;
 				[self.navigationController pushViewController:chooseGroupController animated:YES];
 				[chooseGroupController release];
@@ -698,11 +701,9 @@ titleForHeaderInSection:(NSInteger)section
 {
 	if (buttonIndex == [actionSheet destructiveButtonIndex])
 	{
-		NSLog(@"destructive");
 		//[self postCreateData];
 		[self performSelector:@selector(postCreateData) withObject:nil afterDelay:.5];
 	} else if (buttonIndex == [actionSheet cancelButtonIndex]) {
-		NSLog(@"cancelled");
 	}
 	
 }
@@ -834,10 +835,10 @@ titleForHeaderInSection:(NSInteger)section
 	if ([selectedGroupID isEqualToString:@"0"]) {
 		
 		[postString appendFormat:@"&group_id=0"];
-		if ([newGroup.groupName length] >= 1) [postString appendFormat:@"&group_name=%@", newGroup.groupName];
+		if ([freshGroup.groupName length] >= 1) [postString appendFormat:@"&group_name=%@", freshGroup.groupName];
 		[postString appendString:@"&group_members="];
-		for (int j=0; j<[newGroup.groupMembers count]; j++) {
-			NSString *userEmail = [newGroup.groupMembers objectAtIndex:j];
+		for (int j=0; j<[freshGroup.groupMembers count]; j++) {
+			NSString *userEmail = [freshGroup.groupMembers objectAtIndex:j];
 			if (j != 0) [postString appendString:@","];
 			[postString appendFormat:@"%@", userEmail];
 			//[userEmail release];
@@ -855,7 +856,7 @@ titleForHeaderInSection:(NSInteger)section
 		NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
 		[outputFormatter setDateFormat:@"Y-MM-dd HH:mm:00"];
 		//NSDate *myDate = [[[NSDate alloc] init] autorelease];		// Get current date/time
-		NSDate *myDate = [statusEmailDate addTimeInterval:[self calcTimezoneDiff]];
+		NSDate *myDate = [statusEmailDate dateByAddingTimeInterval:[self calcTimezoneDiff]];
 		NSString *newDateString = [outputFormatter stringFromDate:myDate];
 		[postString appendFormat:@"&status_email=%@", newDateString];
 		[outputFormatter release];
@@ -865,7 +866,7 @@ titleForHeaderInSection:(NSInteger)section
 		NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
 		[outputFormatter setDateFormat:@"Y-MM-dd HH:mm:00"];
 		//NSDate *myCancelDate = [[[NSDate alloc] init] autorelease];		// Get current date/time
-		NSDate *myCancelDate = [cancelEmailDate addTimeInterval:[self calcTimezoneDiff]];
+		NSDate *myCancelDate = [cancelEmailDate dateByAddingTimeInterval:[self calcTimezoneDiff]];
 		NSString *newDateString = [outputFormatter stringFromDate:myCancelDate];
 		[postString appendFormat:@"&cancel_email=%@", newDateString];
 		[outputFormatter release];
@@ -994,7 +995,6 @@ titleForHeaderInSection:(NSInteger)section
 	//[activityIndicator stopAnimating];
 	//[activityIndicator removeFromSuperview];
 	
-	NSLog(@"all done!");
 	if ([submitStatus length] > 1) {
 		NSString *myTitle = nil;
 		NSString *myMsg = nil;
@@ -1050,7 +1050,7 @@ titleForHeaderInSection:(NSInteger)section
 	[_eventNameField release];
 	[_eventLocationField release];
 	[grouplist release];
-	[newGroup release];
+	[freshGroup release];
 	[selectedGroupID release];
 	[eventDetails release];
 	[statusEmailDate release];

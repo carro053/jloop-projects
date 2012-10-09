@@ -19,12 +19,12 @@ enum {
 
 @interface ChooseGroupController : UITableViewController {
 	NSMutableArray *grouplist;
-	UserGroup *newGroup;
+	UserGroup *freshGroup;
 	CreateEventViewController *parentController;
 	NSIndexPath	*lastIndexPath;
 }
 @property (nonatomic, retain) NSMutableArray *grouplist;
-@property (nonatomic, retain) UserGroup *newGroup;
+@property (nonatomic, retain) UserGroup *freshGroup;
 @property (nonatomic, retain) CreateEventViewController *parentController;
 @property (nonatomic, retain) NSIndexPath *lastIndexPath;
 @end

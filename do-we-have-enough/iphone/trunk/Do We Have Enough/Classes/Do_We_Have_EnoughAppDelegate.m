@@ -8,6 +8,7 @@
 
 #import "Do_We_Have_EnoughAppDelegate.h"
 #import "RootViewController.h"
+#import "HomeController.h"
 #import "SettingsTracker.h"
 #import "TestFlight.h"
 #import "FlurryAnalytics.h"
@@ -15,7 +16,7 @@
 
 
 @implementation Do_We_Have_EnoughAppDelegate
-
+@synthesize homeController;
 @synthesize window;
 @synthesize navigationController;
 @synthesize launchEventID;
@@ -23,18 +24,6 @@
 
 #pragma mark -
 #pragma mark Application lifecycle
-
-- (void)applicationDidFinishLaunching:(UIApplication *)application {    
-    
-    [FlurryAnalytics startSession:@"7994fb80cece2b2663b0c3188280ae63"];
-    
-    // Override point for customization after app launch    
-	
-	//[window addSubview:[navigationController view]];
-   // [window makeKeyAndVisible];
-	//NSLog(@"Initiating remoteNoticationssAreActive"); 
-	//[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound |UIRemoteNotificationTypeAlert)];
-}
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {          
 	NSLog(@"devToken=%@",deviceToken);
@@ -72,6 +61,7 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
 	NSLog(@"got user info: %@", userInfo);
+    self.launchEventID = [[userInfo objectForKey:@"push_data"] objectForKey:@"event_id"];
     UIApplicationState state = [application applicationState];
     if (state == UIApplicationStateActive) {
         NSDictionary *aps = [userInfo objectForKey:@"aps"];
@@ -79,33 +69,37 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"DoWeHaveEnough" message:myAlert delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         [alert release];
+        if ([homeController respondsToSelector:@selector(checkValidation)])
+            [homeController performSelector:@selector(checkValidation)];
     }
-	
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [TestFlight takeOff:@"4daac12df9d7ba3264eef02799dfd0bf_NDk0MjIwMTEtMTAtMDUgMTI6MjI6MjkuMjc5Nzgw"];
 	[window addSubview:[navigationController view]];
     [window makeKeyAndVisible];
-	//NSLog(@"got launchoptions: %@", launchOptions);
+	NSLog(@"got launchoptions: %@", launchOptions);
 	NSDictionary *push_data = [[launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"] objectForKey:@"push_data"];
 	NSString *myEventID = [push_data objectForKey:@"event_id"];
 	self.launchEventID = myEventID;
-	
-	/*NSString *applicationCode = @"7994fb80cece2b2663b0c3188280ae63";
-    [Beacon initAndStartBeaconWithApplicationCode:applicationCode
-                                  useCoreLocation:NO
-                                      useOnlyWiFi:NO
-                                  enableDebugMode:YES];*/
+	[FlurryAnalytics startSession:@"7994fb80cece2b2663b0c3188280ae63"];
 	
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound |UIRemoteNotificationTypeAlert)];
+    
 	return YES;
 }	
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-	// Save data if appropriate
-	
-	//[Beacon endBeacon];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    if([self.launchEventID intValue] > 0)
+    {
+        if ([homeController respondsToSelector:@selector(checkValidation)]){
+            [homeController performSelector:@selector(checkValidation)];
+            
+        }
+    }
 }
 
 

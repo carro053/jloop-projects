@@ -34,6 +34,7 @@
 }
 
 @property (readwrite) bool viewAppeared;
+@property (retain, nonatomic) IBOutlet UIImageView *bgImage;
 
 @property (nonatomic, retain) NSMutableData *webData;
 @property (nonatomic, retain) NSXMLParser *xmlParser;

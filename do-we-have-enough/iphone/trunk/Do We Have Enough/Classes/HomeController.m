@@ -32,11 +32,26 @@
 
 @synthesize webData;
 @synthesize xmlParser;
+@synthesize bgImage;
 
 @synthesize viewAppeared;
 
 - (void)viewDidLoad {
-    
+    Do_We_Have_EnoughAppDelegate *appDelegate = (Do_We_Have_EnoughAppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.homeController = self;
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenHeight = screenSize.height;
+    if(screenHeight == 568.0)
+    {
+        self.view.frame = CGRectMake(self.view.frame.origin.x,self.view.frame.origin.y, 320.0, 548.0);
+        bgImage.frame = CGRectMake(bgImage.frame.origin.x,bgImage.frame.origin.y, 320.0, 548.0);
+        bgImage.image = [UIImage imageNamed: @"home_bg-568h.png"];
+        latestTipImage.frame = CGRectMake(latestTipImage.frame.origin.x,latestTipImage.frame.origin.y + 88, latestTipImage.frame.size.width, latestTipImage.frame.size.height);
+        latestHandImage.frame = CGRectMake(latestHandImage.frame.origin.x,latestHandImage.frame.origin.y + 88, latestHandImage.frame.size.width, latestHandImage.frame.size.height);
+        latestActivity.frame = CGRectMake(latestActivity.frame.origin.x,latestActivity.frame.origin.y + 88, latestActivity.frame.size.width, latestActivity.frame.size.height);
+        latestButton.frame = CGRectMake(latestButton.frame.origin.x,latestButton.frame.origin.y + 88, latestButton.frame.size.width, latestButton.frame.size.height);
+    }
     viewAppeared = NO;
     
     
@@ -108,12 +123,29 @@
 	//NSString *myEventID = [[NSString alloc] initWithFormat:@"%@", appDelegate.launchEventID];
 	//NSLog(@"my event id: %@", myEventID);
 	if ([appDelegate.launchEventID length] > 1) {
+        bool goTo = true;
+        EventDetailsViewController *myController = [[EventDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped];
         [TestFlight passCheckpoint:@"HOME VIEW LAUNCHED WITH EVENT ID"];
-		EventDetailsViewController *myController = [[EventDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped];
-		myController.event_id = appDelegate.launchEventID;
-		[self.rootController.navigationController pushViewController:myController animated:YES];
-		[myController release];
+        NSArray *controllers = self.rootController.navigationController.viewControllers;
+        if([[controllers objectAtIndex:1] isKindOfClass:[myController class]])
+        {
+            EventDetailsViewController *firstController = (EventDetailsViewController*)[controllers objectAtIndex:1];
+            if([appDelegate.launchEventID intValue] == [firstController.event_id intValue])
+                goTo = false;
+        }else if([[controllers objectAtIndex:2] isKindOfClass:[myController class]])
+        {
+            EventDetailsViewController *secondController = (EventDetailsViewController*)[controllers objectAtIndex:2];
+            if([appDelegate.launchEventID intValue] == [secondController.event_id intValue])
+                goTo = false;
+        }
+        if(goTo)
+        {
+            myController.event_id = appDelegate.launchEventID;
+            [self.rootController.navigationController pushViewController:myController animated:YES];
+        }
+        [myController release];
 	}
+    appDelegate.launchEventID = @"";
 }
 - (IBAction)createButtonPressed {
 	//[[Beacon shared] startSubBeaconWithName:@"Create Event Started" timeSession:NO];
@@ -210,6 +242,7 @@
     if (conn) {
         webData = [[NSMutableData data] retain];
     }
+    NSLog(@"get file");
 }
 -(void) connectionDidFinishLoading:(NSURLConnection *) connection {
     NSLog(@"DONE. Received Bytes: %d", [webData length]);
@@ -357,6 +390,7 @@
 	[latestTipImage release];
 	[latestActivity release];
 	[settingsButton release];
+    [bgImage release];
     [super dealloc];
 }
 

@@ -46,7 +46,7 @@ enum {
 	NSDate *statusEmailDate;
 	NSDate *cancelEmailDate;
 	NSDate *whenDate;
-	UserGroup *newGroup;
+	UserGroup *freshGroup;
 	EditableCell *_eventNameField;
 	EditableCell *_eventLocationField;
 	int eventNeed;
@@ -61,7 +61,7 @@ enum {
 	LoadingView *loadingView;
 }
 @property (nonatomic, retain) NSMutableArray *grouplist;
-@property (nonatomic, retain) UserGroup *newGroup;
+@property (nonatomic, retain) UserGroup *freshGroup;
 @property (nonatomic, retain) NSString *selectedGroupID;
 @property (nonatomic, retain) NSString *eventDetails;
 @property (nonatomic, retain) NSString *eventName;

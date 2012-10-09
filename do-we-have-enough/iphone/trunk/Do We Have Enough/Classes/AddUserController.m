@@ -11,7 +11,7 @@
 
 
 @implementation AddUserController
-@synthesize newEmail, userlist;
+@synthesize freshEmail, userlist;
 
 
 -(IBAction)textFieldDoneEditing:(id)sender {
@@ -24,7 +24,7 @@
 }
 -(IBAction)save:(id)sender {
 	
-	NSString *email = [newEmail.text lowercaseString];
+	NSString *email = [freshEmail.text lowercaseString];
     NSString *emailRegEx =
     @"(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"
     @"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"
@@ -37,7 +37,7 @@
     NSPredicate *regExPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegEx];
     BOOL myStringMatchesRegEx = [regExPredicate evaluateWithObject:email];
 	if (myStringMatchesRegEx) {
-		NSString *newEmailText = [[NSString alloc] initWithString:newEmail.text];
+		NSString *newEmailText = [[NSString alloc] initWithString:freshEmail.text];
 		[userlist addObject:[newEmailText lowercaseString]];
 		[self.navigationController popViewControllerAnimated:YES];
 	
@@ -67,7 +67,7 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	[newEmail becomeFirstResponder];
+	[freshEmail becomeFirstResponder];
 	UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]
 									 initWithTitle:@"Cancel"
 									 style:UIBarButtonItemStyleBordered
@@ -109,7 +109,7 @@
 
 
 - (void)dealloc {
-	[newEmail release]; 
+	[freshEmail release];
 	[userlist release];
     [super dealloc];
 }
