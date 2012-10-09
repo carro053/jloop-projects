@@ -40,7 +40,7 @@
 #pragma mark Address Book Methods
 - (IBAction)showActionSheet:(id)sender {
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Select a method to add an email address." delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Select from Address Book", @"Enter Email Address", nil];
-	[actionSheet showInView:self.view];
+	[actionSheet showFromToolbar:self.navigationController.toolbar];
 	[actionSheet release];
 }
 - (IBAction)showPicker:(id)sender {
@@ -111,7 +111,6 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
 	if (myParent == @"group") addUserController.userlist = self.parentController.freshGroup.groupMembers;
 	else addUserController.userlist = self.parentController2.freshGroup.groupMembers;
 	[self.navigationController pushViewController:addUserController animated:YES];
-	//[self presentModalViewController:addUserController animated:YES];
 	[addUserController release];
 }
 

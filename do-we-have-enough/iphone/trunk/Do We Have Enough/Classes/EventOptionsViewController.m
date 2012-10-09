@@ -332,7 +332,7 @@ titleForHeaderInSection:(NSInteger)section
 						UITableViewCell *newCell = [tableView cellForRowAtIndexPath:indexPath];
 						UIImage *cellImage = [UIImage imageNamed:@"checkbox.png"];
 						newCell.imageView.image = cellImage;
-						if (newCell.detailTextLabel.text == kSelectTime) [self selectStatusDatePressed];
+						if ([newCell.detailTextLabel.text isEqualToString:kSelectTime]) [self selectStatusDatePressed];
 						[self.parentController setStatusEmail:YES];
 					}
 					break;
@@ -346,7 +346,7 @@ titleForHeaderInSection:(NSInteger)section
 						UITableViewCell *newCell = [tableView cellForRowAtIndexPath:indexPath];
 						UIImage *cellImage = [UIImage imageNamed:@"checkbox.png"];
 						newCell.imageView.image = cellImage;
-						if (newCell.detailTextLabel.text == kSelectTime) [self selectCancelDatePressed];
+						if ([newCell.detailTextLabel.text isEqualToString:kSelectTime]) [self selectCancelDatePressed];
 						[self.parentController setCancelEmail:YES];
 					}
 					break;
