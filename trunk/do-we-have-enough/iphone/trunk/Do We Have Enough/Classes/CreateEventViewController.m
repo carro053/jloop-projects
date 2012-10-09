@@ -110,9 +110,8 @@
 		} else {
             [TestFlight passCheckpoint:@"EVENT VALIDATED AND READY TO CREATE EVENT"];
 			//SHOW THE ACTION SHEET
-			UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Invitations will be sent now.  Ready?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Create Event" otherButtonTitles:nil];
+			UIActionSheet *actionSheet = [[[UIActionSheet alloc] initWithTitle:@"Invitations will be sent now.  Ready?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Create Event" otherButtonTitles:nil] autorelease];
             [actionSheet showFromToolbar:self.navigationController.toolbar];
-			[actionSheet release];
 			
 		}
 		[settings release];
@@ -1035,7 +1034,8 @@ titleForHeaderInSection:(NSInteger)section
 		//NSArray *controllerArray = [[NSArray alloc] initWithObjects: gamePlayController, nil];
 		//[self.navigationController setViewControllers:controllerArray animated:YES];
 		RootViewController *rootController = [self.navigationController.viewControllers objectAtIndex:0];
-		
+		HomeController *homeController = rootController.homeController;
+        [homeController checkValidation];
 		EventDetailsViewController *myController = [[EventDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped];
 		myController.event_id = submitEventID;
 		//[self.navigationController pushViewController:myController animated:YES];

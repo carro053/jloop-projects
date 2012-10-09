@@ -87,7 +87,7 @@
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound |UIRemoteNotificationTypeAlert)];
     
 	return YES;
-}	
+}
 
 - (void)applicationWillTerminate:(UIApplication *)application {
 }

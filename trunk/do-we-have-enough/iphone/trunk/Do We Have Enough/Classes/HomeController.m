@@ -85,6 +85,12 @@
         viewAppeared = YES;
     }
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+    //latestButton.hidden = YES;
+    //latestTipImage.hidden = YES;
+    //[self performSelector:@selector(checkValidation) withObject:nil afterDelay:0.2];
+}
 
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -122,21 +128,24 @@
 	Do_We_Have_EnoughAppDelegate *appDelegate = (Do_We_Have_EnoughAppDelegate *)[[UIApplication sharedApplication] delegate];
 	//NSString *myEventID = [[NSString alloc] initWithFormat:@"%@", appDelegate.launchEventID];
 	//NSLog(@"my event id: %@", myEventID);
-	if ([appDelegate.launchEventID length] > 1) {
+	if ([appDelegate.launchEventID  intValue] > 0) {
         bool goTo = true;
         EventDetailsViewController *myController = [[EventDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped];
         [TestFlight passCheckpoint:@"HOME VIEW LAUNCHED WITH EVENT ID"];
         NSArray *controllers = self.rootController.navigationController.viewControllers;
-        if([[controllers objectAtIndex:1] isKindOfClass:[myController class]])
+        if([controllers count] > 1)
         {
-            EventDetailsViewController *firstController = (EventDetailsViewController*)[controllers objectAtIndex:1];
-            if([appDelegate.launchEventID intValue] == [firstController.event_id intValue])
-                goTo = false;
-        }else if([[controllers objectAtIndex:2] isKindOfClass:[myController class]])
-        {
-            EventDetailsViewController *secondController = (EventDetailsViewController*)[controllers objectAtIndex:2];
-            if([appDelegate.launchEventID intValue] == [secondController.event_id intValue])
-                goTo = false;
+            if([[controllers objectAtIndex:1] isKindOfClass:[myController class]])
+            {
+                EventDetailsViewController *firstController = (EventDetailsViewController*)[controllers objectAtIndex:1];
+                if([appDelegate.launchEventID intValue] == [firstController.event_id intValue])
+                    goTo = false;
+            }else if([[controllers objectAtIndex:2] isKindOfClass:[myController class]])
+            {
+                EventDetailsViewController *secondController = (EventDetailsViewController*)[controllers objectAtIndex:2];
+                if([appDelegate.launchEventID intValue] == [secondController.event_id intValue])
+                    goTo = false;
+            }
         }
         if(goTo)
         {
