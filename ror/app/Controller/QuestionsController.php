@@ -284,6 +284,7 @@ class QuestionsController extends AppController {
 			$this->Question->create();
 			if($this->Question->save($question))
 			{
+				echo 'Question: ID: '.$this->Question-id;
 				if(file_exists(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-O.png'))
 				{
 					if(move_uploaded_file(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-O.png', WWW_ROOT.'img'.DS.'clues'.DS.$this->Question->id.'-O.png'))
@@ -367,6 +368,7 @@ class QuestionsController extends AppController {
 					move_uploaded_file(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'.png', WWW_ROOT.'img'.DS.'prizes'.DS.$this->Question->id.'.png');
 				}
 				$this->version_up_question($this->Question->id);
+				exit;
 				$this->redirect('/questions/index/'.$previous_game_id);
 			}
 		}
