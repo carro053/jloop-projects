@@ -269,6 +269,13 @@ class QuestionsController extends AppController {
 			$this->data = $question;
 		}
 	}
+	function duplicate($question_id)
+	{
+		if(isset($this->data['Question']))
+		{
+		}
+		$this->set('games',$this->Game->find('list'));
+	}
 	
 	/*function initialVersions()
 	{
