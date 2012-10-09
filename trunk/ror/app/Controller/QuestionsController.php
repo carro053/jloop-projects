@@ -287,41 +287,41 @@ class QuestionsController extends AppController {
 				echo 'Question:'.$question_id.' ID: '.$this->Question->id;
 				if(file_exists(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-O.png'))
 				{
-					if(move_uploaded_file(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-O.png', WWW_ROOT.'img'.DS.'clues'.DS.$this->Question->id.'-O.png'))
+					if(copy(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-O.png', WWW_ROOT.'img'.DS.'clues'.DS.$this->Question->id.'-O.png'))
 					{
 						$this->generateClueInsightImage(WWW_ROOT.'img'.DS.'clues'.DS.$this->Question->id.'-O.png', WWW_ROOT.'img'.DS.'clues'.DS.$this->Question->id.'.png');
 					}
 				}elseif(file_exists(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'.png'))
 				{
-					move_uploaded_file(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'.png', WWW_ROOT.'img'.DS.'clues'.DS.$this->Question->id.'.png');
+					copy(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'.png', WWW_ROOT.'img'.DS.'clues'.DS.$this->Question->id.'.png');
 				}
 				
 				if(file_exists(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'-O.png'))
 				{
-					if(move_uploaded_file(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'-O.png', WWW_ROOT.'img'.DS.'questions'.DS.$this->Question->id.'-O.png'))
+					if(copy(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'-O.png', WWW_ROOT.'img'.DS.'questions'.DS.$this->Question->id.'-O.png'))
 					{
 						$this->generateClueInsightImage(WWW_ROOT.'img'.DS.'questions'.DS.$this->Question->id.'-O.png', WWW_ROOT.'img'.DS.'questions'.DS.$this->Question->id.'.png');
 					}
 				}elseif(file_exists(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'.png'))
 				{
-					move_uploaded_file(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'.png', WWW_ROOT.'img'.DS.'questions'.DS.$this->Question->id.'.png');
+					copy(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'.png', WWW_ROOT.'img'.DS.'questions'.DS.$this->Question->id.'.png');
 				}
 				
 				if(file_exists(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'-O.png'))
 				{
-					if(move_uploaded_file(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'-O.png', WWW_ROOT.'img'.DS.'insights'.DS.$this->Question->id.'-O.png'))
+					if(copy(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'-O.png', WWW_ROOT.'img'.DS.'insights'.DS.$this->Question->id.'-O.png'))
 					{
 						$this->generateClueInsightImage(WWW_ROOT.'img'.DS.'insights'.DS.$this->Question->id.'-O.png', WWW_ROOT.'img'.DS.'insights'.DS.$this->Question->id.'.png');
 					}
 				}elseif(file_exists(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'.png'))
 				{
-					move_uploaded_file(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'.png', WWW_ROOT.'img'.DS.'insights'.DS.$this->Question->id.'.png');
+					copy(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'.png', WWW_ROOT.'img'.DS.'insights'.DS.$this->Question->id.'.png');
 				}
 				
 				if(file_exists(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-O.png'))
 				{
 					echo 'test1';
-					if(move_uploaded_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-1-O.png'))
+					if(copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-1-O.png'))
 					{
 					echo 'test2';
 						$this->generateClueInsightImage(WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-1-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-1.png');
@@ -329,47 +329,47 @@ class QuestionsController extends AppController {
 				}elseif(file_exists(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1.png'))
 				{
 					echo 'test3';
-					move_uploaded_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-1.png');
+					copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-1.png');
 				}
 				echo WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1.png';
 				
 				
 				if(file_exists(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-O.png'))
 				{
-					if(move_uploaded_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-2-O.png'))
+					if(copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-2-O.png'))
 					{
 						$this->generateClueInsightImage(WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-2-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-2.png');
 					}
 				}elseif(file_exists(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2.png'))
 				{
-					move_uploaded_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-2.png');
+					copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-2.png');
 				}
 				
 				if(file_exists(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3-O.png'))
 				{
-					if(move_uploaded_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-3-O.png'))
+					if(copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-3-O.png'))
 					{
 						$this->generateClueInsightImage(WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-3-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-3.png');
 					}
 				}elseif(file_exists(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3.png'))
 				{
-					move_uploaded_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-3.png');
+					copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-3.png');
 				}
 				
 				if(file_exists(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4-O.png'))
 				{
-					if(move_uploaded_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-4-O.png'))
+					if(copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-4-O.png'))
 					{
 						$this->generateClueInsightImage(WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-4-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-4.png');
 					}
 				}elseif(file_exists(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4.png'))
 				{
-					move_uploaded_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-4.png');
+					copy(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-4.png');
 				}
 				
 				if(file_exists(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'.png'))
 				{
-					move_uploaded_file(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'.png', WWW_ROOT.'img'.DS.'prizes'.DS.$this->Question->id.'.png');
+					copy(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'.png', WWW_ROOT.'img'.DS.'prizes'.DS.$this->Question->id.'.png');
 				}
 				$this->version_up_question($this->Question->id);
 				exit;
