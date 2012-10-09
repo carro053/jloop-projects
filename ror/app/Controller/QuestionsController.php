@@ -367,6 +367,7 @@ class QuestionsController extends AppController {
 			}
 		}
 		$this->set('games',$this->Game->find('list'));
+		$this->set('question_id',$question_id);
 	}
 	
 	/*function initialVersions()
