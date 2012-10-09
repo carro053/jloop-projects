@@ -273,6 +273,98 @@ class QuestionsController extends AppController {
 	{
 		if(isset($this->data['Question']))
 		{
+			
+			$question = $this->Question->findById($question_id);
+			$question['Question']['game_id'] = $this->data['Question']['game_id'];
+			$question['Question']['order'] = $this->Question->find('count',array('conditions'=>'Question.game_id = '.$question['Question']['game_id']));
+			$question['Question']['version'] = 0;
+			if($this->Question->save($question))
+			{
+				if(file_exists(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-O.png'))
+				{
+					if(move_uploaded_file(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-O.png', WWW_ROOT.'img'.DS.'clues'.DS.$this->Question->id.'-O.png'))
+					{
+						$this->generateClueInsightImage(WWW_ROOT.'img'.DS.'clues'.DS.$this->Question->id.'-O.png', WWW_ROOT.'img'.DS.'clues'.DS.$this->Question->id.'.png');
+					}
+				}elseif(file_exists(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'.png'))
+				{
+					move_uploaded_file(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'.png', WWW_ROOT.'img'.DS.'clues'.DS.$this->Question->id.'.png')
+				}
+				
+				if(file_exists(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'-O.png'))
+				{
+					if(move_uploaded_file(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'-O.png', WWW_ROOT.'img'.DS.'questions'.DS.$this->Question->id.'-O.png'))
+					{
+						$this->generateClueInsightImage(WWW_ROOT.'img'.DS.'questions'.DS.$this->Question->id.'-O.png', WWW_ROOT.'img'.DS.'questions'.DS.$this->Question->id.'.png');
+					}
+				}elseif(file_exists(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'.png'))
+				{
+					move_uploaded_file(WWW_ROOT.'img'.DS.'questions'.DS.$question_id.'.png', WWW_ROOT.'img'.DS.'questions'.DS.$this->Question->id.'.png')
+				}
+				
+				if(file_exists(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'-O.png'))
+				{
+					if(move_uploaded_file(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'-O.png', WWW_ROOT.'img'.DS.'insights'.DS.$this->Question->id.'-O.png'))
+					{
+						$this->generateClueInsightImage(WWW_ROOT.'img'.DS.'insights'.DS.$this->Question->id.'-O.png', WWW_ROOT.'img'.DS.'insights'.DS.$this->Question->id.'.png');
+					}
+				}elseif(file_exists(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'.png'))
+				{
+					move_uploaded_file(WWW_ROOT.'img'.DS.'insights'.DS.$question_id.'.png', WWW_ROOT.'img'.DS.'insights'.DS.$this->Question->id.'.png')
+				}
+				
+				if(file_exists(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-O.png'))
+				{
+					if(move_uploaded_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-1-O.png'))
+					{
+						$this->generateClueInsightImage(WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-1-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-1.png');
+					}
+				}elseif(file_exists(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1.png'))
+				{
+					move_uploaded_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-1.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-1.png')
+				}
+				
+				
+				if(file_exists(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-O.png'))
+				{
+					if(move_uploaded_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-2-O.png'))
+					{
+						$this->generateClueInsightImage(WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-2-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-2.png');
+					}
+				}elseif(file_exists(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2.png'))
+				{
+					move_uploaded_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-2.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-2.png')
+				}
+				
+				if(file_exists(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3-O.png'))
+				{
+					if(move_uploaded_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-3-O.png'))
+					{
+						$this->generateClueInsightImage(WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-3-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-3.png');
+					}
+				}elseif(file_exists(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3.png'))
+				{
+					move_uploaded_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-3.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-3.png')
+				}
+				
+				if(file_exists(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4-O.png'))
+				{
+					if(move_uploaded_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-4-O.png'))
+					{
+						$this->generateClueInsightImage(WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-4-O.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-4.png');
+					}
+				}elseif(file_exists(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4.png'))
+				{
+					move_uploaded_file(WWW_ROOT.'img'.DS.'answers'.DS.$question_id.'-4.png', WWW_ROOT.'img'.DS.'answers'.DS.$this->Question->id.'-4.png')
+				}
+				
+				if(file_exists(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'.png'))
+				{
+					move_uploaded_file(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'.png', WWW_ROOT.'img'.DS.'prizes'.DS.$this->Question->id.'.png')
+				}
+				$this->version_up_question($this->Question->id);
+				$this->redirect('/questions/index/'.$game_id);
+			}
 		}
 		$this->set('games',$this->Game->find('list'));
 	}
