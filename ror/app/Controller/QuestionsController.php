@@ -279,6 +279,9 @@ class QuestionsController extends AppController {
 			$question['Question']['game_id'] = $this->data['Question']['game_id'];
 			$question['Question']['order'] = $this->Question->find('count',array('conditions'=>'Question.game_id = '.$question['Question']['game_id']));
 			$question['Question']['version'] = 0;
+			$question['Question']['id'] = null;
+			$this->Question->id = null;
+			$this->Question->create();
 			if($this->Question->save($question))
 			{
 				if(file_exists(WWW_ROOT.'img'.DS.'clues'.DS.$question_id.'-O.png'))
