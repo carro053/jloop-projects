@@ -275,6 +275,7 @@ class QuestionsController extends AppController {
 		{
 			
 			$question = $this->Question->findById($question_id);
+			$previous_game_id = $question['Question']['game_id'];
 			$question['Question']['game_id'] = $this->data['Question']['game_id'];
 			$question['Question']['order'] = $this->Question->find('count',array('conditions'=>'Question.game_id = '.$question['Question']['game_id']));
 			$question['Question']['version'] = 0;
@@ -363,7 +364,7 @@ class QuestionsController extends AppController {
 					move_uploaded_file(WWW_ROOT.'img'.DS.'prizes'.DS.$question_id.'.png', WWW_ROOT.'img'.DS.'prizes'.DS.$this->Question->id.'.png');
 				}
 				$this->version_up_question($this->Question->id);
-				$this->redirect('/questions/index/'.$game_id);
+				$this->redirect('/questions/index/'.$previous_game_id);
 			}
 		}
 		$this->set('games',$this->Game->find('list'));
