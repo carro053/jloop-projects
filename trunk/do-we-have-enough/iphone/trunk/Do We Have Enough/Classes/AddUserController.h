@@ -10,10 +10,10 @@
 
 
 @interface AddUserController : UIViewController {
-	UITextField *newEmail;
+	UITextField *freshEmail;
 	NSMutableArray *userlist;
 }
-@property (nonatomic, retain) IBOutlet UITextField *newEmail;
+@property (nonatomic, retain) IBOutlet UITextField *freshEmail;
 @property (nonatomic, retain) NSMutableArray *userlist;
 -(IBAction)textFieldDoneEditing:(id)sender;
 -(IBAction)cancel:(id)sender;

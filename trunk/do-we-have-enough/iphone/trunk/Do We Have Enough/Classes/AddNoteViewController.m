@@ -58,11 +58,14 @@
 	self.navigationItem.rightBarButtonItem = saveItem;
 	[saveItem release];*/
     [TestFlight passCheckpoint:@"ADD NOTE VIEW"];
-	int r, g, b;
+	/*int r, g, b;
 	b = 205;
 	g = 155;
 	r = 39;
-	self.tableView.backgroundColor = [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0];
+	self.tableView.backgroundColor = [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0];*/
+    self.tableView.backgroundView = nil;
+    self.tableView.backgroundView = [[[UIView alloc] init] autorelease];
+    [self.tableView setBackgroundColor:[UIColor colorWithRed:48.0/255.0f green:156.0/255.0f blue:203.0/255.0f alpha:1.0]];
 	[super viewDidLoad];
 }
 

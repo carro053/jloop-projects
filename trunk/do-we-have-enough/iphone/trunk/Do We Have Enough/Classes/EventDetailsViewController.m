@@ -16,8 +16,10 @@
 #import "StringHelper.h"
 #import "TestFlight.h"
 
+bool updatingStatus;
 
 @implementation EventDetailsViewController
+@synthesize myStatus;
 @synthesize eventDetails;
 @synthesize memberlist;
 @synthesize loadingView;
@@ -35,17 +37,58 @@
 	[myController release];
 	
 }
+
+-(void)imIn
+{
+    if(myStatus != 1 && !updatingStatus)
+    {
+        updatingStatus = true;
+        [self updateMyStatus:1 :0];
+        LoadingView *myLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
+        loadingView = myLoadingView;
+        NSString * path = [[NSString alloc] initWithFormat:@"http://%@.dowehaveenough.com/devices/set_my_event_status.xml", [[[NSBundle mainBundle] infoDictionary] valueForKey:@"WEB_ENVIRONMENT"]];
+        [self retrieveXMLFileAtURL:path];
+        [path release];
+    }
+}
+-(void)imOut
+{
+    if(myStatus != 2 && !updatingStatus)
+    {
+        updatingStatus = true;
+        [self updateMyStatus:2 :0];
+        LoadingView *myLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
+        loadingView = myLoadingView;
+        NSString * path = [[NSString alloc] initWithFormat:@"http://%@.dowehaveenough.com/devices/set_my_event_status.xml", [[[NSBundle mainBundle] infoDictionary] valueForKey:@"WEB_ENVIRONMENT"]];
+        [self retrieveXMLFileAtURL:path];
+        [path release];
+    }
+}
+-(void)imFiftyFifty
+{
+    if(myStatus != 3 && !updatingStatus)
+    {
+        updatingStatus = true;
+        [self updateMyStatus:3 :0];
+        LoadingView *myLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
+        loadingView = myLoadingView;
+        NSString * path = [[NSString alloc] initWithFormat:@"http://%@.dowehaveenough.com/devices/set_my_event_status.xml", [[[NSBundle mainBundle] infoDictionary] valueForKey:@"WEB_ENVIRONMENT"]];
+        [self retrieveXMLFileAtURL:path];
+        [path release];
+    }
+}
+
 -(void)updateMyStatus:(int)status :(int)guests
 {
     [TestFlight passCheckpoint:@"UPDATE MY STATUS"];
-	NSLog(@"my status is: %d", status);
-	NSString *myStatus = [[NSString alloc] initWithFormat:@"%d", status];
-	NSString *myGuests = [[NSString alloc] initWithFormat:@"%d", guests];
-	[eventDetails setObject:myGuests forKey:@"your_guests"];
-	[eventDetails setObject:myStatus forKey:@"your_status"];
-	[myGuests release];
-	[myStatus release];
-	[self.tableView reloadData];
+    NSLog(@"my status is: %d", status);
+    myStatus = [[NSString stringWithFormat:@"%d", status] intValue];
+    NSString *myGuests = [[NSString alloc] initWithFormat:@"%d", guests];
+    [eventDetails setObject:myGuests forKey:@"your_guests"];
+    [eventDetails setObject:[NSNumber numberWithInt:myStatus] forKey:@"your_status"];
+    [myGuests release];
+    [self.tableView reloadData];
+    [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
 }
 -(void)updateMyNotify:(int)notify
 {
@@ -67,8 +110,23 @@
 									 initWithTitle:@"Invite" 
 									 style:UIBarButtonItemStyleBordered 
 									 target:self 
-											 action:@selector(startInvite)];
-		NSArray *items = [[NSArray alloc] initWithObjects:flexibleSpace, inviteButton, nil];
+                                         action:@selector(startInvite)];
+		UIBarButtonItem *inButton = [[UIBarButtonItem alloc]
+                                         initWithTitle:@"I'm In"
+                                         style:UIBarButtonItemStyleBordered
+                                         target:self 
+                                         action:@selector(imIn)];
+		UIBarButtonItem *outButton = [[UIBarButtonItem alloc]
+                                         initWithTitle:@"I'm Out"
+                                         style:UIBarButtonItemStyleBordered
+                                         target:self
+                                         action:@selector(imOut)];
+		UIBarButtonItem *fiftyFiftyButton = [[UIBarButtonItem alloc]
+                                         initWithTitle:@"I'm 50/50"
+                                         style:UIBarButtonItemStyleBordered
+                                         target:self
+                                         action:@selector(imFiftyFifty)];
+		NSArray *items = [[NSArray alloc] initWithObjects:inButton,outButton,fiftyFiftyButton,flexibleSpace, inviteButton, nil];
 		self.toolbarItems = items;
 		[flexibleSpace release];
 		[inviteButton release];
@@ -113,13 +171,16 @@
 	 g = 155;
 	 r = 39;
 	 self.tableView.backgroundColor = [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0];*/
-	self.tableView.backgroundColor = [UIColor clearColor];
+	//self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundView = nil;
+    self.tableView.backgroundView = [[[UIView alloc] init] autorelease];
+    [self.tableView setBackgroundColor:[UIColor colorWithRed:48.0/255.0f green:156.0/255.0f blue:203.0/255.0f alpha:1.0]];
     [super viewDidLoad];
 }
 - (void)viewDidAppear:(BOOL)animated {
-	if ([eventDetails count] == 0) {
+	//if ([eventDetails count] == 0) {
 		[self refreshData];
-	}
+	//}
     [super viewDidAppear:animated];
 }
 
@@ -189,6 +250,9 @@ titleForHeaderInSection:(NSInteger)section
 	// create the parent view that will hold header Label
 	UIView* customView = [[[UIView alloc] initWithFrame:CGRectMake(10,0,320,44)] autorelease];
 	
+	UIImageView *bgImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"modal_bg.png"]] autorelease];
+	bgImageView.frame = CGRectMake(0,0,320,40);
+	[customView addSubview:bgImageView];
 	// create image object
 	UIImage *myImage = nil;
 	if ([eventDetails count] < 1) myImage = [UIImage imageNamed:@"title_loading.png"];
@@ -215,15 +279,15 @@ titleForHeaderInSection:(NSInteger)section
 	// create the imageView with the image in it
 	UIImageView *imageView = [[[UIImageView alloc] initWithImage:myImage] autorelease];
 	imageView.frame = CGRectMake(20,10,240,24);
-	
 	[customView addSubview:imageView];
+	
 	
 	
 	return customView;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-	return 44;
+	return 48;
 }
 
 
@@ -293,7 +357,7 @@ titleForHeaderInSection:(NSInteger)section
 					}
 					cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
 					cell.textLabel.text = @"You Are:";
-					int myStatus = [[eventDetails objectForKey:@"your_status"] intValue];
+					myStatus = [[eventDetails objectForKey:@"your_status"] intValue];
 					if (myStatus == 0) 
 						cell.detailTextLabel.text = @"< not yet set >";
 					else if (myStatus == 1) {
@@ -368,13 +432,11 @@ titleForHeaderInSection:(NSInteger)section
 					int members_50 = 0;
 					for (int i=0; i<[memberlist count]; i++) {
 						NSMutableDictionary *myMember = [memberlist objectAtIndex:i];
-						NSMutableString *myStatus = [[NSMutableString alloc] initWithString:[myMember objectForKey:@"status"]];
-						int myStatusInt = [myStatus intValue];
+						myStatus = [[myMember objectForKey:@"status"] intValue];
 						int myGuestsInt = [[myMember objectForKey:@"guests"] intValue];
-						if (myStatusInt == 1) members_in = members_in + 1 + myGuestsInt;
-						else if (myStatusInt == 2) members_out++;
-						else if (myStatusInt == 3) members_50++;
-						[myStatus release];
+						if (myStatus == 1) members_in = members_in + 1 + myGuestsInt;
+						else if (myStatus == 2) members_out++;
+						else if (myStatus == 3) members_50++;
 					}
 					NSString *myMsg = [[NSString alloc] initWithFormat:@"%d IN / %d OUT / %d 50-50", members_in, members_out, members_50];
 					cell.detailTextLabel.text = myMsg;
@@ -532,7 +594,7 @@ titleForHeaderInSection:(NSInteger)section
 	NSString *uniqueIdentifier = [device uniqueIdentifier];
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
 	[settings initData];
-	NSString *postString = [NSString stringWithFormat:@"email_address=%@&device_id=%@&event_id=%@", settings.emailAddress, uniqueIdentifier, event_id];
+	NSString *postString = [NSString stringWithFormat:@"email_address=%@&device_id=%@&event_id=%@&status=%d", settings.emailAddress, uniqueIdentifier, event_id, myStatus];
     //NSLog(postString);
     [settings release];
     
@@ -571,6 +633,7 @@ titleForHeaderInSection:(NSInteger)section
     
     [connection release];
 	[webData release];
+    updatingStatus = false;
 	[self.loadingView removeView];
 }
 /*

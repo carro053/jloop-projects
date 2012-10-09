@@ -81,8 +81,8 @@
 		NSLog( @"User selected email address = %@", emailRef );
 		//self.email.text = emailRef;
 		[emailRef release];
-		if (myParent == @"group") [self.parentController.newGroup.groupMembers addObject:emailRef];
-		else [self.parentController2.newGroup.groupMembers addObject:emailRef];
+		if (myParent == @"group") [self.parentController.freshGroup.groupMembers addObject:emailRef];
+		else [self.parentController2.freshGroup.groupMembers addObject:emailRef];
 		[self.tableView reloadData];
 		[self dismissModalViewControllerAnimated:YES];
 		return NO;
@@ -108,8 +108,8 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
 }
 -(IBAction)addEmailPressed:(id)sender {
 	AddUserController *addUserController = [[AddUserController alloc] init];
-	if (myParent == @"group") addUserController.userlist = self.parentController.newGroup.groupMembers; 
-	else addUserController.userlist = self.parentController2.newGroup.groupMembers;
+	if (myParent == @"group") addUserController.userlist = self.parentController.freshGroup.groupMembers;
+	else addUserController.userlist = self.parentController2.freshGroup.groupMembers;
 	[self.navigationController pushViewController:addUserController animated:YES];
 	//[self presentModalViewController:addUserController animated:YES];
 	[addUserController release];
@@ -141,8 +141,8 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
 	[backButton release];
 	[myTitle release];
 	int numPeeps = 0;
-	if (myParent == @"group") numPeeps = [self.parentController.newGroup.groupMembers count];
-	else numPeeps = [self.parentController2.newGroup.groupMembers count];
+	if (myParent == @"group") numPeeps = [self.parentController.freshGroup.groupMembers count];
+	else numPeeps = [self.parentController2.freshGroup.groupMembers count];
 	if (numPeeps == 0) [self showActionSheet:self];
 	
 	/*int r, g, b;
@@ -150,7 +150,10 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
 	 g = 155;
 	 r = 39;
 	 self.tableView.backgroundColor = [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0];*/
-	self.tableView.backgroundColor = [UIColor clearColor];
+	//self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundView = nil;
+    self.tableView.backgroundView = [[[UIView alloc] init] autorelease];
+    [self.tableView setBackgroundColor:[UIColor colorWithRed:48.0/255.0f green:156.0/255.0f blue:203.0/255.0f alpha:1.0]];
     [TestFlight passCheckpoint:@"CHOOSE USERS VIEW"];
 	[super viewDidLoad];
 }
@@ -171,8 +174,8 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
 }
 -(void)viewWillDisappear:(BOOL)animated {
 	if (textFieldBeingEdited != nil) {
-		if (myParent == @"group") parentController.newGroup.groupName = self.textFieldBeingEdited.text;
-		else parentController2.newGroup.groupName = self.textFieldBeingEdited.text;
+		if (myParent == @"group") parentController.freshGroup.groupName = self.textFieldBeingEdited.text;
+		else parentController2.freshGroup.groupName = self.textFieldBeingEdited.text;
 	}
 }
 #pragma mark TextView Delegate Methods
@@ -185,8 +188,8 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     NSLog(@"textFieldDidEnd");
     NSString *text = [textField text];
-    if (myParent == @"group") parentController.newGroup.groupName = text;
-	else parentController2.newGroup.groupName = text;
+    if (myParent == @"group") parentController.freshGroup.groupName = text;
+	else parentController2.freshGroup.groupName = text;
 	//[textField resignFirstResponder];
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField 
@@ -195,8 +198,8 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
     [theTextField resignFirstResponder];
     // do stuff with the text
     NSString *text = [theTextField text];
-	if (myParent == @"group") parentController.newGroup.groupName = text;
-	else parentController2.newGroup.groupName = text;
+	if (myParent == @"group") parentController.freshGroup.groupName = text;
+	else parentController2.freshGroup.groupName = text;
     return YES;
 }
 
@@ -215,8 +218,8 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
 			return 1;
 			break;
 		case GroupMemberSection:
-			if (myParent == @"group") return [self.parentController.newGroup.groupMembers count];
-			else return [self.parentController2.newGroup.groupMembers count];
+			if (myParent == @"group") return [self.parentController.freshGroup.groupMembers count];
+			else return [self.parentController2.freshGroup.groupMembers count];
 			break;
 		default:
 			break;
@@ -240,6 +243,10 @@ titleForHeaderInSection:(NSInteger)section
 	// create the parent view that will hold header Label
 	UIView* customView = [[[UIView alloc] initWithFrame:CGRectMake(10,0,320,44)] autorelease];
 	
+	UIImageView *bgImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"modal_bg.png"]] autorelease];
+	if (section == 0) bgImageView.frame = CGRectMake(0,0,320,40);
+	else bgImageView.frame = CGRectMake(0,30,320,40);
+	[customView addSubview:bgImageView];
 	// create image object
 	UIImage *myImage = nil;
 	switch (section)
@@ -273,7 +280,7 @@ titleForHeaderInSection:(NSInteger)section
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-	if (section == 0) return 44;
+	if (section == 0) return 48;
 	else return 74;
 }
 
@@ -291,8 +298,8 @@ titleForHeaderInSection:(NSInteger)section
 			UIImage *cellImage = nil;
 			cellImage = [UIImage imageNamed:@"icon_fpo.png"];
 			cell.imageView.image = cellImage;
-            if (myParent == @"group") text = self.parentController.newGroup.groupName;
-			else text = self.parentController2.newGroup.groupName;
+            if (myParent == @"group") text = self.parentController.freshGroup.groupName;
+			else text = self.parentController2.freshGroup.groupName;
             tag = 0;
             placeholder = @"Name this group";
 			UITextField *textField = [cell textField];
@@ -309,8 +316,8 @@ titleForHeaderInSection:(NSInteger)section
 			}
 			
 			NSInteger row = [indexPath row];
-			if (myParent == @"group") cell.textLabel.text = [self.parentController.newGroup.groupMembers objectAtIndex:row];
-			else cell.textLabel.text = [self.parentController2.newGroup.groupMembers objectAtIndex:row];
+			if (myParent == @"group") cell.textLabel.text = [self.parentController.freshGroup.groupMembers objectAtIndex:row];
+			else cell.textLabel.text = [self.parentController2.freshGroup.groupMembers objectAtIndex:row];
 		//default:
 			return cell;
 	}
@@ -357,8 +364,8 @@ titleForHeaderInSection:(NSInteger)section
 	 // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
 	 }  */
 	NSUInteger row = [indexPath row];
-	if (myParent == @"group") [self.parentController.newGroup.groupMembers removeObjectAtIndex:row];
-	else [self.parentController2.newGroup.groupMembers removeObjectAtIndex:row];
+	if (myParent == @"group") [self.parentController.freshGroup.groupMembers removeObjectAtIndex:row];
+	else [self.parentController2.freshGroup.groupMembers removeObjectAtIndex:row];
 	[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 

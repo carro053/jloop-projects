@@ -14,7 +14,7 @@
 
 
 @implementation ChooseGroupController
-@synthesize grouplist, newGroup, parentController, lastIndexPath;
+@synthesize grouplist, freshGroup, parentController, lastIndexPath;
 /*
 - (id)initWithStyle:(UITableViewStyle)style {
     // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -44,7 +44,10 @@
 	 g = 155;
 	 r = 39;
 	 self.tableView.backgroundColor = [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0];*/
-	self.tableView.backgroundColor = [UIColor clearColor];
+	//self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundView = nil;
+    self.tableView.backgroundView = [[[UIView alloc] init] autorelease];
+    [self.tableView setBackgroundColor:[UIColor colorWithRed:48.0/255.0f green:156.0/255.0f blue:203.0/255.0f alpha:1.0]];
     [TestFlight passCheckpoint:@"CHOOSE GROUP VIEW"];
 }
 
@@ -90,7 +93,7 @@
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 	//self.grouplist = nil;
-	self.newGroup = nil;
+	self.freshGroup = nil;
 	[super viewDidUnload];
 }
 
@@ -116,6 +119,11 @@ titleForHeaderInSection:(NSInteger)section
 {
 	// create the parent view that will hold header Label
 	UIView* customView = [[[UIView alloc] initWithFrame:CGRectMake(10,0,320,44)] autorelease];
+	
+	UIImageView *bgImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"modal_bg.png"]] autorelease];
+	if (section == 0) bgImageView.frame = CGRectMake(0,0,320,40);
+	else bgImageView.frame = CGRectMake(0,30,320,40);
+	[customView addSubview:bgImageView];
 	
 	// create image object
 	UIImage *myImage = nil;
@@ -150,7 +158,7 @@ titleForHeaderInSection:(NSInteger)section
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-	if (section == 0) return 44;
+	if (section == 0) return 48;
 	else return 74;
 }
 
@@ -189,10 +197,10 @@ titleForHeaderInSection:(NSInteger)section
 			if (cell == nil) {
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:NewCellIdentifier] autorelease];
 			}
-			if (newGroup.groupName == nil || [newGroup.groupName length] < 1) 
+			if (freshGroup.groupName == nil || [freshGroup.groupName length] < 1)
 				cell.textLabel.text = kNewGroupTitle;
-			else cell.textLabel.text	 = newGroup.groupName;
-			if ([newGroup.groupMembers count] != 0) cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%d members", [newGroup.groupMembers count]];
+			else cell.textLabel.text	 = freshGroup.groupName;
+			if ([freshGroup.groupMembers count] != 0) cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%d members", [freshGroup.groupMembers count]];
 			else cell.detailTextLabel.text = @"Click arrow to create a new list";
 			cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
 			if (parentController.selectedGroupID == @"0") {
@@ -335,7 +343,7 @@ titleForHeaderInSection:(NSInteger)section
 
 - (void)dealloc {
 	[grouplist release];
-	[newGroup release];
+	[freshGroup release];
 	[parentController release];
 	[lastIndexPath release];
     [super dealloc];

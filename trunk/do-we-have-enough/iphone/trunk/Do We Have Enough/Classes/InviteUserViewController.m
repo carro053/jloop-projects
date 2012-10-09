@@ -22,7 +22,7 @@
 #pragma mark Address Book Methods
 - (IBAction)showActionSheet:(id)sender {
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Select a method to add an email address." delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Select from Address Book", @"Enter Email Address", nil];
-	[actionSheet showInView:self.view];
+	[actionSheet showFromToolbar:self.navigationController.toolbar];
 	[actionSheet release];
 }
 - (IBAction)showPicker:(id)sender {
@@ -126,6 +126,8 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
 
 
 - (void)viewDidLoad {
+    NSLog(@"Height:%f",self.view.frame.size.height);
+    self.toolbarItems = nil;
 	UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]
 									 initWithTitle:@"Cancel"
 									 style:UIBarButtonItemStyleBordered
@@ -141,6 +143,7 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
 	self.title = @"Invite Someone";
 	self.view.backgroundColor = [UIColor clearColor];
     [TestFlight passCheckpoint:@"INVITE USER VIEW"];
+    
     [super viewDidLoad];
 }
 -(void)viewDidAppear:(BOOL)animated {

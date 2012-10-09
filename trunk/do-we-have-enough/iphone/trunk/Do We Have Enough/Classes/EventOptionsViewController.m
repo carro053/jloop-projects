@@ -56,7 +56,10 @@
 	 g = 155;
 	 r = 39;
 	 self.tableView.backgroundColor = [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0];*/
-	self.tableView.backgroundColor = [UIColor clearColor];
+	//self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundView = nil;
+    self.tableView.backgroundView = [[[UIView alloc] init] autorelease];
+    [self.tableView setBackgroundColor:[UIColor colorWithRed:48.0/255.0f green:156.0/255.0f blue:203.0/255.0f alpha:1.0]];
     [TestFlight passCheckpoint:@"EVENT OPTIONS VIEW"];
     [super viewDidLoad];
 
@@ -135,6 +138,9 @@ titleForHeaderInSection:(NSInteger)section
 	// create the parent view that will hold header Label
 	UIView* customView = [[[UIView alloc] initWithFrame:CGRectMake(10,0,320,44)] autorelease];
 	
+	UIImageView *bgImageView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"modal_bg.png"]] autorelease];
+	bgImageView.frame = CGRectMake(0,0,320,40);
+	[customView addSubview:bgImageView];
 	// create image object
 	UIImage *myImage = nil;
 	switch (section)
@@ -162,7 +168,7 @@ titleForHeaderInSection:(NSInteger)section
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-	return 44;
+	return 48;
 }
 
 // Customize the appearance of table view cells.
