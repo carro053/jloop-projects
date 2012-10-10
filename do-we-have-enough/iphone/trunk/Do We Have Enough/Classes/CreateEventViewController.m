@@ -174,7 +174,7 @@
 
 
 - (void)viewDidLoad {
-    
+    NSLog(@"%@",NSStringFromCGRect(self.view.frame));
 	[[self navigationController] setNavigationBarHidden:NO animated:YES];
 	NSString *myTitle = [[NSString alloc] initWithString:@"Event Creation"];
 	UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]
