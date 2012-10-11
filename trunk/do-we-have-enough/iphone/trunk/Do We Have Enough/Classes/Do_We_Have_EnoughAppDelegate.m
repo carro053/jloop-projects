@@ -71,6 +71,8 @@
         [alert release];
         if ([homeController respondsToSelector:@selector(checkValidation)])
             [homeController performSelector:@selector(checkValidation)];
+        if ([navigationController.topViewController respondsToSelector:@selector(refreshData)])
+            [navigationController.topViewController performSelector:@selector(refreshData)];
     }
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -100,6 +102,8 @@
             
         }
     }
+    if ([navigationController.topViewController respondsToSelector:@selector(refreshData)])
+        [navigationController.topViewController performSelector:@selector(refreshData)];
 }
 
 
