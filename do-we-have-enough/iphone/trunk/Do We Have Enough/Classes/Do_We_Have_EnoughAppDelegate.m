@@ -12,6 +12,7 @@
 #import "SettingsTracker.h"
 #import "TestFlight.h"
 #import "FlurryAnalytics.h"
+#import "EventDetailsViewController.h"
 //#import "Beacon.h"
 
 
@@ -63,6 +64,7 @@
 	NSLog(@"got user info: %@", userInfo);
     self.launchEventID = [[userInfo objectForKey:@"push_data"] objectForKey:@"event_id"];
     UIApplicationState state = [application applicationState];
+    NSLog(@"TESTNOTIFICATIONS");
     if (state == UIApplicationStateActive) {
         NSDictionary *aps = [userInfo objectForKey:@"aps"];
         NSString *myAlert = [aps objectForKey:@"alert"];
@@ -71,8 +73,11 @@
         [alert release];
         if ([homeController respondsToSelector:@selector(checkValidation)])
             [homeController performSelector:@selector(checkValidation)];
-        if ([navigationController.topViewController respondsToSelector:@selector(refreshData)])
-            [navigationController.topViewController performSelector:@selector(refreshData)];
+    }else{
+        
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 1];
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
     }
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -84,7 +89,15 @@
 	NSLog(@"got launchoptions: %@", launchOptions);
 	NSDictionary *push_data = [[launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"] objectForKey:@"push_data"];
 	NSString *myEventID = [push_data objectForKey:@"event_id"];
-	self.launchEventID = myEventID;
+    if([myEventID intValue] > 0)
+    {
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 1];
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+        self.launchEventID = myEventID;
+    }else{
+        self.launchEventID = @"";
+    }
 	[FlurryAnalytics startSession:@"7994fb80cece2b2663b0c3188280ae63"];
 	
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound |UIRemoteNotificationTypeAlert)];
