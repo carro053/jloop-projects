@@ -804,7 +804,6 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 				$this->Notification->save($notification);
 				if($current_token != $notification['Notification']['device_token'])
 				{
-					echo $notification['Notification']['device_token'].' - '.$notification['Notification']['alert'];
 					$payload = '';
 					$current_token = $notification['Notification']['device_token'];
 					$payload['aps'] = array('alert' => $notification['Notification']['alert'], 'sound' => 'default');
@@ -815,7 +814,6 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 				}
 			endforeach;
 		}
-		socket_close($apns);
 		fclose($apns);
 		exit();
 	}
