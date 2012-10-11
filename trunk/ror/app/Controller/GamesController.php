@@ -4,7 +4,7 @@ App::uses('AppController', 'Controller');
 class GamesController extends AppController {
 	public $name = 'Games';
 	public $helpers = array('Html', 'Session');
-	public $uses = array('Game','Question','QuestionVersion','GameSnapshot');
+	public $uses = array('Game','Question','QuestionVersion','GameSnapshot','LearnMoreItem');
 	
 	public function beforeFilter()
 	{
@@ -450,6 +450,40 @@ class GamesController extends AppController {
 		$result = simplexml_load_string($result);
 		$game_id = $result->l;
 		
+		$learn_more_items = $this->LearnMoreItem->find('all');
+		
+		$learn_more_array = array();
+		
+		foreach($learn_more_items as $item):
+			$xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<learnMoreItem>
+	<game>
+		<id>'.$game_id.'</id>
+	</game>
+	<langs>en_us</langs>
+	<message>'.$item['LearnMoreItem']['url'].'</message>
+	<state>Active</state>
+	<title>'.$item['LearnMoreItem']['label'].'</title>
+</learnMoreItem>';
+
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/learnMoreItem/create");
+			curl_setopt($ch, CURLOPT_PORT, 8282);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/xml", "Content-Length: ".strlen($xml)));
+			curl_setopt($ch, CURLOPT_VERBOSE, true);
+			curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
+			curl_setopt($ch, CURLOPT_POST, true);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
+  			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+			$result = curl_exec($ch);
+			curl_close($ch);
+			$result = simplexml_load_string($result);
+			if($result->l > 0)
+			{
+				$learn_more_array[$item['LearnMoreItem']['id']] = $result->l;
+			}
+		endforeach;
+		
 		foreach($game['Question'] as $quest):
 			if(isset($quest['QuestionVersion'][0]['id']) && $quest['QuestionVersion'][0]['deleted'] == 0) {
 				$question['Question'] = $quest['QuestionVersion'][0];
@@ -546,7 +580,15 @@ class GamesController extends AppController {
 			<id>'.$data['gameId'].'</id>
 		</game>
 		<insightText>'.$data['insightText'].'</insightText>
-		<langs>en_us</langs>
+		<langs>en_us</langs>';
+		if($data['learn_more_id'] > 0 && isset($learn_more_array[$data['learn_more_id']]))
+		{
+			$xml .= '
+		<learnMoreItem>
+			<id>'.$learn_more_array[$data['learn_more_id']].'</id>
+		</learnMoreItem>';
+		}
+		$xml .= '
 		<type>'.$data['type'].'</type>
 		<state>'.$data['state'].'</state>
 	</question>';
