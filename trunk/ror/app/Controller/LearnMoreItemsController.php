@@ -13,7 +13,7 @@ class LearnMoreItemsController extends AppController {
 	
 	public function index()
 	{
-		$this->LearnMoreItem->find('all',array('order'=>'LearnMoreItem.label ASC'));
+		$this->set('items',$this->LearnMoreItem->find('all',array('order'=>'LearnMoreItem.label ASC')));
 	}
 	
 	function add()
