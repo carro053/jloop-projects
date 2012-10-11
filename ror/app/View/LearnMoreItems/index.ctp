@@ -19,4 +19,4 @@
 		<tr><td colspan="2">There are currently no learn more items.</td></tr>
 	<?php } ?>
 	</tbody>
-</table>
+</table> 
