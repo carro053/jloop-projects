@@ -111,7 +111,8 @@
             [TestFlight passCheckpoint:@"EVENT VALIDATED AND READY TO CREATE EVENT"];
 			//SHOW THE ACTION SHEET
 			UIActionSheet *actionSheet = [[[UIActionSheet alloc] initWithTitle:@"Invitations will be sent now.  Ready?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Create Event" otherButtonTitles:nil] autorelease];
-            [actionSheet showFromToolbar:self.navigationController.toolbar];
+            //[actionSheet showFromToolbar:self.navigationController.toolbar];
+            [actionSheet showInView:self.view];
 			
 		}
 		[settings release];
@@ -174,7 +175,7 @@
 
 
 - (void)viewDidLoad {
-    NSLog(@"%@",NSStringFromCGRect(self.view.frame));
+    //[[self navigationController] setToolbarHidden:NO];
 	[[self navigationController] setNavigationBarHidden:NO animated:YES];
 	NSString *myTitle = [[NSString alloc] initWithString:@"Event Creation"];
 	UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]
