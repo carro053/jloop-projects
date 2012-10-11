@@ -145,7 +145,6 @@ bool updatingStatus;
 	[path release];
 }
 
-
 - (void)viewDidLoad {
     [TestFlight passCheckpoint:@"EVENT DETAILS VIEW"];
 	memberlist = [[NSMutableArray alloc] init];
