@@ -297,7 +297,7 @@ class GamesController extends AppController {
 	public function mike()
 	{
 		App::import('Vendor', 'RestRequest', array('file' => 'RestRequest.inc.php'));
-		$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/games/getQuestionDetails/644', 'GET');
+		$request = new RestRequest('http://admin:MyAdminPass87@50.56.194.198:8282/RingorangWebService/rservice/game/getQuestionDetails/644', 'GET');
 		$request->execute();
 		$response = $request->getResponseBody();
 		$response = simplexml_load_string($response);
