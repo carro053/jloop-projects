@@ -4,7 +4,7 @@ App::uses('AppController', 'Controller');
 class QuestionsController extends AppController {
 	public $name = 'Questions';
 	public $helpers = array('Html', 'Session');
-	public $uses = array('Game','Question','QuestionVersion','GameSnapshot');
+	public $uses = array('Game','Question','QuestionVersion','GameSnapshot','LearnMoreItem');
 
 	
 	public function beforeFilter()
@@ -143,6 +143,12 @@ class QuestionsController extends AppController {
 			}
 		}
 		$this->set('game_id', $game_id);
+		$items = $this->LearnMoreItem->find('all',array('order'=>'LearnMoreItem.label ASC'));
+		$items_array = array();
+		foreach($items as $item):
+			$items_array[$item['LearnMoreItem']['id']] = $item['LearnMoreItem']['label'];
+		endforeach;
+		$this->set('learn_more_items',$items);
 	}
 	
 	function edit($question_id,$preview=false)
@@ -268,6 +274,12 @@ class QuestionsController extends AppController {
 ',htmlspecialchars_decode($question['Question']['answer_4_note'], ENT_QUOTES));
 			$this->data = $question;
 		}
+		$items = $this->LearnMoreItem->find('all',array('order'=>'LearnMoreItem.label ASC'));
+		$items_array = array();
+		foreach($items as $item):
+			$items_array[$item['LearnMoreItem']['id']] = $item['LearnMoreItem']['label'];
+		endforeach;
+		$this->set('learn_more_items',$items);
 	}
 	function duplicate($question_id)
 	{
