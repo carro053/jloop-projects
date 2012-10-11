@@ -135,14 +135,19 @@ bool updatingStatus;
 }
 -(void)refreshData
 {
-	[memberlist removeAllObjects];
-	[eventDetails removeAllObjects];
-	LoadingView *myLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
-	loadingView = myLoadingView;
-	NSString * path = [[NSString alloc] initWithFormat:@"http://%@.dowehaveenough.com/devices/get_event.xml", [[[NSBundle mainBundle] infoDictionary] valueForKey:@"WEB_ENVIRONMENT"]];
-	
-	[self retrieveXMLFileAtURL:path];
-	[path release];
+    if(!updatingStatus)
+    {
+        updatingStatus = true;
+        NSLog(@"REFRESH");
+        [memberlist removeAllObjects];
+        [eventDetails removeAllObjects];
+        LoadingView *myLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
+        loadingView = myLoadingView;
+        NSString * path = [[NSString alloc] initWithFormat:@"http://%@.dowehaveenough.com/devices/get_event.xml", [[[NSBundle mainBundle] infoDictionary] valueForKey:@"WEB_ENVIRONMENT"]];
+        
+        [self retrieveXMLFileAtURL:path];
+        [path release];
+    }
 }
 
 - (void)viewDidLoad {
@@ -177,9 +182,9 @@ bool updatingStatus;
     [super viewDidLoad];
 }
 - (void)viewDidAppear:(BOOL)animated {
-	//if ([eventDetails count] == 0) {
+	if ([eventDetails count] == 0) {
 		[self refreshData];
-	//}
+	}
     [super viewDidAppear:animated];
 }
 
@@ -605,12 +610,12 @@ titleForHeaderInSection:(NSInteger)section
 	[req addValue:msgLength forHTTPHeaderField:@"Content-Length"];
     [req setHTTPMethod:@"POST"];
     [req setHTTPBody: [postString dataUsingEncoding:NSUTF8StringEncoding]];
-    
     conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
     if (conn) {
         webData = [[NSMutableData data] retain];
     }
 }
+
 -(void) connectionDidFinishLoading:(NSURLConnection *) connection {
     NSLog(@"DONE. Received Bytes: %d", [webData length]);
     NSString *theXML = [[NSString alloc] 
