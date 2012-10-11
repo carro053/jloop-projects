@@ -1,9 +1,9 @@
 <h2>Learn More Items</h2>
-<a class="button" href="/learn_more_items/add/<?php echo $game['Game']['id']; ?>">Add Learn More Item</a>
+<a class="button" href="/learn_more_items/add/">Add Learn More Item</a>
 <table id="sortable">
 	<thead>
 		<tr>
-			<th>Label</th>
+			<th>Item</th>
 			<th width="350px">&nbsp;</th>
 		</tr>
 	</thead>
