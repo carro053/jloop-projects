@@ -12,7 +12,7 @@
 		<?php foreach($items as $item) { ?>
 			<tr>
 				<td><a href="<?php echo $item['LearnMoreItem']['url']; ?>" target="_blank"><?php echo $item['LearnMoreItem']['label']; ?></a></td>
-				<td><a class="button" href="/learn_more_items/edit/<?php echo $learn_more_item['id']; ?>">Edit</a>&nbsp;<a class="button" href="/learn_more_items/delete/<?php echo $learn_more_item['id']; ?>" onclick="return confirm('Are you sure you want to delete this learn_more_item?');">Delete</a></td>
+				<td><a class="button" href="/learn_more_items/edit/<?php echo $item['LearnMoreItem']['id']; ?>">Edit</a>&nbsp;<a class="button" href="/learn_more_items/delete/<?php echo $item['LearnMoreItem']['id']; ?>" onclick="return confirm('Are you sure you want to delete this learn more item?');">Delete</a></td>
 			</tr>
 		<?php } ?>
 	<?php } else { ?>
