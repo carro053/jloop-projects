@@ -1,5 +1,6 @@
 <h2>Learn More Items</h2>
 <a class="button" href="/learn_more_items/add/">Add Learn More Item</a>
+<a class="button" href="/learn_more_items/deleted/">Deleted Learn More Items</a>
 <table id="sortable">
 	<thead>
 		<tr>
