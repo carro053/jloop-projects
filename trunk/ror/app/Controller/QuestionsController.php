@@ -144,7 +144,7 @@ class QuestionsController extends AppController {
 		}
 		$this->set('game_id', $game_id);
 		$items = $this->LearnMoreItem->find('all',array('conditions'=>'LearnMoreItem.deleted = 0','order'=>'LearnMoreItem.label ASC'));
-		$items_array = array();
+		$items_array = array(0=>'No Learn More Item');
 		foreach($items as $item):
 			$items_array[$item['LearnMoreItem']['id']] = $item['LearnMoreItem']['label'];
 		endforeach;
@@ -275,7 +275,7 @@ class QuestionsController extends AppController {
 			$this->data = $question;
 		}
 		$items = $this->LearnMoreItem->find('all',array('conditions'=>'LearnMoreItem.deleted = 0','order'=>'LearnMoreItem.label ASC'));
-		$items_array = array();
+		$items_array = array(0=>'No Learn More Item');
 		foreach($items as $item):
 			$items_array[$item['LearnMoreItem']['id']] = $item['LearnMoreItem']['label'];
 		endforeach;
