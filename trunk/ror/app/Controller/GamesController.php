@@ -450,6 +450,15 @@ class GamesController extends AppController {
 		$result = simplexml_load_string($result);
 		$game_id = $result->l;
 		
+		
+		$request = new RestRequest('http://admin:MyAdminPass87@'.$host.':8282/RingorangWebService/rservice/game/getDetails/'.$result->l, 'GET');
+		$request->execute();
+		$response = $request->getResponseBody();
+		$response = simplexml_load_string($response);
+		echo '<pre>';
+		print_r($response);
+		exit;
+		
 		$learn_conditions = '';
 		foreach($game['Question'] as $question):
 			if($question['learn_more_item_id'] > 0) $learn_conditions .= ' OR LearnMoreItem.id = '.$question['learn_more_item_id'];
