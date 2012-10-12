@@ -26,6 +26,14 @@ class QuestionsController extends AppController {
 		{
 			$order = 'Question.status = "'.$status_filter.'" DESC';
 		}
+		$this->Question->bindModel(array(
+			'belongsTo'=>array(
+				'LearnMoreItem'=>array(
+					'className'=>'LearnMoreItem',
+					'foreignKey'=>'learn_more_item_id'
+				)
+			)
+		));
 		$this->Game->bindModel(array(
 			'hasMany'=>array(
 				'Question'=>array(
@@ -37,6 +45,8 @@ class QuestionsController extends AppController {
 			)
 		));
 		$game = $this->Game->findById($game_id);
+		print_r($game);
+		exit;
 		$this->set('game', $game);
 	}
 	
