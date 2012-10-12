@@ -14,7 +14,7 @@
 	<?php if(!empty($games)) { ?>
 		<?php foreach($games as $game) { ?>
 			<tr>
-				<td><img src="/img/game_icons/<?php if($game['Game']['has_icon']) { echo $game['Game']['id'].'.png'; }else{ echo 'default.png'; } ?>" /></td>
+				<td><img src="/img/game_icons/<?php if($game['Game']['has_icon']) { echo $game['Game']['id'].'.png'; }else{ echo 'default.png'; } ?>" width="41" /></td>
 				<td><?php echo $game['Game']['title']; ?></td>
 				<td style="text-align:center;"><?php echo count($game['Question']); ?></td>
 				<td style="text-align:center;"><a href="/games/version_history/<?php echo $game['Game']['id']; ?>"><?php echo $game['Game']['version']; ?></a></td>
