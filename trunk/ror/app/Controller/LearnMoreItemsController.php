@@ -63,5 +63,25 @@ class LearnMoreItemsController extends AppController {
 		$this->LearnMoreItem->save($learn_more_item);
 		$this->redirect('/learn_more_items/deleted/');
 	}
+	
+	function cron_it()
+	{
+		$cards = array('ace','king','queen','jack','ten','nine','eight','seven','six','five','four','three','two');
+		$suits = array('clubs','diamonds','hearts','spades');
+		
+		foreach($cards as $card):
+		
+			foreach($suits as $suit):
+				$this->LearnMoreItem->create();
+				$item['LearnMoreItem']['id'] = null;
+				$item['LearnMoreItem']['label'] = ucwords($card).' of '.ucwords($suit);
+				$item['LearnMoreItem']['id'] = 'https://nve.play-learn-win.com/the-deck/'.$card.'-of-'.$suit;
+				$this->LearnMoreItem->save($item);
+			endforeach;
+		endforeach;
+		exit;
+		
+	}
+	
 }
 ?>
