@@ -21,6 +21,7 @@
 				?>
 			</th>
 			<th style="text-align:center;">Version</th>
+			<th>Learn More Item</th>
 			<th width="350px">&nbsp;</th>
 		</tr>
 	</thead>
@@ -38,6 +39,7 @@
 					1					
 					<?php } ?>
 				</td>
+				<td><?php if(isset($question['LearnMoreItem']['id'])) { echo '<a href="'.$question['LearnMoreItem']['url'].'" target="_blank">'.$question['LearnMoreItem']['label'].'</a>'; }else{ echo 'Not Set'; } ?></td>
 				<td><a class="button" href="/games/play_question/<?php echo $game['Game']['id']; ?>/<?php echo $question['id']; ?>" target="_blank">Play</a>&nbsp;<a class="button" href="/games/preview_question/<?php echo $game['Game']['id']; ?>/<?php echo $question['id']; ?>" target="_blank">Preview</a>&nbsp;<a class="button" href="/questions/duplicate/<?php echo $question['id']; ?>">Duplicate</a>&nbsp;<a class="button" href="/questions/edit/<?php echo $question['id']; ?>">Edit</a>&nbsp;<a class="button" href="/questions/delete/<?php echo $question['id']; ?>" onclick="return confirm('Are you sure you want to delete this question?');">Delete</a></td>
 			</tr>
 		<?php } ?>

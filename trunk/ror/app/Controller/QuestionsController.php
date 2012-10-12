@@ -45,13 +45,19 @@ class QuestionsController extends AppController {
 			)
 		));
 		$game = $this->Game->find('first',array('conditions'=>'Game.id = '.$game_id,'recursive'=>2));
-		print_r($game);
-		exit;
 		$this->set('game', $game);
 	}
 	
 	public function deleted($game_id)
 	{
+		$this->Question->bindModel(array(
+			'belongsTo'=>array(
+				'LearnMoreItem'=>array(
+					'className'=>'LearnMoreItem',
+					'foreignKey'=>'learn_more_item_id'
+				)
+			)
+		));
 		$this->Game->bindModel(array(
 			'hasMany'=>array(
 				'Question'=>array(
@@ -61,7 +67,7 @@ class QuestionsController extends AppController {
 				)
 			)
 		));
-		$game = $this->Game->findById($game_id);
+		$game = $this->Game->find('first',array('conditions'=>'Game.id = '.$game_id,'recursive'=>2));
 		$this->set('game', $game);
 	}
 	
