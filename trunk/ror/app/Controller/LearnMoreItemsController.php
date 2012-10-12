@@ -50,26 +50,18 @@ class LearnMoreItemsController extends AppController {
 	
 	function delete($learn_more_item_id)
 	{
-		/*$learn_more_item = $this->LearnMoreItem->findById($learn_more_item_id);
+		$learn_more_item = $this->LearnMoreItem->findById($learn_more_item_id);
 		$learn_more_item['LearnMoreItem']['deleted'] = 1;
 		$this->LearnMoreItem->save($learn_more_item);
-		$this->version_up_learn_more_item($learn_more_item_id);
-		$learn_more_items = $this->LearnMoreItem->find('all',array('conditions'=>'LearnMoreItem.game_id = '.$learn_more_item['LearnMoreItem']['game_id'].' AND LearnMoreItem.deleted = 0','order'=>'LearnMoreItem.order ASC'));
-		foreach($learn_more_items as $i=>$learn_more_item):
-			$learn_more_item['LearnMoreItem']['order'] = $i;
-			$this->LearnMoreItem->save($learn_more_item);
-		endforeach;
-		$this->redirect('/learn_more_items/index/');*/
+		$this->redirect('/learn_more_items/index/');
 	}
 	
 	function undelete($learn_more_item_id)
 	{
 		$learn_more_item = $this->LearnMoreItem->findById($learn_more_item_id);
 		$learn_more_item['LearnMoreItem']['deleted'] = 0;
-		$learn_more_item['LearnMoreItem']['order'] = $this->LearnMoreItem->find('count',array('conditions'=>'LearnMoreItem.game_id = '.$learn_more_item['LearnMoreItem']['game_id'].' AND LearnMoreItem.deleted = 0'));
 		$this->LearnMoreItem->save($learn_more_item);
-		$this->version_up_learn_more_item($learn_more_item_id);
-		$this->redirect('/learn_more_items/deleted/'.$learn_more_item['LearnMoreItem']['game_id']);
+		$this->redirect('/learn_more_items/deleted/');
 	}
 }
 ?>
