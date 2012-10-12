@@ -450,7 +450,12 @@ class GamesController extends AppController {
 		$result = simplexml_load_string($result);
 		$game_id = $result->l;
 		
-		$learn_more_items = $this->LearnMoreItem->find('all');
+		$learn_conditions = '';
+		foreach($game['Question'] as $question):
+			if($question['learn_more_item_id'] > 0) $learn_conditions .= ' OR LearnMoreItem.id = '.$question['learn_more_item_id'];
+		endforeach;
+		
+		$learn_more_items = $this->LearnMoreItem->find('all',array('conditions'=>'1 == 2'.$learn_conditions));
 		
 		$learn_more_array = array();
 		
