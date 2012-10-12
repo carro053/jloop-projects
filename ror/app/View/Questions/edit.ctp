@@ -168,7 +168,7 @@
 </table>
 </form>
 
-<?php if(isset($prev_question_id)) { ?><a class="button" href="/question/edit/<?php echo $prev_question_id; ?>">Previous Question</a><?php } ?>
+<?php if(isset($prev_question_id)) { ?><a class="button" href="/question/edit/<?php echo $prev_question_id; ?>">Previous Question</a><?php } ?>&nbsp;
 <?php if(isset($next_question_id)) { ?><a class="button" href="/question/edit/<?php echo $next_question_id; ?>">Next Question</a><?php } ?>
 
 <script type="text/javascript">
