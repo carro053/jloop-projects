@@ -581,11 +581,11 @@ class GamesController extends AppController {
 		</game>
 		<insightText>'.$data['insightText'].'</insightText>
 		<langs>en_us</langs>';
-		if($data['learn_more_id'] > 0 && isset($learn_more_array[$data['learn_more_id']]))
+		if($data['learn_more_item_id'] > 0 && isset($learn_more_array[$data['learn_more_item_id']]))
 		{
 			$xml .= '
 		<learnMoreItem>
-			<id>'.$learn_more_array[$data['learn_more_id']].'</id>
+			<id>'.$learn_more_array[$data['learn_more_item_id']].'</id>
 		</learnMoreItem>';
 		}
 		$xml .= '
