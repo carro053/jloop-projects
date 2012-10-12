@@ -168,7 +168,8 @@
 </table>
 </form>
 
-<?php echo 'prev question id: '.$prev_question_id.' next question id: '.$next_question_id; ?>
+<?php if(isset($prev_question_id)) { ?><a class="button" href="/question/edit/<?php echo $prev_question_id; ?>">Previous Question</a><?php } ?>
+<?php if(isset($next_question_id)) { ?><a class="button" href="/question/edit/<?php echo $next_question_id; ?>">Next Question</a><?php } ?>
 
 <script type="text/javascript">
 	function change_type(item)
