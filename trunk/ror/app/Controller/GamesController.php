@@ -587,13 +587,11 @@ class GamesController extends AppController {
 		<learnMoreItem>
 			<id>'.$learn_more_array[$data['learn_more_item_id']].'</id>
 		</learnMoreItem>';
-			echo $learn_more_array[$data['learn_more_item_id']];
 		}
 		$xml .= '
 		<type>'.$data['type'].'</type>
 		<state>'.$data['state'].'</state>
 	</question>';
-				echo $xml;
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/game/createQuestion");
 				curl_setopt($ch, CURLOPT_PORT, 8282);
