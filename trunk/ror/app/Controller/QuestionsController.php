@@ -44,7 +44,7 @@ class QuestionsController extends AppController {
 				)
 			)
 		));
-		$game = $this->Game->findById($game_id);
+		$game = $this->Game->find('first',array('conditions'=>'Game.id = '.$game_id,'recursive'=>2));
 		print_r($game);
 		exit;
 		$this->set('game', $game);
