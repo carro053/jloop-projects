@@ -139,7 +139,7 @@
 		</tr>
 		<tr>
 			<td><label>Learn More Item</label></td>
-			<td><?php echo $this->Form->input('learn_more_id',array('label'=>false,'options'=>$learn_more_items)); ?></td>
+			<td><?php echo $this->Form->input('learn_more_item_id',array('label'=>false,'options'=>$learn_more_items)); ?></td>
 			<td class="note"></td>
 		</tr>
 		<tr>
