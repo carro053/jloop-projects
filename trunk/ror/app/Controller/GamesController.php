@@ -457,7 +457,7 @@ class GamesController extends AppController {
 		$response = simplexml_load_string($response);
 		
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/custom/updateCustomPicture/".$response->icon->id;);
+		curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/custom/updateCustomPicture/".$response->icon->id);
 		curl_setopt($ch, CURLOPT_PORT, 8282);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: image/png", "Content-Length: ".strlen(file_get_contents(WWW_ROOT.'img'.DS.'game_icons'.DS.$game['Game']['id'].'.png'))));
 		curl_setopt($ch, CURLOPT_VERBOSE, true);
