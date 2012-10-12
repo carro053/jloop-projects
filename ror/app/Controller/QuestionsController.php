@@ -148,7 +148,7 @@ class QuestionsController extends AppController {
 		foreach($items as $item):
 			$items_array[$item['LearnMoreItem']['id']] = $item['LearnMoreItem']['label'];
 		endforeach;
-		$this->set('learn_more_items',$items);
+		$this->set('learn_more_items',$items_array);
 	}
 	
 	function edit($question_id,$preview=false)
@@ -279,7 +279,7 @@ class QuestionsController extends AppController {
 		foreach($items as $item):
 			$items_array[$item['LearnMoreItem']['id']] = $item['LearnMoreItem']['label'];
 		endforeach;
-		$this->set('learn_more_items',$items);
+		$this->set('learn_more_items',$items_array);
 	}
 	function duplicate($question_id)
 	{
