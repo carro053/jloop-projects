@@ -530,7 +530,7 @@ class GamesController extends AppController {
 				$data['clueType'] = ucwords($question['Question']['clue_type']);
 				$data['questionType'] = ucwords($question['Question']['question_type']);
 				$data['insightType'] = ucwords($question['Question']['insight_type']);
-				
+				$data['learn_more_item_id'] = $question['Question']['learn_more_item_id'];
 				if($question['Question']['clue_type'] == 'text')
 				{
 					$data['clueText'] = $question['Question']['clue_text'];
