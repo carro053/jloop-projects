@@ -41,7 +41,7 @@ class LearnMoreItemsController extends AppController {
 			$learn_more_item = $this->data;
 			if($this->LearnMoreItem->save($learn_more_item))
 			{
-				$this->redirect('/learn_more_items/edit/'.$this->LearnMoreItem->id);
+				$this->redirect('/learn_more_items/index/');
 			}
 		} else {
 			$this->data = $learn_more_item;
