@@ -184,6 +184,7 @@ class QuestionsController extends AppController {
 			)
 		));
 		$game = $this->Game->find('first',array('conditions'=>'Game.id = '.$game_id,'recursive'=>2));
+		$this->set('game_title', $game['Game']['title']);
 		foreach($game['Question'] as $gs=>$game_question)
 		{
 			if($question['Question']['id'] == $game_question['id'])
