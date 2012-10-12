@@ -75,7 +75,7 @@ class LearnMoreItemsController extends AppController {
 				$this->LearnMoreItem->create();
 				$item['LearnMoreItem']['id'] = null;
 				$item['LearnMoreItem']['label'] = ucwords($card).' of '.ucwords($suit);
-				$item['LearnMoreItem']['id'] = 'https://nve.play-learn-win.com/the-deck/'.$card.'-of-'.$suit;
+				$item['LearnMoreItem']['url'] = 'https://nve.play-learn-win.com/the-deck/'.$card.'-of-'.$suit;
 				$this->LearnMoreItem->save($item);
 			endforeach;
 		endforeach;
