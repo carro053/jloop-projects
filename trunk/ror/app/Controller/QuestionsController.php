@@ -171,6 +171,30 @@ class QuestionsController extends AppController {
 	{
 		$question = $this->Question->findById($question_id);
 		$game_id = $question['Question']['game_id'];
+		
+		
+		
+		
+		$this->Game->bindModel(array(
+			'hasMany'=>array(
+				'Question'=>array(
+					'className'=>'Question',
+					'foreignKey'=>'game_id',
+					'order'=>$order,
+					'conditions'=>'Question.deleted = 0'
+				)
+			)
+		));
+		$game = $this->Game->find('first',array('conditions'=>'Game.id = '.$game_id,'recursive'=>2));
+		pr($game);
+		exit;
+		
+		
+		
+		
+		
+		
+		
 		$this->set('game_id',$game_id);
 		if(isset($this->data['Question']))
 		{
