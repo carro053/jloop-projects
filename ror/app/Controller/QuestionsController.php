@@ -189,9 +189,9 @@ class QuestionsController extends AppController {
 			if($question['Question']['id'] == $game_question['id'])
 			{
 				if(!empty($game['Question'][$gs-1]))
-					$this->set('prev_question_id', $game['Question'][$gs-1]['id'])
+					$this->set('prev_question_id', $game['Question'][$gs-1]['id']);
 				if(!empty($game['Question'][$gs+1]))
-					$this->set('next_question_id', $game['Question'][$gs+1]['id'])
+					$this->set('next_question_id', $game['Question'][$gs+1]['id']);
 			}
 		}
 		
