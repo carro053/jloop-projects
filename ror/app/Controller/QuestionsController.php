@@ -143,7 +143,7 @@ class QuestionsController extends AppController {
 			}
 		}
 		$this->set('game_id', $game_id);
-		$items = $this->LearnMoreItem->find('all',array('conditions'=>'LearnMoreItem.deleted = 0','order'=>'LearnMoreItem.label ASC'));
+		$items = $this->LearnMoreItem->find('all',array('conditions'=>'LearnMoreItem.deleted = 0'));
 		$items_array = array(0=>'No Learn More Item');
 		foreach($items as $item):
 			$items_array[$item['LearnMoreItem']['id']] = $item['LearnMoreItem']['label'];
@@ -274,7 +274,7 @@ class QuestionsController extends AppController {
 ',htmlspecialchars_decode($question['Question']['answer_4_note'], ENT_QUOTES));
 			$this->data = $question;
 		}
-		$items = $this->LearnMoreItem->find('all',array('conditions'=>'LearnMoreItem.deleted = 0','order'=>'LearnMoreItem.label ASC'));
+		$items = $this->LearnMoreItem->find('all',array('conditions'=>'LearnMoreItem.deleted = 0'));
 		$items_array = array(0=>'No Learn More Item');
 		foreach($items as $item):
 			$items_array[$item['LearnMoreItem']['id']] = $item['LearnMoreItem']['label'];
