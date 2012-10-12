@@ -168,6 +168,8 @@
 </table>
 </form>
 
+<?php echo 'prev question id: '.$prev_question_id.' next question id: '.$next_question_id; ?>
+
 <script type="text/javascript">
 	function change_type(item)
 	{

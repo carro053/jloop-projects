@@ -172,8 +172,6 @@ class QuestionsController extends AppController {
 		$question = $this->Question->findById($question_id);
 		$game_id = $question['Question']['game_id'];
 		
-		
-		
 		$order = 'Question.order ASC';
 		$this->Game->bindModel(array(
 			'hasMany'=>array(
@@ -186,14 +184,16 @@ class QuestionsController extends AppController {
 			)
 		));
 		$game = $this->Game->find('first',array('conditions'=>'Game.id = '.$game_id,'recursive'=>2));
-		pr($game);
-		exit;
-		
-		
-		
-		
-		
-		
+		foreach($game['Question'] as $gs=>$game_question)
+		{
+			if($question['Question']['id'] == $game_question['id'])
+			{
+				if(!empty($game['Question'][$gs-1]))
+					$this->set('prev_question_id', $game['Question'][$gs-1]['id'])
+				if(!empty($game['Question'][$gs+1]))
+					$this->set('next_question_id', $game['Question'][$gs+1]['id'])
+			}
+		}
 		
 		$this->set('game_id',$game_id);
 		if(isset($this->data['Question']))
