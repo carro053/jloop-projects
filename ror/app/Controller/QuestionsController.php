@@ -174,7 +174,7 @@ class QuestionsController extends AppController {
 		
 		
 		
-		
+		$order = 'Question.order ASC';
 		$this->Game->bindModel(array(
 			'hasMany'=>array(
 				'Question'=>array(
