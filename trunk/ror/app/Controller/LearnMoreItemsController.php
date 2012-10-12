@@ -13,12 +13,12 @@ class LearnMoreItemsController extends AppController {
 	
 	public function index()
 	{
-		$this->set('items',$this->LearnMoreItem->find('all',array('conditions'=>'LearnMoreItem.deleted = 0','order'=>'LearnMoreItem.label ASC')));
+		$this->set('items',$this->LearnMoreItem->find('all',array('conditions'=>'LearnMoreItem.deleted = 0')));
 	}
 	
 	public function deleted()
 	{
-		$this->set('items',$this->LearnMoreItem->find('all',array('conditions'=>'LearnMoreItem.deleted = 1','order'=>'LearnMoreItem.label ASC')));
+		$this->set('items',$this->LearnMoreItem->find('all',array('conditions'=>'LearnMoreItem.deleted = 1')));
 	}
 	
 	function add()
