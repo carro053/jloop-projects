@@ -488,7 +488,7 @@ class GamesController extends AppController {
 	<state>Active</state>
 	<title>'.$item['LearnMoreItem']['label'].'</title>
 </learnMoreItem>';
-
+			echo $xml;
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/learnMoreItem/create");
 			curl_setopt($ch, CURLOPT_PORT, 8282);
