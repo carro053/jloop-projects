@@ -500,6 +500,7 @@ class GamesController extends AppController {
   			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
 			$result = curl_exec($ch);
 			curl_close($ch);
+			print_r($result);
 			$result = simplexml_load_string($result);
 			if($result->l > 0)
 			{
