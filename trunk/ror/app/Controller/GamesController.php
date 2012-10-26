@@ -591,10 +591,10 @@ class GamesController extends AppController {
 				$xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	<question>
 		<answer>'.$data['answer'].'</answer>
-		<answer1>'.str_replace('%','&#37;',$data['answer1']).'</answer1>
-		<answer2>'.str_replace('%','&#37;',$data['answer2']).'</answer2>
-		<answer3>'.str_replace('%','&#37;',$data['answer3']).'</answer3>
-		<answer4>'.str_replace('%','&#37;',$data['answer4']).'</answer4>
+		<answer1>'.$data['answer1'].'</answer1>
+		<answer2>'.$data['answer2'].'</answer2>
+		<answer3>'.$data['answer3'].'</answer3>
+		<answer4>'.$data['answer4'].'</answer4>
 		<id>0</id>
 		<clueText>'.$data['clueText'].'</clueText>
 		<question>'.$data['question'].'</question>
@@ -614,6 +614,8 @@ class GamesController extends AppController {
 		<type>'.$data['type'].'</type>
 		<state>'.$data['state'].'</state>
 	</question>';
+				$xml = str_replace('%','&#37;',$xml);
+				$xml = str_replace('30','MIkre;',$xml);
 				
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/game/createQuestion");
