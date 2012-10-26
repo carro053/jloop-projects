@@ -579,7 +579,7 @@ class GamesController extends AppController {
 					$data['insightImage'] = WWW_ROOT.'img'.DS.'insights'.DS.$question['Question']['id'].'-O-'.$quest['QuestionVersion'][0]['id'].'.png';
 					//image stuff goes here
 				}
-				if($data['type'] == 'PictureQuestion')
+				if($data['type'] == 'PictureQuestion' || $question['Question']['insight_type'] != 'text' || $question['Question']['question_type'] != 'text' || $question['Question']['clue_type'] != 'text')
 				{
 					$data['state'] = 'Draft';
 				}else{
@@ -614,7 +614,7 @@ class GamesController extends AppController {
 		<type>'.$data['type'].'</type>
 		<state>'.$data['state'].'</state>
 	</question>';
-				$xml = str_replace('%','',$xml);
+				//$xml = str_replace('%','',$xml);
 				
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/game/createQuestion");
