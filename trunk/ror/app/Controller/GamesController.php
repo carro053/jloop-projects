@@ -499,7 +499,6 @@ class GamesController extends AppController {
   			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
 			$result = curl_exec($ch);
 			curl_close($ch);
-			print_r($result);
 			$result = simplexml_load_string($result);
 			if($result->l > 0)
 			{
@@ -615,6 +614,8 @@ class GamesController extends AppController {
 		<type>'.$data['type'].'</type>
 		<state>'.$data['state'].'</state>
 	</question>';
+				
+				echo '<pre>'.$xml.'</pre>';
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/game/createQuestion");
 				curl_setopt($ch, CURLOPT_PORT, 8282);
