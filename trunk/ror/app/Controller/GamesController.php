@@ -614,8 +614,7 @@ class GamesController extends AppController {
 		<type>'.$data['type'].'</type>
 		<state>'.$data['state'].'</state>
 	</question>';
-				$xml = str_replace('%','&#37;',$xml);
-				$xml = str_replace('30','MIkre;',$xml);
+				$xml = str_replace('%','',$xml);
 				
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/game/createQuestion");
