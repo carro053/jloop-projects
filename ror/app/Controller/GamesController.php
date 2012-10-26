@@ -591,17 +591,17 @@ class GamesController extends AppController {
 				$xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	<question>
 		<answer>'.$data['answer'].'</answer>
-		<answer1>'.$data['answer1'].'</answer1>
-		<answer2>'.$data['answer2'].'</answer2>
-		<answer3>'.$data['answer3'].'</answer3>
-		<answer4>'.$data['answer4'].'</answer4>
+		<answer1>'.htmlentities($data['answer1']).'</answer1>
+		<answer2>'.htmlentities($data['answer2']).'</answer2>
+		<answer3>'.htmlentities($data['answer3']).'</answer3>
+		<answer4>'.htmlentities($data['answer4']).'</answer4>
 		<id>0</id>
-		<clueText>'.$data['clueText'].'</clueText>
-		<question>'.$data['question'].'</question>
+		<clueText>'.htmlentities($data['clueText']).'</clueText>
+		<question>'.htmlentities($data['question']).'</question>
 		<game>
 			<id>'.$data['gameId'].'</id>
 		</game>
-		<insightText>'.$data['insightText'].'</insightText>
+		<insightText>'.htmlentities($data['insightText']).'</insightText>
 		<langs>en_us</langs>';
 		if($data['learn_more_item_id'] > 0 && isset($learn_more_array[$data['learn_more_item_id']]))
 		{
