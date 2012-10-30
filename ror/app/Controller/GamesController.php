@@ -740,6 +740,49 @@ class GamesController extends AppController {
 						$result = curl_exec($ch);
 						curl_close($ch);
 					}
+					if($data['state'] == 'Draft')
+					{
+						$xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+						<question>
+							<answer>'.$data['answer'].'</answer>
+							<answer1>'.$data['answer1'].'</answer1>
+							<answer2>'.$data['answer2'].'</answer2>
+							<answer3>'.$data['answer3'].'</answer3>
+							<answer4>'.$data['answer4'].'</answer4>
+							<id>'.$result->l.'</id>
+							<clueText>'.$data['clueText'].'</clueText>
+							<question>'.$data['question'].'</question>
+							<game>
+								<id>'.$data['gameId'].'</id>
+							</game>
+							<insightText>'.$data['insightText'].'</insightText>
+							<langs>en_us</langs>';
+							if($data['learn_more_item_id'] > 0 && isset($learn_more_array[$data['learn_more_item_id']]))
+							{
+								$xml .= '
+							<learnMoreItem>
+								<id>'.$learn_more_array[$data['learn_more_item_id']].'</id>
+							</learnMoreItem>';
+							}
+							$xml .= '
+							<type>'.$data['type'].'</type>
+							<state>Active</state>
+						</question>';
+						$ch = curl_init();
+						curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/game/updateQuestion/".$result->l);
+						curl_setopt($ch, CURLOPT_PORT, 8282);
+						curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/xml", "Content-Length: ".strlen($xml)));
+						curl_setopt($ch, CURLOPT_VERBOSE, true);
+						curl_setopt($ch, CURLOPT_USERPWD, "admin:MyAdminPass87");
+						curl_setopt($ch, CURLOPT_POST, true);
+						curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
+			  			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+						$result = curl_exec($ch);
+						curl_close($ch);
+						echo 'Active
+';
+						print_r($result);
+					}
 				}else{
 					echo $xml;
 				}
