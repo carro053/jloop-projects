@@ -614,8 +614,6 @@ class GamesController extends AppController {
 		<type>'.$data['type'].'</type>
 		<state>'.$data['state'].'</state>
 	</question>';
-				//$xml = html_entity_decode($xml);
-				//$xml = html_entity_decode($xml);
 				
 				$xml = str_replace('&amp;deg;', '&deg;', $xml);
 				$xml = str_replace('&deg;', '°', $xml);
