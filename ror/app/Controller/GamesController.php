@@ -631,7 +631,8 @@ class GamesController extends AppController {
 				$result = simplexml_load_string($result);
 				if($result->l > 0)
 				{
-					$request = new RestRequest('http://admin:MyAdminPass87@'.$host.':8282/RingorangWebService/rservice/game/getQuestionDetails/'.$result->l, 'GET');
+					$question_id = $result->l;
+					$request = new RestRequest('http://admin:MyAdminPass87@'.$host.':8282/RingorangWebService/rservice/game/getQuestionDetails/'.$question_id, 'GET');
 					$request->execute();
 					$response = $request->getResponseBody();
 					$response = simplexml_load_string($response);
@@ -749,7 +750,7 @@ class GamesController extends AppController {
 							<answer2>'.$data['answer2'].'</answer2>
 							<answer3>'.$data['answer3'].'</answer3>
 							<answer4>'.$data['answer4'].'</answer4>
-							<id>'.$result->l.'</id>
+							<id>'.$question_id.'</id>
 							<clueText>'.$data['clueText'].'</clueText>
 							<question>'.$data['question'].'</question>
 							<game>
@@ -769,7 +770,7 @@ class GamesController extends AppController {
 							<state>Active</state>
 						</question>';
 						$ch = curl_init();
-						curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/game/updateQuestion/".$result->l);
+						curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/game/updateQuestion/".$question_id);
 						curl_setopt($ch, CURLOPT_PORT, 8282);
 						curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/xml", "Content-Length: ".strlen($xml)));
 						curl_setopt($ch, CURLOPT_VERBOSE, true);
