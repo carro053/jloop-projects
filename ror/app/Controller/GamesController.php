@@ -590,18 +590,18 @@ class GamesController extends AppController {
 				
 				$xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	<question>
-		<answer>'.$data['answer'].'</answer>
-		<answer1>'.$data['answer1'].'</answer1>
-		<answer2>'.$data['answer2'].'</answer2>
-		<answer3>'.$data['answer3'].'</answer3>
-		<answer4>'.$data['answer4'].'</answer4>
+		<answer><![CDATA['.$data['answer'].']]></answer>
+		<answer1><![CDATA['.$data['answer1'].']]></answer1>
+		<answer2><![CDATA['.$data['answer2'].']]></answer2>
+		<answer3><![CDATA['.$data['answer3'].']]></answer3>
+		<answer4><![CDATA['.$data['answer4'].']]></answer4>
 		<id>0</id>
-		<clueText>'.$data['clueText'].'</clueText>
-		<question>'.$data['question'].'</question>
+		<clueText><![CDATA['.$data['clueText'].']]></clueText>
+		<question><![CDATA['.$data['question'].']]></question>
 		<game>
 			<id>'.$data['gameId'].'</id>
 		</game>
-		<insightText>'.$data['insightText'].'</insightText>
+		<insightText><![CDATA['.$data['insightText'].']]></insightText>
 		<langs>en_us</langs>';
 		if($data['learn_more_item_id'] > 0 && isset($learn_more_array[$data['learn_more_item_id']]))
 		{
