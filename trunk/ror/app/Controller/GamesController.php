@@ -591,17 +591,17 @@ class GamesController extends AppController {
 				$xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	<question>
 		<answer>'.$data['answer'].'</answer>
-		<answer1><![CDATA['.$data['answer1'].']]></answer1>
-		<answer2><![CDATA['.$data['answer2'].']]></answer2>
-		<answer3><![CDATA['.$data['answer3'].']]></answer3>
-		<answer4><![CDATA['.$data['answer4'].']]></answer4>
+		<answer1>'.$data['answer1'].'</answer1>
+		<answer2>'.$data['answer2'].'</answer2>
+		<answer3>'.$data['answer3'].'</answer3>
+		<answer4>'.$data['answer4'].'</answer4>
 		<id>0</id>
-		<clueText><![CDATA['.$data['clueText'].']]></clueText>
-		<question><![CDATA['.$data['question'].']]></question>
+		<clueText>'.$data['clueText'].'</clueText>
+		<question>'.$data['question'].'</question>
 		<game>
 			<id>'.$data['gameId'].'</id>
 		</game>
-		<insightText><![CDATA['.$data['insightText'].']]></insightText>
+		<insightText>'.$data['insightText'].'</insightText>
 		<langs>en_us</langs>';
 		if($data['learn_more_item_id'] > 0 && isset($learn_more_array[$data['learn_more_item_id']]))
 		{
@@ -614,11 +614,11 @@ class GamesController extends AppController {
 		<type>'.$data['type'].'</type>
 		<state>'.$data['state'].'</state>
 	</question>';
-				$xml = html_entity_decode($xml,ENT_QUOTES);
-				$xml = html_entity_decode($xml,ENT_QUOTES);
+				//$xml = html_entity_decode($xml);
+				//$xml = html_entity_decode($xml);
 				
-				//$xml = str_replace('&amp;deg;', '&deg;', $xml);
-				//$xml = str_replace('&deg;', '°', $xml);
+				$xml = str_replace('&amp;deg;', '&deg;', $xml);
+				$xml = str_replace('&deg;', '°', $xml);
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/game/createQuestion");
 				curl_setopt($ch, CURLOPT_PORT, 8282);
