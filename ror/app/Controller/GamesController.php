@@ -615,7 +615,7 @@ class GamesController extends AppController {
 		<state>'.$data['state'].'</state>
 	</question>';
 				$xml = str_replace('&amp;deg;', '&deg;', $xml);
-				$xml = str_replace('&deg;', '°', $xml);
+				//$xml = str_replace('&deg;', '°', $xml);
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL, "http://".$host."/RingorangWebService/rservice/game/createQuestion");
 				curl_setopt($ch, CURLOPT_PORT, 8282);
