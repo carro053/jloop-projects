@@ -590,7 +590,7 @@ class GamesController extends AppController {
 				
 				$xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 	<question>
-		<answer><![CDATA['.$data['answer'].']]></answer>
+		<answer>'.$data['answer'].'</answer>
 		<answer1><![CDATA['.$data['answer1'].']]></answer1>
 		<answer2><![CDATA['.$data['answer2'].']]></answer2>
 		<answer3><![CDATA['.$data['answer3'].']]></answer3>
