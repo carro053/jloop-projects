@@ -780,9 +780,6 @@ class GamesController extends AppController {
 			  			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
 						$result = curl_exec($ch);
 						curl_close($ch);
-						echo 'Active
-';
-						print_r($result);
 					}
 				}else{
 					echo $xml;
