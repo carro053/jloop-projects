@@ -8,7 +8,7 @@ class GamesController extends AppController {
 	
 	public function beforeFilter()
 	{
-		$this->Auth->allow('json_data','play','play_question','play_version');
+		$this->Auth->allow('json_data','play','play_question','play_version','the_sk');
 	}
 	
 	public function refresher()
@@ -1033,6 +1033,38 @@ class GamesController extends AppController {
 		
 		die;
 	}
+	
+	function the_sk()
+	{
+		$url = 'http://www.bsgonlinegames.com/bsgid/main.php?login=1';
+		$fields_string = '';
+		$fields = array(
+            'account' => urlencode('TheSecondSeven'),
+            'password' => urlencode('wert5813'),
+            'remember' => urlencode('true')
+        );
+
+		//url-ify the data for the POST
+		foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+		rtrim($fields_string, '&');
+		
+		//open connection
+		$ch = curl_init();
+		
+		//set the url, number of POST vars, POST data
+		curl_setopt($ch,CURLOPT_URL, $url);
+		curl_setopt($ch,CURLOPT_POST, count($fields));
+		curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+		
+		//execute post
+		$result = curl_exec($ch);
+		print_r($result);
+		//close connection
+		curl_close($ch);
+		exit;
+	}
+	
+	
 	
 }
 ?>
