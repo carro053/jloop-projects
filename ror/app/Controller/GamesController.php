@@ -8,7 +8,7 @@ class GamesController extends AppController {
 	
 	public function beforeFilter()
 	{
-		$this->Auth->allow('json_data','play','play_question','play_version','the_sk');
+		$this->Auth->allow('json_data','play','play_question','play_version','the_sk','decode');
 	}
 	
 	public function refresher()
@@ -1034,6 +1034,12 @@ class GamesController extends AppController {
 		die;
 	}
 	
+	function decode($str)
+	{
+		echo base64_decode(strrev(str_replace('+','$',$str)));
+		exit;
+	}
+	
 	function the_sk()
 	{
 		$url = 'http://www.bsgonlinegames.com/bsgid/main.php?login=1';
@@ -1058,10 +1064,10 @@ class GamesController extends AppController {
 		
 		//execute post
 		$result = curl_exec($ch);
+		
 		curl_setopt($ch,CURLOPT_URL, 'http://www.starkingdoms.com/game/terranova/status/');
 		curl_setopt($ch,CURLOPT_POST, 0);
 		curl_setopt($ch,CURLOPT_POSTFIELDS, '');
-		
 		//execute post
 		$result = curl_exec($ch);
 		print_r($result);
