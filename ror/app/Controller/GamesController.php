@@ -1058,6 +1058,12 @@ class GamesController extends AppController {
 		
 		//execute post
 		$result = curl_exec($ch);
+		curl_setopt($ch,CURLOPT_URL, 'http://www.starkingdoms.com/game/terranova/status/');
+		curl_setopt($ch,CURLOPT_POST, 0);
+		curl_setopt($ch,CURLOPT_POSTFIELDS, '');
+		
+		//execute post
+		$result = curl_exec($ch);
 		print_r($result);
 		//close connection
 		curl_close($ch);
