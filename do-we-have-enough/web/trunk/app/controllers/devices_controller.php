@@ -778,7 +778,7 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 	}
 	function push_notifications()
 	{
-		$notifications = $this->Notification->findAll('Notification.sent = 0',null,'Notification.device_token ASC, Notification.level DESC');
+		$notifications = $this->Notification->findAll('Notification.sent = 0',null,'Notification.device_token ASC, Notification.level DESC',10);
 		if ($this->environment == "dev") {
 			$apnsHost = 'gateway.sandbox.push.apple.com';
 			$apnsPort = 2195;
