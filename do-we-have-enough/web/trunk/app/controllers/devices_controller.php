@@ -817,6 +817,33 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 		fclose($apns);
 		exit();
 	}
+	function push_test()
+	{
+		$apnsHost = 'gateway.push.apple.com';
+		$apnsPort = 2195;
+		$apnsCert = '/var/www/vhosts/dowehaveenough.com/httpdocs/app/webroot/prod-cert.pem';
+
+		$streamContext = stream_context_create();
+		stream_context_set_option($streamContext, 'ssl', 'local_cert', $apnsCert);
+		//stream_context_set_option($streamContext, 'ssl', 'passphrase', 'a4d6s5');
+		//stream_context_set_option($streamContext, 'ssl', 'verify_peer', false);
+		$apns = stream_socket_client('ssl://' . $apnsHost . ':' . $apnsPort, $error, $errorString, 2, STREAM_CLIENT_CONNECT,$streamContext);
+		if (!$apns)
+		{
+			print "Failed to connect".$error." ".$errorString;
+		}else{
+			$payload = '';
+			$current_token = '8c3e905b 251fd662 7bd0fa6d c7282cc5 baa8ccb3 1c1a94ef a45ae740 7fb47752';
+			$payload['aps'] = array('alert' => 'test push', 'sound' => 'default');
+			//$payload['push_data'] = array('event_id' => ''.$notification['Notification']['event_id'].'');
+			$payload = json_encode($payload);
+			$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$current_token)).chr(0).chr(strlen($payload)).$payload;
+			fwrite($apns, $apnsMessage);
+			}
+		}
+		fclose($apns);
+		exit();
+	}
 	function get_feedback()
 	{
 		if ($this->environment == "dev") {
