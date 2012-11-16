@@ -831,9 +831,9 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 		$apns = stream_socket_client('ssl://' . $apnsHost . ':' . $apnsPort, $error, $errorString, 2, STREAM_CLIENT_CONNECT,$streamContext);
 		if (!$apns)
 		{
-			print "Failed to connect".$error." ".$errorString;
+			echo "Failed to connect".$error." ".$errorString;
 		}else{
-			print("test");
+			echo("test");
 			$payload = '';
 			$current_token = '8c3e905b 251fd662 7bd0fa6d c7282cc5 baa8ccb3 1c1a94ef a45ae740 7fb47752';
 			$payload['aps'] = array('alert' => 'test push', 'sound' => 'default');
@@ -842,7 +842,6 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 			print_r($payload);
 			$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$current_token)).chr(0).chr(strlen($payload)).$payload;
 			fwrite($apns, $apnsMessage);
-			}
 		}
 		fclose($apns);
 		exit();
