@@ -808,6 +808,7 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 					$current_token = $notification['Notification']['device_token'];
 					$payload['aps'] = array('alert' => $notification['Notification']['alert'], 'sound' => 'default');
 					$payload['push_data'] = array('event_id' => ''.$notification['Notification']['event_id'].'');
+					mail("jay@jloop.com", "payload", print_r($payload, true));
 					$payload = json_encode($payload);
 					$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$notification['Notification']['device_token'])).chr(0).chr(strlen($payload)).$payload;
 					fwrite($apns, $apnsMessage);
