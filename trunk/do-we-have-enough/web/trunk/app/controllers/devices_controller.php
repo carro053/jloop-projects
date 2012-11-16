@@ -819,7 +819,7 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 	}
 	function push_test()
 	{
-		print("hello");
+		//print("hello");
 		$apnsHost = 'gateway.push.apple.com';
 		$apnsPort = 2195;
 		$apnsCert = '/var/www/vhosts/dowehaveenough.com/httpdocs/app/webroot/prod-cert.pem';
@@ -833,13 +833,13 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 		{
 			print "Failed to connect".$error." ".$errorString;
 		}else{
-			print("test");
+			//print("test");
 			$payload = '';
 			$current_token = '8c3e905b 251fd662 7bd0fa6d c7282cc5 baa8ccb3 1c1a94ef a45ae740 7fb47752';
 			$payload['aps'] = array('alert' => 'test push', 'sound' => 'default');
 			//$payload['push_data'] = array('event_id' => ''.$notification['Notification']['event_id'].'');
 			$payload = json_encode($payload);
-			print_r($payload);
+			//print_r($payload);
 			$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$current_token)).chr(0).chr(strlen($payload)).$payload;
 			fwrite($apns, $apnsMessage);
 		}
