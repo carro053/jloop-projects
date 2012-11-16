@@ -61,7 +61,7 @@
 	<div class="container">
     	<a class="button my-events" href="<?php if($uAuth->user_id > 0) { echo '/my_events'; }else{ echo '/current_events'; } ?>">my events</a>
         <a href="/help"class="button help">help</a>
-        <a href="https://app.e2ma.net/app/view:Join/signupId:66678/acctId:2179" onclick="window.open('https://app.e2ma.net/app/view:Join/signupId:66678/acctId:2179', 'signup', 'menubar=no, location=no, toolbar=no, scrollbars=yes, width=620, height=350'); return false;"><img src="/img/btn_iphone_finalist.gif" width="332" height="85" style="margin: 0 auto 180px;"/></a>
+        <a href="https://itunes.apple.com/us/app/do-we-have-enough/id506520794?mt=8" target="_blank"><img src="/img/btn_iphone_finalist.gif" width="332" height="85" style="margin: 0 auto 180px;"/></a>
     	<p>&copy;<?php echo date("Y"); ?> <a href="http://www.jloop.com" target="_blank">JLOOP</a></p>
     </div><!-- end .container -->
 </div><!-- end #footer -->
