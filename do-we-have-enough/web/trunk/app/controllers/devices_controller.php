@@ -833,7 +833,7 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 			print "Failed to connect".$error." ".$errorString;
 		}else{
 			$payload = '';
-			$current_token = '8c3e905b 251fd662 7bd0fa6d c7282cc5 baa8ccb3 1c1a94ef a45ae740 7fb47752';
+			$current_token = '4a57ceca d8b5cee6 c55a2c91 ec87531d 879103d8 3d17724b adde6e83 88deb84c';
 			$payload['aps'] = array('alert' => 'test push', 'sound' => 'default');
 			//$payload['push_data'] = array('event_id' => ''.$notification['Notification']['event_id'].'');
 			$payload = json_encode($payload);
