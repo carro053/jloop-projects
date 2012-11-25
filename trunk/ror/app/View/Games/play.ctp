@@ -572,7 +572,7 @@ if($game['Game']['has_icon'])
 				//clueTimer();
 				
 				for(var i in questions) {
-					$('#timelineDrawer').append('<div id="timelineQuestion'+i+'" onclick="loadQuestion('+i+');" class="unplayedQuestion"><img src="/img/game_icons/<?php echo $icon_src; ?>" style="float: left; margin-top: -7px; margin-left: -48px;" width:"48" height:"42" /><p class="unplayedQuestionTitle">'+questions[i]['title']+'</p><p class="unplayedQuestionTime">'+questions[i]['time']+'</p></div>');
+					$('#timelineDrawer').append('<div id="timelineQuestion'+i+'" onclick="loadQuestion('+i+');" class="unplayedQuestion"><img src="/img/game_icons/<?php echo $icon_src; ?>" style="float: left; margin-top: -7px; margin-left: -48px;" width="48" height="42" /><p class="unplayedQuestionTitle">'+questions[i]['title']+'</p><p class="unplayedQuestionTime">'+questions[i]['time']+'</p></div>');
 				}
 				if(questions.length == 1) loadQuestion(0);
 			});
