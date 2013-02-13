@@ -427,6 +427,7 @@ class GamesController extends AppController {
 	<endDate>1343199600000</endDate>
 	<id>0</id>
 	<insightTimer>30</insightTimer>
+	<makeupInsightTimer>30</makeupInsightTimer>
 	<isAgeRequired>false</isAgeRequired>
 	<isRecurringGame>false</isRecurringGame>
 	<makeupPercent>75</makeupPercent>
