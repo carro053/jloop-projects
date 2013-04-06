@@ -13,9 +13,11 @@
     int mission_id;
     BOOL online;
     BOOL play;
+    BOOL graph;
     BOOL gravity;
 }
 - (IBAction)goPressed:(id)sender;
+- (IBAction)graphPressed:(id)sender;
 - (IBAction)backPressed:(id)sender;
 - (IBAction)gravityPressed:(id)sender;
 @property (retain, nonatomic) IBOutlet UIProgressView *fuelIndicator;
@@ -28,6 +30,7 @@
 @property int mission_id;
 @property BOOL online;
 @property BOOL play;
+@property BOOL graph;
 @property BOOL gravity;
 
 @end
