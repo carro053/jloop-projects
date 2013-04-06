@@ -19,6 +19,25 @@
 		740CE84415A4F8B800CA5246 /* FlightSchoolCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 740CE84315A4F8B700CA5246 /* FlightSchoolCell.m */; };
 		740CE84615A4F8E000CA5246 /* FlightSchoolCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 740CE84515A4F8E000CA5246 /* FlightSchoolCell.xib */; };
 		7418B11B15E5A76500C36B81 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7418B11A15E5A76500C36B81 /* Twitter.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		741B7B13170E4FB400F734A3 /* WSAreaChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B7AE5170E4FB400F734A3 /* WSAreaChartView.m */; };
+		741B7B14170E4FB400F734A3 /* WSBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B7AE8170E4FB400F734A3 /* WSBarChartView.m */; };
+		741B7B15170E4FB400F734A3 /* WSAreaLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B7AEB170E4FB400F734A3 /* WSAreaLayer.m */; };
+		741B7B16170E4FB400F734A3 /* WSBarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B7AED170E4FB400F734A3 /* WSBarLayer.m */; };
+		741B7B17170E4FB400F734A3 /* WSColumnLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B7AEF170E4FB400F734A3 /* WSColumnLayer.m */; };
+		741B7B18170E4FB400F734A3 /* WSCoordinateLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B7AF1170E4FB400F734A3 /* WSCoordinateLayer.m */; };
+		741B7B19170E4FB400F734A3 /* WSLegendLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B7AF3170E4FB400F734A3 /* WSLegendLayer.m */; };
+		741B7B1A170E4FB400F734A3 /* WSLineLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B7AF5170E4FB400F734A3 /* WSLineLayer.m */; };
+		741B7B1B170E4FB400F734A3 /* WSScatterLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B7AF7170E4FB400F734A3 /* WSScatterLayer.m */; };
+		741B7B1C170E4FB400F734A3 /* WSTopLeftCoordinateLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B7AF9170E4FB400F734A3 /* WSTopLeftCoordinateLayer.m */; };
+		741B7B1D170E4FB400F734A3 /* WSColumnChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B7AFC170E4FB400F734A3 /* WSColumnChartView.m */; };
+		741B7B1E170E4FB400F734A3 /* WSComboChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B7AFF170E4FB400F734A3 /* WSComboChartView.m */; };
+		741B7B1F170E4FB400F734A3 /* WSBaseChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B7B03170E4FB400F734A3 /* WSBaseChartView.m */; };
+		741B7B20170E4FB400F734A3 /* WSChartObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B7B05170E4FB400F734A3 /* WSChartObject.m */; };
+		741B7B21170E4FB400F734A3 /* WSGlobalCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B7B07170E4FB400F734A3 /* WSGlobalCore.m */; };
+		741B7B22170E4FB400F734A3 /* WSLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B7B0A170E4FB400F734A3 /* WSLineChartView.m */; };
+		741B7B23170E4FB400F734A3 /* WSPieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B7B0D170E4FB400F734A3 /* WSPieChartView.m */; };
+		741B7B24170E4FB400F734A3 /* WSPieChartWithMotionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B7B0F170E4FB400F734A3 /* WSPieChartWithMotionView.m */; };
+		741B7B25170E4FB400F734A3 /* WSScatterChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 741B7B12170E4FB400F734A3 /* WSScatterChartView.m */; };
 		7427F2FA15E3032800EB3E90 /* FlightSchoolMission8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7427F2F815E3032800EB3E90 /* FlightSchoolMission8.jpg */; };
 		7427F2FB15E3032800EB3E90 /* FlightSchoolMission8@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7427F2F915E3032800EB3E90 /* FlightSchoolMission8@2x.jpg */; };
 		7427F2FE15E3077700EB3E90 /* FlightSchoolMission9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7427F2FC15E3077700EB3E90 /* FlightSchoolMission9.jpg */; };
@@ -283,6 +302,45 @@
 		740CE84315A4F8B700CA5246 /* FlightSchoolCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightSchoolCell.m; sourceTree = "<group>"; };
 		740CE84515A4F8E000CA5246 /* FlightSchoolCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlightSchoolCell.xib; sourceTree = "<group>"; };
 		7418B11A15E5A76500C36B81 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		741B7AE4170E4FB400F734A3 /* WSAreaChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSAreaChartView.h; sourceTree = "<group>"; };
+		741B7AE5170E4FB400F734A3 /* WSAreaChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSAreaChartView.m; sourceTree = "<group>"; };
+		741B7AE7170E4FB400F734A3 /* WSBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSBarChartView.h; sourceTree = "<group>"; };
+		741B7AE8170E4FB400F734A3 /* WSBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSBarChartView.m; sourceTree = "<group>"; };
+		741B7AEA170E4FB400F734A3 /* WSAreaLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSAreaLayer.h; sourceTree = "<group>"; };
+		741B7AEB170E4FB400F734A3 /* WSAreaLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSAreaLayer.m; sourceTree = "<group>"; };
+		741B7AEC170E4FB400F734A3 /* WSBarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSBarLayer.h; sourceTree = "<group>"; };
+		741B7AED170E4FB400F734A3 /* WSBarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSBarLayer.m; sourceTree = "<group>"; };
+		741B7AEE170E4FB400F734A3 /* WSColumnLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSColumnLayer.h; sourceTree = "<group>"; };
+		741B7AEF170E4FB400F734A3 /* WSColumnLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSColumnLayer.m; sourceTree = "<group>"; };
+		741B7AF0170E4FB400F734A3 /* WSCoordinateLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSCoordinateLayer.h; sourceTree = "<group>"; };
+		741B7AF1170E4FB400F734A3 /* WSCoordinateLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCoordinateLayer.m; sourceTree = "<group>"; };
+		741B7AF2170E4FB400F734A3 /* WSLegendLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSLegendLayer.h; sourceTree = "<group>"; };
+		741B7AF3170E4FB400F734A3 /* WSLegendLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSLegendLayer.m; sourceTree = "<group>"; };
+		741B7AF4170E4FB400F734A3 /* WSLineLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSLineLayer.h; sourceTree = "<group>"; };
+		741B7AF5170E4FB400F734A3 /* WSLineLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSLineLayer.m; sourceTree = "<group>"; };
+		741B7AF6170E4FB400F734A3 /* WSScatterLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSScatterLayer.h; sourceTree = "<group>"; };
+		741B7AF7170E4FB400F734A3 /* WSScatterLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSScatterLayer.m; sourceTree = "<group>"; };
+		741B7AF8170E4FB400F734A3 /* WSTopLeftCoordinateLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSTopLeftCoordinateLayer.h; sourceTree = "<group>"; };
+		741B7AF9170E4FB400F734A3 /* WSTopLeftCoordinateLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSTopLeftCoordinateLayer.m; sourceTree = "<group>"; };
+		741B7AFB170E4FB400F734A3 /* WSColumnChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSColumnChartView.h; sourceTree = "<group>"; };
+		741B7AFC170E4FB400F734A3 /* WSColumnChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSColumnChartView.m; sourceTree = "<group>"; };
+		741B7AFE170E4FB400F734A3 /* WSComboChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSComboChartView.h; sourceTree = "<group>"; };
+		741B7AFF170E4FB400F734A3 /* WSComboChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSComboChartView.m; sourceTree = "<group>"; };
+		741B7B01170E4FB400F734A3 /* WSBaseChartDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSBaseChartDelegate.h; sourceTree = "<group>"; };
+		741B7B02170E4FB400F734A3 /* WSBaseChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSBaseChartView.h; sourceTree = "<group>"; };
+		741B7B03170E4FB400F734A3 /* WSBaseChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSBaseChartView.m; sourceTree = "<group>"; };
+		741B7B04170E4FB400F734A3 /* WSChartObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSChartObject.h; sourceTree = "<group>"; };
+		741B7B05170E4FB400F734A3 /* WSChartObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSChartObject.m; sourceTree = "<group>"; };
+		741B7B06170E4FB400F734A3 /* WSGlobalCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSGlobalCore.h; sourceTree = "<group>"; };
+		741B7B07170E4FB400F734A3 /* WSGlobalCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSGlobalCore.m; sourceTree = "<group>"; };
+		741B7B09170E4FB400F734A3 /* WSLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSLineChartView.h; sourceTree = "<group>"; };
+		741B7B0A170E4FB400F734A3 /* WSLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSLineChartView.m; sourceTree = "<group>"; };
+		741B7B0C170E4FB400F734A3 /* WSPieChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSPieChartView.h; sourceTree = "<group>"; };
+		741B7B0D170E4FB400F734A3 /* WSPieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSPieChartView.m; sourceTree = "<group>"; };
+		741B7B0E170E4FB400F734A3 /* WSPieChartWithMotionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSPieChartWithMotionView.h; sourceTree = "<group>"; };
+		741B7B0F170E4FB400F734A3 /* WSPieChartWithMotionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSPieChartWithMotionView.m; sourceTree = "<group>"; };
+		741B7B11170E4FB400F734A3 /* WSScatterChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSScatterChartView.h; sourceTree = "<group>"; };
+		741B7B12170E4FB400F734A3 /* WSScatterChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSScatterChartView.m; sourceTree = "<group>"; };
 		7427F2F815E3032800EB3E90 /* FlightSchoolMission8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = FlightSchoolMission8.jpg; path = Resources/FlightSchoolMission8.jpg; sourceTree = "<group>"; };
 		7427F2F915E3032800EB3E90 /* FlightSchoolMission8@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "FlightSchoolMission8@2x.jpg"; path = "Resources/FlightSchoolMission8@2x.jpg"; sourceTree = "<group>"; };
 		7427F2FC15E3077700EB3E90 /* FlightSchoolMission9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = FlightSchoolMission9.jpg; path = Resources/FlightSchoolMission9.jpg; sourceTree = "<group>"; };
@@ -718,6 +776,124 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		741B7AE2170E4FB400F734A3 /* WSCharts */ = {
+			isa = PBXGroup;
+			children = (
+				741B7AE3170E4FB400F734A3 /* Area Chart */,
+				741B7AE6170E4FB400F734A3 /* Bar Chart */,
+				741B7AE9170E4FB400F734A3 /* Chart Layers */,
+				741B7AFA170E4FB400F734A3 /* Column Chart */,
+				741B7AFD170E4FB400F734A3 /* Combo Chart */,
+				741B7B00170E4FB400F734A3 /* Global */,
+				741B7B08170E4FB400F734A3 /* Line Chart */,
+				741B7B0B170E4FB400F734A3 /* Pie Chart */,
+				741B7B10170E4FB400F734A3 /* Scatter Chart */,
+			);
+			path = WSCharts;
+			sourceTree = "<group>";
+		};
+		741B7AE3170E4FB400F734A3 /* Area Chart */ = {
+			isa = PBXGroup;
+			children = (
+				741B7AE4170E4FB400F734A3 /* WSAreaChartView.h */,
+				741B7AE5170E4FB400F734A3 /* WSAreaChartView.m */,
+			);
+			path = "Area Chart";
+			sourceTree = "<group>";
+		};
+		741B7AE6170E4FB400F734A3 /* Bar Chart */ = {
+			isa = PBXGroup;
+			children = (
+				741B7AE7170E4FB400F734A3 /* WSBarChartView.h */,
+				741B7AE8170E4FB400F734A3 /* WSBarChartView.m */,
+			);
+			path = "Bar Chart";
+			sourceTree = "<group>";
+		};
+		741B7AE9170E4FB400F734A3 /* Chart Layers */ = {
+			isa = PBXGroup;
+			children = (
+				741B7AEA170E4FB400F734A3 /* WSAreaLayer.h */,
+				741B7AEB170E4FB400F734A3 /* WSAreaLayer.m */,
+				741B7AEC170E4FB400F734A3 /* WSBarLayer.h */,
+				741B7AED170E4FB400F734A3 /* WSBarLayer.m */,
+				741B7AEE170E4FB400F734A3 /* WSColumnLayer.h */,
+				741B7AEF170E4FB400F734A3 /* WSColumnLayer.m */,
+				741B7AF0170E4FB400F734A3 /* WSCoordinateLayer.h */,
+				741B7AF1170E4FB400F734A3 /* WSCoordinateLayer.m */,
+				741B7AF2170E4FB400F734A3 /* WSLegendLayer.h */,
+				741B7AF3170E4FB400F734A3 /* WSLegendLayer.m */,
+				741B7AF4170E4FB400F734A3 /* WSLineLayer.h */,
+				741B7AF5170E4FB400F734A3 /* WSLineLayer.m */,
+				741B7AF6170E4FB400F734A3 /* WSScatterLayer.h */,
+				741B7AF7170E4FB400F734A3 /* WSScatterLayer.m */,
+				741B7AF8170E4FB400F734A3 /* WSTopLeftCoordinateLayer.h */,
+				741B7AF9170E4FB400F734A3 /* WSTopLeftCoordinateLayer.m */,
+			);
+			path = "Chart Layers";
+			sourceTree = "<group>";
+		};
+		741B7AFA170E4FB400F734A3 /* Column Chart */ = {
+			isa = PBXGroup;
+			children = (
+				741B7AFB170E4FB400F734A3 /* WSColumnChartView.h */,
+				741B7AFC170E4FB400F734A3 /* WSColumnChartView.m */,
+			);
+			path = "Column Chart";
+			sourceTree = "<group>";
+		};
+		741B7AFD170E4FB400F734A3 /* Combo Chart */ = {
+			isa = PBXGroup;
+			children = (
+				741B7AFE170E4FB400F734A3 /* WSComboChartView.h */,
+				741B7AFF170E4FB400F734A3 /* WSComboChartView.m */,
+			);
+			path = "Combo Chart";
+			sourceTree = "<group>";
+		};
+		741B7B00170E4FB400F734A3 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				741B7B01170E4FB400F734A3 /* WSBaseChartDelegate.h */,
+				741B7B02170E4FB400F734A3 /* WSBaseChartView.h */,
+				741B7B03170E4FB400F734A3 /* WSBaseChartView.m */,
+				741B7B04170E4FB400F734A3 /* WSChartObject.h */,
+				741B7B05170E4FB400F734A3 /* WSChartObject.m */,
+				741B7B06170E4FB400F734A3 /* WSGlobalCore.h */,
+				741B7B07170E4FB400F734A3 /* WSGlobalCore.m */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		741B7B08170E4FB400F734A3 /* Line Chart */ = {
+			isa = PBXGroup;
+			children = (
+				741B7B09170E4FB400F734A3 /* WSLineChartView.h */,
+				741B7B0A170E4FB400F734A3 /* WSLineChartView.m */,
+			);
+			path = "Line Chart";
+			sourceTree = "<group>";
+		};
+		741B7B0B170E4FB400F734A3 /* Pie Chart */ = {
+			isa = PBXGroup;
+			children = (
+				741B7B0C170E4FB400F734A3 /* WSPieChartView.h */,
+				741B7B0D170E4FB400F734A3 /* WSPieChartView.m */,
+				741B7B0E170E4FB400F734A3 /* WSPieChartWithMotionView.h */,
+				741B7B0F170E4FB400F734A3 /* WSPieChartWithMotionView.m */,
+			);
+			path = "Pie Chart";
+			sourceTree = "<group>";
+		};
+		741B7B10170E4FB400F734A3 /* Scatter Chart */ = {
+			isa = PBXGroup;
+			children = (
+				741B7B11170E4FB400F734A3 /* WSScatterChartView.h */,
+				741B7B12170E4FB400F734A3 /* WSScatterChartView.m */,
+			);
+			path = "Scatter Chart";
+			sourceTree = "<group>";
+		};
 		748390CE158FEDAC008AEF84 = {
 			isa = PBXGroup;
 			children = (
@@ -893,6 +1069,7 @@
 		74839102158FEDAC008AEF84 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				741B7AE2170E4FB400F734A3 /* WSCharts */,
 				74EF34C915A6974700FA59D4 /* TestFlight */,
 				74C2C8ED15902756003A827B /* JSON */,
 				748391F8158FEDAF008AEF84 /* LICENSE_cocos2d.txt */,
@@ -1640,6 +1817,25 @@
 				74AF140115A56D6700D4E17E /* PlayFlightSchoolMissionViewController.m in Sources */,
 				74AF140615A570BE00D4E17E /* PlayFlightSchoolMissionScene.m in Sources */,
 				7455287B15ED6D6E00211ED6 /* MainMenuViewController.m in Sources */,
+				741B7B13170E4FB400F734A3 /* WSAreaChartView.m in Sources */,
+				741B7B14170E4FB400F734A3 /* WSBarChartView.m in Sources */,
+				741B7B15170E4FB400F734A3 /* WSAreaLayer.m in Sources */,
+				741B7B16170E4FB400F734A3 /* WSBarLayer.m in Sources */,
+				741B7B17170E4FB400F734A3 /* WSColumnLayer.m in Sources */,
+				741B7B18170E4FB400F734A3 /* WSCoordinateLayer.m in Sources */,
+				741B7B19170E4FB400F734A3 /* WSLegendLayer.m in Sources */,
+				741B7B1A170E4FB400F734A3 /* WSLineLayer.m in Sources */,
+				741B7B1B170E4FB400F734A3 /* WSScatterLayer.m in Sources */,
+				741B7B1C170E4FB400F734A3 /* WSTopLeftCoordinateLayer.m in Sources */,
+				741B7B1D170E4FB400F734A3 /* WSColumnChartView.m in Sources */,
+				741B7B1E170E4FB400F734A3 /* WSComboChartView.m in Sources */,
+				741B7B1F170E4FB400F734A3 /* WSBaseChartView.m in Sources */,
+				741B7B20170E4FB400F734A3 /* WSChartObject.m in Sources */,
+				741B7B21170E4FB400F734A3 /* WSGlobalCore.m in Sources */,
+				741B7B22170E4FB400F734A3 /* WSLineChartView.m in Sources */,
+				741B7B23170E4FB400F734A3 /* WSPieChartView.m in Sources */,
+				741B7B24170E4FB400F734A3 /* WSPieChartWithMotionView.m in Sources */,
+				741B7B25170E4FB400F734A3 /* WSScatterChartView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1692,6 +1888,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Stratford (CR3RAM6YSA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Stratford (CR3RAM6YSA)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1706,6 +1904,8 @@
 				);
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8FADE9C8-3DF8-4184-888C-C4A5F8632824";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8FADE9C8-3DF8-4184-888C-C4A5F8632824";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1715,6 +1915,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: JLOOP";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JLOOP";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Space Flight/Prefix.pch";
@@ -1728,6 +1930,8 @@
 				);
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1E97B43F-011D-4567-8EA0-3949967FFB55";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1E97B43F-011D-4567-8EA0-3949967FFB55";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

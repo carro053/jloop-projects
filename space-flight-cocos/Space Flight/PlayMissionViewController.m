@@ -29,10 +29,15 @@ EAGLView *glView;
 @synthesize mission_id;
 @synthesize online;
 @synthesize play;
+@synthesize graph;
 @synthesize gravity;
 
 - (IBAction)goPressed:(id)sender {
     play = YES;
+}
+- (IBAction)graphPressed:(id)sender {
+    graph = YES;
+    NSLog(@"PRESSED");
 }
 
 - (IBAction)backPressed:(id)sender {

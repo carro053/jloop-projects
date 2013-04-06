@@ -18,8 +18,10 @@
 #import "SBJson.h"
 #import "UIDevice+IdentifierAddition.h"
 #import "Constants.h"
+#import "WSLineChartView.h"
 
 bool online;
+bool graphed;
 bool fido;
 bool purchaseCurrency;
 bool deployFido;
@@ -38,6 +40,7 @@ bool panning;
 bool shipOutOfFuel;
 UITouch *panningTouch;
 PathLayer *pathLayer;
+WSLineChartView *graphView;
 
 CCSprite *fuelTank;
 CCSprite *space;
@@ -86,6 +89,7 @@ bool startup;
 @synthesize planets;
 @synthesize thePath;
 @synthesize shipPath;
+@synthesize lastShipPath;
 @synthesize pathPoints;
 @synthesize total_fuel;
 @synthesize fuel_cost;
@@ -133,11 +137,15 @@ bool startup;
 		planets = [[NSMutableArray alloc] init];
 		thePath = [[NSMutableArray alloc] init];
 		shipPath = [[NSMutableArray alloc] init];
+		lastShipPath = [[NSMutableArray alloc] init];
 		pathPoints = [[NSMutableArray alloc] init];
+        
+        graphView = [[WSLineChartView alloc] initWithFrame:CGRectMake(10.0, 50.0, 800.0, 400.0)];
         
         purchaseCurrency = NO;
         deployFido = NO;
         
+        graphed = NO;
         
 		
         
@@ -351,6 +359,12 @@ bool startup;
     {
         self.playMissionViewController.play = NO;
         [self play];
+    }
+    if(self.playMissionViewController.graph)
+    {
+        self.playMissionViewController.graph = NO;
+        [self graphPath];
+        NSLog(@"YES");
     }
     if(self.playMissionViewController.gravity)
     {
@@ -1095,11 +1109,19 @@ bool startup;
     [_controller._touches removeAllObjects];
 }
 -(void) resetMission {
+    
+    
     shipFlightDuration = 0.0;
     shipOutOfFuel = NO;
     outOfFuel = NO;
     fuel_cost = maxFuel - total_fuel;
     travelTime = 0.0;
+    
+    if([shipPath count] > 0)
+    {
+        [lastShipPath removeAllObjects];
+        [lastShipPath addObjectsFromArray:shipPath];
+    }
     [shipPath removeAllObjects];
     [self.playMissionViewController.fuelIndicator setProgress:((total_fuel) / maxFuel) animated:YES];
     ship.position = start.position;
@@ -1116,6 +1138,64 @@ bool startup;
         beacon.visible = YES;
     }
 }
+
+-(void) graphPath {
+    if(graphed)
+    {
+        graphed = NO;
+        [graphView removeFromSuperview];
+    }else{
+        NSLog(@"%d",[lastShipPath count]);
+        if([lastShipPath count] > 0)
+        {
+            graphed = YES;
+            double previousTotalTravelTime = 0.0;
+            double previousTotalFuelUsed = maxFuel - total_fuel;
+            
+            NSMutableArray *arr = [[NSMutableArray alloc] init];
+            
+            
+            NSDictionary *colorDict = [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor redColor],@"Fuel Usage", nil];
+            
+            
+            
+            for(NSDictionary *shipPoint in lastShipPath)
+            {
+                if([[shipPoint objectForKey:@"total_travel_time"] doubleValue] - previousTotalTravelTime >= 0.1)
+                {
+                    
+                    
+                    WSChartObject *dataPoint = [[WSChartObject alloc] init];
+                    dataPoint.name = @"Fuel Used";
+                    dataPoint.xValue = [NSNumber numberWithFloat:previousTotalTravelTime];
+                    dataPoint.yValue = [NSNumber numberWithFloat: ([[shipPoint objectForKey:@"total_fuel_used"] doubleValue] - previousTotalFuelUsed)];
+                    
+                    
+                    
+                    
+                    NSDictionary *data = [[NSDictionary alloc] initWithObjectsAndKeys:dataPoint,@"Fuel Usage",nil];
+                    [arr addObject:data];
+                    previousTotalTravelTime += 0.1;
+                    previousTotalFuelUsed = [[shipPoint objectForKey:@"total_fuel_used"] doubleValue];
+                }
+            }
+            
+            
+            graphView.xAxisName = @"Seconds";
+            graphView.rowWidth = (600.0 / ([arr count] - 1));
+            graphView.title = @"Fuel Usage";
+            graphView.showZeroValueOnYAxis = NO;
+            //graphView.titleFrame = CGRectMake(0.0, 0.0, 400, 50);
+            //graphView.legendFrame = CGRectMake(0.0, 0.0, 400, 400);
+            [graphView drawChart:arr withColor:colorDict];
+            graphView.backgroundColor = [UIColor blackColor];
+            UIView* view = [[CCDirector sharedDirector] openGLView];
+            [view addSubview:graphView];
+        }
+    }
+    
+}
+
 -(void) shipCrashed {
     if(online)
     {
@@ -1285,6 +1365,7 @@ bool startup;
     [wellsData release];
     [thePath release];
     [shipPath release];
+    [lastShipPath release];
     [pathPoints release];
     
     [pathLayer removeAllChildrenWithCleanup:YES];
