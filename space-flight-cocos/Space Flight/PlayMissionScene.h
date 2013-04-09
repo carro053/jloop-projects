@@ -25,7 +25,7 @@
     NSMutableArray *wells;
     NSMutableArray *items;
     NSMutableArray *thePath;
-    NSMutableArray *lastShipPath;
+    NSMutableArray *shipPaths;
     NSMutableArray *shipPath;
     NSMutableArray *pathPoints;
     int total_fuel;
@@ -54,7 +54,7 @@
 @property (nonatomic,retain) NSMutableArray *wells;
 @property (nonatomic,retain) NSMutableArray *thePath;
 @property (nonatomic,retain) NSMutableArray *shipPath;
-@property (nonatomic,retain) NSMutableArray *lastShipPath;
+@property (nonatomic,retain) NSMutableArray *shipPaths;
 @property (nonatomic,retain) NSMutableArray *pathPoints;
 @property (readwrite) int total_fuel;
 @property (readwrite) double shipSpeed;
