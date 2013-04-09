@@ -282,6 +282,7 @@
 		74EF34D015A6974700FA59D4 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 74EF34CC15A6974700FA59D4 /* release_notes.txt */; };
 		74F3528615FBD865009674B2 /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = 74F3528515FBD865009674B2 /* fire.png */; };
 		74FC109F15A6AF2F00F759A8 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74FC109E15A6AF2F00F759A8 /* Icon-72@2x.png */; };
+		830010CB1714D9D1000CF5AC /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 830010CA1714D9D1000CF5AC /* GameKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -751,6 +752,7 @@
 		74EF34CD15A6974700FA59D4 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		74F3528515FBD865009674B2 /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fire.png; path = Resources/fire.png; sourceTree = "<group>"; };
 		74FC109E15A6AF2F00F759A8 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		830010CA1714D9D1000CF5AC /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -758,6 +760,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				830010CB1714D9D1000CF5AC /* GameKit.framework in Frameworks */,
 				7418B11B15E5A76500C36B81 /* Twitter.framework in Frameworks */,
 				74BE4F8715A35F94000A4548 /* SystemConfiguration.framework in Frameworks */,
 				74BE4F8615A35F81000A4548 /* libz.dylib in Frameworks */,
@@ -915,6 +918,7 @@
 		748390DC158FEDAC008AEF84 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				830010CA1714D9D1000CF5AC /* GameKit.framework */,
 				7418B11A15E5A76500C36B81 /* Twitter.framework */,
 				74C2C914159028FC003A827B /* libz.dylib */,
 				74BE4F8315A35F2E000A4548 /* SystemConfiguration.framework */,
@@ -1846,8 +1850,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Stratford (CR3RAM6YSA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Stratford (CR3RAM6YSA)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1859,8 +1863,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				PROVISIONING_PROFILE = "F00CBB12-9247-4DE0-BBFE-797F12C38242";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F00CBB12-9247-4DE0-BBFE-797F12C38242";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1869,7 +1873,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: JLOOP";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JLOOP";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
@@ -1878,7 +1882,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "741A0D56-AB06-4CC1-851F-3D7D8D39A39A";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "741A0D56-AB06-4CC1-851F-3D7D8D39A39A";
 				SDKROOT = iphoneos;
 			};
@@ -1888,8 +1892,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Michael Stratford (CR3RAM6YSA)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Michael Stratford (CR3RAM6YSA)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1904,8 +1908,8 @@
 				);
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8FADE9C8-3DF8-4184-888C-C4A5F8632824";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8FADE9C8-3DF8-4184-888C-C4A5F8632824";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1915,7 +1919,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: JLOOP";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JLOOP";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1930,7 +1934,7 @@
 				);
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1E97B43F-011D-4567-8EA0-3949967FFB55";
+				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1E97B43F-011D-4567-8EA0-3949967FFB55";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

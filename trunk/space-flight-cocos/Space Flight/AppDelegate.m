@@ -13,6 +13,8 @@
 #import "TestFlight.h"
 #import "UIDevice+IdentifierAddition.h"
 #import "MainMenuViewController.h"
+#import <GameKit/GameKit.h>
+
 /*
 #import "HelloWorldLayer.h"
 #import "RootViewController.h"
@@ -54,6 +56,20 @@
 #endif
 	// Init the window
 	//window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    
+    //Game Center auth
+    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
+        if (localPlayer.isAuthenticated)
+        {
+            // Player was successfully authenticated.
+            // Perform additional tasks for the authenticated player.
+            NSLog(@"Game Center auth succeeded");
+        } else {
+            NSLog(@"Game Center auth failed");
+        }
+    }];
 	
 	// Try to use CADisplayLink director
 	// if it fails (SDK < 3.1) use the default director
