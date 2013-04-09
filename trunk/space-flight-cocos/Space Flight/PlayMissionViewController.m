@@ -17,9 +17,11 @@
 #import "GameConfig.h"
 #import "PlayMissionScene.h"
 #import "LGViewHUD.h"
+#import "Constants.h"
 
 LGViewHUD *PlayMissionHud;
 EAGLView *glView;
+bool graphed = FALSE;
 
 @implementation PlayMissionViewController
 @synthesize fuelIndicator;
@@ -29,15 +31,17 @@ EAGLView *glView;
 @synthesize mission_id;
 @synthesize online;
 @synthesize play;
-@synthesize graph;
+@synthesize graphIt;
 @synthesize gravity;
+
+@synthesize scatterPlot;
 
 - (IBAction)goPressed:(id)sender {
     play = YES;
+    [self resetGraph];
 }
 - (IBAction)graphPressed:(id)sender {
-    graph = YES;
-    NSLog(@"PRESSED");
+    graphIt = YES;
 }
 
 - (IBAction)backPressed:(id)sender {
@@ -53,6 +57,58 @@ EAGLView *glView;
 
 - (IBAction)gravityPressed:(id)sender {
     gravity = YES;
+}
+
+-(void) resetGraph {
+    
+    graphed = FALSE;
+    self.scatterPlot.graph = nil;
+    [self.scatterPlot.graphData removeAllObjects];
+    _graphHostingView.hidden = YES;
+}
+
+
+- (void)graphThis:(NSMutableArray *)shipPaths {
+    if(graphed)
+    {
+        [self resetGraph];
+    }else{
+        graphed = TRUE;
+        float xMax = 0.0;
+        float yMax = 0.0;
+        int latest = 1;
+        NSMutableArray *plotArray = [[NSMutableArray alloc] init];
+        for (NSMutableArray *aShipPath in shipPaths) {
+            double previousTotalTravelTime = 0.0;
+            double totalThrustUsed = 0.0;
+            NSString *identifier = [NSString stringWithFormat:@"Attempt #%d",latest];
+            NSMutableArray *data = [NSMutableArray array];
+            for(NSDictionary *shipPoint in aShipPath)
+            {
+                if([[shipPoint objectForKey:@"total_fuel_used"] doubleValue] > maxFuel)
+                {
+                    break;
+                }
+                totalThrustUsed += [[shipPoint objectForKey:@"thrust_power"] doubleValue];
+                //NSLog(@"%f",totalThrustUsed);
+                if([[shipPoint objectForKey:@"total_travel_time"] doubleValue] - previousTotalTravelTime >= 0.1)
+                {
+                    [data addObject:[NSValue valueWithCGPoint:CGPointMake(previousTotalTravelTime, totalThrustUsed)]];
+                    if(previousTotalTravelTime > xMax) xMax = previousTotalTravelTime;
+                    if(totalThrustUsed > yMax) yMax = totalThrustUsed;
+                    previousTotalTravelTime += 0.1;
+                    totalThrustUsed = 0.0;
+                }
+            }
+            NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:identifier, @"PLOT_IDENTIFIER", data, @"PLOT_DATA",[NSNumber numberWithInt:([shipPaths count] + 1 - latest)],@"PLOT_LINE_STYLE",nil];
+            [plotArray addObject:dict];
+            latest++;
+        }
+        NSLog(@"OK");
+        self.scatterPlot = [[FuelUsedScatterPlot alloc] initWithHostingView:_graphHostingView andData:plotArray];
+        [self.scatterPlot initializePlotWithXMin:0.0 xMax:xMax + 0.1 yMin:0.0 yMax:yMax + 5.0];
+        _graphHostingView.hidden = NO;
+    }
 }
 
     
