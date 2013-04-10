@@ -334,7 +334,7 @@ bool startup;
 - (int) deployFido 
 {
     NSString *deviceUDID = [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier];
-	id response = [self objectWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/puzzles/deployFido/%d/%@",missionId,deviceUDID]]];
+	id response = [self objectWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/missions/deployFido/%d/%@",missionId,deviceUDID]]];
 	NSArray *feed = (NSArray *)response;
     int total = [[feed objectAtIndex:0] intValue];
 	return total;
@@ -343,7 +343,7 @@ bool startup;
 - (NSDictionary *) getOnlineMission
 {
     NSString *deviceUDID = [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier];
-	id response = [self objectWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/puzzles/getPuzzle/%d/%@",missionId,deviceUDID]]];
+	id response = [self objectWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/missions/getMission/%d/%@",missionId,deviceUDID]]];
 	NSDictionary *feed = (NSDictionary *)response;
 	return feed;
 }
@@ -1215,7 +1215,7 @@ bool startup;
             NSData * postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:NO];
             NSString * postLength = [NSString stringWithFormat:@"%d",[postData length]];
             NSMutableURLRequest * request = [[[NSMutableURLRequest alloc] init] autorelease];
-            [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/puzzles/saveSolution/%d",missionId]]]; 
+            [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/missions/saveSolution/%d",missionId]]]; 
             [request setHTTPMethod:@"POST"];
             [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
             [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];

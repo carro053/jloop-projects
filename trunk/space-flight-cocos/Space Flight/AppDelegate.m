@@ -172,7 +172,7 @@
                             stringByReplacingOccurrencesOfString:@" " withString:@""] retain];
     
     // Save the token to server
-    NSString *urlStr = [NSString stringWithFormat:@"http://dev.gravitationsapp.com/puzzles/savePushToken"];
+    NSString *urlStr = [NSString stringWithFormat:@"http://dev.gravitationsapp.com/missions/savePushToken"];
     NSURL *url = [NSURL URLWithString:urlStr];
     NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url];
     
