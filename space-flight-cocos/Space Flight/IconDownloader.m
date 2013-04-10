@@ -84,7 +84,7 @@
     // alloc+init and start an NSURLConnection; release on completion/failure
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:
                              [NSURLRequest requestWithURL:
-                              [NSURL URLWithString:[NSString stringWithFormat:@"http://gravity.jloop.com/files/puzzles/puzzle_%d@2x.jpg",missionId]]] delegate:self];
+                              [NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/files/puzzles/puzzle_%d@2x.jpg",missionId]]] delegate:self];
     self.imageConnection = conn;
     [conn release];
 }
