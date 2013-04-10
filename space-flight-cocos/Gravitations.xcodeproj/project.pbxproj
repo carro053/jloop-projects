@@ -453,7 +453,7 @@
 		7477FBD317149AE100FF9F51 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		7477FBD517149D3600FF9F51 /* FuelUsedScatterPlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FuelUsedScatterPlot.h; sourceTree = "<group>"; };
 		7477FBD617149D3600FF9F51 /* FuelUsedScatterPlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FuelUsedScatterPlot.m; sourceTree = "<group>"; };
-		748390D9158FEDAC008AEF84 /* Space Flight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Space Flight.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		748390D9158FEDAC008AEF84 /* Gravitations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gravitations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		748390DD158FEDAC008AEF84 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		748390DF158FEDAC008AEF84 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		748390E1158FEDAC008AEF84 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
@@ -1077,7 +1077,7 @@
 		748390DA158FEDAC008AEF84 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				748390D9158FEDAC008AEF84 /* Space Flight.app */,
+				748390D9158FEDAC008AEF84 /* Gravitations.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1690,9 +1690,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		748390D8158FEDAC008AEF84 /* Space Flight */ = {
+		748390D8158FEDAC008AEF84 /* Gravitations */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7483924B158FEDB0008AEF84 /* Build configuration list for PBXNativeTarget "Space Flight" */;
+			buildConfigurationList = 7483924B158FEDB0008AEF84 /* Build configuration list for PBXNativeTarget "Gravitations" */;
 			buildPhases = (
 				748390D5158FEDAC008AEF84 /* Sources */,
 				748390D6158FEDAC008AEF84 /* Frameworks */,
@@ -1702,9 +1702,9 @@
 			);
 			dependencies = (
 			);
-			name = "Space Flight";
+			name = Gravitations;
 			productName = "Space Flight";
-			productReference = 748390D9158FEDAC008AEF84 /* Space Flight.app */;
+			productReference = 748390D9158FEDAC008AEF84 /* Gravitations.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1716,7 +1716,7 @@
 				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = JLOOP;
 			};
-			buildConfigurationList = 748390D3158FEDAC008AEF84 /* Build configuration list for PBXProject "Space Flight" */;
+			buildConfigurationList = 748390D3158FEDAC008AEF84 /* Build configuration list for PBXProject "Gravitations" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1728,7 +1728,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				748390D8158FEDAC008AEF84 /* Space Flight */,
+				748390D8158FEDAC008AEF84 /* Gravitations */,
 			);
 		};
 /* End PBXProject section */
@@ -2084,7 +2084,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Gravitations;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2115,7 +2115,7 @@
 					"-ObjC",
 					"-all_load",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Gravitations;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "1E97B43F-011D-4567-8EA0-3949967FFB55";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2127,7 +2127,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		748390D3158FEDAC008AEF84 /* Build configuration list for PBXProject "Space Flight" */ = {
+		748390D3158FEDAC008AEF84 /* Build configuration list for PBXProject "Gravitations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				74839249158FEDB0008AEF84 /* Debug */,
@@ -2136,7 +2136,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7483924B158FEDB0008AEF84 /* Build configuration list for PBXNativeTarget "Space Flight" */ = {
+		7483924B158FEDB0008AEF84 /* Build configuration list for PBXNativeTarget "Gravitations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7483924C158FEDB0008AEF84 /* Debug */,
