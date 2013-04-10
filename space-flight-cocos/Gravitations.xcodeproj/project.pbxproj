@@ -903,13 +903,6 @@
 			path = "Scatter Chart";
 			sourceTree = "<group>";
 		};
-		7477FB8517149AD100FF9F51 /* CorePlotHeaders */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CorePlotHeaders;
-			sourceTree = "<group>";
-		};
 		748390CE158FEDAC008AEF84 = {
 			isa = PBXGroup;
 			children = (
@@ -1087,7 +1080,6 @@
 			isa = PBXGroup;
 			children = (
 				7477FBD317149AE100FF9F51 /* libCorePlot-CocoaTouch.a */,
-				7477FB8517149AD100FF9F51 /* CorePlotHeaders */,
 				741B7AE2170E4FB400F734A3 /* WSCharts */,
 				74EF34C915A6974700FA59D4 /* TestFlight */,
 				74C2C8ED15902756003A827B /* JSON */,
