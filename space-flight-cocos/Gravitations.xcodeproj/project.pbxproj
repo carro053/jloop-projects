@@ -1068,7 +1068,7 @@
 			isa = PBXGroup;
 			children = (
 				74FC109E15A6AF2F00F759A8 /* Icon-72@2x.png */,
-				748390ED158FEDAC008AEF84 /* Space Flight */,
+				748390ED158FEDAC008AEF84 /* Gravitations */,
 				748390DC158FEDAC008AEF84 /* Frameworks */,
 				748390DA158FEDAC008AEF84 /* Products */,
 			);
@@ -1101,7 +1101,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		748390ED158FEDAC008AEF84 /* Space Flight */ = {
+		748390ED158FEDAC008AEF84 /* Gravitations */ = {
 			isa = PBXGroup;
 			children = (
 				74C2C8DA1590228B003A827B /* Utilities */,
@@ -1165,6 +1165,7 @@
 				74AF13FF15A56D6700D4E17E /* PlayFlightSchoolMissionViewController.m */,
 				74AF140015A56D6700D4E17E /* PlayFlightSchoolMissionViewController.xib */,
 			);
+			name = Gravitations;
 			path = "Space Flight";
 			sourceTree = "<group>";
 		};
