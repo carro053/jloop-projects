@@ -280,7 +280,7 @@ bool hostActive;
         [post release];
         NSString * postLength = [NSString stringWithFormat:@"%d",[postData length]];
         NSMutableURLRequest * request = [[[NSMutableURLRequest alloc] init] autorelease];
-        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://gravity.jloop.com/puzzles/savePuzzle/35"]]]; 
+        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/puzzles/savePuzzle/35"]]]; 
         [request setHTTPMethod:@"POST"];
         [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
         [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
@@ -312,12 +312,12 @@ bool hostActive;
     [missionsdict setObject:dateString forKey:@"submitted"];
     if(![missionsdict writeToFile:playFileName atomically:NO])
         NSLog(@"failed to write plist");
-    [[EPUploader alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://gravity.jloop.com/puzzles/saveImage/%d/1",returnCode]]
+    [[EPUploader alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/puzzles/saveImage/%d/1",returnCode]]
                            filePath:[NSString stringWithFormat:@"%@/CustomMission_%d@2x.jpg", fileDirectory,submitMissionId]
                            delegate:self
                        doneSelector:@selector(onUploadDone:)
                       errorSelector:@selector(onUploadError:)];
-    /*[[EPUploader alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://gravity.jloop.com/puzzles/saveImage/%d/0",returnCode]]
+    /*[[EPUploader alloc] initWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/puzzles/saveImage/%d/0",returnCode]]
                            filePath:[NSString stringWithFormat:@"%@/CustomMission_%d.jpg", fileDirectory,submitMissionId]
                            delegate:self
                        doneSelector:@selector(onUploadDone:)
@@ -426,7 +426,7 @@ bool hostActive;
     [internetReachable startNotifier];
     
     // check if a pathway to a random host exists
-    hostReachable = [[Reachability reachabilityWithHostName: @"gravity.jloop.com"] retain];
+    hostReachable = [[Reachability reachabilityWithHostName: @"dev.gravitationsapp.com"] retain];
     [hostReachable startNotifier];
     
     YourMissionsHud = [LGViewHUD defaultHUD];

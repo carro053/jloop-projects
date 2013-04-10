@@ -150,7 +150,7 @@ NSString *username;
     [internetReachable startNotifier];
     
     // check if a pathway to a random host exists
-    hostReachable = [[Reachability reachabilityWithHostName: @"gravity.jloop.com"] retain];
+    hostReachable = [[Reachability reachabilityWithHostName: @"dev.gravitationsapp.com"] retain];
     [hostReachable startNotifier];
     
     hud = [LGViewHUD defaultHUD];
@@ -231,7 +231,7 @@ NSString *username;
         NSData * postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:NO];
         NSString * postLength = [NSString stringWithFormat:@"%d",[postData length]];
         NSMutableURLRequest * request = [[[NSMutableURLRequest alloc] init] autorelease];
-        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://gravity.jloop.com/puzzles/saveAccountInfo/"]]]; 
+        [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/puzzles/saveAccountInfo/"]]]; 
         [request setHTTPMethod:@"POST"];
         [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
         [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
@@ -307,7 +307,7 @@ NSString *username;
 - (NSDictionary *) getAccountInfo
 {
     NSString *deviceUDID = [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier];
-	id response = [self objectWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"http://gravity.jloop.com/puzzles/getAccountInfo/%@",deviceUDID]]];
+	id response = [self objectWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/puzzles/getAccountInfo/%@",deviceUDID]]];
 	NSDictionary *feed = (NSDictionary *)response;
 	return feed;
 }

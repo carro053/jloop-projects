@@ -112,7 +112,7 @@ bool featured;
 - (NSDictionary *) getPuzzleTimes
 {
     NSString *deviceUDID = [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier];
-	id response = [self objectWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"http://gravity.jloop.com/puzzles/getPuzzleTimes/%d/%@",self.mission_id,deviceUDID]]];
+	id response = [self objectWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/puzzles/getPuzzleTimes/%d/%@",self.mission_id,deviceUDID]]];
 	NSDictionary *feed = (NSDictionary *)response;
 	return feed;
 }
@@ -464,15 +464,15 @@ bool featured;
     //  Set the initial body of the Tweet
     if(mostFuelId == solutionId && fastestTimeId == solutionId)
     {
-        [tweetSheet setInitialText:[NSString stringWithFormat:@"Check out my Space Flight record for fastest time and most left over fuel!\nhttp://gravity.jloop.com/viewMissionSolution/%d/%d #SpaceFlight",mission_id,solutionId]];
+        [tweetSheet setInitialText:[NSString stringWithFormat:@"Check out my Space Flight record for fastest time and most left over fuel!\nhttp://dev.gravitationsapp.com/viewMissionSolution/%d/%d #SpaceFlight",mission_id,solutionId]];
     }else if(mostFuelId == solutionId)
     {
-        [tweetSheet setInitialText:[NSString stringWithFormat:@"Check out my Space Flight record for the most left over fuel!\nhttp://gravity.jloop.com/viewMissionSolution/%d/%d #SpaceFlight",mission_id,solutionId]];
+        [tweetSheet setInitialText:[NSString stringWithFormat:@"Check out my Space Flight record for the most left over fuel!\nhttp://dev.gravitationsapp.com/viewMissionSolution/%d/%d #SpaceFlight",mission_id,solutionId]];
     }else if(fastestTimeId == solutionId)
     {
-        [tweetSheet setInitialText:[NSString stringWithFormat:@"Check out my Space Flight record for the fastest time!\nhttp://gravity.jloop.com/viewMissionSolution/%d/%d #SpaceFlight",mission_id,solutionId]];
+        [tweetSheet setInitialText:[NSString stringWithFormat:@"Check out my Space Flight record for the fastest time!\nhttp://dev.gravitationsapp.com/viewMissionSolution/%d/%d #SpaceFlight",mission_id,solutionId]];
     }else{
-        [tweetSheet setInitialText:[NSString stringWithFormat:@"Check out my Space Flight mission success!\nhttp://gravity.jloop.com/viewMissionSolution/%d/%d #SpaceFlight",mission_id,solutionId]];
+        [tweetSheet setInitialText:[NSString stringWithFormat:@"Check out my Space Flight mission success!\nhttp://dev.gravitationsapp.com/viewMissionSolution/%d/%d #SpaceFlight",mission_id,solutionId]];
     }
     
     /*
@@ -487,7 +487,7 @@ bool featured;
      */
     /*
     //  Add an URL to the Tweet.  You can add multiple URLs.
-    if (![tweetSheet addURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://gravity.jloop.com/puzzles/viewMissionSolution/%d/%d",mission_id,solutionId]]]){
+    if (![tweetSheet addURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/puzzles/viewMissionSolution/%d/%d",mission_id,solutionId]]]){
         NSLog(@"Unable to add the URL!");
     }
     */
@@ -608,7 +608,7 @@ bool featured;
 
 -(void)submitVoteWith:(int)theVote {
     NSString *deviceUDID = [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://gravity.jloop.com/puzzles/voteForPuzzle/%@/%d/%d",deviceUDID,self.mission_id,theVote]]
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/puzzles/voteForPuzzle/%@/%d/%d",deviceUDID,self.mission_id,theVote]]
                                                 cachePolicy:NSURLRequestReloadIgnoringCacheData
                                             timeoutInterval:5];
     NSOperationQueue *queue = [NSOperationQueue new];
