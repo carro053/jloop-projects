@@ -284,7 +284,7 @@ double lastProbeMoveSpeed;
 
 - (NSDictionary *) getOnlineMission
 {
-	id response = [self objectWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/puzzles/getPuzzle/%d",missionId]]];
+	id response = [self objectWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/missions/getMission/%d",missionId]]];
 	NSDictionary *feed = (NSDictionary *)response;
 	return feed;
 }

@@ -320,7 +320,7 @@ bool loadingMoreMissions;
 }
 - (int) getTotalMissions 
 {
-	id response = [self objectWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/puzzles/getTotalMissions/35"]]];
+	id response = [self objectWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/missions/getTotalMissions/35"]]];
 	NSArray *feed = (NSArray *)response;
     int total = [[feed objectAtIndex:0] intValue];
 	return total;
@@ -328,7 +328,7 @@ bool loadingMoreMissions;
 
 - (NSArray *) getOnlineMissions 
 {
-	id response = [self objectWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/puzzles/getPuzzles/%d/%d/%d/35",orderByRating,missionOffset,missionsPerPage]]];
+	id response = [self objectWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/missions/getMissions/%d/%d/%d/35",orderByRating,missionOffset,missionsPerPage]]];
 	NSArray *feed = (NSArray *)response;
 	return feed;
 }

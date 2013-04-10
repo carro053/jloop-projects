@@ -112,7 +112,7 @@ bool featured;
 - (NSDictionary *) getPuzzleTimes
 {
     NSString *deviceUDID = [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier];
-	id response = [self objectWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/puzzles/getPuzzleTimes/%d/%@",self.mission_id,deviceUDID]]];
+	id response = [self objectWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/missions/getMissionTimes/%d/%@",self.mission_id,deviceUDID]]];
 	NSDictionary *feed = (NSDictionary *)response;
 	return feed;
 }
@@ -487,7 +487,7 @@ bool featured;
      */
     /*
     //  Add an URL to the Tweet.  You can add multiple URLs.
-    if (![tweetSheet addURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/puzzles/viewMissionSolution/%d/%d",mission_id,solutionId]]]){
+    if (![tweetSheet addURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/missions/viewMissionSolution/%d/%d",mission_id,solutionId]]]){
         NSLog(@"Unable to add the URL!");
     }
     */
@@ -608,7 +608,7 @@ bool featured;
 
 -(void)submitVoteWith:(int)theVote {
     NSString *deviceUDID = [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/puzzles/voteForPuzzle/%@/%d/%d",deviceUDID,self.mission_id,theVote]]
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/missions/voteForMission/%@/%d/%d",deviceUDID,self.mission_id,theVote]]
                                                 cachePolicy:NSURLRequestReloadIgnoringCacheData
                                             timeoutInterval:5];
     NSOperationQueue *queue = [NSOperationQueue new];

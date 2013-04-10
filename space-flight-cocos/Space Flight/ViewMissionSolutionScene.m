@@ -253,7 +253,7 @@ double fastest_time;
 
 - (NSDictionary *) getOnlinePuzzleWithSolution
 {
-	id response = [self objectWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/puzzles/getPuzzleWithSolution/%d/%d",puzzleId,solutionId]]];
+	id response = [self objectWithUrl:[NSURL URLWithString:[NSString stringWithFormat:@"http://dev.gravitationsapp.com/missions/getMissionWithSolution/%d/%d",puzzleId,solutionId]]];
 	NSDictionary *feed = (NSDictionary *)response;
 	return feed;
 }
