@@ -102,7 +102,7 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Space Flight</string>
+								<string key="IBUIText">Gravitations</string>
 								<reference key="IBUITextColor" ref="1071229084"/>
 								<reference key="IBUIHighlightedColor" ref="1071229084"/>
 								<int key="IBUIBaselineAdjustment">0</int>
