@@ -77,22 +77,22 @@
     [lineStyles addObject:lineStyle1];
     CPTMutableLineStyle *lineStyle2 = [CPTMutableLineStyle lineStyle];
     lineStyle2.lineWidth              = 2.5f;
-    lineStyle2.lineColor              = [CPTColor colorWithComponentRed:0.0 green:0.7 blue:0.25 alpha:8.0];
+    lineStyle2.lineColor              = [CPTColor colorWithComponentRed:0.0 green:0.7 blue:0.25 alpha:0.8];
     //lineStyle2.dashPattern            = [NSArray arrayWithObjects:[NSNumber numberWithFloat:5.0f], [NSNumber numberWithFloat:5.0f], nil];
     [lineStyles addObject:lineStyle2];
     CPTMutableLineStyle *lineStyle3 = [CPTMutableLineStyle lineStyle];
     lineStyle3.lineWidth              = 2.0f;
-    lineStyle3.lineColor              = [CPTColor colorWithComponentRed:0.0 green:0.6 blue:0.25 alpha:6.0];
+    lineStyle3.lineColor              = [CPTColor colorWithComponentRed:0.0 green:0.6 blue:0.25 alpha:0.6];
     //lineStyle3.dashPattern            = [NSArray arrayWithObjects:[NSNumber numberWithFloat:5.0f], [NSNumber numberWithFloat:5.0f], nil];
     [lineStyles addObject:lineStyle3];
     CPTMutableLineStyle *lineStyle4 = [CPTMutableLineStyle lineStyle];
     lineStyle4.lineWidth              = 1.5f;
-    lineStyle4.lineColor              = [CPTColor colorWithComponentRed:0.0 green:0.5 blue:0.25 alpha:4.0];
+    lineStyle4.lineColor              = [CPTColor colorWithComponentRed:0.0 green:0.5 blue:0.25 alpha:0.4];
     //lineStyle4.dashPattern            = [NSArray arrayWithObjects:[NSNumber numberWithFloat:5.0f], [NSNumber numberWithFloat:5.0f], nil];
     [lineStyles addObject:lineStyle4];
     CPTMutableLineStyle *lineStyle5 = [CPTMutableLineStyle lineStyle];
     lineStyle5.lineWidth              = 1.0f;
-    lineStyle5.lineColor              = [CPTColor colorWithComponentRed:0.0 green:0.4 blue:0.25 alpha:2.0];
+    lineStyle5.lineColor              = [CPTColor colorWithComponentRed:0.0 green:0.4 blue:0.25 alpha:0.2];
     //lineStyle5.dashPattern            = [NSArray arrayWithObjects:[NSNumber numberWithFloat:5.0f], [NSNumber numberWithFloat:5.0f], nil];
     [lineStyles addObject:lineStyle5];
     

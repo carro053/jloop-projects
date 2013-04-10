@@ -44,7 +44,7 @@
 							<object class="IBUIView" id="982385499">
 								<reference key="NSNextResponder" ref="697241220"/>
 								<int key="NSvFlags">274</int>
-								<string key="NSFrame">{{170, 84}, {685, 556}}</string>
+								<string key="NSFrameSize">{1024, 724}</string>
 								<reference key="NSSuperview" ref="697241220"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="403116890"/>
@@ -79,7 +79,7 @@
 							<object class="IBUIProgressView" id="1011465222">
 								<reference key="NSNextResponder" ref="403116890"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{302, 17}, {477, 11}}</string>
+								<string key="NSFrame">{{309, 17}, {477, 11}}</string>
 								<reference key="NSSuperview" ref="403116890"/>
 								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -109,6 +109,17 @@
 								<reference key="IBUIToolbar" ref="403116890"/>
 								<int key="IBUISystemItemIdentifier">5</int>
 							</object>
+							<object class="IBUIBarButtonItem" id="101391261">
+								<string key="IBUITitle">Graph</string>
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<int key="IBUIStyle">1</int>
+								<reference key="IBUIToolbar" ref="403116890"/>
+							</object>
+							<object class="IBUIBarButtonItem" id="195363954">
+								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+								<reference key="IBUIToolbar" ref="403116890"/>
+								<int key="IBUISystemItemIdentifier">5</int>
+							</object>
 							<object class="IBUIBarButtonItem" id="298508124">
 								<string key="IBUITitle">Fuel:</string>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -128,12 +139,6 @@
 								<string key="IBUITitle">Deploy F.I.D.O.</string>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<float key="IBUIWidth">110</float>
-								<int key="IBUIStyle">1</int>
-								<reference key="IBUIToolbar" ref="403116890"/>
-							</object>
-							<object class="IBUIBarButtonItem" id="101391261">
-								<string key="IBUITitle">Graph</string>
-								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBUIStyle">1</int>
 								<reference key="IBUIToolbar" ref="403116890"/>
 							</object>
@@ -277,6 +282,7 @@
 							<reference ref="298508124"/>
 							<reference ref="101391261"/>
 							<reference ref="339039785"/>
+							<reference ref="195363954"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
 					</object>
@@ -341,6 +347,11 @@
 						<reference key="object" ref="982385499"/>
 						<reference key="parent" ref="697241220"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">51</int>
+						<reference key="object" ref="195363954"/>
+						<reference key="parent" ref="403116890"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -360,6 +371,7 @@
 				<string key="46.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="49.CustomClassName">CPTGraphHostingView</string>
 				<string key="49.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="51.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="6.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="7.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
@@ -367,7 +379,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">50</int>
+			<int key="maxID">51</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
