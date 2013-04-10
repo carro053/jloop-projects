@@ -65,6 +65,7 @@ bool graphed = FALSE;
     self.scatterPlot.graph = nil;
     [self.scatterPlot.graphData removeAllObjects];
     _graphHostingView.hidden = YES;
+    _graphHostingView.userInteractionEnabled = NO;
 }
 
 
@@ -83,21 +84,23 @@ bool graphed = FALSE;
             double totalThrustUsed = 0.0;
             NSString *identifier = [NSString stringWithFormat:@"Attempt #%d",latest];
             NSMutableArray *data = [NSMutableArray array];
+            int pointCount = 0;
             for(NSDictionary *shipPoint in aShipPath)
             {
-                if([[shipPoint objectForKey:@"total_fuel_used"] doubleValue] > maxFuel)
-                {
-                    break;
-                }
+                pointCount++;
                 totalThrustUsed += [[shipPoint objectForKey:@"thrust_power"] doubleValue];
                 //NSLog(@"%f",totalThrustUsed);
-                if([[shipPoint objectForKey:@"total_travel_time"] doubleValue] - previousTotalTravelTime >= 0.1)
+                if([[shipPoint objectForKey:@"total_travel_time"] doubleValue] - previousTotalTravelTime >= 0.1 || pointCount == [aShipPath count] || [[shipPoint objectForKey:@"total_fuel_used"] doubleValue] > maxFuel)
                 {
                     [data addObject:[NSValue valueWithCGPoint:CGPointMake(previousTotalTravelTime, totalThrustUsed)]];
                     if(previousTotalTravelTime > xMax) xMax = previousTotalTravelTime;
                     if(totalThrustUsed > yMax) yMax = totalThrustUsed;
                     previousTotalTravelTime += 0.1;
                     totalThrustUsed = 0.0;
+                }
+                if([[shipPoint objectForKey:@"total_fuel_used"] doubleValue] > maxFuel)
+                {
+                    break;
                 }
             }
             NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:identifier, @"PLOT_IDENTIFIER", data, @"PLOT_DATA",[NSNumber numberWithInt:([shipPaths count] + 1 - latest)],@"PLOT_LINE_STYLE",nil];
@@ -108,6 +111,7 @@ bool graphed = FALSE;
         self.scatterPlot = [[FuelUsedScatterPlot alloc] initWithHostingView:_graphHostingView andData:plotArray];
         [self.scatterPlot initializePlotWithXMin:0.0 xMax:xMax + 0.1 yMin:0.0 yMax:yMax + 5.0];
         _graphHostingView.hidden = NO;
+        _graphHostingView.userInteractionEnabled = YES;
     }
 }
 
