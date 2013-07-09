@@ -54,11 +54,11 @@ class SearchesController extends AppController {
 			// Example executing a search with your custom search id.
 			$query = 'site:itunes.apple.com/us "Open iTunes to buy and download apps." '; //search US store, only iOS apps (not Mac apps or music, etc.)
 			
-			if($this->request->data['Search']['not_iphone_5'])
+			if($this->request->data['Search']['is_not_iphone_5'])
 				$query .= '-"This app is optimized for iPhone 5." ';
-			if($this->request->data['Search']['not_ipad_only'])
+			if($this->request->data['Search']['is_not_ipad_only'])
 				$query .= '-"Compatible with iPad." ';
-			$query .= $this->request->data['Search']['custom_terms'];
+			$query .= $this->request->data['Search']['search_terms'];
 			
 			$result = $search->cse->listCse($query, array(
 			  'cx' => '007301418745006324333:d--m5x9_aui', // The custom search engine ID to scope this search query.
@@ -66,5 +66,9 @@ class SearchesController extends AppController {
 			print "<pre>" . print_r($result, true) . "</pre>";
 			exit;
 		}
+	}
+	
+	public function view($search_id) {
+		
 	}
 }
