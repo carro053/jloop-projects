@@ -38,7 +38,33 @@ class SearchesController extends AppController {
 	
 	public function create() {
 		if ($this->request->is('post')) {
+		
+			App::import('Vendor', 'google-api/Google_Client');
+			App::import('Vendor', 'google-api/contrib/Google_CustomsearchService');
+						
+			session_start();
+			$client = new Google_Client();
+			$client->setApplicationName('App Finder');
+			// Docs: http://code.google.com/apis/customsearch/v1/using_rest.html
+			// Visit https://code.google.com/apis/console?api=customsearch to generate
+			// your developer key (simple api key).
+			$client->setDeveloperKey('AIzaSyBeJoG_O5wa2aAqAsWihNnCLmckfDB6kNQ');
+			$search = new Google_CustomsearchService($client);
 			
+			// Example executing a search with your custom search id.
+			$query = 'site:itunes.apple.com/us "Open iTunes to buy and download apps." '; //search US store, only iOS apps (not Mac apps or music, etc.)
+			
+			if($this->request->data['Search']['not_iphone_5'])
+				$query .= '-"This app is optimized for iPhone 5." ';
+			if($this->request->data['Search']['not_ipad_only'])
+				$query .= '-"Compatible with iPad." ';
+			$query .= $this->request->data['Search']['custom_terms']
+			
+			$result = $search->cse->listCse($query, array(
+			  'cx' => '007301418745006324333:d--m5x9_aui', // The custom search engine ID to scope this search query.
+			));
+			print "<pre>" . print_r($result, true) . "</pre>";
+			exit;
 		}
 	}
 }
