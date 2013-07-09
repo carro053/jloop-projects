@@ -35,4 +35,10 @@ class SearchesController extends AppController {
 		print "<pre>" . print_r($result, true) . "</pre>";
 		*/
 	}
+	
+	public function create() {
+		if ($this->request->is('post')) {
+			
+		}
+	}
 }
