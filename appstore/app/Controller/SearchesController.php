@@ -58,7 +58,7 @@ class SearchesController extends AppController {
 				$query .= '-"This app is optimized for iPhone 5." ';
 			if($this->request->data['Search']['not_ipad_only'])
 				$query .= '-"Compatible with iPad." ';
-			$query .= $this->request->data['Search']['custom_terms']
+			$query .= $this->request->data['Search']['custom_terms'];
 			
 			$result = $search->cse->listCse($query, array(
 			  'cx' => '007301418745006324333:d--m5x9_aui', // The custom search engine ID to scope this search query.
