@@ -1,7 +1,7 @@
 <?php
 App::uses('AppController', 'Controller');
 
-class SearchsController extends AppController {
+class SearchesController extends AppController {
 
 	public $uses = array('Search');
 	
