@@ -7,6 +7,7 @@ class SearchesController extends AppController {
 	
 	public function test() {
 		App::import('Vendor', 'google-api/Google_Client');
+		App::import('Vendor', 'google-api/contrib/Google_Client');
 		
 		
 		session_start();
