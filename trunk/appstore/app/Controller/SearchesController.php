@@ -63,7 +63,7 @@ class SearchesController extends AppController {
 				pr($this->request->data['Search']['start_date']);
 				exit;
 			
-				$query .= 'daterange:'.$this->request->data['Search']['start_date'].'..'.$this->request->data['Search']['end_date'].' ';
+				$query .= 'daterange:'.$this->request->data['Search']['start_date']['year'].'-'.$this->request->data['Search']['start_date']['month'].'-'.$this->request->data['Search']['start_date']['day'].'..'.$this->request->data['Search']['end_date']['year'].'-'.$this->request->data['Search']['end_date']['month'].'-'.$this->request->data['Search']['end_date']['day'].' ';
 			}
 			$query .= $this->request->data['Search']['search_terms'];
 			
