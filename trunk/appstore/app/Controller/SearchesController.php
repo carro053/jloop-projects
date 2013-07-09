@@ -59,14 +59,18 @@ class SearchesController extends AppController {
 			if($this->request->data['Search']['is_not_ipad_only'])
 				$query .= '-"Compatible with iPad." ';
 			if($this->request->data['Search']['use_date_range']) {
-				
+				$query .= 'daterange:'.$this->request->data['Search']['start_date'].'..'.$this->request->data['Search']['end_date'].' ';
 			}
 			$query .= $this->request->data['Search']['search_terms'];
 			
+			echo $query;
+			
+			/*
 			$result = $search->cse->listCse($query, array(
 			  'cx' => '007301418745006324333:d--m5x9_aui', // The custom search engine ID to scope this search query.
 			));
 			print "<pre>" . print_r($result, true) . "</pre>";
+			*/
 			exit;
 		}
 	}
