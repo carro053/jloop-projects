@@ -13,6 +13,8 @@
 
 <script type="text/javascript">
 	function toggleDates(checked) {
+		console.log(checked);
+	
 		if(checked == 1)
 			$('#date-range').show();
 		else
