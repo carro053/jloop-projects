@@ -38,7 +38,6 @@ class SearchesController extends AppController {
 	
 	public function create() {
 		if ($this->request->is('post')) {
-			/*
 			App::import('Vendor', 'google-api/Google_Client');
 			App::import('Vendor', 'google-api/contrib/Google_CustomsearchService');
 			
@@ -50,7 +49,6 @@ class SearchesController extends AppController {
 			// your developer key (simple api key).
 			$client->setDeveloperKey('AIzaSyBeJoG_O5wa2aAqAsWihNnCLmckfDB6kNQ');
 			$search = new Google_CustomsearchService($client);
-			*/
 			
 			// Example executing a search with your custom search id.
 			$query = 'site:itunes.apple.com/us "Open iTunes to buy and download apps." '; //search US store, only iOS apps (not Mac apps or music, etc.)
@@ -64,14 +62,10 @@ class SearchesController extends AppController {
 			}
 			$query .= $this->request->data['Search']['search_terms'];
 			
-			echo $query;
-			
-			/*
 			$result = $search->cse->listCse($query, array(
 			  'cx' => '007301418745006324333:d--m5x9_aui', // The custom search engine ID to scope this search query.
 			));
 			print "<pre>" . print_r($result, true) . "</pre>";
-			*/
 			exit;
 		}
 	}
