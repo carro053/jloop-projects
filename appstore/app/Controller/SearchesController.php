@@ -60,6 +60,9 @@ class SearchesController extends AppController {
 			if($this->request->data['Search']['is_not_ipad_only'])
 				$query .= '-"Compatible with iPad." ';
 			if($this->request->data['Search']['use_date_range']) {
+				pr($this->request->data['Search']['start_date']);
+				exit;
+			
 				$query .= 'daterange:'.$this->request->data['Search']['start_date'].'..'.$this->request->data['Search']['end_date'].' ';
 			}
 			$query .= $this->request->data['Search']['search_terms'];
