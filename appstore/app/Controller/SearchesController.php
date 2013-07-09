@@ -58,6 +58,9 @@ class SearchesController extends AppController {
 				$query .= '-"This app is optimized for iPhone 5." ';
 			if($this->request->data['Search']['is_not_ipad_only'])
 				$query .= '-"Compatible with iPad." ';
+			if($this->request->data['Search']['use_date_range']) {
+				
+			}
 			$query .= $this->request->data['Search']['search_terms'];
 			
 			$result = $search->cse->listCse($query, array(
