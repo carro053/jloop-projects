@@ -3,7 +3,7 @@
 	echo $this->Form->input('search_terms');
 	echo $this->Form->input('is_not_iphone_5');
 	echo $this->Form->input('is_not_ipad_only');
-	echo $this->Form->input('use_date_range', array('onchange' => 'toggleDates(this.value);'));
+	echo $this->Form->input('use_date_range', array('onchange' => 'toggleDates(this);'));
 	echo '<div id="date-range" style="display:none;">';
 	echo $this->Form->input('start_date', array('class' => 'date-range'));
 	echo $this->Form->input('end_date', array('class' => 'date-range'));
@@ -12,10 +12,8 @@
 ?>
 
 <script type="text/javascript">
-	function toggleDates(checked) {
-		console.log(checked);
-	
-		if(checked == 1)
+	function toggleDates(checkbox) {
+		if($(checkbox).is(':checked'))
 			$('#date-range').show();
 		else
 			$('#date-range').hide();
