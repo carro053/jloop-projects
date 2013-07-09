@@ -4,16 +4,18 @@
 	echo $this->Form->input('is_not_iphone_5');
 	echo $this->Form->input('is_not_ipad_only');
 	echo $this->Form->input('use_date_range', array('onchange' => 'toggleDates(this.value);'));
-	echo $this->Form->input('start_date', array('class' => 'date-range', 'style' => 'display:none;'));
-	echo $this->Form->input('end_date', array('class' => 'date-range', 'style' => 'display:none;'));
+	echo '<div id="date-range" style="display:none;">';
+	echo $this->Form->input('start_date', array('class' => 'date-range'));
+	echo $this->Form->input('end_date', array('class' => 'date-range'));
+	echo '</div>';
 	echo $this->Form->end('Submit');
 ?>
 
 <script type="text/javascript">
 	function toggleDates(checked) {
 		if(checked)
-			$('.date-range').show();
+			$('#date-range').show();
 		else
-			$('.date-range').hide();
+			$('#date-range').hide();
 	}
 </script>
