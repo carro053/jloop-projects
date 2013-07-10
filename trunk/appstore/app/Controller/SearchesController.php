@@ -64,7 +64,7 @@ class SearchesController extends AppController {
 			
 			$result = $search->cse->listCse($query, array(
 			  'cx' => '007301418745006324333:d--m5x9_aui', // The custom search engine ID to scope this search query.
-			  'num' => 100
+			  'num' => 5
 			));
 			print "<pre>" . print_r($result, true) . "</pre>";
 			exit;
