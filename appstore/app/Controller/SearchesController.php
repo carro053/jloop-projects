@@ -75,16 +75,15 @@ class SearchesController extends AppController {
 			$result = $this->run_query($query, $start);
 			$result_items = array_merge($result_items, $result['items']);
 			
-			/*
 			$num_pages = 0;
 			if($result['total_results'] >= 100)
 				$num_pages = 9;
 			else
 				$num_pages = ceil($result['total_results'] / 10) - 1;
 			for($i = 0; $i < $num_pages; $i++) {
-				
+				$result = $this->run_query($query, $start+2);
+				$result_items = array_merge($result_items, $result['items']);
 			}
-			*/
 			
 			echo $result['total_results'].'<br />';
 			pr($result_items);
@@ -100,7 +99,7 @@ class SearchesController extends AppController {
 		App::import('Vendor', 'google-api/Google_Client');
 		App::import('Vendor', 'google-api/contrib/Google_CustomsearchService');
 		
-		session_start();
+		//session_start();
 		$client = new Google_Client();
 		$client->setApplicationName('App Finder');
 		// Docs: http://code.google.com/apis/customsearch/v1/using_rest.html
