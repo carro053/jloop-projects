@@ -62,19 +62,66 @@ class SearchesController extends AppController {
 			}
 			$query .= $this->request->data['Search']['search_terms'];
 			
+			/*
 			$result = $search->cse->listCse($query, array(
 			  'cx' => '007301418745006324333:d--m5x9_aui', // The custom search engine ID to scope this search query.
-			  /*
-			  'lowRange' => "0",
-			  'highRange' => "100"
-			  */
 			));
 			print "<pre>" . print_r($result, true) . "</pre>";
+			*/
+			
+			$result_items = array();
+			
+			$start = 1;
+			$result = $this->run_query($query, $start);
+			$result_items = array_merge($result_items, $result['items']);
+			
+			/*
+			$num_pages = 0;
+			if($result['total_results'] >= 100)
+				$num_pages = 9;
+			else
+				$num_pages = ceil($result['total_results'] / 10) - 1;
+			for($i = 0; $i < $num_pages; $i++) {
+				
+			}
+			*/
+			
+			echo $result['total_results'].'<br />';
+			pr($result_items);
 			exit;
 		}
 	}
 	
 	public function view($search_id) {
 		
+	}
+	
+	private function run_query($query, $start) {
+		App::import('Vendor', 'google-api/Google_Client');
+		App::import('Vendor', 'google-api/contrib/Google_CustomsearchService');
+		
+		session_start();
+		$client = new Google_Client();
+		$client->setApplicationName('App Finder');
+		// Docs: http://code.google.com/apis/customsearch/v1/using_rest.html
+		// Visit https://code.google.com/apis/console?api=customsearch to generate
+		// your developer key (simple api key).
+		$client->setDeveloperKey('AIzaSyBeJoG_O5wa2aAqAsWihNnCLmckfDB6kNQ');
+		$search = new Google_CustomsearchService($client);
+				
+		$result = $search->cse->listCse($query, array(
+		  'cx' => '007301418745006324333:d--m5x9_aui', // The custom search engine ID to scope this search query.
+		  'start' => $start
+		));
+		print "<pre>" . print_r($result, true) . "</pre>";
+		
+		
+		$return = array();
+		$return['items'] = array();
+		$return['total_results'] = $result['searchInformation']['totalResults'];
+		foreach($result['items'] as $item) {
+			$return['items'][] = $item['link'];
+		}
+		return $return;
 	}
 }
