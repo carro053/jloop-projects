@@ -62,17 +62,11 @@ class SearchesController extends AppController {
 			}
 			$query .= $this->request->data['Search']['search_terms'];
 			
-			/*
-			$result = $search->cse->listCse($query, array(
-			  'cx' => '007301418745006324333:d--m5x9_aui', // The custom search engine ID to scope this search query.
-			));
-			print "<pre>" . print_r($result, true) . "</pre>";
-			*/
+
 			
 			$result_items = array();
 			
-			$start = 1;
-			$result = $this->run_query($query, $start);
+			$result = $this->run_query($query, 1);
 			$result_items = array_merge($result_items, $result['items']);
 			
 			$num_pages = 0;
@@ -80,9 +74,13 @@ class SearchesController extends AppController {
 				$num_pages = 9;
 			else
 				$num_pages = ceil($result['total_results'] / 10) - 1;
-			for($i = 0; $i < $num_pages; $i++) {
-				$result = $this->run_query($query, $start+2);
-				$result_items = array_merge($result_items, $result['items']);
+				
+			if($result['total_results'] > 10) {
+				for($i = 2; $i < $num_pages; $i++) {
+					echo 'i: '.$i;
+					$result = $this->run_query($query, $i);
+					$result_items = array_merge($result_items, $result['items']);
+				}
 			}
 			
 			echo $result['total_results'].'<br />';
