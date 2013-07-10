@@ -71,14 +71,14 @@ class SearchesController extends AppController {
 			
 			$num_pages = 0;
 			if($result['total_results'] >= 100)
-				$num_pages = 9;
+				$num_pages = 10;
 			else
 				$num_pages = ceil($result['total_results'] / 10) - 1;
 				
 			if($result['total_results'] > 10) {
-				for($i = 2; $i < $num_pages; $i++) {
+				for($i = 1; $i < $num_pages; $i++) {
 					echo 'i: '.$i.'<br />';
-					$result = $this->run_query($query, $i * 10);
+					$result = $this->run_query($query, $i * 10 + 1);
 					$result_items = array_merge($result_items, $result['items']);
 				}
 			}
