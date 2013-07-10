@@ -11,6 +11,7 @@ class Scrape extends AppModel {
 		$doc = phpQuery::newDocumentHTML($html);
 		
 		$scrape = array();
+		$scrape['itunes_id'] = $this->parseItunesId($url);
 		$scrape['name'] = pq('#title h1')->html();
 		$scrape['company'] = preg_replace('/^By /', null, pq('#title h2')->html());;
 		$scrape['itunes_link'] = pq('.product a')->attr('href');

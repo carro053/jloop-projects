@@ -32,4 +32,11 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
+
+	public function parseItunesId($itunes_link) {
+		preg_match('/(?<=\/id)\d*/', $itunes_link, $matches);
+		if(!empty($matches[0]))
+			return $matches[0];
+		return 0;
+	}
 }
