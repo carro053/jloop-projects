@@ -14,6 +14,8 @@ class Scrape extends AppModel {
 			);
 			if(!$this->Lead->save($lead))
 				die('An error has occurred while saving the lead for '.$this->name.', id: '.$this->id);
+			if(!$this->saveField('lead_id', $this->Lead->id))
+				die('An error has occurred while saving the lead_id for '.$this->name.', id: '.$this->id.', lead_id: '.$this->Lead->id);
 		}
 	}
 	
