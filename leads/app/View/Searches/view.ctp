@@ -1,4 +1,4 @@
-<?php echo $this->Form->create('Scrapes'); ?>
+<?php echo $this->Form->create('Results'); ?>
 
 <table>
 	<thead>
@@ -16,8 +16,6 @@
 		<?php } ?>
 	</tbody>
 </table>
-
-<?php echo $this->Form->input('an_input'); ?>
 
 <?php echo $this->Form->end("Scrape 'em!"); ?>
 

@@ -106,7 +106,16 @@ class SearchesController extends AppController {
 	public function view($search_id) {
 		if ($this->request->is('post')) {
 			pr($this->request->data);
-			exit;
+			
+			foreach($this->request->data['Results'] as $s=>$result) {
+				$db_result = array();
+				$db_result['Result']['id'] = $s;
+				$db_result['Result']['will_be_scraped'] = 1;
+				$this->Result->save($db_result);
+			}
+			
+			$this->Session->setFlash('Your results will be scraped');
+			$this->redirect('/Searches/create');
 		} else {
 			$this->set('search', $this->Search->findById($search_id));
 		}
