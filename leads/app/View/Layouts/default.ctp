@@ -25,21 +25,10 @@
 		<div id="header">
 			<h1>Leads</h1>
 		</div>
-		<ul id="menu">
-			<li><a href="#">Item 1</a></li>
-			<li><a href="#">Item 2</a></li>
-			<li><a href="#">Item 3</a>
-			<ul>
-				<li><a href="#">Item 3-1</a></li>
-				<li><a href="#">Item 3-2</a></li>
-				<li><a href="#">Item 3-3</a></li>
-				<li><a href="#">Item 3-4</a></li>
-				<li><a href="#">Item 3-5</a></li>
-			</ul>
-			</li>
-			<li><a href="#">Item 4</a></li>
-			<li><a href="#">Item 5</a></li>
-		</ul>
+		<nav>
+			<a href="">Pre-Leads</a>
+			<a href="">Leads</a>
+		</nav>
 		<div id="content">
 
 			<?php echo $this->Session->flash(); ?>
@@ -51,7 +40,8 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		$("#menu").menu();
+		$('a').button();
+		$('.menu').menu();
 	</script>
 	<?php echo $this->element('sql_dump'); ?>
 </body>
