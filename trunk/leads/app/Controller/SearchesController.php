@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 
 class SearchesController extends AppController {
 
-	public $uses = array('Search');
+	public $uses = array('Search','Result');
 	
 	public function test() {
 		App::import('Vendor', 'google-api/Google_Client');
@@ -85,6 +85,16 @@ class SearchesController extends AppController {
 			
 			echo $result['total_results'].'<br />';
 			pr($result_items);
+			
+			foreach($result_items as $result_item) {
+				$check = $this->Result->findByItunesId($result_item['itunes_id']);
+				if(empty($check)) {
+					$this->Result->create();
+					$db_result['Result'] = $result_item;
+					$this->Result->save($db_result);
+				}
+			}
+			
 			exit;
 		}
 	}
