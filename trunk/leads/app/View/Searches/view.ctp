@@ -18,16 +18,10 @@
 <?php pr($search); ?>
 
 <script type="text/javascript">
-	function toggleSelectAll(checkbox) {
+	function toggleSelectAll(checkbox) 
 		if($(checkbox).is(':checked'))
-		{
-			console.log('checked');
 			$('#search-results tr input').prop('checked', true);
-		}
 		else
-		{
-			console.log('NOT checked');
 			$('#search-results tr input').removeAttr('checked');
-		}
 	}
 </script>
