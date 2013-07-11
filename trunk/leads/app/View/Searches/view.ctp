@@ -1,5 +1,3 @@
-
-
 <table>
 	<thead>
 		<th><input type="checkbox" checked="checked" onchange="toggleSelectAll(this);" /></th>
@@ -22,8 +20,8 @@
 <script type="text/javascript">
 	function toggleSelectAll(checkbox) {
 		if($(checkbox).is(':checked'))
-			$('#search-results tr input').attr("checked", "checked");
+			$('#search-results tr input').attr('checked', 'checked');
 		else
-			$('#search-results tr input').removeAttr("checked");
+			$('#search-results tr input').removeAttr('checked');
 	}
 </script>
