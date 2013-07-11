@@ -10,7 +10,7 @@ class ScrapeResultsShell extends AppShell {
         $this->out('Begin Scrapping');
         $results = $this->Result->find('all', array(
         	'conditions' => array(
-        		'processed' => 0
+        		'scraped' => 0
         	),
         	'limit' => 10
         ));
@@ -28,7 +28,7 @@ class ScrapeResultsShell extends AppShell {
 	        
 	        $this->Result->save(array(
 	        	'id' => $result['Result']['id'],
-	        	'processed' => 1
+	        	'scraped' => 1
 	        ));
         }
     }
