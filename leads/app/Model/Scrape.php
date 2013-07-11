@@ -31,11 +31,11 @@ class Scrape extends AppModel {
 		$ratings_current = pq('div.customer-ratings div:contains("Current Version:") + div')->attr('aria-label');
 		$scrape['ratings_current'] = preg_replace('/,.*/', null, $ratings_current);
 		preg_match('/(?<=, )\d*/', $ratings_current, $ratings_current_count);
-		$scrape['ratings_current_count'] = !empty($ratings_current_count[0]) $ratings_current_count[0] ? : 0;
+		$scrape['ratings_current_count'] = !empty($ratings_current_count[0]) ? $ratings_current_count[0] : 0;
 		$ratings_all = pq('div.customer-ratings div:contains("All Versions:") + div')->attr('aria-label');
 		$scrape['ratings_all'] = preg_replace('/,.*/', null, $ratings_all);
 		preg_match('/(?<=, )\d*/', $ratings_all, $ratings_all_count);
-		$scrape['ratings_all_count'] = !empty($ratings_all_count[0]) $ratings_all_count[0] ? : 0;
+		$scrape['ratings_all_count'] = !empty($ratings_all_count[0]) ? $ratings_all_count[0] : 0;
 		$scrape['description'] = pq('h4:contains("Description") + p')->html();
 		foreach(pq('div.app-links a') as $key => $a) {
 			$scrape['link_'.($key + 1).'_name'] = pq($a)->text();
