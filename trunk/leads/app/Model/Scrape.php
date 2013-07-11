@@ -3,6 +3,20 @@ App::uses('AppModel', 'Model');
 
 class Scrape extends AppModel {
 	
+	public $belongsTo = array('Lead');
+	
+	public function afterSave($created) {
+		if($created) {
+			$this->Lead->create();
+			$lead = array(
+				'model' => $this->name,
+				'model_id' => $this->id,
+			);
+			if(!$this->Lead->save($lead))
+				die('An error has occurred while saving the lead for '.$this->name.', id: '.$this->id);
+		}
+	}
+	
 	public function parseURL($url) {
 		App::import('Vendor', 'phpQuery/phpQuery');
 		
