@@ -24,7 +24,7 @@
 			console.log('checked');
 			$('#search-results tr input').each(function(index) {
 				$(this).attr('checked', 'checked')
-			}
+			});
 		}
 		else
 		{
