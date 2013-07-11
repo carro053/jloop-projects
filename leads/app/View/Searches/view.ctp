@@ -22,7 +22,9 @@
 		if($(checkbox).is(':checked'))
 		{
 			console.log('checked');
-			$('#search-results tr input').attr('checked', 'checked');
+			$('#search-results tr input').each(function(index) {
+				$(this).attr('checked', 'checked')
+			}
 		}
 		else
 		{
