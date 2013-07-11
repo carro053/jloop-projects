@@ -1,6 +1,6 @@
 <table>
 	<thead>
-		<th><input type="checkbox" checked="checked" onclick="toggleSelectAll(this);" /></th>
+		<th><input type="checkbox" checked="checked" onchange="toggleSelectAll(this);" /></th>
 		<th>App Store Link</th>
 	</thead>
 	<tbody id="search-results">
@@ -19,7 +19,7 @@
 
 <script type="text/javascript">
 	function toggleSelectAll(checkbox) {
-		if($(checkbox).attr('checked'))
+		if($(checkbox).is(':checked'))
 		{
 			console.log('checked');
 			$('#search-results tr input').attr('checked', 'checked');
