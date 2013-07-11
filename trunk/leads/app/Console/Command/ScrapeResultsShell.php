@@ -10,7 +10,8 @@ class ScrapeResultsShell extends AppShell {
         $this->out('Begin Scrapping');
         $results = $this->Result->find('all', array(
         	'conditions' => array(
-        		'scraped' => 0
+        		'scraped' => 0,
+        		'will_be_scraped' => 1
         	),
         	'limit' => 10
         ));
