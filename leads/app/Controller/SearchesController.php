@@ -66,7 +66,7 @@ class SearchesController extends AppController {
 			
 			$result_items = array();
 			
-			$result = $this->run_query($query, 1);
+			$result = $this->Search->runQuery($query, 1);
 			$result_items = array_merge($result_items, $result['items']);
 			
 			$num_pages = 0;
@@ -78,7 +78,7 @@ class SearchesController extends AppController {
 			if($result['total_results'] > 10) {
 				for($i = 1; $i < $num_pages; $i++) {
 					echo 'i: '.$i.'<br />';
-					$result = $this->run_query($query, $i * 10 + 1);
+					$result = $this->Search->runQuery($query, $i * 10 + 1);
 					$result_items = array_merge($result_items, $result['items']);
 				}
 			}
@@ -93,32 +93,4 @@ class SearchesController extends AppController {
 		
 	}
 	
-	private function run_query($query, $start) {
-		App::import('Vendor', 'google-api/Google_Client');
-		App::import('Vendor', 'google-api/contrib/Google_CustomsearchService');
-		
-		//session_start();
-		$client = new Google_Client();
-		$client->setApplicationName('App Finder');
-		// Docs: http://code.google.com/apis/customsearch/v1/using_rest.html
-		// Visit https://code.google.com/apis/console?api=customsearch to generate
-		// your developer key (simple api key).
-		$client->setDeveloperKey('AIzaSyBeJoG_O5wa2aAqAsWihNnCLmckfDB6kNQ');
-		$search = new Google_CustomsearchService($client);
-				
-		$result = $search->cse->listCse($query, array(
-		  'cx' => '007301418745006324333:d--m5x9_aui', // The custom search engine ID to scope this search query.
-		  'start' => $start
-		));
-		print "<pre>" . print_r($result, true) . "</pre>";
-		
-		
-		$return = array();
-		$return['items'] = array();
-		$return['total_results'] = $result['searchInformation']['totalResults'];
-		foreach($result['items'] as $item) {
-			$return['items'][] = $item['link'];
-		}
-		return $return;
-	}
 }
