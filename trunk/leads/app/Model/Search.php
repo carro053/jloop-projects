@@ -27,7 +27,7 @@ class Search extends AppModel {
 		$return['items'] = array();
 		$return['total_results'] = $result['searchInformation']['totalResults'];
 		foreach($result['items'] as $item) {
-			$return['items'][] = $item['link'];
+			$return['items'][] = array('itunes_link' => $item['link'], 'itunes_id' => $this->parseItunesId($item['link']));
 		}
 		return $return;
 	}
