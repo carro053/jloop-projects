@@ -2,7 +2,7 @@
 App::uses('AppModel', 'Model');
 
 class Scrape extends AppModel {
-	
+
 	public $belongsTo = array('Lead');
 	
 	public function afterSave($created) {
