@@ -1,6 +1,6 @@
 <?php
 	echo $this->Form->create('Search');
-	echo $this->Form->input('search_terms');
+	echo $this->Form->input('search_terms', array('label' => 'Search Terms (e.x. automotive, fitness, etc.)'));
 	echo $this->Form->input('is_not_iphone_5');
 	echo $this->Form->input('is_not_ipad_only');
 	echo $this->Form->input('use_date_range', array('onchange' => 'toggleDates(this);'));
