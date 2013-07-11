@@ -22,12 +22,12 @@
 		if($(checkbox).is(':checked'))
 		{
 			console.log('checked');
-			$('#search-results tr input').attr('checked','checked');
+			$('#search-results tr td input').attr('checked','checked');
 		}
 		else
 		{
 			console.log('NOT checked');
-			$('#search-results tr input').removeAttr('checked');
+			$('#search-results tr td input').removeAttr('checked');
 		}
 	}
 </script>
