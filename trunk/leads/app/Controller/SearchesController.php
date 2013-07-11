@@ -104,6 +104,11 @@ class SearchesController extends AppController {
 	}
 	
 	public function view($search_id) {
-		$this->set('search', $this->Search->findById($search_id));
+		if ($this->request->is('post')) {
+			pr($this->request->data);
+			exit;
+		} else {
+			$this->set('search', $this->Search->findById($search_id));
+		}
 	}
 }

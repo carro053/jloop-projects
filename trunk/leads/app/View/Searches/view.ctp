@@ -8,7 +8,7 @@
 	<tbody id="search-results">
 		<?php foreach($search['Result'] as $result) { ?>
 			<tr>
-				<td><input type="checkbox" checked="checked" /></td>
+				<td><input name="data[Scrapes][<?php echo $result['id']; ?>]" type="checkbox" checked="checked" /></td>
 				<td><a href="<?php echo $result['itunes_link']; ?>" target="_blank"><?php echo $result['itunes_link']; ?></a></td>
 			</tr>
 		<?php } if(empty($search['Result'])) { ?>
