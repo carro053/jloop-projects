@@ -2,10 +2,10 @@
 
 <table>
 	<thead>
-		<th><input type="checkbox" checked="checked" /></th>
+		<th><input type="checkbox" checked="checked" onchange="toggleSelectAll(this);" /></th>
 		<th>App Store Link</th>
 	</thead>
-	<tbody>
+	<tbody id="search-results">
 		<?php foreach($search['Result'] as $result) { ?>
 			<tr>
 				<td><input type="checkbox" checked="checked" /></td>
@@ -18,3 +18,12 @@
 </table>
 
 <?php pr($search); ?>
+
+<script type="text/javascript">
+	function toggleSelectAll(checkbox) {
+		if($(checkbox).is(':checked'))
+			$('#search-results tbody tr input').removeAttr("checked");
+		else
+			$('#search-results tbody tr input').attr("checked", "checked");
+	}
+</script>
