@@ -1,3 +1,5 @@
+<?php echo $this->Form->create('Scrapes'); ?>
+
 <table>
 	<thead>
 		<th><input type="checkbox" checked="checked" onchange="toggleSelectAll(this);" /></th>
@@ -14,6 +16,10 @@
 		<?php } ?>
 	</tbody>
 </table>
+
+<?php echo $this->Form->input('an_input'); ?>
+
+<?php echo $this->Form->end("Scrape 'em!"); ?>
 
 <?php pr($search); ?>
 
