@@ -1,6 +1,6 @@
 <table>
 	<thead>
-		<th><input type="checkbox" checked="checked" onchange="toggleSelectAll(this);" /></th>
+		<th><input type="checkbox" checked="checked" onclick="toggleSelectAll(this);" /></th>
 		<th>App Store Link</th>
 	</thead>
 	<tbody id="search-results">
