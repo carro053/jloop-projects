@@ -59,9 +59,9 @@ class DATABASE_CONFIG {
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'appstore',
+		'login' => 'leads',
 		'password' => 'a4d6s5',
-		'database' => 'appstore',
+		'database' => 'leads',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
