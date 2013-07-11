@@ -28,13 +28,17 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		<?php echo $title_for_layout; ?>
 	</title>
 	
-	<script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="/js/"></script>
 	
 	<?php
 		echo $this->Html->meta('icon');
 
 		echo $this->Html->css('cake.generic');
-
+		echo $this->Html->css('jquery-ui-1.10.3.custom.min');
+		
+		echo $this->Html->script('jquery-1.10.2.min.js');
+		echo $this->Html->script('jquery-ui-1.10.3.custom.min.js');
+		
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
