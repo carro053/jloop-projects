@@ -21,12 +21,7 @@ class ScrapeResultsShell extends AppShell {
 	        	$this->out('  Scraping: '.$result['Result']['itunes_link']);
 		        $this->Scrape->create();
 		        $scrape = $this->Scrape->parseURL($result['Result']['itunes_link']);
-		        $this->Scrape->saveAssociated(array(
-		        	'Scrape' => $scrape,
-		        	'Lead' => array(
-		        		'model' => 'Scrape'
-		        	)
-		        ));
+		        $this->Scrape->save($scrape);
 	        }else{
 		        $this->out('  Link already scraped: '.$result['Result']['itunes_link']);
 	        }
