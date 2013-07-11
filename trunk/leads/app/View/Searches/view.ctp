@@ -20,8 +20,14 @@
 <script type="text/javascript">
 	function toggleSelectAll(checkbox) {
 		if($(checkbox).attr('checked'))
+		{
+			console.log('checked');
 			$('#search-results tr input').attr('checked', 'checked');
+		}
 		else
+		{
+			console.log('NOT checked');
 			$('#search-results tr input').removeAttr('checked');
+		}
 	}
 </script>
