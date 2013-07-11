@@ -22,8 +22,8 @@
 <script type="text/javascript">
 	function toggleSelectAll(checkbox) {
 		if($(checkbox).is(':checked'))
-			$('#search-results tbody tr input').removeAttr("checked");
+			$('#search-results tr input').removeAttr("checked");
 		else
-			$('#search-results tbody tr input').attr("checked", "checked");
+			$('#search-results tr input').attr("checked", "checked");
 	}
 </script>
