@@ -3,6 +3,13 @@ App::uses('AppModel', 'Model');
 
 class Search extends AppModel {
 	
+	public $hasMany = array(
+        'Result' => array(
+            'className'  => 'Result',
+            'foreignKey' => 'search_id'
+        )
+    );
+	
 	public function runQuery($query, $start) {
 		App::import('Vendor', 'google-api/Google_Client');
 		App::import('Vendor', 'google-api/contrib/Google_CustomsearchService');

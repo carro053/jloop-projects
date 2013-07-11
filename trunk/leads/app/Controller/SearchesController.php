@@ -86,10 +86,8 @@ class SearchesController extends AppController {
 			echo $result['total_results'].'<br />';
 			pr($result_items);
 			
-			if(!empty($result_items)) {
-				$this->Search->create();
-				$this->Search->save($this->request->data);
-			}
+			$this->Search->create();
+			$this->Search->save($this->request->data);
 			
 			foreach($result_items as $result_item) {
 				$check = $this->Result->findByItunesId($result_item['itunes_id']);
@@ -101,12 +99,11 @@ class SearchesController extends AppController {
 				}
 			}
 			
-			exit;
+			$this->redirect('/Searches/view/'.$this->Search->id);
 		}
 	}
 	
 	public function view($search_id) {
-		
+		$this->set('search', $this->Search->findById($search_id));
 	}
-	
 }
