@@ -6,6 +6,7 @@ class SearchesController extends AppController {
 	public $uses = array('Search','Result');
 	
 	public function index() {
+		$this->Search->unbindModel(array('hasMany' => array('Result')));
 		$this->set('searches', $this->Search->find('all', array('order' => 'Search.created DESC')));
 	}
 		
