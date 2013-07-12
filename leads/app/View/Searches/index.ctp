@@ -11,7 +11,7 @@
 				<td><?php echo $search['Search']['search_terms']; ?></td>
 				<td><?php echo $search['Search']['is_not_iphone_5'] ? 'Not iPhone 5 Optimized' : 'iPhone 5 Optimized'; ?></td>
 				<td><?php echo $search['Search']['is_not_ipad_only'] ? 'Not iPad-only' : 'iPad-only'; ?></td>
-				<td><?php echo $search['Search']['use_date_range'] ? $search['Search']['start_date'].' - '.$search['Search']['end_date'] : 'Not used'; ?></td>
+				<td><?php echo $search['Search']['use_date_range'] ? $search['Search']['start_date'].' to '.$search['Search']['end_date'] : 'Not used'; ?></td>
 			</tr>
 		<?php } if(empty($searches)) { ?>
 			<tr><td colspan="4">There are currently no searches</td></tr>
