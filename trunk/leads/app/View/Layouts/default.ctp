@@ -26,7 +26,7 @@
 			<h1>Leads</h1>
 		</div>
 		<div id="nav">
-			<a href="/Searches/create">App Search</a>
+			<a href="/Searches">App Searches</a>
 			<a href="">Pre-Leads</a>
 			<a href="">Leads</a>
 		</div>
