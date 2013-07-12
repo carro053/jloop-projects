@@ -4,6 +4,10 @@ App::uses('AppController', 'Controller');
 class SearchesController extends AppController {
 
 	public $uses = array('Search','Result');
+	
+	public function index() {
+		$this->set('searches', $this->Search->find('all', array('order' => 'Search.created DESC')));
+	}
 		
 	public function create() {
 		if ($this->request->is('post')) {
