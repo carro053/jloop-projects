@@ -1,3 +1,9 @@
+<?php
+	echo $this->Form->create('Scrape');
+	echo $this->Form->input('something');
+	echo $this->Form->end('Submit');
+?>
+
 <table>
 	<thead>
 		<tr>
