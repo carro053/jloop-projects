@@ -26,9 +26,8 @@
 			<h1>Leads</h1>
 		</div>
 		<div id="nav">
-			<a href="/Searches">App Searches</a>
-			<a href="">Pre-Leads</a>
-			<a href="">Leads</a>
+			<a href="/Leads/gather">Lead Gathering</a>
+			<a href="/Leads/qualify">Lead Qualifying</a>
 		</div>
 		<div id="content">
 
