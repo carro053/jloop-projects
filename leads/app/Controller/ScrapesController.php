@@ -5,6 +5,10 @@ class ScrapesController extends AppController {
 
 	public $uses = array('Scrape');
 	
+	public function index() {
+		
+	}
+	
 	public function test() {
 		if($this->request->is('post')) {
 			$scrape = $this->Scrape->parseURL($this->request->data['Scrape']['URL']);
