@@ -15,7 +15,13 @@ class ScrapesController extends AppController {
 		foreach($categories_raw as $category) {
 			$categories[$category['Scrape']['category']] = $category['Scrape']['category'];
 		}
-		pr($categories);
+		$this->set('categories', $categories);
+		
+		$conditions = array();
+		$scarpes = $this->Scrape->find('all', array(
+			'conditions' => $conditions,
+		));
+		$this->set('scarpes', $scarpes);
 	}
 	
 	public function test() {
