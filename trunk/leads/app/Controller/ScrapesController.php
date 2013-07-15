@@ -6,11 +6,15 @@ class ScrapesController extends AppController {
 	public $uses = array('Scrape');
 	
 	public function index() {
-		$categories = $this->Scrape->find('all', array(
+		$categories_raw = $this->Scrape->find('all', array(
 			'fields' => array(
 				'DISTINCT category'
 			)
 		));
+		$categories = array('' => 'Any');
+		foreach($categories_raw as $category) {
+			$categories[$category['Scrape']['category']] = $category['Scrape']['category'];
+		}
 		pr($categories);
 	}
 	
