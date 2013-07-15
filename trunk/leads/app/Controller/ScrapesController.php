@@ -6,7 +6,12 @@ class ScrapesController extends AppController {
 	public $uses = array('Scrape');
 	
 	public function index() {
-		
+		$categories = $this->Scrape->find('all', array(
+			'fields' => array(
+				'DISTINCT category'
+			)
+		));
+		pr($categories);
 	}
 	
 	public function test() {
