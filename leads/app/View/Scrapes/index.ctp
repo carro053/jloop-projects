@@ -24,7 +24,8 @@
 </table>
 
 <script type="text/javascript">
-	$('.dialog').click(function() {
+	$('.dialog').click(function(event) {
+		event.preventDefaults();
 		$('</div>')
 			.dialog({
 				close: function(event, ui) {
