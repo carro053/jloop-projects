@@ -25,7 +25,6 @@
 
 <script type="text/javascript">
 	$('.dialog').click(function(event) {
-		event.preventDefaults();
 		$('</div>')
 			.dialog({
 				close: function(event, ui) {
@@ -34,6 +33,6 @@
 			})
 			.load($(this).attr('href'))
 			.appendTo('body');
-		
+		return false;
 	});
 </script>
