@@ -25,13 +25,16 @@
 
 <script type="text/javascript">
 	$('.dialog').click(function(event) {
+		console.log(this);
 		$('</div>')
 			.dialog({
 				close: function(event, ui) {
 					console.log(this);
 				}
 			})
-			.load($(this).attr('href'))
+			.load($(this).attr('href'), function(){
+				console.log(this);
+			})
 			.appendTo('body');
 		return false;
 	});
