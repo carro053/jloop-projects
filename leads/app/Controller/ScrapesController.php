@@ -24,6 +24,10 @@ class ScrapesController extends AppController {
 		$this->set('scarpes', $scarpes);
 	}
 	
+	public function view() {
+		$this->layout = false;
+	}
+	
 	public function test() {
 		if($this->request->is('post')) {
 			$scrape = $this->Scrape->parseURL($this->request->data['Scrape']['URL']);
