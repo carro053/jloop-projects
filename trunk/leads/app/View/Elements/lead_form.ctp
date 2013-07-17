@@ -23,9 +23,12 @@
 	<script type="text/javascript">
 		$('.radio').buttonset();
 		$('#LeadUpdateForm').submit(function() {
-			$.post('/Leads/update', function(data) {
-				$('#LeadFormContainer').replaceWith(data);
-			});
+			$.post('/Leads/update',
+				$(this).serialize(),
+				function(data) {
+					$('#LeadFormContainer').replaceWith(data);
+				}
+			);
 			return false;
 		});
 	</script>
