@@ -19,3 +19,6 @@
 	));
 	echo $this->Form->end('Save');
 ?>
+<script type="text/javascript">
+	$('.radio').buttonset();
+</script>
