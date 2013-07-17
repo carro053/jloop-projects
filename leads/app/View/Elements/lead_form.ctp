@@ -7,7 +7,7 @@
 	echo $this->Form->input('email');
 	echo $this->Form->input('phone');
 	echo $this->Form->input('rating', array(
-		'type' => 'radio'
+		'type' => 'radio',
 		'options' => array(
 			1 => 1,
 			2 => 2,
