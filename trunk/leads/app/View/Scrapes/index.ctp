@@ -29,6 +29,7 @@
 		$('<div/>')
 			.html('CONTENT BEFORE LOAD')
 			.dialog({
+				modal: true,
 				close: function(event, ui) {
 					$(this).remove();
 				}
