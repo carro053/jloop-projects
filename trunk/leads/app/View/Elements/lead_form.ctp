@@ -15,7 +15,7 @@
 			4 => 4,
 			5 => 5
 		),
-		'fieldset' => false
+		'label' => false
 	));
 	echo $this->Form->end('Save');
 ?>
