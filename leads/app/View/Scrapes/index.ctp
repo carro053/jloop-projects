@@ -27,6 +27,7 @@
 	$('.dialog').click(function(event) {
 		var url = $(this).attr('href');
 		$('<div/>')
+			.html('CONTENT BEFORE LOAD')
 			.dialog({
 				close: function(event, ui) {
 					$(this).remove();
