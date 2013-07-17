@@ -6,14 +6,7 @@
 	echo $this->Form->input('id');
 	echo $this->Form->input('email');
 	echo $this->Form->input('phone');
-	echo $this->Form->radio('rating', array(
-		1 => 1,
-		2 => 2,
-		3 => 3,
-		4 => 4,
-		5 => 5
-	));
-	echo $this->Form->input('rating2', array(
+	echo $this->Form->input('rating', array(
 		'type' => 'radio',
 		'options' => array(
 			1 => 1,
@@ -21,7 +14,8 @@
 			3 => 3,
 			4 => 4,
 			5 => 5
-		)
+		),
+		'fieldset' => false
 	));
 	echo $this->Form->end('Save');
 ?>
