@@ -13,5 +13,15 @@
 		4 => 4,
 		5 => 5
 	));
+	echo $this->Form->input('rating2', array(
+		'type' => 'radio',
+		'options' => array(
+			1 => 1,
+			2 => 2,
+			3 => 3,
+			4 => 4,
+			5 => 5
+		)
+	));
 	echo $this->Form->end('Save');
 ?>
