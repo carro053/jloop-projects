@@ -25,14 +25,14 @@
 
 <script type="text/javascript">
 	$('.dialog').click(function(event) {
-		console.log(this);
+		var url = $(this).attr('href');
 		$('<div/>')
 			.dialog({
 				close: function(event, ui) {
 					console.log(this);
 				}
 			})
-			.load($(this).attr('href'), function(){
+			.load(url, function(){
 				console.log(this);
 			})
 			.appendTo('body');
