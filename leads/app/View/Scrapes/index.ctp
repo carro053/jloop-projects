@@ -31,8 +31,8 @@
 					$(this).remove();
 				}
 			})
-			.load(url, function(){
-				
+			.load(url, function() {
+				console.log('loaded');
 			})
 			.appendTo('body');
 		return false;
