@@ -24,8 +24,10 @@ class ScrapesController extends AppController {
 		$this->set('scarpes', $scarpes);
 	}
 	
-	public function view() {
+	public function view($id) {
 		$this->layout = false;
+		$scrape = $this->Scrape->findById($id);
+		$this->set('scrape', $scrape);
 	}
 	
 	public function test() {

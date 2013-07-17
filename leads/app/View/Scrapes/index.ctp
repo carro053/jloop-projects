@@ -15,7 +15,7 @@
 		<?php foreach($scarpes as $scrape) { ?>
 			<tr>
 				<td><?php echo $scrape['Scrape']['name']; ?></td>
-				<td><a class="dialog" href="/Scrapes/view/">Rate</a></td>
+				<td><a class="dialog" href="/Scrapes/view/<?php echo $scrape['Scrape']['id']; ?>">Rate</a></td>
 			</tr>
 		<?php } if(empty($scarpes)) { ?>
 			<tr><td colspan="4">There are currently no scrapes</td></tr>
