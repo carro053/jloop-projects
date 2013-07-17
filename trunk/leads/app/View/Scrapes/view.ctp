@@ -95,6 +95,8 @@
 	</tbody>
 </table>
 
+<?php echo $this->element('lead_form', array('lead' => $scrape['Lead'])); ?>
+
 <script type="text/javascript">
 	try {
 		init();
