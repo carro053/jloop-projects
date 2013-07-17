@@ -29,6 +29,7 @@
 		$('<div/>')
 			.dialog({
 				modal: true,
+				width: 'auto',
 				close: function(event, ui) {
 					$(this).remove();
 				}
