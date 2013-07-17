@@ -1,10 +1,7 @@
 <div id="LeadFormContainer">
 	<?php
-		if(empty($lead))
-			$lead = array();
-		
 		echo $this->Form->create('Lead', array('id' => 'LeadUpdateForm', 'url' => '#'));
-		echo $this->Form->input('id');
+		echo $this->Form->input('id', array('value' => $lead['id']));
 		echo $this->Form->input('email');
 		echo $this->Form->input('phone');
 		echo $this->Form->input('rating', array(
