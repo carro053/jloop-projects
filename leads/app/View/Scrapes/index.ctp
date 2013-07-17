@@ -30,12 +30,13 @@
 			.dialog({
 				modal: true,
 				width: 'auto',
+				autoOpen: false,
 				close: function(event, ui) {
 					$(this).remove();
 				}
 			})
 			.load(url, function() {
-				console.log('loaded');
+				$(this).dialog('open');
 			});
 		return false;
 	});
