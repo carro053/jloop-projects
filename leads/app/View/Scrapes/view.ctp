@@ -14,3 +14,12 @@
 		?>
 	</tbody>
 </table>
+
+<script type="text/javascript">
+	try {
+		init();
+	}
+	catch(error){
+		console.warn(error);
+	}
+</script>

@@ -40,8 +40,11 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		$('a').button();
-		$('.menu').menu();
+		function init() {
+			$('input[type=submit], a, button').button();
+			$('.menu').menu();
+		}
+		init();
 	</script>
 	<?php echo $this->element('sql_dump'); ?>
 </body>
