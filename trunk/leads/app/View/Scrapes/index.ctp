@@ -36,7 +36,7 @@
 			//.load(url, function() {
 			//	console.log('loaded');
 			//})
-			.appendTo('body');
+			;
 		return false;
 	});
 </script>
