@@ -33,10 +33,9 @@
 					$(this).remove();
 				}
 			})
-			//.load(url, function() {
-			//	console.log('loaded');
-			//})
-			;
+			.load(url, function() {
+				console.log('loaded');
+			});
 		return false;
 	});
 </script>
