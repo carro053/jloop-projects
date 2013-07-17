@@ -15,7 +15,8 @@
 			4 => 4,
 			5 => 5
 		),
-		'legend' => false
+		'legend' => false,
+		'hiddenField' => false
 	));
 	echo $this->Form->end('Save');
 ?>
