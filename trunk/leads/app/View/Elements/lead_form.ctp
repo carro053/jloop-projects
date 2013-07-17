@@ -2,7 +2,7 @@
 	if(empty($lead))
 		$lead = array();
 	
-	echo $this->Form->create('Lead', array('url' => '/Leads/update'));
+	echo $this->Form->create('Lead', array('id' => 'LeadUpdateForm','url' => '/Leads/update'));
 	echo $this->Form->input('id');
 	echo $this->Form->input('email');
 	echo $this->Form->input('phone');
@@ -22,4 +22,8 @@
 ?>
 <script type="text/javascript">
 	$('.radio').buttonset();
+	$('#LeadUpdateForm').submit(function() {
+		console.log('form submit');
+		return false;
+	});
 </script>
