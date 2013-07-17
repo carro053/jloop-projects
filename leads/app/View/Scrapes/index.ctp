@@ -26,7 +26,7 @@
 <script type="text/javascript">
 	$('.dialog').click(function(event) {
 		console.log(this);
-		$('</div>')
+		$('<div/>')
 			.dialog({
 				close: function(event, ui) {
 					console.log(this);
