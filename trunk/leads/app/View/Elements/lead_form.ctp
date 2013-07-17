@@ -15,9 +15,7 @@
 			4 => 4,
 			5 => 5
 		),
-		'legend' => false,
-		'hiddenField' => false,
-		'between' => '<label>Rating</label>'
+		'hiddenField' => false
 	));
 	echo $this->Form->end('Save');
 ?>
