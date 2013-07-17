@@ -13,6 +13,11 @@ class LeadsController extends AppController {
 		$this->layout = false;
 		if($this->request->is('post')) {
 			pr($this->request->data);
+			
+			$this->Lead->set($this->request->data);
+			$this->Lead->validates();
+			
+			
 			return $this->render('/Elements/lead_form');
 		}
 		die('Only Post');
