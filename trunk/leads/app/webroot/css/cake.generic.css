@@ -35,7 +35,7 @@ h1, h2, h3, h4 {
 	margin-bottom:0.5em;
 }
 h1 {
-	font-size: 100%;
+	font-size: 215%;
 }
 h2 {
 	font-family:'Gill Sans','lucida grande', helvetica, arial, sans-serif;
@@ -239,15 +239,14 @@ fieldset {
 	padding: 16px 10px;
 }
 fieldset legend {
-	font-size: 160%;
-	font-weight: bold;
+	font-size: 110%;
 }
 fieldset fieldset {
 	margin-top: 0;
 	padding: 10px 0 0;
 }
 fieldset fieldset legend {
-	font-size: 120%;
+	font-size: 110%;
 	font-weight: normal;
 }
 fieldset fieldset div {
