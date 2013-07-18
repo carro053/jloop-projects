@@ -23,6 +23,7 @@
 	<script type="text/javascript">
 		$('.radio').buttonset();
 		$('#LeadUpdateForm').submit(function() {
+			console.log('SUBMITTING');
 			$.post('/Leads/update',
 				$(this).serialize(),
 				function(data) {
