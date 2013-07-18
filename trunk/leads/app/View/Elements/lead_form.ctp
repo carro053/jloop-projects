@@ -1,7 +1,7 @@
 <div id="LeadFormContainer">
 	<?php
-		if(empty($this->request->data['Lead']['id']))
-			$this->request->data['Lead']['id'] = $lead['id'];
+		if(empty($this->request->data['Lead']))
+			$this->request->data['Lead'] = $lead;
 		
 		echo $this->Form->create('Lead', array('id' => 'LeadUpdateForm', 'url' => '#', 'type' => 'post'));
 		echo $this->Form->input('id');
