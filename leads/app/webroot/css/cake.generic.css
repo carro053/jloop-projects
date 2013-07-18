@@ -23,34 +23,29 @@
 
 /** General Style Info **/
 body {
-	background: #003d4c;
+	background: #aaaaaa;
 	color: #fff;
 	font-family:'lucida grande',verdana,helvetica,arial,sans-serif;
 	font-size:90%;
 	margin: 0;
 }
 h1, h2, h3, h4 {
+	color: #026890;
 	font-weight: normal;
 	margin-bottom:0.5em;
 }
 h1 {
-	background:#fff;
-	color: #003d4c;
 	font-size: 100%;
 }
 h2 {
-	background:#fff;
-	color: #e32;
 	font-family:'Gill Sans','lucida grande', helvetica, arial, sans-serif;
 	font-size: 190%;
 }
 h3 {
-	color: #2c6877;
 	font-family:'Gill Sans','lucida grande', helvetica, arial, sans-serif;
 	font-size: 165%;
 }
 h4 {
-	color: #993;
 	font-weight: normal;
 }
 ul, li {
