@@ -20,5 +20,3 @@
 		<?php } ?>
 	</tbody>
 </table>
-
-<?php pr($searches); ?>
