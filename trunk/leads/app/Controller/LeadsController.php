@@ -12,12 +12,11 @@ class LeadsController extends AppController {
 	public function update() {
 		$this->layout = false;
 		if($this->request->is('post')) {
-			pr($this->request->data);
-			
-			$this->Lead->set($this->request->data);
-			$this->Lead->validates();
-			
-			
+			if(!empty($this->request->data['Lead']['id'])) {
+				if($this->Lead->save($this->request->data)) {
+					die(1);
+				}
+			}
 			return $this->render('/Elements/lead_form');
 		}
 		die('Only Post');
