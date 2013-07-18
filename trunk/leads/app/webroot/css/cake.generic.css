@@ -236,10 +236,10 @@ form {
 fieldset {
 	border: none;
 	margin-bottom: 1em;
-	padding: 16px 10px;
 }
 fieldset legend {
 	font-size: 110%;
+	margin-bottom: 3px;
 }
 fieldset fieldset {
 	margin-top: 0;
