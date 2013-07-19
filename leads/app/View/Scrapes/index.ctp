@@ -18,6 +18,9 @@
 		),
 		'value' => !empty($_GET['iphone5']) ? $_GET['iphone5'] : null
 	));
+	echo $this->Form->input('search', array(
+		'value' => !empty($_GET['search']) ? $_GET['search'] : null
+	));
 	echo $this->Form->end('Filter');
 ?>
 
