@@ -22,7 +22,7 @@ class ScrapesController extends AppController {
 			'page' => $page,
 			'limit' => $limit
 		));
-		$this->set('scarpes', $scarpes);
+		$this->set('scrapes', $scrapes);
 		
 		$count = $this->Scrape->find('count', array('conditions' => $conditions));
 		$this->set('count', $count);
