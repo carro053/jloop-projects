@@ -2,15 +2,21 @@
 
 <?php
 	echo $this->Form->create('Scrape', array('type' => 'get'));
-	echo $this->Form->input('category');
-	echo $this->Form->input('updated', array('label' => 'Last Update/Release Before'));
+	echo $this->Form->input('category', array(
+		'value' => !empty($_GET['category']) ? $_GET['category'] : null
+	));
+	echo $this->Form->input('updated', array(
+		'label' => 'Last Update/Release Before',
+		'value' => !empty($_GET['updated']) ? $_GET['updated'] : null
+	));
 	echo $this->Form->input('iphone5', array(
 		'label' => 'iPhone 5 Optimization',
 		'options' => array(
 			'' => 'Any',
 			'no' => 'Not Optimized',
 			'yes' => 'Optimized'
-		)
+		),
+		'value' => !empty($_GET['iphone5']) ? $_GET['iphone5'] : null
 	));
 	echo $this->Form->end('Filter');
 ?>
