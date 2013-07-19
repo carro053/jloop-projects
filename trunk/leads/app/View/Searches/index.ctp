@@ -1,3 +1,4 @@
+<h2>Previous Itunes Searches</h2>
 <table>
 	<thead>
 		<tr>

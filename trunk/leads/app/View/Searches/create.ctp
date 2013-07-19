@@ -1,3 +1,4 @@
+<h2>Itunes Search</h2>
 <?php
 	echo $this->Form->create('Search');
 	echo $this->Form->input('search_terms', array('label' => 'Search Terms (e.x. automotive, fitness, etc.)'));
@@ -8,7 +9,7 @@
 	echo $this->Form->input('start_date', array('class' => 'date-range'));
 	echo $this->Form->input('end_date', array('class' => 'date-range'));
 	echo '</div>';
-	echo $this->Form->end('Submit');
+	echo $this->Form->end('Search');
 ?>
 
 <script type="text/javascript">
