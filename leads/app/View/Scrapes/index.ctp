@@ -6,7 +6,7 @@
 		'value' => !empty($_GET['category']) ? $_GET['category'] : null
 	));
 	echo $this->Form->input('updated', array(
-		'label' => 'Last Update/Release Before',
+		'label' => 'Last Updated/Released Before',
 		'selected' => !empty($_GET['updated']) ? $_GET['updated']['year'].'-'.$_GET['updated']['month'].'-'.$_GET['updated']['day'] : null
 	));
 	echo $this->Form->input('iphone5', array(
