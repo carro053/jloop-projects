@@ -9,7 +9,7 @@ class ScrapesController extends AppController {
 		$limit = (!empty($_GET['limit']) ? $_GET['limit'] : 50);
 		$page = (!empty($_GET['page']) ? $_GET['page'] : 1);
 		
-		$conditions = array();
+		$conditions = array('Lead.status' => 0);
 		
 		//search conditions
 		//$conditions['OR']['Project.location LIKE'] = '%'.$search.'%';
