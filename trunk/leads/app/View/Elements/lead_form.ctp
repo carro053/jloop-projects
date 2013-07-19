@@ -24,6 +24,9 @@
 	
 	<?php
 		pr($lead);
+		foreach($leads['Note'] as $note) {
+			
+		}
 	?>
 	
 	<script type="text/javascript">
