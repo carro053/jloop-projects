@@ -3,7 +3,7 @@
 <?php
 	echo $this->Form->create('Scrape', array('type' => 'get'));
 	echo $this->Form->input('category');
-	echo $this->Form->input('updated');
+	echo $this->Form->input('updated', array('label' => 'Last Update/Release'));
 	echo $this->Form->end('Filter');
 ?>
 
