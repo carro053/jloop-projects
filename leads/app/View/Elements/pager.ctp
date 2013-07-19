@@ -24,6 +24,12 @@ $lastPage = ceil( $totalItems / $itemsPerPage );
 	.pager {
 		float: right;
 	}
+	.pager label {
+		display: inline;
+	}
+	.pager select {
+		text-align: center;
+	}
 </style>
 <script type="text/javascript">
 	function goToPage(page) {
