@@ -25,14 +25,14 @@
 		<div id="header">
 			<h1>Leads</h1>
 		</div>
-		<?php if(!empty($this->Session->read('Auth.User.id'))) { ?>
+		<?php if(!empty($authUser)) { ?>
 			<div id="nav">
 				<a href="/Leads/gather">Lead Gathering</a>
 				<a href="/Leads/qualify">Lead Qualifying</a>
 				<a href="/Leads">Leads</a>
 				
 				<div class="right">
-					<span>Logged in as <?php echo $this->Session->read('Auth.User.username'); ?></span>
+					<span>Logged in as <?php echo $authUser['User']['username']; ?></span>
 					<a href="/Users">Users</a>
 					<a href="/Users/logout">Logout</a>
 				</div>
