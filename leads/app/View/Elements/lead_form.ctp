@@ -23,7 +23,7 @@
 	?>
 	
 	<?php
-		pr($notes);
+		pr($lead);
 	?>
 	
 	<script type="text/javascript">
