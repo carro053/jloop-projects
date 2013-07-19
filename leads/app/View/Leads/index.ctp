@@ -27,4 +27,6 @@
 	</tbody>
 </table>
 
+<?php pr($leads); ?>
+
 <?php echo $this->element('pager', array('totalItems' => $count, 'uri' => 'Leads/index')); ?>
