@@ -30,6 +30,18 @@
 			<a href="/Leads/qualify">Lead Qualifying</a>
 			<a href="/Leads">Leads</a>
 		</div>
+		<div>
+			<ul class="menu">
+				<li><a href="#">Test</a></li>
+				<li><a href="#">Test</a></li>
+				<li><a href="#">Test</a></li>
+				<li><a href="#">Test</a></li>
+				<li><a href="#">Test</a></li>
+				<li><a href="#">Test</a></li>
+				<li><a href="#">Test</a></li>
+				<li><a href="#">Test</a></li>
+			</ul>
+		</div>
 		<div id="content">
 
 			<?php echo $this->Session->flash(); ?>
@@ -43,6 +55,7 @@
 	<script type="text/javascript">
 		function init() {
 			$('input[type=submit], a, button').button();
+			
 			$('.menu').menu();
 			
 			$('.dialog').unbind('click');
