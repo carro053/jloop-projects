@@ -7,7 +7,7 @@
 	));
 	echo $this->Form->input('updated', array(
 		'label' => 'Last Update/Release Before',
-		'value' => strtotime('2055-01-01')
+		'default' => strtotime('2055-01-01')
 		//'value' => !empty($_GET['updated']) ? $_GET['updated']['year'].'-'.$_GET['updated']['month'].'-'.$_GET['updated']['day'] : null
 	));
 	echo $this->Form->input('iphone5', array(
