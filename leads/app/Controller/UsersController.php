@@ -10,8 +10,7 @@ class UsersController extends AppController {
 	
 	public function index() {
 		$users = $this->User->find('all');
-		pr($users);
-		
+		$this->set('users', $users);
 	}
 	
 	public function create() {
