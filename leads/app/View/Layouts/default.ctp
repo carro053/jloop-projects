@@ -44,6 +44,23 @@
 		function init() {
 			$('input[type=submit], a, button').button();
 			$('.menu').menu();
+			
+			$('.dialog').click(function(event) {
+				var url = $(this).attr('href');
+				$('<div/>')
+					.dialog({
+						modal: true,
+						width: '80%',
+						autoOpen: false,
+						close: function(event, ui) {
+							$(this).remove();
+						}
+					})
+					.load(url, function() {
+						$(this).dialog('open');
+					});
+				return false;
+			});
 		}
 		init();
 	</script>

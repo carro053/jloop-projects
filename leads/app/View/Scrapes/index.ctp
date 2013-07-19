@@ -30,22 +30,3 @@
 </table>
 
 <?php echo $this->element('pager', array('totalItems' => $count, 'uri' => 'Scrapes/index')); ?>
-
-<script type="text/javascript">
-	$('.dialog').click(function(event) {
-		var url = $(this).attr('href');
-		$('<div/>')
-			.dialog({
-				modal: true,
-				width: '80%',
-				autoOpen: false,
-				close: function(event, ui) {
-					$(this).remove();
-				}
-			})
-			.load(url, function() {
-				$(this).dialog('open');
-			});
-		return false;
-	});
-</script>
