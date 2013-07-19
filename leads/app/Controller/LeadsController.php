@@ -3,6 +3,8 @@ App::uses('AppController', 'Controller');
 
 class LeadsController extends AppController {
 
+	var $uses = array('Lead','Note');
+
 	public function index() {
 		$limit = (!empty($_GET['limit']) ? $_GET['limit'] : 50);
 		$page = (!empty($_GET['page']) ? $_GET['page'] : 1);
@@ -43,6 +45,19 @@ class LeadsController extends AppController {
 				}
 			}
 			return $this->render('/Elements/lead_form');
+		}
+		die('Only Post');
+	}
+	
+	public function addNote() {
+		$this->layout = false;
+		if($this->request->is('post')) {
+			if($this->Note->save($this->request->data)) {
+				echo $this->request->data['Note']['text'];
+			} else {
+				echo 'error';
+			}
+			exit;
 		}
 		die('Only Post');
 	}
