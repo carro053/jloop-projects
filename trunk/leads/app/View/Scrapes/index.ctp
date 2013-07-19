@@ -1,7 +1,7 @@
 <?php
-	echo $this->Form->create('Scrape');
+	echo $this->Form->create('Scrape', array('type' => 'get'));
 	echo $this->Form->input('category');
-	echo $this->Form->end('Submit');
+	echo $this->Form->end('Filter');
 ?>
 
 <table>
