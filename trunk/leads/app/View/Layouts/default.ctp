@@ -32,7 +32,7 @@
 				<a href="/Leads">Leads</a>
 				
 				<div class="right">
-					<span>Logged in as <?php echo $authUser['User']['username']; ?></span>
+					<span>Logged in as <?php echo $authUser['username']; ?></span>
 					<a href="/Users">Users</a>
 					<a href="/Users/logout">Logout</a>
 				</div>
