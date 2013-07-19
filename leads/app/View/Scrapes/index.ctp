@@ -11,6 +11,7 @@
 			<th>Category</th>
 			<th>Price</th>
 			<th>Updated</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -23,7 +24,7 @@
 				<td><a class="dialog" href="/Scrapes/view/<?php echo $scrape['Scrape']['id']; ?>">Rate</a></td>
 			</tr>
 		<?php } if(empty($scrape)) { ?>
-			<tr><td colspan="4">There are currently no scrapes</td></tr>
+			<tr><td colspan="5">There are currently no scrapes</td></tr>
 		<?php } ?>
 	</tbody>
 </table>
