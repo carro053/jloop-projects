@@ -14,10 +14,7 @@ class LeadsController extends AppController {
 		
 		//search conditions
 		if(!empty($_GET['type'])) {
-			$conditions['Lead.type'] = $_GET['type'];
-		}
-		if(!empty($_GET['status'])) {
-			$conditions['Lead.status'] = $_GET['type'];
+			$conditions['Lead.model'] = $_GET['type'];
 		}
 		if(!empty($_GET['search'])) {
 			$conditions['OR']['Lead.name LIKE'] = '%'.$_GET['search'].'%';
