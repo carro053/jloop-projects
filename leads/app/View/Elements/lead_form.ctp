@@ -69,7 +69,7 @@
 						console.log(data);
 						json_data = eval('(' + data + ')');
 						//$('#LeadNotes').prepend('<p>'+data+'</p>');
-						$('#LeadNotes').prepend('<tr><td>'+json_data['text']+'</td><td>'+json_data['text']+'</td><td>'+json_data['text']+'</td></tr>);
+						$('#LeadNotes').prepend('<tr><td>'+json_data['text']+'</td><td>'+json_data['text']+'</td><td>'+json_data['text']+'</td></tr>');
 					}
 				);
 			} else {
