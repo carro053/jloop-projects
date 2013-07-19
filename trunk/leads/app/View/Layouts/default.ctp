@@ -31,6 +31,7 @@
 			<a href="/Leads">Leads</a>
 			
 			<div class="right">
+				<span>Welcome <?php echo $this->Session->read('Auth.User.username'); ?></span>
 				<a href="/Users">Users</a>
 				<a href="/Users/logout">Logout</a>
 			</div>
