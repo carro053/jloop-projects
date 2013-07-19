@@ -50,7 +50,7 @@ class ScrapesController extends AppController {
 	
 	public function view($id) {
 		$this->layout = false;
-		$scrape = $this->Scrape->findById($id);
+		$scrape = $this->Scrape->findById($id, array('recursive' => 2));
 		$this->set('scrape', $scrape);
 	}
 	
