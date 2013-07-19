@@ -5,6 +5,8 @@ class UsersController extends AppController {
 	
 	public function index() {
 		$users = $this->User->find('all');
+		pr($users);
+		
 	}
 	
 	public function create() {
