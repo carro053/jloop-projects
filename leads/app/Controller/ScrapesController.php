@@ -12,9 +12,17 @@ class ScrapesController extends AppController {
 		$conditions = array('Lead.status' => 0);
 		
 		//search conditions
-		//$conditions['OR']['Project.location LIKE'] = '%'.$search.'%';
 		if(!empty($_GET['category'])) {
 			$conditions['Scrape.category'] = $_GET['category'];
+		}
+		if(!empty($_GET['updated'])) {
+			$conditions['Scrape.updated <'] = $_GET['updated'];
+		}
+		if(!empty($_GET['iphone5'])) {
+			if($_GET['iphone5'] == 'yes')
+				$conditions['Scrape.requirements LIKE'] = '%This app is optimized for iPhone 5.%';
+			if($_GET['iphone5'] == 'no')
+				$conditions['Scrape.requirements NOT LIKE'] = '%This app is optimized for iPhone 5.%';
 		}
 		
 		$scrapes = $this->Scrape->find('all', array(

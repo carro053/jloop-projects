@@ -3,7 +3,15 @@
 <?php
 	echo $this->Form->create('Scrape', array('type' => 'get'));
 	echo $this->Form->input('category');
-	echo $this->Form->input('updated', array('label' => 'Last Update/Release'));
+	echo $this->Form->input('updated', array('label' => 'Last Update/Release Before'));
+	echo $this->Form->input('iphone5', array(
+		'label' => 'iPhone 5 Optimization'
+		'options' => array(
+			'' => 'Any',
+			'no' => 'Not Optimized',
+			'yes' => 'Optimized'
+		)
+	));
 	echo $this->Form->end('Filter');
 ?>
 
