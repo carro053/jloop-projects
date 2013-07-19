@@ -45,8 +45,8 @@
 			$('input[type=submit], a, button').button();
 			$('.menu').menu();
 			
+			$('.dialog').unbind('click');
 			$('.dialog').click(function(event) {
-				$(this).removeClass('dialog');
 				var url = $(this).attr('href');
 				$('<div/>')
 					.dialog({
