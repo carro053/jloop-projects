@@ -23,6 +23,8 @@
 	</tbody>
 </table>
 
+<?php echo $this->element('pager', array('totalItems' => $count)); ?>
+
 <script type="text/javascript">
 	$('.dialog').click(function(event) {
 		var url = $(this).attr('href');

@@ -6,6 +6,31 @@ class ScrapesController extends AppController {
 	public $uses = array('Scrape');
 	
 	public function index() {
+		$limit = (!empty($_GET['limit']) ? $_GET['limit'] : 50);
+		$page = (!empty($_GET['page']) ? $_GET['page'] : 1);
+		
+		$conditions = array();
+		
+		//search conditions
+		/*if($search) {
+			$conditions['OR']['Project.name LIKE'] = '%'.$search.'%';
+			$conditions['OR']['Project.location LIKE'] = '%'.$search.'%';
+		}
+		
+		if($brokerage_id != null) {
+			$conditions['Project.brokerage_id'] = $brokerage_id;
+		}*/
+		
+		$scarpes = $this->Scrape->find('all', array(
+			'conditions' => $conditions,
+			'page' => $page,
+			'limit' => $limit
+		));
+		$this->set('scarpes', $scarpes);
+		
+		$count = $this->Scrape->find('count', array('conditions' => $conditions));
+		$this->set('count', $count);
+		
 		$categories_raw = $this->Scrape->find('all', array(
 			'fields' => array(
 				'DISTINCT category'
@@ -17,11 +42,6 @@ class ScrapesController extends AppController {
 		}
 		$this->set('categories', $categories);
 		
-		$conditions = array();
-		$scarpes = $this->Scrape->find('all', array(
-			'conditions' => $conditions,
-		));
-		$this->set('scarpes', $scarpes);
 	}
 	
 	public function view($id) {
