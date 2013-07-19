@@ -4,3 +4,9 @@
 		<strong>Success!</strong> The lead has been saved.</p>
 	</div>
 </div>
+
+<script type="text/javascript">
+	setTimeout(function() {
+		window.location.reload();
+	}, 1000);
+</script>
