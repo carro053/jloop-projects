@@ -12,14 +12,10 @@ class ScrapesController extends AppController {
 		$conditions = array();
 		
 		//search conditions
-		/*if($search) {
-			$conditions['OR']['Project.name LIKE'] = '%'.$search.'%';
-			$conditions['OR']['Project.location LIKE'] = '%'.$search.'%';
+		//$conditions['OR']['Project.location LIKE'] = '%'.$search.'%';
+		if(!empty($_GET['category'])) {
+			$conditions['Scrape.category'] = $_GET['category'];
 		}
-		
-		if($brokerage_id != null) {
-			$conditions['Project.brokerage_id'] = $brokerage_id;
-		}*/
 		
 		$scarpes = $this->Scrape->find('all', array(
 			'conditions' => $conditions,
