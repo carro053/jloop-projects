@@ -4,7 +4,8 @@
 			<th>Name</th>
 			<th>Type</th>
 			<th>Rating</th>
-			<th>Contact</th>
+			<th>Email</th>
+			<th>Phone</th>
 			<th>Created</th>
 			<th>&nbsp;</th>
 		</tr>
@@ -15,7 +16,8 @@
 				<td>TODO!</td>
 				<td><?php echo $lead['Lead']['model']; ?></td>
 				<td><?php echo $lead['Lead']['rating']; ?></td>
-				<td><?php echo '<a href="mailto:'.$lead['Lead']['email'].'">'.$lead['Lead']['email'].'</a> | '.$lead['Lead']['phone']; ?></td>
+				<td><?php echo '<a href="mailto:'.$lead['Lead']['email'].'">'.$lead['Lead']['email'].'</a>'; ?></td>
+				<td><?php echo $lead['Lead']['phone']; ?></td>
 				<td><?php echo $lead['Lead']['created']; ?></td>
 				<td><a class="dialog" href="/<?php echo Inflector::pluralize($lead['Lead']['model']); ?>/view/<?php echo $lead['Lead']['model_id']; ?>">View</a></td>
 			</tr>
