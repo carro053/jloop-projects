@@ -27,7 +27,7 @@
 	<tbody>
 		<?php foreach($leads as $lead) { ?>
 			<tr>
-				<td>TODO!</td>
+				<td><?php echo $lead['Lead']['name']; ?></td>
 				<td><?php echo $lead['Lead']['model']; ?></td>
 				<td><?php echo $lead['Lead']['rating']; ?></td>
 				<td><?php echo '<a href="mailto:'.$lead['Lead']['email'].'">'.$lead['Lead']['email'].'</a>'; ?></td>
