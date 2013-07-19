@@ -25,6 +25,6 @@
 	</tbody>
 </table>
 
-<?php echo 'INFLECTOR: '.Inflector::pluralize($lead['Lead']['model']);
+<?php echo 'INFLECTOR: '.Inflector::pluralize($lead['Lead']['model']); ?>
 
 <?php pr($leads); ?>
