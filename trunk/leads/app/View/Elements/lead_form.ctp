@@ -40,15 +40,7 @@
 			<?php } ?>
 		</tbody>
 	</table>
-	
-	<?php
-		pr($lead);
-		foreach($lead['Note'] as $note) {
-			echo '<p>'.$note['text'].'</p>';
-		}
-	?>
-	</div>
-	
+		
 	<?php
 		echo $this->Form->create('Note', array('id' => 'NoteForm', 'url' => '#', 'type' => 'post'));
 		echo $this->Form->input('lead_id', array('type' => 'hidden', 'value' => $lead['id']));
