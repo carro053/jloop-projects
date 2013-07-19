@@ -24,7 +24,7 @@
 	
 	<?php
 		pr($lead);
-		foreach($leads['Note'] as $note) {
+		foreach($lead['Note'] as $note) {
 			
 		}
 	?>
