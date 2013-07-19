@@ -627,3 +627,8 @@ pre {
 #url-rewriting-warning {
 	display:none;
 }
+
+/** Misc **/
+.right {
+	float: right;
+}
