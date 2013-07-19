@@ -13,11 +13,16 @@ class LeadsController extends AppController {
 		$conditions[] = 'Lead.status > 0';
 		
 		//search conditions
-		/*
-		if(!empty($_GET['category'])) {
-			$conditions['Lead.category'] = $_GET['category'];
+		if(!empty($_GET['type'])) {
+			$conditions['Lead.type'] = $_GET['type'];
 		}
-		*/
+		if(!empty($_GET['status'])) {
+			$conditions['Lead.status'] = $_GET['type'];
+		}
+		if(!empty($_GET['search'])) {
+			$conditions['OR']['Lead.name LIKE'] = '%'.$_GET['search'].'%';
+			$conditions['OR']['Lead.email LIKE'] = '%'.$_GET['search'].'%';
+		}
 		
 		$leads = $this->Lead->find('all', array(
 			'conditions' => $conditions,
@@ -28,6 +33,17 @@ class LeadsController extends AppController {
 		
 		$count = $this->Lead->find('count', array('conditions' => $conditions));
 		$this->set('count', $count);
+		
+		$types_raw = $this->Lead->find('all', array(
+			'fields' => array(
+				'DISTINCT model'
+			)
+		));
+		$types = array('' => 'Any');
+		foreach($types_raw as $type) {
+			$types[$type['Lead']['model']] = $type['Lead']['model'];
+		}
+		$this->set('types', $types);
 	}
 
 	public function gather() {
