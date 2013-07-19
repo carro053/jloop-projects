@@ -69,7 +69,6 @@ class LeadsController extends AppController {
 		$this->layout = false;
 		if($this->request->is('post')) {
 			if($this->Note->save($this->request->data)) {
-				//echo json_encode($this->request->data['Note']);
 				$note = $this->Note->read();
 				echo json_encode($note['Note']);
 			} else {
