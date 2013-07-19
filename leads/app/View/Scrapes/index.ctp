@@ -7,7 +7,8 @@
 	));
 	echo $this->Form->input('updated', array(
 		'label' => 'Last Update/Release Before',
-		'value' => !empty($_GET['updated']) ? $_GET['updated']['year'].'-'.$_GET['updated']['month'].'-'.$_GET['updated']['day'] : null
+		'value' => '2055-01-01'
+		//'value' => !empty($_GET['updated']) ? $_GET['updated']['year'].'-'.$_GET['updated']['month'].'-'.$_GET['updated']['day'] : null
 	));
 	echo $this->Form->input('iphone5', array(
 		'label' => 'iPhone 5 Optimization',
