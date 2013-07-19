@@ -1,3 +1,17 @@
+<h2>Leads</h2>
+
+<?php
+	echo $this->Form->create('Lead', array('type' => 'get'));
+	echo $this->Form->input('type', array(
+		'value' => !empty($_GET['type']) ? $_GET['type'] : null
+	));
+	echo $this->Form->input('search', array(
+		'label' => 'Search (Name, Email)',
+		'value' => !empty($_GET['search']) ? $_GET['search'] : null
+	));
+	echo $this->Form->end('Filter');
+?>
+
 <table>
 	<thead>
 		<tr>
