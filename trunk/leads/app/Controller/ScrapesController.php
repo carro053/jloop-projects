@@ -24,7 +24,12 @@ class ScrapesController extends AppController {
 			if($_GET['iphone5'] == 'no')
 				$conditions['Scrape.requirements NOT LIKE'] = '%This app is optimized for iPhone 5.%';
 		}
-		
+		if(!empty($_GET['search'])) {
+			$conditions['OR']['Scrape.name LIKE'] = '%'.$_GET['search'].'%';
+			$conditions['OR']['Scrape.seller LIKE'] = '%'.$_GET['search'].'%';
+			$conditions['OR']['Scrape.copyright LIKE'] = '%'.$_GET['search'].'%';
+			$conditions['OR']['Scrape.description LIKE'] = '%'.$_GET['search'].'%';
+		}
 		$scrapes = $this->Scrape->find('all', array(
 			'conditions' => $conditions,
 			'page' => $page,
