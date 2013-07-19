@@ -23,7 +23,7 @@
 	</tbody>
 </table>
 
-<?php echo $this->element('pager', array('totalItems' => $count)); ?>
+<?php echo $this->element('pager', array('totalItems' => $count, 'uri' => '/Scrapes/index')); ?>
 
 <script type="text/javascript">
 	$('.dialog').click(function(event) {
