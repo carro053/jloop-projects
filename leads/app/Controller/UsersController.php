@@ -17,6 +17,7 @@ class UsersController extends AppController {
 	public function create() {
 		if($this->request->is('post')) {
 			if($this->User->save($this->request->data)) {
+				$this->Session->setFlash('User created');
 				return $this->redirect('/Users/index');
 			}
 		}
