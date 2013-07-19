@@ -25,17 +25,19 @@
 		<div id="header">
 			<h1>Leads</h1>
 		</div>
-		<div id="nav">
-			<a href="/Leads/gather">Lead Gathering</a>
-			<a href="/Leads/qualify">Lead Qualifying</a>
-			<a href="/Leads">Leads</a>
-			
-			<div class="right">
-				<span>Welcome <?php echo $this->Session->read('Auth.User.username'); ?></span>
-				<a href="/Users">Users</a>
-				<a href="/Users/logout">Logout</a>
+		<?php if(!empty($this->Session->read('Auth.User.id'))) { ?>
+			<div id="nav">
+				<a href="/Leads/gather">Lead Gathering</a>
+				<a href="/Leads/qualify">Lead Qualifying</a>
+				<a href="/Leads">Leads</a>
+				
+				<div class="right">
+					<span>Logged in as <?php echo $this->Session->read('Auth.User.username'); ?></span>
+					<a href="/Users">Users</a>
+					<a href="/Users/logout">Logout</a>
+				</div>
 			</div>
-		</div>
+		<?php } ?>
 		<div id="content">
 
 			<?php echo $this->Session->flash(); ?>
