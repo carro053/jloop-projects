@@ -24,8 +24,7 @@ class LeadsController extends AppController {
 		$leads = $this->Lead->find('all', array(
 			'conditions' => $conditions,
 			'page' => $page,
-			'limit' => $limit,
-			'recursive' => -1
+			'limit' => $limit
 		));
 		$this->set('leads', $leads);
 		
