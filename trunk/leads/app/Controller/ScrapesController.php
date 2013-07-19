@@ -17,7 +17,7 @@ class ScrapesController extends AppController {
 			$conditions['Scrape.category'] = $_GET['category'];
 		}
 		
-		$scarpes = $this->Scrape->find('all', array(
+		$scrapes = $this->Scrape->find('all', array(
 			'conditions' => $conditions,
 			'page' => $page,
 			'limit' => $limit
