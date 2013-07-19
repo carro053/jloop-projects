@@ -66,9 +66,13 @@
 				$.post('/Leads/addNote',
 					$(this).serialize(),
 					function(data) {
-						json_data = eval('(' + data + ')');
-						$('#LeadNotes').prepend('<tr><td>'+json_data['text']+'</td><td>'+json_data['user_id']+'</td><td>'+json_data['created']+'</td></tr>');
-						$('#NoteText').val('');
+						if(data != 'error') {
+							json_data = eval('(' + data + ')');
+							$('#LeadNotes').prepend('<tr><td>'+json_data['text']+'</td><td>'+json_data['user_id']+'</td><td>'+json_data['created']+'</td></tr>');
+							$('#NoteText').val('');
+						} else {
+							alert('Something went horribly wrong and your note wasn\'t saved');
+						}
 					}
 				);
 			} else {
