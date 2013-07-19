@@ -1,3 +1,4 @@
+<h2>Itunes Search Results</h2>
 <?php echo $this->Form->create('Results'); ?>
 
 <table>
