@@ -28,7 +28,7 @@ $lastPage = ceil( $totalItems / $itemsPerPage );
 		display: inline;
 	}
 	.pager select {
-		text-align: center;
+		vertical-align: bottom;
 	}
 </style>
 <script type="text/javascript">
