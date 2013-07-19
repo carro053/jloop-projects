@@ -5,7 +5,7 @@
 	echo $this->Form->input('category');
 	echo $this->Form->input('updated', array('label' => 'Last Update/Release Before'));
 	echo $this->Form->input('iphone5', array(
-		'label' => 'iPhone 5 Optimization'
+		'label' => 'iPhone 5 Optimization',
 		'options' => array(
 			'' => 'Any',
 			'no' => 'Not Optimized',
