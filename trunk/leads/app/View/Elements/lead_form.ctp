@@ -22,7 +22,25 @@
 		echo $this->Form->end('Save');
 	?>
 	
-	<div id="LeadNotes">
+	<table>
+		<thead>
+			<tr>
+				<th>Note</th>
+				<th>Author</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+		<tbody id="LeadNotes">
+			<?php foreach($lead['Note'] as $note) { ?>
+				<tr>
+					<td><?php echo $note['text']; ?></td>
+					<td><?php echo $note['user_id']; ?></td>
+					<td><?php echo $note['created']; ?></td>
+				</tr>
+			<?php } ?>
+		</tbody>
+	</table>
+	
 	<?php
 		pr($lead);
 		foreach($lead['Note'] as $note) {
@@ -57,7 +75,9 @@
 					$(this).serialize(),
 					function(data) {
 						console.log(data);
-						$('#LeadNotes').prepend('<p>'+data+'</p>');
+						json_data = eval('(' + data + ')');
+						//$('#LeadNotes').prepend('<p>'+data+'</p>');
+						$('#LeadNotes').prepend('<tr><td>'+json_data['text']+'</td><td>'+json_data['text']+'</td><td>'+json_data['text']+'</td></tr>);
 					}
 				);
 			} else {
