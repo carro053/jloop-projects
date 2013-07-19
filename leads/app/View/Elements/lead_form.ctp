@@ -26,7 +26,7 @@
 	<?php
 		pr($lead);
 		foreach($lead['Note'] as $note) {
-			echo '<p>'.$note.'</p>';
+			echo '<p>'.$note['text'].'</p>';
 		}
 	?>
 	</div>
