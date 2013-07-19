@@ -46,6 +46,7 @@
 			$('.menu').menu();
 			
 			$('.dialog').click(function(event) {
+				$(this).removeClass('dialog');
 				var url = $(this).attr('href');
 				$('<div/>')
 					.dialog({
