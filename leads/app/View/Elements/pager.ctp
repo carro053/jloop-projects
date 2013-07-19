@@ -11,6 +11,7 @@ $currentPage = !empty($_GET['page']) ? $_GET['page'] : 1;
 $uri = '';
 $params = '';
 pr($_GET);
+pr($_SERVER);
 foreach($_GET as $key => $value) {
 	if($key == 'url') {
 		$uri = $value;
