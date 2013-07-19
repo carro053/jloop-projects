@@ -22,11 +22,19 @@
 		echo $this->Form->end('Save');
 	?>
 	
+	<div id="LeadNotes">
 	<?php
 		pr($lead);
 		foreach($lead['Note'] as $note) {
-			
+			echo '<p>'.$note.'</p>';
 		}
+	?>
+	</div>
+	
+	<?php
+		echo $this->Form->create('Note', array('id' => 'NoteForm', 'url' => '#', 'type' => 'post'));
+		echo $this->Form->input('text', array('id' => 'NoteText'));
+		echo $this->Form->end('Add Note to Lead');
 	?>
 	
 	<script type="text/javascript">
@@ -38,6 +46,22 @@
 					$('#LeadFormContainer').replaceWith(data);
 				}
 			);
+			return false;
+		});
+		
+		$('#NoteForm').submit(function() {
+			if($('#NoteText').val() != '')
+			{
+				$.post('/Leads/addNote',
+					$(this).serialize(),
+					function(data) {
+						console.log(data);
+						$('#LeadNotes').prepend('<p>'+data+'</p>');
+					}
+				);
+			} else {
+				alert('Please enter some text for your note!');
+			}
 			return false;
 		});
 	</script>

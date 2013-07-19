@@ -10,7 +10,8 @@ class Lead extends AppModel {
 	public $hasMany = array(
 		'Note' => array(
 			'className' => 'Note',
-			'foreignKey' => 'lead_id'
+			'foreignKey' => 'lead_id',
+			'order' => 'Note.created DESC'
 		)
 	);
 }
