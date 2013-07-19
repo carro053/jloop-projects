@@ -8,16 +8,21 @@
 	<thead>
 		<tr>
 			<th>App</th>
-			<th></th>
+			<th>Category</th>
+			<th>Price</th>
+			<th>Updated</th>
 		</tr>
 	</thead>
 	<tbody>
-		<?php foreach($scarpes as $scrape) { ?>
+		<?php foreach($scrapes as $scrape) { ?>
 			<tr>
 				<td><?php echo $scrape['Scrape']['name']; ?></td>
+				<td><?php echo $scrape['Scrape']['category']; ?></td>
+				<td><?php echo $scrape['Scrape']['price']; ?></td>
+				<td><?php echo $scrape['Scrape']['updated']; ?></td>
 				<td><a class="dialog" href="/Scrapes/view/<?php echo $scrape['Scrape']['id']; ?>">Rate</a></td>
 			</tr>
-		<?php } if(empty($scarpes)) { ?>
+		<?php } if(empty($scrape)) { ?>
 			<tr><td colspan="4">There are currently no scrapes</td></tr>
 		<?php } ?>
 	</tbody>
