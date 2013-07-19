@@ -5,6 +5,7 @@
 		
 		echo $this->Form->create('Lead', array('id' => 'LeadUpdateForm', 'url' => '#', 'type' => 'post'));
 		echo $this->Form->input('id');
+		echo $this->Form->input('status', array('type' => 'hidden', 'value' => 1));
 		echo $this->Form->input('email');
 		echo $this->Form->input('phone');
 		echo $this->Form->input('rating', array(
