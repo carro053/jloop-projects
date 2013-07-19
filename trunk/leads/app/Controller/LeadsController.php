@@ -13,7 +13,7 @@ class LeadsController extends AppController {
 		//search conditions
 		/*
 		if(!empty($_GET['category'])) {
-			$conditions['Scrape.category'] = $_GET['category'];
+			$conditions['Lead.category'] = $_GET['category'];
 		}
 		*/
 		

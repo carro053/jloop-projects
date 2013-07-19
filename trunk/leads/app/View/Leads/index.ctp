@@ -28,5 +28,3 @@
 </table>
 
 <?php echo $this->element('pager', array('totalItems' => $count, 'uri' => 'Leads/index')); ?>
-
-<?php pr($leads); ?>
