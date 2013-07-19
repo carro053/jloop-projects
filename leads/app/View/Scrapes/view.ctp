@@ -97,7 +97,10 @@
 
 <h3>Make it a Lead!</h3>
 
-<?php echo $this->element('lead_form', array('lead' => $scrape['Lead'])); ?>
+<?php echo $this->element('lead_form', array(
+	'lead' => $scrape['Lead'],
+	'defaultName' => $scrape['Scrape']['name'].' '.$scrape['Scrape']['copyright']
+)); ?>
 
 <script type="text/javascript">
 	try {
