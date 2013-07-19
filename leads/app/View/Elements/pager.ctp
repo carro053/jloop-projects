@@ -1,20 +1,15 @@
 <?php
-//$link
-//$currentPage
-//$itemsPerPage
 //$totalItems
+//$uri
 
 $itemsPerPage = !empty($_GET['limit']) ? $_GET['limit'] : 50;
 
 $currentPage = !empty($_GET['page']) ? $_GET['page'] : 1;
 
-$uri = '';
 $params = '';
-pr($_GET);
+
 foreach($_GET as $key => $value) {
-	if($key == 'url') {
-		$uri = $value;
-	}elseif($key != 'page') {
+	if($key != 'page') {
 		$params .= '&'.$key.'='.$value;
 	}
 }
