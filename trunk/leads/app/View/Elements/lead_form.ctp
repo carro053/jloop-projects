@@ -21,6 +21,11 @@
 		));
 		echo $this->Form->end('Save');
 	?>
+	
+	<?php
+		pr($lead);
+	?>
+	
 	<script type="text/javascript">
 		$('.radio').buttonset();
 		$('#LeadUpdateForm').submit(function() {
