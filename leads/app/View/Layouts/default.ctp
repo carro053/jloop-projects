@@ -29,18 +29,11 @@
 			<a href="/Leads/gather">Lead Gathering</a>
 			<a href="/Leads/qualify">Lead Qualifying</a>
 			<a href="/Leads">Leads</a>
-		</div>
-		<div>
-			<ul class="menu">
-				<li><a href="#">Test</a></li>
-				<li><a href="#">Test</a></li>
-				<li><a href="#">Test</a></li>
-				<li><a href="#">Test</a></li>
-				<li><a href="#">Test</a></li>
-				<li><a href="#">Test</a></li>
-				<li><a href="#">Test</a></li>
-				<li><a href="#">Test</a></li>
-			</ul>
+			
+			<div class="right">
+				<a href="/Users">Users</a>
+				<a href="/Users/logout">Logout</a>
+			</div>
 		</div>
 		<div id="content">
 
