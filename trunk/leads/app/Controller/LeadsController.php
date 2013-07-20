@@ -8,7 +8,7 @@ class LeadsController extends AppController {
 	public function index() {
 		$limit = (!empty($_GET['limit']) ? $_GET['limit'] : 50);
 		$page = (!empty($_GET['page']) ? $_GET['page'] : 1);
-		$order = (!empty($_GET['order']) ? $_GET['order'] : 'rating').' '.(!empty($_GET['direction']) ? $_GET['direction'] : 'desc');
+		$order = (!empty($_GET['order']) ? $_GET['order'] : 'Scrape.name').' '.(!empty($_GET['direction']) ? $_GET['direction'] : 'asc');
 		
 		$conditions = array();
 		$conditions[] = 'Lead.status > 0';
