@@ -67,6 +67,8 @@ class LeadsController extends AppController {
 	public function addNote() {
 		$this->layout = false;
 		if($this->request->is('post')) {
+			$user = $this->Auth->user();
+			$this->request->data['Note']['user_id'] = $user['User']['id'];
 			if($this->Note->save($this->request->data)) {
 				$note = $this->Note->read();
 				echo json_encode($note['Note']);
