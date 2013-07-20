@@ -15,7 +15,7 @@
 <table>
 	<thead>
 		<tr>
-			<th>Name</th>
+			<th>Name <?php echo $this->element('sorter', array('uri' => 'Leads/index', 'field' => 'name')); ?></th>
 			<th>Type</th>
 			<th>Rating <?php echo $this->element('sorter', array('uri' => 'Leads/index', 'field' => 'rating')); ?></th>
 			<th>Email</th>
