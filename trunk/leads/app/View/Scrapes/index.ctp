@@ -28,10 +28,10 @@
 <table>
 	<thead>
 		<tr>
-			<th>App</th>
-			<th>Category</th>
-			<th>Price</th>
-			<th>Released/Updated</th>
+			<th>App <?php echo $this->element('sorter', array('uri' => 'Scrapes/index', 'field' => 'name')); ?></th>
+			<th>Category <?php echo $this->element('sorter', array('uri' => 'Scrapes/index', 'field' => 'category')); ?></th>
+			<th>Price <?php echo $this->element('sorter', array('uri' => 'Scrapes/index', 'field' => 'price')); ?></th>
+			<th>Released/Updated <?php echo $this->element('sorter', array('uri' => 'Scrapes/index', 'field' => 'updated')); ?></th>
 			<th></th>
 		</tr>
 	</thead>

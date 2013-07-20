@@ -8,6 +8,7 @@ class ScrapesController extends AppController {
 	public function index() {
 		$limit = (!empty($_GET['limit']) ? $_GET['limit'] : 50);
 		$page = (!empty($_GET['page']) ? $_GET['page'] : 1);
+		$order = (!empty($_GET['order']) ? $_GET['order'] : 'rating').' '.(!empty($_GET['direction']) ? $_GET['direction'] : 'desc');
 		
 		$conditions = array('Lead.status' => 0);
 		
@@ -32,6 +33,7 @@ class ScrapesController extends AppController {
 		}
 		$scrapes = $this->Scrape->find('all', array(
 			'conditions' => $conditions,
+			'order' => $order,
 			'page' => $page,
 			'limit' => $limit
 		));
