@@ -17,10 +17,10 @@
 		<tr>
 			<th>Name</th>
 			<th>Type</th>
-			<th>Rating</th>
+			<th>Rating<?php echo $this->element('sorter', array('uri' => 'Leads/index', 'field' => 'rating')); ?></th>
 			<th>Email</th>
 			<th>Phone</th>
-			<th>Created</th>
+			<th>Created<?php echo $this->element('sorter', array('uri' => 'Leads/index', 'field' => 'created')); ?></th>
 			<th>&nbsp;</th>
 		</tr>
 	</thead>
