@@ -8,6 +8,7 @@ class LeadsController extends AppController {
 	public function index() {
 		$limit = (!empty($_GET['limit']) ? $_GET['limit'] : 50);
 		$page = (!empty($_GET['page']) ? $_GET['page'] : 1);
+		$order = (!empty($_GET['order']) ? $_GET['order'] : 'rating').' '.(!empty($_GET['direction']) ? $_GET['direction'] : 'desc');
 		
 		$conditions = array();
 		$conditions[] = 'Lead.status > 0';
@@ -23,6 +24,7 @@ class LeadsController extends AppController {
 		
 		$leads = $this->Lead->find('all', array(
 			'conditions' => $conditions,
+			'order' => $order,
 			'page' => $page,
 			'limit' => $limit
 		));
