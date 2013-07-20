@@ -68,7 +68,7 @@ class LeadsController extends AppController {
 		$this->layout = false;
 		if($this->request->is('post')) {
 			$user = $this->Auth->user();
-			$this->request->data['Note']['user_id'] = $user['User']['id'];
+			$this->request->data['Note']['user_id'] = $user['id'];
 			if($this->Note->save($this->request->data)) {
 				$note = $this->Note->read();
 				echo json_encode($note['Note']);
