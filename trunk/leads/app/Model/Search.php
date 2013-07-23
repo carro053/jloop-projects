@@ -27,7 +27,6 @@ class Search extends AppModel {
 		  'cx' => '007301418745006324333:d--m5x9_aui', // The custom search engine ID to scope this search query.
 		  'start' => $start
 		));
-		print "<pre>" . print_r($result, true) . "</pre>";
 		
 		
 		$return = array();
