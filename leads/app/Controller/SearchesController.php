@@ -54,13 +54,13 @@ class SearchesController extends AppController {
 				
 			if($result['total_results'] > 10) {
 				for($i = 1; $i < $num_pages; $i++) {
-					echo 'i: '.$i.'<br />';
+					//echo 'i: '.$i.'<br />';
 					$result = $this->Search->runQuery($query, $i * 10 + 1);
 					$result_items = array_merge($result_items, $result['items']);
 				}
 			}
 			
-			echo $result['total_results'].'<br />';
+			//echo $result['total_results'].'<br />';
 			//pr($result_items);
 			
 			$this->Search->create();
@@ -76,7 +76,7 @@ class SearchesController extends AppController {
 				}
 			}
 			
-			echo 'This is about to redirect to '.$this->Search->id;
+			//echo 'This is about to redirect to '.$this->Search->id;
 			$this->redirect('/Searches/view/'.$this->Search->id);
 		}
 	}
