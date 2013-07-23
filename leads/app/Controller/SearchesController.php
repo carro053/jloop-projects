@@ -24,6 +24,8 @@ class SearchesController extends AppController {
 			$client->setDeveloperKey('AIzaSyBeJoG_O5wa2aAqAsWihNnCLmckfDB6kNQ');
 			$search = new Google_CustomsearchService($client);
 			
+			
+			/*
 			// Example executing a search with your custom search id.
 			$query = 'site:itunes.apple.com/us "Open iTunes to buy and download apps." '; //search US store, only iOS apps (not Mac apps or music, etc.)
 			
@@ -35,6 +37,9 @@ class SearchesController extends AppController {
 				$query .= 'daterange:'.$this->request->data['Search']['start_date']['year'].'-'.$this->request->data['Search']['start_date']['month'].'-'.$this->request->data['Search']['start_date']['day'].'..'.$this->request->data['Search']['end_date']['year'].'-'.$this->request->data['Search']['end_date']['month'].'-'.$this->request->data['Search']['end_date']['day'].' ';
 			}
 			$query .= $this->request->data['Search']['search_terms'];
+			*/
+			
+			$this->Search->buildQueryString($this->request->data);
 			
 			$result_items = array();
 			
@@ -71,6 +76,7 @@ class SearchesController extends AppController {
 				}
 			}
 			
+			echo 'This is about to redirect...';
 			$this->redirect('/Searches/view/'.$this->Search->id);
 		}
 	}
