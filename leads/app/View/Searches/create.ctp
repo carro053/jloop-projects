@@ -28,15 +28,13 @@
 
 	function ajax_google_search_preview() {
 		console.log('ajax preview');
-		$('#SearchCreateForm').submit(function() {
-			$.post('/Searches/ajaxGetGoogleSearchPreviewLink',
-				$(this).serialize(),
-				function(data) {
-					console.log(data);
-				}
-			);
+		$.post('/Searches/ajaxGetGoogleSearchPreviewLink',
+			$('#SearchCreateForm').serialize(),
+			function(data) {
+				console.log(data);
+			}
+		);
 			return false;
-		});
 	}
 
 	function toggleDates(checkbox) {
