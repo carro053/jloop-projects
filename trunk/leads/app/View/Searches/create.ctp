@@ -13,7 +13,7 @@
 ?>
 
 <a href="#" onclick="ajax_google_search_preview();">Preview</a>
-<h3>Google Search Preview: <span></span></h3>
+<h3>Google Search Preview: <a id="previewLink" href="#" target="_blank"></a></h3>
 
 <script type="text/javascript">
 	/*
@@ -32,6 +32,8 @@
 			$('#SearchCreateForm').serialize(),
 			function(data) {
 				console.log(data);
+				$('#previewLink').html(data);
+				$('#previewLink').attr('href', data);
 			}
 		);
 		return false;
