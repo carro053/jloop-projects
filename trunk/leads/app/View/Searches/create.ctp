@@ -12,7 +12,7 @@
 	echo $this->Form->end('Search');
 ?>
 
-<a href="#" onclick="ajax_google_search_preview(); return false;">Preview</a>
+<a href="#" onclick="ajax_google_search_preview();">Preview</a>
 <h3>Google Search Preview: <span></span></h3>
 
 <script type="text/javascript">
@@ -34,7 +34,7 @@
 				console.log(data);
 			}
 		);
-			return false;
+		return false;
 	}
 
 	function toggleDates(checkbox) {
