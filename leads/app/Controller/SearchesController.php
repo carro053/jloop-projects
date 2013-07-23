@@ -101,7 +101,7 @@ class SearchesController extends AppController {
 	public function ajaxGetGoogleSearchPreviewLink() {
 		$this->layout = false;
 		if($this->request->is('post')) {
-			echo $this->Search->buildQueryString($this->request->data);
+			echo 'https://www.google.com?q='. urlencode($this->Search->buildQueryString($this->request->data));
 			exit;
 		}
 		die('Only Post');
