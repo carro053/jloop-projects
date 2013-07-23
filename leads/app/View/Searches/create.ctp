@@ -1,4 +1,4 @@
-<h2>Itunes Search</h2>
+<h2>iTunes Search</h2>
 <?php
 	echo $this->Form->create('Search');
 	echo $this->Form->input('search_terms', array('label' => 'Search Terms (e.x. automotive, fitness, etc.)'));
@@ -16,6 +16,10 @@
 
 <script type="text/javascript">
 	$('#SearchCreateForm').change( function() {
+		console.log('form changed');
+	});
+	
+	$('#SearchCreateForm').keyup( function() {
 		console.log('form changed');
 	});
 
