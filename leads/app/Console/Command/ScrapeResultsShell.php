@@ -22,6 +22,7 @@ class ScrapeResultsShell extends AppShell {
 	        	$this->out('  Scraping: '.$result['Result']['itunes_link']);
 		        $this->Scrape->create();
 		        $scrape = $this->Scrape->parseURL($result['Result']['itunes_link']);
+		        $scrape['Lead']['type'] = 'Google Search Automatic iTunes Scrape';
 		        $this->Scrape->save($scrape);
 	        }else{
 		        $this->out('  Link already scraped: '.$result['Result']['itunes_link']);

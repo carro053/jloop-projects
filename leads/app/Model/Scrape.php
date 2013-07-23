@@ -11,6 +11,7 @@ class Scrape extends AppModel {
 			$lead = array(
 				'model' => $this->name,
 				'model_id' => $this->id,
+				'type' => $this->data['Lead']['type']
 			);
 			if(!$this->Lead->save($lead, false))
 				die('An error has occurred while saving the lead for '.$this->name.', id: '.$this->id);
