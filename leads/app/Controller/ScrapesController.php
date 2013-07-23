@@ -63,7 +63,7 @@ class ScrapesController extends AppController {
 	
 	public function create() {
 		if($this->request->is('post')) {
-			$scrape = $this->Scrape->parseURL($this->request->data['Scrape']['URL']);
+			$scrape = $this->Scrape->parseURL($this->request->data['Scrape']['itunes_link']);
 			pr($scrape);
 		}
 	}
