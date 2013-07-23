@@ -39,7 +39,7 @@ class SearchesController extends AppController {
 			$query .= $this->request->data['Search']['search_terms'];
 			*/
 			
-			$this->Search->buildQueryString($this->request->data);
+			$query = $this->Search->buildQueryString($this->request->data);
 			
 			$result_items = array();
 			
