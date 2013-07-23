@@ -26,7 +26,7 @@
 	function ajax_google_search_preview() {
 		console.log('ajax preview');
 		$('#SearchCreateForm').submit(function() {
-			$.post('/Leads/addNote',
+			$.post('/Searches/ajaxGetGoogleSearchPreviewLink',
 				$(this).serialize(),
 				function(data) {
 					console.log(data);
