@@ -61,6 +61,13 @@ class ScrapesController extends AppController {
 		$this->set('scrape', $scrape);
 	}
 	
+	public function create() {
+		if($this->request->is('post')) {
+			$scrape = $this->Scrape->parseURL($this->request->data['Scrape']['URL']);
+			pr($scrape);
+		}
+	}
+	
 	public function test() {
 		if($this->request->is('post')) {
 			$scrape = $this->Scrape->parseURL($this->request->data['Scrape']['URL']);
