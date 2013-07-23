@@ -2,6 +2,14 @@
 
 <?php
 	echo $this->Form->create('Scrape', array('type' => 'get'));
+	echo $this->Form->input('type', array(
+		'options' => array(
+			'' => 'Any',
+			'manual' => 'Manual iTunes Scrape',
+			'auto' => 'Google Search Automatic iTunes Scrape'
+		),
+		'value' => !empty($_GET['type']) ? $_GET['type'] : null
+	));
 	echo $this->Form->input('category', array(
 		'value' => !empty($_GET['category']) ? $_GET['category'] : null
 	));
