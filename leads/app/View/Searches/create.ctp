@@ -12,9 +12,11 @@
 	echo $this->Form->end('Search');
 ?>
 
+<a href="#" onclick="ajax_google_search_preview(); return false;">Preview</a>
 <h3>Google Search Preview: <span></span></h3>
 
 <script type="text/javascript">
+	/*
 	$('#SearchCreateForm').change( function() {
 		ajax_google_search_preview();
 	});
@@ -22,6 +24,7 @@
 	$('#SearchCreateForm').keyup( function() {
 		ajax_google_search_preview();
 	});
+	*/
 
 	function ajax_google_search_preview() {
 		console.log('ajax preview');
