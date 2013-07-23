@@ -70,9 +70,9 @@
 		<?php foreach($scrapes as $scrape) { ?>
 			<tr>
 				<td><?php echo $scrape['Scrape']['name']; ?></td>
+				<td><?php echo $scrape['Scrape']['category']; ?></td>
 				<td><?php echo $scrape['Scrape']['ratings_all']; ?></td>
 				<td><?php echo $scrape['Scrape']['ratings_all_count']; ?></td>
-				<td><?php echo $scrape['Scrape']['category']; ?></td>
 				<td><?php echo $scrape['Scrape']['price']; ?></td>
 				<td><?php echo $scrape['Scrape']['released_updated']; ?></td>
 				<td><a class="dialog" href="/Scrapes/view/<?php echo $scrape['Scrape']['id']; ?>">View</a></td>
