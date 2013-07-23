@@ -46,11 +46,11 @@ class Scrape extends AppModel {
 		$scrape['copyright'] = pq('li.copyright')->text();
 		$scrape['requirements'] = preg_replace('/^\S+\s/', null, pq('p:contains("Requirements:")')->text());
 		$ratings_current = pq('div.customer-ratings div:contains("Current Version:") + div')->attr('aria-label');
-		$scrape['ratings_current'] = preg_replace('/,.*/', null, $ratings_current);
+		$scrape['ratings_current'] = str_replace(array(' and a half', ' stars'), array('.5', null), preg_replace('/,.*/', null, $ratings_current));
 		preg_match('/(?<=, )\d*/', $ratings_current, $ratings_current_count);
 		$scrape['ratings_current_count'] = !empty($ratings_current_count[0]) ? $ratings_current_count[0] : 0;
 		$ratings_all = pq('div.customer-ratings div:contains("All Versions:") + div')->attr('aria-label');
-		$scrape['ratings_all'] = preg_replace('/,.*/', null, $ratings_all);
+		$scrape['ratings_all'] = str_replace(array(' and a half', ' stars'), array('.5', null), preg_replace('/,.*/', null, $ratings_all));
 		preg_match('/(?<=, )\d*/', $ratings_all, $ratings_all_count);
 		$scrape['ratings_all_count'] = !empty($ratings_all_count[0]) ? $ratings_all_count[0] : 0;
 		$scrape['description'] = pq('h4:contains("Description") + p')->html();
