@@ -69,11 +69,12 @@ class ScrapesController extends AppController {
 		        $this->Scrape->create();
 		        $scrape = $this->Scrape->parseURL($this->request->data['Scrape']['itunes_link']);
 		        $scrape['Lead']['type'] = 'Manual iTunes Scrape';
-		        $this->Scrape->save($scrape);
+		        if(this->Scrape->save($scrape)) {
+			        $this->Session->setFlash('Link has been successfully scraped.');
+		        }
 	        }else{
 	        	$this->Session->setFlash('Link has previously been scraped already.');
 	        }
-			pr($scrape);
 		}
 	}
 	
