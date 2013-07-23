@@ -76,7 +76,7 @@ class SearchesController extends AppController {
 				}
 			}
 			
-			echo 'This is about to redirect...';
+			echo 'This is about to redirect to '.$this->Search->id;
 			$this->redirect('/Searches/view/'.$this->Search->id);
 		}
 	}
