@@ -18,6 +18,7 @@ class ScrapesController extends AppController {
 				'manual' => 'Manual iTunes Scrape',
 				'auto' => 'Google Search Automatic iTunes Scrape'
 			);
+			var_dump(in_array($_GET['type'], $types));
 			if(in_array($_GET['type'], $types))
 				$conditions['Lead.type'] =  $types[$_GET['type']];
 		}
