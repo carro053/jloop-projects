@@ -39,4 +39,19 @@ class Search extends AppModel {
 		return $return;
 	}
 	
+	public function buildQueryString($search) {
+		// Example executing a search with your custom search id.
+		$query = 'site:itunes.apple.com/us "Open iTunes to buy and download apps." '; //search US store, only iOS apps (not Mac apps or music, etc.)
+		
+		if($search['Search']['is_not_iphone_5'])
+			$query .= '-"This app is optimized for iPhone 5." ';
+		if($search['Search']['is_not_ipad_only'])
+			$query .= '-"Compatible with iPad." ';
+		if($search['Search']['use_date_range']) {
+			$query .= 'daterange:'.$search['Search']['start_date']['year'].'-'.$search['Search']['start_date']['month'].'-'.$search['Search']['start_date']['day'].'..'.$search['Search']['end_date']['year'].'-'.$search['Search']['end_date']['month'].'-'.$search['Search']['end_date']['day'].' ';
+		}
+		$query .= $search['Search']['search_terms'];
+		
+		return $query;
+	}
 }
