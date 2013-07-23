@@ -97,4 +97,8 @@ class SearchesController extends AppController {
 			$this->set('search', $this->Search->findById($search_id));
 		}
 	}
+	
+	public function ajaxGetGoogleSearchPreviewLink() {
+		
+	}
 }

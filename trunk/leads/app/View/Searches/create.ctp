@@ -12,7 +12,14 @@
 	echo $this->Form->end('Search');
 ?>
 
+<h3>Google Search Preview: <span></span></h3>
+
 <script type="text/javascript">
+	$('#SearchCreateForm').change( function() {
+		console.log('form changed');
+	});
+
+
 	function toggleDates(checkbox) {
 		if($(checkbox).is(':checked'))
 			$('#date-range').show();
