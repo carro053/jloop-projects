@@ -13,6 +13,14 @@ class ScrapesController extends AppController {
 		$conditions = array('Lead.status' => 0);
 		
 		//search conditions
+		if(!empty($_GET['type'])) {
+			$types = array(
+				'manual' => 'Manual iTunes Scrape',
+				'auto' => 'Google Search Automatic iTunes Scrape'
+			);
+			if(in_array($_GET['type'], $types))
+				$conditions['Lead.type'] =  $types[$_GET['type']];
+		}
 		if(!empty($_GET['category'])) {
 			$conditions['Scrape.category'] = $_GET['category'];
 		}

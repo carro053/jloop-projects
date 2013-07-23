@@ -35,12 +35,12 @@ class LeadsController extends AppController {
 		
 		$types_raw = $this->Lead->find('all', array(
 			'fields' => array(
-				'DISTINCT model'
+				'DISTINCT type'
 			)
 		));
 		$types = array('' => 'Any');
 		foreach($types_raw as $type) {
-			$types[$type['Lead']['model']] = $type['Lead']['model'];
+			$types[$type['Lead']['type']] = $type['Lead']['type'];
 		}
 		$this->set('types', $types);
 	}
