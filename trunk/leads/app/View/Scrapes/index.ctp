@@ -13,9 +13,9 @@
 	echo $this->Form->input('category', array(
 		'value' => !empty($_GET['category']) ? $_GET['category'] : null
 	));
-	echo $this->Form->input('updated', array(
+	echo $this->Form->input('released_updated', array(
 		'label' => 'Last Updated/Released Before',
-		'selected' => !empty($_GET['updated']) ? $_GET['updated']['year'].'-'.$_GET['updated']['month'].'-'.$_GET['updated']['day'] : null
+		'selected' => !empty($_GET['released_updated']) ? $_GET['released_updated']['year'].'-'.$_GET['released_updated']['month'].'-'.$_GET['released_updated']['day'] : null
 	));
 	echo $this->Form->input('iphone5', array(
 		'label' => 'iPhone 5 Optimization',
@@ -49,7 +49,7 @@
 				<td><?php echo $scrape['Scrape']['name']; ?></td>
 				<td><?php echo $scrape['Scrape']['category']; ?></td>
 				<td><?php echo $scrape['Scrape']['price']; ?></td>
-				<td><?php echo $scrape['Scrape']['updated']; ?></td>
+				<td><?php echo $scrape['Scrape']['released_updated']; ?></td>
 				<td><a class="dialog" href="/Scrapes/view/<?php echo $scrape['Scrape']['id']; ?>">View</a></td>
 			</tr>
 		<?php } if(empty($scrape)) { ?>
