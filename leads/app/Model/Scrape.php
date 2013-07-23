@@ -38,7 +38,7 @@ class Scrape extends AppModel {
 		$scrape['category'] = pq('.genre a')->html();
 		$released_updated = pq('.release-date')->text();
 		$scrape['is_updated'] = preg_match('/Updated:/', $released_updated);
-		$scrape['updated'] = date('Y-m-d', strtotime(preg_replace('/^\S+\s/', null, $released_updated)));
+		$scrape['released_updated'] = date('Y-m-d', strtotime(preg_replace('/^\S+\s/', null, $released_updated)));
 		$scrape['version'] = preg_replace('/^\S+\s/', null, pq('li:contains("Version:")')->text());
 		$scrape['size'] = preg_replace('/^\S+\s/', null, pq('li:contains("Size:")')->text());
 		$scrape['languages'] = preg_replace('/^\S+\s/', null, pq('li.language')->text());

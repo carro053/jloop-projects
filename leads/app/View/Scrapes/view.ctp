@@ -23,7 +23,7 @@
 			)));
 			echo $this->Html->tableCells(array(array(
 				$this->Html->tag('strong', $scrape['Scrape']['is_updated'] ? 'Updated' : 'Released'),
-				$scrape['Scrape']['updated']
+				$scrape['Scrape']['released_updated']
 			)));
 			echo $this->Html->tableCells(array(array(
 				$this->Html->tag('strong', 'Version'),

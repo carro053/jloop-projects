@@ -24,8 +24,8 @@ class ScrapesController extends AppController {
 		if(!empty($_GET['category'])) {
 			$conditions['Scrape.category'] = $_GET['category'];
 		}
-		if(!empty($_GET['updated'])) {
-			$conditions['Scrape.updated <'] = $_GET['updated']['year'].'-'.$_GET['updated']['month'].'-'.$_GET['updated']['day'];
+		if(!empty($_GET['released_updated'])) {
+			$conditions['Scrape.released_updated <'] = $_GET['released_updated']['year'].'-'.$_GET['released_updated']['month'].'-'.$_GET['released_updated']['day'];
 		}
 		if(!empty($_GET['iphone5'])) {
 			if($_GET['iphone5'] == 'yes')
