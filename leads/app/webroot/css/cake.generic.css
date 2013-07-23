@@ -239,7 +239,7 @@ fieldset {
 }
 fieldset.bordered {
 	border: 2px solid #000000;
-	margin-bottom: 1em;
+	padding: 1em;
 }
 fieldset legend {
 	font-size: 110%;
