@@ -16,13 +16,25 @@
 
 <script type="text/javascript">
 	$('#SearchCreateForm').change( function() {
-		console.log('form changed');
+		ajax_google_search_preview();
 	});
 	
 	$('#SearchCreateForm').keyup( function() {
-		console.log('form changed');
+		ajax_google_search_preview();
 	});
 
+	function ajax_google_search_preview() {
+		console.log('ajax preview');
+		$('#SearchCreateForm').submit(function() {
+			$.post('/Leads/addNote',
+				$(this).serialize(),
+				function(data) {
+					console.log(data);
+				}
+			);
+			return false;
+		});
+	}
 
 	function toggleDates(checkbox) {
 		if($(checkbox).is(':checked'))

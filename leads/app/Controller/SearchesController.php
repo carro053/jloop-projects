@@ -99,6 +99,11 @@ class SearchesController extends AppController {
 	}
 	
 	public function ajaxGetGoogleSearchPreviewLink() {
-		
+		$this->layout = false;
+		if($this->request->is('post')) {
+			pr($this->request->data);
+			exit;
+		}
+		die('Only Post');
 	}
 }
