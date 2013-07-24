@@ -26,18 +26,17 @@
 			),
 			'hiddenField' => false
 		));
-		echo $this->Form->input('Tag', array('multiple' => 'checkbox'));
-		/*echo '<div id="tags"><fieldset><legend>Tags</legend>';
+		echo '<div id="tags"><fieldset><legend>Tags</legend>';
 		foreach($tags as $tag) {
 			echo $this->Form->input('Tag.'.$tag['Tag']['name'], array(
 				'type' => 'checkbox',
 				'label' => $tag['Tag']['name'],
 				'value' => $tag['Tag']['id'],
-				//'hiddenField' => false,
+				'hiddenField' => false,
 				'div' => false
 			));
 		}
-		echo '</fieldset></div>';*/
+		echo '</fieldset></div>';
 		echo $this->Form->end('Save');
 	?>
 	
