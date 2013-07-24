@@ -16,16 +16,6 @@
 <h3>Google Search Preview: <a id="previewLink" href="#" target="_blank"></a></h3>
 
 <script type="text/javascript">
-	/*
-	$('#SearchCreateForm').change( function() {
-		ajax_google_search_preview();
-	});
-	
-	$('#SearchCreateForm').keyup( function() {
-		ajax_google_search_preview();
-	});
-	*/
-
 	function ajax_google_search_preview() {
 		console.log('ajax preview');
 		$.post('/Searches/ajaxGetGoogleSearchPreviewLink',
@@ -34,6 +24,8 @@
 				console.log(data);
 				$('#previewLink').html(data);
 				$('#previewLink').attr('href', data);
+				
+				window.open(data, '_blank');
 			}
 		);
 		return false;
