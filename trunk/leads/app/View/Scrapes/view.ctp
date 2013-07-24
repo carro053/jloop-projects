@@ -99,7 +99,8 @@
 
 <?php echo $this->element('lead_form', array(
 	'lead' => $scrape['Lead'],
-	'defaultName' => $scrape['Scrape']['name'].' '.$scrape['Scrape']['copyright']
+	'defaultName' => $scrape['Scrape']['name'].' '.$scrape['Scrape']['copyright'],
+	'tags' => $tags
 )); ?>
 
 <script type="text/javascript">
