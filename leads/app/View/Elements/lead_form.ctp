@@ -27,8 +27,9 @@
 			'hiddenField' => false
 		));
 		echo '<div id="tags"><fieldset><legend>Tags</legend>';
-		foreach($tags as $tag) {
-			echo $this->Form->input('Tag.'.$tag['Tag']['name'], array(
+		echo '<input id="TagTag" type="hidden" value="" name="data[Tag][Tag]">';
+		foreach($tags as $key => $tag) {
+			echo $this->Form->input('Tag.'.$key, array(
 				'type' => 'checkbox',
 				'label' => $tag['Tag']['name'],
 				'value' => $tag['Tag']['id'],
@@ -68,7 +69,7 @@
 	
 	<script type="text/javascript">
 		$('.radio').buttonset();
-		//$('#tags').buttonset();
+		$('#tags').buttonset();
 		$('#LeadUpdateForm').submit(function() {
 			$.post('/Leads/update',
 				$(this).serialize(),
