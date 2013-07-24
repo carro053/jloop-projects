@@ -22,8 +22,12 @@
 			),
 			'hiddenField' => false
 		));
+		echo '<div id="tags">';
+		foreach($tags as $tag) {
+			echo $this->Form->input('Tag.'$tag['Tag']['name'], array('type' => 'checkbox'));
+		}
+		echo '</div>';
 		echo $this->Form->end('Save');
-		pr($tags);
 	?>
 	
 	<table>
@@ -54,6 +58,7 @@
 	
 	<script type="text/javascript">
 		$('.radio').buttonset();
+		$('#tags').buttonset();
 		$('#LeadUpdateForm').submit(function() {
 			$.post('/Leads/update',
 				$(this).serialize(),
