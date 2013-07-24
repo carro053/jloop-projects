@@ -27,7 +27,7 @@
 			'hiddenField' => false
 		));
 		echo '<div id="tags"><fieldset><legend>Tags</legend>';
-		echo '<input id="TagTag" type="hidden" value="" name="data[Tag][Tag]">';
+		echo '<input type="hidden" value="" name="data[Tag][]">';
 		foreach($tags as $key => $tag) {
 			echo $this->Form->input('Tag.'.$key, array(
 				'type' => 'checkbox',
