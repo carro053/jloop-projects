@@ -52,7 +52,7 @@
 		console.log(form);
 		
 		var query = 'site:itunes.apple.com/us "Open iTunes to buy and download apps." ';
-		if(form.data[Search][is_not_iphone_5])
+		if(form['data[Search][is_not_iphone_5]'])
 			query += '-"This app is optimized for iPhone 5." ';
 		console.log(query);
 	}
