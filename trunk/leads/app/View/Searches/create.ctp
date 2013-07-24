@@ -47,7 +47,8 @@
 	
 	function google_search_preview() {
 		console.log('form changed');
-		var form = JSON.stringify($('form').serializeObject());
+		//var form = JSON.stringify($('#SearchCreateForm').serializeObject());
+		var form = $('#SearchCreateForm').serializeObject();
 		console.log(form);
 	}
 	
