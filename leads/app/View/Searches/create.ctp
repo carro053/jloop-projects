@@ -47,5 +47,7 @@
 	
 	function google_search_preview() {
 		console.log('form changed');
+		var form = $("#SearchCreateForm").serializeArray();
+		console.log(form);
 	}
 </script>
