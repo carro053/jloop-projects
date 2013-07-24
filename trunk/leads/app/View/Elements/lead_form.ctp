@@ -26,7 +26,7 @@
 			),
 			'hiddenField' => false
 		));
-		echo $this->Form->input('Tag.name');
+		echo $this->Form->input('tags');
 		/*echo '<div id="tags"><fieldset><legend>Tags</legend>';
 		foreach($tags as $tag) {
 			echo $this->Form->input('Tag.'.$tag['Tag']['name'], array(
