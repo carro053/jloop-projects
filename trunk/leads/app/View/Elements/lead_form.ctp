@@ -32,7 +32,7 @@
 				'type' => 'checkbox',
 				'label' => $tag['Tag']['name'],
 				'value' => $tag['Tag']['id'],
-				'hiddenField' => false,
+				//'hiddenField' => false,
 				'div' => false
 			));
 		}
@@ -68,7 +68,7 @@
 	
 	<script type="text/javascript">
 		$('.radio').buttonset();
-		$('#tags').buttonset();
+		//$('#tags').buttonset();
 		$('#LeadUpdateForm').submit(function() {
 			$.post('/Leads/update',
 				$(this).serialize(),
