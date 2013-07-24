@@ -22,7 +22,7 @@
 			),
 			'hiddenField' => false
 		));
-		echo '<div id="tags">';
+		echo '<div id="tags"><fieldset><legend>Tags</legend>';
 		foreach($tags as $tag) {
 			echo $this->Form->input('Tag.'.$tag['Tag']['name'], array(
 				'type' => 'checkbox',
@@ -30,7 +30,7 @@
 				'div' => false
 			));
 		}
-		echo '</div>';
+		echo '</fieldset></div>';
 		echo $this->Form->end('Save');
 	?>
 	
