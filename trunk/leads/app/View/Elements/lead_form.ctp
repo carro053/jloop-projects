@@ -26,6 +26,7 @@
 		foreach($tags as $tag) {
 			echo $this->Form->input('Tag.'.$tag['Tag']['name'], array(
 				'type' => 'checkbox',
+				'label' => $tag['Tag']['name'],
 				'hiddenField' => false,
 				'div' => false
 			));
