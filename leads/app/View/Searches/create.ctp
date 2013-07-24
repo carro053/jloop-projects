@@ -47,7 +47,24 @@
 	
 	function google_search_preview() {
 		console.log('form changed');
-		var form = $("#SearchCreateForm").serializeArray();
+		var form = $("#SearchCreateForm").serializeObject();
 		console.log(form);
 	}
+	
+	$.fn.serializeObject = function()
+	{
+	    var o = {};
+	    var a = this.serializeArray();
+	    $.each(a, function() {
+	        if (o[this.name] !== undefined) {
+	            if (!o[this.name].push) {
+	                o[this.name] = [o[this.name]];
+	            }
+	            o[this.name].push(this.value || '');
+	        } else {
+	            o[this.name] = this.value || '';
+	        }
+	    });
+	    return o;
+	};
 </script>
