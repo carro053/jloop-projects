@@ -27,6 +27,7 @@
 			echo $this->Form->input('Tag.'.$tag['Tag']['name'], array(
 				'type' => 'checkbox',
 				'label' => $tag['Tag']['name'],
+				'value' => $tag['Tag']['id'],
 				'hiddenField' => false,
 				'div' => false
 			));
