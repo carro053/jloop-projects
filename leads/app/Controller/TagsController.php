@@ -18,7 +18,7 @@ class TagsController extends AppController {
 	}
 	
 	public function update($id) {
-		if($this->request->is('post')) {
+		if($this->request->is('post') || $this->request->is('put')) {
 			if($this->Tag->save($this->request->data)) {
 				$this->Session->setFlash('Tag updated');
 				return $this->redirect('/Tags/index');
