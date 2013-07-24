@@ -56,8 +56,6 @@ class LeadsController extends AppController {
 		if($this->request->is('post')) {
 			if(!empty($this->request->data['Lead']['id'])) {
 				if($this->Lead->save($this->request->data)) {
-					pr($this->request->data);
-					die;
 					return $this->render('/Elements/lead_form_success');
 				}
 			}
