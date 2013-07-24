@@ -20,6 +20,13 @@
 
 
 <script type="text/javascript">
+	$("#SearchCreateForm").change(function() {
+		google_search_preview();
+	});
+	$("#SearchCreateForm").keyup(function() {
+		google_search_preview();
+	});
+	
 	function ajax_google_search_preview() {
 		console.log('ajax preview');
 		$.post('/Searches/ajaxGetGoogleSearchPreviewLink',
@@ -38,5 +45,9 @@
 			$('#date-range').show();
 		else
 			$('#date-range').hide();
+	}
+	
+	function google_search_preview() {
+		console.log('form changed');
 	}
 </script>
