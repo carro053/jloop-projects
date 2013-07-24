@@ -9,11 +9,15 @@
 	echo $this->Form->input('start_date', array('class' => 'date-range'));
 	echo $this->Form->input('end_date', array('class' => 'date-range'));
 	echo '</div>';
+	
+?>
+<a href="#" onclick="ajax_google_search_preview();">Preview</a>
+<h3>Google Search Preview: <a id="previewLink" href="#" target="_blank"></a></h3>
+<?	
 	echo $this->Form->end('Search');
 ?>
 
-<a href="#" onclick="ajax_google_search_preview();">Preview</a>
-<h3>Google Search Preview: <a id="previewLink" href="#" target="_blank"></a></h3>
+
 
 <script type="text/javascript">
 	function ajax_google_search_preview() {
@@ -24,8 +28,6 @@
 				console.log(data);
 				$('#previewLink').html(data);
 				$('#previewLink').attr('href', data);
-				
-				window.open(data, '_blank');
 			}
 		);
 		return false;
