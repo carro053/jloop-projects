@@ -23,6 +23,7 @@
 			'hiddenField' => false
 		));
 		echo $this->Form->end('Save');
+		pr($tags);
 	?>
 	
 	<table>

@@ -14,4 +14,8 @@ class Lead extends AppModel {
 			'order' => 'Note.created DESC'
 		)
 	);
+	
+	public $hasAndBelongsToMany = array(
+		'Tag'
+	);
 }

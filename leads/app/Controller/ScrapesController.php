@@ -73,6 +73,9 @@ class ScrapesController extends AppController {
 		$this->layout = false;
 		$scrape = $this->Scrape->find('first', array('conditions' => 'Scrape.id = '.$id, 'recursive' => 2));
 		$this->set('scrape', $scrape);
+		
+		$tags = $this->Tag->find('all');
+		$this->set('tags', $tags);
 	}
 	
 	public function create() {
