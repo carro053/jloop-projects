@@ -28,11 +28,9 @@
 	});
 	
 	function ajax_google_search_preview() {
-		console.log('ajax preview');
 		$.post('/Searches/ajaxGetGoogleSearchPreviewLink',
 			$('#SearchCreateForm').serialize(),
 			function(data) {
-				console.log(data);
 				$('#previewLink').html(data);
 				$('#previewLink').attr('href', data);
 			}
