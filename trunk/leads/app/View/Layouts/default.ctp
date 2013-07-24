@@ -34,6 +34,7 @@
 				<div class="right">
 					<span>Logged in as <?php echo $authUser['username']; ?></span>
 					<a href="/Users">Users</a>
+					<a href="/Tags">Tags</a>
 					<a href="/Users/logout">Logout</a>
 				</div>
 			</div>
