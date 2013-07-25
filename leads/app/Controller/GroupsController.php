@@ -12,6 +12,7 @@ class GroupsController extends AppController {
 		if($this->request->is('post')) {
 			pr($this->request->data);
 		}
+		die;
 	}
 	
 	/*public function create() {
