@@ -41,7 +41,6 @@ class AppController extends Controller {
     );
     
     public function beforeFilter() {
-    	echo 'EVERY LINK IS A BUTTON EVERY LINK IS A BUTTON EVERY LINK IS A BUTTON EVERY LINK IS A BUTTON EVERY LINK IS A BUTTON EVERY LINK IS A BUTTON EVERY LINK IS A BUTTON EVERY LINK IS A BUTTON EVERY LINK IS A BUTTON EVERY LINK IS A BUTTON ';
 	    $this->set('authUser', $this->Auth->user());
     }
 }
