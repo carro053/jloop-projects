@@ -34,6 +34,7 @@
 				'label' => $tag['Tag']['name'],
 				'value' => $tag['Tag']['id'],
 				'hiddenField' => false,
+				'selected' => true,
 				'div' => false
 			));
 		}
