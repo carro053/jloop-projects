@@ -16,6 +16,7 @@ class Lead extends AppModel {
 	);
 	
 	public $hasAndBelongsToMany = array(
-		'Tag'
+		'Tag',
+		'Group'
 	);
 }
