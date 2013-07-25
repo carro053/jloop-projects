@@ -11,7 +11,14 @@ class GroupsController extends AppController {
 	public function addLeads() {
 		if($this->request->is('post')) {
 			pr($this->request->data);
-			if($this->Group->saveAll($this->request->data))
+			$group = array();
+			foreach($this->request->data['Lead'] as $lead_id => $on) {
+				$group[] = array(
+					'Lead' => array('id' => $lead_id),
+					'Group' => array('name' => $this->request->data['Group']['name'])
+				);
+			}
+			if($this->Group->saveAll($group))
 				die('saved');
 			else
 				die('didnt save');
