@@ -11,8 +11,8 @@
 	echo '</div>';
 	
 ?>
-<!--<a href="#" onclick="ajax_google_search_preview();">Preview</a>-->
 <h3>Google Search Preview: <a id="previewLink" href="#" target="_blank"></a></h3>
+<div id="progressBar"></div>
 <?	
 	echo $this->Form->end('Search');
 ?>
@@ -30,6 +30,10 @@
 	});
 	
 	function ajax_google_search_preview() {
+		$( "#progressbar" ).progressbar({
+			value: false
+		});
+		
 		$.post('/Searches/ajaxGetGoogleSearchPreviewLink',
 			$('#SearchCreateForm').serialize(),
 			function(data) {
@@ -46,35 +50,4 @@
 		else
 			$('#date-range').hide();
 	}
-	
-	/*
-	function google_search_preview() {
-		console.log('form changed');
-		//var form = JSON.stringify($('#SearchCreateForm').serializeObject());
-		var form = $('#SearchCreateForm').serializeObject();
-		console.log(form);
-		
-		var query = 'site:itunes.apple.com/us "Open iTunes to buy and download apps." ';
-		if(form['data[Search][is_not_iphone_5]'])
-			query += '-"This app is optimized for iPhone 5." ';
-		console.log(query);
-	}
-	*/
-	
-	$.fn.serializeObject = function()
-	{
-	    var o = {};
-	    var a = this.serializeArray();
-	    $.each(a, function() {
-	        if (o[this.name] !== undefined) {
-	            if (!o[this.name].push) {
-	                o[this.name] = [o[this.name]];
-	            }
-	            o[this.name].push(this.value || '');
-	        } else {
-	            o[this.name] = this.value || '';
-	        }
-	    });
-	    return o;
-	};
 </script>
