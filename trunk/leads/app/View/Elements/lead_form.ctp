@@ -64,7 +64,9 @@
 			<?php } ?>
 		</tbody>
 	</table>
-		
+	
+	<?php pr($lead['Note']); ?>
+	
 	<?php
 		echo $this->Form->create('Note', array('id' => 'NoteForm', 'url' => '#', 'type' => 'post'));
 		echo $this->Form->input('lead_id', array('type' => 'hidden', 'value' => $lead['id']));
