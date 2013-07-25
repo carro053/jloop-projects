@@ -11,7 +11,7 @@
 	echo '</div>';
 	
 ?>
-<a href="#" onclick="ajax_google_search_preview();">Preview</a>
+<!--<a href="#" onclick="ajax_google_search_preview();">Preview</a>-->
 <h3>Google Search Preview: <a id="previewLink" href="#" target="_blank"></a></h3>
 <?	
 	echo $this->Form->end('Search');
