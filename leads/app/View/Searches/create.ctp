@@ -30,7 +30,7 @@
 	});
 	
 	function ajax_google_search_preview() {
-		$( "#progressbar" ).progressbar({
+		$( "#progressBar" ).progressbar({
 			value: false
 		});
 		
