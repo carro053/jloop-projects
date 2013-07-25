@@ -9,7 +9,7 @@ class GroupsController extends AppController {
 	}
 	
 	public function addLeads() {
-		$this->layout = false;
+		//$this->layout = false;
 		if($this->request->is('post')) {
 			$existing = $this->Group->findByName($this->request->data['Group']['name']);
 			$group = array(
