@@ -20,6 +20,8 @@
 
 
 <script type="text/javascript">
+	ajax_google_search_preview();
+
 	$("#SearchCreateForm").change(function() {
 		ajax_google_search_preview();
 	});
