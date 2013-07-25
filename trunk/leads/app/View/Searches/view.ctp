@@ -1,4 +1,5 @@
 <h2>Itunes Search Results</h2>
+
 <?php echo $this->Form->create('Results'); ?>
 
 <table>
@@ -19,8 +20,6 @@
 </table>
 
 <?php echo $this->Form->end("Scrape 'em!"); ?>
-
-<?php pr($search); ?>
 
 <script type="text/javascript">
 	function toggleSelectAll(checkbox) {
