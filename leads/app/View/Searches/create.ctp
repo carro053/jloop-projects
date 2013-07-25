@@ -37,7 +37,7 @@
 		$.post('/Searches/ajaxGetGoogleSearchPreviewLink',
 			$('#SearchCreateForm').serialize(),
 			function(data) {
-				$('#previewLink').html(data);
+				$('#progressBar').html(data);
 				$('#previewLink').attr('href', data);
 			}
 		);
