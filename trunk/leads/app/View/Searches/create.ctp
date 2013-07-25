@@ -21,10 +21,10 @@
 
 <script type="text/javascript">
 	$("#SearchCreateForm").change(function() {
-		google_search_preview();
+		ajax_google_search_preview();
 	});
 	$("#SearchCreateForm").keyup(function() {
-		google_search_preview();
+		ajax_google_search_preview();
 	});
 	
 	function ajax_google_search_preview() {
@@ -45,6 +45,7 @@
 			$('#date-range').hide();
 	}
 	
+	/*
 	function google_search_preview() {
 		console.log('form changed');
 		//var form = JSON.stringify($('#SearchCreateForm').serializeObject());
@@ -56,6 +57,7 @@
 			query += '-"This app is optimized for iPhone 5." ';
 		console.log(query);
 	}
+	*/
 	
 	$.fn.serializeObject = function()
 	{
