@@ -66,6 +66,7 @@ class LeadsController extends AppController {
 		die('Only Post');
 	}
 	
+	/*
 	public function addNote() {
 		$this->layout = false;
 		if($this->request->is('post')) {
@@ -81,4 +82,5 @@ class LeadsController extends AppController {
 		}
 		die('Only Post');
 	}
+	*/
 }
