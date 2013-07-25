@@ -11,8 +11,12 @@ class GroupsController extends AppController {
 	public function addLeads() {
 		if($this->request->is('post')) {
 			pr($this->request->data);
+			if($this->Group->saveAll($this->request->data))
+				die('saved');
+			else
+				die('didnt save');
 		}
-		die;
+		die('Only Post');
 	}
 	
 	/*public function create() {
