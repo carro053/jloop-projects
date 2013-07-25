@@ -43,6 +43,7 @@
 			));
 		}
 		echo '</fieldset></div>';
+		echo $this->Form->input('Note.text');
 		echo $this->Form->end('Save');
 	?>
 	
