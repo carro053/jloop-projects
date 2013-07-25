@@ -6,9 +6,6 @@
 		if(empty($this->request->data['Lead']['name']) && !empty($defaultName))
 			$this->request->data['Lead']['name'] = $defaultName;
 		
-		
-		pr($this->request->data);
-		
 		echo $this->Form->create('Lead', array('id' => 'LeadUpdateForm', 'url' => '#', 'type' => 'post'));
 		echo $this->Form->input('id');
 		echo $this->Form->input('name');
