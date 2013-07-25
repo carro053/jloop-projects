@@ -17,7 +17,7 @@
 <table>
 	<thead>
 		<tr>
-			<th><input type="checkbox" checked="checked" onchange="toggleSelectAll(this);" /></th>
+			<th><input type="checkbox" onchange="toggleSelectAll(this);" /></th>
 			<th>Name <?php echo $this->element('sorter', array('uri' => 'Leads/index', 'field' => 'name')); ?></th>
 			<th>Type</th>
 			<th>Rating <?php echo $this->element('sorter', array('uri' => 'Leads/index', 'field' => 'rating')); ?></th>
@@ -32,7 +32,7 @@
 	<tbody id="filtered-leads">
 		<?php foreach($leads as $lead) { ?>
 			<tr>
-				<td><input name="data[Leads][<?php echo $lead['Lead']['id']; ?>]" type="checkbox" checked="checked" /></td>
+				<td><input name="data[Leads][<?php echo $lead['Lead']['id']; ?>]" type="checkbox" /></td>
 				<td><?php echo $lead['Lead']['name']; ?></td>
 				<td><?php echo $lead['Lead']['type']; ?></td>
 				<td><?php echo $lead['Lead']['rating']; ?></td>
