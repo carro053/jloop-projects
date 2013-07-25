@@ -58,7 +58,7 @@
 			<?php foreach($lead['Note'] as $note) { ?>
 				<tr>
 					<td><?php echo $note['text']; ?></td>
-					<td><?php echo $note['user_id']; ?></td>
+					<td><?php echo $note['User']['username']; ?></td>
 					<td><?php echo $note['created']; ?></td>
 				</tr>
 			<?php } ?>
