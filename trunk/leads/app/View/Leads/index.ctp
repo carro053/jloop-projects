@@ -35,7 +35,13 @@
 				<td><?php echo '<a href="mailto:'.$lead['Lead']['email'].'">'.$lead['Lead']['email'].'</a>'; ?></td>
 				<td><?php echo $lead['Lead']['phone']; ?></td>
 				<td><?php echo $lead['Lead']['created']; ?></td>
-				<td><?php foreach($lead['Tag'] as $key => $tag) if($key != 0) echo ', '; echo $tag['name']; ?></td>
+				<td><?php
+					foreach($lead['Tag'] as $key => $tag) {
+						if($key != 0)
+							echo ', ';
+						echo $tag['name'];
+					}
+				?></td>
 				<td><?php echo count($lead['Note']); ?></td>
 				<td><a class="dialog" href="/<?php echo Inflector::pluralize($lead['Lead']['model']); ?>/view/<?php echo $lead['Lead']['model_id']; ?>">View</a></td>
 			</tr>
