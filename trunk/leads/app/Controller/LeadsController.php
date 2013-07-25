@@ -43,6 +43,10 @@ class LeadsController extends AppController {
 			$types[$type['Lead']['type']] = $type['Lead']['type'];
 		}
 		$this->set('types', $types);
+		
+		$groups = array('' => 'New');
+		$groups += $this->Lead->Group->find('list');
+		$this->set('groups', $groups);
 	}
 
 	public function gather() {
