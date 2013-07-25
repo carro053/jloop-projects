@@ -11,8 +11,8 @@
 	echo '</div>';
 	
 ?>
-<h3>Google Search Preview: <a id="previewLink" href="#" target="_blank"></a></h3>
-<div id="progressBar"></div>
+<h3>Google Search Preview: <a id="previewLink" href="#" target="_blank"><div id="progressBar"></div></a></h3>
+
 <?	
 	echo $this->Form->end('Search');
 ?>
