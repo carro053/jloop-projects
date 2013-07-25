@@ -62,7 +62,7 @@ class LeadsController extends AppController {
 				if(!isset($this->request->data['Tag']))
 					$this->request->data['Tag'] = array();
 				if($this->Lead->saveAll($this->request->data)) {
-					return $this->render('/Elements/lead_form_success');
+					return $this->render('/Elements/form_success');
 				}
 			}
 			return $this->render('/Elements/lead_form');
