@@ -11,12 +11,13 @@ class GroupsController extends AppController {
 	public function addLeads() {
 		if($this->request->is('post')) {
 			pr($this->request->data);
-			$group = array();
+			$group = array('Group' => array('name' => $this->request->data['Group']['name']));
 			foreach($this->request->data['Leads'] as $lead_id => $on) {
-				$group[] = array(
+				$group['Lead'][] = $lead_id;
+				/*array(
 					'Lead' => array('id' => $lead_id),
 					'Group' => array('name' => $this->request->data['Group']['name'])
-				);
+				);*/
 			}
 			if($this->Group->saveAll($group))
 				die('saved');
