@@ -44,6 +44,7 @@
 		}
 		echo '</fieldset></div>';
 		echo $this->Form->input('Note.text');
+		echo $this->Form->input('Note.user_id', array('type' => 'hidden', 'value' => $authUser['id']));
 		echo $this->Form->end('Save');
 	?>
 	
