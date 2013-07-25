@@ -56,9 +56,8 @@
 </table>
 
 <?php
-	echo $this->Form->input('Group.id', array('options' => $groups));
 	echo $this->Form->input('Group.name');
-	echo $this->Form->end('Submit');
+	echo $this->Form->end('Add to Group');
 ?>
 
 <?php echo $this->element('pager', array('totalItems' => $count, 'uri' => 'Leads/index')); ?>
