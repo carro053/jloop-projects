@@ -55,11 +55,27 @@
 	</tbody>
 </table>
 
-<?php echo $this->Form->end('Submit'); ?>
+<?php
+	echo $this->Form->input('Group.id');
+	echo $this->Form->input('Group.name');
+	echo $this->Form->end('Submit');
+?>
 
 <?php echo $this->element('pager', array('totalItems' => $count, 'uri' => 'Leads/index')); ?>
 
 <script type="text/javascript">
+	$('#LeadsIndexForm').submit(function() {
+		$.post('/Groups/addLeads',
+			$(this).serialize(),
+			function(data) {
+				$(data).dialog({
+					modal: true
+				});
+			}
+		);
+		return false;
+	});
+		
 	function toggleSelectAll(checkbox) {
 		if($(checkbox).is(':checked'))
 			$('#filtered-leads tr input').prop('checked', true);
