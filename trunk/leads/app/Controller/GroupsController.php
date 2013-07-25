@@ -12,7 +12,7 @@ class GroupsController extends AppController {
 		if($this->request->is('post')) {
 			pr($this->request->data);
 			$group = array();
-			foreach($this->request->data['Lead'] as $lead_id => $on) {
+			foreach($this->request->data['Leads'] as $lead_id => $on) {
 				$group[] = array(
 					'Lead' => array('id' => $lead_id),
 					'Group' => array('name' => $this->request->data['Group']['name'])
