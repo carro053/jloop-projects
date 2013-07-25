@@ -17,6 +17,8 @@ class Lead extends AppModel {
 	
 	public $hasAndBelongsToMany = array(
 		'Tag',
-		'Group'
+		'Group' => array(
+			'unique' => 'keepExisting'
+		)
 	);
 }
