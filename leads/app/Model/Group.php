@@ -9,7 +9,7 @@ class Group extends AppModel {
 	
 	public $hasAndBelongsToMany = array(
 		'Lead' => array(
-			'unique' => 'keepExisting'
+			'unique' => false/*'keepExisting'*/
 		)
 	);
 }
