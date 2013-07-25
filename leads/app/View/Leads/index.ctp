@@ -12,9 +12,12 @@
 	echo $this->Form->end('Filter');
 ?>
 
+<?php echo $this->Form->create('Leads'); ?>
+
 <table>
 	<thead>
 		<tr>
+			<th><input type="checkbox" checked="checked" onchange="toggleSelectAll(this);" /></th>
 			<th>Name <?php echo $this->element('sorter', array('uri' => 'Leads/index', 'field' => 'name')); ?></th>
 			<th>Type</th>
 			<th>Rating <?php echo $this->element('sorter', array('uri' => 'Leads/index', 'field' => 'rating')); ?></th>
@@ -26,9 +29,10 @@
 			<th></th>
 		</tr>
 	</thead>
-	<tbody>
+	<tbody id="filtered-leads">
 		<?php foreach($leads as $lead) { ?>
 			<tr>
+				<td><input name="data[Leads][<?php echo $lead['Lead']['id']; ?>]" type="checkbox" checked="checked" /></td>
 				<td><?php echo $lead['Lead']['name']; ?></td>
 				<td><?php echo $lead['Lead']['type']; ?></td>
 				<td><?php echo $lead['Lead']['rating']; ?></td>
@@ -51,4 +55,15 @@
 	</tbody>
 </table>
 
+<?php echo $this->Form->end('Submit'); ?>
+
 <?php echo $this->element('pager', array('totalItems' => $count, 'uri' => 'Leads/index')); ?>
+
+<script type="text/javascript">
+	function toggleSelectAll(checkbox) {
+		if($(checkbox).is(':checked'))
+			$('#filtered-leads tr input').prop('checked', true);
+		else
+			$('#filtered-leads tr input').removeAttr('checked');
+	}
+</script>
