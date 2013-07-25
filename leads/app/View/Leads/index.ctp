@@ -56,7 +56,7 @@
 </table>
 
 <?php
-	echo $this->Form->input('Group.id');
+	echo $this->Form->input('Group.id', array('options' => $groups));
 	echo $this->Form->input('Group.name');
 	echo $this->Form->end('Submit');
 ?>
