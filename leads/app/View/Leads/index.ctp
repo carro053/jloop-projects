@@ -21,7 +21,9 @@
 			<th>Email</th>
 			<th>Phone</th>
 			<th>Created <?php echo $this->element('sorter', array('uri' => 'Leads/index', 'field' => 'created')); ?></th>
-			<th>&nbsp;</th>
+			<th>Tags</th>
+			<th>Notes</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -33,6 +35,8 @@
 				<td><?php echo '<a href="mailto:'.$lead['Lead']['email'].'">'.$lead['Lead']['email'].'</a>'; ?></td>
 				<td><?php echo $lead['Lead']['phone']; ?></td>
 				<td><?php echo $lead['Lead']['created']; ?></td>
+				<td><?php foreach($lead['Tag'] as $key => $tag) if($key != 0) echo ', '; echo $tag['name']; ?></td>
+				<td><?php echo count($lead['Note']); ?></td>
 				<td><a class="dialog" href="/<?php echo Inflector::pluralize($lead['Lead']['model']); ?>/view/<?php echo $lead['Lead']['model_id']; ?>">View</a></td>
 			</tr>
 		<?php } if(empty($lead)) { ?>
@@ -42,5 +46,3 @@
 </table>
 
 <?php echo $this->element('pager', array('totalItems' => $count, 'uri' => 'Leads/index')); ?>
-
-<?php pr($leads);?>
