@@ -29,12 +29,19 @@
 		echo '<div id="tags"><fieldset><legend>Tags</legend>';
 		echo '<input type="hidden" value="" name="data[Tag][]">';
 		foreach($tags as $key => $tag) {
+			$checked = false;
+			foreach($this->request->data['Lead']['Tag'] as $_tag) {
+				if($_tag['id'] == $tag['Tag']['id']) {
+					$checked = true;
+					break;
+				}
+			}
 			echo $this->Form->input('Tag.'.$key, array(
 				'type' => 'checkbox',
 				'label' => $tag['Tag']['name'],
 				'value' => $tag['Tag']['id'],
 				'hiddenField' => false,
-				'checked' => false,
+				'checked' => $checked,
 				'div' => false
 			));
 		}
