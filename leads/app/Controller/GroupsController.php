@@ -9,20 +9,20 @@ class GroupsController extends AppController {
 	}
 	
 	public function addLeads() {
+		$this->layout = false;
 		if($this->request->is('post')) {
-			pr($this->request->data);
-			$group = array('Group' => array('name' => $this->request->data['Group']['name']));
+			$existing = $this->Group->findByName($this->request->data['Group']['name']);
+			$group = array(
+				'Group' => array(
+					'id' => !empty($existing['Group']['id']) ? $existing['Group']['id'] : null,
+					'name' => $this->request->data['Group']['name']
+				)
+			);
 			foreach($this->request->data['Leads'] as $lead_id => $on) {
 				$group['Lead'][] = $lead_id;
-				/*array(
-					'Lead' => array('id' => $lead_id),
-					'Group' => array('name' => $this->request->data['Group']['name'])
-				);*/
 			}
 			if($this->Group->saveAll($group))
-				die('saved');
-			else
-				die('didnt save');
+				return $this->render('/Elements/form_success');
 		}
 		die('Only Post');
 	}
