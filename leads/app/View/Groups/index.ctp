@@ -35,6 +35,7 @@
 <script>
 	$(function() {
 		$( "#accordion" ).accordion({
+			active: false,
 			heightStyle: "content"
 		});
 	});
