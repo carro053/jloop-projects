@@ -12,18 +12,19 @@ class GroupsController extends AppController {
 		$this->layout = false;
 		if($this->request->is('post')) {
 			$existing = $this->Group->findByName($this->request->data['Group']['name']);
-			//pr($existing);
-			//die;
+			pr($existing);
+			die;
 			$group = array(
 				'Group' => array(
 					'id' => !empty($existing['Group']['id']) ? $existing['Group']['id'] : null,
 					'name' => $this->request->data['Group']['name']
 				)
 			);
+			foreach($existing['Lead'])
 			foreach($this->request->data['Leads'] as $lead_id => $on) {
 				$group['Lead'][] = $lead_id;
 			}
-			if($this->Group->saveAll($existing))
+			if($this->Group->saveAll($group))
 				return $this->render('/Elements/form_success');
 		}
 		die('Only Post');
