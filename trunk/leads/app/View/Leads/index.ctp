@@ -67,7 +67,7 @@
 		$.post('/Groups/addLeads',
 			$(this).serialize(),
 			function(data) {
-				$(data).dialog({
+				$('<div/>').html(data).dialog({
 					modal: true
 				});
 			}
