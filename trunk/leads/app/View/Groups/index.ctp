@@ -25,22 +25,26 @@
 				<thead>
 					<tr>
 						<td>Name</td>
-						<td>Something</td>
+						<td>Type</td>
+						<td>Rating</td>
+						<td>Email</td>
+						<td>Phone</td>
+						<td>&nbsp;</td>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>Todd</td>
-						<td>Other</td>
-					</tr>
-					<tr>
-						<td>Todd</td>
-						<td>Other</td>
-					</tr>
-					<tr>
-						<td>Todd</td>
-						<td>Other</td>
-					</tr>
+					<?php foreach($group['Lead'] as $lead) { ?>
+						<tr>
+							<td><?php echo $lead['name']; ?></td>
+							<td><?php echo $lead['type']; ?></td>
+							<td><?php echo $lead['rating']; ?></td>
+							<td><?php echo $lead['email']; ?></td>
+							<td><?php echo $lead['phone']; ?></td>
+							<td><a class="dialog" href="/<?php echo Inflector::pluralize($lead['model']); ?>/view/<?php echo $lead['model_id']; ?>">View</a></td>
+						</tr>
+					<?php } if(empty($group['Lead'])) { ?>
+						<tr><td colspan="6">There are currently no leads in this group. Bummer.</td></tr>
+					<?php } ?>
 				</tbody>
 			</table>
 		</div>
