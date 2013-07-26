@@ -70,6 +70,8 @@
 				term: request
 			}, response );
 		}
+	}).focus(function() {
+		$(this).autocomplete('search');
 	});
     
 	$('#LeadsIndexForm').submit(function() {
