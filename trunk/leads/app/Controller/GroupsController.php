@@ -20,7 +20,9 @@ class GroupsController extends AppController {
 					'name' => $this->request->data['Group']['name']
 				)
 			);
-			//foreach($existing['Lead'])
+			foreach($existing['Lead'] as $lead) {
+				$group['Lead'][] = $lead['id'];
+			}
 			foreach($this->request->data['Leads'] as $lead_id => $on) {
 				$group['Lead'][] = $lead_id;
 			}
