@@ -69,7 +69,8 @@
 			$.getJSON('/Groups/getJSON', {
 				term: request
 			}, response );
-		}
+		},
+		minLength: 0
 	}).focus(function() {
 		$(this).autocomplete('search', '');
 	});
