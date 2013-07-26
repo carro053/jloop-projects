@@ -30,7 +30,7 @@
 				<a href="/Leads/gather">Lead Gathering</a>
 				<a href="/Leads/qualify">Lead Qualifying</a>
 				<a href="/Leads">Leads</a>
-				
+				<a href="/Groups">Lead Groups</a>
 				<div class="right">
 					<span>Logged in as <?php echo $authUser['username']; ?></span>
 					<a href="/Users">Users</a>
