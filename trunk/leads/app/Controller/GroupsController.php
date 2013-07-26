@@ -33,6 +33,7 @@ class GroupsController extends AppController {
 	public function getJSON() {
 		$groups_raw = $this->Group->find('list');
 		pr($groups_raw);
+		echo json_encode($groups_raw);
 		die;
 		$groups = array();
 		foreach($groups_raw as $group) {
