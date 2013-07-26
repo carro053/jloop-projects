@@ -8,8 +8,6 @@ class Group extends AppModel {
 	);
 	
 	public $hasAndBelongsToMany = array(
-		'Lead' => array(
-			'unique' => 'keepExisting'
-		)
+		'Lead'
 	);
 }
