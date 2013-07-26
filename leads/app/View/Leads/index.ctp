@@ -71,6 +71,7 @@
 			}, response );
 		}
 	}).focus(function() {
+		console.log(123);
 		$(this).autocomplete('search');
 	});
     
