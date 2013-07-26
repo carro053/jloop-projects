@@ -1,3 +1,4 @@
+<?php /*
 <table>
 	<thead>
 		<tr>
@@ -14,5 +15,22 @@
 		<?php } ?>
 	</tbody>
 </table>
+*/ ?>
+
+<div id="accordion">
+	<?php foreach($groups as $group) { ?>
+		<h3><?php echo $group['Group']['name']; ?></h3>
+		<div>
+			<p>
+				Here's some crap. Who cares.
+			</p>
+		</div>
+</div>
 
 <?php pr($groups); ?>
+
+<script>
+	$(function() {
+		$( "#accordion" ).accordion();
+	});
+</script>
