@@ -63,8 +63,9 @@
 <?php echo $this->element('pager', array('totalItems' => $count, 'uri' => 'Leads/index')); ?>
 
 <script type="text/javascript">
+	var groups = <?php echo json_encode($groups); ?>;
 	$("#GroupName").autocomplete({
-		source: <?php echo json_encode($groups); ?>
+		source: groups
 	});
     
 	$('#LeadsIndexForm').submit(function() {
