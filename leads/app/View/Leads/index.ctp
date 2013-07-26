@@ -71,8 +71,7 @@
 			}, response );
 		}
 	}).focus(function() {
-		console.log(123);
-		$(this).autocomplete('search');
+		$(this).autocomplete('search', '');
 	});
     
 	$('#LeadsIndexForm').submit(function() {
