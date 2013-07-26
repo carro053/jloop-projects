@@ -66,8 +66,8 @@
 	var groups = <?php echo json_encode($groups); ?>;
 	$("#GroupName").autocomplete({
 		source: function( request, response ) {
-			$.getJSON( "/Groups/getJSON", {
-				term: extractLast( request.term )
+			$.getJSON('/Groups/getJSON', {
+				term: request
 			}, response );
 		}
 	});
