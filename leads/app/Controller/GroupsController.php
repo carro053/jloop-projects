@@ -13,7 +13,6 @@ class GroupsController extends AppController {
 		if($this->request->is('post')) {
 			$existing = $this->Group->findByName($this->request->data['Group']['name']);
 			pr($existing);
-			die;
 			$group = array(
 				'Group' => array(
 					'id' => !empty($existing['Group']['id']) ? $existing['Group']['id'] : null,
