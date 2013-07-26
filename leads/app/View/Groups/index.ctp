@@ -25,6 +25,7 @@
 				Here's some crap. Who cares.
 			</p>
 		</div>
+	<?php } ?>
 </div>
 
 <?php pr($groups); ?>
