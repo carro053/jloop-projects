@@ -72,7 +72,7 @@
 		},
 		minLength: 0
 	}).focus(function() {
-		//$(this).autocomplete('search');
+		$(this).autocomplete('search');
 	});
     
 	$('#LeadsIndexForm').submit(function() {
