@@ -30,6 +30,15 @@ class GroupsController extends AppController {
 		die('Only Post');
 	}
 	
+	public function getJSON() {
+		$groups_raw = $this->Group->find('list');
+		$groups = array();
+		foreach($groups_raw as $group) {
+			$groups[] = $group['Group']['name'];
+		}
+		die(json_encode($groups));
+	}
+	
 	/*public function create() {
 		if($this->request->is('post')) {
 			if($this->Tag->save($this->request->data)) {

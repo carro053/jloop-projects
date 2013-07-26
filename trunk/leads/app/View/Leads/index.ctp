@@ -65,7 +65,11 @@
 <script type="text/javascript">
 	var groups = <?php echo json_encode($groups); ?>;
 	$("#GroupName").autocomplete({
-		source: groups
+		source: function( request, response ) {
+			$.getJSON( "/Groups/getJSON", {
+				term: extractLast( request.term )
+			}, response );
+		}
 	});
     
 	$('#LeadsIndexForm').submit(function() {
