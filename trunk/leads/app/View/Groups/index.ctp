@@ -21,9 +21,28 @@
 	<?php foreach($groups as $group) { ?>
 		<h3><?php echo $group['Group']['name']; ?></h3>
 		<div>
-			<p>
-				Here's some crap. Who cares.
-			</p>
+			<table>
+				<thead>
+					<tr>
+						<td>Name</td>
+						<td>Something</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Todd</td>
+						<td>Other</td>
+					</tr>
+					<tr>
+						<td>Todd</td>
+						<td>Other</td>
+					</tr>
+					<tr>
+						<td>Todd</td>
+						<td>Other</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	<?php } ?>
 </div>
