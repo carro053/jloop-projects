@@ -48,6 +48,7 @@
 		$.ajax({
 			url: "/Groups/removeLead/"+groups_lead_id+"?t="+time,
 			success: function(data){
+				console.log(data);
 				if(data == "1")
 					$('#groups_lead_id_'+groups_lead_id).remove();
 			},
