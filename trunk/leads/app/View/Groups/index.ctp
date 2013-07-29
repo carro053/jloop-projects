@@ -1,6 +1,6 @@
 <div id="accordion">
 	<?php foreach($groups as $group) { ?>
-		<h3><?php echo $group['Group']['name']; ?><a href="http://google.com">Linky Linky</a></h3>
+		<h3><?php echo $group['Group']['name']; ?></h3>
 		<div>
 			<table>
 				<thead>
@@ -28,6 +28,8 @@
 					<?php } ?>
 				</tbody>
 			</table>
+			
+			<a onclick="return confirm('Are you sure you want to delete this entire group? You\'re crazy.);" href="/Groups/delete/<?php echo $group['Group']['id']; ?>">Delete Group</a>
 		</div>
 	<?php } ?>
 </div>
