@@ -34,8 +34,6 @@
 	<?php } ?>
 </div>
 
-<?php pr($groups); ///Groups/removeLead ?>
-
 <script>
 	$(function() {
 		$( "#accordion" ).accordion({
