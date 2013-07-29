@@ -62,7 +62,7 @@
 			<th>Stars <?php echo $this->element('sorter', array('uri' => 'Scrapes/index', 'field' => 'ratings_all')); ?></th>
 			<th>Ratings <?php echo $this->element('sorter', array('uri' => 'Scrapes/index', 'field' => 'ratings_all_count')); ?></th>
 			<th>Price</th>
-			<th>Released/Updated <?php echo $this->element('sorter', array('uri' => 'Scrapes/index', 'field' => 'updated')); ?></th>
+			<th>Released/Updated <?php echo $this->element('sorter', array('uri' => 'Scrapes/index', 'field' => 'released_updated')); ?></th>
 			<th></th>
 		</tr>
 	</thead>
