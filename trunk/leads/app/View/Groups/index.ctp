@@ -21,7 +21,7 @@
 							<td><?php echo $lead['rating']; ?></td>
 							<td><?php echo $lead['email']; ?></td>
 							<td><?php echo $lead['phone']; ?></td>
-							<td><a class="dialog" href="/<?php echo Inflector::pluralize($lead['model']); ?>/view/<?php echo $lead['model_id']; ?>">View</a></td>
+							<td><a class="dialog" href="/<?php echo Inflector::pluralize($lead['model']); ?>/view/<?php echo $lead['model_id']; ?>">View</a>&nbsp;<a href="#" onclick="">Delete From Group</a></td>
 						</tr>
 					<?php } if(empty($group['Lead'])) { ?>
 						<tr><td colspan="6">There are currently no leads in this group. Bummer.</td></tr>
@@ -32,6 +32,8 @@
 	<?php } ?>
 </div>
 
+<?php pr($groups); ///Groups/removeLead ?>
+
 <script>
 	$(function() {
 		$( "#accordion" ).accordion({
@@ -40,4 +42,8 @@
 			heightStyle: "content"
 		});
 	});
+	
+	function removeLead(group_lead_id, tr) {
+		
+	}
 </script>
