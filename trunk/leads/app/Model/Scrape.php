@@ -25,7 +25,7 @@ class Scrape extends AppModel {
 		
 		//reformat a google search result link
 		if(strncmp($url, 'https://www.google.com/url?', strlen('https://www.google.com/url?'))) {
-			pr(parse_url($url))
+			pr(parse_url($url));
 			exit;
 		}
 		
