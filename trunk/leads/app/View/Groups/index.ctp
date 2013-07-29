@@ -44,7 +44,7 @@
 	});
 	
 	function removeLead(groups_lead_id) {
-		if(confirm('Are you sure you want to delete this lead from this group?'))
+		if(confirm('Are you sure you want to delete this lead from this group?')) {
 			var time = new Date().getTime();
 			$.ajax({
 				url: "/Groups/removeLead/"+groups_lead_id+"?t="+time,
