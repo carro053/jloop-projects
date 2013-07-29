@@ -44,7 +44,8 @@ class GroupsController extends AppController {
 	public function removeLead($groups_leads_id) {
 		$this->loadModel('GroupsLead');
 		if($this->GroupsLead->delete($groups_leads_id)) {
-			die(1);
+			echo 1;
+			die();
 		}
 		die('Error');
 	}
