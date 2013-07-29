@@ -53,7 +53,7 @@
 		function init() {
 			$('input[type=submit], a, button').button({
 				icons: {
-					primary: $(this).attr('icon')
+					primary: "ui-icon-info"
 				}
 			});
 			
