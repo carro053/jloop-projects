@@ -41,6 +41,14 @@ class GroupsController extends AppController {
 		die(json_encode($groups));
 	}
 	
+	public function removeLead($groups_leads_id) {
+		$this->loadModel('GroupsLead');
+		if($this->GroupsLead->delete($groups_leads_id)) {
+			return $this->render('/Elements/form_success');
+		}
+		die('Error');
+	}
+	
 	/*public function create() {
 		if($this->request->is('post')) {
 			if($this->Tag->save($this->request->data)) {
