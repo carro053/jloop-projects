@@ -44,18 +44,20 @@
 	});
 	
 	function removeLead(groups_lead_id) {
-		var time = new Date().getTime();
-		$.ajax({
-			url: "/Groups/removeLead/"+groups_lead_id+"?t="+time,
-			success: function(data){
-				console.log(data);
-				if(data == "1")
-					$('#groups_lead_id_'+groups_lead_id).remove();
-			},
-			error: function(){
-				alert('There was an error with AJAX.');
-			}
-		});
+		if(confirm('Are you sure you want to delete this lead from this group?'))
+			var time = new Date().getTime();
+			$.ajax({
+				url: "/Groups/removeLead/"+groups_lead_id+"?t="+time,
+				success: function(data){
+					console.log(data);
+					if(data == "1")
+						$('#groups_lead_id_'+groups_lead_id).remove();
+				},
+				error: function(){
+					alert('There was an error with AJAX.');
+				}
+			});
+		}
 		return false;
 	}
 </script>
