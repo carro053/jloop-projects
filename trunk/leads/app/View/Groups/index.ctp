@@ -1,6 +1,6 @@
 <div id="accordion">
 	<?php foreach($groups as $group) { ?>
-		<h3><?php echo $group['Group']['name']; ?></h3>
+		<h3><?php echo $group['Group']['name']; ?><a href="http://google.com">Linky Linky</a></h3>
 		<div>
 			<table>
 				<thead>
@@ -49,7 +49,6 @@
 			$.ajax({
 				url: "/Groups/removeLead/"+groups_lead_id+"?t="+time,
 				success: function(data){
-					console.log(data);
 					if(data == "1")
 						$('#groups_lead_id_'+groups_lead_id).remove();
 				},
