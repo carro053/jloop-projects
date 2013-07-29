@@ -23,6 +23,12 @@ class Scrape extends AppModel {
 	public function parseURL($url) {
 		App::import('Vendor', 'phpQuery/phpQuery');
 		
+		//reformat a google search result link
+		if(strncmp($url, 'https://www.google.com/url?', strlen('https://www.google.com/url?'))) {
+			pr(parse_url($url))
+			exit;
+		}
+		
 		$html = file_get_contents($url);
 		
 		$doc = phpQuery::newDocumentHTML($html);
