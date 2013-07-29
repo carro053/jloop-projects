@@ -29,7 +29,7 @@
 				</tbody>
 			</table>
 			
-			<a onclick="return confirm('Are you sure you want to delete this entire group? You\'re crazy.);" href="/Groups/delete/<?php echo $group['Group']['id']; ?>">Delete Group</a>
+			<a onclick="return confirm('Are you sure you want to delete this entire group? You\'re crazy.');" href="/Groups/delete/<?php echo $group['Group']['id']; ?>">Delete Group</a>
 		</div>
 	<?php } ?>
 </div>
