@@ -50,6 +50,19 @@ class GroupsController extends AppController {
 		die('Error');
 	}
 	
+	public function delete($id) {
+		$group = $this->Group->findById($id);
+		pr($group);
+		die;
+		/*if($this->Group->delete($id)) {
+			foreach($group['Lead'] as $lead) {
+				
+			}
+		}*/
+		$this->Session->setFlash('Group Deleted');
+		return $this->redirect('/Groups/index');
+	}
+	
 	/*public function create() {
 		if($this->request->is('post')) {
 			if($this->Tag->save($this->request->data)) {
