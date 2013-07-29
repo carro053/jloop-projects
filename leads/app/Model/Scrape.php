@@ -24,7 +24,7 @@ class Scrape extends AppModel {
 		App::import('Vendor', 'phpQuery/phpQuery');
 		
 		//reformat a google search result link
-		if(strncmp($url, 'https://www.google.com/url?', strlen('https://www.google.com/url?'))) {
+		if(strpos($url, 'https://www.google.com/url?') !== false) {
 			pr(parse_url($url));
 			exit;
 		}
