@@ -44,7 +44,17 @@
 	});
 	
 	function removeLead(groups_lead_id) {
-		console.log(groups_lead_id);
+		var time = new Date().getTime();
+		$.ajax({
+			url: "/Groups/removeLead/"+groups_lead_id+"?t="+time,
+			success: function(data){
+				if(data == "1")
+					$('#groups_lead_id_'+groups_lead_id).remove();
+			},
+			error: function(){
+				alert('There was an error with AJAX.');
+			}
+		});
 		return false;
 	}
 </script>
