@@ -51,7 +51,11 @@
 	</div>
 	<script type="text/javascript">
 		function init() {
-			$('input[type=submit], a, button').button();
+			$('input[type=submit], a, button').button({
+				icons: {
+					primary: $(this).attr('icon')
+				}
+			});
 			
 			$('.menu').menu();
 			
