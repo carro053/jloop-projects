@@ -15,13 +15,13 @@
 				</thead>
 				<tbody>
 					<?php foreach($group['Lead'] as $lead) { ?>
-						<tr>
+						<tr id="groups_lead_id_<?php echo $lead['GroupsLead']['id']; ?>">
 							<td><?php echo $lead['name']; ?></td>
 							<td><?php echo $lead['type']; ?></td>
 							<td><?php echo $lead['rating']; ?></td>
 							<td><?php echo $lead['email']; ?></td>
 							<td><?php echo $lead['phone']; ?></td>
-							<td><a class="dialog" href="/<?php echo Inflector::pluralize($lead['model']); ?>/view/<?php echo $lead['model_id']; ?>">View</a>&nbsp;<a href="#" onclick="">Delete From Group</a></td>
+							<td><a class="dialog" href="/<?php echo Inflector::pluralize($lead['model']); ?>/view/<?php echo $lead['model_id']; ?>">View</a>&nbsp;<a href="#" onclick="removeLead(<?php echo $lead['GroupsLead']['id']; ?>);">Delete From Group</a></td>
 						</tr>
 					<?php } if(empty($group['Lead'])) { ?>
 						<tr><td colspan="6">There are currently no leads in this group. Bummer.</td></tr>
@@ -43,7 +43,8 @@
 		});
 	});
 	
-	function removeLead(group_lead_id, tr) {
-		
+	function removeLead(groups_lead_id) {
+		console.log(groups_lead_id);
+		return false;
 	}
 </script>
