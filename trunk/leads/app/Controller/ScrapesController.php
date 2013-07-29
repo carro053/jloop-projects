@@ -63,7 +63,7 @@ class ScrapesController extends AppController {
 		));
 		$categories = array('' => 'Any');
 		foreach($categories_raw as $category) {
-			$categories[$category['Scrape']['category']] = $category['Scrape']['category'];
+			$categories[$category['Scrape']['category']] = html_entity_decode($category['Scrape']['category']);
 		}
 		$this->set('categories', $categories);
 		
