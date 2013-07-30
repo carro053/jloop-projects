@@ -9,7 +9,26 @@
 		'label' => 'Search (Name, Email, Twitter, Facebook)',
 		'value' => !empty($_GET['search']) ? $_GET['search'] : null
 	));
-	echo $this->Form->input('Tag');
+	echo '<div id="tags"><fieldset><legend>Tags</legend>';
+	echo '<input type="hidden" value="" name="data[Tag][]">';
+	foreach($tags as $key => $tag) {
+		$checked = false;
+		foreach($this->request->data['Lead']['Tag'] as $_tag) {
+			if($_tag['id'] == $tag['Tag']['id']) {
+				$checked = true;
+				break;
+			}
+		}
+		echo $this->Form->input('Tag.'.$key, array(
+			'type' => 'checkbox',
+			'label' => $tag['Tag']['name'],
+			'value' => $tag['Tag']['id'],
+			'hiddenField' => false,
+			'checked' => $checked,
+			'div' => false
+		));
+	}
+	echo '</fieldset></div>';
 	echo $this->Form->end('Filter');
 ?>
 
@@ -66,6 +85,7 @@
 <?php echo $this->element('pager', array('totalItems' => $count, 'uri' => 'Leads/index')); ?>
 
 <script type="text/javascript">
+	$('#tags').buttonset();
 	var groups = <?php echo json_encode($groups); ?>;
 	$("#GroupName").autocomplete({
 		source: function( request, response ) {
