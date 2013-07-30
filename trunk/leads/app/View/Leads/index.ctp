@@ -13,12 +13,12 @@
 	echo '<div id="tags"><fieldset><legend>Tags</legend>';
 	foreach($tags as $key => $tag) {
 		$checked = false;
-		/*foreach($this->request->data['Lead']['Tag'] as $_tag) {
-			if($_tag['id'] == $tag['Tag']['id']) {
+		foreach($_GET['Tag'] as $tag_id) {
+			if($tag_id == $tag['Tag']['id']) {
 				$checked = true;
 				break;
 			}
-		}*/
+		}
 		echo $this->Form->input('Tag[]', array(
 			'type' => 'checkbox',
 			'label' => $tag['Tag']['name'],
@@ -85,7 +85,7 @@
 <?php echo $this->element('pager', array('totalItems' => $count, 'uri' => 'Leads/index')); ?>
 
 <script type="text/javascript">
-	//$('#tags').buttonset();
+	$('#tags').buttonset();
 	var groups = <?php echo json_encode($groups); ?>;
 	$("#GroupName").autocomplete({
 		source: function( request, response ) {
