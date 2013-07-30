@@ -24,6 +24,8 @@ class LeadsController extends AppController {
 			$conditions['OR']['Lead.facebook LIKE'] = '%'.$_GET['search'].'%';
 		}
 		
+		$conditions['Lead.id IN'] = 'SELECT `lead_id` from `leads_tags` WHERE `tag_id` = 1';
+		
 		$leads = $this->Lead->find('all', array(
 			'conditions' => $conditions,
 			'order' => $order,
