@@ -23,8 +23,12 @@ class LeadsController extends AppController {
 			$conditions['OR']['Lead.twitter LIKE'] = '%'.$_GET['search'].'%';
 			$conditions['OR']['Lead.facebook LIKE'] = '%'.$_GET['search'].'%';
 		}
-		
-		$conditions[] = array('Lead.id IN (SELECT `lead_id` from `leads_tags` WHERE `tag_id` = 1)');
+		if(!empty($_GET['IncludeTag'])) {
+			$conditions[] = array('Lead.id IN (SELECT `lead_id` from `leads_tags` WHERE `tag_id` = '.implode(',', $_GET['IncludeTag']).')');
+		}
+		if(!empty($_GET['ExcludeTag'])) {
+			$conditions[] = array('Lead.id NOT IN (SELECT `lead_id` from `leads_tags` WHERE `tag_id` = '.implode(',', $_GET['ExcludeTag']).')');
+		}
 		
 		$leads = $this->Lead->find('all', array(
 			'conditions' => $conditions,
