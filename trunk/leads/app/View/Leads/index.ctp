@@ -13,12 +13,12 @@
 	echo '<input type="hidden" value="" name="data[Tag][]">';
 	foreach($tags as $key => $tag) {
 		$checked = false;
-		foreach($this->request->data['Lead']['Tag'] as $_tag) {
+		/*foreach($this->request->data['Lead']['Tag'] as $_tag) {
 			if($_tag['id'] == $tag['Tag']['id']) {
 				$checked = true;
 				break;
 			}
-		}
+		}*/
 		echo $this->Form->input('Tag.'.$key, array(
 			'type' => 'checkbox',
 			'label' => $tag['Tag']['name'],
