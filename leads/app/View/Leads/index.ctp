@@ -22,6 +22,7 @@
 			}
 		}
 		echo $this->Form->input('Tag[]', array(
+			'id' => 'LeadTag'.$key,
 			'type' => 'checkbox',
 			'label' => $tag['Tag']['name'],
 			'value' => $tag['Tag']['id'],
