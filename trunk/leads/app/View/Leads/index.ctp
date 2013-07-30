@@ -12,6 +12,8 @@
 	echo $this->Form->end('Filter');
 ?>
 
+<p><?php echo $count; ?> result(s).</p>
+
 <?php echo $this->Form->create('Leads'); ?>
 
 <table>

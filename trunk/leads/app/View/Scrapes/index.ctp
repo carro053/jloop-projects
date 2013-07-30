@@ -71,6 +71,8 @@
 	echo $this->Form->end('Filter');
 ?>
 
+<p><?php echo $count; ?> result(s).</p>
+
 <table>
 	<thead>
 		<tr>
