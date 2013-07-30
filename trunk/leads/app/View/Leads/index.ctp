@@ -19,7 +19,7 @@
 				break;
 			}
 		}*/
-		echo $this->Form->input('Tag['.$key.']', array(
+		echo $this->Form->input('Tag[]', array(
 			'type' => 'checkbox',
 			'label' => $tag['Tag']['name'],
 			'value' => $tag['Tag']['id'],
