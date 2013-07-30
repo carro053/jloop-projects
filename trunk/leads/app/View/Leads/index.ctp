@@ -10,19 +10,41 @@
 		'label' => 'Search (Name, Email, Twitter, Facebook)',
 		'value' => !empty($_GET['search']) ? $_GET['search'] : null
 	));
-	echo '<div id="tags"><fieldset><legend>Tags</legend>';
+	echo '<div class="tags"><fieldset><legend>Include Tags</legend>';
 	foreach($tags as $key => $tag) {
 		$checked = false;
-		if(!empty($_GET['Tag'])) {
-			foreach($_GET['Tag'] as $tag_id) {
+		if(!empty($_GET['IncludeTag'])) {
+			foreach($_GET['IncludeTag'] as $tag_id) {
 				if($tag_id == $tag['Tag']['id']) {
 					$checked = true;
 					break;
 				}
 			}
 		}
-		echo $this->Form->input('Tag[]', array(
-			'id' => 'LeadTag'.$key,
+		echo $this->Form->input('IncludeTag[]', array(
+			'id' => 'LeadIncludeTag'.$key,
+			'type' => 'checkbox',
+			'label' => $tag['Tag']['name'],
+			'value' => $tag['Tag']['id'],
+			'hiddenField' => false,
+			'checked' => $checked,
+			'div' => false
+		));
+	}
+	echo '</fieldset></div>';
+	echo '<div class="tags"><fieldset><legend>Exclude Tags</legend>';
+	foreach($tags as $key => $tag) {
+		$checked = false;
+		if(!empty($_GET['ExcludeTag'])) {
+			foreach($_GET['ExcludeTag'] as $tag_id) {
+				if($tag_id == $tag['Tag']['id']) {
+					$checked = true;
+					break;
+				}
+			}
+		}
+		echo $this->Form->input('ExcludeTag[]', array(
+			'id' => 'LeadExcludeTag'.$key,
 			'type' => 'checkbox',
 			'label' => $tag['Tag']['name'],
 			'value' => $tag['Tag']['id'],
@@ -88,7 +110,7 @@
 <?php echo $this->element('pager', array('totalItems' => $count, 'uri' => 'Leads/index')); ?>
 
 <script type="text/javascript">
-	$('#tags').buttonset();
+	$('.tags').buttonset();
 	var groups = <?php echo json_encode($groups); ?>;
 	$("#GroupName").autocomplete({
 		source: function( request, response ) {
