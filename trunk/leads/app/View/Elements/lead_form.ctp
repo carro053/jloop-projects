@@ -11,6 +11,8 @@
 		echo $this->Form->input('name');
 		echo $this->Form->input('status', array('type' => 'hidden', 'value' => 1));
 		echo $this->Form->input('email');
+		echo $this->Form->input('twitter');
+		echo $this->Form->input('facebook');
 		echo $this->Form->input('phone');
 		echo $this->Form->input('rating', array(
 			'type' => 'radio',
