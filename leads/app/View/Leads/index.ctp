@@ -1,6 +1,3 @@
-<?php pr($_GET); ?>
-<?php echo implode(',', $_GET['IncludeTag']); ?>
-<?php echo implode(',', $_GET['ExcludeTag']); ?>
 <h2>Leads</h2>
 
 <?php
