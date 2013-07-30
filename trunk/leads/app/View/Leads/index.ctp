@@ -19,7 +19,7 @@
 				break;
 			}
 		}*/
-		echo $this->Form->input('Tag[]', array(
+		echo $this->Form->input('tags', array(
 			'type' => 'checkbox',
 			'label' => $tag['Tag']['name'],
 			'value' => $tag['Tag']['id'],
@@ -85,7 +85,7 @@
 <?php echo $this->element('pager', array('totalItems' => $count, 'uri' => 'Leads/index')); ?>
 
 <script type="text/javascript">
-	$('#tags').buttonset();
+	//$('#tags').buttonset();
 	var groups = <?php echo json_encode($groups); ?>;
 	$("#GroupName").autocomplete({
 		source: function( request, response ) {
