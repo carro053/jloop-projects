@@ -13,7 +13,7 @@
 	echo $this->Form->input('category', array(
 		'value' => !empty($_GET['category']) ? $_GET['category'] : null
 	));
-	echo $this->Form->input('ratings_all', array(
+	echo $this->Form->input('ratings_all_min', array(
 		'label' => 'Minimum Rating (Stars)',
 		'options' => array(
 			'' => 'Any',
@@ -28,7 +28,24 @@
 			'4.5' => '4.5',
 			'5' => '5'
 		),
-		'value' => !empty($_GET['ratings_all']) ? $_GET['ratings_all'] : null
+		'value' => !empty($_GET['ratings_all_min']) ? $_GET['ratings_all_min'] : null
+	));
+	echo $this->Form->input('ratings_all_max', array(
+		'label' => 'Maximum Rating (Stars)',
+		'options' => array(
+			'' => 'Any',
+			'0.5' => '0.5',
+			'1' => '1',
+			'1.5' => '1.5',
+			'2' => '2',
+			'2.5' => '2.5',
+			'3' => '3',
+			'3.5' => '3.5',
+			'4' => '4',
+			'4.5' => '4.5',
+			'5' => '5'
+		),
+		'value' => !empty($_GET['ratings_all_max']) ? $_GET['ratings_all_max'] : null
 	));
 	echo $this->Form->input('ratings_all_count', array(
 		'label' => 'Minimum Amount of Ratings',
