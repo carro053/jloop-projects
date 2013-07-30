@@ -12,7 +12,7 @@
 	
 ?>
 <h3>Google Search Preview: <a id="previewLink" href="#" target="_blank"></a></h3>
-<a href="/files/chrome_leadinator.zip" icon="ui-icon-info">Download the Chrome Extension to scrape results right from the Google results page!</a>
+<a href="/files/chrome_leadinator.zip">Download the Chrome Extension to scrape results right from the Google results page!</a>
 <?	
 	echo $this->Form->end('Search');
 ?>
