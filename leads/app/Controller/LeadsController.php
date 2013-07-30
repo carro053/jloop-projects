@@ -20,6 +20,8 @@ class LeadsController extends AppController {
 		if(!empty($_GET['search'])) {
 			$conditions['OR']['Lead.name LIKE'] = '%'.$_GET['search'].'%';
 			$conditions['OR']['Lead.email LIKE'] = '%'.$_GET['search'].'%';
+			$conditions['OR']['Lead.twitter LIKE'] = '%'.$_GET['search'].'%';
+			$conditions['OR']['Lead.facebook LIKE'] = '%'.$_GET['search'].'%';
 		}
 		
 		$leads = $this->Lead->find('all', array(
@@ -43,6 +45,9 @@ class LeadsController extends AppController {
 			$types[$type['Lead']['type']] = $type['Lead']['type'];
 		}
 		$this->set('types', $types);
+		
+		$tags = $this->Lead->Tag->find('all');
+		$this->set('tags', $tags);
 		
 		$groups = array('' => 'New');
 		$groups += $this->Lead->Group->find('list');

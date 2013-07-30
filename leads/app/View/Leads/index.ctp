@@ -6,9 +6,10 @@
 		'value' => !empty($_GET['type']) ? $_GET['type'] : null
 	));
 	echo $this->Form->input('search', array(
-		'label' => 'Search (Name, Email)',
+		'label' => 'Search (Name, Email, Twitter, Facebook)',
 		'value' => !empty($_GET['search']) ? $_GET['search'] : null
 	));
+	echo $this->Form->input('Tag');
 	echo $this->Form->end('Filter');
 ?>
 
