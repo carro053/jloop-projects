@@ -11,7 +11,6 @@
 		'value' => !empty($_GET['search']) ? $_GET['search'] : null
 	));
 	echo '<div id="tags"><fieldset><legend>Tags</legend>';
-	echo '<input type="hidden" value="" name="data[Tag][]">';
 	foreach($tags as $key => $tag) {
 		$checked = false;
 		/*foreach($this->request->data['Lead']['Tag'] as $_tag) {
@@ -20,7 +19,7 @@
 				break;
 			}
 		}*/
-		echo $this->Form->input('Tag.'.$key, array(
+		echo $this->Form->input('Tag[]', array(
 			'type' => 'checkbox',
 			'label' => $tag['Tag']['name'],
 			'value' => $tag['Tag']['id'],
