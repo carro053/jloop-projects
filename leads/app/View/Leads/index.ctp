@@ -1,3 +1,4 @@
+<?php pr($_GET); ?>
 <h2>Leads</h2>
 
 <?php
