@@ -13,10 +13,12 @@
 	echo '<div id="tags"><fieldset><legend>Tags</legend>';
 	foreach($tags as $key => $tag) {
 		$checked = false;
-		foreach($_GET['Tag'] as $tag_id) {
-			if($tag_id == $tag['Tag']['id']) {
-				$checked = true;
-				break;
+		if(!empty($_GET['Tag'])) {
+			foreach($_GET['Tag'] as $tag_id) {
+				if($tag_id == $tag['Tag']['id']) {
+					$checked = true;
+					break;
+				}
 			}
 		}
 		echo $this->Form->input('Tag[]', array(
