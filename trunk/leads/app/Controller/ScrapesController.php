@@ -27,8 +27,11 @@ class ScrapesController extends AppController {
 		/*if(!empty($_GET['released_updated'])) {
 			$conditions['Scrape.released_updated <'] = $_GET['released_updated']['year'].'-'.$_GET['released_updated']['month'].'-'.$_GET['released_updated']['day'];
 		}*/
-		if(!empty($_GET['ratings_all'])) {
-			$conditions['Scrape.ratings_all >='] = $_GET['ratings_all'];
+		if(!empty($_GET['ratings_all_min'])) {
+			$conditions['Scrape.ratings_all >='] = $_GET['ratings_all_min'];
+		}
+		if(!empty($_GET['ratings_all_max'])) {
+			$conditions['Scrape.ratings_all <='] = $_GET['ratings_all_max'];
 		}
 		if(!empty($_GET['ratings_all_count'])) {
 			$conditions['Scrape.ratings_all_count >='] = $_GET['ratings_all_count'];
