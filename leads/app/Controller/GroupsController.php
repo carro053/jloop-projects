@@ -50,15 +50,11 @@ class GroupsController extends AppController {
 		die('Error');
 	}
 	
-	public function delete($id) {	
-		$this->loadModel('GroupsLead');
-		$group = $this->Group->findById($id);
-		if($this->Group->delete($id)) {
-			foreach($group['Lead'] as $lead) {
-				$this->GroupsLead->delete($lead['GroupsLead']['id']);
-			}
+	public function delete($id = null) {
+		if(!empty($id) && $this->Group->delete($id)) {
+			$this->Group->query('DELETE FROM `groups_leads` WHERE `group_id` = '.$id);
+			$this->Session->setFlash('Group deleted');
 		}
-		$this->Session->setFlash('Group Deleted');
 		return $this->redirect('/Groups/index');
 	}
 	
