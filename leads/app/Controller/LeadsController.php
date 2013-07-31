@@ -6,6 +6,28 @@ class LeadsController extends AppController {
 	var $uses = array('Lead','Note');
 
 	public function index() {
+		$types_raw = $this->Lead->find('all', array(
+			'fields' => array(
+				'DISTINCT type'
+			)
+		));
+		$types = array('' => 'Any');
+		foreach($types_raw as $type) {
+			$types[$type['Lead']['type']] = $type['Lead']['type'];
+		}
+		$this->set('types', $types);
+		
+		$groups = array('' => 'New');
+		$groups += $this->Lead->Group->find('list');
+		$this->set('groups', $groups);
+		
+		$tags = $this->Lead->Tag->find('all');
+		$this->set('tags', $tags);
+		
+		if(!isset($_GET['IncludeTag'])) {
+			$_GET['IncludeTag'] = array(5);
+		}
+		
 		$limit = (!empty($_GET['limit']) ? $_GET['limit'] : 50);
 		$page = (!empty($_GET['page']) ? $_GET['page'] : 1);
 		$order = (!empty($_GET['order']) ? $_GET['order'] : 'rating').' '.(!empty($_GET['direction']) ? $_GET['direction'] : 'desc');
@@ -40,24 +62,6 @@ class LeadsController extends AppController {
 		
 		$count = $this->Lead->find('count', array('conditions' => $conditions));
 		$this->set('count', $count);
-		
-		$types_raw = $this->Lead->find('all', array(
-			'fields' => array(
-				'DISTINCT type'
-			)
-		));
-		$types = array('' => 'Any');
-		foreach($types_raw as $type) {
-			$types[$type['Lead']['type']] = $type['Lead']['type'];
-		}
-		$this->set('types', $types);
-		
-		$tags = $this->Lead->Tag->find('all');
-		$this->set('tags', $tags);
-		
-		$groups = array('' => 'New');
-		$groups += $this->Lead->Group->find('list');
-		$this->set('groups', $groups);
 	}
 
 	public function gather() {
