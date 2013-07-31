@@ -24,13 +24,13 @@ class LeadsController extends AppController {
 		$tags = $this->Lead->Tag->find('all');
 		$this->set('tags', $tags);
 		
-		if(!isset($_GET['IncludeTag'])) {
+		if(!isset($_GET['IncludeTag']) && !isset($_GET['form'])) {
 			foreach($tags as $tag) {
 				if($tag['Tag']['filter_default'] == 'Included')
 					$_GET['IncludeTag'][] = $tag['Tag']['id'];
 			}
 		}
-		if(!isset($_GET['ExcludeTag'])) {
+		if(!isset($_GET['ExcludeTag']) && !isset($_GET['form'])) {
 			foreach($tags as $tag) {
 				if($tag['Tag']['filter_default'] == 'Excluded')
 					$_GET['ExcludeTag'][] = $tag['Tag']['id'];
