@@ -17,7 +17,12 @@
 		"storage",
 		"tabs",
 		"http://leads.jloop.com/*"
-	]
+	],
+	
+	"externally_connectable": {
+		"matches": ["http://leads.jloop.com/*"]
+	}
+	
 	/*
 	"browser_action": {
 		"default_title": "JLOOP Leadinator",
