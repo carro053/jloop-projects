@@ -113,18 +113,5 @@
 			return false;
 		});
 		*/
-		
-		// The ID of the extension we want to talk to.
-		var extensionId = "bahjdelimcmkgnembfahpmbbigoecaih";
-
-		// Make a simple request:
-		chrome.extension.sendMessage(extensionId, {"test": "test"},
-		  function(response) {
-		  	console.log('sending a message to the extension');
-		  	console.log(response);
-		    if (!response.success) {
-		    	
-		    }
-		  });
 	</script>
 </div>

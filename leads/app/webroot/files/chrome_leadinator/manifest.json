@@ -19,10 +19,13 @@
 		"http://leads.jloop.com/*"
 	],
 	
-	"externally_connectable": {
-		"matches": ["http://leads.jloop.com/*"]
-	}
-	
+	"content_scripts": [
+		{
+			"matches": ["http://leads.jloop.com/*"],
+			"js": ["js/lead_messaging.js"],
+			"run_at": "document_end"
+		}
+	]
 	/*
 	"browser_action": {
 		"default_title": "JLOOP Leadinator",

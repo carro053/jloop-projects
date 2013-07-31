@@ -23,7 +23,7 @@ chrome.contextMenus.create(scrapeAppContextProperties, function (){
 });
 
 var facebookContextProperties = {
-	"title": "Scrape this App",
+	"title": "Save Facebook Link",
 	"onclick": saveFacebookUrl,
 	"contexts": ["page"],
 	"parentId": parentContextId
@@ -31,6 +31,12 @@ var facebookContextProperties = {
 chrome.contextMenus.create(facebookContextProperties, function (){
 	
 });
+
+
+chrome.runtime.onMessage.addListener(
+	function(request, sender, sendResponse) {
+		console.log(request);
+	});
 
 /*
 var context_menu_created = false;
