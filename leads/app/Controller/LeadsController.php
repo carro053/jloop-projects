@@ -25,7 +25,16 @@ class LeadsController extends AppController {
 		$this->set('tags', $tags);
 		
 		if(!isset($_GET['IncludeTag'])) {
-			$_GET['IncludeTag'] = array(5);
+			foreach($tags as $tag) {
+				if($tag['Tag']['filter_default'] == 'Included')
+					$_GET['IncludeTag'][] = $tag['Tag']['id'];
+			}
+		}
+		if(!isset($_GET['ExcludeTag'])) {
+			foreach($tags as $tag) {
+				if($tag['Tag']['filter_default'] == 'Excluded')
+					$_GET['ExcludeTag'][] = $tag['Tag']['id'];
+			}
 		}
 		
 		$limit = (!empty($_GET['limit']) ? $_GET['limit'] : 50);
