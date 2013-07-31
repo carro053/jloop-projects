@@ -2,6 +2,10 @@
 
 <?php
 	echo $this->Form->create('Lead', array('type' => 'get'));
+	echo $this->Form->input('form', array(
+		'type' => 'hidden',
+		'value' => true
+	));
 	echo $this->Form->input('type', array(
 		'value' => !empty($_GET['type']) ? $_GET['type'] : null
 	));
