@@ -31,7 +31,8 @@
 			'value' => $tag['Tag']['id'],
 			'hiddenField' => false,
 			'checked' => $checked,
-			'div' => false
+			'div' => false,
+			'onchange' => 'console.log($(this).attr("checked))'
 		));
 	}
 	echo '</fieldset></div>';
