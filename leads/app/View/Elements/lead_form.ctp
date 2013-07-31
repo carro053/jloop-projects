@@ -93,7 +93,7 @@
 		
 		console.log('send info from site');
 		
-		
+		console.log(this);
 		
 		sendLeadInfoToExtension();
 		
