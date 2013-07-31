@@ -95,7 +95,7 @@
 		
 		console.log(this);
 		
-		this.sendLeadInfoToExtension();
+		window.sendLeadInfoToExtension();
 		
 		/*
 		$('#NoteForm').submit(function() {
