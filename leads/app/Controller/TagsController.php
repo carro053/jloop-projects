@@ -27,4 +27,12 @@ class TagsController extends AppController {
 			$this->request->data = $this->Tag->findById($id);
 		}
 	}
+	
+	public function delete($id = null) {
+		if(!empty($id) && $this->Tag->delete($id)) {
+			$this->Tag->query('DELETE FROM `leads_tags` WHERE `tag_id` = '.$id);
+			$this->Session->setFlash('Tag deleted');
+		}
+		return $this->redirect('/Tags/index');
+	}
 }
