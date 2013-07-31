@@ -19,6 +19,8 @@
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+	
+	<script>var EXTENSION = {};</script>
 </head>
 <body>
 	<div id="container">
