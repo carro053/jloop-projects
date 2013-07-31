@@ -22,6 +22,16 @@ chrome.contextMenus.create(scrapeAppContextProperties, function (){
 	
 });
 
+var facebookContextProperties = {
+	"title": "Scrape this App",
+	"onclick": saveFacebookUrl,
+	"contexts": ["page"],
+	"parentId": parentContextId
+};
+chrome.contextMenus.create(facebookContextProperties, function (){
+	
+});
+
 /*
 var context_menu_created = false;
 
@@ -75,6 +85,23 @@ function scrapeAppLink(info, tab) {
 		type: "POST",
 		url: "http://leads.jloop.com/Scrapes/create"+"?t="+time,
 		data: {"data[Scrape][itunes_link]": scrapeLink, "data[Scrape][is_chrome_extension]": 1},
+		success: function(data){
+			console.log(data);
+			if(data != "1")
+				alert('Link couldn\'t be scraped. Are you sure you\'re logged in to the Leads site and clicking an iTunes link?');
+		},
+		error: function(){
+			alert('There was a connection error with this scrape attempt.');
+		}
+	});
+}
+
+function saveFacebookUrl(info, tab) {
+	var time = new Date().getTime();
+	$.ajax({
+		type: "POST",
+		url: "http://leads.jloop.com/Leads/update"+"?t="+time,
+		data: {"data[Scrape][itunes_link]": info.pageUrl, "data[Scrape][is_chrome_extension]": 1},
 		success: function(data){
 			console.log(data);
 			if(data != "1")
