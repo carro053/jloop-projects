@@ -11,11 +11,12 @@ chrome.runtime.sendMessage(editorExtensionId, {"test" : "test"},
   });
 */
 
+console.log('current val: '+$('#chrome-extension-info').val());
 
 $('#chrome-extension-info').change( function() {
 	console.log('sending info');
 	console.log($(this).val());
 	chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
-	  console.log(response);
+		console.log(response);
 	});
 });
