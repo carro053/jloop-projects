@@ -118,7 +118,7 @@
 		var extensionId = "bahjdelimcmkgnembfahpmbbigoecaih";
 
 		// Make a simple request:
-		chrome.app.runtime.sendMessage(extensionId, {"test": "test"},
+		chrome.extension.sendMessage(extensionId, {"test": "test"},
 		  function(response) {
 		  	console.log('sending a message to the extension');
 		  	console.log(response);
