@@ -11,17 +11,11 @@ chrome.runtime.sendMessage(editorExtensionId, {"test" : "test"},
   });
 */
 
-var chris_face = 100;
 
-//EXTENSION.version = 2;
-console.log(this);
-
-
-sendLeadInfoToExtension();
-
-function sendLeadInfoToExtension() {
+$('#chrome-extension-info').change( function() {
 	console.log('sending info');
+	console.log($(this).val());
 	chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
 	  console.log(response);
 	});
-}
+});

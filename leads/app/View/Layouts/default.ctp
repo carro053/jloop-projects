@@ -19,8 +19,6 @@
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
-	
-	<script>var EXTENSION = {};</script>
 </head>
 <body>
 	<div id="container">
@@ -78,5 +76,7 @@
 		init();
 	</script>
 	<?php echo $this->element('sql_dump'); ?>
+	
+	<input id="chrome-extension-info" type="hidden" value="0" />
 </body>
 </html>
