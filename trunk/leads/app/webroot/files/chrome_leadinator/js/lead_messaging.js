@@ -11,6 +11,9 @@ chrome.runtime.sendMessage(editorExtensionId, {"test" : "test"},
   });
 */
 
-chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
-  console.log(response);
-});
+function sendLeadInfoToExtension() {
+	console.log('sending info');
+	chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
+	  console.log(response);
+	});
+}
