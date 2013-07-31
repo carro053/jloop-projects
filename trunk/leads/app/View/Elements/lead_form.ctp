@@ -91,6 +91,7 @@
 			return false;
 		});
 		
+		console.log('send info from site');
 		sendLeadInfoToExtension();
 		
 		/*
