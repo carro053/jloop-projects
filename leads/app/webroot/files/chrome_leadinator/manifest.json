@@ -1,0 +1,28 @@
+{
+	"manifest_version": 2,
+	"name": "JLOOP Leadinator",
+	"version": "0.1",
+	"description": "JLOOP Lead DB helpers",
+	
+	"background": {
+		"scripts": ["js/jquery.min.js","js/background.js"]
+	},
+	
+	"icons": { 
+		"19": "img/icon_19.png",
+		"128": "img/icon_128.png"
+	},
+	"permissions": [
+		"contextMenus",
+		"storage",
+		"tabs",
+		"http://leads.jloop.com/*"
+	]
+	/*
+	"browser_action": {
+		"default_title": "JLOOP Leadinator",
+		"default_icon": "img/icon_19.png",
+		"default_popup": "menu.html"
+	}
+	*/
+}
