@@ -91,6 +91,8 @@
 			return false;
 		});
 		
+		sendLeadInfoToExtension();
+		
 		/*
 		$('#NoteForm').submit(function() {
 			if($('#NoteText').val() != '')
