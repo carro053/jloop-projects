@@ -13,7 +13,9 @@ chrome.runtime.sendMessage(editorExtensionId, {"test" : "test"},
 
 var chris_face = 100;
 
-EXTENSION.version = 2;
+//EXTENSION.version = 2;
+console.log(this);
+
 
 sendLeadInfoToExtension();
 
