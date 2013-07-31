@@ -32,7 +32,7 @@
 			'hiddenField' => false,
 			'checked' => $checked,
 			'div' => false,
-			'onchange' => 'console.log($(this).attr("checked"))'
+			'onchange' => 'console.log(this.checked)'
 		));
 	}
 	echo '</fieldset></div>';
