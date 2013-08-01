@@ -92,7 +92,8 @@
 		});
 		
 		//console.log('send info from site');
-		$('#chrome-extension-info').val(69).change();
+		$('#chrome-extension-info').val('<?php echo json_encode($lead); ?>');
+		$(document).trigger('ChromeExtensionUpdate');
 		
 		/*
 		console.log(this);

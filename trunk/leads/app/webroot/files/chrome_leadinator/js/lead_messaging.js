@@ -21,9 +21,18 @@ $('#chrome-extension-info').change( function() {
 	});
 });
 
+/*
 $('body').bind('DOMSubtreeModified',testHandler);
 
 function testHandler() {
 	console.log('BODY MODIFIED');
+	console.log('current val: '+$('#chrome-extension-info').val());
+}
+*/
+
+$(document).bind('ChromeExtensionUpdate', testHandler);
+
+function testHandler() {
+	console.log('EVENT HANDLED');
 	console.log('current val: '+$('#chrome-extension-info').val());
 }
