@@ -25,4 +25,5 @@ $('body').bind('DOMSubtreeModified',testHandler);
 
 function testHandler() {
 	console.log('BODY MODIFIED');
+	console.log('current val: '+$('#chrome-extension-info').val());
 }
