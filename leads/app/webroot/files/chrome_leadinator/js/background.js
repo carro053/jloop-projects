@@ -2,40 +2,46 @@ console.log('JLOOP Leadinator Initialized!');
 
 var parentContextId = "leadinator_parent";
 
+var currentLeadId = null;
+
 var parentContextProperties = {
 	"title": "JLOOP Leadinator",
 	"id": parentContextId,
 	"contexts": ["all"]
 };
 
-chrome.contextMenus.create(parentContextProperties, function (){
-	
-});
+
 
 var scrapeAppContextProperties = {
+	"id": "scrape_app",
 	"title": "Scrape this App",
 	"onclick": scrapeAppLink,
 	"contexts": ["page","link"],
 	"parentId": parentContextId
 };
-chrome.contextMenus.create(scrapeAppContextProperties, function (){
-	
-});
+
 
 var facebookContextProperties = {
-	"title": "Save Facebook Link",
+	"id": "save_facebook",
+	"title": "You must view a lead in your browser before you can save a Facebook link",
 	"onclick": saveFacebookUrl,
 	"contexts": ["page"],
 	"parentId": parentContextId
 };
-chrome.contextMenus.create(facebookContextProperties, function (){
-	
-});
+
+chrome.contextMenus.create(parentContextProperties, function (){});
+chrome.contextMenus.create(scrapeAppContextProperties, function (){});
+chrome.contextMenus.create(facebookContextProperties, function (){});
+
 
 chrome.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
 		console.log('message received by extension');
-		console.log(request);
+		console.log(request.name);
+		
+		currentLeadId = request.id;
+		fbUpdateProperties = { "title": "Save Facebook link for " + request.name };
+		chrome.contextMenus.update("save_facebook", fbUpdateProperties, function (){});
 	});
 
 
@@ -106,15 +112,20 @@ function scrapeAppLink(info, tab) {
 }
 
 function saveFacebookUrl(info, tab) {
+	if(currentLeadId == null) {
+		alert('You have to view a lead on the site before you can save its Facebook link!');
+		return;
+	}
+
 	var time = new Date().getTime();
 	$.ajax({
 		type: "POST",
 		url: "http://leads.jloop.com/Leads/update"+"?t="+time,
-		data: {"data[Scrape][itunes_link]": info.pageUrl, "data[Scrape][is_chrome_extension]": 1},
+		data: {"data[Lead][id]": currentLeadId, "data[Lead][facebook]": info.pageUrl, "data[Lead][is_chrome_extension]": 1},
 		success: function(data){
 			console.log(data);
 			if(data != "1")
-				alert('Link couldn\'t be scraped. Are you sure you\'re logged in to the Leads site and clicking an iTunes link?');
+				alert('Something went wrong. We\'re not really sure.');
 		},
 		error: function(){
 			alert('There was a connection error with this scrape attempt.');

@@ -37,12 +37,8 @@ function testHandler() {
 
 //pass data along to the extension (stupid as hell)
 window.addEventListener("message", function(event) {
-	console.log('message received');
-	console.log(event);
-	
 	chrome.runtime.sendMessage(event.data, function(response) {
-		console.log('message send to extension');
-		console.log(response);
+		
 	});
 	
 }, false);

@@ -84,6 +84,8 @@ class LeadsController extends AppController {
 		if($this->request->is('post')) {
 			if(!empty($this->request->data['Lead']['id'])) {
 				if($this->Lead->saveAll($this->request->data)) {
+					if(isset($this->request->data['Lead']['is_chrome_extension']))
+						die('1');
 					return $this->render('/Elements/form_success');
 				}
 			}
