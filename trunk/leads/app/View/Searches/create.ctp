@@ -1,4 +1,10 @@
 <h2>iTunes Search</h2>
+<style>
+	#date-range * {
+		display: inline;
+	}
+</style>
+
 <?php
 	$years = array();
 	for($i = date('Y'); $i > 2007; $i--)
