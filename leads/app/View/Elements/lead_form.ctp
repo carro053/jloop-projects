@@ -69,6 +69,8 @@
 		</tbody>
 	</table>
 	
+	<?php pr($lead); ?>
+	
 	<?php
 		/*
 		echo $this->Form->create('Note', array('id' => 'NoteForm', 'url' => '#', 'type' => 'post'));
