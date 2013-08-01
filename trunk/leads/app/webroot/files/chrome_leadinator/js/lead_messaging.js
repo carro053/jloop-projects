@@ -1,5 +1,6 @@
 console.log('hey, i injected, bro');
 
+/*
 // The ID of the extension we want to talk to.
 var editorExtensionId = "bahjdelimcmkgnembfahpmbbigoecaih";
 
@@ -8,6 +9,7 @@ chrome.runtime.sendMessage(editorExtensionId, {"test" : "test"},
   function(response) {
     
   });
+*/
 
 /*
 console.log('current val: '+$('#chrome-extension-info').val());
