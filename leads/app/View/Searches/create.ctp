@@ -5,12 +5,12 @@
 		$years[$i] = $i;
 	
 	$months = array();
-	$months['*'] = '*';
+	$months['*'] = 'Any';
 	for( $i = 1 ;  $i <= 12 ; $i++ )
 		$months[gmdate( "M" , mktime( 0 , 0 , 0 , $i, 1 ) )] = gmdate( "M" , mktime( 0 , 0 , 0 , $i, 1 ) );
 	
 	$days = array();
-	$days['*'] = '*';
+	$days['*'] = 'Any';
 	for($i = 1; $i <= 31; $i++)
 		$days[$i] = $i;
 
