@@ -18,6 +18,23 @@ var scrapeAppContextProperties = {
 	"parentId": parentContextId
 };
 
+var appNameContextProperties = {
+	"id": "app_name",
+	"type": "separator",
+	"enabled": false,
+	"title": "VIEW AN APP IN THE LEADS SITE BEFORE GATHERING DATA",
+	"contexts": ["all"],
+	"parentId": parentContextId
+};
+
+var emailContextProperties = {
+	"id": "save_email",
+	"title": "You must view a lead in your browser before you can save an email address",
+	"onclick": saveFacebookUrl,
+	"contexts": ["link","seleciton"],
+	"parentId": parentContextId
+};
+
 var facebookContextProperties = {
 	"id": "save_facebook",
 	"title": "You must view a lead in your browser before you can save a Facebook link",
@@ -36,6 +53,7 @@ var twitterContextProperties = {
 
 chrome.contextMenus.create(parentContextProperties, function (){});
 chrome.contextMenus.create(scrapeAppContextProperties, function (){});
+chrome.contextMenus.create(appNameContextProperties, function (){});
 chrome.contextMenus.create(facebookContextProperties, function (){});
 chrome.contextMenus.create(twitterContextProperties, function (){});
 
