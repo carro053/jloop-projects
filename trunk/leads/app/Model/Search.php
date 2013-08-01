@@ -52,8 +52,8 @@ class Search extends AppModel {
 		*/
 		
 		if($search['Search']['use_date']) {
-			$query .= '"Updated: '.$search['Search']['month'].' '.$search['Search']['day'].', '.$search['Search']['year'].'" ';
-			//$query .= '("Released: '.$search['Search']['month'].' '.$search['Search']['day'].', '.$search['Search']['year'].'" OR "Updated: '.$search['Search']['month'].' '.$search['Search']['day'].', '.$search['Search']['year'].'") ';
+			//$query .= '"Updated: '.$search['Search']['month'].' '.$search['Search']['day'].', '.$search['Search']['year'].'" ';
+			$query .= '("Released: '.$search['Search']['month'].' '.$search['Search']['day'].', '.$search['Search']['year'].'" OR "Updated: '.$search['Search']['month'].' '.$search['Search']['day'].', '.$search['Search']['year'].'") ';
 		}
 		$query .= $search['Search']['search_terms'];
 		
