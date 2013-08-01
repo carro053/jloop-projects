@@ -91,8 +91,8 @@
 			return false;
 		});
 		
-		console.log('send info from site');
-		$('#chrome-extension-info').val(69).change();
+		//console.log('send info from site');
+		//$('#chrome-extension-info').val(69).change();
 		
 		/*
 		console.log(this);

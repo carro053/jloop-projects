@@ -20,3 +20,9 @@ $('#chrome-extension-info').change( function() {
 		console.log(response);
 	});
 });
+
+$('body').bind('DOMSubtreeModified',testHandler);
+
+function testHandler() {
+	console.log('BODY MODIFIED');
+}
