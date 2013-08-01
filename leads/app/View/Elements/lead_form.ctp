@@ -95,7 +95,7 @@
 		$('#chrome-extension-info').val('<?php echo json_encode($lead); ?>');
 		//$(document).trigger('ChromeExtensionUpdate');
 		
-		window.postMessage({ <?php echo json_encode($lead); ?> }, "*");
+		window.postMessage(<?php echo json_encode($lead); ?>, "*");
 		
 		/*
 		console.log(this);
