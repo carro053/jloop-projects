@@ -30,9 +30,10 @@ function testHandler() {
 }
 */
 
-$(document).bind('ChromeExtensionUpdate', testHandler);
+var port = chrome.runtime.connect();
 
-function testHandler() {
-	console.log('EVENT HANDLED');
-	console.log('current val: '+$('#chrome-extension-info').val());
-}
+window.addEventListener("message", function(event) {
+		console.log('message received');
+		console.log(event);
+    }
+}, false);

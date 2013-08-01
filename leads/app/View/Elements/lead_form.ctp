@@ -93,7 +93,9 @@
 		
 		//console.log('send info from site');
 		$('#chrome-extension-info').val('<?php echo json_encode($lead); ?>');
-		$(document).trigger('ChromeExtensionUpdate');
+		//$(document).trigger('ChromeExtensionUpdate');
+		
+		window.postMessage({ type: "FROM_PAGE", text: "Hello from the webpage!" }, "*");
 		
 		/*
 		console.log(this);
