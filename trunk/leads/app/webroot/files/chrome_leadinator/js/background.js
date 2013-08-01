@@ -10,8 +10,6 @@ var parentContextProperties = {
 	"contexts": ["all"]
 };
 
-
-
 var scrapeAppContextProperties = {
 	"id": "scrape_app",
 	"title": "Scrape this App",
@@ -29,9 +27,19 @@ var facebookContextProperties = {
 	"parentId": parentContextId
 };
 
+var twitterContextProperties = {
+	"id": "save_twitter",
+	"title": "You must view a lead in your browser before you can save a Twitter link",
+	"onclick": saveTwitterUrl,
+	"contexts": ["page"],
+	"parentId": parentContextId
+};
+
+
 chrome.contextMenus.create(parentContextProperties, function (){});
 chrome.contextMenus.create(scrapeAppContextProperties, function (){});
 chrome.contextMenus.create(facebookContextProperties, function (){});
+chrome.contextMenus.create(twitterContextProperties, function (){});
 
 
 chrome.runtime.onMessage.addListener(
@@ -42,48 +50,11 @@ chrome.runtime.onMessage.addListener(
 		currentLeadId = request.id;
 		fbUpdateProperties = { "title": "Save Facebook link for " + request.name };
 		chrome.contextMenus.update("save_facebook", fbUpdateProperties, function (){});
+		twitterUpdateProperties = { "title": "Save Twitter link for " + request.name };
+		chrome.contextMenus.update("save_twitter", twitterUpdateProperties, function (){});
 	});
 
 
-
-
-/*
-var context_menu_created = false;
-
-chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-	toggleContextMenu();
-});
-
-chrome.tabs.onActivated.addListener(function(activeInfo) {
-	toggleContextMenu();
-});
-
-function toggleContextMenu() {
-	chrome.tabs.getSelected(null,function(tab) {
-		if(tab.url.indexOf('https://www.google.com') !== -1) {
-			console.log('attach the context menu');
-			if(!context_menu_created) {
-				context_menu_created = true;
-				var createProperties = {
-					"title": "Scrape this App",
-					"onclick": scrapeAppLink,
-					"contexts": ["link"]
-				};
-				chrome.contextMenus.create(createProperties, function (){
-					
-				});
-			}
-		} else {
-			if(context_menu_created) {
-				context_menu_created = false;
-				chrome.contextMenus.removeAll(function () {
-					
-				});
-			}
-		}
-	});
-}
-*/
 
 function scrapeAppLink(info, tab) {
 	console.log(info);
@@ -122,6 +93,28 @@ function saveFacebookUrl(info, tab) {
 		type: "POST",
 		url: "http://leads.jloop.com/Leads/update"+"?t="+time,
 		data: {"data[Lead][id]": currentLeadId, "data[Lead][facebook]": info.pageUrl, "data[Lead][is_chrome_extension]": 1},
+		success: function(data){
+			console.log(data);
+			if(data != "1")
+				alert('Something went wrong. We\'re not really sure.');
+		},
+		error: function(){
+			alert('There was a connection error with this scrape attempt.');
+		}
+	});
+}
+
+function saveTwitterUrl(info, tab) {
+	if(currentLeadId == null) {
+		alert('You have to view a lead on the site before you can save its Twitter link!');
+		return;
+	}
+
+	var time = new Date().getTime();
+	$.ajax({
+		type: "POST",
+		url: "http://leads.jloop.com/Leads/update"+"?t="+time,
+		data: {"data[Lead][id]": currentLeadId, "data[Lead][twitter]": info.pageUrl, "data[Lead][is_chrome_extension]": 1},
 		success: function(data){
 			console.log(data);
 			if(data != "1")
