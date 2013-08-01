@@ -20,7 +20,6 @@ var scrapeAppContextProperties = {
 
 var appNameContextProperties = {
 	"id": "app_name",
-	"type": "separator",
 	"enabled": false,
 	"title": "VIEW AN APP IN THE LEADS SITE BEFORE GATHERING DATA",
 	"contexts": ["all"],
@@ -29,15 +28,17 @@ var appNameContextProperties = {
 
 var emailContextProperties = {
 	"id": "save_email",
-	"title": "You must view a lead in your browser before you can save an email address",
-	"onclick": saveFacebookUrl,
-	"contexts": ["link","seleciton"],
+	"enabled": false,
+	"title": "Save email address",
+	"onclick": saveEmail,
+	"contexts": ["link","selection"],
 	"parentId": parentContextId
 };
 
 var facebookContextProperties = {
 	"id": "save_facebook",
-	"title": "You must view a lead in your browser before you can save a Facebook link",
+	"enabled": false,
+	"title": "Save Facebook link",
 	"onclick": saveFacebookUrl,
 	"contexts": ["page"],
 	"parentId": parentContextId
@@ -45,18 +46,29 @@ var facebookContextProperties = {
 
 var twitterContextProperties = {
 	"id": "save_twitter",
-	"title": "You must view a lead in your browser before you can save a Twitter link",
+	"enabled": false,
+	"title": "Save Twitter link",
 	"onclick": saveTwitterUrl,
 	"contexts": ["page"],
+	"parentId": parentContextId
+};
+
+var phoneContextProperties = {
+	"id": "save_phone",
+	"enabled": false,
+	"title": "Save phone number",
+	"onclick": savePhone,
+	"contexts": ["selection"],
 	"parentId": parentContextId
 };
 
 chrome.contextMenus.create(parentContextProperties, function (){});
 chrome.contextMenus.create(scrapeAppContextProperties, function (){});
 chrome.contextMenus.create(appNameContextProperties, function (){});
+chrome.contextMenus.create(emailContextProperties, function (){});
 chrome.contextMenus.create(facebookContextProperties, function (){});
 chrome.contextMenus.create(twitterContextProperties, function (){});
-
+chrome.contextMenus.create(phoneContextProperties, function (){});
 
 chrome.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
@@ -64,13 +76,19 @@ chrome.runtime.onMessage.addListener(
 		console.log(request.name);
 		
 		currentLeadId = request.id;
-		fbUpdateProperties = { "title": "Save Facebook link for " + request.name };
+		
+		appNameUpdateProperties = { "title": "Currently gathering data for " + request.name };
+		chrome.contextMenus.update("app_name", appNameUpdateProperties, function (){});
+		
+		emailUpdateProperties = { "enabled": true };
+		chrome.contextMenus.update("save_email", emailUpdateProperties, function (){});
+		fbUpdateProperties = { "enabled": true };
 		chrome.contextMenus.update("save_facebook", fbUpdateProperties, function (){});
-		twitterUpdateProperties = { "title": "Save Twitter link for " + request.name };
+		twitterUpdateProperties = { "enabled": true };
 		chrome.contextMenus.update("save_twitter", twitterUpdateProperties, function (){});
+		phoneUpdateProperties = { "enabled": true };
+		chrome.contextMenus.update("save_phone", phoneUpdateProperties, function (){});
 	});
-
-
 
 function scrapeAppLink(info, tab) {
 	console.log(info);
@@ -91,6 +109,35 @@ function scrapeAppLink(info, tab) {
 			console.log(data);
 			if(data != "1")
 				alert('Link couldn\'t be scraped. Are you sure you\'re logged in to the Leads site and clicking an iTunes link?');
+		},
+		error: function(){
+			alert('There was an AJAX error in the extension.');
+		}
+	});
+}
+
+function saveEmail(info, tab) {
+	var emailAddress = null;
+	if(info.linkUrl) {
+		pieces = info.linkUrl.split(':');
+		emailAddress = pieces[1];
+	} else {
+		emailAddress = info.selectionText;
+	}
+	if(currentLeadId == null) {
+		alert('You have to view a lead on the site before you can save its email address!');
+		return;
+	}
+
+	var time = new Date().getTime();
+	$.ajax({
+		type: "POST",
+		url: "http://leads.jloop.com/Leads/update"+"?t="+time,
+		data: {"data[Lead][id]": currentLeadId, "data[Lead][email]": emailAddress, "data[Lead][is_chrome_extension]": 1},
+		success: function(data){
+			console.log(data);
+			if(data != "1")
+				alert('Something went wrong. We\'re not really sure.');
 		},
 		error: function(){
 			alert('There was an AJAX error in the extension.');
@@ -131,6 +178,28 @@ function saveTwitterUrl(info, tab) {
 		type: "POST",
 		url: "http://leads.jloop.com/Leads/update"+"?t="+time,
 		data: {"data[Lead][id]": currentLeadId, "data[Lead][twitter]": info.pageUrl, "data[Lead][is_chrome_extension]": 1},
+		success: function(data){
+			console.log(data);
+			if(data != "1")
+				alert('Something went wrong. We\'re not really sure.');
+		},
+		error: function(){
+			alert('There was an AJAX error in the extension.');
+		}
+	});
+}
+
+function savePhone(info, tab) {
+	if(currentLeadId == null) {
+		alert('You have to view a lead on the site before you can save its Twitter link!');
+		return;
+	}
+
+	var time = new Date().getTime();
+	$.ajax({
+		type: "POST",
+		url: "http://leads.jloop.com/Leads/update"+"?t="+time,
+		data: {"data[Lead][id]": currentLeadId, "data[Lead][phone]": info.selectionText, "data[Lead][is_chrome_extension]": 1},
 		success: function(data){
 			console.log(data);
 			if(data != "1")
