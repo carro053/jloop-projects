@@ -32,11 +32,14 @@ chrome.contextMenus.create(facebookContextProperties, function (){
 	
 });
 
-
 chrome.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
+		console.log('message received by extension');
 		console.log(request);
 	});
+
+
+
 
 /*
 var context_menu_created = false;
