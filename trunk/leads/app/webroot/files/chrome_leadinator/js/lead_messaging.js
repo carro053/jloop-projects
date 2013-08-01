@@ -35,7 +35,7 @@ function testHandler() {
 //var port = chrome.runtime.connect();
 
 
-//pass data along to the extension
+//pass data along to the extension (stupid as hell)
 window.addEventListener("message", function(event) {
 	console.log('message received');
 	console.log(event);
