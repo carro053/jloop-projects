@@ -1,13 +1,26 @@
 <h2>iTunes Search</h2>
 <?php
+	$years = array();
+	for($i = date('Y'); $i > 2007; $i--) {
+		$years[$i] = $i;
+	}
+	
+	$months = array();
+	$months['*'] = '*';
+	for( $i = 1 ;  $i <= 12 ; $i++ )
+	{
+		echo gmdate( "M" , mktime( 0 , 0 , 0 , $i, 1 ) ) . "<br />\n";
+	}
+
 	echo $this->Form->create('Search');
 	echo $this->Form->input('search_terms', array('label' => 'Search Terms (e.x. automotive, fitness, etc.)'));
 	echo $this->Form->input('is_not_iphone_5');
 	echo $this->Form->input('is_not_ipad_only');
-	echo $this->Form->input('use_date_range', array('onchange' => 'toggleDates(this);'));
+	echo $this->Form->input('use_date', array('onchange' => 'toggleDates(this);'));
 	echo '<div id="date-range" style="display:none;">';
-	echo $this->Form->input('start_date', array('class' => 'date-range'));
-	echo $this->Form->input('end_date', array('class' => 'date-range'));
+	echo $this->Form->input('year', array('class' => 'date-range', 'options' => $years));
+	echo $this->Form->input('month', array('class' => 'date-range'));
+	echo $this->Form->input('day', array('class' => 'date-range'));
 	echo '</div>';
 	
 ?>
