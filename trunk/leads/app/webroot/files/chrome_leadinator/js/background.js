@@ -18,7 +18,6 @@ var scrapeAppContextProperties = {
 	"parentId": parentContextId
 };
 
-
 var facebookContextProperties = {
 	"id": "save_facebook",
 	"title": "You must view a lead in your browser before you can save a Facebook link",
@@ -34,7 +33,6 @@ var twitterContextProperties = {
 	"contexts": ["page"],
 	"parentId": parentContextId
 };
-
 
 chrome.contextMenus.create(parentContextProperties, function (){});
 chrome.contextMenus.create(scrapeAppContextProperties, function (){});
@@ -77,7 +75,7 @@ function scrapeAppLink(info, tab) {
 				alert('Link couldn\'t be scraped. Are you sure you\'re logged in to the Leads site and clicking an iTunes link?');
 		},
 		error: function(){
-			alert('There was a connection error with this scrape attempt.');
+			alert('There was an AJAX error in the extension.');
 		}
 	});
 }
@@ -99,7 +97,7 @@ function saveFacebookUrl(info, tab) {
 				alert('Something went wrong. We\'re not really sure.');
 		},
 		error: function(){
-			alert('There was a connection error with this scrape attempt.');
+			alert('There was an AJAX error in the extension.');
 		}
 	});
 }
@@ -121,7 +119,7 @@ function saveTwitterUrl(info, tab) {
 				alert('Something went wrong. We\'re not really sure.');
 		},
 		error: function(){
-			alert('There was a connection error with this scrape attempt.');
+			alert('There was an AJAX error in the extension.');
 		}
 	});
 }
