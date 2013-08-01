@@ -9,7 +9,7 @@ class Search extends AppModel {
             'foreignKey' => 'search_id'
         )
     );
-	
+		
 	public function runQuery($query, $start) {
 		App::import('Vendor', 'google-api/Google_Client');
 		App::import('Vendor', 'google-api/contrib/Google_CustomsearchService');
@@ -46,8 +46,13 @@ class Search extends AppModel {
 			$query .= '-"This app is optimized for iPhone 5." ';
 		if($search['Search']['is_not_ipad_only'])
 			$query .= '-"Compatible with iPad." ';
+		/*
 		if($search['Search']['use_date_range']) {
 			$query .= 'daterange:'.$search['Search']['start_date']['year'].'-'.$search['Search']['start_date']['month'].'-'.$search['Search']['start_date']['day'].'..'.$search['Search']['end_date']['year'].'-'.$search['Search']['end_date']['month'].'-'.$search['Search']['end_date']['day'].' ';
+		*/
+		
+		if($search['Search']['use_date']) {
+			
 		}
 		$query .= $search['Search']['search_terms'];
 		
