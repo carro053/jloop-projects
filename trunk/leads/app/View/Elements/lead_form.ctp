@@ -93,46 +93,11 @@
 			return false;
 		});
 		
-		//console.log('send info from site');
-		$('#chrome-extension-info').val('<?php echo json_encode($lead); ?>');
-		
-		//$(document).trigger('ChromeExtensionUpdate');
-		
+		//pass lead data to chrome extension content script
 		var lead = <?php echo json_encode($lead); ?>;
 		<?php if(empty($lead['name'])) { ?>
 			lead.name = '<?php echo $this->request->data['Lead']['name']; ?>';
 		<?php } ?>
-		
 		window.postMessage(lead, "*");
-		
-		/*
-		console.log(this);
-		
-		sendLeadInfoToExtension();
-		*/
-		
-		
-		/*
-		$('#NoteForm').submit(function() {
-			if($('#NoteText').val() != '')
-			{
-				$.post('/Leads/addNote',
-					$(this).serialize(),
-					function(data) {
-						if(data != 'error') {
-							json_data = eval('(' + data + ')');
-							$('#LeadNotes').prepend('<tr><td>'+json_data['text']+'</td><td>'+json_data['user_id']+'</td><td>'+json_data['created']+'</td></tr>');
-							$('#NoteText').val('');
-						} else {
-							alert('Something went horribly wrong and your note wasn\'t saved');
-						}
-					}
-				);
-			} else {
-				alert('Please enter some text for your note!');
-			}
-			return false;
-		});
-		*/
 	</script>
 </div>
