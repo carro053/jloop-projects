@@ -2,6 +2,7 @@
 <style>
 	#date-range * {
 		display: inline;
+		margin-right: 5px;
 	}
 </style>
 
