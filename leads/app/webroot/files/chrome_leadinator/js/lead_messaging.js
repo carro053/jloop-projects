@@ -30,10 +30,9 @@ function testHandler() {
 }
 */
 
-var port = chrome.runtime.connect();
+//var port = chrome.runtime.connect();
 
 window.addEventListener("message", function(event) {
-		console.log('message received');
-		console.log(event);
-    }
+	console.log('message received');
+	console.log(event);
 }, false);
