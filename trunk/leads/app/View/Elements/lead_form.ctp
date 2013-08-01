@@ -100,7 +100,7 @@
 		
 		var lead = <?php echo json_encode($lead); ?>;
 		<?php if(empty($lead['name'])) { ?>
-			lead.name = <?php echo $this->request->data['Lead']['name']; ?>
+			lead.name = <?php echo $this->request->data['Lead']['name']; ?>;
 		<?php } ?>
 		
 		window.postMessage(lead, "*");
