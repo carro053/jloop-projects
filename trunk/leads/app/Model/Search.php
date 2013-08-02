@@ -46,13 +46,7 @@ class Search extends AppModel {
 			$query .= '-"This app is optimized for iPhone 5." ';
 		if($search['Search']['is_not_ipad_only'])
 			$query .= '-"Compatible with iPad." ';
-		/*
-		if($search['Search']['use_date_range']) {
-			$query .= 'daterange:'.$search['Search']['start_date']['year'].'-'.$search['Search']['start_date']['month'].'-'.$search['Search']['start_date']['day'].'..'.$search['Search']['end_date']['year'].'-'.$search['Search']['end_date']['month'].'-'.$search['Search']['end_date']['day'].' ';
-		*/
-		
 		if($search['Search']['use_date']) {
-			//$query .= '"Updated: '.$search['Search']['month'].' '.$search['Search']['day'].', '.$search['Search']['year'].'" ';
 			$query .= '("Released: '.$search['Search']['month'].' '.$search['Search']['day'].', '.$search['Search']['year'].'" OR "Updated: '.$search['Search']['month'].' '.$search['Search']['day'].', '.$search['Search']['year'].'") ';
 		}
 		$query .= $search['Search']['search_terms'];
