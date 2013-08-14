@@ -35,6 +35,15 @@ var emailContextProperties = {
 	"parentId": parentContextId
 };
 
+var twitterContextProperties = {
+	"id": "save_twitter",
+	"enabled": false,
+	"title": "Save Twitter link",
+	"onclick": saveTwitterUrl,
+	"contexts": ["page"],
+	"parentId": parentContextId
+};
+
 var facebookContextProperties = {
 	"id": "save_facebook",
 	"enabled": false,
@@ -44,11 +53,11 @@ var facebookContextProperties = {
 	"parentId": parentContextId
 };
 
-var twitterContextProperties = {
-	"id": "save_twitter",
+var linkedinContextProperties = {
+	"id": "save_linkedin",
 	"enabled": false,
-	"title": "Save Twitter link",
-	"onclick": saveTwitterUrl,
+	"title": "Save LinkedIn link",
+	"onclick": saveLinkedinUrl,
 	"contexts": ["page"],
 	"parentId": parentContextId
 };
@@ -66,8 +75,9 @@ chrome.contextMenus.create(parentContextProperties, function (){});
 chrome.contextMenus.create(scrapeAppContextProperties, function (){});
 chrome.contextMenus.create(appNameContextProperties, function (){});
 chrome.contextMenus.create(emailContextProperties, function (){});
-chrome.contextMenus.create(facebookContextProperties, function (){});
 chrome.contextMenus.create(twitterContextProperties, function (){});
+chrome.contextMenus.create(facebookContextProperties, function (){});
+chrome.contextMenus.create(linkedinContextProperties, function (){});
 chrome.contextMenus.create(phoneContextProperties, function (){});
 
 chrome.runtime.onMessage.addListener(
@@ -82,11 +92,13 @@ chrome.runtime.onMessage.addListener(
 		
 		emailUpdateProperties = { "enabled": true };
 		chrome.contextMenus.update("save_email", emailUpdateProperties, function (){});
-		fbUpdateProperties = { "enabled": true };
-		chrome.contextMenus.update("save_facebook", fbUpdateProperties, function (){});
 		twitterUpdateProperties = { "enabled": true };
 		chrome.contextMenus.update("save_twitter", twitterUpdateProperties, function (){});
+		fbUpdateProperties = { "enabled": true };
+		chrome.contextMenus.update("save_facebook", fbUpdateProperties, function (){});
 		phoneUpdateProperties = { "enabled": true };
+		linkedinUpdateProperties = { "enabled": true };
+		chrome.contextMenus.update("save_linkedin", linkedinUpdateProperties, function (){});
 		chrome.contextMenus.update("save_phone", phoneUpdateProperties, function (){});
 	});
 
@@ -145,6 +157,28 @@ function saveEmail(info, tab) {
 	});
 }
 
+function saveTwitterUrl(info, tab) {
+	if(currentLeadId == null) {
+		alert('You have to view a lead on the site before you can save its Twitter link!');
+		return;
+	}
+
+	var time = new Date().getTime();
+	$.ajax({
+		type: "POST",
+		url: "http://leads.jloop.com/Leads/update"+"?t="+time,
+		data: {"data[Lead][id]": currentLeadId, "data[Lead][twitter]": info.pageUrl, "data[Lead][is_chrome_extension]": 1},
+		success: function(data){
+			console.log(data);
+			if(data != "1")
+				alert('Something went wrong. We\'re not really sure.');
+		},
+		error: function(){
+			alert('There was an AJAX error in the extension.');
+		}
+	});
+}
+
 function saveFacebookUrl(info, tab) {
 	if(currentLeadId == null) {
 		alert('You have to view a lead on the site before you can save its Facebook link!');
@@ -167,9 +201,9 @@ function saveFacebookUrl(info, tab) {
 	});
 }
 
-function saveTwitterUrl(info, tab) {
+function saveLinkedinUrl(info, tab) {
 	if(currentLeadId == null) {
-		alert('You have to view a lead on the site before you can save its Twitter link!');
+		alert('You have to view a lead on the site before you can save its LinkedIn link!');
 		return;
 	}
 
@@ -177,7 +211,7 @@ function saveTwitterUrl(info, tab) {
 	$.ajax({
 		type: "POST",
 		url: "http://leads.jloop.com/Leads/update"+"?t="+time,
-		data: {"data[Lead][id]": currentLeadId, "data[Lead][twitter]": info.pageUrl, "data[Lead][is_chrome_extension]": 1},
+		data: {"data[Lead][id]": currentLeadId, "data[Lead][linkedin]": info.pageUrl, "data[Lead][is_chrome_extension]": 1},
 		success: function(data){
 			console.log(data);
 			if(data != "1")
