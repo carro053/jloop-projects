@@ -109,6 +109,8 @@
 								echo ', ';
 							$i++;
 						}
+						if(empty($lead['Group']))
+							echo 'NONE';
 					?>
 				</td>
 				
