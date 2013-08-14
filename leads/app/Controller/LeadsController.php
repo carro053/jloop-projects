@@ -53,6 +53,7 @@ class LeadsController extends AppController {
 			$conditions['OR']['Lead.email LIKE'] = '%'.$_GET['search'].'%';
 			$conditions['OR']['Lead.twitter LIKE'] = '%'.$_GET['search'].'%';
 			$conditions['OR']['Lead.facebook LIKE'] = '%'.$_GET['search'].'%';
+			$conditions['OR']['Lead.linkedin LIKE'] = '%'.$_GET['search'].'%';
 		}
 		if(!empty($_GET['IncludeTag'])) {
 			$conditions[] = array('Lead.id IN (SELECT `lead_id` from `leads_tags` WHERE `tag_id` IN ('.implode(',', $_GET['IncludeTag']).'))');

@@ -10,7 +10,7 @@
 		'value' => !empty($_GET['type']) ? $_GET['type'] : null
 	));
 	echo $this->Form->input('search', array(
-		'label' => 'Search (Name, Email, Twitter, Facebook)',
+		'label' => 'Search (Name, Email, Twitter, Facebook, LinkedIn)',
 		'value' => !empty($_GET['search']) ? $_GET['search'] : null
 	));
 	echo '<div class="tags"><fieldset><legend>Include Tags</legend>';
