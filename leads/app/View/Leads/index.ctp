@@ -77,6 +77,7 @@
 			<th>Created <?php echo $this->element('sorter', array('uri' => 'Leads/index', 'field' => 'created')); ?></th>
 			<th>Tags</th>
 			<th>Notes</th>
+			<th>In Group(s)</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -98,6 +99,19 @@
 					}
 				?></td>
 				<td><?php echo count($lead['Note']); ?></td>
+				
+				<td>
+					<?php
+						$i = 0;
+						foreach($lead['Group'] as $group) {
+							echo $group['name'];
+							if($i < count($lead['Group']) - 1)
+								echo ', ';
+							$i++;
+						}
+					?>
+				</td>
+				
 				<td><a class="dialog" href="/<?php echo Inflector::pluralize($lead['Lead']['model']); ?>/view/<?php echo $lead['Lead']['model_id']; ?>">View</a></td>
 			</tr>
 		<?php } if(empty($lead)) { ?>
