@@ -13,6 +13,7 @@
 		echo $this->Form->input('email');
 		echo $this->Form->input('twitter');
 		echo $this->Form->input('facebook');
+		echo $this->Form->input('linkedin');
 		echo $this->Form->input('phone');
 		echo $this->Form->input('rating', array(
 			'type' => 'radio',
