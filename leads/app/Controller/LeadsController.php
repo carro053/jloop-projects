@@ -61,6 +61,12 @@ class LeadsController extends AppController {
 		if(!empty($_GET['ExcludeTag'])) {
 			$conditions[] = array('Lead.id NOT IN (SELECT `lead_id` from `leads_tags` WHERE `tag_id` IN ('.implode(',', $_GET['ExcludeTag']).'))');
 		}
+		if(!empty($_GET['RatingAtLeast'])) {
+			$conditions[] = array('Lead.rating >= '.$_GET['RatingAtLeast']);
+		}
+		if(!empty($_GET['RatingLessThan'])) {
+			$conditions[] = array('Lead.rating < '.$_GET['RatingLessThan']);
+		}
 		
 		$leads = $this->Lead->find('all', array(
 			'conditions' => $conditions,
