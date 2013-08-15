@@ -100,6 +100,8 @@
 			$conditions .= '&';
 		$i++;
 	}
+	
+	pr($_GET);
 ?>
 
 <a href="http://<?php echo $_SERVER['HTTP_HOST'].'/Leads/index/1?'.$conditions; ?>">Export these results to Mailman</a>
