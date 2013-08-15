@@ -24,7 +24,8 @@
 			3 => '3',
 			4 => '4',
 			5 => '5'
-		)
+		),
+		'value' => !empty($_GET['RatingAtLeast']) ? $_GET['RatingAtLeast'] : null
 	));
 	
 	echo $this->Form->input('RatingLessThan', array(
@@ -36,7 +37,8 @@
 			3 => '3',
 			4 => '4',
 			5 => '5'
-		)
+		),
+		'value' => !empty($_GET['RatingLessThan']) ? $_GET['RatingLessThan'] : null
 	));
 	
 	echo '<div class="tags"><fieldset><legend>Include Tags</legend>';
