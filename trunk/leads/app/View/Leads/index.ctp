@@ -13,6 +13,32 @@
 		'label' => 'Search (Name, Email, Twitter, Facebook, LinkedIn)',
 		'value' => !empty($_GET['search']) ? $_GET['search'] : null
 	));
+	
+	echo $this->Form->input('RatingAtLeast', array(
+		'label' => 'Rating at least',
+		'type' => 'select',
+		'options' => array(
+			'' => ' ',
+			1 => '1',
+			2 => '2',
+			3 => '3',
+			4 => '4',
+			5 => '5'
+		)
+	));
+	
+	echo $this->Form->input('RatingLessThan', array(
+		'label' => 'Rating less than',
+		'type' => 'select',
+		'options' => array(
+			'' => ' ',
+			2 => '2',
+			3 => '3',
+			4 => '4',
+			5 => '5'
+		)
+	));
+	
 	echo '<div class="tags"><fieldset><legend>Include Tags</legend>';
 	foreach($tags as $key => $tag) {
 		$checked = false;
@@ -99,7 +125,6 @@
 					}
 				?></td>
 				<td><?php echo count($lead['Note']); ?></td>
-				
 				<td>
 					<?php
 						$i = 0;
@@ -113,7 +138,6 @@
 							echo 'NONE';
 					?>
 				</td>
-				
 				<td><a class="dialog" href="/<?php echo Inflector::pluralize($lead['Lead']['model']); ?>/view/<?php echo $lead['Lead']['model_id']; ?>">View</a></td>
 			</tr>
 		<?php } if(empty($lead)) { ?>
