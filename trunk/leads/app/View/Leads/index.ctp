@@ -91,6 +91,19 @@
 
 <p><?php echo $count; ?> result(s).</p>
 
+<?php
+	$conditions = '';
+	$i = 0;
+	foreach($_GET as $c=>$condition) {
+		$conditions .= $c.'='.$condition;
+		if($i < count($_GET) - 1)
+			$conditions .= '&';
+		$i++;
+	}
+?>
+
+<a href="http://<?php echo $_SERVER['HTTP_HOST'].'/Leads/index/1?'.$conditions; ?>">Export these results to Mailman</a>
+
 <?php echo $this->Form->create('Leads'); ?>
 
 <table>
