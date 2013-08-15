@@ -104,7 +104,7 @@
 	pr($_GET);
 ?>
 
-<a href="http://<?php echo $_SERVER['HTTP_HOST'].'/Leads/index/1?'.$conditions; ?>">Export these results to Mailman</a>
+<a href="http://<?php echo $_SERVER['HTTP_HOST'].'/Leads/index/1?'.$_SERVER['QUERY_STRING']; ?>">Export these results to Mailman</a>
 
 <?php echo $this->Form->create('Leads'); ?>
 
