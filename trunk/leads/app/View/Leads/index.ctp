@@ -143,7 +143,7 @@
 				<td><a class="dialog" href="/<?php echo Inflector::pluralize($lead['Lead']['model']); ?>/view/<?php echo $lead['Lead']['model_id']; ?>">View</a></td>
 			</tr>
 		<?php } if(empty($lead)) { ?>
-			<tr><td colspan="5">There are currently no leads</td></tr>
+			<tr><td colspan="5">There are no leads that match this search.</td></tr>
 		<?php } ?>
 	</tbody>
 </table>
