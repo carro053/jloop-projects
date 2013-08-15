@@ -90,8 +90,10 @@ class LeadsController extends AppController {
 			$qexport = fopen($filename, 'w');
 			
 			foreach($leads as $lead) {
-				$fields = array($lead['Lead']['email'], $lead['Lead']['name']);
-				fputcsv($qexport, $fields);
+				if(!empty($lead['Lead']['email'])) {
+					$fields = array($lead['Lead']['email'], $lead['Lead']['name']);
+					fputcsv($qexport, $fields);
+				}
 			}
 			
 			fclose($qexport);
