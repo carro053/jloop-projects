@@ -21,7 +21,7 @@
 									<tr>
 										<td><strong>Company</strong></td>
 										<td>
-											<?php echo $lead['address'].'<br />'.$lead['city'].' '.$lead['state'].' '.$lead['zip'].' '.$lead['country'].' <hr />'.$lead['email'].'<hr />'.$lead['phone']; ?>
+											<?php echo $lead['address'].'<br />'.$lead['city'].' '.$lead['state'].' '.$lead['zip'].' '.$lead['country'].'<br /><br />'.$lead['email'].'<br /><br />'.$lead['phone']; ?>
 										</td>
 									</tr>
 									<?php foreach($lead['Contact'] as $contact) { ?>
