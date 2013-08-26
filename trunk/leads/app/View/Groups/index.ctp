@@ -26,7 +26,7 @@
 									</tr>
 									<?php foreach($lead['Contact'] as $contact) { ?>
 										<tr>
-											<td><strong><?php echo $contact['first_name'].' '.$contact['last_name']; ?></strong></td>
+											<td><strong><?php echo $contact['first_name'].' '.$contact['last_name']; ?></strong><br /><?php echo $contact['title']; ?></td>
 											<td>
 												<?php echo $contact['address'].'<br />'.$contact['city'].' '.$contact['state'].' '.$contact['zip'].' '.$contact['country'].'<br /><br />'.$contact['email'].'<br /><br />'.$contact['phone']; ?>
 											</td>
