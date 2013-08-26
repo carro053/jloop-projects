@@ -5,10 +5,10 @@
 			<table>
 				<thead>
 					<tr>
-						<td>Lead</td>
-						<td>Company</td>
-						<td>Contacts</td>
-						<td>&nbsp;</td>
+						<th>Lead</th>
+						<th>Company</th>
+						<th>Contacts</th>
+						<th>&nbsp;</th>
 					</tr>
 				</thead>
 				<tbody>
