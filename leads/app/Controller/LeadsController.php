@@ -114,6 +114,10 @@ class LeadsController extends AppController {
 		$this->layout = false;
 		if($this->request->is('post')) {
 			if(!empty($this->request->data['Lead']['id'])) {
+				//if no notes is entererd, don't save a blank note
+				if(empty($this->request->data['Note']))
+					unset($this->request->data['Note']);
+					
 				if($this->Lead->saveAll($this->request->data)) {
 					if(isset($this->request->data['Lead']['is_chrome_extension']))
 						die('1');
