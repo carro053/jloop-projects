@@ -46,9 +46,6 @@
 			));
 		}
 		echo '</fieldset></div>';
-		echo $this->Form->input('Note.0.text', array('label' => 'Note'));
-		echo $this->Form->input('Note.0.user_id', array('type' => 'hidden', 'value' => $authUser['id']));
-		echo $this->Form->end('Save');
 	?>
 	
 	<table>
@@ -59,7 +56,7 @@
 				<th>Date</th>
 			</tr>
 		</thead>
-		<tbody id="LeadNotes">
+		<tbody>
 			<?php foreach($lead['Note'] as $note) { ?>
 				<tr>
 					<td><?php echo $note['text']; ?></td>
@@ -67,8 +64,19 @@
 					<td><?php echo $note['created']; ?></td>
 				</tr>
 			<?php } ?>
+			<?php if(empty($lead['Note'])) { ?>
+				<tr><td colspan="3">No notes entered yet.</td></tr>
+			<?php } ?>
 		</tbody>
 	</table>
+	
+	<?php
+		echo $this->Form->input('Note.0.text', array('label' => 'Note'));
+		echo $this->Form->input('Note.0.user_id', array('type' => 'hidden', 'value' => $authUser['id']));
+		echo $this->Form->end('Save');
+	?>
+	
+	
 	
 	<?php
 		/*

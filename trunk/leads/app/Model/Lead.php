@@ -8,6 +8,10 @@ class Lead extends AppModel {
 	);
 	
 	public $hasMany = array(
+		'Contact' => array(
+			'className' => 'Contact',
+			'foreignKey' => 'lead_id'
+		),
 		'Note' => array(
 			'className' => 'Note',
 			'foreignKey' => 'lead_id',
