@@ -15,7 +15,7 @@
 					<?php foreach($group['Lead'] as $lead) { ?>
 						<tr id="groups_lead_id_<?php echo $lead['GroupsLead']['id']; ?>">
 							<td><?php echo $lead['name']; ?></td>
-							<td><?php echo $lead['seller']; ?></td>
+							<td><?php echo $lead['company']; ?></td>
 							<td>
 								<table>
 									<tr>
