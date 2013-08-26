@@ -115,7 +115,7 @@ class LeadsController extends AppController {
 		if($this->request->is('post')) {
 			if(!empty($this->request->data['Lead']['id'])) {
 				//if no notes is entererd, don't save a blank note
-				if(empty($this->request->data['Note']))
+				if(empty($this->request->data['Note'][0]['text']))
 					unset($this->request->data['Note']);
 					
 				if($this->Lead->saveAll($this->request->data)) {
