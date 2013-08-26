@@ -5,11 +5,9 @@
 			<table>
 				<thead>
 					<tr>
-						<td>Name</td>
-						<td>Type</td>
-						<td>Rating</td>
-						<td>Email</td>
-						<td>Phone</td>
+						<td>Lead</td>
+						<td>Company</td>
+						<td>Contacts</td>
 						<td>&nbsp;</td>
 					</tr>
 				</thead>
@@ -17,14 +15,29 @@
 					<?php foreach($group['Lead'] as $lead) { ?>
 						<tr id="groups_lead_id_<?php echo $lead['GroupsLead']['id']; ?>">
 							<td><?php echo $lead['name']; ?></td>
-							<td><?php echo $lead['type']; ?></td>
-							<td><?php echo $lead['rating']; ?></td>
-							<td><?php echo $lead['email']; ?></td>
-							<td><?php echo $lead['phone']; ?></td>
+							<td><?php echo $lead['seller']; ?></td>
+							<td>
+								<table>
+									<tr>
+										<td><strong>Company</strong></td>
+										<td>
+											<?php echo $lead['address'].'<br />'.$lead['city'].' '.$lead['state'].' '.$lead['zip'].' '.$lead['country'].' <hr />'.$lead['email'].'<hr />'.$lead['phone']; ?>
+										</td>
+									</tr>
+									<?php foreach($lead['Contact'] as $contact) { ?>
+										<tr>
+											<td><strong><?php echo $contact['first_name'].' '.$contact['last_name']; ?></strong></td>
+											<td>
+												<?php echo $contact['address'].'<br />'.$contact['city'].' '.$contact['state'].' '.$contact['zip'].' '.$contact['country'].' <hr />'.$contact['email'].'<hr />'.$contact['phone']; ?>
+											</td>
+										</tr>
+									<?php } ?>
+								</table>
+							</td>
 							<td><a class="dialog" href="/<?php echo Inflector::pluralize($lead['model']); ?>/view/<?php echo $lead['model_id']; ?>">View</a>&nbsp;<a href="#" onclick="removeLead(<?php echo $lead['GroupsLead']['id']; ?>);">Delete From Group</a></td>
 						</tr>
 					<?php } if(empty($group['Lead'])) { ?>
-						<tr><td colspan="6">There are currently no leads in this group. Bummer.</td></tr>
+						<tr><td colspan="4">There are currently no leads in this group. Bummer.</td></tr>
 					<?php } ?>
 				</tbody>
 			</table>
