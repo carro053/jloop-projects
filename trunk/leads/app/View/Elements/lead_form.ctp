@@ -85,6 +85,19 @@
 	<?php
 		echo $this->Form->input('Contact.0.first_name');
 		echo $this->Form->input('Contact.0.last_name');
+		echo $this->Form->input('Contact.0.title');
+		echo $this->Form->input('Contact.0.phone');
+		echo $this->Form->input('Contact.0.email');
+		echo $this->Form->input('Contact.0.im');
+		echo $this->Form->input('Contact.0.website');
+		echo $this->Form->input('Contact.0.address');
+		echo $this->Form->input('Contact.0.city');
+		echo $this->Form->input('Contact.0.state');
+		echo $this->Form->input('Contact.0.zip');
+		echo $this->Form->input('Contact.0.country');
+		echo $this->Form->input('Contact.0.linkedin');
+		echo $this->Form->input('Contact.0.twitter');
+		echo $this->Form->input('Contact.0.background_info');
 	?>
 	
 	<table>
