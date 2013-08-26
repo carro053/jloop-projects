@@ -157,8 +157,6 @@
 
 <?php echo $this->element('pager', array('totalItems' => $count, 'uri' => 'Leads/index')); ?>
 
-<?php pr($leads); ?>
-
 <script type="text/javascript">
 	$('.tags').buttonset();
 	var groups = <?php echo json_encode($groups); ?>;
