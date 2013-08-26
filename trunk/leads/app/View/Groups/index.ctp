@@ -47,7 +47,6 @@
 	<?php } ?>
 </div>
 
-<?php pr($groups); ?>
 <script>
 	$(function() {
 		$( "#accordion" ).accordion({
