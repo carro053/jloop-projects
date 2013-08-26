@@ -4,7 +4,9 @@ App::uses('AppController', 'Controller');
 class GroupsController extends AppController {
 
 	public function index() {
-		$groups = $this->Group->find('all');
+		$groups = $this->Group->find('all', array(
+			'recursive' => 2
+		));
 		$this->set('groups', $groups);
 	}
 	
