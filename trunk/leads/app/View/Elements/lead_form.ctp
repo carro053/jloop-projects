@@ -51,6 +51,45 @@
 	<table>
 		<thead>
 			<tr>
+				<th>Contact</th>
+				<th>Phone</th>
+				<th>Email</th>
+				<th>IM</th>
+				<th>Website</th>
+				<th>Address</th>
+				<th>Linkedin</th>
+				<th>Twitter</th>
+				<th>Background Info</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach($lead['Contact'] as $contact) { ?>
+				<tr>
+					<td><?php echo $note['first_name'].' '.$note['last_name'].'<br />'.$note['title']; ?></td>
+					<td><?php echo $note['phone']; ?></td>
+					<td><?php echo $note['email']; ?></td>
+					<td><?php echo $note['im']; ?></td>
+					<td><?php echo $note['website']; ?></td>
+					<td><?php echo $note['address'].'<br />'.$note['city'].' '.$note['state'].' '.$note['zip'].' '.$note['country']; ?></td>
+					<td><?php echo $note['linkedin']; ?></td>
+					<td><?php echo $note['twitter']; ?></td>
+					<td><?php echo $note['background_info']; ?></td>
+				</tr>
+			<?php } ?>
+			<?php if(empty($lead['Contact'])) { ?>
+				<tr><td colspan="9">No contacts entered yet.</td></tr>
+			<?php } ?>
+		</tbody>
+	</table>
+	
+	<?php
+		echo $this->Form->input('Contact.0.first_name');
+		echo $this->Form->input('Contact.0.last_name');
+	?>
+	
+	<table>
+		<thead>
+			<tr>
 				<th>Note</th>
 				<th>Author</th>
 				<th>Date</th>
