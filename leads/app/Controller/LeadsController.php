@@ -120,6 +120,12 @@ class LeadsController extends AppController {
 						unset($this->request->data['Note'][$key]);
 				}
 				
+				//if no contact is entererd, don't save a blank contact
+				foreach($this->request->data['Contact'] as $key => $contact) {
+					if(empty($contact['first_name']) && empty($contact['last_name']))
+						unset($this->request->data['Contact'][$key]);
+				}
+				
 				if($this->Lead->saveAll($this->request->data)) {
 					if(isset($this->request->data['Lead']['is_chrome_extension']))
 						die('1');
