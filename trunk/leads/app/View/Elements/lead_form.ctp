@@ -15,6 +15,11 @@
 		echo $this->Form->input('facebook');
 		echo $this->Form->input('linkedin');
 		echo $this->Form->input('phone');
+		echo $this->Form->input('address');
+		echo $this->Form->input('city');
+		echo $this->Form->input('state');
+		echo $this->Form->input('zip');
+		echo $this->Form->input('country');
 		echo $this->Form->input('rating', array(
 			'type' => 'radio',
 			'options' => array(
