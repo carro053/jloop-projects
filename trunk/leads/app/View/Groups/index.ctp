@@ -28,7 +28,7 @@
 										<tr>
 											<td><strong><?php echo $contact['first_name'].' '.$contact['last_name']; ?></strong></td>
 											<td>
-												<?php echo $contact['address'].'<br />'.$contact['city'].' '.$contact['state'].' '.$contact['zip'].' '.$contact['country'].' <hr />'.$contact['email'].'<hr />'.$contact['phone']; ?>
+												<?php echo $contact['address'].'<br />'.$contact['city'].' '.$contact['state'].' '.$contact['zip'].' '.$contact['country'].'<br /><br />'.$contact['email'].'<br /><br />'.$contact['phone']; ?>
 											</td>
 										</tr>
 									<?php } ?>
