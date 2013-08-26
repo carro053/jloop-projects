@@ -9,7 +9,8 @@ class Note extends AppModel {
 		'text' => array(
 			array(
 				'rule' => 'notEmpty',
-				'required' => false
+				'required' => false,
+				'allowEmpty' => true
 			)
 		)
 	);
