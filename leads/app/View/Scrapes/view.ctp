@@ -100,7 +100,7 @@
 <?php echo $this->element('lead_form', array(
 	'lead' => $scrape['Lead'],
 	'defaultName' => $scrape['Scrape']['name'].' '.$scrape['Scrape']['copyright'],
-	'defaultCompany' => $scrape['Scrape']['seller']
+	'defaultCompany' => $scrape['Scrape']['seller'],
 	'tags' => $tags
 )); ?>
 
