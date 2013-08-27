@@ -37,9 +37,9 @@
 							<td>
 								<a class="dialog" href="/<?php echo Inflector::pluralize($lead['model']); ?>/view/<?php echo $lead['model_id']; ?>">View</a>&nbsp;
 								<?php if(empty($lead['highrise_id'])) { ?>
-									<a href="#" onclick="exportToHighrise(<?php echo $lead['id']; ?>); return false;" id="highrise-export-<?php echo $lead['highrise_id']; ?>">Export to Highrise</a>
+									<a href="#" onclick="exportToHighrise(<?php echo $lead['id']; ?>); return false;" id="highrise-export-<?php echo $lead['id']; ?>">Export to Highrise</a>
 								<?php } else { ?>
-									<a href="https://jloop.highrisehq.com/companies/<?php echo $lead['highrise_id']; ?>" target="_blank" id="highrise-export-<?php echo $lead['highrise_id']; ?>">View in Highrise</a>
+									<a href="https://jloop.highrisehq.com/companies/<?php echo $lead['highrise_id']; ?>" target="_blank" id="highrise-export-<?php echo $lead['id']; ?>">View in Highrise</a>
 								<?php } ?>&nbsp;
 								<a href="#" onclick="removeLead(<?php echo $lead['GroupsLead']['id']; ?>);">Delete From Group</a>
 							</td>
