@@ -61,7 +61,7 @@ class GroupsController extends AppController {
 	}
 	
 	public function mailmanExport($group_id) {
-		$group = $this->Group->find('first', array('conditions' => 'Group.id = '.$group_id, 'recursive' => 2));
+		$group = $this->Group->find('first', array('conditions' => 'Group.id = '.$group_id.' AND Lead.highrise_id != 0', 'recursive' => 2));
 		
 		$filename = ROOT.'/app/tmp/logs/leads_mailman_export_'.time().'.csv';
 		$qexport = fopen($filename, 'w');
