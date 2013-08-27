@@ -69,7 +69,7 @@ class GroupsController extends AppController {
 		$qexport = fopen($filename, 'w');
 		
 		foreach($group['Lead'] as $lead) {
-			if(!empty($lead['Lead']['email'])) {
+			if(!empty($lead['email'])) {
 				$fields = array($lead['email'], $lead['name']);
 				fputcsv($qexport, $fields);
 			}
