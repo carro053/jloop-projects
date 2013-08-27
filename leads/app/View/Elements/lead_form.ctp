@@ -140,7 +140,7 @@
 		if(empty($this->request->data['Lead']['highrise_id'])) { ?>
 			<a href="#" onclick="exportToHighrise(<?php echo $this->request->data['Lead']['id']; ?>); return false;" id="highrise-export">Export to Highrise</a>
 		<?php } else { ?>
-			<a href="https://jloop.highrisehq.com/companies/<?php echo $this->request->data['Lead']['highrise_id']; ?>" target="_blank">View in Highrise</a>
+			<a href="https://jloop.highrisehq.com/companies/<?php echo $this->request->data['Lead']['highrise_id']; ?>" target="_blank" id="highrise-export">View in Highrise</a>
 		<?php } ?>
 	<?php } ?>
 	
