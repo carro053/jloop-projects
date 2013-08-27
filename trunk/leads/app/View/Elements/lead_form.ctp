@@ -136,7 +136,7 @@
 		echo $this->Form->end('Save');
 	?>
 	
-	<?php if(!empty($this->request->data['Lead']['id']) {
+	<?php if(!empty($this->request->data['Lead']['id'])) {
 		if(empty($this->request->data['Lead']['highrise_id'])) { ?>
 			<a href="#" onclick="exportToHighrise(<?php echo $this->request->data['Lead']['id']; ?>); return false;" id="highrise-export">Export to Highrise</a>
 		<?php } else { ?>
