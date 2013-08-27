@@ -172,19 +172,5 @@
 			lead.name = '<?php echo $this->request->data['Lead']['name']; ?>';
 		<?php } ?>
 		window.postMessage(lead, "*");
-		
-		function exportToHighrise(lead_id) {
-			var time = new Date().getTime();
-			$.ajax({
-				url: "/Leads/ajaxExportToHighrise/"+lead_id+"?t="+time,
-				success: function(data){
-					if(!isNaN(data)) //if something is NOT not number, then it's a number!
-						$('#highrise-export').replaceWith('<a href="https://jloop.highrisehq.com/companies/'+data+'" target="_blank">View in Highrise</a>');
-				},
-				error: function(){
-					alert('There was an error with AJAX.');
-				}
-			});
-		}
 	</script>
 </div>
