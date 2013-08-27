@@ -61,7 +61,7 @@ class GroupsController extends AppController {
 	}
 	
 	public function mailmanExport($group_id) {
-		$group = $this->Group->findById($group_id);
+		$group = $this->Group->findById($group_id, array('recursive' => 2));
 		pr($group);
 		exit;
 	}
