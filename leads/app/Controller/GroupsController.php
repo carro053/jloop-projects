@@ -63,6 +63,29 @@ class GroupsController extends AppController {
 	public function mailmanExport($group_id) {
 		$group = $this->Group->find('first', array('conditions' => 'Group.id = '.$group_id, 'recursive' => 2));
 		pr($group);
+		//exit;
+		
+		$filename = ROOT.'/app/tmp/logs/leads_mailman_export_'.time().'.csv';
+		$qexport = fopen($filename, 'w');
+		
+		foreach($group['Lead'] as $lead) {
+			if(!empty($lead['Lead']['email'])) {
+				$fields = array($lead['email'], $lead['name']);
+				fputcsv($qexport, $fields);
+			}
+			
+			foreach($lead['Contact'] as $contact) {
+				if(!empty($contact['email'])) {
+					$fields = array($contact['email'], $contact['first_name'], $contact['last_name']);
+					fputcsv($qexport, $fields);
+				}
+			}
+		}
+		
+		fclose($qexport);
+		header('Content-disposition: attachment; filename=leads_mailman_export_'.time().'.csv');
+		header('Content-type: application/csv');
+		readfile($filename);
 		exit;
 	}
 	
