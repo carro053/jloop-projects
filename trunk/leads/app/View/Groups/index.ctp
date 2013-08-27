@@ -42,7 +42,7 @@
 				</tbody>
 			</table>
 			
-			<a href="/Groups/mailmanExport/<?php echo $group['Group']['id']; ?>" onclick="return confirm('NOTE: Any leads without email addresses will NOT be exported');">Export this Group to Mailman</a>
+			<a href="/Groups/mailmanExport/<?php echo $group['Group']['id']; ?>" onclick="return confirm('NOTE: Leads that have no email addresses or have already been moved to Highrise will NOT be exported.');">Export this Group to Mailman</a>
 			<a onclick="return confirm('Are you sure you want to delete this entire group? You\'re crazy.');" href="/Groups/delete/<?php echo $group['Group']['id']; ?>">Delete Group</a>
 		</div>
 	<?php } ?>
