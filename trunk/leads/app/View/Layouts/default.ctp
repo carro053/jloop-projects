@@ -81,6 +81,7 @@
 				url: "/Leads/ajaxExportToHighrise/"+lead_id+"?t="+time,
 				success: function(data){
 					console.log(data);
+					console.log(lead_id);
 					if(!isNaN(data)) {
 						$('#highrise-export-'+lead_id).replaceWith('<a href="https://jloop.highrisehq.com/companies/'+data+'" target="_blank" id="highrise-export-'+lead_id+'">View in Highrise</a>');
 						$('#highrise-export-'+lead_id).button();
