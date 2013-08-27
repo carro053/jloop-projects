@@ -34,7 +34,15 @@
 									<?php } ?>
 								</table>
 							</td>
-							<td><a class="dialog" href="/<?php echo Inflector::pluralize($lead['model']); ?>/view/<?php echo $lead['model_id']; ?>">View</a>&nbsp;<a href="#" onclick="removeLead(<?php echo $lead['GroupsLead']['id']; ?>);">Delete From Group</a></td>
+							<td>
+								<a class="dialog" href="/<?php echo Inflector::pluralize($lead['model']); ?>/view/<?php echo $lead['model_id']; ?>">View</a>&nbsp;
+								<?php if(empty($lead['highrise_id'])) { ?>
+									<a href="#" onclick="exportToHighrise(<?php echo $lead['id']; ?>); return false;" id="highrise-export">Export to Highrise</a>
+								<?php } else { ?>
+									<a href="https://jloop.highrisehq.com/companies/<?php echo $lead['highrise_id']; ?>" target="_blank" id="highrise-export">View in Highrise</a>
+								<?php } ?>&nbsp;
+								<a href="#" onclick="removeLead(<?php echo $lead['GroupsLead']['id']; ?>);">Delete From Group</a>
+							</td>
 						</tr>
 					<?php } if(empty($group['Lead'])) { ?>
 						<tr><td colspan="4">There are currently no leads in this group. Bummer.</td></tr>
@@ -43,11 +51,6 @@
 			</table>
 			
 			<a href="/Groups/mailmanExport/<?php echo $group['Group']['id']; ?>" onclick="return confirm('NOTE: Leads that have no email addresses or have already been moved to Highrise will NOT be exported.');">Export this Group to Mailman</a>
-			<?php if(empty($lead['highrise_id'])) { ?>
-				<a href="#" onclick="exportToHighrise(<?php echo $lead['id']; ?>); return false;" id="highrise-export">Export to Highrise</a>
-			<?php } else { ?>
-				<a href="https://jloop.highrisehq.com/companies/<?php echo $lead['highrise_id']; ?>" target="_blank" id="highrise-export">View in Highrise</a>
-			<?php } ?>
 			<a onclick="return confirm('Are you sure you want to delete this entire group? You\'re crazy.');" href="/Groups/delete/<?php echo $group['Group']['id']; ?>">Delete Group</a>
 		</div>
 	<?php } ?>
