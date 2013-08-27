@@ -5,7 +5,7 @@ class LeadsController extends AppController {
 
 	var $uses = array('Lead','Note');
 
-	public function index($mailman_export=0) {
+	public function index() {
 		$types_raw = $this->Lead->find('all', array(
 			'fields' => array(
 				'DISTINCT type'
@@ -79,6 +79,7 @@ class LeadsController extends AppController {
 		$count = $this->Lead->find('count', array('conditions' => $conditions));
 		$this->set('count', $count);
 		
+		/*
 		if($mailman_export == 1) {
 			//CSV EXPORT TO MAILMAN
 			$leads = $this->Lead->find('all', array(
@@ -102,6 +103,7 @@ class LeadsController extends AppController {
 			readfile($filename);
 			exit;
 		}
+		*/
 	}
 
 	public function gather() {

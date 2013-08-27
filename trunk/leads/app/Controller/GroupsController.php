@@ -60,6 +60,12 @@ class GroupsController extends AppController {
 		return $this->redirect('/Groups/index');
 	}
 	
+	public function mailmanExport($group_id) {
+		$group = $this->Group->findById($group_id);
+		pr($group);
+		exit;
+	}
+	
 	/*public function create() {
 		if($this->request->is('post')) {
 			if($this->Tag->save($this->request->data)) {

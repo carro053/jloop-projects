@@ -91,7 +91,7 @@
 
 <p><?php echo $count; ?> result(s).</p>
 
-<a href="http://<?php echo $_SERVER['HTTP_HOST'].'/Leads/index/1?'.$_SERVER['QUERY_STRING']; ?>" onclick="return confirm('NOTE: Any leads without email addresses will NOT be exported');">Export these results to Mailman</a>
+<?php /*<a href="http://<?php echo $_SERVER['HTTP_HOST'].'/Leads/index/1?'.$_SERVER['QUERY_STRING']; ?>" onclick="return confirm('NOTE: Any leads without email addresses will NOT be exported');">Export these results to Mailman</a> */ ?>
 
 <?php echo $this->Form->create('Leads'); ?>
 
