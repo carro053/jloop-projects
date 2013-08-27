@@ -74,6 +74,22 @@
 			});
 		}
 		init();
+		
+		function exportToHighrise(lead_id) {
+			var time = new Date().getTime();
+			$.ajax({
+				url: "/Leads/ajaxExportToHighrise/"+lead_id+"?t="+time,
+				success: function(data){
+					if(!isNaN(data)) {
+						$('#highrise-export').replaceWith('<a href="https://jloop.highrisehq.com/companies/'+data+'" target="_blank">View in Highrise</a>');
+						$('#highrise-export').button();
+					}
+				},
+				error: function(){
+					alert('There was an error with AJAX.');
+				}
+			});
+		}
 	</script>
 	<?php echo $this->element('sql_dump'); ?>
 	
