@@ -156,4 +156,10 @@ class LeadsController extends AppController {
 		die('Only Post');
 	}
 	*/
+	
+	public function ajaxExportToHighrise($lead_id) {
+		//todd, do something here!
+		echo '71562371';
+		exit;
+	}
 }

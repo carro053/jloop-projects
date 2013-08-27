@@ -136,7 +136,13 @@
 		echo $this->Form->end('Save');
 	?>
 	
-	
+	<?php if(!empty($this->request->data['Lead']['id']) {
+		if(empty($this->request->data['Lead']['highrise_id'])) { ?>
+			<a href="#" onclick="exportToHighrise(<?php echo $this->request->data['Lead']['id']; ?>); return false;" id="highrise-export">Export to Highrise</a>
+		<?php } else { ?>
+			<a href="https://jloop.highrisehq.com/companies/<?php echo $this->request->data['Lead']['highrise_id']; ?>">View in Highrise</a>
+		<?php } ?>
+	<?php } ?>
 	
 	<?php
 		/*
@@ -166,5 +172,18 @@
 			lead.name = '<?php echo $this->request->data['Lead']['name']; ?>';
 		<?php } ?>
 		window.postMessage(lead, "*");
+		
+		function exportToHighrise(lead_id) {
+			var time = new Date().getTime();
+			$.ajax({
+				url: "/Leads/ajaxExportToHighrise/"+lead_id+"?t="+time,
+				success: function(data){
+					console.log(data);
+				},
+				error: function(){
+					alert('There was an error with AJAX.');
+				}
+			});
+		}
 	</script>
 </div>
