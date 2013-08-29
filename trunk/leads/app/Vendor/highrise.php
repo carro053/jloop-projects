@@ -90,7 +90,7 @@ class Highrise {
 		  </subject_datas>
 		</company>';
 		$resp = $this->post($xml, 'companies.xml');
-		return $resp;
+		return $resp->id;
 	}
 	
 	public function pushDeal() {
