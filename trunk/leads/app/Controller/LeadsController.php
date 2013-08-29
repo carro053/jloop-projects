@@ -162,4 +162,12 @@ class LeadsController extends AppController {
 		echo '71562371';
 		exit;
 	}
+	
+	public function testHighrise() {
+		App::import('Vendor', 'highrise');
+		$highrise = new Highrise();
+		$resp = $highrise->pushPerson();
+		pr($resp);
+		die;
+	}
 }
