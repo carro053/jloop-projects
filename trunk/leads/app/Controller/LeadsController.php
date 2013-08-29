@@ -171,7 +171,7 @@ class LeadsController extends AppController {
 	public function testHighrise() {
 		App::import('Vendor', 'highrise');
 		$highrise = new Highrise();
-		$resp = $highrise->pushPerson();
+		$resp = $highrise->pushCompany(array());
 		pr($resp);
 		die;
 	}
