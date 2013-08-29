@@ -161,6 +161,11 @@ class LeadsController extends AppController {
 		//todd, do something here!
 		echo '71562371';
 		exit;
+		
+		$lead = $this->Lead->findById($lead_id);
+		if(!empty($lead) && empty($lead['Lead']['highrise_id'])) {
+			
+		}
 	}
 	
 	public function testHighrise() {
