@@ -7,7 +7,11 @@ $opposite_direction = $direction == 'asc' ? 'desc' : 'asc';
 
 $params = '';
 foreach($_GET as $key => $value) {
-	if($key != 'order' && $key != 'direction') {
+	if(is_array($value)) {
+		foreach($value as $v) {
+			$params .= '&'.$key.'[]='.$v;
+		}
+	}elseif($key != 'order' && $key != 'direction') {
 		$params .= '&'.$key.'='.$value;
 	}
 }
