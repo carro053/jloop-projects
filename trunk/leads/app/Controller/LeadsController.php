@@ -163,10 +163,8 @@ class LeadsController extends AppController {
 			App::import('Vendor', 'highrise');
 			$highrise = new Highrise();
 			$highrise_id = $highrise->pushCompany($lead['Lead']);
-			if($highrise_id > 0) {
-				foreach($lead['Contact'] as $contact) {
-					$highrise->pushPerson($contact, $lead['Lead']['company']);
-				}
+			foreach($lead['Contact'] as $contact) {
+				$highrise->pushPerson($contact, $lead['Lead']['company']);
 			}
 			//save a deal
 			
