@@ -133,11 +133,17 @@ class Highrise {
 	}
 	
 	public function pushDeal($lead, $company_id) {
+		$tags = '';
+		foreach($lead['Tag'] as $key=>$tag) {
+			if($key != 0)
+				$tags .= ', ';
+			$tags .= $tag['name'];
+		}
 		$xml = '<deal>
-		  <name>a test</name>
+		  <name>'.htmlspecialchars($lead['Lead']['name']).'</name>
 		  <!-- optional fields -->
 		  <party-id type="integer">'.$company_id.'</party-id>
-		  <background>test background</background>
+		  <background>Tags: '.$tags.'</background>
 		</deal>';
 		$resp = $this->post($xml, 'deals.xml');
 		return $resp;
