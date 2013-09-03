@@ -159,7 +159,7 @@ class LeadsController extends AppController {
 	
 	public function ajaxExportToHighrise($lead_id) {
 		$lead = $this->Lead->findById($lead_id);
-		if(!empty($lead) && empty($lead['Lead']['highrise_id'])) {
+		if(!empty($lead)/* && empty($lead['Lead']['highrise_id'])*/) {
 			App::import('Vendor', 'highrise');
 			$highrise = new Highrise();
 			$highrise_id = $highrise->pushCompany($lead['Lead']);
