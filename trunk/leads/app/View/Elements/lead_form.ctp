@@ -138,9 +138,9 @@
 	
 	<?php if(!empty($this->request->data['Lead']['id'])) {
 		if(empty($this->request->data['Lead']['highrise_id'])) { ?>
-			<a href="#" onclick="exportToHighrise(<?php echo $this->request->data['Lead']['id']; ?>); return false;" id="highrise-export-<?php echo $this->request->data['Lead']['id']; ?>">Export to Highrise</a>
+			<a href="#" onclick="exportToHighrise(<?php echo $this->request->data['Lead']['id']; ?>); return false;" class="highrise-export-<?php echo $this->request->data['Lead']['id']; ?>">Export to Highrise</a>
 		<?php } else { ?>
-			<a href="https://jloop.highrisehq.com/companies/<?php echo $this->request->data['Lead']['highrise_id']; ?>" target="_blank" id="highrise-export-<?php echo $this->request->data['Lead']['id']; ?>">View in Highrise</a>
+			<a href="https://jloop.highrisehq.com/companies/<?php echo $this->request->data['Lead']['highrise_id']; ?>" target="_blank" class="highrise-export-<?php echo $this->request->data['Lead']['id']; ?>">View in Highrise</a>
 		<?php } ?>
 	<?php } ?>
 	
