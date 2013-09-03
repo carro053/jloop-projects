@@ -9,7 +9,11 @@ $currentPage = !empty($_GET['page']) ? $_GET['page'] : 1;
 $params = '';
 
 foreach($_GET as $key => $value) {
-	if($key != 'page') {
+	if(is_array($value)) {
+		foreach($value as $v) {
+			$params .= '&'.$key.'[]='.$v;
+		}
+	}elseif($key != 'page') {
 		$params .= '&'.$key.'='.$value;
 	}
 }
