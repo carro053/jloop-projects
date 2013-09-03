@@ -159,15 +159,19 @@ class LeadsController extends AppController {
 	
 	public function ajaxExportToHighrise($lead_id) {
 		$lead = $this->Lead->findById($lead_id);
+		pr($lead);
+		die;
 		if(!empty($lead)/* && empty($lead['Lead']['highrise_id'])*/) {
 			App::import('Vendor', 'highrise');
 			$highrise = new Highrise();
+			//save company to highrise
 			$highrise_id = $highrise->pushCompany($lead['Lead']);
+			//save each contact as person in highrise
 			foreach($lead['Contact'] as $contact) {
 				$highrise->pushPerson($contact, $lead['Lead']['company']);
 			}
 			//save a deal
-			
+			$highrise->pushDeal($lead);
 			//save highrise_id to lead
 			$this->Lead->id = $lead_id;
 			$this->Lead->saveField('highrise_id', $highrise_id);
