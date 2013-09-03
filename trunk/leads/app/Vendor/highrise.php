@@ -111,10 +111,12 @@ class Highrise {
 		  <subject_datas type="array">
 			  <subject_data>
 			    <value>'.htmlspecialchars($lead['facebook']).'</value>
+			    <subject_field_id type="integer">808590</subject_field_id>
 			    <subject_field_label>Facebook</subject_field_label>
 			  </subject_data>
 			  <subject_data>
 			    <value>'.htmlspecialchars($lead['linkedin']).'</value>
+			    <subject_field_id type="integer">808592</subject_field_id>
 			    <subject_field_label>Linkedin</subject_field_label>
 			  </subject_data>
 		  </subject_datas>
