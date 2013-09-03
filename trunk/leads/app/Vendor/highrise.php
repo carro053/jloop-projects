@@ -137,21 +137,12 @@ class Highrise {
 		return (int)$resp->id;
 	}
 	
-	public function pushDeal() {
+	public function pushDeal($lead, $company_id) {
 		$xml = '<deal>
-		  <name>#{name}</name>
+		  <name>a test</name>
 		  <!-- optional fields -->
-		  <party-id type="integer">#{party_id}</party-id>
-		  <visible-to>Everyone</visible-to>
-		  <group-id type="integer">#{group_id}</group-id>
-		  <owner-id type="integer">#{owner_id}</owner-id>
-		  <responsible-party-id type="integer">#{responsible_party_id}</responsible-party-id>
-		  <category-id type="integer">#{category_id}</category-id>
-		  <background>#{background}</background>
-		  <currency>#{currency}</currency>
-		  <price type="integer">#{price}</price>
-		  <price-type>fixed</price-type>
-		  <duration type="integer">#{duration}</duration>
+		  <party-id type="integer">'.$company_id.'</party-id>
+		  <background>test background</background>
 		</deal>';
 		$resp = $this->post($xml, 'deals.xml');
 		return $resp;
