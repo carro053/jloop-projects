@@ -171,7 +171,7 @@ class LeadsController extends AppController {
 				$highrise->pushPerson($contact, $lead['Lead']['company']);
 			}
 			//save a deal
-			$highrise->pushDeal($lead);
+			$highrise->pushDeal($lead, $highrise_id);
 			//save highrise_id to lead
 			$this->Lead->id = $lead_id;
 			$this->Lead->saveField('highrise_id', $highrise_id);
