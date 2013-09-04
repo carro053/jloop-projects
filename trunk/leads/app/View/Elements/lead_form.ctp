@@ -73,15 +73,15 @@
 		<tbody>
 			<?php foreach($lead['Contact'] as $contact) { ?>
 				<tr>
-					<td><?php echo $contact['first_name'].' '.$contact['last_name'].'<br />'.$contact['title']; ?></td>
-					<td><?php echo $contact['phone']; ?></td>
+					<td><?php echo $this->Editable->contact('first_name', $contact).' '.$this->Editable->contact('last_name', $contact).'<br />'.$this->Editable->contact('title', $contact); ?></td>
+					<td><?php echo $this->Editable->contact('phone', $contact); ?></td>
 					<td><?php echo $this->Editable->contact('email', $contact); ?></td>
-					<td><?php echo $contact['im']; ?></td>
-					<td><?php echo $contact['website']; ?></td>
-					<td><?php echo $contact['address'].'<br />'.$contact['city'].' '.$contact['state'].' '.$contact['zip'].' '.$contact['country']; ?></td>
-					<td><?php echo $contact['linkedin']; ?></td>
-					<td><?php echo $contact['twitter']; ?></td>
-					<td><?php echo $contact['background_info']; ?></td>
+					<td><?php echo $this->Editable->contact('im', $contact); ?></td>
+					<td><?php echo $this->Editable->contact('website', $contact); ?></td>
+					<td><?php echo $this->Editable->contact('address', $contact).'<br />'.$this->Editable->contact('city', $contact).' '.$this->Editable->contact('state', $contact).' '.$this->Editable->contact('zip', $contact).' '.$this->Editable->contact('country', $contact); ?></td>
+					<td><?php echo $this->Editable->contact('linkedin', $contact); ?></td>
+					<td><?php echo $this->Editable->contact('twitter', $contact); ?></td>
+					<td><?php echo $this->Editable->contact('background_info', $contact); ?></td>
 				</tr>
 			<?php } ?>
 			<?php if(empty($lead['Contact'])) { ?>
