@@ -31,4 +31,8 @@ App::uses('Helper', 'View');
  * @package       app.View.Helper
  */
 class AppHelper extends Helper {
+
+	public function editable($field) {
+		return '<span class="editable">'.$field.'</span>'
+	}
 }
