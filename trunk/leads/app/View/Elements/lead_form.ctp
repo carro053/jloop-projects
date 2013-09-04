@@ -167,6 +167,7 @@
 		});
 		$('.editable').editable({
 			mode: 'inline'
+			url: $(this).attr('controller') + '/update'
 		});
 		
 		//pass lead data to chrome extension content script
