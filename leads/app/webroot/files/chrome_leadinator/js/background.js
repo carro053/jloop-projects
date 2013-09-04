@@ -1,6 +1,6 @@
 console.log('JLOOP Leadinator Initialized!');
 
-var site_url = 'leads.jloop.com';
+var site_url = 'dev.leads.jloop.com';
 
 var parentContextId = "leadinator_parent";
 
