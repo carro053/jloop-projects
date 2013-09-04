@@ -5,7 +5,7 @@ class ContactsController extends AppController {
 
 	public function updateField() {
 		pr($_POST);
-		header('HTTP 400 Bad Request', true, 400);
+		header(null, null, 508);
         echo "This field is required!";
 		die;
 	}
