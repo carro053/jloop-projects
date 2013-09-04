@@ -75,7 +75,7 @@
 				<tr>
 					<td><?php echo $contact['first_name'].' '.$contact['last_name'].'<br />'.$contact['title']; ?></td>
 					<td><?php echo $contact['phone']; ?></td>
-					<td><?php echo $this->Editable->contact($contact, 'email'); ?></td>
+					<td><?php echo $this->Editable->contact('email', $contact); ?></td>
 					<td><?php echo $contact['im']; ?></td>
 					<td><?php echo $contact['website']; ?></td>
 					<td><?php echo $contact['address'].'<br />'.$contact['city'].' '.$contact['state'].' '.$contact['zip'].' '.$contact['country']; ?></td>
