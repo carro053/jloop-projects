@@ -53,6 +53,7 @@
 	</div>
 	<script type="text/javascript">
 		var extension_info = {url: "<?php echo $_SERVER['HTTP_HOST']; ?>"};
+		window.postMessage(extension_info, "*");
 	
 		function init() {
 			$('input[type=submit], a, button').button();
