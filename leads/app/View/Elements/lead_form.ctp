@@ -74,7 +74,7 @@
 			<?php foreach($lead['Contact'] as $contact) { ?>
 				<tr>
 					<td><?php echo $contact['first_name'].' '.$contact['last_name'].'<br />'.$contact['title']; ?></td>
-					<td><?php echo $contact['phone']; ?></td>
+					<td class="editable"><?php echo $contact['phone']; ?></td>
 					<td><?php echo $contact['email']; ?></td>
 					<td><?php echo $contact['im']; ?></td>
 					<td><?php echo $contact['website']; ?></td>
@@ -165,6 +165,7 @@
 			);
 			return false;
 		});
+		$('.editable').editable();
 		
 		//pass lead data to chrome extension content script
 		var lead = <?php echo json_encode($lead); ?>;
