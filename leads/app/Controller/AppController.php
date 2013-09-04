@@ -40,6 +40,11 @@ class AppController extends Controller {
         )
     );
     
+    public $helpers = array(
+    	'Html',
+    	'Form'
+    );
+    
     public function beforeFilter() {
 	    $this->set('authUser', $this->Auth->user());
     }
