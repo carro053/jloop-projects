@@ -3,8 +3,8 @@ App::uses('AppHelper', 'View');
 
 class EditableHelper extends AppHelper {
 
-	public function editable($field) {
-		return '<span class="editable" data-type="text" data-pk="1" data-url="/Contacts/updateField" data-title="Enter '.$field.'">'.$field.'</span>';
+	public function contact($field, $data) {
+		return '<span class="editable" data-type="text" data-pk="'.$data['id'].'" data-name="'.$field.'" data-url="/Contacts/updateField" data-title="Enter '.$field.'">'.$data[$field].'</span>';
 	}
 	
 }
