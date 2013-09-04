@@ -89,6 +89,7 @@ chrome.runtime.onMessage.addListener(
 		
 		if(request.site_url) {
 			site_url = request.site_url;
+			environment = request.environment;
 		} else {
 			currentLeadId = request.id;
 			
