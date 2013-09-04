@@ -52,6 +52,8 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+		var extension_info = {url: "<?php echo $_SERVER['HTTP_HOST']; ?>"};
+	
 		function init() {
 			$('input[type=submit], a, button').button();
 			
