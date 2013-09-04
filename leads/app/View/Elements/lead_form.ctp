@@ -170,10 +170,16 @@
 		});
 		
 		//pass lead data to chrome extension content script
-		var lead = <?php echo json_encode($lead); ?>;
+		var extension_info = <?php echo json_encode($lead); ?>;
 		<?php if(empty($lead['name'])) { ?>
-			lead.name = '<?php echo $this->request->data['Lead']['name']; ?>';
+			extension_info.name = '<?php echo $this->request->data['Lead']['name']; ?>';
+			extension_info.site_url = "<?php echo $_SERVER['HTTP_HOST']; ?>";
+			if(extension_info.site_url.indexOf('dev') != -1)
+				extension_info.environment = 'DEV';
+			else
+				extension_info.environment = 'LIVE';
 		<?php } ?>
-		window.postMessage(lead, "*");
+		window.postMessage(extension_info, "*");
+		console.log('message should be sent to extension');
 	</script>
 </div>
