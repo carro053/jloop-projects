@@ -85,23 +85,26 @@ chrome.contextMenus.create(phoneContextProperties, function (){});
 chrome.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
 		console.log('message received by extension');
-		console.log(request.name);
 		
-		currentLeadId = request.id;
-		
-		appNameUpdateProperties = { "title": "Currently gathering data for " + request.name };
-		chrome.contextMenus.update("app_name", appNameUpdateProperties, function (){});
-		
-		emailUpdateProperties = { "enabled": true };
-		chrome.contextMenus.update("save_email", emailUpdateProperties, function (){});
-		twitterUpdateProperties = { "enabled": true };
-		chrome.contextMenus.update("save_twitter", twitterUpdateProperties, function (){});
-		fbUpdateProperties = { "enabled": true };
-		chrome.contextMenus.update("save_facebook", fbUpdateProperties, function (){});
-		phoneUpdateProperties = { "enabled": true };
-		linkedinUpdateProperties = { "enabled": true };
-		chrome.contextMenus.update("save_linkedin", linkedinUpdateProperties, function (){});
-		chrome.contextMenus.update("save_phone", phoneUpdateProperties, function (){});
+		if(request.site_url) {
+			site_url = request.site_url;
+		} else {
+			currentLeadId = request.id;
+			
+			appNameUpdateProperties = { "title": "Currently gathering data for " + request.name };
+			chrome.contextMenus.update("app_name", appNameUpdateProperties, function (){});
+			
+			emailUpdateProperties = { "enabled": true };
+			chrome.contextMenus.update("save_email", emailUpdateProperties, function (){});
+			twitterUpdateProperties = { "enabled": true };
+			chrome.contextMenus.update("save_twitter", twitterUpdateProperties, function (){});
+			fbUpdateProperties = { "enabled": true };
+			chrome.contextMenus.update("save_facebook", fbUpdateProperties, function (){});
+			phoneUpdateProperties = { "enabled": true };
+			linkedinUpdateProperties = { "enabled": true };
+			chrome.contextMenus.update("save_linkedin", linkedinUpdateProperties, function (){});
+			chrome.contextMenus.update("save_phone", phoneUpdateProperties, function (){});
+		}
 	});
 
 function scrapeAppLink(info, tab) {
