@@ -104,8 +104,7 @@ chrome.runtime.onMessage.addListener(
 		linkedinUpdateProperties = { "enabled": true };
 		chrome.contextMenus.update("save_linkedin", linkedinUpdateProperties, function (){});
 		chrome.contextMenus.update("save_phone", phoneUpdateProperties, function (){});
-	}
-});
+	});
 
 function scrapeAppLink(info, tab) {
 	console.log(info);
