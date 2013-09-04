@@ -52,7 +52,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		var extension_info = {url: "<?php echo $_SERVER['HTTP_HOST']; ?>"};
+		var extension_info = {site_url: "<?php echo $_SERVER['HTTP_HOST']; ?>"};
 		window.postMessage(extension_info, "*");
 	
 		function init() {
