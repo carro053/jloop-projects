@@ -66,14 +66,19 @@ class DATABASE_CONFIG {
 		//'encoding' => 'utf8',
 	);
 
-	public $test = array(
+	public $dev = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'user',
-		'password' => 'password',
-		'database' => 'test_database_name',
+		'login' => 'leads_dev',
+		'password' => 'a4d6s5',
+		'database' => 'leads_dev',
 		'prefix' => '',
 		//'encoding' => 'utf8',
 	);
+	
+	function __construct() {
+		if(strpos($_SERVER['SERVER_NAME'], 'dev') !== false)
+			$this->default = $this->dev;
+	}
 }
