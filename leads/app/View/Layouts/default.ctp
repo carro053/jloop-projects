@@ -54,6 +54,7 @@
 	<script type="text/javascript">
 		var extension_info = {site_url: "<?php echo $_SERVER['HTTP_HOST']; ?>"};
 		window.postMessage(extension_info, "*");
+		console.log('message should be sent to extension');
 	
 		function init() {
 			$('input[type=submit], a, button').button();
