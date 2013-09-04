@@ -166,7 +166,7 @@
 			return false;
 		});
 		$('.editable').editable({
-			mode: 'inline'
+			mode: 'inline',
 			url: $(this).attr('controller') + '/update'
 		});
 		
