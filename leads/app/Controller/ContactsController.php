@@ -8,7 +8,6 @@ class ContactsController extends AppController {
 			$this->Contact->id = $_POST['pk'];
 			if(!$this->Contact->saveField($_POST['name'], $_POST['value'], false))
 				throw new ForbiddenException();
-			
 		}
 		die;
 	}
