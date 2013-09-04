@@ -53,6 +53,10 @@
 	</div>
 	<script type="text/javascript">
 		var extension_info = {site_url: "<?php echo $_SERVER['HTTP_HOST']; ?>"};
+		if(extension_info.site_url.indexOf('dev') != -1)
+			extension_info.environment = 'DEV';
+		else
+			extension_info.environment = 'LIVE';
 		window.postMessage(extension_info, "*");
 		console.log('message should be sent to extension');
 	

@@ -1,6 +1,7 @@
 console.log('JLOOP Leadinator Initialized!');
 
-var site_url = 'NONSENSE';
+var environment = 'DEV';
+var site_url = 'dev.leads.jloop.com';
 
 var parentContextId = "leadinator_parent";
 
@@ -91,7 +92,7 @@ chrome.runtime.onMessage.addListener(
 		} else {
 			currentLeadId = request.id;
 			
-			appNameUpdateProperties = { "title": "Currently gathering data for " + request.name };
+			appNameUpdateProperties = { "title": environment+": Currently gathering data for " + request.name };
 			chrome.contextMenus.update("app_name", appNameUpdateProperties, function (){});
 			
 			emailUpdateProperties = { "enabled": true };
