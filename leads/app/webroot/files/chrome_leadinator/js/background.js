@@ -1,5 +1,7 @@
 console.log('JLOOP Leadinator Initialized!');
 
+var site_url = 'leads.jloop.com';
+
 var parentContextId = "leadinator_parent";
 
 var currentLeadId = null;
@@ -115,7 +117,7 @@ function scrapeAppLink(info, tab) {
 	var time = new Date().getTime();
 	$.ajax({
 		type: "POST",
-		url: "http://leads.jloop.com/Scrapes/create"+"?t="+time,
+		url: "http://"+site_url+"/Scrapes/create"+"?t="+time,
 		data: {"data[Scrape][itunes_link]": scrapeLink, "data[Scrape][is_chrome_extension]": 1},
 		success: function(data){
 			console.log(data);
@@ -144,7 +146,7 @@ function saveEmail(info, tab) {
 	var time = new Date().getTime();
 	$.ajax({
 		type: "POST",
-		url: "http://leads.jloop.com/Leads/update"+"?t="+time,
+		url: "http://"+site_url+"/Leads/update"+"?t="+time,
 		data: {"data[Lead][id]": currentLeadId, "data[Lead][email]": emailAddress, "data[Lead][is_chrome_extension]": 1},
 		success: function(data){
 			console.log(data);
@@ -166,7 +168,7 @@ function saveTwitterUrl(info, tab) {
 	var time = new Date().getTime();
 	$.ajax({
 		type: "POST",
-		url: "http://leads.jloop.com/Leads/update"+"?t="+time,
+		url: "http://"+site_url+"/Leads/update"+"?t="+time,
 		data: {"data[Lead][id]": currentLeadId, "data[Lead][twitter]": info.pageUrl, "data[Lead][is_chrome_extension]": 1},
 		success: function(data){
 			console.log(data);
@@ -188,7 +190,7 @@ function saveFacebookUrl(info, tab) {
 	var time = new Date().getTime();
 	$.ajax({
 		type: "POST",
-		url: "http://leads.jloop.com/Leads/update"+"?t="+time,
+		url: "http://"+site_url+"/Leads/update"+"?t="+time,
 		data: {"data[Lead][id]": currentLeadId, "data[Lead][facebook]": info.pageUrl, "data[Lead][is_chrome_extension]": 1},
 		success: function(data){
 			console.log(data);
@@ -210,7 +212,7 @@ function saveLinkedinUrl(info, tab) {
 	var time = new Date().getTime();
 	$.ajax({
 		type: "POST",
-		url: "http://leads.jloop.com/Leads/update"+"?t="+time,
+		url: "http://"+site_url+"/Leads/update"+"?t="+time,
 		data: {"data[Lead][id]": currentLeadId, "data[Lead][linkedin]": info.pageUrl, "data[Lead][is_chrome_extension]": 1},
 		success: function(data){
 			console.log(data);
@@ -232,7 +234,7 @@ function savePhone(info, tab) {
 	var time = new Date().getTime();
 	$.ajax({
 		type: "POST",
-		url: "http://leads.jloop.com/Leads/update"+"?t="+time,
+		url: "http://"+site_url+"/Leads/update"+"?t="+time,
 		data: {"data[Lead][id]": currentLeadId, "data[Lead][phone]": info.selectionText, "data[Lead][is_chrome_extension]": 1},
 		success: function(data){
 			console.log(data);
