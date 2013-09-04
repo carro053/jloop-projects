@@ -116,18 +116,19 @@ class LeadsController extends AppController {
 		$this->layout = false;
 		if($this->request->is('post')) {
 			if(!empty($this->request->data['Lead']['id'])) {
-				//if no notes is entererd, don't save a blank note
-				foreach($this->request->data['Note'] as $key => $note) {
-					if(empty($note['text']))
-						unset($this->request->data['Note'][$key]);
+				if(!isset($this->request->data['Lead']['is_chrome_extension'])) {
+					//if no notes is entererd, don't save a blank note
+					foreach($this->request->data['Note'] as $key => $note) {
+						if(empty($note['text']))
+							unset($this->request->data['Note'][$key]);
+					}
+					
+					//if no contact is entererd, don't save a blank contact
+					foreach($this->request->data['Contact'] as $key => $contact) {
+						if(empty($contact['first_name']) && empty($contact['last_name']))
+							unset($this->request->data['Contact'][$key]);
+					}
 				}
-				
-				//if no contact is entererd, don't save a blank contact
-				foreach($this->request->data['Contact'] as $key => $contact) {
-					if(empty($contact['first_name']) && empty($contact['last_name']))
-						unset($this->request->data['Contact'][$key]);
-				}
-				
 				if($this->Lead->saveAll($this->request->data)) {
 					if(isset($this->request->data['Lead']['is_chrome_extension']))
 						die('1');
