@@ -11,9 +11,11 @@
 
 		echo $this->Html->css('cake.generic');
 		echo $this->Html->css('start/jquery-ui-1.10.3.custom.min');
+		echo $this->Html->css('jqueryui-editable');
 		
 		echo $this->Html->script('jquery-1.10.2.min.js');
 		echo $this->Html->script('jquery-ui-1.10.3.custom.min.js');
+		echo $this->Html->script('jqueryui-editable.min.js');
 		
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
