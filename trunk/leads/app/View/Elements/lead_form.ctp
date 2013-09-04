@@ -165,7 +165,9 @@
 			);
 			return false;
 		});
-		$('.editable').editable();
+		$('.editable').editable({
+			mode: 'inline'
+		});
 		
 		//pass lead data to chrome extension content script
 		var lead = <?php echo json_encode($lead); ?>;
