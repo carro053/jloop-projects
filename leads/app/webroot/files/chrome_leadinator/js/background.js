@@ -13,6 +13,14 @@ var parentContextProperties = {
 	"contexts": ["all"]
 };
 
+var environmentContextProperties = {
+	"id": "env_label",
+	"title": "Environment: "+environment,
+	"enabled": false,
+	"contexts": ["all"],
+	"parentId": parentContextId
+};
+
 var scrapeAppContextProperties = {
 	"id": "scrape_app",
 	"title": "Scrape this App",
@@ -75,6 +83,9 @@ var phoneContextProperties = {
 };
 
 chrome.contextMenus.create(parentContextProperties, function (){});
+
+chrome.contextMenus.create(environmentContextProperties, function (){});
+
 chrome.contextMenus.create(scrapeAppContextProperties, function (){});
 chrome.contextMenus.create(appNameContextProperties, function (){});
 chrome.contextMenus.create(emailContextProperties, function (){});
@@ -91,7 +102,10 @@ chrome.runtime.onMessage.addListener(
 		environment = request.environment;
 		currentLeadId = request.id;
 		
-		appNameUpdateProperties = { "title": environment+": Currently gathering data for " + request.name };
+		environmentUpdateContextProperties = { "title": "Environment: "+environment };
+		chrome.contextMenus.update("env_label", environmentUpdateContextProperties, function (){});
+		
+		appNameUpdateProperties = { "title": "Currently gathering data for " + request.name };
 		chrome.contextMenus.update("app_name", appNameUpdateProperties, function (){});
 		
 		emailUpdateProperties = { "enabled": true };
