@@ -173,8 +173,11 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
 
 #pragma mark POST methods
 - (void)retrieveXMLFileAtURL:(NSString *)URL {
-	UIDevice *device = [UIDevice currentDevice];
-	NSString *uniqueIdentifier = [device uniqueIdentifier];
+	//UIDevice *device = [UIDevice currentDevice];
+	//NSString *uniqueIdentifier = [device uniqueIdentifier];
+    
+    NSString *uniqueIdentifier = [UIDevice currentDevice].identifierForVendor.UUIDString;
+    
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
 	[settings initData];
 	NSString *postString = [NSString stringWithFormat:@"email_address=%@&device_id=%@&event_id=%@&invite_email_address=%@&add_to_group=%d", settings.emailAddress, uniqueIdentifier, event_id, emailAddress.text, [groupSwitch isOn]];

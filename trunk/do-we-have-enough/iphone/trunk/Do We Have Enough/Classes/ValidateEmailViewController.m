@@ -82,8 +82,11 @@
 
 #pragma mark POST methods
 - (void)retrieveXMLFileAtURL:(NSString *)URL {
-	UIDevice *device = [UIDevice currentDevice];
-	NSString *uniqueIdentifier = [device uniqueIdentifier];
+	//UIDevice *device = [UIDevice currentDevice];
+	//NSString *uniqueIdentifier = [device uniqueIdentifier];
+    
+    NSString *uniqueIdentifier = [UIDevice currentDevice].identifierForVendor.UUIDString;
+    
 	NSString *postString = [NSString stringWithFormat:@"email_address=%@&device_id=%@", emailAddress.text, uniqueIdentifier];
     //NSLog(postString);
     

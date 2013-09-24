@@ -29,8 +29,11 @@
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {          
 	NSLog(@"devToken=%@",deviceToken);
 	NSString *dt=[[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-	UIDevice *device = [UIDevice currentDevice];
-	NSString *uniqueIdentifier = [device uniqueIdentifier];
+	//UIDevice *device = [UIDevice currentDevice];
+	//NSString *uniqueIdentifier = [device uniqueIdentifier];
+    
+    NSString *uniqueIdentifier = [UIDevice currentDevice].identifierForVendor.UUIDString;
+    
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
 	[settings initData];
 	if ([settings.emailAddress isEqualToString:@"false"]) {
@@ -82,6 +85,25 @@
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //reset validation for first run on iOS 6+
+    NSString *filename = [[NSString alloc] initWithString:@"vendorIdFirstRunCheck"];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSString *dataFilePath = [documentsDirectory stringByAppendingPathComponent:filename];
+    BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:dataFilePath];
+    if(!fileExists) {
+        //alert reset validation and tell the user all about it
+        SettingsTracker *settings = [[SettingsTracker alloc] init];
+        [settings resetData];
+        [settings release];
+        
+        NSString *content = @"User ran the app for the first time";
+        NSData *fileContents = [content dataUsingEncoding:NSUTF8StringEncoding];
+        [[NSFileManager defaultManager] createFileAtPath:dataFilePath
+                                                contents:fileContents
+                                              attributes:nil];
+    }
+    
     self.window.frame = CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, [[UIScreen mainScreen]bounds].size.height);
     [TestFlight takeOff:@"4daac12df9d7ba3264eef02799dfd0bf_NDk0MjIwMTEtMTAtMDUgMTI6MjI6MjkuMjc5Nzgw"];
 	[window addSubview:[navigationController view]];

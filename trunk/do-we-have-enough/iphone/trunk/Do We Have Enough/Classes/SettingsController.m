@@ -252,8 +252,11 @@
 - (void)saveNotifications {
     [TestFlight passCheckpoint:@"SETTINGS SAVE NOTIFICATIONS"];
 	NSString *URL = [[NSString alloc] initWithFormat:@"http://%@.dowehaveenough.com/devices/save_user.xml", [[[NSBundle mainBundle] infoDictionary] valueForKey:@"WEB_ENVIRONMENT"]];
-	UIDevice *device = [UIDevice currentDevice];
-	NSString *uniqueIdentifier = [device uniqueIdentifier];
+	//UIDevice *device = [UIDevice currentDevice];
+	//NSString *uniqueIdentifier = [device uniqueIdentifier];
+    
+    NSString *uniqueIdentifier = [UIDevice currentDevice].identifierForVendor.UUIDString;
+    
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
 	[settings initData];
 	NSString *postString = [NSString stringWithFormat:@"email_address=%@&device_id=%@&notify_in=%@&notify_out=%@&notify_event_change=%@&app_notify_in=%@&app_notify_out=%@&app_notify_event_change=%@&name=%@", settings.emailAddress, uniqueIdentifier, settings.notifyIn, settings.notifyOut, settings.notifyEventChange, settings.appNotifyIn, settings.appNotifyOut, settings.appNotifyEventChange,settings.userName];
@@ -278,8 +281,11 @@
 - (void)saveResetEmailSettings {
     [TestFlight passCheckpoint:@"SETTINGS RESET EMAIL"];
 	NSString *URL = [[NSString alloc] initWithFormat:@"http://%@.dowehaveenough.com/devices/invalidate_device.xml", [[[NSBundle mainBundle] infoDictionary] valueForKey:@"WEB_ENVIRONMENT"]];
-	UIDevice *device = [UIDevice currentDevice];
-	NSString *uniqueIdentifier = [device uniqueIdentifier];
+	//UIDevice *device = [UIDevice currentDevice];
+	//NSString *uniqueIdentifier = [device uniqueIdentifier];
+    
+    NSString *uniqueIdentifier = [UIDevice currentDevice].identifierForVendor.UUIDString;
+    
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
 	[settings initData];
 	NSString *postString = [NSString stringWithFormat:@"email_address=%@&device_id=%@", settings.emailAddress, uniqueIdentifier];

@@ -515,7 +515,7 @@ titleForHeaderInSection:(NSInteger)section
 					UITableViewCell *cell = nil;
 					UserGroup *mygroup = nil;
 					//NSLog(selectedGroupID);
-					if (selectedGroupID != @"0") {
+                    if(![selectedGroupID isEqualToString:@"0"]) {
 						for (mygroup in grouplist) {
 							if (selectedGroupID == mygroup.groupID) {
 								numPeeps = mygroup.groupMembersCount;
@@ -783,8 +783,11 @@ titleForHeaderInSection:(NSInteger)section
 }
 #pragma mark POST methods
 - (void)retrieveXMLFileAtURL:(NSString *)URL {
-	UIDevice *device = [UIDevice currentDevice];
-	NSString *uniqueIdentifier = [device uniqueIdentifier];
+	//UIDevice *device = [UIDevice currentDevice];
+	//NSString *uniqueIdentifier = [device uniqueIdentifier];
+    
+    NSString *uniqueIdentifier = [UIDevice currentDevice].identifierForVendor.UUIDString;
+    
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
 	[settings initData];
 	NSString *postString = [NSString stringWithFormat:@"email_address=%@&device_id=%@", settings.emailAddress, uniqueIdentifier];
@@ -809,8 +812,11 @@ titleForHeaderInSection:(NSInteger)section
 	[self storeEventValues];
 	LoadingView *myLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
 	loadingView = myLoadingView;
-	UIDevice *device = [UIDevice currentDevice];
-	NSString *uniqueIdentifier = [device uniqueIdentifier];
+	//UIDevice *device = [UIDevice currentDevice];
+	//NSString *uniqueIdentifier = [device uniqueIdentifier];
+    
+    NSString *uniqueIdentifier = [UIDevice currentDevice].identifierForVendor.UUIDString;
+    
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
 	[settings initData];
     
