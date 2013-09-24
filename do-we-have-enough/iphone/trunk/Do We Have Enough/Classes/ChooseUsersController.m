@@ -81,7 +81,7 @@
 		NSLog( @"User selected email address = %@", emailRef );
 		//self.email.text = emailRef;
 		[emailRef release];
-		if (myParent == @"group") [self.parentController.freshGroup.groupMembers addObject:emailRef];
+		if ([myParent  isEqual: @"group"]) [self.parentController.freshGroup.groupMembers addObject:emailRef];
 		else [self.parentController2.freshGroup.groupMembers addObject:emailRef];
 		[self.tableView reloadData];
 		[self dismissModalViewControllerAnimated:YES];
@@ -108,7 +108,7 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
 }
 -(IBAction)addEmailPressed:(id)sender {
 	AddUserController *addUserController = [[AddUserController alloc] init];
-	if (myParent == @"group") addUserController.userlist = self.parentController.freshGroup.groupMembers;
+	if ([myParent  isEqual: @"group"]) addUserController.userlist = self.parentController.freshGroup.groupMembers;
 	else addUserController.userlist = self.parentController2.freshGroup.groupMembers;
 	[self.navigationController pushViewController:addUserController animated:YES];
 	[addUserController release];
@@ -140,7 +140,7 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
 	[backButton release];
 	[myTitle release];
 	int numPeeps = 0;
-	if (myParent == @"group") numPeeps = [self.parentController.freshGroup.groupMembers count];
+	if ([myParent  isEqual: @"group"]) numPeeps = [self.parentController.freshGroup.groupMembers count];
 	else numPeeps = [self.parentController2.freshGroup.groupMembers count];
 	if (numPeeps == 0) [self showActionSheet:self];
 	
@@ -173,7 +173,7 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
 }
 -(void)viewWillDisappear:(BOOL)animated {
 	if (textFieldBeingEdited != nil) {
-		if (myParent == @"group") parentController.freshGroup.groupName = self.textFieldBeingEdited.text;
+		if ([myParent  isEqual: @"group"]) parentController.freshGroup.groupName = self.textFieldBeingEdited.text;
 		else parentController2.freshGroup.groupName = self.textFieldBeingEdited.text;
 	}
 }
@@ -187,7 +187,7 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     NSLog(@"textFieldDidEnd");
     NSString *text = [textField text];
-    if (myParent == @"group") parentController.freshGroup.groupName = text;
+    if ([myParent  isEqual: @"group"]) parentController.freshGroup.groupName = text;
 	else parentController2.freshGroup.groupName = text;
 	//[textField resignFirstResponder];
 }
@@ -197,7 +197,7 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
     [theTextField resignFirstResponder];
     // do stuff with the text
     NSString *text = [theTextField text];
-	if (myParent == @"group") parentController.freshGroup.groupName = text;
+	if ([myParent  isEqual: @"group"]) parentController.freshGroup.groupName = text;
 	else parentController2.freshGroup.groupName = text;
     return YES;
 }
@@ -217,7 +217,7 @@ didDismissWithButtonIndex:(NSInteger)buttonIndex
 			return 1;
 			break;
 		case GroupMemberSection:
-			if (myParent == @"group") return [self.parentController.freshGroup.groupMembers count];
+			if ([myParent  isEqual: @"group"]) return [self.parentController.freshGroup.groupMembers count];
 			else return [self.parentController2.freshGroup.groupMembers count];
 			break;
 		default:
@@ -297,7 +297,7 @@ titleForHeaderInSection:(NSInteger)section
 			UIImage *cellImage = nil;
 			cellImage = [UIImage imageNamed:@"icon_fpo.png"];
 			cell.imageView.image = cellImage;
-            if (myParent == @"group") text = self.parentController.freshGroup.groupName;
+            if ([myParent  isEqual: @"group"]) text = self.parentController.freshGroup.groupName;
 			else text = self.parentController2.freshGroup.groupName;
             tag = 0;
             placeholder = @"Name this group";
@@ -315,7 +315,7 @@ titleForHeaderInSection:(NSInteger)section
 			}
 			
 			NSInteger row = [indexPath row];
-			if (myParent == @"group") cell.textLabel.text = [self.parentController.freshGroup.groupMembers objectAtIndex:row];
+			if ([myParent  isEqual: @"group"]) cell.textLabel.text = [self.parentController.freshGroup.groupMembers objectAtIndex:row];
 			else cell.textLabel.text = [self.parentController2.freshGroup.groupMembers objectAtIndex:row];
 		//default:
 			return cell;
@@ -363,7 +363,7 @@ titleForHeaderInSection:(NSInteger)section
 	 // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
 	 }  */
 	NSUInteger row = [indexPath row];
-	if (myParent == @"group") [self.parentController.freshGroup.groupMembers removeObjectAtIndex:row];
+	if ([myParent  isEqual: @"group"]) [self.parentController.freshGroup.groupMembers removeObjectAtIndex:row];
 	else [self.parentController2.freshGroup.groupMembers removeObjectAtIndex:row];
 	[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }

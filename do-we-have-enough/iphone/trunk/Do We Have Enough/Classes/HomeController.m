@@ -70,6 +70,7 @@
 	//NSLog(@"environment: %@", [[[NSBundle mainBundle] infoDictionary] valueForKey:@"WEB_ENVIRONMENT"]);
 	
     [TestFlight passCheckpoint:@"HOME VIEW"];
+    
 	[super viewDidLoad];
 }
 
@@ -200,14 +201,16 @@
     if (![settings.emailAddress isEqualToString:@"false"]) {
 		if ([settings.isValidated isEqualToString:@"false"]) {
 			CheckValidationViewController *checkValidationController = [[CheckValidationViewController alloc] initWithNibName:@"CheckValidationViewController" bundle:nil];
-			[self presentModalViewController:checkValidationController animated:YES];
+			//[self presentModalViewController:checkValidationController animated:YES];
+            [self presentViewController:checkValidationController animated:YES completion:nil];
 			[checkValidationController release];
 		} else {
             [self.rootController switchViews:self];
 		}
 	}else{
 		ValidateEmailViewController *validateController = [[ValidateEmailViewController alloc] initWithNibName:@"ValidateEmailViewController" bundle:nil];
-		[self presentModalViewController:validateController animated:YES];
+		//[self presentModalViewController:validateController animated:YES];
+        [self presentViewController:validateController animated:YES completion:nil];
 		[validateController release];
     }
     [settings release];
@@ -229,9 +232,13 @@
 
 #pragma mark POST methods
 - (void)retrieveXMLFileAtURL:(NSString *)URL {
-	latestButton.titleLabel.text = @"       loading...";
-	UIDevice *device = [UIDevice currentDevice];
-	NSString *uniqueIdentifier = [device uniqueIdentifier];
+    [latestButton setTitle:@"       loading..." forState:UIControlStateNormal];
+    
+	//UIDevice *device = [UIDevice currentDevice];
+	//NSString *uniqueIdentifier = [device uniqueIdentifier];
+    
+    NSString *uniqueIdentifier = [UIDevice currentDevice].identifierForVendor.UUIDString;
+    
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
 	[settings initData];
 	NSString *postString = [NSString stringWithFormat:@"email_address=%@&device_id=%@", settings.emailAddress, uniqueIdentifier];
@@ -373,10 +380,13 @@
 	[settings release];
 	NSLog(@"the event IS: %@", currentEventName);
 	NSLog(@"current notify in: %@", currentNotifyIn);
-	NSString *btnTitle = [[NSString alloc] initWithFormat:@"%@ - %@", currentEventName, currentEventWhen];
+    
+    //remove newline characters from currentEventName
+    NSString *btnTitle = [[NSString alloc] initWithFormat:@"%@ - %@", currentEventName, currentEventWhen];
+    btnTitle = [btnTitle stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+    
 	latestButton.hidden = NO;
 	[latestButton setTitle:btnTitle forState:UIControlStateNormal];
-	[btnTitle release];
 	latestTipImage.hidden = NO;
 	latestHandImage.hidden = NO;
 	latest_event_id = [currentEventID copy];

@@ -217,8 +217,11 @@ titleForHeaderInSection:(NSInteger)section
 
 #pragma mark POST methods
 - (void)retrieveXMLFileAtURL:(NSString *)URL {
-	UIDevice *device = [UIDevice currentDevice];
-	NSString *uniqueIdentifier = [device uniqueIdentifier];
+	//UIDevice *device = [UIDevice currentDevice];
+	//NSString *uniqueIdentifier = [device uniqueIdentifier];
+    
+    NSString *uniqueIdentifier = [UIDevice currentDevice].identifierForVendor.UUIDString;
+    
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
 	[settings initData];
 	NSString *postString = [NSString stringWithFormat:@"email_address=%@&device_id=%@", settings.emailAddress, uniqueIdentifier];

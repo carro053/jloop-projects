@@ -203,7 +203,7 @@ titleForHeaderInSection:(NSInteger)section
 			if ([freshGroup.groupMembers count] != 0) cell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%d members", [freshGroup.groupMembers count]];
 			else cell.detailTextLabel.text = @"Click arrow to create a new list";
 			cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-			if (parentController.selectedGroupID == @"0") {
+			if ([parentController.selectedGroupID  isEqual: @"0"]) {
 				cellImage = [UIImage imageNamed:@"checkmark.png"];
 				lastIndexPath = [indexPath copy];
 			} else 
