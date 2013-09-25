@@ -173,10 +173,7 @@
 		7469782714F5D23800B3910F /* checkmark-open@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7469782214F5D23800B3910F /* checkmark-open@2x.png */; };
 		7469782814F5D23800B3910F /* close_btn_over@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7469782314F5D23800B3910F /* close_btn_over@2x.png */; };
 		7476C4451623540D002A3171 /* home_bg-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7476C4441623540D002A3171 /* home_bg-568h@2x.png */; };
-		7476C4461623964C002A3171 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C2FCCD1506F23D007DD607 /* libTestFlight.a */; };
 		74B322A216092976004217E3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B322A116092976004217E3 /* Default-568h@2x.png */; };
-		74C2FCD21506F23D007DD607 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 74C2FCCE1506F23D007DD607 /* README.txt */; };
-		74C2FCD31506F23D007DD607 /* release_notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 74C2FCCF1506F23D007DD607 /* release_notes.txt */; };
 		74C9CA1814F80E1E00CEDEC0 /* title_your_name.png in Resources */ = {isa = PBXBuildFile; fileRef = 74C9CA1614F80E1E00CEDEC0 /* title_your_name.png */; };
 		74C9CA1914F80E1E00CEDEC0 /* title_your_name@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74C9CA1714F80E1E00CEDEC0 /* title_your_name@2x.png */; };
 		74C9CA1C14F8523D00CEDEC0 /* icon_fpo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74C9CA1B14F8523D00CEDEC0 /* icon_fpo@2x.png */; };
@@ -383,10 +380,6 @@
 		7469782314F5D23800B3910F /* close_btn_over@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_btn_over@2x.png"; sourceTree = "<group>"; };
 		7476C4441623540D002A3171 /* home_bg-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_bg-568h@2x.png"; sourceTree = "<group>"; };
 		74B322A116092976004217E3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		74C2FCCD1506F23D007DD607 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
-		74C2FCCE1506F23D007DD607 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		74C2FCCF1506F23D007DD607 /* release_notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.txt; sourceTree = "<group>"; };
-		74C2FCD01506F23D007DD607 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		74C9CA1614F80E1E00CEDEC0 /* title_your_name.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_your_name.png; sourceTree = "<group>"; };
 		74C9CA1714F80E1E00CEDEC0 /* title_your_name@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "title_your_name@2x.png"; sourceTree = "<group>"; };
 		74C9CA1B14F8523D00CEDEC0 /* icon_fpo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_fpo@2x.png"; sourceTree = "<group>"; };
@@ -402,7 +395,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				832D3A6317F35B3F00B58C30 /* Security.framework in Frameworks */,
-				7476C4461623964C002A3171 /* libTestFlight.a in Frameworks */,
 				7459725C1506E49800911C57 /* libz.dylib in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
@@ -691,10 +683,6 @@
 		74C2FCCC1506F209007DD607 /* TestFlightSDK */ = {
 			isa = PBXGroup;
 			children = (
-				74C2FCCD1506F23D007DD607 /* libTestFlight.a */,
-				74C2FCCE1506F23D007DD607 /* README.txt */,
-				74C2FCCF1506F23D007DD607 /* release_notes.txt */,
-				74C2FCD01506F23D007DD607 /* TestFlight.h */,
 			);
 			name = TestFlightSDK;
 			sourceTree = "<group>";
@@ -889,8 +877,6 @@
 				74C9CA1814F80E1E00CEDEC0 /* title_your_name.png in Resources */,
 				74C9CA1914F80E1E00CEDEC0 /* title_your_name@2x.png in Resources */,
 				74C9CA1C14F8523D00CEDEC0 /* icon_fpo@2x.png in Resources */,
-				74C2FCD21506F23D007DD607 /* README.txt in Resources */,
-				74C2FCD31506F23D007DD607 /* release_notes.txt in Resources */,
 				7441553E15082DC20032E949 /* Icon-72.png in Resources */,
 				7441553F15082DC20032E949 /* Icon-Small-50.png in Resources */,
 				7441554015082DC20032E949 /* Icon-Small.png in Resources */,
@@ -962,8 +948,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)/Classes\\\"",
-					"$(SRCROOT)",
-					"/Users/chris/Dev/dowehaveenough_ios_svn/iphone/Do\\ We\\ Have\\ Enough",
+					"$(SRCROOT)/**",
 				);
 				PRODUCT_NAME = DoWeHaveEnough;
 				PROVISIONING_PROFILE = "A6C337E4-6CE7-433D-AECB-CA5CF8D99D8E";
@@ -986,8 +971,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)/Classes\\\"",
-					"$(SRCROOT)",
-					"/Users/chris/Dev/dowehaveenough_ios_svn/iphone/Do\\ We\\ Have\\ Enough",
+					"$(SRCROOT)/**",
 				);
 				PRODUCT_NAME = DoWeHaveEnough;
 				PROVISIONING_PROFILE = "";
@@ -1030,8 +1014,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)/Classes\\\"",
-					"$(SRCROOT)",
-					"/Users/chris/Dev/dowehaveenough_ios_svn/iphone/Do\\ We\\ Have\\ Enough",
+					"$(SRCROOT)/**",
 				);
 				PRODUCT_NAME = DoWeHaveEnough;
 				PROVISIONING_PROFILE = "";
