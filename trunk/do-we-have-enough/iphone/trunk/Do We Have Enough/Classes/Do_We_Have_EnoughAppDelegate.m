@@ -11,9 +11,8 @@
 #import "HomeController.h"
 #import "SettingsTracker.h"
 #import "TestFlight.h"
-#import "FlurryAnalytics.h"
 #import "EventDetailsViewController.h"
-//#import "Beacon.h"
+#import "Flurry.h"
 
 
 @implementation Do_We_Have_EnoughAppDelegate
@@ -104,6 +103,9 @@
                                               attributes:nil];
     }
     
+    //[Flurry setCrashReportingEnabled:YES];
+    [Flurry startSession:@"7994fb80cece2b2663b0c3188280ae63"];
+    
     self.window.frame = CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, [[UIScreen mainScreen]bounds].size.height);
     [TestFlight takeOff:@"4daac12df9d7ba3264eef02799dfd0bf_NDk0MjIwMTEtMTAtMDUgMTI6MjI6MjkuMjc5Nzgw"];
 	[window addSubview:[navigationController view]];
@@ -120,7 +122,6 @@
     }else{
         self.launchEventID = @"";
     }
-	[FlurryAnalytics startSession:@"7994fb80cece2b2663b0c3188280ae63"];
 	
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound |UIRemoteNotificationTypeAlert)];
     
