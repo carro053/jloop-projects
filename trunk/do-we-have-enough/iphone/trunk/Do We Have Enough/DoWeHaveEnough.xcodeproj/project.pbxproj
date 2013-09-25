@@ -179,6 +179,9 @@
 		74C9CA1C14F8523D00CEDEC0 /* icon_fpo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74C9CA1B14F8523D00CEDEC0 /* icon_fpo@2x.png */; };
 		832D3A6117F357E100B58C30 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832D3A6017F357E100B58C30 /* libFlurry_4.2.3.a */; };
 		832D3A6317F35B3F00B58C30 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 832D3A6217F35B3F00B58C30 /* Security.framework */; };
+		835CA6BF17F366430008EEAF /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 835CA6B917F366430008EEAF /* libTestFlight.a */; };
+		835CA6C017F366430008EEAF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 835CA6BA17F366430008EEAF /* README.md */; };
+		835CA6C117F366430008EEAF /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 835CA6BB17F366430008EEAF /* release_notes.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -386,6 +389,12 @@
 		832D3A5F17F357E100B58C30 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		832D3A6017F357E100B58C30 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
 		832D3A6217F35B3F00B58C30 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		835CA6B917F366430008EEAF /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		835CA6BA17F366430008EEAF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		835CA6BB17F366430008EEAF /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
+		835CA6BC17F366430008EEAF /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		835CA6BD17F366430008EEAF /* TestFlight+AsyncLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+AsyncLogging.h"; sourceTree = "<group>"; };
+		835CA6BE17F366430008EEAF /* TestFlight+ManualSessions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TestFlight+ManualSessions.h"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Do_We_Have_Enough-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Do_We_Have_Enough-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -406,6 +415,7 @@
 				698CB2F310C708CC0036887A /* CoreLocation.framework in Frameworks */,
 				698CB2F510C708CC0036887A /* SystemConfiguration.framework in Frameworks */,
 				832D3A6117F357E100B58C30 /* libFlurry_4.2.3.a in Frameworks */,
+				835CA6BF17F366430008EEAF /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,6 +693,12 @@
 		74C2FCCC1506F209007DD607 /* TestFlightSDK */ = {
 			isa = PBXGroup;
 			children = (
+				835CA6B917F366430008EEAF /* libTestFlight.a */,
+				835CA6BA17F366430008EEAF /* README.md */,
+				835CA6BB17F366430008EEAF /* release_notes.md */,
+				835CA6BC17F366430008EEAF /* TestFlight.h */,
+				835CA6BD17F366430008EEAF /* TestFlight+AsyncLogging.h */,
+				835CA6BE17F366430008EEAF /* TestFlight+ManualSessions.h */,
 			);
 			name = TestFlightSDK;
 			sourceTree = "<group>";
@@ -885,6 +901,8 @@
 				7476C4451623540D002A3171 /* home_bg-568h@2x.png in Resources */,
 				743E31501624B0130061194B /* title_the_details.png in Resources */,
 				743E31511624B0130061194B /* title_the_details@2x.png in Resources */,
+				835CA6C017F366430008EEAF /* README.md in Resources */,
+				835CA6C117F366430008EEAF /* release_notes.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -948,7 +966,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)/Classes\\\"",
-					"$(SRCROOT)/**",
+					"$(SRCROOT)",
+					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = DoWeHaveEnough;
 				PROVISIONING_PROFILE = "A6C337E4-6CE7-433D-AECB-CA5CF8D99D8E";
@@ -971,7 +990,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)/Classes\\\"",
-					"$(SRCROOT)/**",
+					"$(SRCROOT)",
+					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = DoWeHaveEnough;
 				PROVISIONING_PROFILE = "";
@@ -1014,7 +1034,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\\\"$(SRCROOT)/Classes\\\"",
-					"$(SRCROOT)/**",
+					"$(SRCROOT)",
+					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = DoWeHaveEnough;
 				PROVISIONING_PROFILE = "";
