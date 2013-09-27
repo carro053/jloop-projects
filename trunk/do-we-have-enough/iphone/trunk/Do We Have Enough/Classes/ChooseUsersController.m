@@ -48,12 +48,12 @@
 	picker.displayedProperties = [NSArray arrayWithObject:[NSNumber numberWithInt:kABPersonEmailProperty]];
     picker.peoplePickerDelegate = self;
 	
-    [self presentModalViewController:picker animated:YES];
+    [self presentViewController:picker animated:YES completion:nil];
     [picker release];
 }
 - (void)peoplePickerNavigationControllerDidCancel:
 (ABPeoplePickerNavigationController *)peoplePicker {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -84,7 +84,7 @@
 		if ([myParent  isEqual: @"group"]) [self.parentController.freshGroup.groupMembers addObject:emailRef];
 		else [self.parentController2.freshGroup.groupMembers addObject:emailRef];
 		[self.tableView reloadData];
-		[self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
 		return NO;
 	} else {
 		return YES;

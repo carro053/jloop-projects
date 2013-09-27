@@ -21,7 +21,7 @@
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
 	[settings resetData];
 	[settings release];
-	[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 -(IBAction)checkButtonPressed {
 	LoadingView *myLoadingView = [LoadingView loadingViewInView:[self.view.window.subviews objectAtIndex:0]];
@@ -139,7 +139,7 @@
 			[settings saveValidation:@"true"];
 			//[(HomeController *)self.parentViewController dismissModalViewControllerAnimated:YES];
             [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound |UIRemoteNotificationTypeAlert)];
-            [self dismissModalViewControllerAnimated:YES];
+            [self dismissViewControllerAnimated:YES completion:nil];
 		} else {
 			//TODO: add failure alert
             [TestFlight passCheckpoint:@"USER FAILED VALIDATION CHECK"];
