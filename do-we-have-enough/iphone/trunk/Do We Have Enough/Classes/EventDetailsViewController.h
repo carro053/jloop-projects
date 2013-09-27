@@ -57,9 +57,11 @@ enum {
 @property (nonatomic, retain) NSMutableDictionary *eventDetails;
 @property (nonatomic, retain) NSMutableArray *memberlist;
 @property (nonatomic, retain) NSString *event_id;
+@property (nonatomic, readwrite) BOOL shouldRefreshData;
+@property (nonatomic, readwrite) BOOL shouldPushToMemberList;
 
 @property (nonatomic, retain) LoadingView *loadingView;
-- (void)retrieveXMLFileAtURL:(NSString *)URL;
+-(void)retrieveXMLFileAtURL:(NSString *)URL;
 -(void)refreshData;
 -(void)refreshView;
 -(void)startInvite;

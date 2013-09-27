@@ -15,6 +15,7 @@
 #import "SettingsTracker.h"
 #import "StringHelper.h"
 #import "TestFlight.h"
+#import "Do_We_Have_EnoughAppDelegate.h"
 
 bool updatingStatus;
 
@@ -24,6 +25,9 @@ bool updatingStatus;
 @synthesize memberlist;
 @synthesize loadingView;
 @synthesize event_id;
+@synthesize shouldRefreshData;
+@synthesize shouldPushToMemberList;
+
 /*@synthesize currentName, currentWhen, currentWhere, currentNeed;
 @synthesize currentNeed, currentDetails, currentActive;
 @synthesize currentCannotInvite, currentCannotBring;
@@ -49,6 +53,11 @@ bool updatingStatus;
         NSString * path = [[NSString alloc] initWithFormat:@"http://%@.dowehaveenough.com/devices/set_my_event_status.xml", [[[NSBundle mainBundle] infoDictionary] valueForKey:@"WEB_ENVIRONMENT"]];
         [self retrieveXMLFileAtURL:path];
         [path release];
+        
+        //[self refreshView];
+        //[self refreshData];
+        //[self.tableView reloadData];
+        //[self performSelector:@selector(refreshData) withObject:nil afterDelay:0.1f];
     }
 }
 -(void)imOut
@@ -62,6 +71,11 @@ bool updatingStatus;
         NSString * path = [[NSString alloc] initWithFormat:@"http://%@.dowehaveenough.com/devices/set_my_event_status.xml", [[[NSBundle mainBundle] infoDictionary] valueForKey:@"WEB_ENVIRONMENT"]];
         [self retrieveXMLFileAtURL:path];
         [path release];
+        
+        //[self refreshView];
+        //[self refreshData];
+        //[self.tableView reloadData];
+        //[self performSelector:@selector(refreshData) withObject:nil afterDelay:0.1f];
     }
 }
 -(void)imFiftyFifty
@@ -80,9 +94,12 @@ bool updatingStatus;
 
 -(void)updateMyStatus:(int)status :(int)guests
 {
+    shouldRefreshData = YES;
+    
     [TestFlight passCheckpoint:@"UPDATE MY STATUS"];
     NSLog(@"my status is: %d", status);
-    myStatus = [[NSString stringWithFormat:@"%d", status] intValue];
+    //myStatus = [[NSString stringWithFormat:@"%d", status] intValue];
+    myStatus = status;
     NSString *myGuests = [[NSString alloc] initWithFormat:@"%d", guests];
     [eventDetails setObject:myGuests forKey:@"your_guests"];
     [eventDetails setObject:[NSNumber numberWithInt:myStatus] forKey:@"your_status"];
@@ -132,6 +149,16 @@ bool updatingStatus;
 		[inviteButton release];
 		[items release];
 	} else [self.navigationController setToolbarHidden:YES animated:YES];
+    
+    
+    if(shouldPushToMemberList) {
+        shouldPushToMemberList = NO;
+        EventMemberListViewController *myController = [[EventMemberListViewController alloc] initWithStyle:UITableViewStylePlain];
+        myController.eventDetailsController = self;
+		myController.memberlist = memberlist;
+		[self.navigationController pushViewController:myController animated:YES];
+		[myController release];
+    }
 }
 -(void)refreshData
 {
@@ -151,6 +178,11 @@ bool updatingStatus;
 }
 
 - (void)viewDidLoad {
+    //shouldRefreshData = NO;
+    
+    Do_We_Have_EnoughAppDelegate *appDelegate = (Do_We_Have_EnoughAppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.eventDetailsViewController = self;
+    
     [TestFlight passCheckpoint:@"EVENT DETAILS VIEW"];
 	memberlist = [[NSMutableArray alloc] init];
 	eventDetails = [[NSMutableDictionary alloc] init];
@@ -198,11 +230,13 @@ bool updatingStatus;
     [super viewDidAppear:animated];
 }
 */
-/*
+
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
+    Do_We_Have_EnoughAppDelegate *appDelegate = (Do_We_Have_EnoughAppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.eventDetailsViewController = nil;
 }
-*/
+
 /*
 - (void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];
@@ -534,6 +568,7 @@ titleForHeaderInSection:(NSInteger)section
 	}
 	if (section == InvitePeopleSection2 && row == PeopleStatusCell) {
 		EventMemberListViewController *myController = [[EventMemberListViewController alloc] initWithStyle:UITableViewStylePlain];
+        myController.eventDetailsController = self;
 		myController.memberlist = memberlist;
 		[self.navigationController pushViewController:myController animated:YES];
 		[myController release];
@@ -642,6 +677,12 @@ titleForHeaderInSection:(NSInteger)section
 	[webData release];
     updatingStatus = false;
 	[self.loadingView removeView];
+    
+    
+    if(shouldRefreshData) {
+        shouldRefreshData = NO;
+        [self performSelector:@selector(refreshData) withObject:nil afterDelay:0.2f];
+    }
 }
 /*
  - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -767,6 +808,8 @@ titleForHeaderInSection:(NSInteger)section
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
 	
+    
+    
 	//[activityIndicator stopAnimating];
 	//[activityIndicator removeFromSuperview];
 	

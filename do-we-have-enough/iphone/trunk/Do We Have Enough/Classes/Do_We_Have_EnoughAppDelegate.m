@@ -21,7 +21,6 @@
 @synthesize navigationController;
 @synthesize launchEventID;
 
-
 #pragma mark -
 #pragma mark Application lifecycle
 
@@ -141,6 +140,12 @@
     }
     if ([navigationController.topViewController respondsToSelector:@selector(refreshData)])
         [navigationController.topViewController performSelector:@selector(refreshData)];
+    
+    if([self.eventMemberListViewController respondsToSelector:@selector(refresh:)]) {
+        [self.eventMemberListViewController refresh:nil];
+    } else if([self.eventDetailsViewController respondsToSelector:@selector(refreshData)]) {
+        [self.eventDetailsViewController refreshData];
+    }
 }
 
 
