@@ -105,7 +105,7 @@
             [TestFlight passCheckpoint:@"EVENT VALIDATED NOW NEED VALID EMAIL"];
 			ValidateEmailCreateViewController *myController = [[ValidateEmailCreateViewController alloc] initWithNibName:@"ValidateEmailCreateViewController" bundle:nil];
 			myController.parentController = self;
-			[self presentModalViewController:myController animated:YES];
+            [self presentViewController:myController animated:YES completion:nil];
 			[myController release];
 		} else {
             [TestFlight passCheckpoint:@"EVENT VALIDATED AND READY TO CREATE EVENT"];
@@ -120,7 +120,7 @@
 }
 -(void)resumeCreate
 {
-	[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 	//[self startCreate];
 	[self performSelector:@selector(startCreate) withObject:nil afterDelay:1];
 }
@@ -133,7 +133,7 @@
 	
 	CheckValidationViewController *checkValidationController = [[CheckValidationViewController alloc] initWithNibName:@"CheckValidationViewController" bundle:nil];
 	RootViewController *rootController = [self.navigationController.viewControllers objectAtIndex:0];
-	[rootController presentModalViewController:checkValidationController animated:YES];
+    [rootController presentViewController:checkValidationController animated:YES completion:nil];
 	[self.navigationController popViewControllerAnimated:YES];
 	[checkValidationController release];
 }

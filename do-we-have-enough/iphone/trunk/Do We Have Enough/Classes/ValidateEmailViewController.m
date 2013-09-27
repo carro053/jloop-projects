@@ -21,7 +21,7 @@
 	NSLog(@"cancel");
 	//HomeController *homeController = self.parentViewController;
 	[(HomeController *)self.parentViewController swapCheckValidation];
-	[self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 -(IBAction)save:(id)sender {
 	
@@ -199,7 +199,7 @@
 	//[activityIndicator removeFromSuperview];
 	
 	NSLog(@"all done!");
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 	//NSLog(@"events array has %d items", [eventlist count]);
 	//[self.tableView reloadData];
 }

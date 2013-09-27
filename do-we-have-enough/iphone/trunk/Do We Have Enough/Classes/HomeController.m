@@ -99,7 +99,7 @@
 }
 
 -(void)swapCheckValidation {
-	[self dismissModalViewControllerAnimated:YES];
+	[self dismissViewControllerAnimated:YES completion:nil];
 	[self performSelector:@selector(checkValidation) withObject:nil afterDelay:1];
 }
 
@@ -114,7 +114,7 @@
             [TestFlight passCheckpoint:@"HOME VIEW VALIDATION NOT SET"];
 			NSLog(@"validation is not set");
 			CheckValidationViewController *checkValidationController = [[CheckValidationViewController alloc] initWithNibName:@"CheckValidationViewController" bundle:nil];
-			[self presentModalViewController:checkValidationController animated:YES];
+            [self presentViewController:checkValidationController animated:YES completion:nil];
 			[checkValidationController release];
 
 		} else {
@@ -179,12 +179,12 @@
 	[settings initData];
 	if ([settings.emailAddress isEqualToString: @"false"]) {
 		ValidateEmailViewController *validateController = [[ValidateEmailViewController alloc] initWithNibName:@"ValidateEmailViewController" bundle:nil];
-		[self presentModalViewController:validateController animated:YES];
+        [self presentViewController:validateController animated:YES completion:nil];
 		[validateController release];
 	} else {
         if ([settings.isValidated isEqualToString:@"false"]) {
 			CheckValidationViewController *checkValidationController = [[CheckValidationViewController alloc] initWithNibName:@"CheckValidationViewController" bundle:nil];
-			[self presentModalViewController:checkValidationController animated:YES];
+            [self presentViewController:checkValidationController animated:YES completion:nil];
 			[checkValidationController release];
 		} else {
             EventListViewController *eventListViewController = [[EventListViewController alloc] initWithStyle:UITableViewStyleGrouped];

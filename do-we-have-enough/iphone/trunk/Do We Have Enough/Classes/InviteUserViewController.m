@@ -30,12 +30,12 @@
 	[[ABPeoplePickerNavigationController alloc] init];
     picker.peoplePickerDelegate = self;
 	
-    [self presentModalViewController:picker animated:YES];
+    [self presentViewController:picker animated:YES completion:nil];
     [picker release];
 }
 - (void)peoplePickerNavigationControllerDidCancel:
 (ABPeoplePickerNavigationController *)peoplePicker {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -63,7 +63,7 @@
 		NSLog( @"User selected email address = %@", emailRef );
 		self.emailAddress.text = emailRef;
 		[emailRef release];
-		[self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
 		return NO;
 	} else {
 		return YES;
