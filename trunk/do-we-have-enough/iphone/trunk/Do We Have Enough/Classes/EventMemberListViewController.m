@@ -8,11 +8,12 @@
 
 #import "EventMemberListViewController.h"
 #import "TestFlight.h"
+#import "Do_We_Have_EnoughAppDelegate.h"
 
 
 
 @implementation EventMemberListViewController
-@synthesize memberlist, inlist, outlist, fiftylist, unknownlist;
+@synthesize memberlist, inlist, outlist, fiftylist, unknownlist, eventDetailsController;
 
 /*
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -25,6 +26,10 @@
 
 
 - (void)viewDidLoad {
+    Do_We_Have_EnoughAppDelegate *appDelegate = (Do_We_Have_EnoughAppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.eventMemberListViewController = self;
+    
+    
 	inlist = [[NSMutableArray alloc] init];
 	outlist	= [[NSMutableArray alloc] init];
 	fiftylist = [[NSMutableArray alloc] init];
@@ -53,9 +58,23 @@
     [super viewDidAppear:animated];
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    UIBarButtonItem *button = [[UIBarButtonItem alloc]
+                               initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                               target:self
+                               action:@selector(refresh:)];
+    self.navigationItem.rightBarButtonItem = button;
+    [button release];
 }
 
+
+-(IBAction)refresh:(id)sender {
+    NSLog(@"refreshing list!");
+    [eventDetailsController performSelector:@selector(refreshData) withObject:nil afterDelay:0.3f];
+    eventDetailsController.shouldPushToMemberList = YES;
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -67,11 +86,13 @@
     [super viewDidAppear:animated];
 }
 */
-/*
+
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
+    Do_We_Have_EnoughAppDelegate *appDelegate = (Do_We_Have_EnoughAppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.eventMemberListViewController = nil;
 }
-*/
+
 /*
 - (void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];
@@ -241,6 +262,7 @@ titleForHeaderInSection:(NSInteger)section
 	[outlist release];
 	[fiftylist release];
 	[unknownlist release];
+    [eventDetailsController release];
     [super dealloc];
 }
 
