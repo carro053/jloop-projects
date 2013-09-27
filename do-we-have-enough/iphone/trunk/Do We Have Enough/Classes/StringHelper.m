@@ -18,9 +18,16 @@
 	CGFloat maxHeight = 9999;
 	CGSize maximumLabelSize = CGSizeMake(maxWidth,maxHeight);
 	
+    /*
+    //deprecated
 	CGSize expectedLabelSize = [self sizeWithFont:[UIFont systemFontOfSize:size] 
 								   constrainedToSize:maximumLabelSize 
-									   lineBreakMode:UILineBreakModeWordWrap]; 
+									   lineBreakMode:UILineBreakModeWordWrap];
+    */
+    
+    CGSize expectedLabelSize = [self sizeWithFont:[UIFont systemFontOfSize:size]
+                                constrainedToSize:maximumLabelSize
+                                    lineBreakMode:NSLineBreakByWordWrapping];
 	
 	return expectedLabelSize.height;
 }
@@ -41,7 +48,8 @@
 	UILabel *cellLabel = [[UILabel alloc] initWithFrame:[self RAD_frameForCellLabelWithSystemFontOfSize:size]];
 	cellLabel.textColor = [UIColor blackColor];
 	cellLabel.backgroundColor = [UIColor clearColor];
-	cellLabel.textAlignment = UITextAlignmentLeft;
+	//cellLabel.textAlignment = UITextAlignmentLeft; //deprecated
+    cellLabel.textAlignment = NSTextAlignmentLeft;
 	cellLabel.font = [UIFont systemFontOfSize:size];
 	
 	cellLabel.text = self; 
