@@ -20,8 +20,7 @@
 -(IBAction)cancel:(id)sender {
 	NSLog(@"cancel");
 	//HomeController *homeController = self.parentViewController;
-	
-	[(CreateEventViewController *)self.parentViewController dismissModalViewControllerAnimated:YES];
+    [(CreateEventViewController *)self.parentViewController dismissViewControllerAnimated:YES completion:nil];
 }
 -(IBAction)save:(id)sender {
 	
