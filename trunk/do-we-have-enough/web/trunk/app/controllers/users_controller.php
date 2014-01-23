@@ -416,16 +416,19 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 		
 		$this->EventsUser->bindModel(array('belongsTo'=>array('Event' =>array('className'=>'Event','foreignKey'=>'event_id','conditions'=>'','order'=> '','limit'=> ''))));
 		$events_user = $this->EventsUser->find('EventsUser.event_id = '.$this->uAuth->event_id.' AND EventsUser.user_id = '.$this->uAuth->user_id);
-		$events_user['EventsUser']['status'] = $status;
-		$events_user['EventsUser']['status_changed'] = date('Y-m-d H:i:s'); 
-		if($status == 4)
+		if($events_user['EventsUser']['status'] != $status)
 		{
-			$events_user['EventsUser']['status'] = 1;
-			$events_user['EventsUser']['guests'] = 1;
-		}else{
-			$events_user['EventsUser']['guests'] = 0;
+			$events_user['EventsUser']['status'] = $status;
+			$events_user['EventsUser']['status_changed'] = date('Y-m-d H:i:s'); 
+			if($status == 4)
+			{
+				$events_user['EventsUser']['status'] = 1;
+				$events_user['EventsUser']['guests'] = 1;
+			}else{
+				$events_user['EventsUser']['guests'] = 0;
+			}
+			$this->EventsUser->save($events_user);
 		}
-		$this->EventsUser->save($events_user);
 		$this->Event->bindModel(array('hasAndBelongsToMany'=>array('User' =>array('className'=>'User','joinTable'=>'events_users','foreignKey'=>'event_id','associationForeignKey'=>'user_id','conditions'=>'','order'=> '','limit'=> '','unique'=>true,'finderQuery'=>'','deleteQuery'=>''))));
 		$event = $this->Event->find('Event.url = "'.$events_user['Event']['url'].'" AND Event.validated = 1');
 		$access = 0;
