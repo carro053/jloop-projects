@@ -352,7 +352,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 		$events_user = $this->EventsUser->find('EventsUser.hash = "'.$hash.'"');
 		if(isset($events_user['Event']['id']))
 		{
-			if($status)
+			if($status && $status != $events_user['EventsUser']['status'])
 			{
 				$events_user['EventsUser']['status'] = $status;
 				if($status == 4)

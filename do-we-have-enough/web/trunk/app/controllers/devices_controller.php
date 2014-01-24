@@ -764,7 +764,7 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 	{
 		$this->User->bindModel(array('hasOne'=>array('UserMobileDevice'=>array('foreignKey'=>false,'conditions'=> array('User.id = UserMobileDevice.user_id')),'EventsUser' =>array('className'=>'EventsUser','foreignKey'=>'user_id','conditions'=>'EventsUser.event_id = '.$_POST['event_id'],'order'=> '','limit'=> ''))));
 		$user = $this->User->find('User.email = "'.$_POST['email_address'].'" AND UserMobileDevice.device_id = "'.$_POST['device_id'].'"');
-		if(isset($user['UserMobileDevice']['id']))
+		if(isset($user['UserMobileDevice']['id']) && $user['EventsUser']['status'] != $_POST['status'])
 		{
 			$user['EventsUser']['status'] = $_POST['status'];
 			$user['EventsUser']['guests'] = $_POST['guests'];
