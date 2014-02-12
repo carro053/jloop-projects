@@ -38,7 +38,7 @@ class AdagesController extends AppController {
 		
 		if($html) {
 			
-			var_dump(pq('.warning'));
+			var_dump(pq('.warning')->length);
 			
 			exit;
 			
