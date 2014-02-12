@@ -30,7 +30,7 @@ class AdagesController extends AppController {
 		exit;
 	}
 
-	private function scrapeAdage($id) {
+	public function scrapeAdage($id) {
 		App::import('Vendor', 'phpQuery/phpQuery');
 		$adage = $this->Adage->findById($id);
 		$html = file_get_contents($adage['Adage']['url']);
