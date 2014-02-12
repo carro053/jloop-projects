@@ -11,16 +11,9 @@ class AdagesController extends AppController {
 		
 		//Adage uses AJAX to load the actual company names, so you'll have to save the rendered page in your browser and upload it to the following location
 		$html = file_get_contents('http://'.$_SERVER['HTTP_HOST'].'/files/adage_directory.html');
-		
-		//echo $html;
-		//exit;
-		
 		$doc = phpQuery::newDocumentHTML($html);
 		
-		pr($doc);
-		
-		echo 'start directory listing';
-		//pr(pq('a.directory_entry'));
+		echo 'start directory listing<br>';
 		
 		foreach(pq('a.directory_entry') as $key => $a) {
 			
@@ -37,7 +30,29 @@ class AdagesController extends AppController {
 		exit;
 	}
 
-	public function scrapeAdage($id) {
+	private function scrapeAdage($id) {
+		App::import('Vendor', 'phpQuery/phpQuery');
+		$adage = $this->Adage->findById($id);
+		$html = file_get_contents($adage['Adage']['url']);
+		$doc = phpQuery::newDocumentHTML($html);
 		
+		if($html) {
+			
+			var_dump(pq('.warning'));
+			
+			exit;
+			
+			
+			
+			
+			$adage['Adage']['scraped'] = 1;
+			
+			pr($adage);
+			$this->Adage->save($adage, false);
+		} else {
+			//mark as errored if the 
+			$adage['Adage']['error'] = 1;
+		}
+		return '1';
 	}
 }
