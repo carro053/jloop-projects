@@ -30,6 +30,12 @@ class AdagesController extends AppController {
 		exit;
 	}
 
+	public function scrapeAllAdages($limit = 20) {
+		$adages = $this->Adage->find('all', array('conditions' => 'Adage.scraped = 0', 'limit' => $limit, 'fields' => 'Adage.id'));
+		pr($adages);
+		exit;
+	}
+
 	//JDM, GOOD, id = 901, Alcone BAD, id = 83
 	public function scrapeAdage($id) {
 		App::import('Vendor', 'phpQuery/phpQuery');
