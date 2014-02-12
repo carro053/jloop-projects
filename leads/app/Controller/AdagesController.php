@@ -13,7 +13,10 @@ class AdagesController extends AppController {
 		
 		$doc = phpQuery::newDocumentHTML($html);
 		
-		pr($doc);
+		//pr($doc);
+		
+		pr(pq('a.directory_entry')->html());
+		
 		exit;
 	}
 
