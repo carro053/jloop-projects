@@ -61,8 +61,8 @@ class AdagesController extends AppController {
 			} else {
 				$adage['Adage']['access_denied'] = 1;
 			}
-			$this->Adage->save($adage, false);
 			$adage['Adage']['scraped'] = 1;
+			$this->Adage->save($adage, false);
 			pr($adage);
 		} else {
 			//mark as errored if the 
