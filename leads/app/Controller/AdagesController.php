@@ -51,7 +51,6 @@ class AdagesController extends AppController {
 				$adage['Adage']['regions'] = strip_tags(pq('ul.region li')->text());
 				$adage['Adage']['specialties'] = strip_tags(pq('ul.speciality li')->text()); //
 				$adage['Adage']['categories'] = strip_tags(pq('ul.category li')->text());
-				$adage['Adage']['scraped'] = 1;
 			} else {
 				$adage['Adage']['access_denied'] = 1;
 			}
