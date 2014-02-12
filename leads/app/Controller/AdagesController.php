@@ -51,24 +51,15 @@ class AdagesController extends AppController {
 				$adage['Adage']['company_url'] = strip_tags(pq('div.attribute-url a')->text());
 				$adage['Adage']['employees'] = strip_tags(pq('.employees')->text());
 				$adage['Adage']['regions'] = strip_tags(pq('ul.region li')->text());
-				$adage['Adage']['specialties'] = strip_tags(pq('ul.specialty li')->text());
+				$adage['Adage']['specialties'] = strip_tags(pq('ul.speciality li')->text()); //
 				$adage['Adage']['categories'] = strip_tags(pq('ul.category li')->text());
-				
 				$adage['Adage']['scraped'] = 1;
 			} else {
 				$adage['Adage']['access_denied'] = 1;
 			}
-			
-			pr($adage);
-			exit;
-			
 			$this->Adage->save($adage, false);
-			
-			
 			$adage['Adage']['scraped'] = 1;
-			
 			pr($adage);
-			
 		} else {
 			//mark as errored if the 
 			$adage['Adage']['network_error'] = 1;
