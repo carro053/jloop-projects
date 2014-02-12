@@ -11,6 +11,9 @@ class AdagesController extends AppController {
 				
 		$html = file_get_contents('http://adage.com/directory');
 		
+		echo $html;
+		exit;
+		
 		$doc = phpQuery::newDocumentHTML($html);
 		
 		pr($doc);
