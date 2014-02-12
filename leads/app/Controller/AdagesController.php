@@ -9,9 +9,6 @@ class AdagesController extends AppController {
 	}
 
 	public function getDirectoryListing() {
-		//echo 'hello';
-		//exit;
-	
 		App::import('Vendor', 'phpQuery/phpQuery');
 		
 		//Adage uses AJAX to load the actual company names, so you'll have to save the rendered page in your browser and upload it to the following location
@@ -41,8 +38,9 @@ class AdagesController extends AppController {
 			$this->scrapeAdage($adage['Adage']['id']);
 		exit;
 	}
-
-	//JDM, GOOD, id = 901, Alcone BAD, id = 83
+	
+	//http://lookbook.adage.com/Agencies/JDM 		GOOD, id = 901
+	//http://lookbook.adage.com/Agencies/Alcone		BAD, id = 83
 	public function scrapeAdage($id) {
 		App::import('Vendor', 'phpQuery/phpQuery');
 		$adage = $this->Adage->findById($id);
