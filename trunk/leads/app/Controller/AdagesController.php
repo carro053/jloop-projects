@@ -3,6 +3,11 @@ App::uses('AppController', 'Controller');
 
 class AdagesController extends AppController {
 
+	public function beforeFilter() {
+		parent::beforeFilter();
+		$this->Auth->allow();
+	}
+
 	public function getDirectoryListing() {
 		//echo 'hello';
 		//exit;
