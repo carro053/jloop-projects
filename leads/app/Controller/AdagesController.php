@@ -9,7 +9,7 @@ class AdagesController extends AppController {
 	
 		App::import('Vendor', 'phpQuery/phpQuery');
 				
-		$html = file_get_contents('http://adage.com/directory');
+		$html = file_get_contents('/adage_directory.html');
 		
 		echo $html;
 		exit;
