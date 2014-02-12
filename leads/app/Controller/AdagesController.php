@@ -40,6 +40,8 @@ class AdagesController extends AppController {
 		if($html) {
 			//check if "Access Denied" message
 			if(pq('.warning')->length) {
+				echo 'address: '.pq('.address')->text();
+			
 				$adage['Adage']['address'] = strip_tags(pq('.address')->text());
 				$adage['Adage']['city'] = strip_tags(pq('.city')->text());
 				$adage['Adage']['state'] = strip_tags(pq('.state')->text());
