@@ -54,6 +54,8 @@ class AdagesController extends AppController {
 			} else {
 				$adage['Adage']['access_denied'] = 1;
 			}
+			
+			pr($adage);
 			$this->Adage->save($adage, false);
 			exit;
 			
