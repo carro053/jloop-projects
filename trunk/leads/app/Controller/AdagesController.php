@@ -16,7 +16,7 @@ class AdagesController extends AppController {
 		pr($doc);
 		
 		echo 'start directory listing';
-		pr(pq('a.directory_entry')->html());
+		pr(pq('a.directory_entry'));
 		
 		exit;
 	}
