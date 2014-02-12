@@ -13,7 +13,7 @@ class AdagesController extends AppController {
 		
 		$doc = phpQuery::newDocumentHTML($html);
 		
-		//pr($doc);
+		pr($doc);
 		
 		echo 'start directory listing';
 		pr(pq('a.directory_entry')->html());
