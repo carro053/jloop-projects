@@ -30,6 +30,7 @@ class AdagesController extends AppController {
 		exit;
 	}
 
+	//JDM, GOOD, id = 901, Alcone BAD, id = 83
 	public function scrapeAdage($id) {
 		App::import('Vendor', 'phpQuery/phpQuery');
 		$adage = $this->Adage->findById($id);
@@ -37,21 +38,33 @@ class AdagesController extends AppController {
 		$doc = phpQuery::newDocumentHTML($html);
 		
 		if($html) {
-			
-			var_dump(pq('.warning')->length);
-			
+			//check if "Access Denied" message
+			if(pq('.warning')->length) {
+				$adage['Adage']['address'] = strip_tags(pq('.address')->text());
+				$adage['Adage']['city'] = strip_tags(pq('.city')->text());
+				$adage['Adage']['state'] = strip_tags(pq('.state')->text());
+				$adage['Adage']['zip'] = strip_tags(pq('.zip')->text());
+				$adage['Adage']['country'] = strip_tags(pq('.country')->text());
+				$adage['Adage']['phone'] = strip_tags(pq('.attribute-phone')->text());
+				$adage['Adage']['company_url'] = strip_tags(pq('div.attribute-url a')->text());
+				$adage['Adage']['employees'] = strip_tags(pq('.employees')->text());
+				$adage['Adage']['regions'] = strip_tags(pq('ul.region li')->text());
+				$adage['Adage']['specialties'] = strip_tags(pq('ul.specialty li')->text());
+				$adage['Adage']['categories'] = strip_tags(pq('ul.category li')->text());
+			} else {
+				$adage['Adage']['access_denied'] = 1;
+			}
+			$this->Adage->save($adage, false);
 			exit;
-			
-			
 			
 			
 			$adage['Adage']['scraped'] = 1;
 			
 			pr($adage);
-			$this->Adage->save($adage, false);
+			
 		} else {
 			//mark as errored if the 
-			$adage['Adage']['error'] = 1;
+			$adage['Adage']['network_error'] = 1;
 		}
 		return '1';
 	}
