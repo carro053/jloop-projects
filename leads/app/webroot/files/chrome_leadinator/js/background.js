@@ -83,7 +83,6 @@ var phoneContextProperties = {
 };
 
 chrome.contextMenus.create(parentContextProperties, function (){});
-
 chrome.contextMenus.create(environmentContextProperties, function (){});
 
 chrome.contextMenus.create(scrapeAppContextProperties, function (){});
@@ -125,7 +124,7 @@ function scrapeAppLink(info, tab) {
 
 	var scrapeLink = null;
 	
-	if(info.linkUrl)
+	if(info.pageUrl)
 		scrapeLink = info.pageUrl;
 	if(info.linkUrl)
 		scrapeLink = info.linkUrl;
