@@ -110,6 +110,7 @@ class LeadsController extends AppController {
 	}
 	
 	public function qualify() {
+		
 	}
 	
 	public function update() {

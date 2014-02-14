@@ -5,7 +5,83 @@ class AdagesController extends AppController {
 
 	public function beforeFilter() {
 		parent::beforeFilter();
-		$this->Auth->allow();
+		$this->Auth->allow(array('scrapeAllAdages'));
+	}
+
+	public function index() {
+		$limit = (!empty($_GET['limit']) ? $_GET['limit'] : 50);
+		$page = (!empty($_GET['page']) ? $_GET['page'] : 1);
+		$order = (!empty($_GET['order']) ? $_GET['order'] : 'Scrape.name').' '.(!empty($_GET['direction']) ? $_GET['direction'] : 'asc');
+		
+		$conditions = array('Lead.status' => 0);
+		
+		/*
+		//search conditions
+		if(!empty($_GET['type'])) {
+			$types = array(
+				'manual' => 'Manual iTunes Scrape',
+				'auto' => 'Google Search Automatic iTunes Scrape'
+			);
+			if(!empty($types[$_GET['type']]))
+				$conditions['Lead.type'] =  $types[$_GET['type']];
+		}
+		if(!empty($_GET['category'])) {
+			$conditions['Scrape.category'] = $_GET['category'];
+		}
+		if(!empty($_GET['ratings_all_min'])) {
+			$conditions['Scrape.ratings_all >='] = $_GET['ratings_all_min'];
+		}
+		if(!empty($_GET['ratings_all_max'])) {
+			$conditions['Scrape.ratings_all <='] = $_GET['ratings_all_max'];
+		}
+		if(!empty($_GET['ratings_all_count'])) {
+			$conditions['Scrape.ratings_all_count >='] = $_GET['ratings_all_count'];
+		}
+		if(!empty($_GET['iphone5'])) {
+			if($_GET['iphone5'] == 'yes')
+				$conditions['Scrape.requirements LIKE'] = '%This app is optimized for iPhone 5.%';
+			if($_GET['iphone5'] == 'no')
+				$conditions['Scrape.requirements NOT LIKE'] = '%This app is optimized for iPhone 5.%';
+		}
+		if(!empty($_GET['search'])) {
+			$conditions['OR']['Scrape.name LIKE'] = '%'.$_GET['search'].'%';
+			$conditions['OR']['Scrape.seller LIKE'] = '%'.$_GET['search'].'%';
+			$conditions['OR']['Scrape.copyright LIKE'] = '%'.$_GET['search'].'%';
+			$conditions['OR']['Scrape.description LIKE'] = '%'.$_GET['search'].'%';
+		}
+		$scrapes = $this->Scrape->find('all', array(
+			'conditions' => $conditions,
+			'order' => $order,
+			'page' => $page,
+			'limit' => $limit
+		));
+		$this->set('scrapes', $scrapes);
+		
+		$count = $this->Scrape->find('count', array('conditions' => $conditions));
+		$this->set('count', $count);
+		
+		$categories_raw = $this->Scrape->find('all', array(
+			'fields' => array(
+				'DISTINCT category'
+			)
+		));
+		$categories = array('' => 'Any');
+		foreach($categories_raw as $category) {
+			$categories[$category['Scrape']['category']] = html_entity_decode($category['Scrape']['category']);
+		}
+		$this->set('categories', $categories);
+		*/
+		
+		$conditions = array();
+		$scrapes = $this->Adage->find('all', array(
+			'conditions' => $conditions,
+			'order' => $order,
+			'page' => $page,
+			'limit' => $limit
+		));
+		$this->set('scrapes', $scrapes);
+		$count = $this->Scrape->find('count', array('conditions' => $conditions));
+		$this->set('count', $count);
 	}
 
 	public function getDirectoryListing() {
