@@ -96,7 +96,7 @@
 				<td><?php echo $scrape['Scrape']['released_updated']; ?></td>
 				<td><a class="dialog" href="/Scrapes/view/<?php echo $scrape['Scrape']['id']; ?>">View</a></td>
 			</tr>
-		<?php } if(empty($scrape)) { ?>
+		<?php } if(empty($scrapes)) { ?>
 			<tr><td colspan="5">There are currently no scrapes</td></tr>
 		<?php } ?>
 	</tbody>
