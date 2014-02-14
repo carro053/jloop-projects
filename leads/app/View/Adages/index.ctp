@@ -28,6 +28,7 @@
 			<tr>
 				<td><?php echo $adage['Adage']['name']; ?></td>
 				<td><?php echo $adage['Adage']['categories']; ?></td>
+				<td><?php echo $adage['Adage']['specialties']; ?></td>
 				<td><?php echo $adage['Adage']['regions']; ?></td>
 				<td><?php echo $adage['Adage']['state']; ?></td>
 				<td><a class="dialog" href="/Adages/view/<?php echo $adage['Adage']['id']; ?>">View</a></td>
