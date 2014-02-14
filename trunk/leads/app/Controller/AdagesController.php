@@ -85,7 +85,23 @@ class AdagesController extends AppController {
 	}
 
 	public function convertIntoLeads() {
+		$adages = $this->Adage->find('all');
+		foreach($adages as $adage) {
+			$lead = array();
+			$this->Lead->create();
+			$lead['Lead']['model'] = 'Adage';
+			$lead['Lead']['type'] = 'AdAge Scrape';
+			$lead['Lead']['company'] = $adage['Adage']['name'];
+			$lead['Lead']['phone'] = $adage['Adage']['phone'];
+			$lead['Lead']['address'] = $adage['Adage']['address'];
+			$lead['Lead']['city'] = $adage['Adage']['city'];
+			$lead['Lead']['zip'] = $adage['Adage']['zip'];
+			$lead['Lead']['state'] = $adage['Adage']['state'];
+			$lead['Lead']['country'] = $adage['Adage']['country'];
+			pr($lead);
+		}
 		
+		exit;
 	}
 
 	public function getDirectoryListing() {
