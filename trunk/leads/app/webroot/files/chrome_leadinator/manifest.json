@@ -16,9 +16,11 @@
 		"contextMenus",
 		"storage",
 		"tabs",
-		"http://leads.jloop.com/*"
+		"http://leads.jloop.com/*",
+		"http://dev.leads.jloop.com/*",
+		"http://facebook.com/*",
+		"*://*/*"
 	],
-	
 	"content_scripts": [
 		{
 			"matches": ["http://leads.jloop.com/*","http://dev.leads.jloop.com/*"],
