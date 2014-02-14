@@ -18,7 +18,7 @@
 				)
 			)));
 			echo $this->Html->tableCells(array(array(
-				$this->Html->tag('strong', 'Category'),
+				$this->Html->tag('strong', 'Categories'),
 				$adage['Adage']['categories']
 			)));
 			echo $this->Html->tableCells(array(array(
