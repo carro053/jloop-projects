@@ -32,6 +32,7 @@ class Scrape extends AppModel {
 		
 		$html = file_get_contents($url);
 		
+		echo $url;
 		echo $html;
 		exit;
 		
