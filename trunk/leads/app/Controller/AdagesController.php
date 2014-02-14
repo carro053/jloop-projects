@@ -90,6 +90,7 @@ class AdagesController extends AppController {
 			$lead = array();
 			$this->Adage->Lead->create();
 			$lead['Lead']['model'] = 'Adage';
+			$lead['Lead']['model_id'] = $adage['Adage']['id'];
 			$lead['Lead']['type'] = 'AdAge Scrape';
 			$lead['Lead']['company'] = $adage['Adage']['name'];
 			$lead['Lead']['phone'] = $adage['Adage']['phone'];
@@ -99,6 +100,8 @@ class AdagesController extends AppController {
 			$lead['Lead']['state'] = $adage['Adage']['state'];
 			$lead['Lead']['country'] = $adage['Adage']['country'];
 			pr($lead);
+			
+			$this->Adage->Lead->save($lead, false);
 		}
 		
 		exit;
