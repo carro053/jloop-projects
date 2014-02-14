@@ -72,14 +72,12 @@ class AdagesController extends AppController {
 		$this->set('categories', $categories);
 		*/
 		
-		$conditions = array('Lead.status' => 0);
+		//$conditions = array('Lead.status' => 0);
 		$adages = $this->Adage->find('all', array(
-			/*
 			'conditions' => $conditions,
 			'order' => $order,
 			'page' => $page,
 			'limit' => $limit
-			*/
 		));
 		$this->set('adages', $adages);
 		$count = $this->Adage->find('count', array('conditions' => $conditions));
