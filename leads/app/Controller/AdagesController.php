@@ -31,6 +31,15 @@ class AdagesController extends AppController {
 		$count = $this->Adage->find('count', array('conditions' => $conditions));
 		$this->set('count', $count);
 	}
+	
+	public function view($id) {
+		$this->layout = false;
+		$adage = $this->Adage->find('first', array('conditions' => 'Adage.id = '.$id, 'recursive' => 3));
+		$this->set('adage', $adage);
+		
+		$tags = $this->Adage->Lead->Tag->find('all');
+		$this->set('tags', $tags);
+	}
 
 	public function convertIntoLeads() {
 		$adages = $this->Adage->find('all');
