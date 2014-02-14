@@ -6,7 +6,7 @@
 				$this->Html->link(
 					$adage['Adage']['name'],
 					$adage['Adage']['company_url'],
-					array('target' => '_blank', 'full_base' => false)
+					array('target' => '_blank')
 				)
 			)));
 			echo $this->Html->tableCells(array(array(
