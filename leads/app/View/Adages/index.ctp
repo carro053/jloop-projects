@@ -4,7 +4,7 @@
 	echo $this->Form->create('Adage', array('type' => 'get'));
 
 	echo $this->Form->input('search', array(
-		'label' => 'Search (Name, category, region, state)',
+		'label' => 'Search (Name, category, specialty, region, state)',
 		'value' => !empty($_GET['search']) ? $_GET['search'] : null
 	));
 	echo $this->Form->end('Filter');
