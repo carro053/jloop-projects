@@ -32,6 +32,10 @@ class Scrape extends AppModel {
 		
 		$html = file_get_contents($url);
 		
+		echo $html;
+		exit;
+		
+		
 		$doc = phpQuery::newDocumentHTML($html);
 		
 		$scrape = array();
