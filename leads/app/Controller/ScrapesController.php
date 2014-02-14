@@ -88,11 +88,6 @@ class ScrapesController extends AppController {
 	        if(empty($check)) {
 		        $this->Scrape->create();
 		        $scrape = $this->Scrape->parseURL($this->request->data['Scrape']['itunes_link']);
-		        
-		        print_r($scrape);
-		        exit;
-		        
-		        
 		        $scrape['Lead']['type'] = 'Manual iTunes Scrape';
 		        if(!empty($scrape['itunes_link']) && $this->Scrape->save($scrape)) {
 		        	if(isset($this->request->data['Scrape']['is_chrome_extension']))
