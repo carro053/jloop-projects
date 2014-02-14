@@ -88,7 +88,7 @@ class AdagesController extends AppController {
 		$adages = $this->Adage->find('all');
 		foreach($adages as $adage) {
 			$lead = array();
-			$this->Lead->create();
+			$this->Adage->Lead->create();
 			$lead['Lead']['model'] = 'Adage';
 			$lead['Lead']['type'] = 'AdAge Scrape';
 			$lead['Lead']['company'] = $adage['Adage']['name'];
