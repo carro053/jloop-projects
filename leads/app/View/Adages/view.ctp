@@ -6,7 +6,7 @@
 				$this->Html->link(
 					$adage['Adage']['name'],
 					$adage['Adage']['company_url'],
-					array('target' => '_blank', 'full_base' => true)
+					array('target' => '_blank', 'full_base' => false)
 				)
 			)));
 			echo $this->Html->tableCells(array(array(
@@ -30,7 +30,7 @@
 
 <?php echo $this->element('lead_form', array(
 	'lead' => $adage['Lead'],
-	'defaultName' => $adage['Adage']['name'],
+	'defaultName' => '',
 	'defaultCompany' => $adage['Adage']['name'],
 	'tags' => $tags
 )); ?>
