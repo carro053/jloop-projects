@@ -13,7 +13,7 @@ class AdagesController extends AppController {
 		$page = (!empty($_GET['page']) ? $_GET['page'] : 1);
 		$order = (!empty($_GET['order']) ? $_GET['order'] : 'Adage.name').' '.(!empty($_GET['direction']) ? $_GET['direction'] : 'asc');
 		
-		$conditions = array('Lead.status !=' => 0);
+		$conditions = array('Lead.status' => 0);
 		/*
 		//search conditions
 		if(!empty($_GET['type'])) {
