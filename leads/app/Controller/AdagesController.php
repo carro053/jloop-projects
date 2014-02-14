@@ -71,8 +71,10 @@ class AdagesController extends AppController {
 	public function fixCompanyUrls() {
 		$adages = $this->Adage->find('all');
 		foreach($adages as $adage) {
-			$adage['Adage']['company_url'] = 'http://'.$adage['Adage']['company_url'];
-			$this->Adage->save($adage);
+			if(!empty($adage['Adage']['company_url'])) {
+				$adage['Adage']['company_url'] = 'http://'.$adage['Adage']['company_url'];
+				$this->Adage->save($adage);
+			}
 		}
 		exit;
 	}
