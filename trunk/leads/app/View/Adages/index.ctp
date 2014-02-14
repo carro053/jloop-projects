@@ -15,7 +15,7 @@
 <table>
 	<thead>
 		<tr>
-			<th>Name <?php echo $this->element('sorter', array('uri' => 'Adages/index', 'field' => 'name')); ?></th>
+			<th>Name <?php echo $this->element('sorter', array('uri' => 'Adages/index', 'field' => 'Adage.name')); ?></th>
 			<th>Category <?php echo $this->element('sorter', array('uri' => 'Adages/index', 'field' => 'categories')); ?></th>
 			<th>Region <?php echo $this->element('sorter', array('uri' => 'Adages/index', 'field' => 'regions')); ?></th>
 			<th>State <?php echo $this->element('sorter', array('uri' => 'Adages/index', 'field' => 'state')); ?></th>
