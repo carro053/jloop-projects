@@ -2,9 +2,17 @@
 	<tbody>
 		<?php
 			echo $this->Html->tableCells(array(array(
-				$this->Html->tag('strong', 'App'),
+				$this->Html->tag('strong', 'Name'),
 				$this->Html->link(
 					$adage['Adage']['name'],
+					$adage['Adage']['company_url'],
+					array('target' => '_blank')
+				)
+			)));
+			echo $this->Html->tableCells(array(array(
+				$this->Html->tag('strong', 'AdAge Link'),
+				$this->Html->link(
+					$adage['Adage']['url'],
 					$adage['Adage']['url'],
 					array('target' => '_blank')
 				)
@@ -22,8 +30,8 @@
 
 <?php echo $this->element('lead_form', array(
 	'lead' => $adage['Lead'],
-	'defaultName' => $adage['Adage']['name'].' '.$adage['Adage']['copyright'],
-	'defaultCompany' => $adage['Adage']['seller'],
+	'defaultName' => $adage['Adage']['name'],
+	'defaultCompany' => $adage['Adage']['name'],
 	'tags' => $tags
 )); ?>
 
