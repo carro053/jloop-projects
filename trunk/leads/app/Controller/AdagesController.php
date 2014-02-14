@@ -17,6 +17,7 @@ class AdagesController extends AppController {
 		if(!empty($_GET['search'])) {
 			$conditions['OR']['Adage.name LIKE'] = '%'.$_GET['search'].'%';
 			$conditions['OR']['Adage.categories LIKE'] = '%'.$_GET['search'].'%';
+			$conditions['OR']['Adage.specialties LIKE'] = '%'.$_GET['search'].'%';
 			$conditions['OR']['Adage.regions LIKE'] = '%'.$_GET['search'].'%';
 			$conditions['OR']['Adage.state LIKE'] = '%'.$_GET['search'].'%';
 		}
