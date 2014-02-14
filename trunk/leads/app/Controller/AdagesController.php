@@ -100,7 +100,10 @@ class AdagesController extends AppController {
 			$lead['Lead']['country'] = $adage['Adage']['country'];
 			pr($lead);
 			
-			$this->Adage->Lead->save($lead);
+			if($this->Adage->Lead->save($lead)) {
+				$adage['Adage']['lead_id'] = $this->Adage->Lead->id;
+				$this->Adage->save($adage);
+			}
 		}
 		
 		exit;
