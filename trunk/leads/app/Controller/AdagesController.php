@@ -73,15 +73,19 @@ class AdagesController extends AppController {
 		*/
 		
 		$conditions = array();
-		$scrapes = $this->Adage->find('all', array(
+		$adages = $this->Adage->find('all', array(
 			'conditions' => $conditions,
 			'order' => $order,
 			'page' => $page,
 			'limit' => $limit
 		));
-		$this->set('scrapes', $scrapes);
-		$count = $this->Scrape->find('count', array('conditions' => $conditions));
+		$this->set('adages', $adages);
+		$count = $this->Adage->find('count', array('conditions' => $conditions));
 		$this->set('count', $count);
+	}
+
+	public function convertIntoLeads() {
+		
 	}
 
 	public function getDirectoryListing() {
