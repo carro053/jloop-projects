@@ -29,30 +29,6 @@
 				$this->Html->tag('strong', 'Specialties'),
 				$adage['Adage']['specialties']
 			)));
-			echo $this->Html->tableCells(array(array(
-				$this->Html->tag('strong', 'Address'),
-				$adage['Adage']['address']
-			)));
-			echo $this->Html->tableCells(array(array(
-				$this->Html->tag('strong', 'City'),
-				$adage['Adage']['city']
-			)));
-			echo $this->Html->tableCells(array(array(
-				$this->Html->tag('strong', 'State'),
-				$adage['Adage']['state']
-			)));
-			echo $this->Html->tableCells(array(array(
-				$this->Html->tag('strong', 'Zip'),
-				$adage['Adage']['zip']
-			)));
-			echo $this->Html->tableCells(array(array(
-				$this->Html->tag('strong', 'Country'),
-				$adage['Adage']['country']
-			)));
-			echo $this->Html->tableCells(array(array(
-				$this->Html->tag('strong', 'Phone'),
-				$adage['Adage']['phone']
-			)));
 		?>
 	</tbody>
 </table>
