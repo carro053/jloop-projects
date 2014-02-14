@@ -67,6 +67,16 @@ class AdagesController extends AppController {
 		exit;
 	}
 
+	//adds http:// to company_urls because people are retarded
+	public function fixCompanyUrls() {
+		$adages = $this->Adage->find('all');
+		foreach($adages as $adage) {
+			$adage['Adage']['company_url'] = 'http://'.$adage['Adage']['company_url'];
+			$this->Adage->save($adage);
+		}
+		exit;
+	}
+
 	public function getDirectoryListing() {
 		App::import('Vendor', 'phpQuery/phpQuery');
 		
