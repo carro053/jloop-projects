@@ -15,7 +15,7 @@
 <table>
 	<thead>
 		<tr>
-			<th>Name <?php echo $this->element('sorter', array('uri' => 'Adages/index', 'field' => 'Adages.name')); ?></th>
+			<th>Name <?php echo $this->element('sorter', array('uri' => 'Adages/index', 'field' => 'name')); ?></th>
 			<th>Category <?php echo $this->element('sorter', array('uri' => 'Adages/index', 'field' => 'categories')); ?></th>
 			<th>Region <?php echo $this->element('sorter', array('uri' => 'Adages/index', 'field' => 'regions')); ?></th>
 			<th>State <?php echo $this->element('sorter', array('uri' => 'Adages/index', 'field' => 'state')); ?></th>
@@ -38,5 +38,3 @@
 </table>
 
 <?php echo $this->element('pager', array('totalItems' => $count, 'uri' => 'Adages/index')); ?>
-
-<?php pr($adages); ?>
