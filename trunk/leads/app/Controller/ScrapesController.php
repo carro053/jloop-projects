@@ -83,9 +83,6 @@ class ScrapesController extends AppController {
 	
 	public function create() {
 		if($this->request->is('post')) {
-			print_r($this->request->data);
-	        exit;
-		
 			$itunes_id = $this->Scrape->parseItunesId($this->request->data['Scrape']['itunes_link']);
 			$check = $this->Scrape->findByItunesId($itunes_id);
 	        if(empty($check)) {
