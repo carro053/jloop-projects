@@ -1,4 +1,4 @@
-<h2>Review AdAge Adages</h2>
+<h2>Review AdAge Scrapes</h2>
 
 <?php
 	echo $this->Form->create('Adage', array('type' => 'get'));
