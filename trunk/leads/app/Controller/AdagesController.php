@@ -70,7 +70,7 @@ class AdagesController extends AppController {
 		$this->set('categories', $categories);
 		*/
 		
-		//$conditions = array('Lead.status' => 0);
+		$conditions = array('Lead.status' => 0);
 		$adages = $this->Adage->find('all', array(
 			'conditions' => $conditions,
 			'order' => $order,
