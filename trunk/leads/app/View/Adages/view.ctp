@@ -5,7 +5,7 @@
 				$this->Html->tag('strong', 'Name'),
 				$this->Html->link(
 					$adage['Adage']['name'],
-					$adage['Adage']['company_url'],
+					$adage['Lead']['website'],
 					array('target' => '_blank')
 				)
 			)));
