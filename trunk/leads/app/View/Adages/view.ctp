@@ -39,6 +39,7 @@
 	'lead' => $adage['Lead'],
 	'defaultName' => '',
 	'defaultCompany' => $adage['Adage']['name'],
+	'defaultWebsite' => $adage['Adage']['company_url'],
 	'tags' => $tags
 )); ?>
 
