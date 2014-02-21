@@ -174,10 +174,11 @@ titleForHeaderInSection:(NSInteger)section
 			NSMutableDictionary *myMember = [inlist objectAtIndex:row];
 			int myGuests = [[myMember objectForKey:@"guests"] intValue];
 			NSString *myMsg = nil;
+            NSString *name = [[myMember objectForKey:@"name"] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
 			if (myGuests == 0) {
-				myMsg = [[NSString alloc] initWithFormat:@"%@", [myMember objectForKey:@"name"]];
+				myMsg = [[NSString alloc] initWithFormat:@"%@", name];
 			} else {
-				myMsg = [[NSString alloc] initWithFormat:@"%@+ %d", [myMember objectForKey:@"name"], myGuests];
+				myMsg = [[NSString alloc] initWithFormat:@"%@ + %d",name, myGuests ];
 			}
 			cell.textLabel.text = myMsg;
 			[myMsg release];
