@@ -19,7 +19,7 @@
 			<th>Categories <?php echo $this->element('sorter', array('uri' => 'Adages/index', 'field' => 'categories')); ?></th>
 			<th>Specialties <?php echo $this->element('sorter', array('uri' => 'Adages/index', 'field' => 'specialties')); ?></th>
 			<th>Region <?php echo $this->element('sorter', array('uri' => 'Adages/index', 'field' => 'regions')); ?></th>
-			<th>State <?php echo $this->element('sorter', array('uri' => 'Adages/index', 'field' => 'state')); ?></th>
+			<th>State <?php echo $this->element('sorter', array('uri' => 'Adages/index', 'field' => 'Adage.state')); ?></th>
 			<th></th>
 		</tr>
 	</thead>
