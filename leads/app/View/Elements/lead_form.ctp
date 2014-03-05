@@ -164,17 +164,15 @@
 				$(this).serialize(),
 				function(data) {
 					//$('#LeadFormContainer').replaceWith(data);
-					
-					console.log('updated');
-					
-					if(data == 'success') {
+					if(data == 'updated') {
 						var time = new Date().getTime();
 						$.ajax({
 							url: "/<?php echo Inflector::pluralize($this->request->data['Lead']['model']); ?>/view/<?php echo $this->request->data['Lead']['model_id']; ?>"+"?t="+time,
+							type: "GET",
 							success: function(data){
 								//console.log($("#LeadFormContainer", $(data)));
 								console.log(data);
-								$('#LeadFormContainer').replaceWith($("#LeadFormContainer", data));
+								$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(data)));
 							},
 							error: function(){
 								alert('There was an error with AJAX.');
