@@ -147,15 +147,6 @@
 		<?php } ?>
 	<?php } ?>
 	
-	<?php
-		/*
-		echo $this->Form->create('Note', array('id' => 'NoteForm', 'url' => '#', 'type' => 'post'));
-		echo $this->Form->input('lead_id', array('type' => 'hidden', 'value' => $lead['id']));
-		echo $this->Form->input('text', array('id' => 'NoteText'));
-		echo $this->Form->end('Add Note to Lead');
-		*/
-	?>
-	
 	<script type="text/javascript">
 		$('.radio').buttonset();
 		$('#tags').buttonset();
