@@ -168,7 +168,7 @@
 								var elements = $(leadFormData);
 								var found = $('#LeadFormContainer', leadFormData);
 								console.log('alleged inner HTML');
-								console.log($(found).html());
+								console.log(found.html());
 								
 								$('#LeadFormContainer').replaceWith(leadFormData);
 							},
