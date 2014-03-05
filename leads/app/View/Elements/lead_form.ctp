@@ -157,6 +157,9 @@
 	?>
 	
 	<script type="text/javascript">
+		var theStuff = '';
+	
+	
 		$('.radio').buttonset();
 		$('#tags').buttonset();
 		$('#LeadUpdateForm').submit(function() {
@@ -173,12 +176,9 @@
 							url: "/<?php echo Inflector::pluralize($this->request->data['Lead']['model']); ?>/view/<?php echo $this->request->data['Lead']['model_id']; ?>"+"?t="+time,
 							type: "GET",
 							success: function(data){
-								//console.log($(data));
-								//console.log(data);
-								//$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(data)));
+								theStuff = data;
 								console.log(data);
 								$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(data)));
-								
 							},
 							error: function(){
 								alert('There was an error with AJAX.');
