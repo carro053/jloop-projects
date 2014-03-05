@@ -157,9 +157,6 @@
 	?>
 	
 	<script type="text/javascript">
-		var theStuff = '';
-	
-	
 		$('.radio').buttonset();
 		$('#tags').buttonset();
 		$('#LeadUpdateForm').submit(function() {
@@ -169,17 +166,13 @@
 					//$('#LeadFormContainer').replaceWith(data);
 					if(data == 'updated') {
 					
-						//$( "#LeadFormContainer" ).load( "/<?php echo Inflector::pluralize($this->request->data['Lead']['model']); ?>/view/<?php echo $this->request->data['Lead']['model_id']; ?> #LeadFormContainer" );
-					
 						var time = new Date().getTime();
 						$.ajax({
 							url: "/<?php echo Inflector::pluralize($this->request->data['Lead']['model']); ?>/view/<?php echo $this->request->data['Lead']['model_id']; ?>"+"?t="+time,
 							type: "GET",
-							success: function(data){
-								theStuff = data;
-								console.log(data);
-								//$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(data)));
-								$('#LeadFormContainer').text( $("#LeadFormContainer", $(data)).text() );
+							success: function(leadFormData){
+								console.log(leadFormData);
+								$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(leadFormData)));
 							},
 							error: function(){
 								alert('There was an error with AJAX.');
