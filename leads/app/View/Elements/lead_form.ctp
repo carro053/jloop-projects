@@ -174,8 +174,8 @@
 							success: function(data){
 								//var newDoc = $.parseHTML(data)
 								//$('#LeadFormContainer').replaceWith($("#LeadFormContainer", newDoc));
-								$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(data)));
-								console.log(newDoc);
+								$('#LeadFormContainer').html($("#LeadFormContainer", $(data)).html());
+								console.log($("#LeadFormContainer", $(data).html());
 							},
 							error: function(){
 								alert('There was an error with AJAX.');
