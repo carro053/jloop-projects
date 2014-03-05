@@ -170,7 +170,7 @@
 					if(data == 'success') {
 						var time = new Date().getTime();
 						$.ajax({
-							url: "/<?php echo $this->request->data['Lead']['model']; ?>/view/<?php echo $this->request->data['Lead']['id']; ?>"+"?t="+time,
+							url: "/<?php echo $this->request->data['Lead']['model']; ?>/view/<?php echo $this->request->data['Lead']['model_id']; ?>"+"?t="+time,
 							success: function(data){
 								$('#LeadFormContainer').replaceWith(data);
 								console.log('updated view');
