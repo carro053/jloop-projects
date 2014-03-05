@@ -146,7 +146,7 @@ class LeadsController extends AppController {
 					$this->set('lead', $lead);
 					$tags = $this->Lead->Tag->find('all');
 					
-					pr($tags);
+					pr($lead);
 					exit;
 					
 					$this->set('tags', $tags);
