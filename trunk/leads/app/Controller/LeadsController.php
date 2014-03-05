@@ -133,10 +133,6 @@ class LeadsController extends AppController {
 				if($this->Lead->saveAll($this->request->data)) {
 					if(isset($this->request->data['Lead']['is_chrome_extension']))
 						die('1');
-					
-					/*
-					return $this->render('/Elements/form_success');
-					*/
 					die('updated');
 				}
 			}
@@ -144,24 +140,6 @@ class LeadsController extends AppController {
 		}
 		die('Only Post');
 	}
-	
-	/*
-	public function addNote() {
-		$this->layout = false;
-		if($this->request->is('post')) {
-			$user = $this->Auth->user();
-			$this->request->data['Note']['user_id'] = $user['id'];
-			if($this->Note->save($this->request->data)) {
-				$note = $this->Note->read();
-				echo json_encode($note['Note']);
-			} else {
-				echo 'error';
-			}
-			exit;
-		}
-		die('Only Post');
-	}
-	*/
 	
 	public function ajaxExportToHighrise($lead_id) {
 		$lead = $this->Lead->findById($lead_id);
