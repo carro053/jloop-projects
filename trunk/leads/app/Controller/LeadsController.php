@@ -147,7 +147,7 @@ class LeadsController extends AppController {
 					$this->set('tags', $tags);
 					return $this->render('/Elements/lead_form');
 					*/
-					die('success');
+					die('updated');
 				}
 			}
 			return $this->render('/Elements/lead_form');
