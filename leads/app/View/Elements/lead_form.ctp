@@ -173,7 +173,7 @@
 							url: "/<?php echo Inflector::pluralize($this->request->data['Lead']['model']); ?>/view/<?php echo $this->request->data['Lead']['model_id']; ?>"+"?t="+time,
 							success: function(data){
 								$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(data))); //$('#artistTable').replaceWith($("#artistTable", $(data)));
-								console.log('updated view');
+								console.log(data);
 							},
 							error: function(){
 								alert('There was an error with AJAX.');
