@@ -178,7 +178,8 @@
 							success: function(data){
 								theStuff = data;
 								console.log(data);
-								$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(data)));
+								//$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(data)));
+								$('#LeadFormContainer').text( $("#LeadFormContainer", $(data)).text() );
 							},
 							error: function(){
 								alert('There was an error with AJAX.');
