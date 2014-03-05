@@ -165,6 +165,7 @@
 								//$('#LeadFormContainer').replaceWith(leadFormData);
 								console.log(leadFormData);
 								$('#leadOverlay').replaceWith(leadFormData);
+								$('.dbm-buttonset input').removeClass('ui-helper-hidden-accessible'); setTimeout(function() { $('.dbm-buttonset input').addClass('ui-helper-hidden-accessible'); }, 0); 
 							},
 							error: function(){
 								alert('There was an error with AJAX.');
