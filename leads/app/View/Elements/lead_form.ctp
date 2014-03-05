@@ -172,8 +172,8 @@
 						$.ajax({
 							url: "/<?php echo Inflector::pluralize($this->request->data['Lead']['model']); ?>/view/<?php echo $this->request->data['Lead']['model_id']; ?>"+"?t="+time,
 							success: function(data){
-								console.log(data);
-								$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(data)));
+								//console.log($("#LeadFormContainer", $(data)));
+								$('#LeadFormContainer').replaceWith($("#LeadFormContainer", data));
 							},
 							error: function(){
 								alert('There was an error with AJAX.');
