@@ -163,7 +163,8 @@
 							type: "GET",
 							success: function(leadFormData){
 								console.log(leadFormData);
-								$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(leadFormData)));
+								//$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(leadFormData)));
+								$('#LeadFormContainer').replaceWith('THIS IS WHERE THE FORM SHOULD BE');
 							},
 							error: function(){
 								alert('There was an error with AJAX.');
