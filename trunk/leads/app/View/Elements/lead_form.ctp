@@ -164,7 +164,7 @@
 							success: function(leadFormData){
 								//console.log(leadFormData);
 								console.log('where is the form?');
-								console.log($("#LeadFormContainer", $(leadFormData)).text());
+								console.log($("#LeadFormContainer", $(leadFormData)).html());
 								$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(leadFormData)));
 							},
 							error: function(){
