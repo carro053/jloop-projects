@@ -171,7 +171,8 @@
 							url: "/<?php echo Inflector::pluralize($this->request->data['Lead']['model']); ?>/view/<?php echo $this->request->data['Lead']['model_id']; ?>"+"?t="+time,
 							type: "GET",
 							success: function(leadFormData){
-								console.log(leadFormData);
+								//console.log(leadFormData);
+								console.log($("#LeadFormContainer", $(leadFormData).text());
 								$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(leadFormData)));
 							},
 							error: function(){
