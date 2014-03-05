@@ -133,7 +133,9 @@ class LeadsController extends AppController {
 				if($this->Lead->saveAll($this->request->data)) {
 					if(isset($this->request->data['Lead']['is_chrome_extension']))
 						die('1');
-					//return $this->render('/Elements/form_success');
+					
+					/*
+					return $this->render('/Elements/form_success');
 					
 					$lead = $this->Lead->findById($this->request->data['Lead']['id']);
 					$this->set('lead', $lead);
@@ -144,6 +146,8 @@ class LeadsController extends AppController {
 					
 					$this->set('tags', $tags);
 					return $this->render('/Elements/lead_form');
+					*/
+					die('success');
 				}
 			}
 			return $this->render('/Elements/lead_form');
