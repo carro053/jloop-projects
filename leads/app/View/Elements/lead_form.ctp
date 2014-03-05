@@ -164,7 +164,7 @@
 							success: function(leadFormData){
 								//$('#LeadFormContainer').replaceWith(leadFormData);
 								console.log(leadFormData);
-								$('#leadOverlay').replaceWith($(leadFormData));
+								$('#leadOverlay').replaceWith(leadFormData);
 							},
 							error: function(){
 								alert('There was an error with AJAX.');
