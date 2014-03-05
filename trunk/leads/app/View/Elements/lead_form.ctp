@@ -163,7 +163,7 @@
 							type: "GET",
 							success: function(leadFormData){
 								//console.log(leadFormData);
-								var theHtml = $.parseHTML( leadFormData )
+								var theHtml = $.parseHTML( leadFormData );
 								console.log('where is the form?');
 								console.log($("#LeadFormContainer", $(theHtml)).html());
 								$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(leadFormData)));
