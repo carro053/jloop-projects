@@ -162,15 +162,8 @@
 							url: "/<?php echo Inflector::pluralize($this->request->data['Lead']['model']); ?>/view/<?php echo $this->request->data['Lead']['model_id']; ?>"+"?t="+time,
 							type: "GET",
 							success: function(leadFormData){
-								//console.log(leadFormData);
-								//$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(leadFormData)));
-								
-								var elements = $(leadFormData);
-								var found = $('#LeadFormContainer', leadFormData);
-								console.log('alleged inner HTML');
-								console.log(found.html());
-								
-								$('#LeadFormContainer').replaceWith(leadFormData);
+								//$('#LeadFormContainer').replaceWith(leadFormData);
+								$('#leadOverlay').replaceWith(leadFormData);
 							},
 							error: function(){
 								alert('There was an error with AJAX.');
