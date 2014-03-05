@@ -142,6 +142,8 @@ class LeadsController extends AppController {
 					$view->layout = false; 
 					$html = $view->element($campaign['Campaign']['template']);
 					*/
+					$lead = $this->Lead->findById($this->request->data['Lead']['id']);
+					$this->set('lead', $lead);
 					return $this->render('/Elements/lead_form');
 				}
 			}
