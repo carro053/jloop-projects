@@ -175,7 +175,7 @@
 								//var newDoc = $.parseHTML(data)
 								//$('#LeadFormContainer').replaceWith($("#LeadFormContainer", newDoc));
 								$('#LeadFormContainer').html($("#LeadFormContainer", $(data)).html());
-								console.log($("#LeadFormContainer", $(data).html());
+								console.log($("#LeadFormContainer", $(data).html()));
 							},
 							error: function(){
 								alert('There was an error with AJAX.');
