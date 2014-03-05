@@ -1,4 +1,4 @@
-<div id="#leadOverlay">
+<div id="leadOverlay">
 	<table>
 		<tbody>
 			<?php
