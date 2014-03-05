@@ -174,7 +174,11 @@
 								//console.log(data);
 								//$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(data)));
 								
-								$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(data)));
+								//$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(data)));
+								
+								var elements = $(data);
+								var found = $('#LeadFormContainer', elements);
+								$('#LeadFormContainer').replaceWith(found);
 							},
 							error: function(){
 								alert('There was an error with AJAX.');
