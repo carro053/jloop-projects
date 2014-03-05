@@ -144,6 +144,8 @@ class LeadsController extends AppController {
 					*/
 					$lead = $this->Lead->findById($this->request->data['Lead']['id']);
 					$this->set('lead', $lead);
+					$tags = $this->Lead->Tag->find('all');
+					$this->set('tags', $tags);
 					return $this->render('/Elements/lead_form');
 				}
 			}
