@@ -172,10 +172,7 @@
 						$.ajax({
 							url: "/<?php echo Inflector::pluralize($this->request->data['Lead']['model']); ?>/view/<?php echo $this->request->data['Lead']['model_id']; ?>"+"?t="+time,
 							success: function(data){
-								//var newDoc = $.parseHTML(data)
-								//$('#LeadFormContainer').replaceWith($("#LeadFormContainer", newDoc));
-								$('#LeadFormContainer').html($("#LeadFormContainer", $(data)).html());
-								console.log($("#LeadFormContainer", $(data).html()));
+								$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(data)));
 							},
 							error: function(){
 								alert('There was an error with AJAX.');
