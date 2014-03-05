@@ -163,7 +163,23 @@
 			$.post('/Leads/update',
 				$(this).serialize(),
 				function(data) {
-					$('#LeadFormContainer').replaceWith(data);
+					//$('#LeadFormContainer').replaceWith(data);
+					
+					console.log('updated');
+					
+					if(data == 'success') {
+						var time = new Date().getTime();
+						$.ajax({
+							url: "/<?php echo $this->request->data['Lead']['model']; ?>/view"+"?t="+time,
+							success: function(data){
+								$('#LeadFormContainer').replaceWith(data);
+								console.log('updated view');
+							},
+							error: function(){
+								alert('There was an error with AJAX.');
+							}
+						});
+					}
 				}
 			);
 			return false;
