@@ -172,6 +172,7 @@
 							type: "GET",
 							success: function(leadFormData){
 								//console.log(leadFormData);
+								console.log('where is the form?');
 								console.log($("#LeadFormContainer", $(leadFormData)).text());
 								$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(leadFormData)));
 							},
