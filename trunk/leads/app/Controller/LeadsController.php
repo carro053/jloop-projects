@@ -134,7 +134,8 @@ class LeadsController extends AppController {
 					if(isset($this->request->data['Lead']['is_chrome_extension']))
 						die('1');
 					//return $this->render('/Elements/form_success');
-					return $this->render('/Elements/lead_form');
+					pr($this->request->data);
+					exit;
 				}
 			}
 			return $this->render('/Elements/lead_form');
