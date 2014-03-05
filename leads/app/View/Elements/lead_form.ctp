@@ -164,7 +164,7 @@
 							success: function(leadFormData){
 								console.log(leadFormData);
 								//$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(leadFormData)));
-								$('#LeadFormContainer').replaceWith('THIS IS WHERE THE FORM SHOULD BE');
+								$('#LeadFormContainer').replaceWith(leadFormData);
 							},
 							error: function(){
 								alert('There was an error with AJAX.');
