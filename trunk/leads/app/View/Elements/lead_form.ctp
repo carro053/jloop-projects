@@ -172,7 +172,7 @@
 							type: "GET",
 							success: function(leadFormData){
 								//console.log(leadFormData);
-								console.log($("#LeadFormContainer", $(leadFormData).text());
+								console.log($("#LeadFormContainer", $(leadFormData)).text());
 								$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(leadFormData)));
 							},
 							error: function(){
