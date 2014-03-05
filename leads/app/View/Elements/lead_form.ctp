@@ -166,9 +166,8 @@
 					//$('#LeadFormContainer').replaceWith(data);
 					if(data == 'updated') {
 					
-						$( "#LeadFormContainer" ).load( "/<?php echo Inflector::pluralize($this->request->data['Lead']['model']); ?>/view/<?php echo $this->request->data['Lead']['model_id']; ?> #LeadFormContainer" );
+						//$( "#LeadFormContainer" ).load( "/<?php echo Inflector::pluralize($this->request->data['Lead']['model']); ?>/view/<?php echo $this->request->data['Lead']['model_id']; ?> #LeadFormContainer" );
 					
-						/*
 						var time = new Date().getTime();
 						$.ajax({
 							url: "/<?php echo Inflector::pluralize($this->request->data['Lead']['model']); ?>/view/<?php echo $this->request->data['Lead']['model_id']; ?>"+"?t="+time,
@@ -178,17 +177,13 @@
 								//console.log(data);
 								//$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(data)));
 								
-								//$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(data)));
+								$('#LeadFormContainer').replaceWith($("#LeadFormContainer", $(data)));
 								
-								var elements = $(data);
-								var found = $('#LeadFormContainer', elements);
-								$('#LeadFormContainer').replaceWith(found);
 							},
 							error: function(){
 								alert('There was an error with AJAX.');
 							}
 						});
-						*/
 					}
 				}
 			);
