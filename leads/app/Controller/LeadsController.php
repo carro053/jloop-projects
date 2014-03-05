@@ -135,19 +135,12 @@ class LeadsController extends AppController {
 						die('1');
 					//return $this->render('/Elements/form_success');
 					
-					/*
-					$lead = $this->Lead->findById($this->request->data['Lead']['id']);
-					$view = new View($this, false);
-					$view->set(strtolower($lead['Lead']['model']), $lead)
-					$view->layout = false; 
-					$html = $view->element($campaign['Campaign']['template']);
-					*/
 					$lead = $this->Lead->findById($this->request->data['Lead']['id']);
 					$this->set('lead', $lead);
 					$tags = $this->Lead->Tag->find('all');
 					
-					pr($lead);
-					exit;
+					//pr($lead);
+					//exit;
 					
 					$this->set('tags', $tags);
 					return $this->render('/Elements/lead_form');
