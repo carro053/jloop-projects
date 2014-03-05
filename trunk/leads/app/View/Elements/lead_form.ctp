@@ -154,18 +154,13 @@
 			$.post('/Leads/update',
 				$(this).serialize(),
 				function(data) {
-					//$('#LeadFormContainer').replaceWith(data);
 					if(data == 'updated') {
-					
 						var time = new Date().getTime();
 						$.ajax({
 							url: "/<?php echo Inflector::pluralize($this->request->data['Lead']['model']); ?>/view/<?php echo $this->request->data['Lead']['model_id']; ?>"+"?t="+time,
 							type: "GET",
 							success: function(leadFormData){
-								//$('#LeadFormContainer').replaceWith(leadFormData);
-								console.log(leadFormData);
 								$('#leadOverlay').replaceWith(leadFormData);
-								$('.dbm-buttonset input').removeClass('ui-helper-hidden-accessible'); setTimeout(function() { $('.dbm-buttonset input').addClass('ui-helper-hidden-accessible'); }, 0); 
 							},
 							error: function(){
 								alert('There was an error with AJAX.');
