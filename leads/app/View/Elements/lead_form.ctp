@@ -181,6 +181,12 @@
 		$('.editable').editable({
 			mode: 'inline'
 		});
+		$('.editable-select').editable({
+			mode: 'inline',
+			source: [<?php foreach($assignable_users as $id => $name) {
+				echo '{text:"'.$name.'",value:"'.$id.'"}';
+			} ?>]
+		});
 		
 		//pass lead data to chrome extension content script
 		var extension_info = <?php echo json_encode($lead); ?>;
