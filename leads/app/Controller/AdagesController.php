@@ -40,6 +40,12 @@ class AdagesController extends AppController {
 		
 		$tags = $this->Adage->Lead->Tag->find('all');
 		$this->set('tags', $tags);
+		
+		$assignable_users = $this->Scrape->Lead->Contact->User->find('list', array(
+			'fields' => array('User.id', 'User.username'),
+			'order' => 'User.username ASC'
+		));
+		$this->set('assignable_users', $assignable_users);
 	}
 
 	public function convertIntoLeads() {
