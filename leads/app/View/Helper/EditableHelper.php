@@ -8,7 +8,7 @@ class EditableHelper extends AppHelper {
 	}
 	
 	public function assignContact($field, $data) {
-		return '<span class="editable-select" data-type="text" data-pk="'.$data['id'].'" data-name="'.$field.'" data-url="/Contacts/updateField" data-title="Enter '.$field.'">'.$data[$field].'</span>';
+		return '<span class="editable-select" data-type="select" data-pk="'.$data['id'].'" data-name="'.$field.'" data-url="/Contacts/updateField" data-title="Enter '.$field.'">'.$data[$field].'</span>';
 	}
 	
 }
