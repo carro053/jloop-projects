@@ -79,6 +79,9 @@ class ScrapesController extends AppController {
 		
 		$tags = $this->Scrape->Lead->Tag->find('all');
 		$this->set('tags', $tags);
+		
+		$assignable_users = $this->Scrape->Lead->Contact->User->find('list');
+		$this->set('assignable_users', $assignable_users);
 	}
 	
 	public function create() {
