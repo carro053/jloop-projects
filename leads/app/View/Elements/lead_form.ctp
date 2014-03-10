@@ -110,6 +110,10 @@
 		echo $this->Form->input('Contact.0.linkedin');
 		echo $this->Form->input('Contact.0.twitter');
 		echo $this->Form->input('Contact.0.background_info');
+		echo $this->Form->input('Contact.0.user_id', array(
+			'label' => 'Assigned User',
+			'options' => $assignable_users
+		));
 	?>
 	
 	<table>
