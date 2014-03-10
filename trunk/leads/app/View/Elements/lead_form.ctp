@@ -184,7 +184,7 @@
 		$('.editable-select').editable({
 			mode: 'inline',
 			source: [<?php foreach($assignable_users as $id => $name) {
-				echo '{text:"'.$name.'",value:"'.$id.'"}';
+				echo '{text:"'.$name.'",value:"'.$id.'"},';
 			} ?>]
 		});
 		
