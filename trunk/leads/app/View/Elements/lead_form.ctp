@@ -26,6 +26,7 @@
 		echo $this->Form->input('state');
 		echo $this->Form->input('zip');
 		echo $this->Form->input('country');
+		echo $this->Form->input('notable_projects');
 		echo $this->Form->input('rating', array(
 			'type' => 'radio',
 			'options' => array(
