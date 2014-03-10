@@ -87,7 +87,7 @@
 					<td><?php echo $this->Editable->contact('linkedin', $contact); ?></td>
 					<td><?php echo $this->Editable->contact('twitter', $contact); ?></td>
 					<td><?php echo $this->Editable->contact('background_info', $contact); ?></td>
-					<td><?php echo $this->Editable->assignContact('user_id', $contact); ?></td>
+					<td><?php echo $this->Editable->assignContact('user_id', $contact, $assignable_users); ?></td>
 				</tr>
 			<?php } ?>
 			<?php if(empty($lead['Contact'])) { ?>
