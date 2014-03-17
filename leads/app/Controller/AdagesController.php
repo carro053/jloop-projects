@@ -41,7 +41,8 @@ class AdagesController extends AppController {
 		$tags = $this->Adage->Lead->Tag->find('all');
 		$this->set('tags', $tags);
 		
-		$assignable_users = $this->Adage->Lead->Contact->User->find('list', array(
+		$assignable_users = array('0' => 'Unassigned');
+		$assignable_users += $this->Adage->Lead->Contact->User->find('list', array(
 			'fields' => array('User.id', 'User.username'),
 			'order' => 'User.username ASC'
 		));
