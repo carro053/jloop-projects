@@ -19,7 +19,7 @@ class ContactsController extends AppController {
 		
 		$conditions = array();
 		
-		if(isset($_GET['user_id'])) {
+		if(isset($_GET['user_id']) && $_GET['user_id'] != '') {
 			$conditions[] = array('Contact.user_id' => $_GET['user_id']);
 		}		
 		$contacts = $this->Contact->find('all', array(
