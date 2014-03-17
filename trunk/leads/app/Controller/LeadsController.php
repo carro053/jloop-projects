@@ -6,6 +6,8 @@ class LeadsController extends AppController {
 	var $uses = array('Lead','Note');
 
 	public function index() {
+		pr($_GET);
+	
 		$types_raw = $this->Lead->find('all', array(
 			'fields' => array(
 				'DISTINCT type'
@@ -66,6 +68,9 @@ class LeadsController extends AppController {
 		}
 		if(!empty($_GET['RatingLessThan'])) {
 			$conditions[] = array('Lead.rating < '.$_GET['RatingLessThan']);
+		}
+		if(!empty($_GET['NotableProjectsNotIdentified'])) {
+			$conditions[] = array('Lead.notable_projects' => '');
 		}
 		
 		$leads = $this->Lead->find('all', array(
