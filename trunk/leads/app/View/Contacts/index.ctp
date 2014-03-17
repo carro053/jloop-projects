@@ -47,7 +47,7 @@
 					<?php echo $contact['Contact']['zip']; ?><br>
 					<?php echo $contact['Contact']['country']; ?>
 				</td>
-				<td><?php echo $contact['Contact']['linkedin']; ?></td>
+				<td><?php if(!empty($contact['Contact']['linkedin'])) echo '<a target="_blank" href="'.$contact['Contact']['linkedin'].'">Linkedin</a>'; ?></td>
 				<td><?php echo $contact['Contact']['twitter']; ?></td>
 				<td><?php echo $contact['Contact']['background_info']; ?></td>
 				<td><?php echo $contact['User']['username']; ?></td>
