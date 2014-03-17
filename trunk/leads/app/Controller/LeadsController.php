@@ -6,7 +6,9 @@ class LeadsController extends AppController {
 	var $uses = array('Lead','Note');
 
 	public function index() {
-		pr($_GET);
+		echo '<pre>';
+		print_r($_GET);
+		echo '</pre>';
 	
 		$types_raw = $this->Lead->find('all', array(
 			'fields' => array(
