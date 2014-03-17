@@ -85,6 +85,7 @@
 			'div' => false
 		));
 	}
+	echo '</fieldset></div>';
 	
 	echo $this->Form->input('NotableProjectsNotIdentified', array(
 		'label' => 'Notable Projects have not been identified',
@@ -93,7 +94,6 @@
 		'checked' => !empty($_GET['NotableProjectsNotIdentified']) ? true : false
 	));
 	
-	echo '</fieldset></div>';
 	echo $this->Form->end('Filter');
 ?>
 
