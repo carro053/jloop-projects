@@ -27,6 +27,7 @@
 			<th>Twitter</th>
 			<th>Background Info</th>
 			<th>Assigned User</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
