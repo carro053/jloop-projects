@@ -34,7 +34,10 @@ class ContactsController extends AppController {
 		$count = $this->Contact->find('count', array('conditions' => $conditions));
 		$this->set('count', $count);
 		
-		$users = array();
+		$users = $this->Contact->User->find('list', array(
+			'fields' => array('User.id', 'User.username'),
+			'order' => 'User.username ASC'
+		));
 		$this->set('users', $users);
 	}
 	

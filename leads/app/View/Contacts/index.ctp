@@ -36,9 +36,9 @@
 				<td><?php echo $contact['Contact']['last_name']; ?></td>
 				<td><?php echo $contact['Contact']['title']; ?></td>
 				<td><?php echo $contact['Contact']['phone']; ?></td>
-				<td><?php echo $contact['Contact']['email']; ?></td>
+				<td><?php echo '<a href="mailto:'.$lead['Contact']['email'].'">'.$lead['Contact']['email'].'</a>'; ?></td>
 				<td><?php echo $contact['Contact']['im']; ?></td>
-				<td><?php echo $contact['Contact']['website']; ?></td>
+				<td><?php echo '<a target="_blank" href="'.$lead['Contact']['website'].'">'.$lead['Contact']['website'].'</a>'; ?></td>
 				<td>
 					<?php echo $contact['Contact']['address']; ?><br>
 					<?php echo $contact['Contact']['city']; ?>, 
@@ -50,6 +50,7 @@
 				<td><?php echo $contact['Contact']['twitter']; ?></td>
 				<td><?php echo $contact['Contact']['background_info']; ?></td>
 				<td><?php echo $contact['User']['username']; ?></td>
+				<td><a class="dialog" href="/<?php echo Inflector::pluralize($contact['Lead']['model']); ?>/view/<?php echo $contact['Lead']['model_id']; ?>">Lead</a></td>
 			</tr>
 		<?php } if(empty($contacts)) { ?>
 			<tr><td colspan="12">There are no contacts that match this search.</td></tr>
