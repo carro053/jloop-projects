@@ -6,10 +6,6 @@ class LeadsController extends AppController {
 	var $uses = array('Lead','Note');
 
 	public function index() {
-		echo '<pre>';
-		print_r($_GET);
-		echo '</pre>';
-	
 		$types_raw = $this->Lead->find('all', array(
 			'fields' => array(
 				'DISTINCT type'
