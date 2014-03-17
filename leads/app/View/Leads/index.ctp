@@ -90,7 +90,7 @@
 		'label' => 'Notable Projects have not been identified',
 		'type' => 'checkbox',
 		'div' => false,
-		'value' => !empty($_GET['NotableProjectsNotIdentified']) ? $_GET['NotableProjectsNotIdentified'] : null
+		'checked' => !empty($_GET['NotableProjectsNotIdentified']) ? true : false
 	));
 	
 	echo '</fieldset></div>';
