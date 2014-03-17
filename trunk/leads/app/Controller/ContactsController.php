@@ -19,10 +19,9 @@ class ContactsController extends AppController {
 		
 		$conditions = array();
 		
-		if(!empty($_GET['user_id'])) {
+		if(isset($_GET['user_id'])) {
 			$conditions[] = array('Contact.user_id' => $_GET['user_id']);
-		}
-		
+		}		
 		$contacts = $this->Contact->find('all', array(
 			'conditions' => $conditions,
 			'order' => $order,
@@ -34,7 +33,11 @@ class ContactsController extends AppController {
 		$count = $this->Contact->find('count', array('conditions' => $conditions));
 		$this->set('count', $count);
 		
-		$users = $this->Contact->User->find('list', array(
+		$users = array(
+			'' => 'Any',
+			'0' => 'Unassigned'
+		);
+		$users += $this->Contact->User->find('list', array(
 			'fields' => array('User.id', 'User.username'),
 			'order' => 'User.username ASC'
 		));
