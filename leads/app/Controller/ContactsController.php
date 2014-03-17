@@ -23,15 +23,6 @@ class ContactsController extends AppController {
 			$conditions[] = array('Contact.user_id' => $_GET['user_id']);
 		}
 		
-		$this->Contact->bindModel(array(
-			'belongsTo' => array(
-				'User' => array(
-					'className' => 'Lead',
-					'foreignKey' => 'lead_id'
-				)
-			)
-		));
-		
 		$contacts = $this->Contact->find('all', array(
 			'conditions' => $conditions,
 			'order' => $order,
