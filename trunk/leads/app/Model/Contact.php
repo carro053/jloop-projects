@@ -7,6 +7,10 @@ class Contact extends AppModel {
 		'User' => array(
 			'className' => 'User',
 			'foreignKey' => 'user_id'
+		),
+		'Lead' => array(
+			'className' => 'Lead',
+			'foreignKey' => 'lead_id'
 		)
 	);
 	
