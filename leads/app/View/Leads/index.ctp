@@ -85,6 +85,12 @@
 			'div' => false
 		));
 	}
+	
+	echo $this->Form->input('NotableProjectsNotIdentified', array(
+		'label' => 'Notable Projects have not been identified',
+		'value' => !empty($_GET['NotableProjectsNotIdentified']) ? $_GET['NotableProjectsNotIdentified'] : null
+	));
+	
 	echo '</fieldset></div>';
 	echo $this->Form->end('Filter');
 ?>
