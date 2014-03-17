@@ -36,9 +36,9 @@
 				<td><?php echo $contact['Contact']['last_name']; ?></td>
 				<td><?php echo $contact['Contact']['title']; ?></td>
 				<td><?php echo $contact['Contact']['phone']; ?></td>
-				<td><?php echo '<a href="mailto:'.$lead['Contact']['email'].'">'.$lead['Contact']['email'].'</a>'; ?></td>
+				<td><?php echo '<a href="mailto:'.$contact['Contact']['email'].'">'.$contact['Contact']['email'].'</a>'; ?></td>
 				<td><?php echo $contact['Contact']['im']; ?></td>
-				<td><?php echo '<a target="_blank" href="'.$lead['Contact']['website'].'">'.$lead['Contact']['website'].'</a>'; ?></td>
+				<td><?php echo '<a target="_blank" href="'.$contact['Contact']['website'].'">'.$contact['Contact']['website'].'</a>'; ?></td>
 				<td>
 					<?php echo $contact['Contact']['address']; ?><br>
 					<?php echo $contact['Contact']['city']; ?>, 
