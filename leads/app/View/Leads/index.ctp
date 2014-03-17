@@ -89,6 +89,7 @@
 	echo $this->Form->input('NotableProjectsNotIdentified', array(
 		'label' => 'Notable Projects have not been identified',
 		'type' => 'checkbox',
+		'div' => false,
 		'value' => !empty($_GET['NotableProjectsNotIdentified']) ? $_GET['NotableProjectsNotIdentified'] : null
 	));
 	
