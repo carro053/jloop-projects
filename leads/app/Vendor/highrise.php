@@ -3,11 +3,7 @@ class Highrise {
 	
 	private $apiToken = '91826f752ed853d8ac81bbc9650232ab';
 	private $baseUrl = 'https://jloop.highrisehq.com/';
-	
-	private $ourTags = array(
 		
-	);
-	
 	private function post($postfields = '', $uri = '') {
 		$curl = curl_init($this->baseUrl.$uri);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -35,10 +31,17 @@ class Highrise {
 		return $parsed_resp;
 	}
 	
-	public function getAllTags() {
+	public function tagPerson($tag_name, $contact_id) {
 		$resp = $this->get('tags.xml');
 		echo '<pre>';
 		print_r($resp);
+		
+		foreach($resp->tag as $tag) {
+			if($tag->name == $tag_name) {
+				echo 'found tag: '.$tag->id;
+				break;
+			}
+		}
 		exit;
 	}
 	
