@@ -37,12 +37,12 @@ class Highrise {
 		return $resp;
 	}
 	
-	public function pushPerson($contact, $company) {
+	public function pushPerson($contact, $lead) {
 		$xml = '<person>
 		  <first-name>'.htmlspecialchars($contact['first_name']).'</first-name>
 		  <last-name>'.htmlspecialchars($contact['last_name']).'</last-name>
 		  <title>'.htmlspecialchars($contact['title']).'</title>
-		  <company-name>'.htmlspecialchars($company).'</company-name>
+		  <company-name>'.htmlspecialchars($lead['company']).'</company-name>
 		  <background>'.htmlspecialchars($contact['background_info']).'</background>
 		  <linkedin_url>'.htmlspecialchars($contact['linkedin']).'</linkedin_url>
 		  <contact-data>
@@ -59,13 +59,21 @@ class Highrise {
 		      </phone-number>
 		    </phone-numbers>
 		    <addresses>
+		    	<address>
+			      <city>'.htmlspecialchars($lead['city']).'</city>
+			      <country>'.htmlspecialchars($lead['country']).'</country>
+			      <state>'.htmlspecialchars($lead['state']).'</state>
+			      <street>'.htmlspecialchars($lead['address']).'</street>
+			      <zip>'.htmlspecialchars($lead['zip']).'</zip>
+			      <location>Work</location>
+			    </address>
 			    <address>
 			      <city>'.htmlspecialchars($contact['city']).'</city>
 			      <country>'.htmlspecialchars($contact['country']).'</country>
 			      <state>'.htmlspecialchars($contact['state']).'</state>
 			      <street>'.htmlspecialchars($contact['address']).'</street>
 			      <zip>'.htmlspecialchars($contact['zip']).'</zip>
-			      <location>Work</location>
+			      <location>Other</location>
 			    </address>
 			  </addresses>
 			  <twitter-accounts>

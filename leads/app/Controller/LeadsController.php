@@ -153,7 +153,7 @@ class LeadsController extends AppController {
 			$highrise_id = $highrise->pushCompany($lead['Lead']);
 			//save each contact as person in highrise
 			foreach($lead['Contact'] as $contact) {
-				$highrise->pushPerson($contact, $contact['Lead']['company']);
+				$highrise->pushPerson($contact, $contact['Lead']);
 			}
 			/* //no deals for now!
 			//save a deal
@@ -180,12 +180,9 @@ class LeadsController extends AppController {
 				$company_response = $highrise->pushCompany($contact['Lead']);
 				$this->Lead->id = $contact['Lead']['id'];
 				$this->Lead->saveField('highrise_id', $company_response);
-				pr($company_response);
 			}
 			
-			$contact_response = $highrise->pushPerson($contact['Contact'], $contact['Lead']['company']);
-			
-			pr($contact_response);
+			$contact_response = $highrise->pushPerson($contact['Contact'], $contact['Lead']);
 			
 			//tag 'em as unassigned
 			$highrise->tagPerson('unassigned', (int)$contact_response->id);
@@ -193,7 +190,7 @@ class LeadsController extends AppController {
 			//save highrise_id to lead
 			$this->Contact->id = $contact_id;
 			$this->Contact->saveField('highrise_id', (int)$contact_response->id);
-			echo $highrise_id;
+			echo (int)$contact_response->id);
 		}
 		exit;
 	}
