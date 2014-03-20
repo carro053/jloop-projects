@@ -89,7 +89,13 @@
 					<td><?php echo $this->Editable->contact('twitter', $contact); ?></td>
 					<td><?php echo $this->Editable->contact('background_info', $contact); ?></td>
 					<td><?php echo $this->Editable->assignContact('user_id', $contact, $assignable_users); ?></td>
-					<td><a id="export_person-<?php echo $contact['id']; ?>" href="#" onclick="exportPersonToHighrise('<?php echo $contact['id']; ?>'); return false;">Export Contact to Highrise</a></td>
+					<td>
+						<?php if(empty($contact['highrise_id'])) { ?>
+							<a id="export_person-<?php echo $contact['id']; ?>" href="#" onclick="exportPersonToHighrise('<?php echo $contact['id']; ?>'); return false;">Export Contact to Highrise</a>
+						<?php } else { ?>
+							<a href="https://jloop.highrisehq.com/people/<?php echo $contact['highrise_id']; ?>" target="_blank" id="export_person-<?php echo $contact['id']; ?>">View in Highrise</a>
+						<?php } ?>
+					</td>
 				</tr>
 			<?php } ?>
 			<?php if(empty($lead['Contact'])) { ?>
