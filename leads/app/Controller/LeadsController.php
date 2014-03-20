@@ -153,7 +153,7 @@ class LeadsController extends AppController {
 			$highrise_id = $highrise->pushCompany($lead['Lead']);
 			//save each contact as person in highrise
 			foreach($lead['Contact'] as $contact) {
-				$highrise->pushPerson($contact, $lead['Lead']['company']);
+				$highrise->pushPerson($contact, $contact['Lead']['company']);
 			}
 			/* //no deals for now!
 			//save a deal
