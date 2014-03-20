@@ -101,8 +101,8 @@
 				success: function(data){
 					if(!isNaN(data)) {
 						console.log('contact exported');
-						$('export_person-'+contact_id).replaceWith('<a href="https://jloop.highrisehq.com/people/'+data+'" target="_blank" id="export_person-'+contact_id+'">View in Highrise</a>');
-						$('export_person-'+contact_id).button();
+						$('#export_person-'+contact_id).replaceWith('<a href="https://jloop.highrisehq.com/people/'+data+'" target="_blank" id="export_person-'+contact_id+'">View in Highrise</a>');
+						$('#export_person-'+contact_id).button();
 					}
 				},
 				error: function(){
