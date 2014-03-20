@@ -35,21 +35,6 @@ class Highrise {
 		$xml = '<name>'.$tag_name.'</name>';
 		$resp = $this->post($xml, 'people/'.$contact_id.'/tags.xml');
 		return $resp;
-	
-		/*
-		$resp = $this->get('tags.xml');
-		echo '<pre>';
-		print_r($resp);
-		
-		
-		foreach($resp->tag as $tag) {
-			if($tag->name == $tag_name) {
-				echo 'found tag: '.$tag->id;
-				
-			}
-		}
-		exit;
-		*/
 	}
 	
 	public function pushPerson($contact, $company) {
