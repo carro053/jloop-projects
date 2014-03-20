@@ -190,7 +190,7 @@ class LeadsController extends AppController {
 			//save highrise_id to lead
 			$this->Contact->id = $contact_id;
 			$this->Contact->saveField('highrise_id', (int)$contact_response->id);
-			echo (int)$contact_response->id);
+			echo (int)$contact_response->id;
 		}
 		exit;
 	}
