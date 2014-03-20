@@ -18,7 +18,7 @@ class Highrise {
 		$parsed_resp = simplexml_load_string($resp);
 		return $parsed_resp;
 	}
-	
+		
 	public function pushPerson($contact, $company) {
 		$xml = '<person>
 		  <first-name>'.htmlspecialchars($contact['first_name']).'</first-name>
