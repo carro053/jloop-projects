@@ -24,9 +24,11 @@ class Highrise {
 	}
 	
 	public function getAllTags() {
+		/*
 		$resp = $this->post('', 'tags.xml');
 		pr($resp);
-		exit;
+		*/
+		exit('1');
 	}
 	
 	public function pushPerson($contact, $company) {
