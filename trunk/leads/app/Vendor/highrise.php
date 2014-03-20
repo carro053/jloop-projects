@@ -24,8 +24,8 @@ class Highrise {
 	}
 	
 	public function getAllTags() {
-		$resp = $this->post('', 'tags.xml');
-		pr($resp);
+		//$resp = $this->post('', 'tags.xml');
+		//pr($resp);
 		exit('1');
 	}
 	
