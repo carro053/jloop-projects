@@ -12,23 +12,31 @@ class Highrise {
 		$curl = curl_init($this->baseUrl.$uri);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($curl, CURLOPT_USERPWD, $this->apiToken.':x');
-		//curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/xml'));
-		//curl_setopt($curl, CURLOPT_POST, true);
-		//curl_setopt($curl, CURLOPT_POSTFIELDS, $postfields);
+		curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/xml'));
+		curl_setopt($curl, CURLOPT_POST, true);
+		curl_setopt($curl, CURLOPT_POSTFIELDS, $postfields);
 		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER,0);
 		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST,0);
 		$resp = curl_exec($curl);
 		curl_close($curl);
-		
-		echo 'response: '.$resp;
-		exit;
-		
+		$parsed_resp = simplexml_load_string($resp);
+		return $parsed_resp;
+	}
+	
+	private function get($uri = '') {
+		$curl = curl_init($this->baseUrl.$uri);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_USERPWD, $this->apiToken.':x');
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER,0);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST,0);
+		$resp = curl_exec($curl);
+		curl_close($curl);
 		$parsed_resp = simplexml_load_string($resp);
 		return $parsed_resp;
 	}
 	
 	public function getAllTags() {
-		$resp = $this->post('', 'tags.xml');
+		$resp = $this->get('tags.xml');
 		echo '<pre>';
 		print_r($resp);
 		exit;
