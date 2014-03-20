@@ -99,13 +99,11 @@
 			$.ajax({
 				url: "/Leads/ajaxExportPersonToHighrise/"+contact_id+"?t="+time,
 				success: function(data){
-					console.log(data);
-					/*
 					if(!isNaN(data)) {
-						$('.highrise-export-'+lead_id).replaceWith('<a href="https://jloop.highrisehq.com/companies/'+data+'" target="_blank" class="highrise-export-'+lead_id+'">View in Highrise</a>');
-						$('.highrise-export-'+lead_id).button();
+						console.log('contact exported');
+						$('export_person-'+contact_id).replaceWith('<a href="https://jloop.highrisehq.com/people/'+data+'" target="_blank" id="export_person-'+contact_id+'">View in Highrise</a>');
+						$('export_person-'+contact_id).button();
 					}
-					*/
 				},
 				error: function(){
 					alert('There was an error with AJAX.');
