@@ -9,6 +9,9 @@ class Highrise {
 	);
 	
 	private function post($postfields = '', $uri = '') {
+		echo 'got to post';
+		exit;
+	
 		$curl = curl_init($this->baseUrl.$uri);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($curl, CURLOPT_USERPWD, $this->apiToken.':x');
