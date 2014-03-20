@@ -186,10 +186,10 @@ class LeadsController extends AppController {
 			$contact_response = $highrise->pushPerson($contact['Contact'], $contact['Lead']['company']);
 			
 			pr($contact_response);
-			exit;
 			
 			//tag 'em as unassigned
 			$highrise->tagPerson('unassigned', (int)$contact_response->id);
+			exit;
 			
 			//save highrise_id to lead
 			$this->Contact->id = $contact_id;
