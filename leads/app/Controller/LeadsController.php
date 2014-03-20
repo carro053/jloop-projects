@@ -155,6 +155,33 @@ class LeadsController extends AppController {
 			foreach($lead['Contact'] as $contact) {
 				$highrise->pushPerson($contact, $lead['Lead']['company']);
 			}
+			/* //no deals for now!
+			//save a deal
+			$highrise->pushDeal($lead, $highrise_id);
+			*/
+			
+			//save highrise_id to lead
+			$this->Lead->id = $lead_id;
+			$this->Lead->saveField('highrise_id', $highrise_id);
+			echo $highrise_id;
+		}
+		exit;
+	}
+	
+	public function ajaxExportPersonToHighrise($contact_id) {
+		$contact = $this->Contact->findById($contact_id);
+		pr($contact);
+		exit;
+		
+		if(!empty($lead)/* && empty($lead['Lead']['highrise_id'])*/) {
+			App::import('Vendor', 'highrise');
+			$highrise = new Highrise();
+			//save company to highrise
+			$highrise_id = $highrise->pushCompany($lead['Lead']);
+			//save each contact as person in highrise
+			foreach($lead['Contact'] as $contact) {
+				$highrise->pushPerson($contact, $lead['Lead']['company']);
+			}
 			//save a deal
 			$highrise->pushDeal($lead, $highrise_id);
 			//save highrise_id to lead
@@ -164,5 +191,4 @@ class LeadsController extends AppController {
 		}
 		exit;
 	}
-
 }

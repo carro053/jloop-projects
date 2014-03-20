@@ -73,6 +73,7 @@
 				<th>Twitter</th>
 				<th>Background Info</th>
 				<th>Assigned User</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -88,10 +89,11 @@
 					<td><?php echo $this->Editable->contact('twitter', $contact); ?></td>
 					<td><?php echo $this->Editable->contact('background_info', $contact); ?></td>
 					<td><?php echo $this->Editable->assignContact('user_id', $contact, $assignable_users); ?></td>
+					<td><a href="#" onclick="exportPersonToHighrise(<?php echo $contact['id']; ?>); return false;">Export Contact to Highrise</a></td>
 				</tr>
 			<?php } ?>
 			<?php if(empty($lead['Contact'])) { ?>
-				<tr><td colspan="9">No contacts entered yet.</td></tr>
+				<tr><td colspan="11">No contacts entered yet.</td></tr>
 			<?php } ?>
 		</tbody>
 	</table>
