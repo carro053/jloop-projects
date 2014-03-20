@@ -176,8 +176,9 @@ class LeadsController extends AppController {
 			App::import('Vendor', 'highrise');
 			$highrise = new Highrise();
 			
-			exit;
+			
 			$highrise->getAllTags();
+			exit;
 			
 			//push company first if it doesn't exist
 			if(empty($contact['Lead']['highrise_id'])) {
