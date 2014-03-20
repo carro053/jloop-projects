@@ -175,15 +175,23 @@ class LeadsController extends AppController {
 		if(!empty($contact)) {
 			App::import('Vendor', 'highrise');
 			$highrise = new Highrise();
-			//save company to highrise
-			$response = $highrise->pushPerson($contact['Contact'], $contact['Lead']['company']);
-			pr($response);
-			exit;
 			
+			//push company first if it doesn't exist
+			if(empty($contact['Lead']['highrise_id'])) {
+				$company_response = $highrise->pushCompany($contact['Lead']);
+				$this->Lead->id = $contact['Lead']['id'];
+				$this->Lead->saveField('highrise_id', $company_response);
+				pr($company_response);
+			}
+			
+			$contact_response = $highrise->pushPerson($contact['Contact'], $contact['Lead']['company']);
+			
+			pr($contact_response);
+			exit;
 			
 			//save highrise_id to lead
 			$this->Contact->id = $contact_id;
-			$this->Contact->saveField('highrise_id', $highrise_id);
+			$this->Contact->saveField('highrise_id', (int)$contact_response->id);
 			echo $highrise_id;
 		}
 		exit;
