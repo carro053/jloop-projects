@@ -170,15 +170,12 @@ class LeadsController extends AppController {
 	
 	public function ajaxExportPersonToHighrise($contact_id) {
 		$contact = $this->Contact->findById($contact_id);
-		pr($contact);
 		
 		if(!empty($contact)) {
 			App::import('Vendor', 'highrise');
 			$highrise = new Highrise();
 			
-			
-			pr($highrise->getAllTags());
-			exit;
+			$highrise->getAllTags());
 			
 			//push company first if it doesn't exist
 			if(empty($contact['Lead']['highrise_id'])) {
@@ -192,6 +189,9 @@ class LeadsController extends AppController {
 			
 			pr($contact_response);
 			exit;
+			
+			//tag 'em as unassigned
+			$highrise->tagPerson('unassigned', (int)$contact_response->id);
 			
 			//save highrise_id to lead
 			$this->Contact->id = $contact_id;
