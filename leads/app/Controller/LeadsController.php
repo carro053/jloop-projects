@@ -175,10 +175,6 @@ class LeadsController extends AppController {
 			App::import('Vendor', 'highrise');
 			$highrise = new Highrise();
 			
-			pr($highrise->tagPerson('unassigned', '201767948'));
-			
-			exit;
-			
 			//push company first if it doesn't exist
 			if(empty($contact['Lead']['highrise_id'])) {
 				$company_response = $highrise->pushCompany($contact['Lead']);
@@ -193,7 +189,6 @@ class LeadsController extends AppController {
 			
 			//tag 'em as unassigned
 			$highrise->tagPerson('unassigned', (int)$contact_response->id);
-			exit;
 			
 			//save highrise_id to lead
 			$this->Contact->id = $contact_id;
