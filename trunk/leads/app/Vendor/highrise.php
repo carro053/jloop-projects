@@ -4,6 +4,10 @@ class Highrise {
 	private $apiToken = '91826f752ed853d8ac81bbc9650232ab';
 	private $baseUrl = 'https://jloop.highrisehq.com/';
 	
+	private $ourTags = array(
+		
+	);
+	
 	private function post($postfields = '', $uri = '') {
 		$curl = curl_init($this->baseUrl.$uri);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -18,7 +22,13 @@ class Highrise {
 		$parsed_resp = simplexml_load_string($resp);
 		return $parsed_resp;
 	}
-		
+	
+	public function getAllTags() {
+		$resp = $this->post('', 'tags.xml');
+		pr($resp);
+		exit;
+	}
+	
 	public function pushPerson($contact, $company) {
 		$xml = '<person>
 		  <first-name>'.htmlspecialchars($contact['first_name']).'</first-name>
