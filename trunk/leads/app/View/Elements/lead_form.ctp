@@ -89,7 +89,7 @@
 					<td><?php echo $this->Editable->contact('twitter', $contact); ?></td>
 					<td><?php echo $this->Editable->contact('background_info', $contact); ?></td>
 					<td><?php echo $this->Editable->assignContact('user_id', $contact, $assignable_users); ?></td>
-					<td><a href="#" onclick="exportPersonToHighrise('<?php echo $contact['id']; ?>'); return false;">Export Contact to Highrise</a></td>
+					<td><a id="export_person-<?php echo $contact['id']; ?>" href="#" onclick="exportPersonToHighrise('<?php echo $contact['id']; ?>'); return false;">Export Contact to Highrise</a></td>
 				</tr>
 			<?php } ?>
 			<?php if(empty($lead['Contact'])) { ?>
