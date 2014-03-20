@@ -9,9 +9,6 @@ class Highrise {
 	);
 	
 	private function post($postfields = '', $uri = '') {
-		echo 'got to post';
-		exit;
-	
 		$curl = curl_init($this->baseUrl.$uri);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($curl, CURLOPT_USERPWD, $this->apiToken.':x');
@@ -22,6 +19,10 @@ class Highrise {
 		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST,0);
 		$resp = curl_exec($curl);
 		curl_close($curl);
+		
+		pr($resp);
+		exit;
+		
 		$parsed_resp = simplexml_load_string($resp);
 		return $parsed_resp;
 	}

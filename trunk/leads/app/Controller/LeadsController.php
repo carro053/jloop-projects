@@ -177,7 +177,7 @@ class LeadsController extends AppController {
 			$highrise = new Highrise();
 			
 			
-			$highrise->getAllTags();
+			pr($highrise->getAllTags());
 			exit;
 			
 			//push company first if it doesn't exist
