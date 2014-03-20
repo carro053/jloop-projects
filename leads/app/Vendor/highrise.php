@@ -20,7 +20,7 @@ class Highrise {
 		$resp = curl_exec($curl);
 		curl_close($curl);
 		
-		pr($resp);
+		echo 'response: '.$resp;
 		exit;
 		
 		$parsed_resp = simplexml_load_string($resp);
