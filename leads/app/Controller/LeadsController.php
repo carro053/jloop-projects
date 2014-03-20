@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 
 class LeadsController extends AppController {
 
-	var $uses = array('Lead','Note');
+	var $uses = array('Lead','Note','Contact');
 
 	public function index() {
 		$types_raw = $this->Lead->find('all', array(
