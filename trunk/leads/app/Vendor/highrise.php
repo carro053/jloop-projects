@@ -33,7 +33,7 @@ class Highrise {
 	
 	public function tagPerson($tag_name, $contact_id) {
 		$xml = '<name>'.$tag_name.'</name>';
-		$resp = $this->post($xml, 'person/'.$contact_id.'/tags.xml');
+		$resp = $this->post($xml, 'people/'.$contact_id.'/tags.xml');
 		return $resp;
 	
 		/*
