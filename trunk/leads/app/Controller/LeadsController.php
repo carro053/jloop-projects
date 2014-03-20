@@ -176,7 +176,7 @@ class LeadsController extends AppController {
 			App::import('Vendor', 'highrise');
 			$highrise = new Highrise();
 			//save company to highrise
-			$response = $highrise->pushPerson($contact['Contact']);
+			$response = $highrise->pushPerson($contact['Contact'], $contact['Lead']['company']);
 			pr($response);
 			exit;
 			
