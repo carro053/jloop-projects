@@ -994,7 +994,6 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = DoWeHaveEnough;
-				
 			};
 			name = Release;
 		};
@@ -1022,8 +1021,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: JLOOP (8DVNF457Y5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JLOOP (8DVNF457Y5)";
 				COPY_PHASE_STRIP = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Do_We_Have_Enough_Prefix.pch;
@@ -1037,8 +1036,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = DoWeHaveEnough;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9FEFEFFC-8C6E-4F1B-AEE8-5CA66D6E9633";
+				PROVISIONING_PROFILE = "9DD9ED65-A5B3-4D92-A596-73423A4C69DA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9DD9ED65-A5B3-4D92-A596-73423A4C69DA";
 			};
 			name = Distribution;
 		};

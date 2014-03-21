@@ -106,7 +106,7 @@
     [Flurry startSession:@"7994fb80cece2b2663b0c3188280ae63"];
     
     self.window.frame = CGRectMake(0, 0, [[UIScreen mainScreen]bounds].size.width, [[UIScreen mainScreen]bounds].size.height);
-    [TestFlight takeOff:@"4daac12df9d7ba3264eef02799dfd0bf_NDk0MjIwMTEtMTAtMDUgMTI6MjI6MjkuMjc5Nzgw"];
+    [TestFlight takeOff:@"d3e1df22-7a84-44b8-8ec7-58bb9ddb01c2"];
 	[window addSubview:[navigationController view]];
     [window makeKeyAndVisible];
 	NSLog(@"got launchoptions: %@", launchOptions);
