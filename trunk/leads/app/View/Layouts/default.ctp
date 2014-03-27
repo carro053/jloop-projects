@@ -95,20 +95,22 @@
 		}
 		
 		function exportPersonToHighrise(contact_id) {
-			var time = new Date().getTime();
-			$.ajax({
-				url: "/Leads/ajaxExportPersonToHighrise/"+contact_id+"?t="+time,
-				success: function(data){
-					if(!isNaN(data)) {
-						console.log('contact exported');
-						$('#export_person-'+contact_id).replaceWith('<a href="https://jloop.highrisehq.com/people/'+data+'" target="_blank" id="export_person-'+contact_id+'">View in Highrise</a>');
-						$('#export_person-'+contact_id).button();
+			if(confirm('Exporting this contact will copy all of their information into Highrise and create a company if none exists. Are you sure you want to export? Because one time, Daniel hit this button and he didn\'t really want to export, so now this message has to be here forever.')) {
+				var time = new Date().getTime();
+				$.ajax({
+					url: "/Leads/ajaxExportPersonToHighrise/"+contact_id+"?t="+time,
+					success: function(data){
+						if(!isNaN(data)) {
+							console.log('contact exported');
+							$('#export_person-'+contact_id).replaceWith('<a href="https://jloop.highrisehq.com/people/'+data+'" target="_blank" id="export_person-'+contact_id+'">View in Highrise</a>');
+							$('#export_person-'+contact_id).button();
+						}
+					},
+					error: function(){
+						alert('There was an error with AJAX.');
 					}
-				},
-				error: function(){
-					alert('There was an error with AJAX.');
-				}
-			});
+				});
+			}
 		}
 	</script>
 	<?php echo $this->element('sql_dump'); ?>
