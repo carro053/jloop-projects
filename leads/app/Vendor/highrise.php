@@ -52,7 +52,7 @@ class Highrise {
 		$tag_ids_to_find = array();
 		foreach($all_tags->tag as $tag) {
 			echo $tag->name.' '.$tag->id.'<br>';
-			if(isset($printedTags[$tag->name]))
+			if(isset($this->printedTags[$tag->name]))
 				$tag_ids_to_find[$tag->id] = $tag->name;
 		}
 		print_r($tag_ids_to_find);
