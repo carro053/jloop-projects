@@ -187,10 +187,10 @@
 			return false;
 		});
 		$('.editable').editable({
-			mode: 'inline'
+			//mode: 'inline'
 		});
 		$('.editable-select').editable({
-			mode: 'inline',
+			//mode: 'inline',
 			source: [<?php foreach($assignable_users as $id => $name) {
 				echo '{text:"'.$name.'",value:"'.$id.'"},';
 			} ?>]
