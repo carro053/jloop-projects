@@ -56,8 +56,8 @@ class Highrise {
 		}
 		print_r($tag_ids_to_find);
 		
-		foreach($tag_ids_to_find as $id) {
-			$person = $this->get('people.xml?tag_id='.$id);
+		foreach($tag_ids_to_find as $i=>$id) {
+			$person = $this->get('people.xml?tag_id='.$i);
 			print_r($person);
 		}
 		exit;
