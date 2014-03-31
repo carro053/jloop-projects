@@ -64,7 +64,8 @@
 				$('<div/>')
 					.dialog({
 						modal: true,
-						width: '80%',
+						width: '100%',
+						draggable: false,
 						autoOpen: false,
 						close: function(event, ui) {
 							$(this).remove();
