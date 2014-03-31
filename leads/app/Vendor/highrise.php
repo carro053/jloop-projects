@@ -56,7 +56,8 @@ class Highrise {
 			//if(isset($this->printedTags[(string)$tag->name])) {
 			$theName = (string)$tag->name;
 			if(array_key_exists($theName, $this->printedTags)) {
-				$tag_ids_to_find[$tag->id] = $tag->name;
+				//$tag_ids_to_find[$tag->id] = $tag->name;
+				echo 'found it!';
 			}
 		}
 		print_r($tag_ids_to_find);
