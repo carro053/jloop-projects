@@ -73,7 +73,6 @@
 				<th>Twitter</th>
 				<th>Background Info</th>
 				<th>Assigned User</th>
-				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -89,17 +88,10 @@
 					<td><?php echo $this->Editable->contact('twitter', $contact); ?></td>
 					<td><?php echo $this->Editable->contact('background_info', $contact); ?></td>
 					<td><?php echo $this->Editable->assignContact('user_id', $contact, $assignable_users); ?></td>
-					<td>
-						<?php if(empty($contact['highrise_id'])) { ?>
-							<a id="export_person-<?php echo $contact['id']; ?>" href="#" onclick="exportPersonToHighrise('<?php echo $contact['id']; ?>'); return false;">Export Contact to Highrise</a>
-						<?php } else { ?>
-							<a href="https://jloop.highrisehq.com/people/<?php echo $contact['highrise_id']; ?>" target="_blank" id="export_person-<?php echo $contact['id']; ?>">View in Highrise</a>
-						<?php } ?>
-					</td>
 				</tr>
 			<?php } ?>
 			<?php if(empty($lead['Contact'])) { ?>
-				<tr><td colspan="11">No contacts entered yet.</td></tr>
+				<tr><td colspan="9">No contacts entered yet.</td></tr>
 			<?php } ?>
 		</tbody>
 	</table>
@@ -187,10 +179,10 @@
 			return false;
 		});
 		$('.editable').editable({
-			//mode: 'inline'
+			mode: 'inline'
 		});
 		$('.editable-select').editable({
-			//mode: 'inline',
+			mode: 'inline',
 			source: [<?php foreach($assignable_users as $id => $name) {
 				echo '{text:"'.$name.'",value:"'.$id.'"},';
 			} ?>]
