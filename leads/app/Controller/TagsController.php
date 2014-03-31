@@ -35,4 +35,12 @@ class TagsController extends AppController {
 		}
 		return $this->redirect('/Tags/index');
 	}
+	
+	public function cleanUpHighrisePrintTags() {
+		App::import('Vendor', 'highrise');
+		$highrise = new Highrise();
+		$highrise->cleanToBePrintedTags();
+		$this->Session->setFlash('The Highrise print tags have been cleaned');
+		$this->redirect('/Tags');
+	}
 }
