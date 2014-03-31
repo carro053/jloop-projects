@@ -43,23 +43,48 @@ class Highrise {
 		return $parsed_resp;
 	}
 	
+	private function delete($uri = '') {
+		$curl = curl_init($this->baseUrl.$uri);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_USERPWD, $this->apiToken.':x');
+		curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER,0);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST,0);
+		$resp = curl_exec($curl);
+		curl_close($curl);
+		$parsed_resp = simplexml_load_string($resp);
+		return $parsed_resp;
+	}
+	
 	public function cleanToBePrintedTags() {
 		$all_tags = $this->get('tags.xml');
 		echo '<pre>';
 		print_r($all_tags);
 		
-		$tag_ids_to_find = array();
+		$printed_tag_ids = array();
 		foreach($all_tags->tag as $tag) {
 			if(array_key_exists((string)$tag->name, $this->printedTags)) {
-				$tag_ids_to_find[(string)$tag->id] = (string)$tag->name;
+				$printed_tag_ids[(string)$tag->id] = (string)$tag->name;
 			}
 		}
-		print_r($tag_ids_to_find);
+		print_r($printed_tag_ids);
 		
-		foreach($tag_ids_to_find as $i=>$id) {
-			$person = $this->get('people.xml?tag_id='.$i);
-			print_r($person);
+		$tags_to_be_removed = array(); //key = person id, value = tag id
+		foreach($printed_tag_ids as $i=>$id) {
+			$printed_tagged_people = $this->get('people.xml?tag_id='.$i);
+			print_r($printed_tagged_people);
+			
+			foreach($printed_tagged_people->person as $printed_person) {
+				foreach($printed_person->tags->tag as $tag) {
+					if(array_key_exists((string)$tag->name, $this->toBePrintedTags)) {
+						$tags_to_be_removed[(string)$printed_person->id] = (string)$tag->name;
+					}
+				}
+			}
 		}
+		
+		print_r($tags_to_be_removed);
+		
 		exit;
 	}
 	
