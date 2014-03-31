@@ -3,7 +3,19 @@ class Highrise {
 	
 	private $apiToken = '91826f752ed853d8ac81bbc9650232ab';
 	private $baseUrl = 'https://jloop.highrisehq.com/';
-		
+	
+	private $toBePrintedTags = array(
+		'greg-to-print',
+		'jay-to-print',
+		'jen-to-print'
+	);
+	
+	private $printedTags = array(
+		'greg-printed',
+		'jay-printed',
+		'jen-printed'
+	);
+	
 	private function post($postfields = '', $uri = '') {
 		$curl = curl_init($this->baseUrl.$uri);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -29,6 +41,13 @@ class Highrise {
 		curl_close($curl);
 		$parsed_resp = simplexml_load_string($resp);
 		return $parsed_resp;
+	}
+	
+	public function cleanToBePrintedTags() {
+		$all_tags = $this->get('tags.xml');
+		echo '<pre>';
+		print_r($all_tags);
+		exit;
 	}
 	
 	public function tagPerson($tag_name, $contact_id) {

@@ -194,4 +194,11 @@ class LeadsController extends AppController {
 		}
 		exit;
 	}
+	
+	public function cleanUpHighrisePrintTags() {
+		App::import('Vendor', 'highrise');
+		$highrise = new Highrise();
+		$highrise->cleanToBePrintedTags();
+		exit;
+	}
 }
