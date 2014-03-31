@@ -54,7 +54,8 @@ class Highrise {
 			echo $tag->name.' '.$tag->id.'<br>';
 			var_dump((string)$tag->name);
 			//if(isset($this->printedTags[(string)$tag->name])) {
-			if(array_key_exists((string)$tag->name, $this->printedTags)) {
+			$theName = (string)$tag->name;
+			if(array_key_exists($theName, $this->printedTags)) {
 				$tag_ids_to_find[$tag->id] = $tag->name;
 			}
 		}
