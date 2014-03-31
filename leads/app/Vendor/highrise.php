@@ -5,15 +5,15 @@ class Highrise {
 	private $baseUrl = 'https://jloop.highrisehq.com/';
 	
 	private $toBePrintedTags = array(
-		'greg-to-print',
-		'jay-to-print',
-		'jen-to-print'
+		'greg-to-print' => 'greg-to-print',
+		'jay-to-print' => 'jay-to-print',
+		'jen-to-print' => 'jen-to-print'
 	);
 	
 	private $printedTags = array(
-		'greg-printed',
-		'jay-printed',
-		'jen-printed'
+		'greg-printed' => 'greg-printed',
+		'jay-printed' => 'jay-printed',
+		'jen-printed' => 'jen-printed'
 	);
 	
 	private function post($postfields = '', $uri = '') {
@@ -47,6 +47,14 @@ class Highrise {
 		$all_tags = $this->get('tags.xml');
 		echo '<pre>';
 		print_r($all_tags);
+		
+		
+		$tag_ids_to_find = array();
+		foreach($all_tags->tag as $tag) {
+			if(isset($printedTags[$tag->name]))
+				$tag_ids_to_find[$tag->id] = $tag->name;
+		}
+		print_r($tag_ids_to_find);
 		exit;
 	}
 	
