@@ -1,6 +1,7 @@
 <h2>Tags</h2>
 
 <a href="/Tags/create">Create</a>
+<a href="/Tags/cleanUpHighrisePrintTags" onclick="return confirm('Are sure you want to clean up the highrise pritn tags?');">Clean up Highrise Printed Tags (for Daniel!)</a>
 
 <table>
 	<thead>

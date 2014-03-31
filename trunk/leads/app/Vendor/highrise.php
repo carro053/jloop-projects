@@ -56,23 +56,19 @@ class Highrise {
 		return $parsed_resp;
 	}
 	
+	//removes the to-be-printed tags from the contacts if they've been marked as printed
 	public function cleanToBePrintedTags() {
 		$all_tags = $this->get('tags.xml');
-		echo '<pre>';
-		print_r($all_tags);
-		
 		$printed_tag_ids = array();
 		foreach($all_tags->tag as $tag) {
 			if(array_key_exists((string)$tag->name, $this->printedTags)) {
 				$printed_tag_ids[(string)$tag->id] = (string)$tag->name;
 			}
 		}
-		print_r($printed_tag_ids);
 		
 		$tags_to_be_removed = array(); //key = person id, value = tag id
 		foreach($printed_tag_ids as $i=>$id) {
 			$printed_tagged_people = $this->get('people.xml?tag_id='.$i);
-			print_r($printed_tagged_people);
 			
 			foreach($printed_tagged_people->person as $printed_person) {
 				foreach($printed_person->tags->tag as $tag) {
@@ -83,14 +79,10 @@ class Highrise {
 			}
 		}
 		
-		print_r($tags_to_be_removed);
-		
 		foreach($tags_to_be_removed as $person_id => $tag_id) {
 			$delete_response = $this->delete('people/'.$person_id.'/tags/'.$tag_id.'.xml');
-			print_r($delete_response);
 		}
 		
-		exit;
 	}
 	
 	public function tagPerson($tag_name, $contact_id) {
