@@ -77,7 +77,7 @@ class Highrise {
 			foreach($printed_tagged_people->person as $printed_person) {
 				foreach($printed_person->tags->tag as $tag) {
 					if(array_key_exists((string)$tag->name, $this->toBePrintedTags)) {
-						$tags_to_be_removed[(string)$printed_person->id] = (string)$tag->name;
+						$tags_to_be_removed[(string)$printed_person->id] = (string)$tag->id;
 					}
 				}
 			}
