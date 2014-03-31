@@ -85,6 +85,11 @@ class Highrise {
 		
 		print_r($tags_to_be_removed);
 		
+		foreach($tags_to_be_removed as $person_id => $tag_id) {
+			$delete_response = $this->delete('people/'.$person_id.'/tags/'.$tag_id.'.xml');
+			print_r($delete_response);
+		}
+		
 		exit;
 	}
 	
