@@ -48,16 +48,18 @@ class Highrise {
 		echo '<pre>';
 		print_r($all_tags);
 		
-		print_r($this->printedTags);
 		$tag_ids_to_find = array();
 		foreach($all_tags->tag as $tag) {
-			echo $tag->name.' '.$tag->id.'<br>';
-			var_dump((string)$tag->name);
 			if(array_key_exists((string)$tag->name, $this->printedTags)) {
 				$tag_ids_to_find[(string)$tag->id] = (string)$tag->name;
 			}
 		}
 		print_r($tag_ids_to_find);
+		
+		foreach($tag_ids_to_find as $id) {
+			$person = $this->get('people.xml?tag_id='.$id);
+			print_r($person);
+		}
 		exit;
 	}
 	
