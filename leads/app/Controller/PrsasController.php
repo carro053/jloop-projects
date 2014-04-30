@@ -23,7 +23,7 @@ class PrsasController extends AppController {
 			
 				//There were 57 matches
 				preg_match_all('/There were ([\d]+) matches/', $html, $matches);
-				pr($matches);
+				//pr($matches);
 				
 				if(isset($matches[1][0]) && $i > $matches[1][0]) {
 					echo 'reached max results at '.$i;
@@ -76,10 +76,17 @@ class PrsasController extends AppController {
 							}
 						}
 						
+						$prsa['Prsa']['city'] = $cleaned_other_address_parts[0];
+						
 						echo 'cleaned other parts<br>';
 						pr($cleaned_other_address_parts);
 						
-						preg_match_all('/([A-Z][A-Z])/', $cleaned_other_address_parts[1], $matches);
+						preg_match_all('/([A-Z][A-Z])/', $cleaned_other_address_parts[1], $matches); //find State code
+						//pr($matches);
+						
+						$prsa['Prsa']['state'] = $matches[1][0];
+						
+						preg_match_all('/([\d]+)/', $cleaned_other_address_parts[1], $matches); //find State code
 						pr($matches);
 					}
 				}
