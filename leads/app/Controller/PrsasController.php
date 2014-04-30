@@ -35,7 +35,7 @@ class PrsasController extends AppController {
 				//check to see if our favorite div exists
 				if(pq('div.contentCol')->length) {
 					foreach(pq('div.contentCol table tr') as $tr) {
-						echo pq($tr).html();
+						echo pq($tr)->html();
 					}
 				}
 				
