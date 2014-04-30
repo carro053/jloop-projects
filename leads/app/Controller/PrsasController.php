@@ -21,7 +21,7 @@ class PrsasController extends AppController {
 			$html = file_get_contents($url);
 			if($html) {
 				//There were 57 matches
-				$total_matches = preg_match('There were [.0-9]+ matches');
+				$total_matches = preg_match('There were [.0-9]+ matches', $html);
 				echo 'total matches: '.$total_matches;
 			
 				$doc = phpQuery::newDocumentHTML($html);
