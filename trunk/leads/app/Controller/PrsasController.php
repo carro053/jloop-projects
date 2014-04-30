@@ -54,7 +54,28 @@ class PrsasController extends AppController {
 						
 						echo 'cleaned parts<br>';
 						pr($cleaned_address_parts);
-						//foreach($cleaned_address_parts as $part)
+						
+						if(count($cleaned_address_parts) == 2) {
+							$prsa['Prsa']['address'] = $cleaned_address_parts[0];
+							$other_address_parts = explode(',', $cleaned_address_parts[1]);
+						}
+						
+						if(count($cleaned_address_parts) == 3) {
+							$prsa['Prsa']['address'] = $cleaned_address_parts[0].', '.$cleaned_address_parts[1];
+							$other_address_parts = explode(',', $cleaned_address_parts[2]);
+						}
+						
+						$cleaned_other_address_parts = array();
+						if(!empty($other_address_parts)) {
+							foreach($other_address_parts as $part) {
+								$part = trim($part);
+								if(!empty($part))
+									$cleaned_other_address_parts[] = $part;
+							}
+						}
+						
+						echo 'cleaned other parts<br>';
+						pr($cleaned_other_address_parts);
 					}
 				}
 				
