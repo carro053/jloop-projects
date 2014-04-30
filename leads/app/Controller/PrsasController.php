@@ -70,16 +70,14 @@ class PrsasController extends AppController {
 						}
 						
 						$prsa['Prsa']['city'] = $cleaned_other_address_parts[0];
-						
 						preg_match_all('/([A-Z][A-Z])/', $cleaned_other_address_parts[1], $matches); //find State code
-						
 						$prsa['Prsa']['state'] = $matches[1][0];
-						
 						preg_match_all('/([\d]+)/', $cleaned_other_address_parts[1], $matches); //find State code
-						
 						$prsa['Prsa']['zip'] = $matches[1][0];
 						
 						pr($prsa);
+						
+						
 					}
 				}
 				
