@@ -23,7 +23,6 @@ class PrsasController extends AppController {
 			
 				//There were 57 matches
 				preg_match_all('/There were ([\d]+) matches/', $html, $matches);
-				//pr($matches);
 				
 				if(isset($matches[1][0]) && $i > $matches[1][0]) {
 					echo 'reached max results at '.$i;
@@ -42,9 +41,6 @@ class PrsasController extends AppController {
 						
 						$address_parts = explode('<br>', pq($address_node_td_node)->html());
 						
-						//pr($prsa);
-						//pr($address_parts);
-						
 						//clean out the crap characters
 						$cleaned_address_parts = array();
 						foreach($address_parts as $part) {
@@ -52,9 +48,6 @@ class PrsasController extends AppController {
 							if(!empty($part))
 								$cleaned_address_parts[] = $part;
 						}
-						
-						//echo 'cleaned parts<br>';
-						//pr($cleaned_address_parts);
 						
 						if(count($cleaned_address_parts) == 2) {
 							$prsa['Prsa']['address'] = $cleaned_address_parts[0];
@@ -78,16 +71,15 @@ class PrsasController extends AppController {
 						
 						$prsa['Prsa']['city'] = $cleaned_other_address_parts[0];
 						
-						echo 'cleaned other parts<br>';
-						pr($cleaned_other_address_parts);
-						
 						preg_match_all('/([A-Z][A-Z])/', $cleaned_other_address_parts[1], $matches); //find State code
-						//pr($matches);
 						
 						$prsa['Prsa']['state'] = $matches[1][0];
 						
 						preg_match_all('/([\d]+)/', $cleaned_other_address_parts[1], $matches); //find State code
-						pr($matches);
+						
+						$prsa['Prsa']['zip'] = $matches[1][0];
+						
+						pr($prsa);
 					}
 				}
 				
