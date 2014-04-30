@@ -31,7 +31,7 @@ class PrsasController extends AppController {
 			} else {
 				echo 'Error fetching: '.$url.'<br>';
 			}
-			if($i > 5000) //JUST IN CASE WE GO TOO FAR!!!
+			if($i > 50) //JUST IN CASE WE GO TOO FAR!!!
 				$has_more_pages = false;
 			$i += $increment;
 		}
