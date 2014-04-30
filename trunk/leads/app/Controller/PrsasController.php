@@ -38,7 +38,7 @@ class PrsasController extends AppController {
 					foreach(pq('div.contentCol table tr td.secondtitle') as $name_td_node) {
 						$prsa['Prsa']['name'] = pq($name_td_node)->find('span b')->html();
 						
-						$address_node_td_node = pq($name_td_node)->parent()->find('td');
+						$address_node_td_node = pq($name_td_node)->parent()->next()->find('td');
 						$prsa['Prsa']['address'] = pq($address_node_td_node)->html();
 						pr($prsa);
 					}
@@ -47,7 +47,7 @@ class PrsasController extends AppController {
 			} else {
 				echo 'Error fetching: '.$url.'<br>';
 			}
-			if($i > 1000) //JUST IN CASE WE GO TOO FAR!!!
+			if($i > 20) //JUST IN CASE WE GO TOO FAR!!!
 				break;
 			$i += $increment;
 		}
