@@ -32,7 +32,7 @@ class PrsasController extends AppController {
 				
 				$doc = phpQuery::newDocumentHTML($html);
 				
-				//check to see if our favorite div exists
+				//check to see if our favorite content div exists
 				if(pq('div.contentCol')->length) {
 					$prsa = array();
 					foreach(pq('div.contentCol table tr td.secondtitle') as $name_td_node) {
@@ -42,9 +42,10 @@ class PrsasController extends AppController {
 						
 						$address_parts = explode('<br>', pq($address_node_td_node)->html());
 						
-						pr($prsa);
-						pr($address_parts);
+						//pr($prsa);
+						//pr($address_parts);
 						
+						//clean out the crap characters
 						$cleaned_address_parts = array();
 						foreach($address_parts as $part) {
 							$part = trim($part);
@@ -52,19 +53,20 @@ class PrsasController extends AppController {
 								$cleaned_address_parts[] = $part;
 						}
 						
-						echo 'cleaned parts<br>';
-						pr($cleaned_address_parts);
+						//echo 'cleaned parts<br>';
+						//pr($cleaned_address_parts);
 						
 						if(count($cleaned_address_parts) == 2) {
 							$prsa['Prsa']['address'] = $cleaned_address_parts[0];
-							$other_address_parts = explode(',', $cleaned_address_parts[1]);
+							$other_address_parts = explode(',', $cleaned_address_parts[1]); //City, State, Zip
 						}
 						
 						if(count($cleaned_address_parts) == 3) {
 							$prsa['Prsa']['address'] = $cleaned_address_parts[0].', '.$cleaned_address_parts[1];
-							$other_address_parts = explode(',', $cleaned_address_parts[2]);
+							$other_address_parts = explode(',', $cleaned_address_parts[2]); //City, State, Zip
 						}
 						
+						//clean out the crap characters
 						$cleaned_other_address_parts = array();
 						if(!empty($other_address_parts)) {
 							foreach($other_address_parts as $part) {
@@ -76,6 +78,9 @@ class PrsasController extends AppController {
 						
 						echo 'cleaned other parts<br>';
 						pr($cleaned_other_address_parts);
+						
+						preg_match_all('/([A-Z][A-Z])/', $cleaned_other_address_parts[1], $matches);
+						pr($matches);
 					}
 				}
 				
