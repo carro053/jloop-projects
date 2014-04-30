@@ -34,15 +34,20 @@ class PrsasController extends AppController {
 				
 				//check to see if our favorite div exists
 				if(pq('div.contentCol')->length) {
-					foreach(pq('div.contentCol table tr td.secondtitle') as $name_td) {
-						echo pq($name_td)->find('span b')->html().'<br>';
+					$prsa = array();
+					foreach(pq('div.contentCol table tr td.secondtitle') as $name_td_node) {
+						$prsa['Prsa']['name'] = pq($name_td_node)->find('span b')->html();
+						
+						$address_node_td_node = pq($name_td_node)->parent()->find('td');
+						$prsa['Prsa']['address'] = pq($address_node_td_node)->html();
+						pr($prsa);
 					}
 				}
 				
 			} else {
 				echo 'Error fetching: '.$url.'<br>';
 			}
-			if($i > 200) //JUST IN CASE WE GO TOO FAR!!!
+			if($i > 1000) //JUST IN CASE WE GO TOO FAR!!!
 				break;
 			$i += $increment;
 		}
