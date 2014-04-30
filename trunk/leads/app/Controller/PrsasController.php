@@ -44,6 +44,17 @@ class PrsasController extends AppController {
 						
 						pr($prsa);
 						pr($address_parts);
+						
+						$cleaned_address_parts = array();
+						foreach($address_parts as $part) {
+							$part = trim($part);
+							if(!empty($part))
+								$cleaned_address_parts[] = $part;
+						}
+						
+						echo 'cleaned parts<br>';
+						pr($cleaned_address_parts);
+						//foreach($cleaned_address_parts as $part)
 					}
 				}
 				
