@@ -34,8 +34,8 @@ class PrsasController extends AppController {
 				
 				//check to see if our favorite div exists
 				if(pq('div.contentCol')->length) {
-					foreach(pq('div.contentCol table tr') as $tr) {
-						echo pq($tr)->html();
+					foreach(pq('div.contentCol table tr td.secondtitle') as $name_td) {
+						echo pq($name_td)->find('span b')->html().'<br>';
 					}
 				}
 				
