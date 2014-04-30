@@ -39,8 +39,11 @@ class PrsasController extends AppController {
 						$prsa['Prsa']['name'] = pq($name_td_node)->find('span b')->html();
 						
 						$address_node_td_node = pq($name_td_node)->parent()->next()->find('td');
-						$prsa['Prsa']['address'] = pq($address_node_td_node)->html();
+						
+						$address_parts = explode('<br>', pq($address_node_td_node)->html());
+						
 						pr($prsa);
+						pr($address_parts);
 					}
 				}
 				
