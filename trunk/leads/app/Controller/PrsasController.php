@@ -4,6 +4,31 @@ App::uses('AppController', 'Controller');
 class PrsasController extends AppController {
 	var $uses = array('Prsa', 'Contact');
 
+	public function index() {
+		$limit = (!empty($_GET['limit']) ? $_GET['limit'] : 50);
+		$page = (!empty($_GET['page']) ? $_GET['page'] : 1);
+		$order = (!empty($_GET['order']) ? $_GET['order'] : 'Prsa.name').' '.(!empty($_GET['direction']) ? $_GET['direction'] : 'asc');
+		
+		$conditions = array('Lead.status' => 0);
+		if(!empty($_GET['search'])) {
+			$conditions['OR']['Prsa.name LIKE'] = '%'.$_GET['search'].'%';
+			$conditions['OR']['Prsa.industry_specializations LIKE'] = '%'.$_GET['search'].'%';
+			$conditions['OR']['Prsa.practice_specializations LIKE'] = '%'.$_GET['search'].'%';
+			$conditions['OR']['Prsa.state LIKE'] = '%'.$_GET['search'].'%';
+		}
+		
+		$prsas = $this->Prsa->find('all', array(
+			'conditions' => $conditions,
+			'order' => $order,
+			'page' => $page,
+			'limit' => $limit
+		));
+		$this->set('prsas', $prsas);
+		$count = $this->Prsa->find('count', array('conditions' => $conditions));
+		$this->set('count', $count);
+	}
+
+
 	//example URLs
 	//http://www.prsa.org/Network/FindAFirm/Search?StartDisplay=1&xName=&xCompany=&xCity=&xIndSpec=&xState=CA&xZip=&xCountry=&xDesignation=&xPracSpec=&xSearchOutput=IND
 	//http://www.prsa.org/Network/FindAFirm/Search?StartDisplay=11&xName=&xCompany=&xCity=&xIndSpec=&xState=CA&xZip=&xCountry=&xDesignation=&xPracSpec=&xSearchOutput=IND
