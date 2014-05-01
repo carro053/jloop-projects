@@ -26,9 +26,8 @@
 		<?php foreach($prsas as $prsa) { ?>
 			<tr>
 				<td><?php echo $prsa['Prsa']['name']; ?></td>
-				<td><?php echo $prsa['Prsa']['categories']; ?></td>
-				<td><?php echo $prsa['Prsa']['specialties']; ?></td>
-				<td><?php echo $prsa['Prsa']['regions']; ?></td>
+				<td><?php echo $prsa['Prsa']['industry_specializations']; ?></td>
+				<td><?php echo $prsa['Prsa']['practice_specializations']; ?></td>
 				<td><?php echo $prsa['Prsa']['state']; ?></td>
 				<td><a class="dialog" href="/Prsas/view/<?php echo $prsa['Prsa']['id']; ?>">View</a></td>
 			</tr>
