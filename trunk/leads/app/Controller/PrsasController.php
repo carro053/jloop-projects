@@ -168,6 +168,8 @@ class PrsasController extends AppController {
 			$lead['Lead']['website'] = $prsa['Prsa']['company_url'];
 			$lead['Lead']['email'] = $prsa['Prsa']['email'];
 			
+			pr($lead);
+			
 			if($this->Prsa->Lead->save($lead)) {
 				$prsa['Prsa']['lead_id'] = $this->Prsa->Lead->id;
 				$this->Prsa->save($prsa);
@@ -179,6 +181,9 @@ class PrsasController extends AppController {
 					$contact['Contact']['first_name'] = $prsa['Prsa']['contact_first_name'];
 					$contact['Contact']['last_name'] = $prsa['Prsa']['contact_last_name'];
 					$contact['Contact']['title'] = $prsa['Prsa']['contact_title'];
+					
+					pr($contact);
+					
 					$this->Contact->save($contact, false);
 				}
 			}

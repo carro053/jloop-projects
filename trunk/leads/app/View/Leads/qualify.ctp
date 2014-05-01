@@ -3,4 +3,5 @@
 	<legend>Itunes App Store</legend>
 	<a href="/Scrapes/index">Review Itunes App Scrapes</a>
 	<a href="/Adages/index">Review AdAge Scrapes</a>
+	<a href="/Prsas/index">Review PRSA Scrapes</a>
 </fieldset>
