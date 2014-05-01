@@ -96,6 +96,9 @@ class PrsasController extends AppController {
 									$prsa['Prsa']['fax'] = $matches[1][0];
 								
 								if(preg_match_all('/"Mailto:(.+?)"/', pq($current_tr_node)->html(), $matches))
+									$prsa['Prsa']['email'] = $matches[1][0];
+									
+								if(preg_match_all('/website: <a href="(.+?)"/', pq($current_tr_node)->html(), $matches))
 									pr($matches);
 								
 								$current_tr_node = pq($current_tr_node)->next();
