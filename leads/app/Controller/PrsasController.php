@@ -37,9 +37,9 @@ class PrsasController extends AppController {
 					foreach(pq('div.contentCol table tr td.secondtitle') as $name_td_node) {
 						$prsa['Prsa']['name'] = pq($name_td_node)->find('span b')->html();
 						
-						$address_node_td_node = pq($name_td_node)->parent()->next()->find('td');
+						$address_td_node = pq($name_td_node)->parent()->next()->find('td');
 						
-						$address_parts = explode('<br>', pq($address_node_td_node)->html());
+						$address_parts = explode('<br>', pq($address_td_node)->html());
 						
 						//clean out the crap characters
 						$cleaned_address_parts = array();
@@ -75,16 +75,17 @@ class PrsasController extends AppController {
 						preg_match_all('/([\d]+)/', $cleaned_other_address_parts[1], $matches); //find State code
 						$prsa['Prsa']['zip'] = $matches[1][0];
 						
+						$phone_td_node = pq($address_td_node)->parent()->next()->find('td');
+						$prsa['Prsa']['phone'] = pq($phone_td_node)->html();
+						
 						pr($prsa);
-						
-						
 					}
 				}
 				
 			} else {
 				echo 'Error fetching: '.$url.'<br>';
 			}
-			if($i > 500) //JUST IN CASE WE GO TOO FAR!!!
+			if($i > 20) //JUST IN CASE WE GO TOO FAR!!!
 				break;
 			$i += $increment;
 		}
