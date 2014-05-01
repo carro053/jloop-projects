@@ -107,6 +107,8 @@ class PrsasController extends AppController {
 								if(preg_match('/Contact:/', pq($current_tr_node)->html())) {
 									$contact_name_node = pq($current_tr_node)->find('strong');
 									$prsa['Prsa']['contact_name'] = pq($contact_name_node)->html();
+									$contact_title_node = pq($current_tr_node)->find('i');
+									$prsa['Prsa']['contact_title'] = pq($contact_title_node)->html();
 								}
 								
 								$current_tr_node = pq($current_tr_node)->next();
