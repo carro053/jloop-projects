@@ -2,6 +2,7 @@
 App::uses('AppController', 'Controller');
 
 class PrsasController extends AppController {
+	var $uses = array('Contact');
 
 	//example URLs
 	//http://www.prsa.org/Network/FindAFirm/Search?StartDisplay=1&xName=&xCompany=&xCity=&xIndSpec=&xState=CA&xZip=&xCountry=&xDesignation=&xPracSpec=&xSearchOutput=IND
@@ -171,7 +172,15 @@ class PrsasController extends AppController {
 				$prsa['Prsa']['lead_id'] = $this->Prsa->Lead->id;
 				$this->Prsa->save($prsa);
 				
-				
+				if(!empty($prsa['Prsa']['contact_first_name'])) {
+					$this->Contact->create();
+					$contact = array();
+					$contact['Contact']['lead_id'] = $this->Prsa->Lead->id;
+					$contact['Contact']['first_name'] = $prsa['Prsa']['contact_first_name'];
+					$contact['Contact']['last_name'] = $prsa['Prsa']['contact_last_name'];
+					$contact['Contact']['title'] = $prsa['Prsa']['contact_title'];
+					$this->Contact->save($contact, false);
+				}
 			}
 		}
 		
