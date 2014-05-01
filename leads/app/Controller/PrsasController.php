@@ -22,7 +22,7 @@ class PrsasController extends AppController {
 			if($html) {
 			
 				//ex: There were 57 matches
-				preg_match('/There were ([\d]+) matches/', $html, $matches);
+				preg_match_all('/There were ([\d]+) matches/', $html, $matches);
 				
 				//stop the main loop if we go beyond the max search results
 				if(isset($matches[1][0]) && $i > $matches[1][0]) {
@@ -71,9 +71,9 @@ class PrsasController extends AppController {
 						}
 						
 						$prsa['Prsa']['city'] = $cleaned_other_address_parts[0];
-						preg_match('/([A-Z][A-Z])/', $cleaned_other_address_parts[1], $matches); //find State
+						preg_match_all('/([A-Z][A-Z])/', $cleaned_other_address_parts[1], $matches); //find State
 						$prsa['Prsa']['state'] = $matches[1][0];
-						preg_match('/([\d]+)/', $cleaned_other_address_parts[1], $matches); //find Zip
+						preg_match_all('/([\d]+)/', $cleaned_other_address_parts[1], $matches); //find Zip
 						$prsa['Prsa']['zip'] = $matches[1][0];
 						
 						$phone_td_node = pq($address_td_node)->parent()->next()->find('td');
