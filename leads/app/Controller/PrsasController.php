@@ -2,7 +2,7 @@
 App::uses('AppController', 'Controller');
 
 class PrsasController extends AppController {
-	var $uses = array('Contact');
+	var $uses = array('Prsa', 'Contact');
 
 	//example URLs
 	//http://www.prsa.org/Network/FindAFirm/Search?StartDisplay=1&xName=&xCompany=&xCity=&xIndSpec=&xState=CA&xZip=&xCountry=&xDesignation=&xPracSpec=&xSearchOutput=IND
