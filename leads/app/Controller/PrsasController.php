@@ -112,7 +112,11 @@ class PrsasController extends AppController {
 								
 								if(preg_match('/Contact:/', pq($current_tr_node)->html())) {
 									$contact_name_node = pq($current_tr_node)->find('strong');
-									$prsa['Prsa']['contact_name'] = pq($contact_name_node)->html();
+									$contact_name = pq($contact_name_node)->html();
+									
+									$contact_name_parts = explode(',', $contact_name);
+									pr($contact_name_parts);
+									
 									$contact_title_node = pq($current_tr_node)->find('i');
 									$prsa['Prsa']['contact_title'] = pq($contact_title_node)->html();
 								}
@@ -123,15 +127,15 @@ class PrsasController extends AppController {
 						
 						pr($prsa);
 						
-						$this->Prsa->create();
-						$this->Prsa->save($prsa);
+						//$this->Prsa->create();
+						//$this->Prsa->save($prsa);
 					}
 				}
 				
 			} else {
 				echo 'Error fetching: '.$url.'<br>';
 			}
-			if($i > 5000) //JUST IN CASE WE GO TOO FAR!!!
+			if($i > 20) //JUST IN CASE WE GO TOO FAR!!!
 				break;
 			$i += $increment;
 		}
@@ -139,8 +143,33 @@ class PrsasController extends AppController {
 	}
 	
 	public function convertToLeadsAndContacts() {
+		set_time_limit(120); //don't let the script run for more than 2 minutes
+	
 		$prsas = $this->Prsa->find('all', array('conditions' => 'Prsa.lead_id = 0'));
-		pr($prsas);
+		foreach($prsas as $prsa) {
+			$lead = array();
+			$this->Prsa->Lead->create();
+			$lead['Lead']['model'] = 'Prsa';
+			$lead['Lead']['model_id'] = $prsa['Prsa']['id'];
+			$lead['Lead']['type'] = 'PRSA Scrape';
+			$lead['Lead']['company'] = $prsa['Prsa']['name'];
+			$lead['Lead']['phone'] = $prsa['Prsa']['phone'];
+			$lead['Lead']['address'] = $prsa['Prsa']['address'];
+			$lead['Lead']['city'] = $prsa['Prsa']['city'];
+			$lead['Lead']['zip'] = $prsa['Prsa']['zip'];
+			$lead['Lead']['state'] = $prsa['Prsa']['state'];
+			$lead['Lead']['country'] = $prsa['Prsa']['country'];
+			$lead['Lead']['website'] = $prsa['Prsa']['company_url'];
+			$lead['Lead']['email'] = $prsa['Prsa']['email'];
+			
+			if($this->Prsa->Lead->save($lead)) {
+				$prsa['Prsa']['lead_id'] = $this->Prsa->Lead->id;
+				$this->Prsa->save($prsa);
+				
+				
+			}
+		}
+		
 		exit;
 	}
 }
