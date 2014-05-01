@@ -28,6 +28,21 @@ class PrsasController extends AppController {
 		$this->set('count', $count);
 	}
 
+	public function view($id) {
+		$this->layout = false;
+		$prsa = $this->Prsa->find('first', array('conditions' => 'Prsa.id = '.$id, 'recursive' => 3));
+		$this->set('prsa', $prsa);
+		
+		$tags = $this->Prsa->Lead->Tag->find('all');
+		$this->set('tags', $tags);
+		
+		$assignable_users = array('0' => 'Unassigned');
+		$assignable_users += $this->Prsa->Lead->Contact->User->find('list', array(
+			'fields' => array('User.id', 'User.username'),
+			'order' => 'User.username ASC'
+		));
+		$this->set('assignable_users', $assignable_users);
+	}
 
 	//example URLs
 	//http://www.prsa.org/Network/FindAFirm/Search?StartDisplay=1&xName=&xCompany=&xCity=&xIndSpec=&xState=CA&xZip=&xCountry=&xDesignation=&xPracSpec=&xSearchOutput=IND
