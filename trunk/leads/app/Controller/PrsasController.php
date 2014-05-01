@@ -76,7 +76,7 @@ class PrsasController extends AppController {
 						$prsa['Prsa']['zip'] = $matches[1][0];
 						
 						$phone_td_node = pq($address_td_node)->parent()->next()->find('td');
-						$prsa['Prsa']['phone'] = pq($phone_td_node)->html();
+						$prsa['Prsa']['phone'] = trim(pq($phone_td_node)->html());
 						
 						pr($prsa);
 					}
