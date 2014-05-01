@@ -21,9 +21,10 @@ class PrsasController extends AppController {
 			$html = file_get_contents($url);
 			if($html) {
 			
-				//There were 57 matches
+				//ex: There were 57 matches
 				preg_match_all('/There were ([\d]+) matches/', $html, $matches);
 				
+				//stop the main loop if we go beyond the max search results
 				if(isset($matches[1][0]) && $i > $matches[1][0]) {
 					echo 'reached max results at '.$i;
 					break;
@@ -70,15 +71,28 @@ class PrsasController extends AppController {
 						}
 						
 						$prsa['Prsa']['city'] = $cleaned_other_address_parts[0];
-						preg_match_all('/([A-Z][A-Z])/', $cleaned_other_address_parts[1], $matches); //find State code
+						preg_match_all('/([A-Z][A-Z])/', $cleaned_other_address_parts[1], $matches); //find State
 						$prsa['Prsa']['state'] = $matches[1][0];
-						preg_match_all('/([\d]+)/', $cleaned_other_address_parts[1], $matches); //find State code
+						preg_match_all('/([\d]+)/', $cleaned_other_address_parts[1], $matches); //find Zip
 						$prsa['Prsa']['zip'] = $matches[1][0];
 						
 						$phone_td_node = pq($address_td_node)->parent()->next()->find('td');
 						$prsa['Prsa']['phone'] = trim(pq($phone_td_node)->html());
 						
 						pr($prsa);
+						
+						//loop through all remaining tr's until we hit the hr
+						$current_tr_node = pq($phone_td_node)->parent()->next();
+						$found_hr = false;
+						while(pq($current_tr_node)->length && !$found_hr) {
+							$check_hr = pq($current_tr_node)->find('hr');
+							if(!empty($check_hr))
+								$found_hr = true;
+							else {
+								echo pq($current_tr_node)->html();
+								$current_tr_node = pq($current_tr_node)->next();
+							}
+						}
 					}
 				}
 				
