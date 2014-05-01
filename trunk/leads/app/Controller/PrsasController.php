@@ -90,7 +90,7 @@ class PrsasController extends AppController {
 								echo 'END OF RECORD';
 								$found_hr = true;
 							} else {
-								echo pq($current_tr_node)->html();
+								//echo pq($current_tr_node)->html();
 								
 								if(preg_match_all('/fax: (\([\d]+\) [\d]+\-[\d]+)/', pq($current_tr_node)->html(), $matches))
 									$prsa['Prsa']['fax'] = $matches[1][0];
