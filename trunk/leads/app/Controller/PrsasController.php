@@ -95,7 +95,7 @@ class PrsasController extends AppController {
 								if(preg_match_all('/fax: (\([\d]+\) [\d]+\-[\d]+)/', pq($current_tr_node)->html(), $matches))
 									$prsa['Prsa']['fax'] = $matches[1][0];
 								
-								if(preg_match_all('/\"Mailto:(.+)\"/', pq($current_tr_node)->html(), $matches))
+								if(preg_match_all('/"Mailto:(.+?)"/', pq($current_tr_node)->html(), $matches))
 									pr($matches);
 								
 								$current_tr_node = pq($current_tr_node)->next();
