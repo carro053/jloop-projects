@@ -115,7 +115,10 @@ class PrsasController extends AppController {
 									$contact_name = pq($contact_name_node)->html();
 									
 									$contact_name_parts = explode(',', $contact_name);
-									pr($contact_name_parts);
+									$contact_name = $contact_name_parts[0];
+									$contact_name_parts = explode(' ', $contact_name);
+									$prsa['Prsa']['contact_first_name'] = $contact_name_parts[0];
+									$prsa['Prsa']['contact_last_name'] = $contact_name_parts[count($contact_name_parts) - 1];
 									
 									$contact_title_node = pq($current_tr_node)->find('i');
 									$prsa['Prsa']['contact_title'] = pq($contact_title_node)->html();
