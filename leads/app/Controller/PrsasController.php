@@ -198,6 +198,7 @@ class PrsasController extends AppController {
 			$lead['Lead']['model'] = 'Prsa';
 			$lead['Lead']['model_id'] = $prsa['Prsa']['id'];
 			$lead['Lead']['type'] = 'PRSA Scrape';
+			$lead['Lead']['name'] = $prsa['Prsa']['name'];
 			$lead['Lead']['company'] = $prsa['Prsa']['name'];
 			$lead['Lead']['phone'] = $prsa['Prsa']['phone'];
 			$lead['Lead']['address'] = $prsa['Prsa']['address'];
