@@ -137,4 +137,10 @@ class PrsasController extends AppController {
 		}
 		exit;
 	}
+	
+	public convertToLeadsAndContacts() {
+		$prsas = $this->Prsa->find('all', array('conditions' => 'Prsa.lead_id = 0'));
+		pr($prsas);
+		exit;
+	}
 }
