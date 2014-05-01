@@ -99,7 +99,7 @@ class PrsasController extends AppController {
 									$prsa['Prsa']['email'] = $matches[1][0];
 									
 								if(preg_match_all('/website: <a href="(.+?)"/', pq($current_tr_node)->html(), $matches))
-									echo 'website: '.$matches[1][0];
+									$prsa['Prsa']['company_url'] = $matches[1][0];
 								
 								$current_tr_node = pq($current_tr_node)->next();
 							}
