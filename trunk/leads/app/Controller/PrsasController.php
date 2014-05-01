@@ -17,7 +17,7 @@ class PrsasController extends AppController {
 		$i = 1;
 		$increment = 10;
 		while(true) {
-			$url = 'http://www.prsa.org/Network/FindAFirm/Search?StartDisplay='.$i.'&xName=&xCompany=&xCity=&xIndSpec=&xState=CA&xZip=&xCountry=&xDesignation=&xPracSpec=&xSearchOutput=IND';
+			$url = 'http://www.prsa.org/Network/FindAFirm/Search?StartDisplay='.$i.'&xName=&xCompany=&xCity=&xIndSpec=&xState=CA&xZip=&xCountry=&xDesignation=&xPracSpec=&xSearchOutput=IND'; //url with specified search paramters
 			$html = file_get_contents($url);
 			if($html) {
 			
@@ -79,8 +79,6 @@ class PrsasController extends AppController {
 						$phone_td_node = pq($address_td_node)->parent()->next()->find('td');
 						$prsa['Prsa']['phone'] = trim(pq($phone_td_node)->html());
 						
-						
-						
 						//loop through all remaining tr's until we hit the hr
 						$current_tr_node = pq($phone_td_node)->parent()->next();
 						$found_hr = false;
@@ -90,8 +88,6 @@ class PrsasController extends AppController {
 								echo 'END OF RECORD';
 								$found_hr = true;
 							} else {
-								//echo pq($current_tr_node)->html();
-								
 								if(preg_match_all('/fax: (\([\d]+\) [\d]+\-[\d]+)/', pq($current_tr_node)->html(), $matches))
 									$prsa['Prsa']['fax'] = $matches[1][0];
 								
@@ -103,7 +99,17 @@ class PrsasController extends AppController {
 								
 								if(preg_match_all('/Number of Employees: ([\d]+)/', pq($current_tr_node)->html(), $matches))
 									$prsa['Prsa']['employees'] = $matches[1][0];
-									
+								
+								if(preg_match('/Industry Specializations:/', pq($current_tr_node)->html())) {
+									$industry_specializations_node = pq($current_tr_node)->find('i');
+									$prsa['Prsa']['industry_specializations'] = pq($industry_specializations_node)->html();
+								}
+								
+								if(preg_match('/Practice Specializations:/', pq($current_tr_node)->html())) {
+									$practice_specializations_node = pq($current_tr_node)->find('i');
+									$prsa['Prsa']['practice_specializations'] = pq($practice_specializations_node)->html();
+								}
+								
 								if(preg_match('/Contact:/', pq($current_tr_node)->html())) {
 									$contact_name_node = pq($current_tr_node)->find('strong');
 									$prsa['Prsa']['contact_name'] = pq($contact_name_node)->html();
