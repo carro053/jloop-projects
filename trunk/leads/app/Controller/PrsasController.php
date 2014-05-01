@@ -103,6 +103,11 @@ class PrsasController extends AppController {
 								
 								if(preg_match_all('/Number of Employees: ([\d]+)/', pq($current_tr_node)->html(), $matches))
 									$prsa['Prsa']['employees'] = $matches[1][0];
+									
+								if(preg_match('/Contact:/', pq($current_tr_node)->html())) {
+									$contact_name_node = pq($current_tr_node)->find('strong');
+									$prsa['Prsa']['contact_name'] = pq($contact_name_node)->html();
+								}
 								
 								$current_tr_node = pq($current_tr_node)->next();
 							}
