@@ -122,13 +122,16 @@ class PrsasController extends AppController {
 						}
 						
 						pr($prsa);
+						
+						$this->Prsa->create();
+						$this->Prsa->save($prsa);
 					}
 				}
 				
 			} else {
 				echo 'Error fetching: '.$url.'<br>';
 			}
-			if($i > 500) //JUST IN CASE WE GO TOO FAR!!!
+			if($i > 5000) //JUST IN CASE WE GO TOO FAR!!!
 				break;
 			$i += $increment;
 		}
