@@ -1,4 +1,4 @@
-<h2>Review AdAge Scrapes</h2>
+<h2>Review PRSA Scrapes</h2>
 
 <?php
 	echo $this->Form->create('Prsa', array('type' => 'get'));
@@ -32,7 +32,7 @@
 				<td><a class="dialog" href="/Prsas/view/<?php echo $prsa['Prsa']['id']; ?>">View</a></td>
 			</tr>
 		<?php } if(empty($prsas)) { ?>
-			<tr><td colspan="5">There are currently no prsas</td></tr>
+			<tr><td colspan="5">There are currently no PRSA Scrapes</td></tr>
 		<?php } ?>
 	</tbody>
 </table>
