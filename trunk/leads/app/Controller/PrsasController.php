@@ -9,6 +9,7 @@ class PrsasController extends AppController {
 	//http://www.prsa.org/Network/FindAFirm/Search?StartDisplay=51&xName=&xCompany=&xCity=&xIndSpec=&xState=CA&xZip=&xCountry=&xDesignation=&xPracSpec=&xSearchOutput=IND
 	
 	public function scrapeIndex() {
+		Configure::write('debug', 2);
 		set_time_limit(120); //don't let the script run for more than 2 minutes
 		echo '<pre>';
 	
@@ -130,15 +131,15 @@ class PrsasController extends AppController {
 						
 						pr($prsa);
 						
-						//$this->Prsa->create();
-						//$this->Prsa->save($prsa);
+						$this->Prsa->create();
+						$this->Prsa->save($prsa);
 					}
 				}
 				
 			} else {
 				echo 'Error fetching: '.$url.'<br>';
 			}
-			if($i > 20) //JUST IN CASE WE GO TOO FAR!!!
+			if($i > 5000) //JUST IN CASE WE GO TOO FAR!!!
 				break;
 			$i += $increment;
 		}
@@ -146,6 +147,7 @@ class PrsasController extends AppController {
 	}
 	
 	public function convertToLeadsAndContacts() {
+		Configure::write('debug', 2);
 		set_time_limit(120); //don't let the script run for more than 2 minutes
 	
 		$prsas = $this->Prsa->find('all', array('conditions' => 'Prsa.lead_id = 0'));
