@@ -122,7 +122,7 @@ class PrsasController extends AppController {
 			} else {
 				echo 'Error fetching: '.$url.'<br>';
 			}
-			if($i > 20) //JUST IN CASE WE GO TOO FAR!!!
+			if($i > 500) //JUST IN CASE WE GO TOO FAR!!!
 				break;
 			$i += $increment;
 		}
