@@ -79,7 +79,7 @@ class PrsasController extends AppController {
 						$phone_td_node = pq($address_td_node)->parent()->next()->find('td');
 						$prsa['Prsa']['phone'] = trim(pq($phone_td_node)->html());
 						
-						pr($prsa);
+						
 						
 						//loop through all remaining tr's until we hit the hr
 						$current_tr_node = pq($phone_td_node)->parent()->next();
@@ -92,12 +92,14 @@ class PrsasController extends AppController {
 							} else {
 								echo pq($current_tr_node)->html();
 								
-								preg_match_all('/fax: (\([\d]+\) [\d]+\-[\d]+)/', pq($current_tr_node)->html(), $matches);
-								pr($matches);
-								
+								if(preg_match_all('/fax: (\([\d]+\) [\d]+\-[\d]+)/', pq($current_tr_node)->html(), $matches))
+									$prsa['Prsa']['fax'] = $matches[1][0];
+									
 								$current_tr_node = pq($current_tr_node)->next();
 							}
 						}
+						
+						pr($prsa);
 					}
 				}
 				
