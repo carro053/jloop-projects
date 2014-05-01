@@ -11,14 +11,6 @@
 					)
 				)));
 				echo $this->Html->tableCells(array(array(
-					$this->Html->tag('strong', 'AdAge Link'),
-					$this->Html->link(
-						$prsa['Prsa']['url'],
-						$prsa['Prsa']['url'],
-						array('target' => '_blank')
-					)
-				)));
-				echo $this->Html->tableCells(array(array(
 					$this->Html->tag('strong', 'Industry Specializations'),
 					$prsa['Prsa']['industry_specializations']
 				)));
