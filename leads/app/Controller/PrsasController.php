@@ -88,6 +88,9 @@ class PrsasController extends AppController {
 							echo 'some TRs, bro<br>';
 							
 							$check_hr = pq($current_tr_node)->find('hr');
+							
+							pr($check_hr);
+							
 							if(!empty($check_hr)) {
 								echo 'found hr';
 								$found_hr = true;
