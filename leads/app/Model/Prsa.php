@@ -5,6 +5,7 @@ class Prsa extends AppModel {
 
 	public $belongsTo = array('Lead');
 	
+	/*
 	public function afterSave($created) {
 		if($created) {
 			$this->Lead->create();
@@ -19,4 +20,5 @@ class Prsa extends AppModel {
 				die('An error has occurred while saving the lead_id for '.$this->name.', id: '.$this->id.', lead_id: '.$this->Lead->id);
 		}
 	}
+	*/
 }
