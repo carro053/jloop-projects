@@ -85,6 +85,8 @@ class PrsasController extends AppController {
 						$current_tr_node = pq($phone_td_node)->parent()->next();
 						$found_hr = false;
 						while(pq($current_tr_node)->length && !$found_hr) {
+							echo 'some TRs, bro<br>';
+							
 							$check_hr = pq($current_tr_node)->find('hr');
 							if(!empty($check_hr))
 								$found_hr = true;
