@@ -2,14 +2,21 @@
 	<table>
 		<tbody>
 			<?php
-				echo $this->Html->tableCells(array(array(
-					$this->Html->tag('strong', 'Name'),
-					$this->Html->link(
-						$prsa['Prsa']['name'],
-						$prsa['Lead']['website'],
-						array('target' => '_blank')
-					)
-				)));
+				if(!empty($prsa['Prsa']['company_url'])) {
+					echo $this->Html->tableCells(array(array(
+						$this->Html->tag('strong', 'Name'),
+						$this->Html->link(
+							$prsa['Prsa']['name'],
+							$prsa['Lead']['website'],
+							array('target' => '_blank')
+						)
+					)));
+				} else {
+					echo $this->Html->tableCells(array(array(
+						$this->Html->tag('strong', 'Name'),
+						$prsa['Prsa']['name']
+					)));
+				}
 				echo $this->Html->tableCells(array(array(
 					$this->Html->tag('strong', 'Industry Specializations'),
 					$prsa['Prsa']['industry_specializations']
