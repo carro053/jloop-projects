@@ -91,6 +91,10 @@ class PrsasController extends AppController {
 								$found_hr = true;
 							} else {
 								echo pq($current_tr_node)->html();
+								
+								preg_match_all('/fax: (\([\d]+\) [\d]+\-[\d]+)/', pq($current_tr_node)->html(), $matches);
+								pr($matches);
+								
 								$current_tr_node = pq($current_tr_node)->next();
 							}
 						}
