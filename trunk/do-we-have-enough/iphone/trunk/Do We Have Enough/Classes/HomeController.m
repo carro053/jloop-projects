@@ -55,7 +55,6 @@
     viewAppeared = NO;
     
     
-	NSLog(@"didappear");
 	latestButton.hidden = YES;
 	latestTipImage.hidden = YES;
 	latestHandImage.hidden = YES;
@@ -76,8 +75,6 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"home screen appeared");
-    
     if(!viewAppeared)
     {
         latestButton.hidden = YES;
@@ -104,7 +101,6 @@
 }
 
 -(void)checkValidation {
-	NSLog(@"checkvalidation");
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
 	[settings initData];
 	if (![settings.emailAddress isEqualToString:@"false"]) {
@@ -242,7 +238,7 @@
 	SettingsTracker *settings = [[SettingsTracker alloc] init];
 	[settings initData];
 	NSString *postString = [NSString stringWithFormat:@"email_address=%@&device_id=%@", settings.emailAddress, uniqueIdentifier];
-    //NSLog(postString);
+    //NSLog(@"%@ %@",URL,postString);
     [settings release];
     
     NSURL *url = [NSURL URLWithString:URL];
@@ -258,7 +254,7 @@
     if (conn) {
         webData = [[NSMutableData data] retain];
     }
-    NSLog(@"get file");
+    //NSLog(@"get file");
 }
 -(void) connectionDidFinishLoading:(NSURLConnection *) connection {
     NSLog(@"DONE. Received Bytes: %d", [webData length]);
@@ -267,17 +263,27 @@
                         length:[webData length] 
                         encoding:NSUTF8StringEncoding];
     //---shows the XML---
-    //NSLog(theXML);
-	[theXML release];    
-    //[activityIndicator stopAnimating];    
-    if (xmlParser)
+    
+    if([theXML isEqualToString:@"<?xml version=\"1.0\" encoding=\"UTF-8\"?><result>false</result>"])
     {
-        [xmlParser release];
-    }    
-    xmlParser = [[NSXMLParser alloc] initWithData: webData];
-    [xmlParser setDelegate: self];
-    [xmlParser setShouldResolveExternalEntities:YES];
-    [xmlParser parse];
+        SettingsTracker *settings = [[SettingsTracker alloc] init];
+        [settings initData];
+        [settings saveValidation:@"false"];
+        [settings saveEmail:@"false"];
+        [settings release];
+        [self settingsButtonPressed];
+    }else{
+        [theXML release];    
+        //[activityIndicator stopAnimating];    
+        if (xmlParser)
+        {
+            [xmlParser release];
+        }    
+        xmlParser = [[NSXMLParser alloc] initWithData: webData];
+        [xmlParser setDelegate: self];
+        [xmlParser setShouldResolveExternalEntities:YES];
+        [xmlParser parse];
+    }
     
     [connection release];
 	[webData release];
@@ -310,7 +316,7 @@
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict{
 	//NSLog(@"found this element: %@", elementName);
 	currentElement = [elementName copy];
-	
+	NSLog(@"DID START");
 	if ([elementName isEqualToString:@"user_data"]) {
 		// clear out our story item caches...
 		//item = [[NSMutableDictionary alloc] init];
@@ -337,6 +343,8 @@
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string{
 	//NSLog(@"found characters: %@", string);
 	// save the characters for the current item...
+    string = [string stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    
 	if ([currentElement isEqualToString:@"notify_in"]) {
 		[currentNotifyIn appendString:string];
 	} else if ([currentElement isEqualToString:@"notify_out"]) {
@@ -375,8 +383,7 @@
 	[settings saveAppNotifyOut:currentAppNotifyOut];
 	[settings saveAppNotifyEventChange:currentAppNotifyEventChange];
 	[settings saveUserName:currentUserName];
-    NSLog(@"%@ %@ %@ %@ %@ %@ %@",currentNotifyIn,currentNotifyOut,currentNotifyEventChange,currentAppNotifyIn,currentAppNotifyOut,currentAppNotifyEventChange,currentUserName);
-	NSLog(@"notify in in home view: %d", [settings.notifyIn intValue]);
+    //NSLog(@"%@ %@ %@ %@ %@ %@ %@",currentNotifyIn,currentNotifyOut,currentNotifyEventChange,currentAppNotifyIn,currentAppNotifyOut,currentAppNotifyEventChange,currentUserName);
 	[settings release];
 	NSLog(@"the event IS: %@", currentEventName);
 	NSLog(@"current notify in: %@", currentNotifyIn);
