@@ -59,11 +59,15 @@
 -(void)saveNotifyIn:(NSString *)notify
 {
 	if (!isInited) [self initData];
+    
+    
+    NSLog(@"EMAIL:%@ VALIDATION:%@ NOTIFYIN:%@ NOTIFYOUT:%@ NOTIFYEVENTCHANGE:%@ APPNOTIFYIN:%@ APPNOTIFYOUT:%@ APPNOTIFYEVENTCHANGE:%@ USERNAME:%@",emailAddress,isValidated,notify,notifyOut,notifyEventChange,appNotifyIn,appNotifyOut,appNotifyEventChange,userName);
 	NSMutableArray *array = [[NSMutableArray alloc] init];
+    
 	[array addObject:emailAddress];
 	[array addObject:isValidated];
 	[array addObject:notify];
-	[array addObject:notifyOut];
+    [array addObject:notifyOut];
 	[array addObject:notifyEventChange];
 	[array addObject:appNotifyIn];
 	[array addObject:appNotifyOut];
@@ -183,15 +187,16 @@
 	if ([[NSFileManager defaultManager] fileExistsAtPath:filePath])
 	{
 		NSMutableArray *array = [[NSMutableArray alloc] initWithContentsOfFile:filePath];
-		NSString *myEmail = [array objectAtIndex:0];
-		NSString *myValidation = [array objectAtIndex:1];
-		NSString *myNotifyIn = [array objectAtIndex:2];
-		NSString *myNotifyOut = [array objectAtIndex:3];
-		NSString *myNotifyEventChange = [array objectAtIndex:4];
-		NSString *myAppNotifyIn = [array objectAtIndex:5];
-		NSString *myAppNotifyOut = [array objectAtIndex:6];
-		NSString *myAppNotifyEventChange = [array objectAtIndex:7];
-		NSString *myUserName = [array objectAtIndex:8];
+		NSString *myEmail = [[array objectAtIndex:0] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+		NSString *myValidation = [[array objectAtIndex:1] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+		NSString *myNotifyIn = [[array objectAtIndex:2] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+		NSString *myNotifyOut = [[array objectAtIndex:3] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+		NSString *myNotifyEventChange = [[array objectAtIndex:4] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+		NSString *myAppNotifyIn = [[array objectAtIndex:5] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+		NSString *myAppNotifyOut = [[array objectAtIndex:6] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+		NSString *myAppNotifyEventChange = [[array objectAtIndex:7] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+		NSString *myUserName = [[array objectAtIndex:8] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+        NSLog(@"EMAIL:%@ VALIDATION:%@ NOTIFYIN:%@ NOTIFYOUT:%@ NOTIFYEVENTCHANGE:%@ APPNOTIFYIN:%@ APPNOTIFYOUT:%@ APPNOTIFYEVENTCHANGE:%@ USERNAME:%@",myEmail,myValidation,myNotifyIn,myNotifyOut,myNotifyEventChange,myAppNotifyIn,myAppNotifyOut,myAppNotifyEventChange,myUserName);
 		self.emailAddress = myEmail;
 		self.isValidated = myValidation;
 		self.notifyIn = myNotifyIn;
@@ -204,6 +209,7 @@
 		[array autorelease];
 		[self setIsInited:YES];
 	} else {
+        NSLog(@"SETTINGS FILE NOT FOUND!!!");
 		[self resetData];
 		[self setIsInited:YES];
 	}
