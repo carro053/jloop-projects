@@ -21,7 +21,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	foreach($accounts->Invoices[0]->Invoice as $inv) {
 		echo date('M-d', strtotime($inv->DueDate)).": ";
 		echo $inv->Contact->Name.": ".$inv->Reference." - ".$inv->AmountDue."<br/>";
-		$projectTotal += intval($inv->AmountDue);
+		$projectTotal += floatval($inv->AmountDue);
 	}
 	echo "TOTAL PROJECTED: ".money_format('%n',$projectTotal)."<br/><br/>";
 	pr($accounts->Invoices[0]->Invoice[0]);
