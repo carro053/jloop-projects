@@ -16,7 +16,11 @@ $response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	foreach($accounts->Reports[0]->Report[0]->Rows[0]->Row as $row) {
-		echo $row->RowType."<br />";
+		echo $row->RowType;
+		if ($row->RowType == "SECTION") {
+			echo ": ".$row->Title;
+		}
+		echo "<br />";
 	}
 	pr($accounts->Reports);
 } else {
