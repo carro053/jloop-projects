@@ -10,15 +10,20 @@ if (!isset($_GET['month'])) {
 } else {
 	$mo = $_GET['month'];
 }
+if (!isset($_GET['year'])) {
+	$yr = date('Y');
+} else {
+	$yr = $_GET['year'];
+}
 $month_array = array("N/A","January","February","March","April","May","June","July","August","September","October","November","December");
 
 ////
 
-echo 'month of '.$month_array[floatval($mo)].'<br/><br/>';
+echo 'month of '.$month_array[floatval($mo)].', '.$yr.'<br/><br/>';
 /*
 
 echo 'INVOICED to date:<br />';
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 'core'), array('Where' => ''));
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 'core'), array('Where' => 'fromDate="));
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	$invoicedTotal = 0;
@@ -39,6 +44,7 @@ if ($XeroOAuth->response['code'] == 200) {
 } else {
 	outputError($XeroOAuth);
 }
+/*
 echo "<br />";
 echo 'PROJECTED invoices:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('Where' => 'Status=="DRAFT" && Date>=DateTime(2014,7,1) && Date<DateTime(2014,8,1)'));
