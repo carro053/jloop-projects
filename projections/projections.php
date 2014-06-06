@@ -51,6 +51,7 @@ if ($XeroOAuth->response['code'] == 200) {
 } else {
 	outputError($XeroOAuth);
 }
+echo "------------------------";
 
 echo "<br />";
 echo 'PROJECTED invoices:<br />';
@@ -70,6 +71,8 @@ if ($XeroOAuth->response['code'] == 200) {
 } else {
 	outputError($XeroOAuth);
 }
+
+echo "------------------------";
 
 $recur_array = array();
 echo 'RECURRING invoices:<br />';
@@ -121,7 +124,7 @@ if ($XeroOAuth->response['code'] == 200) {
 
 
 
-
+echo "------------------------";
 
 $projectedTotal = $invoicedTotal + $projectTotal + $recurOtherTotal + $recurTotal;
 echo '<strong>PROJECTED TOTAL FOR MONTH: '.money_format('%n', $projectedTotal)."</strong>";
