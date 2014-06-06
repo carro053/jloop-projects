@@ -5,11 +5,16 @@ error_reporting(E_ALL);
 setlocale(LC_MONETARY, 'en_US');
 
 include("projections_stuff.php");
+if (!isset($_GET['month'])) {
+	$mo = date('n');
+} else {
+	$mo = $_GET['month'];
+}
 
 
 ////
 
-echo 'month of July<br/><br/>';
+echo 'month of '.$mo.'<br/><br/>';
 
 echo 'INVOICED to date:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 'core'), array('Where' => ''));
@@ -33,7 +38,7 @@ if ($XeroOAuth->response['code'] == 200) {
 } else {
 	outputError($XeroOAuth);
 }
-
+echo "<br />";
 echo 'PROJECTED invoices:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('Where' => 'Status=="DRAFT" && Date>=DateTime(2014,7,1) && Date<DateTime(2014,8,1)'));
 if ($XeroOAuth->response['code'] == 200) {
