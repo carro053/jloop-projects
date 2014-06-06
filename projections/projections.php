@@ -17,8 +17,8 @@ if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	echo "There are " . count($accounts->Invoices[0]). " to date </br>";
 	//pr($accounts->Invoices[0]->Invoice);
-	foreach Invoices as Invoice {
-		pr(Invoice);
+	foreach ($accounts->Invoices as $invoice) {
+		pr($invoice);
 	}
 	
 } else {
