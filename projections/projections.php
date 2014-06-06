@@ -100,7 +100,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	$recurTotal =0;
 	foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
 		
-		if (in_array(strval($inv->RepeatingInvoiceID), $recur_array)) {
+		if (!in_array(strval($inv->RepeatingInvoiceID), $recur_array)) {
 			$recurTotal += floatval($inv->Total);
 			echo "ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
 		} else {
