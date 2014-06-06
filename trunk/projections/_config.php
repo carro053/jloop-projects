@@ -16,7 +16,7 @@ define('BASE_PATH',dirname(__FILE__));
  * Public - standard public app method
  * Partner - partner app method
  */
-define("XRO_APP_TYPE",     "Partner");
+define("XRO_APP_TYPE",     "Private");
 
 /**
  * Set a user agent string that matches your application name as set in the Xero developer centre
@@ -26,7 +26,7 @@ $useragent = "";
 /**
  * Set your callback url or set 'oob' if none required
  */
-define("OAUTH_CALLBACK",     'http://localhost/XeroOAuth-PHP/example.php');
+define("OAUTH_CALLBACK",     'oob');
 
 /**
  * Application specific settings
@@ -38,8 +38,8 @@ define("OAUTH_CALLBACK",     'http://localhost/XeroOAuth-PHP/example.php');
  */
 
 $signatures = array(
-    'consumer_key'     => 'MWSAN8S5AAFPMMNBV3DQIEWH4TM9FE',
-    'shared_secret'    => 's',
+    'consumer_key'     => 'VKVCKW3NUXKEPORW7ZWOHBIB7DYTCL',
+    'shared_secret'    => 'E2T16UNAVRADG6BQHRIXPCMQKEXXSU',
     // API versions
     'core_version'=> '2.0',
     'payroll_version'=> '1.0',
