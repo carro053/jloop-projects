@@ -90,10 +90,11 @@ if ($XeroOAuth->response['code'] == 200) {
 */
 echo 'Recurring invoices scheduled in this month:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.NextScheduledDate>=DateTime('.$yr.','.$mo.',1) && Schedule.NextScheduledDate<DateTime('.$yr.','.$mo.','.$days.') && && Type=="ACCREC"'));
+$recurOtherTotal =0;
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " other invoices: </br>";
-	$recurOtherTotal =0;
+	
 	foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
 		//echo $inv->Contact->Name.": ".$inv->Total."<br />";
 		$recurOtherTotal += floatval($inv->Total);
