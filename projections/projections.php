@@ -17,7 +17,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	foreach($accounts->Reports[0]->Report[0]->Rows[0]->Row as $row) {
 		echo $row->RowType;
-		if ($row->RowType == "SECTION") {
+		if ($row->RowType == "Section") {
 			echo ": ".$row->Title;
 		}
 		echo "<br />";
