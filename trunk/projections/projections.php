@@ -10,11 +10,12 @@ if (!isset($_GET['month'])) {
 } else {
 	$mo = $_GET['month'];
 }
+$month_array = new array("N/A","January","February","March","April","May","June","July","August","September","October","November","December");
 
 
 ////
 
-echo 'month of '.$mo.'<br/><br/>';
+echo 'month of '.$month_array[floatval($mo)].'<br/><br/>';
 
 echo 'INVOICED to date:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 'core'), array('Where' => ''));
