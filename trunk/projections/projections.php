@@ -12,10 +12,10 @@ if (!isset($_GET['month'])) {
 }
 $month_array = new array("N/A","January","February","March","April","May","June","July","August","September","October","November","December");
 
-
 ////
 
-echo 'month of '.$month_array[floatval($mo)].'<br/><br/>';
+echo 'month of '.$month_array[1].'<br/><br/>';
+/*
 
 echo 'INVOICED to date:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 'core'), array('Where' => ''));
@@ -95,4 +95,5 @@ if ($XeroOAuth->response['code'] == 200) {
 $projectedTotal = $invoicedTotal + $projectTotal + $recurTotal + $recurOtherTotal;
 echo '<strong>PROJECTED TOTAL FOR MONTH: '.money_format('%n', $projectedTotal)."</strong>";
 //
+*/
 ?>
