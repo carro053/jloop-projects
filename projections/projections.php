@@ -19,6 +19,10 @@ if ($XeroOAuth->response['code'] == 200) {
 		echo $row->RowType;
 		if ($row->RowType == "Section") {
 			echo ": ".$row->Title;
+			foreach ($row->Rows->Row as $sectionrow) {
+				echo "<br />";
+				echo $sectionrow->Cells->Cell[0]->Value." = ".$sectionrow->Cells->Cell[1]->Value;
+			}
 		}
 		echo "<br />";
 	}
