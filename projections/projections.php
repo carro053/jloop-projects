@@ -82,7 +82,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
 		//echo $inv->Contact->Name.": ".$inv->Total."<br />";
 		$recurOtherTotal += floatval($inv->Total);
-		array_push($recur_array, $inv->RepeatingInvoiceID.toString());
+		array_push($recur_array, strval($inv->RepeatingInvoiceID));
 	}
 	//$recurTotal += $recurOtherTotal;
 	echo "TOTAL recurring scheduled: ".money_format('%n', $recurOtherTotal)."<br /><br />";
