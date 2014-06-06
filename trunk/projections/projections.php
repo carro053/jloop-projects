@@ -72,12 +72,12 @@ if ($XeroOAuth->response['code'] == 200) {
 }
 
 $recur_array = array();
-echo 'Recurring invoices scheduled in this month:<br />';
+echo 'RECURRING invoices:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.NextScheduledDate>=DateTime('.$yr.','.$mo.',1) && Schedule.NextScheduledDate<DateTime('.$yr.','.$nextmo.',1) && Type=="ACCREC"'));
 $recurOtherTotal =0;
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
-	echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " other invoices: </br>";
+	echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " recurring invoices currently scheduled. </br>";
 	
 	foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
 		//echo $inv->Contact->Name.": ".$inv->Total."<br />";
@@ -85,14 +85,13 @@ if ($XeroOAuth->response['code'] == 200) {
 		array_push($recur_array, strval($inv->RepeatingInvoiceID));
 	}
 	//$recurTotal += $recurOtherTotal;
-	echo "TOTAL recurring scheduled: ".money_format('%n', $recurOtherTotal)."<br /><br />";
 	//echo "TOTAL all recurring: ".money_format('%n', $recurTotal)."<br /><br />";
 	
 	//pr($accounts->RepeatingInvoices);
 	//pr($recur_array);
 }
 
-echo 'RECURRING invoices scheduled:<br />Monthly invoices:<br />';
+//echo 'RECURRING invoices scheduled:<br />Monthly invoices:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.Unit=="MONTHLY" && Schedule.Period==1 && Type=="ACCREC"'));
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
@@ -110,8 +109,10 @@ if ($XeroOAuth->response['code'] == 200) {
 		}
 		
 	}
-	echo "There are " . $recurCount. " monthly invoices not yet billed in this month.</br>";
-	echo "TOTAL monthly: ".money_format('%n', $recurTotal)."<br /><br />";
+	
+	echo "There are " . $recurCount. " monthly invoices not yet scheduled in this month.</br>";
+	echo "Total recurring scheduled: ".money_format('%n', $recurOtherTotal)."<br /><br />";
+	echo "Total monthly not-yet-scheduled: ".money_format('%n', $recurTotal)."<br /><br />";
 	
 	//pr($accounts->RepeatingInvoices[0]->RepeatingInvoice[0]);
 } else {
