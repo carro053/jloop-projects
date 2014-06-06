@@ -41,26 +41,23 @@ if ($XeroOAuth->response['code'] == 200) {
 	}
 	echo "TOTAL monthly: ".money_format('%n', $recurTotal)."<br /><br />";
 	
-	
-	
-	
-	pr($accounts->RepeatingInvoices[0]->RepeatingInvoice);
+	//pr($accounts->RepeatingInvoices[0]->RepeatingInvoice);
 } else {
 	outputError($XeroOAuth);
 }
-
-
-
-
-
-
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.NextScheduledDate>=DateTime(2014,7,1) && Schedule.NextScheduledDate<DateTime(2014,8,1)'));
+echo 'Other Recurring invoices in this month:<br />';
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.NextScheduledDate>=DateTime(2014,7,1) && Schedule.NextScheduledDate<DateTime(2014,8,1) && Schedule.Unit!="MONTHLY" && Type=="ACCREC"'));
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
-	echo "There are " . count($accounts->RepeatingInvoices[0]). " matching invoices in this Xero organisation, the first one is: </br>";
-	pr($accounts->RepeatingInvoices[0]->RepeatingInvoice);
-} else {
-	outputError($XeroOAuth);
+	echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " other invoices: </br>";
+	$recurOtherTotal =0;
+	foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
+		echo $inv->Contact->Name.": ".$inv->Total."<br />";
+		$recurOtherTotal += floatval($inv->Total);
+	}
+	$recurTotal += $recurOtherTotal;
+	echo "TOTAL other: ".money_format('%n', $recurOtherTotal)."<br /><br />";
+	echo "TOTAL all recurring: ".money_format('%n', $recurTotal)."<br /><br />";
 }
 //
 ?>
