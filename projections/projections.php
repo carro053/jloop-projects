@@ -29,6 +29,7 @@ $response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	$invoicedTotal = 0;
+	$endofrevenue = false;
 	foreach($accounts->Reports[0]->Report[0]->Rows[0]->Row as $row) {
 		//echo $row->RowType;
 		if ($row->RowType == "Section") {
@@ -39,10 +40,12 @@ if ($XeroOAuth->response['code'] == 200) {
 					echo "<br />";
 					echo $sectionrow->Cells->Cell[0]->Value." = ".$sectionrow->Cells->Cell[1]->Value;
 					$invoicedTotal = floatval($sectionrow->Cells->Cell[1]->Value);
+					if ($sectionrow->Cells->Cell[0]->Value == "Total Revenue") $endofrevenue = true;
 				}
 			}
 		}
 		echo "<br />";
+		if ($endofrevenue) break;
 	}
 	//pr($accounts->Reports);
 } else {
