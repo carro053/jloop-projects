@@ -10,7 +10,7 @@ if (!isset($_GET['month'])) {
 } else {
 	$mo = $_GET['month'];
 }
-$month_array = ["N/A","January","February","March","April","May","June","July","August","September","October","November","December"];
+$month_array = array("N/A","January","February","March","April","May","June","July","August","September","October","November","December");
 
 ////
 
