@@ -15,6 +15,7 @@ echo 'INVOICED to date:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 'core'), array('Where' => ''));
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
+	$invoicedTotal = 0;
 	foreach($accounts->Reports[0]->Report[0]->Rows[0]->Row as $row) {
 		//echo $row->RowType;
 		if ($row->RowType == "Section") {
@@ -23,15 +24,16 @@ if ($XeroOAuth->response['code'] == 200) {
 			foreach ($row->Rows->Row as $sectionrow) {
 				echo "<br />";
 				echo $sectionrow->Cells->Cell[0]->Value." = ".$sectionrow->Cells->Cell[1]->Value;
+				$invoicedTotal = floatval($sectionrow->Cells->Cell[1]->Value);
 			}
 		}
 		echo "<br />";
 	}
-	pr($accounts->Reports);
+	//pr($accounts->Reports);
 } else {
 	outputError($XeroOAuth);
 }
-/*
+
 echo 'PROJECTED invoices:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('Where' => 'Status=="DRAFT" && Date>=DateTime(2014,7,1) && Date<DateTime(2014,8,1)'));
 if ($XeroOAuth->response['code'] == 200) {
@@ -81,6 +83,10 @@ if ($XeroOAuth->response['code'] == 200) {
 	echo "TOTAL other: ".money_format('%n', $recurOtherTotal)."<br /><br />";
 	echo "TOTAL all recurring: ".money_format('%n', $recurTotal)."<br /><br />";
 }
-*/
+
+
+
+$projectedTotal = $invoicedTotal + $projectTotal + $recurTotal + $recurOtherTotal;
+echo '<strong>PROJECTED TOTAL FOR MONTH: '.money_format('%n', $projectedTotal)."</strong>";
 //
 ?>
