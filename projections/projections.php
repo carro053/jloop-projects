@@ -102,6 +102,8 @@ if ($XeroOAuth->response['code'] == 200) {
 	//$recurTotal += $recurOtherTotal;
 	echo "TOTAL recurring scheduled: ".money_format('%n', $recurOtherTotal)."<br /><br />";
 	//echo "TOTAL all recurring: ".money_format('%n', $recurTotal)."<br /><br />";
+	
+	pr($accounts->RepeatingInvoice);
 }
 
 
