@@ -18,6 +18,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	foreach($accounts->Reports[0]->Report[0]->Rows[0]->Row as $row) {
 		echo $row->RowType;
 		if ($row->RowType == "Section") {
+			if ($row->Title == "Less Cost of Sales") die;
 			echo ": ".$row->Title;
 			foreach ($row->Rows->Row as $sectionrow) {
 				echo "<br />";
