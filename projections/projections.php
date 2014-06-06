@@ -14,7 +14,7 @@ $month_array = array("N/A","January","February","March","April","May","June","Ju
 
 ////
 
-echo 'month of '.$month_array[1].'<br/><br/>';
+echo 'month of '.$month_array[floatval($mo)].'<br/><br/>';
 /*
 
 echo 'INVOICED to date:<br />';
