@@ -23,7 +23,7 @@ if ($XeroOAuth->response['code'] == 200) {
 		echo $inv->Contact->Name.": ".$inv->Reference." - ".$inv->AmountDue."<br/>";
 		$projectTotal += intval($inv->AmountDue);
 	}
-	echo "TOTAL PROJECTED: ".money_format('%i',$projectTotal)."<br/><br/>";
+	echo "TOTAL PROJECTED: ".money_format('%n',$projectTotal)."<br/><br/>";
 	pr($accounts->Invoices[0]->Invoice[0]);
 } else {
 	outputError($XeroOAuth);
