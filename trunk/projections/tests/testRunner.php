@@ -24,7 +24,8 @@ function testLinks()
                 <li><a href="?invoice=attachment&method=put">Invoice attachment PUT</a></li>
                 <li><a href="?invoice=pdf">Invoice PDF</a></li>
                 <li><a href="?trialbalance=1">Trial Balance</a></li>
-                <li><a href="?invoicesdraft=1">Draft Invoices</a></li>';
+                <li><a href="?invoicesdraft=1">Draft Invoices</a></li>
+                <li><a href="?invoicesrepeating=1">Repeating Invoices</a></li>';
 
         if (XRO_APP_TYPE == 'Partner')   echo '<li><a href="?refresh=1">Refresh access token</a></li>';
         if (XRO_APP_TYPE !== 'Private' && isset($_SESSION['access_token'])) {
