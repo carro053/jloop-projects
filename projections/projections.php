@@ -19,7 +19,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	//pr($accounts->Invoices[0]->Invoice);
 	//
 	foreach($accounts->Invoices[0]->Invoice as $inv) {
-		echo get_class($inv->DueDate);
+		echo date('Y-m-d', strtotime($inv->DueDate));
 		echo $inv->Contact->Name.": ".$inv->Reference." - ".$inv->AmountDue."<br/>";
 	}
 	pr($accounts->Invoices[0]->Invoice[0]);
@@ -35,5 +35,5 @@ if ($XeroOAuth->response['code'] == 200) {
 } else {
 	outputError($XeroOAuth);
 }
-
+//
 ?>
