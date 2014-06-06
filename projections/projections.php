@@ -70,6 +70,27 @@ if ($XeroOAuth->response['code'] == 200) {
 } else {
 	outputError($XeroOAuth);
 }
+
+$recur_array = arry();
+echo 'Recurring invoices scheduled in this month:<br />';
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.NextScheduledDate>=DateTime('.$yr.','.$mo.',1) && Schedule.NextScheduledDate<DateTime('.$yr.','.$nextmo.',1) && Type=="ACCREC"'));
+$recurOtherTotal =0;
+if ($XeroOAuth->response['code'] == 200) {
+	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
+	echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " other invoices: </br>";
+	
+	foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
+		//echo $inv->Contact->Name.": ".$inv->Total."<br />";
+		$recurOtherTotal += floatval($inv->Total);
+		array_push($recur_array, $inv->RepeatingInvoiceID);
+	}
+	//$recurTotal += $recurOtherTotal;
+	echo "TOTAL recurring scheduled: ".money_format('%n', $recurOtherTotal)."<br /><br />";
+	//echo "TOTAL all recurring: ".money_format('%n', $recurTotal)."<br /><br />";
+	
+	//pr($accounts->RepeatingInvoices);
+	pr($recur_array);
+}
 /*
 echo 'RECURRING invoices scheduled:<br />Monthly invoices:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.Unit=="MONTHLY" && Schedule.Period==1 && Type=="ACCREC"'));
@@ -88,23 +109,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	outputError($XeroOAuth);
 }
 */
-echo 'Recurring invoices scheduled in this month:<br />';
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.NextScheduledDate>=DateTime('.$yr.','.$mo.',1) && Schedule.NextScheduledDate<DateTime('.$yr.','.$nextmo.',1) && Type=="ACCREC"'));
-$recurOtherTotal =0;
-if ($XeroOAuth->response['code'] == 200) {
-	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
-	echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " other invoices: </br>";
-	
-	foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
-		//echo $inv->Contact->Name.": ".$inv->Total."<br />";
-		$recurOtherTotal += floatval($inv->Total);
-	}
-	//$recurTotal += $recurOtherTotal;
-	echo "TOTAL recurring scheduled: ".money_format('%n', $recurOtherTotal)."<br /><br />";
-	//echo "TOTAL all recurring: ".money_format('%n', $recurTotal)."<br /><br />";
-	
-	pr($accounts->RepeatingInvoices);
-}
+
 
 
 
