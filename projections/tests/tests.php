@@ -344,7 +344,7 @@ if (isset($_REQUEST['invoicesmodified'])) {
        }
    }
    if (isset($_REQUEST['invoicesrepeating'])) {
-       $response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array());
+       $response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.NextScheduledDate>=DateTime(2014,7,1) && Schedule.NextScheduledDate<DateTime(2014,8,1)'));
        if ($XeroOAuth->response['code'] == 200) {
            $accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
            echo "There are " . count($accounts->RepeatingInvoices[0]). " matching invoices in this Xero organisation, the first one is: </br>";
