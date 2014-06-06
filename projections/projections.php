@@ -87,9 +87,9 @@ if ($XeroOAuth->response['code'] == 200) {
 } else {
 	outputError($XeroOAuth);
 }
-
-echo 'Other Recurring invoices in this month:<br />';
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.NextScheduledDate>=DateTime(2014,7,1) && Schedule.NextScheduledDate<DateTime(2014,8,1) && Schedule.Period>1 && Type=="ACCREC"'));
+*/
+echo 'Recurring invoices scheduled in this month:<br />';
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.NextScheduledDate>=DateTime('.$yr.','.$mo.',1) && Schedule.NextScheduledDate<DateTime('.$yr.','.$mo.','.$days.') && && Type=="ACCREC"'));
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " other invoices: </br>";
@@ -98,15 +98,15 @@ if ($XeroOAuth->response['code'] == 200) {
 		//echo $inv->Contact->Name.": ".$inv->Total."<br />";
 		$recurOtherTotal += floatval($inv->Total);
 	}
-	$recurTotal += $recurOtherTotal;
-	echo "TOTAL other: ".money_format('%n', $recurOtherTotal)."<br /><br />";
-	echo "TOTAL all recurring: ".money_format('%n', $recurTotal)."<br /><br />";
+	//$recurTotal += $recurOtherTotal;
+	echo "TOTAL recurring scheduled: ".money_format('%n', $recurOtherTotal)."<br /><br />";
+	//echo "TOTAL all recurring: ".money_format('%n', $recurTotal)."<br /><br />";
 }
 
 
 
-$projectedTotal = $invoicedTotal + $projectTotal + $recurTotal + $recurOtherTotal;
+$projectedTotal = $invoicedTotal + $projectTotal + $recurOtherTotal;
 echo '<strong>PROJECTED TOTAL FOR MONTH: '.money_format('%n', $projectedTotal)."</strong>";
 //
-*/
+
 ?>
