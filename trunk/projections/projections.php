@@ -36,7 +36,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " monthly invoices: </br>";
 	$recurTotal =0;
 	foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
-		echo $inv->Contact->Name.": ".$inv->Total."<br />";
+		//echo $inv->Contact->Name.": ".$inv->Total."<br />";
 		$recurTotal += floatval($inv->Total);
 	}
 	echo "TOTAL monthly: ".money_format('%n', $recurTotal)."<br /><br />";
@@ -53,7 +53,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " other invoices: </br>";
 	$recurOtherTotal =0;
 	foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
-		echo $inv->Contact->Name.": ".$inv->Total."<br />";
+		//echo $inv->Contact->Name.": ".$inv->Total."<br />";
 		$recurOtherTotal += floatval($inv->Total);
 	}
 	$recurTotal += $recurOtherTotal;
