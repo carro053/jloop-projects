@@ -54,7 +54,7 @@ if ($XeroOAuth->response['code'] == 200) {
 
 echo "<br />";
 echo 'PROJECTED invoices:<br />';
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('Where' => 'Status=="DRAFT" && Date>=DateTime('.$yr.','.$mo.',1) && Date<DateTime('.$yr.','.$mo.','.$days.')'));
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('Where' => 'Status=="DRAFT" && Date>=DateTime('.$yr.','.$mo.',1) && Date<DateTime('.$yr.','.$mo+1.',1)'));
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	//echo "There are " . count($accounts->Invoices[0]->Invoice). " to date <br/>";
@@ -89,7 +89,7 @@ if ($XeroOAuth->response['code'] == 200) {
 }
 */
 echo 'Recurring invoices scheduled in this month:<br />';
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.NextScheduledDate>=DateTime('.$yr.','.$mo.',1) && Schedule.NextScheduledDate<DateTime('.$yr.','.$mo.','.$days.') && Type=="ACCREC"'));
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.NextScheduledDate>=DateTime('.$yr.','.$mo.',1) && Schedule.NextScheduledDate<DateTime('.$yr.','.$mo+1.',1) && Type=="ACCREC"'));
 $recurOtherTotal =0;
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
