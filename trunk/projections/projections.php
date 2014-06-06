@@ -34,10 +34,12 @@ if ($XeroOAuth->response['code'] == 200) {
 		if ($row->RowType == "Section") {
 			if ($row->Title == "Less Cost of Sales") break;
 			echo "<strong>".$row->Title."</strong>";
-			foreach ($row->Rows->Row as $sectionrow) {
-				echo "<br />";
-				echo $sectionrow->Cells->Cell[0]->Value." = ".$sectionrow->Cells->Cell[1]->Value;
-				$invoicedTotal = floatval($sectionrow->Cells->Cell[1]->Value);
+			if (count($row->Rows) > 0) {
+				foreach ($row->Rows->Row as $sectionrow) {
+					echo "<br />";
+					echo $sectionrow->Cells->Cell[0]->Value." = ".$sectionrow->Cells->Cell[1]->Value;
+					$invoicedTotal = floatval($sectionrow->Cells->Cell[1]->Value);
+				}
 			}
 		}
 		echo "<br />";
@@ -52,7 +54,7 @@ echo 'PROJECTED invoices:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('Where' => 'Status=="DRAFT" && Date>=DateTime('.$yr.','.$mo.',1) && Date<DateTime('.$yr.','.$mo.','.$days.')'));
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
-	echo "There are " . count($accounts->Invoices[0]->Invoice). " to date <br/>";
+	//echo "There are " . count($accounts->Invoices[0]->Invoice). " to date <br/>";
 	//pr($accounts->Invoices[0]->Invoice);
 	$projectTotal = 0;
 	foreach($accounts->Invoices[0]->Invoice as $inv) {
