@@ -9,8 +9,18 @@ include("projections_stuff.php");
 
 ////
 
-echo 'month of june<br/><br/>';
+echo 'month of July<br/><br/>';
 
+echo 'INVOICED to date:<br />';
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports', 'core'), array('ReportID' => 'ProfitAndLoss'));
+if ($XeroOAuth->response['code'] == 200) {
+	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
+	
+	pr($accounts);
+} else {
+	outputError($XeroOAuth);
+}
+/*
 echo 'PROJECTED invoices:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('Where' => 'Status=="DRAFT" && Date>=DateTime(2014,7,1) && Date<DateTime(2014,8,1)'));
 if ($XeroOAuth->response['code'] == 200) {
@@ -60,6 +70,6 @@ if ($XeroOAuth->response['code'] == 200) {
 	echo "TOTAL other: ".money_format('%n', $recurOtherTotal)."<br /><br />";
 	echo "TOTAL all recurring: ".money_format('%n', $recurTotal)."<br /><br />";
 }
-
+*/
 //
 ?>
