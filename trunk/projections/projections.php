@@ -16,15 +16,16 @@ if (!isset($_GET['year'])) {
 	$yr = $_GET['year'];
 }
 $month_array = array("N/A","January","February","March","April","May","June","July","August","September","October","November","December");
+$days = cal_days_in_month(CAL_GREGORIAN, $mo, $yr);
 
 ////
 
 echo 'month of '.$month_array[floatval($mo)].', '.$yr.'<br/><br/>';
-echo 'days in month: '.cal_days_in_month(CAL_GREGORIAN, $mo, $yr);
+
 
 
 echo 'INVOICED to date:<br />';
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 'core'), array('fromDate' => $yr.'-'.$mo.'-1','toDate' => $yr.'-'.$mo.'-'.cal_days_in_month(CAL_GREGORIAN, $mo, $yr)));
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 'core'), array('fromDate' => $yr.'-'.$mo.'-1','toDate' => $yr.'-'.$mo.'-'.$days));
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	$invoicedTotal = 0;
@@ -45,10 +46,10 @@ if ($XeroOAuth->response['code'] == 200) {
 } else {
 	outputError($XeroOAuth);
 }
-/*
+
 echo "<br />";
 echo 'PROJECTED invoices:<br />';
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('Where' => 'Status=="DRAFT" && Date>=DateTime(2014,7,1) && Date<DateTime(2014,8,1)'));
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('Where' => 'Status=="DRAFT" && Date>=DateTime('.$yr.','.$mo.',1) && Date<DateTime('.$yr.','.$mo+1.',1)'));
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	echo "There are " . count($accounts->Invoices[0]->Invoice). " to date <br/>";
@@ -64,7 +65,7 @@ if ($XeroOAuth->response['code'] == 200) {
 } else {
 	outputError($XeroOAuth);
 }
-
+/*
 echo 'RECURRING invoices scheduled:<br />Monthly invoices:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.Unit=="MONTHLY" && Schedule.Period==1 && Type=="ACCREC"'));
 if ($XeroOAuth->response['code'] == 200) {
