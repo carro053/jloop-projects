@@ -20,10 +20,11 @@ $month_array = array("N/A","January","February","March","April","May","June","Ju
 ////
 
 echo 'month of '.$month_array[floatval($mo)].', '.$yr.'<br/><br/>';
+echo 'days in month: '.cal_days_in_month(CAL_GREGORIAN, $mo, $yr);
 
 
 echo 'INVOICED to date:<br />';
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 'core'), array('fromDate' => '2014-2-1','toDate' => '2014-2-28'));
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 'core'), array('fromDate' => $yr.'-'.$mo.'-1','toDate' => $yr.'-'.$mo.'-'.cal_days_in_month(CAL_GREGORIAN, $mo, $yr)));
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	$invoicedTotal = 0;
