@@ -38,6 +38,7 @@ if ($XeroOAuth->response['code'] == 200) {
 			if (count($row->Rows) > 0) {
 				foreach ($row->Rows->Row as $sectionrow) {
 					echo "<br />";
+					echo " * ";
 					echo $sectionrow->Cells->Cell[0]->Value." = ".$sectionrow->Cells->Cell[1]->Value;
 					$invoicedTotal = floatval($sectionrow->Cells->Cell[1]->Value);
 					if ($sectionrow->Cells->Cell[0]->Value == "Total Revenue") $endofrevenue = true;
@@ -51,9 +52,10 @@ if ($XeroOAuth->response['code'] == 200) {
 } else {
 	outputError($XeroOAuth);
 }
+echo "<br /><br />";
 echo "------------------------";
 
-echo "<br />";
+
 echo 'PROJECTED invoices:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('Where' => 'Status=="DRAFT" && Date>=DateTime('.$yr.','.$mo.',1) && Date<DateTime('.$yr.','.$nextmo.',1)'));
 if ($XeroOAuth->response['code'] == 200) {
@@ -62,11 +64,11 @@ if ($XeroOAuth->response['code'] == 200) {
 	//pr($accounts->Invoices[0]->Invoice);
 	$projectTotal = 0;
 	foreach($accounts->Invoices[0]->Invoice as $inv) {
-		echo date('M-d', strtotime($inv->DueDate)).": ";
+		echo " * ".date('M-d', strtotime($inv->DueDate)).": ";
 		echo $inv->Contact->Name.": ".$inv->Reference." - ".$inv->AmountDue."<br/>";
 		$projectTotal += floatval($inv->AmountDue);
 	}
-	echo "TOTAL PROJECTED: ".money_format('%n',$projectTotal)."<br/><br/>";
+	echo "Total projected: ".money_format('%n',$projectTotal)."<br/><br/>";
 	//pr($accounts->Invoices[0]->Invoice[0]);
 } else {
 	outputError($XeroOAuth);
@@ -114,7 +116,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	}
 	
 	echo "There are " . $recurCount. " monthly invoices not yet scheduled in this month.</br>";
-	echo "Total recurring scheduled: ".money_format('%n', $recurOtherTotal)."<br /><br />";
+	echo "Total recurring scheduled: ".money_format('%n', $recurOtherTotal)."<br />";
 	echo "Total monthly not-yet-scheduled: ".money_format('%n', $recurTotal)."<br /><br />";
 	
 	//pr($accounts->RepeatingInvoices[0]->RepeatingInvoice[0]);
