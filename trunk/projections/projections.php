@@ -12,7 +12,7 @@ include("projections_stuff.php");
 echo 'month of July<br/><br/>';
 
 echo 'INVOICED to date:<br />';
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports', 'core'), array('Where' => 'ReportID=="ProfitAndLoss"'));
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/AgedReceivablesByContact', 'core'), array('Where' => ''));
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	
