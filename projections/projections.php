@@ -41,10 +41,11 @@ if ($XeroOAuth->response['code'] == 200) {
 	}
 	echo "TOTAL monthly: ".money_format('%n', $recurTotal)."<br /><br />";
 	
-	//pr($accounts->RepeatingInvoices[0]->RepeatingInvoice);
+	pr($accounts->RepeatingInvoices[0]->RepeatingInvoice[0]);
 } else {
 	outputError($XeroOAuth);
 }
+/*
 echo 'Other Recurring invoices in this month:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.NextScheduledDate>=DateTime(2014,7,1) && Schedule.NextScheduledDate<DateTime(2014,8,1) && Type=="ACCREC"'));
 if ($XeroOAuth->response['code'] == 200) {
@@ -59,5 +60,6 @@ if ($XeroOAuth->response['code'] == 200) {
 	echo "TOTAL other: ".money_format('%n', $recurOtherTotal)."<br /><br />";
 	echo "TOTAL all recurring: ".money_format('%n', $recurTotal)."<br /><br />";
 }
+*/
 //
 ?>
