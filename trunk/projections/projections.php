@@ -89,7 +89,7 @@ if ($XeroOAuth->response['code'] == 200) {
 }
 */
 echo 'Recurring invoices scheduled in this month:<br />';
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.NextScheduledDate>=DateTime('.$yr.','.$mo.',1) && Schedule.NextScheduledDate<DateTime('.$yr.','.$mo.','.$days.') && && Type=="ACCREC"'));
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.NextScheduledDate>=DateTime('.$yr.','.$mo.',1) && Schedule.NextScheduledDate<DateTime('.$yr.','.$mo.','.$days.') && Type=="ACCREC"'));
 $recurOtherTotal =0;
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
