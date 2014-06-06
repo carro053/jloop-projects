@@ -17,12 +17,11 @@ if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	echo "There are " . count($accounts->Invoices[0]->Invoice). " to date <br/>";
 	//pr($accounts->Invoices[0]->Invoice);
-	//pr($accounts->Invoices[0]->Invoice[0]);
+	//
 	foreach($accounts->Invoices[0]->Invoice as $inv) {
 		echo $inv->Contact->Name.": ".$inv->Reference." - ".$inv->AmountDue."<br/>";
 	}
-	
-	
+	pr($accounts->Invoices[0]->Invoice[0]);
 } else {
 	outputError($XeroOAuth);
 }
