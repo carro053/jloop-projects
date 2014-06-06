@@ -1,4 +1,6 @@
 <?php
+
+echo 'test';
 require 'lib/XeroOAuth.php';
 
 define ( 'BASE_PATH', dirname(__FILE__) );
