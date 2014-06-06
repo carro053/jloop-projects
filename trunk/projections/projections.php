@@ -80,7 +80,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " other invoices: </br>";
 	
 	foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
-		//echo $inv->Contact->Name.": ".$inv->Total."<br />";
+		echo $inv->Contact->Name.": ".$inv->Total."<br />";
 		$recurOtherTotal += floatval($inv->Total);
 		array_push($recur_array, strval($inv->RepeatingInvoiceID));
 	}
@@ -89,7 +89,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	//echo "TOTAL all recurring: ".money_format('%n', $recurTotal)."<br /><br />";
 	
 	//pr($accounts->RepeatingInvoices);
-	pr($recur_array);
+	//pr($recur_array);
 }
 
 echo 'RECURRING invoices scheduled:<br />Monthly invoices:<br />';
