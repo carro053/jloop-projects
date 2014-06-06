@@ -16,10 +16,10 @@ $response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	foreach($accounts->Reports[0]->Report[0]->Rows[0]->Row as $row) {
-		echo $row->RowType;
+		//echo $row->RowType;
 		if ($row->RowType == "Section") {
 			if ($row->Title == "Less Cost of Sales") break;
-			echo ": ".$row->Title;
+			echo "<strong>".$row->Title."</strong>";
 			foreach ($row->Rows->Row as $sectionrow) {
 				echo "<br />";
 				echo $sectionrow->Cells->Cell[0]->Value." = ".$sectionrow->Cells->Cell[1]->Value;
