@@ -91,7 +91,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	//pr($accounts->RepeatingInvoices);
 	pr($recur_array);
 }
-/*
+
 echo 'RECURRING invoices scheduled:<br />Monthly invoices:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.Unit=="MONTHLY" && Schedule.Period==1 && Type=="ACCREC"'));
 if ($XeroOAuth->response['code'] == 200) {
@@ -99,8 +99,14 @@ if ($XeroOAuth->response['code'] == 200) {
 	echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " monthly invoices: </br>";
 	$recurTotal =0;
 	foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
-		//echo $inv->Contact->Name.": ".$inv->Total."<br />";
-		$recurTotal += floatval($inv->Total);
+		
+		if (in_array(strval($inv->RepeatingInvoiceID), $recur_array)) {
+			$recurTotal += floatval($inv->Total);
+			echo "ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
+		} else {
+			echo "NOT ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
+		}
+		
 	}
 	echo "TOTAL monthly: ".money_format('%n', $recurTotal)."<br /><br />";
 	
@@ -108,12 +114,12 @@ if ($XeroOAuth->response['code'] == 200) {
 } else {
 	outputError($XeroOAuth);
 }
-*/
 
 
 
 
-$projectedTotal = $invoicedTotal + $projectTotal + $recurOtherTotal;
+
+$projectedTotal = $invoicedTotal + $projectTotal + $recurOtherTotal + $recurTotal;
 echo '<strong>PROJECTED TOTAL FOR MONTH: '.money_format('%n', $projectedTotal)."</strong>";
 //
 
