@@ -18,6 +18,12 @@ if (!isset($_GET['year'])) {
 $month_array = array("N/A","January","February","March","April","May","June","July","August","September","October","November","December");
 $days = cal_days_in_month(CAL_GREGORIAN, $mo, $yr);
 $nextmo = floatval($mo)+1;
+if (strtotime($mo." ".$days.", ".$yr) < time()) {
+	$past = true;
+	echo "past";
+} else $past = false;
+
+
 ////
 
 echo 'month of '.$month_array[floatval($mo)].', '.$yr.'<br/><br/>';
