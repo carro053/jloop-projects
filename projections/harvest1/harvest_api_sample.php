@@ -17,10 +17,10 @@
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_TIMEOUT, 60);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_USERAGENT, "YOUR DESCRIPTIVE NAME GOES HERE");
+        curl_setopt($ch, CURLOPT_USERAGENT, "JLOOP Projections");
 
 
-        //curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POST, 0);
         //curl_setopt($ch, CURLOPT_POSTFIELDS, $xml_data);
 
         $data = curl_exec($ch);
