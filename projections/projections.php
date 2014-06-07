@@ -63,11 +63,14 @@ if ($XeroOAuth->response['code'] == 200) {
 	//echo "There are " . count($accounts->Invoices[0]->Invoice). " to date <br/>";
 	//pr($accounts->Invoices[0]->Invoice);
 	$projectTotal = 0;
-	foreach($accounts->Invoices[0]->Invoice as $inv) {
-		echo " * ".date('M-d', strtotime($inv->DueDate)).": ";
-		echo $inv->Contact->Name.": ".$inv->Reference." - ".$inv->AmountDue."<br/>";
-		$projectTotal += floatval($inv->AmountDue);
+	if (count($accounts->Invoices)>0) {
+		foreach($accounts->Invoices[0]->Invoice as $inv) {
+			echo " * ".date('M-d', strtotime($inv->DueDate)).": ";
+			echo $inv->Contact->Name.": ".$inv->Reference." - ".$inv->AmountDue."<br/>";
+			$projectTotal += floatval($inv->AmountDue);
+		}
 	}
+	
 	echo "Total projected: ".money_format('%n',$projectTotal)."<br/><br/>";
 	//pr($accounts->Invoices[0]->Invoice[0]);
 } else {
