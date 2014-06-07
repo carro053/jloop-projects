@@ -26,6 +26,7 @@ $recurTotal =0;
 $invoicedTotal = 0;
 $projectTotal = 0;
 $recurCount = 0;
+$recurOtherTotal =0;
 ////
 
 echo 'month of '.$month_array[floatval($mo)].', '.$yr.'<br/><br/>';
@@ -91,7 +92,7 @@ echo "------------------------";
 $recur_array = array();
 echo 'RECURRING invoices:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.NextScheduledDate>=DateTime('.$yr.','.$mo.',1) && Schedule.NextScheduledDate<DateTime('.$yr.','.$nextmo.',1) && Type=="ACCREC"'));
-$recurOtherTotal =0;
+
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " recurring invoices currently scheduled. </br>";
