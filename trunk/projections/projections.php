@@ -20,10 +20,12 @@ $days = cal_days_in_month(CAL_GREGORIAN, $mo, $yr);
 $nextmo = floatval($mo)+1;
 if (strtotime($month_array[floatval($mo)]." ".$days.", ".$yr) < time()) {
 	$past = true;
-	echo "past";
+	//echo "past";
 } else $past = false;
-
-
+$recurTotal =0;
+$invoicedTotal = 0;
+$projectTotal = 0;
+$recurCount = 0;
 ////
 
 echo 'month of '.$month_array[floatval($mo)].', '.$yr.'<br/><br/>';
@@ -34,7 +36,7 @@ echo 'INVOICED to date:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 'core'), array('fromDate' => $yr.'-'.$mo.'-1','toDate' => $yr.'-'.$mo.'-'.$days));
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
-	$invoicedTotal = 0;
+	
 	$endofrevenue = false;
 	foreach($accounts->Reports[0]->Report[0]->Rows[0]->Row as $row) {
 		//echo $row->RowType;
@@ -61,6 +63,7 @@ if ($XeroOAuth->response['code'] == 200) {
 echo "<br /><br />";
 echo "------------------------";
 
+if (!$past) {
 
 echo 'PROJECTED invoices:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('Where' => 'Status=="DRAFT" && Date>=DateTime('.$yr.','.$mo.',1) && Date<DateTime('.$yr.','.$nextmo.',1)'));
@@ -68,7 +71,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	//echo "There are " . count($accounts->Invoices[0]->Invoice). " to date <br/>";
 	//pr($accounts->Invoices[0]->Invoice);
-	$projectTotal = 0;
+	
 	if (count($accounts->Invoices)>0) {
 		foreach($accounts->Invoices[0]->Invoice as $inv) {
 			echo " * ".date('M-d', strtotime($inv->DueDate)).": ";
@@ -110,8 +113,8 @@ $response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'cor
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	//echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " monthly invoices: </br>";
-	$recurTotal =0;
-	$recurCount = 0;
+	
+	
 	foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
 		
 		if (!in_array(strval($inv->RepeatingInvoiceID), $recur_array)) {
@@ -133,6 +136,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	outputError($XeroOAuth);
 }
 
+} // end if past
 
 
 echo "------------------------";
