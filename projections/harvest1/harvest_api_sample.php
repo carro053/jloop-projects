@@ -40,7 +40,9 @@
 	            if ($code == "HS") {
 	            	print_r($project);
 	            	echo $project->name."<br />";
-	            	$url2 = "https://jloop.harvestapp.com/projects/".$project->id."/entries?from=20140509&to=20140615";
+	            	//$url2 = "https://jloop.harvestapp.com/projects/".$project->id."/entries?from=20140509&to=20140615";
+	            	$url2 = "https://jloop.harvestapp.com/projects/124893/entries?from=20140509&to=20140615";
+	            	
 	            	curl_setopt($ch, CURLOPT_URL, $url2);
 	            	$data2 = curl_exec($ch);
 	            	if (curl_errno($ch)) {
