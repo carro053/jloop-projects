@@ -37,7 +37,7 @@
             echo "there are: ".count($project_xml->project)." projects";
             foreach ($project_xml->project as $project) {
 	            echo $project->name."<br />";
-	            echo substr($project>name, 0,2)."<br />";
+	            echo substr(strval($project>name), 0,2)."<br />";
             }
             //print_r($project_xml);
             curl_close($ch);
