@@ -37,7 +37,19 @@
             echo "there are: ".count($project_xml->project)." projects";
             foreach ($project_xml->project as $project) {
 	            $code = substr(strval($project->name),0,2);
-	            if ($code == "HS") echo $project->name."<br />";
+	            if ($code == "HS") {
+	            	echo $project->name."<br />";
+	            	$url2 = "https://jloop.harvestapp.com/projects/".$project->id."/entries?from=20140509&to=20140615";
+	            	curl_setopt($ch, CURLOPT_URL, $url2);
+	            	$data2 = curl_exec($ch);
+	            	if (curl_errno($ch)) {
+			            print "Error: " . curl_error($ch);
+			        } else {
+			        	$time_xml = new SimpleXMLElement($data2);
+			        	print_r($data2);
+			        	break;
+			        }
+	            }
             }
             //print_r($project_xml);
             curl_close($ch);
