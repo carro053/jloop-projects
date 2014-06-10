@@ -36,9 +36,9 @@
             $project_xml = new SimpleXMLElement($data);
             echo "there are: ".count($project_xml->project)." projects";
             foreach ($project_xml->project as $project) {
-	            //if ($project->id)
+	            echo $project->name."<br />";
             }
-            print_r($project_xml);
+            //print_r($project_xml);
             curl_close($ch);
         }
 
