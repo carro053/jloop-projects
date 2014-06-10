@@ -29,8 +29,8 @@
             print "Error: " . curl_error($ch);
         } else {
             // Show me the result
-            //var_dump($data);
-            print_r_($data);
+            var_dump($data);
+            //print_r_($data);
             curl_close($ch);
         }
 
