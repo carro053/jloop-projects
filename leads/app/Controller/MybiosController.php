@@ -14,7 +14,7 @@ class MybiosController extends AppController {
 		App::import('Vendor', 'phpQuery/phpQuery');
 		
 		$base_url = 'http://mybio.org/exhibitor?exhibitor_page=';
-		for($i = 91; $i <= 100; $i++) {
+		for($i = 101; $i <= 110; $i++) {
 			echo 'page '.$i,'<br><br>';
 			$html = file_get_contents($base_url.$i);
 			$doc = phpQuery::newDocumentHTML($html);
