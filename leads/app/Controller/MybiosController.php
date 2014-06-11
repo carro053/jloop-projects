@@ -86,10 +86,8 @@ class MybiosController extends AppController {
 			
 			pr($mybio);
 			
-			/*
 			$mybio['Mybio']['scraped'] = 1;
 			$this->Mybio->save($mybio);
-			*/
 		}
 		
 		exit;
