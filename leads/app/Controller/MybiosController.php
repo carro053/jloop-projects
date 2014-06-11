@@ -46,10 +46,14 @@ class MybiosController extends AppController {
 			
 			//Networks list
 			foreach(pq('ul.networks-list li a') as $key => $a) {
-				if(pq($a)->attr('title') == 'Website') {
-					echo pq($a)->attr('href').'<br>';
-				}
+				if(pq($a)->attr('title') == 'Website')
+					$mybio['Mybio']['website'] = pq($a)->attr('href');
+					
+				if(pq($a)->attr('title') == 'Linkedin')
+					$mybio['Mybio']['linkedin'] = pq($a)->attr('href');
 			}
+			
+			pr($mybio);
 			
 			/*
 			$mybio['Mybio']['scraped'] = 1;
