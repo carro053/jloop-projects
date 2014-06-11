@@ -60,25 +60,16 @@ class MybiosController extends AppController {
 					//echo pq('.street-address', $sidebar_div)->text().'<br>';
 					if(pq('.street-address', $sidebar_div)->text() != '')
 						$mybio['Mybio']['address'] .= pq('.street-address', $sidebar_div)->text();
-					
-					
-					/*
-					if(!empty(pq('.street-address', $sidebar_div)->text()))
-						$mybio['Mybio']['address'] .= pq('.street-address', $sidebar_div)->text();
-					*/	
-						
-					/*
-					if(!empty(pq('.extended-address', $sidebar_div)->text()))
+					if(pq('.extended-address', $sidebar_div)->text() != '')
 						$mybio['Mybio']['address'] .= ' '.pq('.extended-address', $sidebar_div)->text();
-					if(!empty(pq('.locality', $sidebar_div)->text()))
-						$mybio['Mybio']['address'] .= ' '.pq('.locality', $sidebar_div)->text();
-					if(!empty(pq('.region', $sidebar_div)->text()))
-						$mybio['Mybio']['address'] .= ' '.pq('.region', $sidebar_div)->text();
-					if(!empty(pq('.postal-code', $sidebar_div)->text()))
+					if(pq('.locality', $sidebar_div)->text() != '')
+						$mybio['Mybio']['address'] .= ', '.pq('.locality', $sidebar_div)->text();
+					if(pq('.region', $sidebar_div)->text() != '')
+						$mybio['Mybio']['address'] .= ', '.pq('.region', $sidebar_div)->text();
+					if(pq('.postal-code', $sidebar_div)->text() != '')
 						$mybio['Mybio']['address'] .= ' '.pq('.postal-code', $sidebar_div)->text();
-					if(!empty(pq('.country-name', $sidebar_div)->text()))
+					if(pq('.country-name', $sidebar_div)->text() != '')
 						$mybio['Mybio']['address'] .= ' '.pq('.country-name', $sidebar_div)->text();
-					*/
 					break;
 				}
 			}
