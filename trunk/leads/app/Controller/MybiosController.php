@@ -65,13 +65,13 @@ class MybiosController extends AppController {
 					if(pq('.extended-address', $sidebar_div)->text() != '')
 						$mybio['Mybio']['address'] .= ' '.pq('.extended-address', $sidebar_div)->text();
 					if(pq('.locality', $sidebar_div)->text() != '')
-						$mybio['Mybio']['address'] .= ', '.pq('.locality', $sidebar_div)->text();
+						$mybio['Mybio']['city'] = pq('.locality', $sidebar_div)->text();
 					if(pq('.region', $sidebar_div)->text() != '')
-						$mybio['Mybio']['address'] .= ', '.pq('.region', $sidebar_div)->text();
+						$mybio['Mybio']['state'] = pq('.region', $sidebar_div)->text();
 					if(pq('.postal-code', $sidebar_div)->text() != '')
-						$mybio['Mybio']['address'] .= ' '.pq('.postal-code', $sidebar_div)->text();
+						$mybio['Mybio']['zip'] = pq('.postal-code', $sidebar_div)->text();
 					if(pq('.country-name', $sidebar_div)->text() != '')
-						$mybio['Mybio']['address'] .= ' '.pq('.country-name', $sidebar_div)->text();
+						$mybio['Mybio']['country'] = pq('.country-name', $sidebar_div)->text();
 						
 					if(pq('div.contact-phone', $sidebar_div) != '') {
 						pq('div.contact-phone span.contact-label', $sidebar_div)->remove();
