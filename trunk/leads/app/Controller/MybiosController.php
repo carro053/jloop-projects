@@ -57,7 +57,6 @@ class MybiosController extends AppController {
 			foreach(pq('div.sidebar') as $key => $sidebar_div) {
 				if(strpos(pq($sidebar_div)->html(), '<h5>Location</h5>') !== false) {
 					$mybio['Mybio']['address'] = '';
-					//echo pq('.street-address', $sidebar_div)->text().'<br>';
 					if(pq('.street-address', $sidebar_div)->text() != '')
 						$mybio['Mybio']['address'] .= pq('.street-address', $sidebar_div)->text();
 					if(pq('.extended-address', $sidebar_div)->text() != '')
@@ -70,6 +69,10 @@ class MybiosController extends AppController {
 						$mybio['Mybio']['address'] .= ' '.pq('.postal-code', $sidebar_div)->text();
 					if(pq('.country-name', $sidebar_div)->text() != '')
 						$mybio['Mybio']['address'] .= ' '.pq('.country-name', $sidebar_div)->text();
+						
+					if(pq('.contact-phone', $sidebar_div) != '')
+						$mybio['Mybio']['phone'] = pq('.contact-phone', $sidebar_div).last();
+					
 					break;
 				}
 			}
