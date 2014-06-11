@@ -56,7 +56,19 @@ class MybiosController extends AppController {
 			//address, phone, fax
 			foreach(pq('div.sidebar') as $key => $sidebar_div) {
 				if(strpos(pq($sidebar_div)->html(), '<h5>Location</h5>') !== false) {
-					echo pq('.street-address', $sidebar_div)->text();
+					$mybio['Mybio']['address'] = '';
+					if(!empty(pq('.street-address', $sidebar_div)->text()))
+						$mybio['Mybio']['address'] .= pq('.street-address', $sidebar_div)->text();
+					if(!empty(pq('.extended-address', $sidebar_div)->text()))
+						$mybio['Mybio']['address'] .= ' '.pq('.extended-address', $sidebar_div)->text();
+					if(!empty(pq('.locality', $sidebar_div)->text()))
+						$mybio['Mybio']['address'] .= ' '.pq('.locality', $sidebar_div)->text();
+					if(!empty(pq('.region', $sidebar_div)->text()))
+						$mybio['Mybio']['address'] .= ' '.pq('.region', $sidebar_div)->text();
+					if(!empty(pq('.postal-code', $sidebar_div)->text()))
+						$mybio['Mybio']['address'] .= ' '.pq('.postal-code', $sidebar_div)->text();
+					if(!empty(pq('.country-name', $sidebar_div)->text()))
+						$mybio['Mybio']['address'] .= ' '.pq('.country-name', $sidebar_div)->text();
 					break;
 				}
 			}
