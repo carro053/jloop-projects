@@ -70,8 +70,10 @@ class MybiosController extends AppController {
 					if(pq('.country-name', $sidebar_div)->text() != '')
 						$mybio['Mybio']['address'] .= ' '.pq('.country-name', $sidebar_div)->text();
 						
-					if(pq('.contact-phone', $sidebar_div) != '')
-						$mybio['Mybio']['phone'] = pq('.contact-phone', $sidebar_div)->text();
+					if(pq('div.contact-phone', $sidebar_div) != '') {
+						pq('div.contact-phone span.contact-label', $sidebar_div)->remove();
+						$mybio['Mybio']['phone'] = pq('div.contact-phone', $sidebar_div)->text();
+					}
 					
 					break;
 				}
