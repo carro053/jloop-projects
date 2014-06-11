@@ -15,6 +15,7 @@ class MybiosController extends AppController {
 		
 		$base_url = 'http://mybio.org/exhibitor?exhibitor_page=';
 		for($i = 1; $i <= 20; $i++) {
+			echo 'page '.$i,'<br><br>';
 			$html = file_get_contents($base_url.$i);
 			$doc = phpQuery::newDocumentHTML($html);
 			foreach(pq('div.exhibitor-list-section h5 a') as $key => $a) {
@@ -26,7 +27,6 @@ class MybiosController extends AppController {
 				$mybio['Mybio']['name'] = pq($a)->text();
 				$this->Mybio->save($mybio);
 			}
-			break;
 		}
 		
 		exit;
