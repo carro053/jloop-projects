@@ -51,6 +51,9 @@ class MybiosController extends AppController {
 					
 				if(pq($a)->attr('title') == 'Linkedin')
 					$mybio['Mybio']['linkedin'] = pq($a)->attr('href');
+				
+				if(pq($a)->attr('title') == 'Twitter')
+					$mybio['Mybio']['twitter'] = pq($a)->attr('href');
 			}
 			
 			//address, phone, fax
