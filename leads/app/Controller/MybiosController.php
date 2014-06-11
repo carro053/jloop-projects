@@ -17,8 +17,8 @@ class MybiosController extends AppController {
 		for($i = 1; $i <= 190; $i++) {
 			$html = file_get_contents($base_url.$i);
 			$doc = phpQuery::newDocumentHTML($html);
-			foreach(pq('div.exhibitor-list-section h5') as $key => $h5) {
-				echo pq($h5)->text().'<br>';
+			foreach(pq('div.exhibitor-list-section h5 a') as $key => $a) {
+				echo pq($a)->attr('href').'<br>';
 			}
 			break;
 		}
