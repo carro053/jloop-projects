@@ -23,11 +23,29 @@ class MybiosController extends AppController {
 				$this->Mybio->create();
 				$mybio = array();
 				$mybio['Mybio']['url'] = pq($a)->attr('href');
+				$mybio['Mybio']['name'] = pq($a)->text();
 				$this->Mybio->save($mybio);
 			}
 			break;
 		}
 		
 		exit;
+	}
+	
+	public function scrapeDetailPage() {
+		/* examples
+		http://mybio.org/exhibitor/member/85974
+		http://mybio.org/exhibitor/member/78638
+		*/
+		
+		App::import('Vendor', 'phpQuery/phpQuery');
+		$mybios = $this->Mybio->find('all', array('limit' => 10, 'conditions' => array('Mybio.scraped' => '0')));
+		foreach($mybios as $mybio) {
+			$html = file_get_contents($mybio['Mybio']['url']);
+			$doc = phpQuery::newDocumentHTML($html);
+			
+			
+			
+		}
 	}
 }
