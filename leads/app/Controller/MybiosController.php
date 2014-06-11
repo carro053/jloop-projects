@@ -75,6 +75,11 @@ class MybiosController extends AppController {
 						$mybio['Mybio']['phone'] = pq('div.contact-phone', $sidebar_div)->text();
 					}
 					
+					if(pq('div.contact-fax', $sidebar_div) != '') {
+						pq('div.contact-fax span.contact-label', $sidebar_div)->remove();
+						$mybio['Mybio']['phone'] = pq('div.contact-fax', $sidebar_div)->text();
+					}
+					
 					break;
 				}
 			}
