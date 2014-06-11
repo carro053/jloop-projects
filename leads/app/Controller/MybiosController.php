@@ -19,6 +19,11 @@ class MybiosController extends AppController {
 			$doc = phpQuery::newDocumentHTML($html);
 			foreach(pq('div.exhibitor-list-section h5 a') as $key => $a) {
 				echo pq($a)->attr('href').'<br>';
+				
+				$this->Mybio->create();
+				$mybio = array();
+				$mybio['Mybio']['url'] = pq($a)->attr('href');
+				$this->Mybio->save($mybio);
 			}
 			break;
 		}
