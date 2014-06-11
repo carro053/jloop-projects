@@ -44,8 +44,19 @@ class MybiosController extends AppController {
 			$html = file_get_contents($mybio['Mybio']['url']);
 			$doc = phpQuery::newDocumentHTML($html);
 			
+			//Networks list
+			foreach(pq('ul.networks-list li a') as $key => $a) {
+				if(pq($a)->attr('title') == 'Website') {
+					echo pq($a)->attr('href').'<br>';
+				}
+			}
 			
-			
+			/*
+			$mybio['Mybio']['scraped'] = 1;
+			$this->Mybio->save($mybio);
+			*/
 		}
+		
+		exit;
 	}
 }
