@@ -53,6 +53,14 @@ class MybiosController extends AppController {
 					$mybio['Mybio']['linkedin'] = pq($a)->attr('href');
 			}
 			
+			//address, phone, fax
+			foreach(pq('div.sidebar') as $key => $sidebar_div) {
+				if(strpos(pq($sidebar_div)->html(), '<h5>Location</h5>') !== false) {
+					echo pq('.street-address', $sidebar_div)->text();
+					break;
+				}
+			}
+			
 			pr($mybio);
 			
 			/*
