@@ -57,11 +57,8 @@ class MybiosController extends AppController {
 			foreach(pq('div.sidebar') as $key => $sidebar_div) {
 				if(strpos(pq($sidebar_div)->html(), '<h5>Location</h5>') !== false) {
 					$mybio['Mybio']['address'] = '';
-					echo pq('.street-address', $sidebar_div)->text().'<br>';
-					
-					if(!empty((string)pq('.street-address', $sidebar_div)->text())) {
-						echo 'sweet';
-					}
+					//echo pq('.street-address', $sidebar_div)->text().'<br>';
+					var_dump(pq('.street-address', $sidebar_div)->text());
 					
 					/*
 					if(!empty(pq('.street-address', $sidebar_div)->text()))
