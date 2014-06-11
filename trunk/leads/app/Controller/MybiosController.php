@@ -71,7 +71,7 @@ class MybiosController extends AppController {
 						$mybio['Mybio']['address'] .= ' '.pq('.country-name', $sidebar_div)->text();
 						
 					if(pq('.contact-phone', $sidebar_div) != '')
-						$mybio['Mybio']['phone'] = pq('.contact-phone', $sidebar_div).last();
+						$mybio['Mybio']['phone'] = pq('.contact-phone', $sidebar_div)->last()->text();
 					
 					break;
 				}
