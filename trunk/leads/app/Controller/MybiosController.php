@@ -59,7 +59,7 @@ class MybiosController extends AppController {
 					$mybio['Mybio']['address'] = '';
 					echo pq('.street-address', $sidebar_div)->text().'<br>';
 					
-					if(!empty(pq('.street-address', $sidebar_div)->text())) {
+					if(!empty((string)pq('.street-address', $sidebar_div)->text())) {
 						echo 'sweet';
 					}
 					
