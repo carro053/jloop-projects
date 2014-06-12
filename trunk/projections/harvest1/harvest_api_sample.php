@@ -58,7 +58,7 @@
 			        }
 	            }
             }
-            //print_r($project_xml);
+            print_r($project_xml);
             curl_close($ch);
         }
 
