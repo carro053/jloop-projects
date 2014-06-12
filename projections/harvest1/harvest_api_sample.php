@@ -50,9 +50,9 @@
 			        } else {
 			        	$time_xml = new SimpleXMLElement($data2);
 			        	print_r($time_xml);
-			        	foreach ($time_xml->day-entries as $entry) {
-				        	echo "Entry: ".$entry->day-entry->is-billed."<br />";
-			        	}
+			        	//foreach ($time_xml->day-entries as $entry) {
+				        	//echo "Entry: ".$entry->day-entry->is-billed."<br />";
+			        	//}
 			        	//break;
 			        }
 	            }
