@@ -52,8 +52,9 @@
 			        	//print_r($time_xml);
 			        	echo "count: ".count($time_xml);
 			        	foreach ($time_xml as $entry) {
-			        		if ($entry->is-billed) echo "BILLED: ";
-			        		else echo "NOT BILLED: "
+			        		//if ($entry->is-billed) echo "BILLED: ";
+			        		//else echo "NOT BILLED: "
+			        		echo $entry->is-billed;
 				        	echo "Entry: ".strval($entry->notes)."<br />";
 			        	}
 			        	//break;
