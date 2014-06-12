@@ -55,7 +55,7 @@
 			        		//if ($entry->is-billed) echo "BILLED: ";
 			        		//else echo "NOT BILLED: "
 			        		print_r($entry);
-			        		echo "billed: ".strval($entry->is-billed)."<br />";
+			        		echo "billed: ".strval($entry->invoice-id)."<br />";
 				        	echo "Entry: ".strval($entry->notes)."<br />";
 			        	}
 			        	break;
