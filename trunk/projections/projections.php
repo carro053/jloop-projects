@@ -180,17 +180,20 @@ $response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	
-	$endofrevenue = false;
+	$expenseTotal = 0;
 	foreach($accounts->Reports[0]->Report[0]->Rows[0]->Row as $row) {
 		//echo $row->RowType;
 		if ($row->RowType == "Section") {
-			echo "<strong>".$row->Title."</strong>";
 			if (count($row->Rows) > 0) {
 				foreach ($row->Rows->Row as $sectionrow) {
-					if ($sectionrow->Cells->Cell[0]->Value == "Total Cost of Sales" || $sectionrow->Cells->Cell[0]->Value == "Total Other Income and Expense") {
-						echo "<br />";
-						echo " * ";
-						echo $sectionrow->Cells->Cell[0]->Value." = ".$sectionrow->Cells->Cell[1]->Value;
+					if ($sectionrow->Cells->Cell[0]->Value == "Total Cost of Sales") {
+						$expenseTotal += floatval($sectionrow->Cells->Cell[1]->Value);
+					} else if ($sectionrow->Cells->Cell[0]->Value == "Total Other Income and Expense") {
+						
+						$expenseTotal += (0 - floatval($sectionrow->Cells->Cell[1]->Value));
+						//echo "<br />";
+						//echo " * ";
+						//echo $sectionrow->Cells->Cell[0]->Value." = ".$sectionrow->Cells->Cell[1]->Value;
 					}
 					
 				}
@@ -202,6 +205,7 @@ if ($XeroOAuth->response['code'] == 200) {
 } else {
 	outputError($XeroOAuth);
 }
+echo '<strong>EXPENSES FOR THE LAST SIX MONTHS: '.money_format('%n', $expenseTotal)."</strong>";
 echo "<br /><br />";
 
 //
