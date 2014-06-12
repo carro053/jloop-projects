@@ -22,6 +22,8 @@ if (strtotime($month_array[floatval($mo)]." ".$days.", ".$yr) < time()) {
 	$past = true;
 	//echo "past";
 } else $past = false;
+if ($mo == $_GET['month']) $thismonth = true;
+else $thismonth - false;
 $recurTotal =0;
 $invoicedTotal = 0;
 $projectTotal = 0;
@@ -33,7 +35,7 @@ echo 'month of '.$month_array[floatval($mo)].', '.$yr.'<br/><br/>';
 
 
 
-echo 'INVOICED to date:<br />';
+echo '------------------------INVOICED to date:<br />';
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 'core'), array('fromDate' => $yr.'-'.$mo.'-1','toDate' => $yr.'-'.$mo.'-'.$days));
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
@@ -109,33 +111,37 @@ if ($XeroOAuth->response['code'] == 200) {
 	//pr($recur_array);
 }
 
-//echo 'RECURRING invoices scheduled:<br />Monthly invoices:<br />';
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.Unit=="MONTHLY" && Schedule.Period==1 && Type=="ACCREC"'));
-if ($XeroOAuth->response['code'] == 200) {
-	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
-	//echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " monthly invoices: </br>";
+if (!$thismonth) {
 	
-	
-	foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
+
+	//echo 'RECURRING invoices scheduled:<br />Monthly invoices:<br />';
+	$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.Unit=="MONTHLY" && Schedule.Period==1 && Type=="ACCREC"'));
+	if ($XeroOAuth->response['code'] == 200) {
+		$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
+		//echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " monthly invoices: </br>";
 		
-		if (!in_array(strval($inv->RepeatingInvoiceID), $recur_array)) {
-			$recurTotal += floatval($inv->Total);
-			$recurCount ++;
-			///echo "ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
-		} else {
-			//echo "NOT ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
+		
+		foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
+			
+			if (!in_array(strval($inv->RepeatingInvoiceID), $recur_array)) {
+				$recurTotal += floatval($inv->Total);
+				$recurCount ++;
+				///echo "ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
+			} else {
+				//echo "NOT ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
+			}
+			
 		}
 		
+		//pr($accounts->RepeatingInvoices[0]->RepeatingInvoice[0]);
+	} else {
+		outputError($XeroOAuth);
 	}
-	
+} //end if not this month
+
 	echo "There are " . $recurCount. " monthly invoices not yet scheduled in this month.</br>";
 	echo "Total recurring scheduled: ".money_format('%n', $recurOtherTotal)."<br />";
 	echo "Total monthly not-yet-scheduled: ".money_format('%n', $recurTotal)."<br /><br />";
-	
-	//pr($accounts->RepeatingInvoices[0]->RepeatingInvoice[0]);
-} else {
-	outputError($XeroOAuth);
-}
 
 } // end if past
 
