@@ -38,7 +38,7 @@
             foreach ($project_xml->project as $project) {
 	            $code = substr(strval($project->name),0,2);
 	            if ($code == "HS") {
-	            	print_r($project);
+	            	//print_r($project);
 	            	echo $project->name."<br />";
 	            	$url2 = "https://jloop.harvestapp.com/projects/".$project->id."/entries?from=20140509&to=20140615";
 	            	//$url2 = "https://jloop.harvestapp.com/projects/124893/entries?from=20140509&to=20140615";
@@ -49,7 +49,10 @@
 			            print "Error: " . curl_error($ch);
 			        } else {
 			        	$time_xml = new SimpleXMLElement($data2);
-			        	print_r($data2);
+			        	print_r($time_xml);
+			        	foreach ($time_xml->day-entries as $entry) {
+				        	echo "Entry: ".$entry->day-entry->is-billed."<br />";
+			        	}
 			        	//break;
 			        }
 	            }
