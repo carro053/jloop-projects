@@ -49,10 +49,10 @@
 			            print "Error: " . curl_error($ch);
 			        } else {
 			        	$time_xml = new SimpleXMLElement($data2);
-			        	print_r($time_xml);
-			        	//foreach ($time_xml->day-entries as $entry) {
-				        	//echo "Entry: ".$entry->day-entry->is-billed."<br />";
-			        	//}
+			        	//print_r($time_xml);
+			        	foreach ($time_xml->day-entry as $entry) {
+				        	echo "Entry: ".$entry->is-billed."<br />";
+			        	}
 			        	//break;
 			        }
 	            }
