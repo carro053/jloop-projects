@@ -49,12 +49,12 @@
 			            print "Error: " . curl_error($ch);
 			        } else {
 			        	$time_xml = new SimpleXMLElement($data2);
-			        	var_dump($time_xml);
+			        	//var_dump($time_xml);
 			        	echo "count: ".count($time_xml);
 			        	foreach ($time_xml as $entry) {
 			        		//if ($entry->is-billed) echo "BILLED: ";
 			        		//else echo "NOT BILLED: "
-			        		//echo (string) $entry->is-billed;
+			        		echo "billed: ".strval($entry->is-billed)."<br />";
 				        	echo "Entry: ".strval($entry->notes)."<br />";
 			        	}
 			        	break;
