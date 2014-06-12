@@ -52,7 +52,7 @@
 			        	print_r($time_xml);
 			        	echo "count: ".count($time_xml->day-entry);
 			        	foreach ($time_xml->day-entry as $entry) {
-				        	echo "Entry: ".$entry->is-billed."<br />";
+				        	echo "Entry: ".strval($entry->is-billed)."<br />";
 			        	}
 			        	break;
 			        }
