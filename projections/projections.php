@@ -199,13 +199,17 @@ if ($XeroOAuth->response['code'] == 200) {
 				}
 			}
 		}
-		echo "<br />";
+		//echo "<br />";
 	}
 	//pr($accounts->Reports);
 } else {
 	outputError($XeroOAuth);
 }
-echo '<strong>EXPENSES FOR THE LAST SIX MONTHS: '.money_format('%n', $expenseTotal)."</strong>";
+echo 'Expenses for the <i>last 6 months</i>: '.money_format('%n', $expenseTotal)."<br />";
+echo 'AVERAGE monthly expenses: '.money_format('%n', $expenseTotal/6)."<br />";
+$profit = $projectedTotal - $expenseTotal;
+if ($profit < 0) echo "LOSS FOR THIS MONTH: ".money_format('%n', $profit);
+else echo "PROFIT FOR THIS MONTH: ".money_format('%n', $profit);
 echo "<br /><br />";
 
 //
