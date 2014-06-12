@@ -23,7 +23,6 @@ if (strtotime($month_array[floatval($mo)]." ".$days.", ".$yr) < time()) {
 	//echo "past";
 } else $past = false;
 $curmo = intval(date('n'));
-$curmodays = cal_days_in_month(CAL_GREGORIAN, date('n'), date('Y'));
 if ($mo == date('n')) $thismonth = true;
 else $thismonth = false;
 $recurTotal =0;
@@ -159,8 +158,17 @@ echo '------------------------EXPENSES:<br />';
 if ($curmo < 7) {
 	$startyr = intval($yr) -1;
 	$startmo = $curmo +6;
+	if ($curmo == 1) {
+		$lastmo = 12;
+		$lastmoyr = intval(date('Y'))-1;
+		
+	} else {
+		$lastmo = $curmo - 1;
+		$lastmoyr = date('Y');
+	}
+	$lastmodays = cal_days_in_month(CAL_GREGORIAN, $lastmo, $lastmoyr);
 }
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 'core'), array('fromDate' => $startyr.'-'.$startmo.'-1','toDate' => date('Y').'-'.$curmo.'-'.$curmodays));
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 'core'), array('fromDate' => $startyr.'-'.$startmo.'-1','toDate' => $lastmoyr.'-'.$lastmo.'-'.$lastmodays));
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	
