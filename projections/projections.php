@@ -22,6 +22,8 @@ if (strtotime($month_array[floatval($mo)]." ".$days.", ".$yr) < time()) {
 	$past = true;
 	//echo "past";
 } else $past = false;
+$curmo = intval(date('n'));
+$curmodays = cal_days_in_month(CAL_GREGORIAN, date('n'), date('Y'));
 if ($mo == date('n')) $thismonth = true;
 else $thismonth = false;
 $recurTotal =0;
@@ -150,6 +152,43 @@ echo "------------------------";
 
 $projectedTotal = $invoicedTotal + $projectTotal + $recurOtherTotal + $recurTotal;
 echo '<strong>PROJECTED TOTAL FOR MONTH: '.money_format('%n', $projectedTotal)."</strong>";
+
+echo "<br /><br />";
+
+echo '------------------------EXPENSES:<br />';
+if ($curmo < 7) {
+	$startyr = intval($yr) -1;
+	$startmo = $curmo +6;
+}
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 'core'), array('fromDate' => $startyr.'-'.$startmo.'-1','toDate' => date('Y').'-'.$curmo.'-'.$curmodays));
+if ($XeroOAuth->response['code'] == 200) {
+	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
+	
+	$endofrevenue = false;
+	foreach($accounts->Reports[0]->Report[0]->Rows[0]->Row as $row) {
+		//echo $row->RowType;
+		if ($row->RowType == "Section") {
+			if ($row->Title == "Less Cost of Sales") break;
+			echo "<strong>".$row->Title."</strong>";
+			if (count($row->Rows) > 0) {
+				foreach ($row->Rows->Row as $sectionrow) {
+					echo "<br />";
+					echo " * ";
+					echo $sectionrow->Cells->Cell[0]->Value." = ".$sectionrow->Cells->Cell[1]->Value;
+					$invoicedTotal = floatval($sectionrow->Cells->Cell[1]->Value);
+					if ($sectionrow->Cells->Cell[0]->Value == "Total Revenue") $endofrevenue = true;
+				}
+			}
+		}
+		echo "<br />";
+		if ($endofrevenue) break;
+	}
+	//pr($accounts->Reports);
+} else {
+	outputError($XeroOAuth);
+}
+echo "<br /><br />";
+
 //
 
 ?>
