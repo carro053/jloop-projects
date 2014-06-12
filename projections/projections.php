@@ -207,11 +207,12 @@ if ($XeroOAuth->response['code'] == 200) {
 }
 $averageExpenses = $expenseTotal/6;
 $profit = $projectedTotal - $averageExpenses;
-echo 'Expenses for the <i>last 6 months</i>: '.money_format('%n', $expenseTotal)."<br />";
-echo 'AVERAGE monthly expenses: '.money_format('%n', $averageExpenses)."<br />";
+//echo 'Expenses for the <i>last 6 months</i>: '.money_format('%n', $expenseTotal)."<br />";
+echo 'AVERAGE monthly expenses for the <i>last 6 months</i>: '.money_format('%n', $averageExpenses)."<br />";
+echo "------------------------<strong>";
 if ($profit < 0) echo "LOSS FOR THIS MONTH: ".money_format('%n', $profit);
 else echo "PROFIT FOR THIS MONTH: ".money_format('%n', $profit);
-echo "<br /><br />";
+echo "</strong><br /><br />";
 
 //
 
