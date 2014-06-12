@@ -30,7 +30,7 @@
             print "Error: " . curl_error($ch);
         } else {
             // Show me the result
-            var_dump($data);
+            //var_dump($data);
             //print_r_($data);
             
             $project_xml = new SimpleXMLElement($data);
@@ -40,8 +40,8 @@
 	            if ($code == "HS") {
 	            	print_r($project);
 	            	echo $project->name."<br />";
-	            	//$url2 = "https://jloop.harvestapp.com/projects/".$project->id."/entries?from=20140509&to=20140615";
-	            	$url2 = "https://jloop.harvestapp.com/projects/124893/entries?from=20140509&to=20140615";
+	            	$url2 = "https://jloop.harvestapp.com/projects/".$project->id."/entries?from=20140509&to=20140615";
+	            	//$url2 = "https://jloop.harvestapp.com/projects/124893/entries?from=20140509&to=20140615";
 	            	
 	            	curl_setopt($ch, CURLOPT_URL, $url2);
 	            	$data2 = curl_exec($ch);
@@ -50,7 +50,7 @@
 			        } else {
 			        	$time_xml = new SimpleXMLElement($data2);
 			        	print_r($data2);
-			        	break;
+			        	//break;
 			        }
 	            }
             }
