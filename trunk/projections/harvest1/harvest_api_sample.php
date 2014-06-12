@@ -54,7 +54,7 @@
 			        	foreach ($time_xml as $entry) {
 			        		//if ($entry->is-billed) echo "BILLED: ";
 			        		//else echo "NOT BILLED: "
-			        		echo $entry->is-billed.__toString;
+			        		echo (string) $entry->is-billed;
 				        	echo "Entry: ".strval($entry->notes)."<br />";
 			        	}
 			        	//break;
