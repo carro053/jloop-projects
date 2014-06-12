@@ -49,7 +49,7 @@
 			            print "Error: " . curl_error($ch);
 			        } else {
 			        	$time_xml = new SimpleXMLElement($data2);
-			        	print_r($time_xml);
+			        	print_r($time_xml->day-entry);
 			        	echo "count: ".count($time_xml->day-entry);
 			        	foreach ($time_xml->day-entry as $entry) {
 				        	echo "Entry: ".strval($entry->is-billed)."<br />";
@@ -58,7 +58,7 @@
 			        }
 	            }
             }
-            print_r($project_xml);
+            //print_r($project_xml);
             curl_close($ch);
         }
 
