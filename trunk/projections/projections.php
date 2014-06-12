@@ -166,8 +166,16 @@ if ($curmo < 7) {
 		$lastmo = $curmo - 1;
 		$lastmoyr = date('Y');
 	}
-	$lastmodays = cal_days_in_month(CAL_GREGORIAN, $lastmo, $lastmoyr);
+	
+} else {
+	$startyr = $yr;
+	$startmo = $curmo - 6;
+	$lastmo = $curmo - 1;
+	$lastmoyr = $yr;
 }
+$lastmodays = cal_days_in_month(CAL_GREGORIAN, $lastmo, $lastmoyr);
+
+
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 'core'), array('fromDate' => $startyr.'-'.$startmo.'-1','toDate' => $lastmoyr.'-'.$lastmo.'-'.$lastmodays));
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
@@ -176,20 +184,19 @@ if ($XeroOAuth->response['code'] == 200) {
 	foreach($accounts->Reports[0]->Report[0]->Rows[0]->Row as $row) {
 		//echo $row->RowType;
 		if ($row->RowType == "Section") {
-			if ($row->Title == "Less Cost of Sales") break;
 			echo "<strong>".$row->Title."</strong>";
 			if (count($row->Rows) > 0) {
 				foreach ($row->Rows->Row as $sectionrow) {
-					echo "<br />";
-					echo " * ";
-					echo $sectionrow->Cells->Cell[0]->Value." = ".$sectionrow->Cells->Cell[1]->Value;
-					$invoicedTotal = floatval($sectionrow->Cells->Cell[1]->Value);
-					if ($sectionrow->Cells->Cell[0]->Value == "Total Revenue") $endofrevenue = true;
+					if ($sectionrow->Cells->Cell[0]->Value == "Total Cost of Sales" || $sectionrow->Cells->Cell[0]->Value == "Total Other Income and Expense") {
+						echo "<br />";
+						echo " * ";
+						echo $sectionrow->Cells->Cell[0]->Value." = ".$sectionrow->Cells->Cell[1]->Value;
+					}
+					
 				}
 			}
 		}
 		echo "<br />";
-		if ($endofrevenue) break;
 	}
 	//pr($accounts->Reports);
 } else {
