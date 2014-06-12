@@ -49,7 +49,7 @@
 			            print "Error: " . curl_error($ch);
 			        } else {
 			        	$time_xml = new SimpleXMLElement($data2);
-			        	//var_dump($time_xml);
+			        	var_dump($data2);
 			        	echo "count: ".count($time_xml);
 			        	foreach ($time_xml as $entry) {
 			        		//if ($entry->is-billed) echo "BILLED: ";
