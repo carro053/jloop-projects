@@ -23,7 +23,7 @@ if (strtotime($month_array[floatval($mo)]." ".$days.", ".$yr) < time()) {
 	//echo "past";
 } else $past = false;
 if ($mo == $_GET['month']) $thismonth = true;
-else $thismonth - false;
+else $thismonth = false;
 $recurTotal =0;
 $invoicedTotal = 0;
 $projectTotal = 0;
