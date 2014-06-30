@@ -18,7 +18,7 @@ if (!isset($_GET['year'])) {
 $month_array = array("N/A","January","February","March","April","May","June","July","August","September","October","November","December");
 $days = cal_days_in_month(CAL_GREGORIAN, $mo, $yr);
 $nextmo = floatval($mo)+1;
-if (strtotime($month_array[floatval($mo)]." ".$days.", ".$yr) < time()) {
+if (strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59") < time()) {
 	$past = true;
 	//echo "past";
 } else $past = false;
