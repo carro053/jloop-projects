@@ -78,7 +78,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	
 	if (count($accounts->Invoices)>0) {
 		foreach($accounts->Invoices[0]->Invoice as $inv) {
-			echo " * ".date('M-d', strtotime($inv->InvoiceDate)).": ";
+			echo " * ".date('M-d', strtotime($inv->Date)).": ";
 			echo $inv->Contact->Name.": ".$inv->Reference." - ".$inv->AmountDue."<br/>";
 			$projectTotal += floatval($inv->AmountDue);
 		}
