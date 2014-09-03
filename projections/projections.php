@@ -157,9 +157,14 @@ echo 'RECURRING invoices scheduled:<br />Weekly invoices:<br />';
 			echo "interval: ".$interval."</br>";
 			//echo "NextStr: ".strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59")."</br>";
 			if ($nextSched < $endMo) {
-				echo "Next Date: ".$inv->Schedule->NextScheduledDate;
-				$weeklyTotal += floatval($inv->Total);
-				$weeklyCount ++;
+				$schedTest = $nextSched;
+				do {
+					$weeklyTotal += floatval($inv->Total);
+					$weeklyCount ++;
+					$schedTest += $aweek*$interval;
+				} while ($schedTest < $endMo);
+				//echo "Next Date: ".$inv->Schedule->NextScheduledDate;
+				
 				///echo "ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
 			//} else {
 				//echo "NOT ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
