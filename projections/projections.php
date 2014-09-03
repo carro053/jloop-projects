@@ -30,6 +30,8 @@ $invoicedTotal = 0;
 $projectTotal = 0;
 $recurCount = 0;
 $recurOtherTotal =0;
+$weeklyCount = 0;
+$weeklyTotal = 0;
 ////
 
 echo 'month of '.$month_array[floatval($mo)].', '.$yr.'<br/><br/>';
@@ -136,8 +138,9 @@ if (!$thismonth) {
 	} else {
 		outputError($XeroOAuth);
 	}
-} else { // we are in this month - so we want to see if there are any weekly invoices still to come...
-	echo 'RECURRING invoices scheduled:<br />Weekly invoices:<br />';
+}
+
+echo 'RECURRING invoices scheduled:<br />Weekly invoices:<br />';
 	$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.Unit=="WEEKLY" && Type=="ACCREC"'));
 	if ($XeroOAuth->response['code'] == 200) {
 		$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
@@ -146,8 +149,8 @@ if (!$thismonth) {
 		
 		foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
 			
-			$recurTotal += floatval($inv->Total);
-			$recurCount ++;
+			$weeklyTotal += floatval($inv->Total);
+			$weeklyCount ++;
 			echo "ADDED: ".$inv->Contact->Name.": ".$inv->Total.": period: ".$inv->Schedule->Period."<br />";
 			
 		}
@@ -156,20 +159,19 @@ if (!$thismonth) {
 	} else {
 		outputError($XeroOAuth);
 	}
-} 
 
 //end if not this month
 
 	echo "There are " . $recurCount. " monthly invoices not yet scheduled in this month.</br>";
 	echo "Total recurring scheduled: ".money_format('%n', $recurOtherTotal)."<br />";
 	echo "Total monthly not-yet-scheduled: ".money_format('%n', $recurTotal)."<br /><br />";
-
+	echo "Total weekly not-yet-scheduled: ".money_format('%n', $weeklyTotal)."<br /><br />";
 } // end if past
 
 
 echo "------------------------";
 
-$projectedTotal = $invoicedTotal + $projectTotal + $recurOtherTotal + $recurTotal;
+$projectedTotal = $invoicedTotal + $projectTotal + $recurOtherTotal + $recurTotal + $weeklyTotal;
 echo '<strong>PROJECTED TOTAL FOR MONTH: '.money_format('%n', $projectedTotal)."</strong>";
 
 echo "<br /><br />";
