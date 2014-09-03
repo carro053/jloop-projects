@@ -101,7 +101,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " recurring invoices currently scheduled. </br>";
 	
 	foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
-		echo $inv->Contact->Name.": ".$inv->Total."<br />";
+		//echo $inv->Contact->Name.": ".$inv->Total."<br />";
 		$recurOtherTotal += floatval($inv->Total);
 		array_push($recur_array, strval($inv->RepeatingInvoiceID));
 	}
@@ -113,8 +113,6 @@ if ($XeroOAuth->response['code'] == 200) {
 }
 
 if (!$thismonth) {
-	
-
 	//echo 'RECURRING invoices scheduled:<br />Monthly invoices:<br />';
 	$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.Unit=="MONTHLY" && Schedule.Period==1 && Type=="ACCREC"'));
 	if ($XeroOAuth->response['code'] == 200) {
@@ -138,7 +136,29 @@ if (!$thismonth) {
 	} else {
 		outputError($XeroOAuth);
 	}
-} //end if not this month
+} else { // we are in this month - so we want to see if there are any weekly invoices still to come...
+	echo 'RECURRING invoices scheduled:<br />Weekly invoices:<br />';
+	$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.Unit=="WEEKLY" && Type=="ACCREC"'));
+	if ($XeroOAuth->response['code'] == 200) {
+		$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
+		echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " weekly invoices: </br>";
+		
+		
+		foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
+			
+			$recurTotal += floatval($inv->Total);
+			$recurCount ++;
+			echo "ADDED: ".$inv->Contact->Name.": ".$inv->Total.": period: ".$inv->Schedule->Period."<br />";
+			
+		}
+		
+		//pr($accounts->RepeatingInvoices[0]->RepeatingInvoice[0]);
+	} else {
+		outputError($XeroOAuth);
+	}
+} 
+
+//end if not this month
 
 	echo "There are " . $recurCount. " monthly invoices not yet scheduled in this month.</br>";
 	echo "Total recurring scheduled: ".money_format('%n', $recurOtherTotal)."<br />";
