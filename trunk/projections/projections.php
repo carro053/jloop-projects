@@ -18,6 +18,11 @@ if (!isset($_GET['year'])) {
 $month_array = array("N/A","January","February","March","April","May","June","July","August","September","October","November","December");
 $days = cal_days_in_month(CAL_GREGORIAN, $mo, $yr);
 $nextmo = floatval($mo)+1;
+$nextyr = $yr;
+if ($nextmo == 13) {
+	$nextmo = 1;
+	$nextyr = floatval($yr) + 1;
+}
 if (strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59") < time()) {
 	$past = true;
 	//echo "past";
@@ -72,7 +77,7 @@ echo "------------------------";
 if (!$past) {
 
 echo 'PROJECTED invoices:<br />';
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('Where' => 'Status=="DRAFT" && Date>=DateTime('.$yr.','.$mo.',1) && Date<DateTime('.$yr.','.$nextmo.',1) && Type=="ACCREC"'));
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('Where' => 'Status=="DRAFT" && Date>=DateTime('.$yr.','.$mo.',1) && Date<DateTime('.$nextyr.','.$nextmo.',1) && Type=="ACCREC"'));
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	//echo "There are " . count($accounts->Invoices[0]->Invoice). " to date <br/>";
@@ -96,7 +101,7 @@ echo "------------------------";
 
 $recur_array = array();
 echo 'RECURRING invoices:<br />';
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.NextScheduledDate>=DateTime('.$yr.','.$mo.',1) && Schedule.NextScheduledDate<DateTime('.$yr.','.$nextmo.',1) && Type=="ACCREC"'));
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.NextScheduledDate>=DateTime('.$yr.','.$mo.',1) && Schedule.NextScheduledDate<DateTime('.$nextyr.','.$nextmo.',1) && Type=="ACCREC"'));
 
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
