@@ -151,6 +151,7 @@ if (!$thismonth) {
 			//$weeksInMo = 4;
 			//print_r($inv);
 			$nextSched = strtotime($inv->Schedule->NextScheduledDate);
+			$endSched = strtotime($inv->Schedule->EndDate);
 			$endMo = strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59");
 			$startMo = strtotime($month_array[floatval($mo)]." 1, ".$yr." 00:00:00");
 			$aweek = 604800;
@@ -160,7 +161,7 @@ if (!$thismonth) {
 			if ($nextSched < $endMo) {
 				$schedTest = $nextSched;
 				do {
-					if ($schedTest > $startMo) {
+					if ($schedTest > $startMo && $schedTest < $endSched) {
 						$weeklyTotal += floatval($inv->Total);
 						$weeklyCount ++;
 					}
