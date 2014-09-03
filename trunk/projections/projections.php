@@ -152,7 +152,7 @@ echo 'RECURRING invoices scheduled:<br />Weekly invoices:<br />';
 			//print_r($inv);
 			$nextSched = strtotime($inv->Schedule->NextScheduledDate);
 			$endMo = strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59");
-			$1week = 604800;
+			$aweek = 604800;
 			$interval = floatval($inv->Schedule->Period);
 			echo "interval: ".$interval."</br>";
 			//echo "NextStr: ".strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59")."</br>";
