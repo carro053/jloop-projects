@@ -152,8 +152,8 @@ echo 'RECURRING invoices scheduled:<br />Weekly invoices:<br />';
 			//print_r($inv);
 			echo "Next Date: ".$inv->Schedule->NextScheduledDate."</br>";
 			echo "Str: ".strtotime($inv->Schedule->NextScheduledDate)."</br>";
-			echo "NextStr: ".strtotime($yr.','.$nextmo.',1')."</br>";
-			if (strtotime($inv->Schedule->NextScheduledDate) < strtotime($yr.','.$nextmo.',1')) {
+			echo "NextStr: ".strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59")."</br>";
+			if (strtotime($inv->Schedule->NextScheduledDate) < strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59")) {
 				echo "Next Date: ".$inv->Schedule->NextScheduledDate;
 				$weeklyTotal += floatval($inv->Total);
 				$weeklyCount ++;
