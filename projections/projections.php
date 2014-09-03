@@ -152,6 +152,7 @@ if (!$thismonth) {
 			//print_r($inv);
 			$nextSched = strtotime($inv->Schedule->NextScheduledDate);
 			$endMo = strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59");
+			$startMo = strtotime($month_array[floatval($mo)]." 1, ".$yr." 00:00:00");
 			$aweek = 604800;
 			$interval = floatval($inv->Schedule->Period);
 			//echo "interval: ".$interval."</br>";
@@ -159,8 +160,10 @@ if (!$thismonth) {
 			if ($nextSched < $endMo) {
 				$schedTest = $nextSched;
 				do {
-					$weeklyTotal += floatval($inv->Total);
-					$weeklyCount ++;
+					if ($schedTest > $startMo) {
+						$weeklyTotal += floatval($inv->Total);
+						$weeklyCount ++;
+					}
 					$schedTest += $aweek*$interval;
 				} while ($schedTest < $endMo);
 				//echo "Next Date: ".$inv->Schedule->NextScheduledDate;
