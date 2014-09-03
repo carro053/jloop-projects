@@ -151,14 +151,14 @@ echo 'RECURRING invoices scheduled:<br />Weekly invoices:<br />';
 			//$weeksInMo = 4;
 			//print_r($inv);
 			//if (!in_array(strval($inv->RepeatingInvoiceID), $recur_array)) {
-			if (strtotime($inv->Schedule->NextScheduledDate) < strtotime($yr.','.$nextmo.',1'))
+			if (strtotime($inv->Schedule->NextScheduledDate) < strtotime($yr.','.$nextmo.',1')) {
 				echo "Next Date: ".$inv->Schedule->NextScheduledDate;
 				$weeklyTotal += floatval($inv->Total);
 				$weeklyCount ++;
 				///echo "ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
 			//} else {
 				//echo "NOT ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
-			//}
+			}
 			
 		}
 		
