@@ -140,11 +140,11 @@ if (!$thismonth) {
 	}
 }
 
-echo 'RECURRING invoices scheduled:<br />Weekly invoices:<br />';
+//echo 'RECURRING invoices scheduled:<br />Weekly invoices:<br />';
 	$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.Unit=="WEEKLY" && Type=="ACCREC"'));
 	if ($XeroOAuth->response['code'] == 200) {
 		$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
-		echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " weekly invoices: </br>";
+		//echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " weekly invoices: </br>";
 		
 		
 		foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
@@ -154,7 +154,7 @@ echo 'RECURRING invoices scheduled:<br />Weekly invoices:<br />';
 			$endMo = strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59");
 			$aweek = 604800;
 			$interval = floatval($inv->Schedule->Period);
-			echo "interval: ".$interval."</br>";
+			//echo "interval: ".$interval."</br>";
 			//echo "NextStr: ".strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59")."</br>";
 			if ($nextSched < $endMo) {
 				$schedTest = $nextSched;
@@ -181,7 +181,7 @@ echo 'RECURRING invoices scheduled:<br />Weekly invoices:<br />';
 
 	echo "There are " . $recurCount. " monthly invoices not yet scheduled in this month.</br>";
 	echo "Total recurring scheduled: ".money_format('%n', $recurOtherTotal)."<br />";
-	echo "Total monthly not-yet-scheduled: ".money_format('%n', $recurTotal)."<br /><br />";
+	echo "Total monthly not-yet-scheduled: ".money_format('%n', $recurTotal)."<br />";
 	echo "There are " . $weeklyCount ." weekly not-yet-scheduled: ".money_format('%n', $weeklyTotal)."<br /><br />";
 } // end if past
 
