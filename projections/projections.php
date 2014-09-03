@@ -150,7 +150,7 @@ echo 'RECURRING invoices scheduled:<br />Weekly invoices:<br />';
 		foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
 			//$weeksInMo = 4;
 			//print_r($inv);
-			//if (!in_array(strval($inv->RepeatingInvoiceID), $recur_array)) {
+			echo "Next Date: ".$inv->Schedule->NextScheduledDate;
 			if (strtotime($inv->Schedule->NextScheduledDate) < strtotime($yr.','.$nextmo.',1')) {
 				echo "Next Date: ".$inv->Schedule->NextScheduledDate;
 				$weeklyTotal += floatval($inv->Total);
