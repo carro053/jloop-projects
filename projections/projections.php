@@ -148,10 +148,15 @@ echo 'RECURRING invoices scheduled:<br />Weekly invoices:<br />';
 		
 		
 		foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
-			
-			$weeklyTotal += floatval($inv->Total);
-			$weeklyCount ++;
-			echo "ADDED: ".$inv->Contact->Name.": ".$inv->Total.": period: ".$inv->Schedule->Period."<br />";
+			$weeksInMo = 4;
+			print_r($inv);
+			if (!in_array(strval($inv->RepeatingInvoiceID), $recur_array)) {
+				$weeklyTotal += floatval($inv->Total);
+				$weeklyCount ++;
+				///echo "ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
+			} else {
+				//echo "NOT ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
+			}
 			
 		}
 		
@@ -165,7 +170,7 @@ echo 'RECURRING invoices scheduled:<br />Weekly invoices:<br />';
 	echo "There are " . $recurCount. " monthly invoices not yet scheduled in this month.</br>";
 	echo "Total recurring scheduled: ".money_format('%n', $recurOtherTotal)."<br />";
 	echo "Total monthly not-yet-scheduled: ".money_format('%n', $recurTotal)."<br /><br />";
-	echo "Total weekly not-yet-scheduled: ".money_format('%n', $weeklyTotal)."<br /><br />";
+	echo "There are " . $weeklyCount ." weekly not-yet-scheduled: ".money_format('%n', $weeklyTotal)."<br /><br />";
 } // end if past
 
 
