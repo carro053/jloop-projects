@@ -212,7 +212,7 @@ echo "Estimated Hourly Total based on last few months (manually entered by Jay):
 
 echo "------------------------";
 
-$projectedTotal = $invoicedTotal + $projectTotal + $recurOtherTotal + $recurTotal + $weeklyTotal + $hourlyTotal;
+$projectedTotal = $invoicedTotal + $projectTotal + $recurOtherTotal + $recurTotal + $weeklyTotal;
 echo '<strong>PROJECTED TOTAL FOR MONTH: '.money_format('%n', $projectedTotal)."</strong>";
 
 echo "<br /><br />";
