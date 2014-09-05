@@ -204,10 +204,11 @@ if (!$thismonth) {
 	echo "There are " . $weeklyCount ." weekly not-yet-scheduled: ".money_format('%n', $weeklyTotal)."<br /><br />";
 } // end if past
 
-
+/*
 echo "------------------------HOURLY invoices:<br />";
 $hourlyTotal = 8000;
 echo "Estimated Hourly Total based on last few months (manually entered by Jay): ".money_format('%n', $hourlyTotal)."</br></br>";
+*/
 
 echo "------------------------";
 
