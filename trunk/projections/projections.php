@@ -168,10 +168,15 @@ if (!$thismonth) {
 				$foundIt = false;
 				do {
 					if ($schedTest > $startMo && $schedTest < $endSched) {
-						if (!in_array(strval($inv->RepeatingInvoiceID), $recur_array) && !$foundIt) {
+						if (in_array(strval($inv->RepeatingInvoiceID), $recur_array)) {
+							if ($foundIt) {
+								$weeklyTotal += floatval($inv->Total);
+								$weeklyCount ++;
+							}
+							$foundIt = true;
+						} else {
 							$weeklyTotal += floatval($inv->Total);
-						$weeklyCount ++;
-						$foundIt = true;
+							$weeklyCount ++;
 						}
 						
 					}
