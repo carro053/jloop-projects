@@ -165,10 +165,15 @@ if (!$thismonth) {
 			//echo "NextStr: ".strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59")."</br>";
 			if ($nextSched < $endMo) {
 				$schedTest = $nextSched;
+				$foundIt = false;
 				do {
-					if ($schedTest > $startMo && $schedTest < $endSched && !in_array(strval($inv->RepeatingInvoiceID), $recur_array)) {
-						$weeklyTotal += floatval($inv->Total);
+					if ($schedTest > $startMo && $schedTest < $endSched) {
+						if (!in_array(strval($inv->RepeatingInvoiceID), $recur_array) && !$foundIt) {
+							$weeklyTotal += floatval($inv->Total);
 						$weeklyCount ++;
+						$foundIt = true;
+						}
+						
 					}
 					$schedTest += $aweek*$interval;
 				} while ($schedTest < $endMo);
