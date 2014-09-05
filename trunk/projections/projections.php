@@ -101,7 +101,7 @@ echo "------------------------";
 
 $recur_array = array();
 echo 'RECURRING invoices:<br />';
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.NextScheduledDate>=DateTime('.$yr.','.$mo.',1) && Schedule.NextScheduledDate<DateTime('.$nextyr.','.$nextmo.',1) && Type=="ACCREC"'));
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.NextScheduledDate>=DateTime('.$yr.','.$mo.',1) && (Schedule.Unit=="MONTHLY" || Schedule.Unit=="Annual") && Schedule.NextScheduledDate<DateTime('.$nextyr.','.$nextmo.',1) && Type=="ACCREC"'));
 
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
