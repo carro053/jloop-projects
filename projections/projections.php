@@ -205,9 +205,13 @@ if (!$thismonth) {
 } // end if past
 
 
+echo "------------------------HOURLY invoices:<br />";
+$hourlyTotal = 8000;
+echo "Estimated Hourly Total based on last few months (manually entered by Jay): ".money_format('%n', $hourlyTotal)."</br></br>";
+
 echo "------------------------";
 
-$projectedTotal = $invoicedTotal + $projectTotal + $recurOtherTotal + $recurTotal + $weeklyTotal;
+$projectedTotal = $invoicedTotal + $projectTotal + $recurOtherTotal + $recurTotal + $weeklyTotal + $hourlyTotal;
 echo '<strong>PROJECTED TOTAL FOR MONTH: '.money_format('%n', $projectedTotal)."</strong>";
 
 echo "<br /><br />";
