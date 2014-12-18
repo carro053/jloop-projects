@@ -47,6 +47,7 @@
     saveNewPhrases: true,
     translateBody: true
   });
+  Localize.setLanguage('es');
 </script>
 </head>
 
