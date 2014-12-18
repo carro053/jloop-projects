@@ -37,6 +37,17 @@
 		});
 	});
 </script>
+<script src="//cdn.localizejs.com/localize.js"></script>
+<script>!function(a){if(!a.Localize){a.Localize={};for(var e=["translate","untranslate","phrase","initialize","translatePage","setLanguage","getLanguage","detectLanguage","untranslatePage","bootstrap","prefetch","on","off"],t=0;t<e.length;t++)a.Localize[e[t]]=function(){}}}(window);</script>
+
+<script>
+  Localize.initialize({
+    key: 'WKpmfzz3SwINV', 
+    rememberLanguage: true,
+    saveNewPhrases: true,
+    translateBody: true
+  });
+</script>
 </head>
 
 <body<?php if($page == 'home') echo ' id="home"'; ?>>
