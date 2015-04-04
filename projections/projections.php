@@ -6,7 +6,7 @@ setlocale(LC_MONETARY, 'en_US');
 
 include("projections_stuff.php");
 if (!isset($_GET['expenses'])) {
-	$numMos4Expenses = 6;
+	$numMos4Expenses = 3;
 } else {
 	$numMos4Expenses = floatval($_GET['expenses']);
 }
