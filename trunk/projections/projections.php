@@ -50,7 +50,7 @@ $weeklyCount = 0;
 $weeklyTotal = 0;
 ////
 
-echo '<h1>month of '.$month_array[floatval($mo)].', '.$yr.'</h1><br/>';
+echo '<h1>'.$month_array[floatval($mo)].', '.$yr.'</h1>';
 echo '<a href="projections.php?month='.$prevmo.'&year='.$prevyr.'&expenses='.$numMos4Expenses.'">Previous month</a> - ';
 echo '<a href="projections.php?month='.$nextmo.'&year='.$nextyr.'&expenses='.$numMos4Expenses.'">Next month</a><br />';
 echo 'Expenses: <a href="projections.php?month='.$mo.'&year='.$yr.'&expenses=1">1</a> - ';
