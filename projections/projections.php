@@ -275,11 +275,11 @@ if ($XeroOAuth->response['code'] == 200) {
 					//echo $sectionrow->Cells->Cell[0]->Value." = ".$sectionrow->Cells->Cell[1]->Value."<br />";
 					if ($sectionrow->Cells->Cell[0]->Value == "Total Cost of Sales") {
 						$expenseTotal += floatval($sectionrow->Cells->Cell[1]->Value);
-						echo "now<br />";
+						//echo "now<br />";
 					} else if ($sectionrow->Cells->Cell[0]->Value == "Total Other Income and Expense") {
 						
 						$expenseTotal += (0 - floatval($sectionrow->Cells->Cell[1]->Value));
-						echo "again<br />";
+						//echo "again<br />";
 						//echo "<br />";
 						//echo " * ";
 						//echo $sectionrow->Cells->Cell[0]->Value." = ".$sectionrow->Cells->Cell[1]->Value;
