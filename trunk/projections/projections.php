@@ -270,8 +270,10 @@ if ($XeroOAuth->response['code'] == 200) {
 		if ($row->RowType == "Section") {
 			if (count($row->Rows) > 0) {
 				foreach ($row->Rows->Row as $sectionrow) {
+					echo $sectionrow->Cells->Cell[0]->Value." = ".$sectionrow->Cells->Cell[1]->Value;
 					if ($sectionrow->Cells->Cell[0]->Value == "Total Cost of Sales") {
 						$expenseTotal += floatval($sectionrow->Cells->Cell[1]->Value);
+						
 					} else if ($sectionrow->Cells->Cell[0]->Value == "Total Other Income and Expense") {
 						
 						$expenseTotal += (0 - floatval($sectionrow->Cells->Cell[1]->Value));
@@ -285,7 +287,7 @@ if ($XeroOAuth->response['code'] == 200) {
 		}
 		//echo "<br />";
 	}
-	pr($accounts->Reports);
+	//pr($accounts->Reports);
 } else {
 	outputError($XeroOAuth);
 }
