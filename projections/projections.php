@@ -256,7 +256,7 @@ if ($curmo == 1) {
 	$lastmo = $curmo - 1;
 	$lastmoyr = $yr;
 }
-trace("start: ".$startmo."/".$startyr." & last:".$lastmo."/".$lastmodays);
+echo "start: ".$startmo."/".$startyr." & last:".$lastmo."/".$lastmodays."<br />";
 $lastmodays = cal_days_in_month(CAL_GREGORIAN, $lastmo, $lastmoyr);
 
 
@@ -292,7 +292,7 @@ if ($XeroOAuth->response['code'] == 200) {
 $averageExpenses = $expenseTotal/6;
 $profit = $projectedTotal - $averageExpenses;
 //echo 'Expenses for the <i>last 6 months</i>: '.money_format('%n', $expenseTotal)."<br />";
-echo 'AVERAGE monthly expenses for the <i>last 6 months</i>: '.money_format('%n', $averageExpenses)."<br /><br />";
+echo 'AVERAGE monthly expenses for the <i>last 1 month</i>: '.money_format('%n', $averageExpenses)."<br /><br />";
 echo "------------------------<strong>";
 if ($profit < 0) echo "LOSS FOR THIS MONTH: <red>".money_format('%n', $profit)."</red>";
 else echo "PROFIT FOR THIS MONTH: ".money_format('%n', $profit);
