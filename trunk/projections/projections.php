@@ -50,9 +50,14 @@ $weeklyCount = 0;
 $weeklyTotal = 0;
 ////
 
-echo 'month of '.$month_array[floatval($mo)].', '.$yr.'<br/>';
+echo '<h1>month of '.$month_array[floatval($mo)].', '.$yr.'</h1><br/>';
 echo '<a href="projections.php?month='.$prevmo.'&year='.$prevyr.'&expenses='.$numMos4Expenses.'">Previous month</a> - ';
-echo '<a href="projections.php?month='.$nextmo.'&year='.$nextyr.'&expenses='.$numMos4Expenses.'">Next month</a><br /><br />';
+echo '<a href="projections.php?month='.$nextmo.'&year='.$nextyr.'&expenses='.$numMos4Expenses.'">Next month</a><br />';
+echo 'Expenses: <a href="projections.php?month='.$mo.'&year='.$yr.'&expenses=1">1</a> - ';
+echo '<a href="projections.php?month='.$mo.'&year='.$yr.'&expenses=2">2</a> - ';
+echo '<a href="projections.php?month='.$mo.'&year='.$yr.'&expenses=3">3</a> - ';
+echo '<a href="projections.php?month='.$mo.'&year='.$yr.'&expenses=6">6</a> - ';
+echo '<a href="projections.php?month='.$mo.'&year='.$yr.'&expenses=12">12</a><br /><br />';
 
 
 echo '------------------------INVOICED to date:<br />';
