@@ -256,10 +256,10 @@ if ($curmo == 1) {
 	$lastmo = $curmo - 1;
 	$lastmoyr = $yr;
 }
-echo "start: ".$startmo."/".$startyr." & last:".$lastmo."/".$lastmodays."<br />";
+
 $lastmodays = cal_days_in_month(CAL_GREGORIAN, $lastmo, $lastmoyr);
 
-
+echo "start: ".$startmo."/".$startyr." & last:".$lastmo."/".$lastmodays."<br />";
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('Reports/ProfitAndLoss', 'core'), array('fromDate' => $startyr.'-'.$startmo.'-1','toDate' => $lastmoyr.'-'.$lastmo.'-'.$lastmodays));
 if ($XeroOAuth->response['code'] == 200) {
 	$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
