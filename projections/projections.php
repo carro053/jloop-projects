@@ -218,6 +218,8 @@ echo '<strong>PROJECTED TOTAL FOR MONTH: '.money_format('%n', $projectedTotal)."
 echo "<br /><br />";
 
 echo '------------------------EXPENSES:<br />';
+
+$numMos4Expenses = 1;
 //////SIX MONTH VERSION
 /*if ($curmo < 7) {
 	$startyr = intval($yr) -1;
@@ -292,7 +294,7 @@ if ($XeroOAuth->response['code'] == 200) {
 } else {
 	outputError($XeroOAuth);
 }
-$averageExpenses = $expenseTotal/6;
+$averageExpenses = $expenseTotal/$numMos4Expenses;
 $profit = $projectedTotal - $averageExpenses;
 //echo 'Expenses for the <i>last 6 months</i>: '.money_format('%n', $expenseTotal)."<br />";
 echo 'AVERAGE monthly expenses for the <i>last 1 month</i>: '.money_format('%n', $averageExpenses)."<br /><br />";
