@@ -285,7 +285,7 @@ if ($XeroOAuth->response['code'] == 200) {
 		}
 		//echo "<br />";
 	}
-	//pr($accounts->Reports);
+	pr($accounts->Reports);
 } else {
 	outputError($XeroOAuth);
 }
