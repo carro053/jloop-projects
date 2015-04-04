@@ -23,10 +23,16 @@ if (!isset($_GET['year'])) {
 $month_array = array("N/A","January","February","March","April","May","June","July","August","September","October","November","December");
 $days = cal_days_in_month(CAL_GREGORIAN, $mo, $yr);
 $nextmo = floatval($mo)+1;
+$prevmo = floatval($mo)-1;
 $nextyr = $yr;
+$prevyr = $yr;
 if ($nextmo == 13) {
 	$nextmo = 1;
 	$nextyr = floatval($yr) + 1;
+}
+if ($prevmo == 0) {
+	$prevmo = 12;
+	$prevyr = floatval($yr) - 1;
 }
 if (strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59") < time()) {
 	$past = true;
@@ -44,8 +50,9 @@ $weeklyCount = 0;
 $weeklyTotal = 0;
 ////
 
-echo 'month of '.$month_array[floatval($mo)].', '.$yr.'<br/><br/>';
-
+echo 'month of '.$month_array[floatval($mo)].', '.$yr.'<br/>';
+echo '<a href="projections.php?month='.$prevmo.'&year='.$prevyr.'&expenses='.$numMos4Expenses.'">Previous month</a> - ';
+echo '<a href="projections.php?month='.$nextmo.'&year='.$nextyr.'&expenses='.$numMos4Expenses.'">Next month</a><br /><br />';
 
 
 echo '------------------------INVOICED to date:<br />';
