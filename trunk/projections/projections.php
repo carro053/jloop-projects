@@ -6,9 +6,9 @@ setlocale(LC_MONETARY, 'en_US');
 
 include("projections_stuff.php");
 if (!isset($_GET['expenses'])) {
-	$numMos4Expenses = floatval($_GET['expenses']);
-} else {
 	$numMos4Expenses = 6;
+} else {
+	$numMos4Expenses = floatval($_GET['expenses']);
 }
 if (!isset($_GET['month'])) {
 	$mo = date('n');
@@ -244,25 +244,6 @@ if ($curmo <= $numMos4Expenses) {
 	$lastmo = $curmo - 1;
 	$lastmoyr = $yr;
 }
-///////ONE MONTH VERSION
-/*if ($curmo == 1) {
-	$startyr = intval($yr) -1;
-	$startmo = $curmo +11;
-	if ($curmo == 1) {
-		$lastmo = 12;
-		$lastmoyr = intval(date('Y'))-1;
-		
-	} else {
-		$lastmo = $curmo - 1;
-		$lastmoyr = date('Y');
-	}
-	
-} else {
-	$startyr = $yr;
-	$startmo = $curmo - 1;
-	$lastmo = $curmo - 1;
-	$lastmoyr = $yr;
-}*/
 
 $lastmodays = cal_days_in_month(CAL_GREGORIAN, $lastmo, $lastmoyr);
 
