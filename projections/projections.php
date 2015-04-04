@@ -5,6 +5,11 @@ error_reporting(E_ALL);
 setlocale(LC_MONETARY, 'en_US');
 
 include("projections_stuff.php");
+if (!isset($_GET['expenses']) {
+	$numMos4Expenses = floatval($_GET['expenses']);
+} else {
+	$numMos4Expenses = 6;
+}
 if (!isset($_GET['month'])) {
 	$mo = date('n');
 } else {
@@ -219,11 +224,11 @@ echo "<br /><br />";
 
 echo '------------------------EXPENSES:<br />';
 
-$numMos4Expenses = 1;
+
 //////SIX MONTH VERSION
-/*if ($curmo < 7) {
+if ($curmo <= $numMos4Expenses) {
 	$startyr = intval($yr) -1;
-	$startmo = $curmo +6;
+	$startmo = $curmo +12 - $numMos4Expenses;
 	if ($curmo == 1) {
 		$lastmo = 12;
 		$lastmoyr = intval(date('Y'))-1;
@@ -235,12 +240,12 @@ $numMos4Expenses = 1;
 	
 } else {
 	$startyr = $yr;
-	$startmo = $curmo - 1;
+	$startmo = $curmo - $numMos4Expenses;
 	$lastmo = $curmo - 1;
 	$lastmoyr = $yr;
-}*/
+}
 ///////ONE MONTH VERSION
-if ($curmo == 1) {
+/*if ($curmo == 1) {
 	$startyr = intval($yr) -1;
 	$startmo = $curmo +11;
 	if ($curmo == 1) {
@@ -257,7 +262,7 @@ if ($curmo == 1) {
 	$startmo = $curmo - 1;
 	$lastmo = $curmo - 1;
 	$lastmoyr = $yr;
-}
+}*/
 
 $lastmodays = cal_days_in_month(CAL_GREGORIAN, $lastmo, $lastmoyr);
 
@@ -297,7 +302,7 @@ if ($XeroOAuth->response['code'] == 200) {
 $averageExpenses = $expenseTotal/$numMos4Expenses;
 $profit = $projectedTotal - $averageExpenses;
 //echo 'Expenses for the <i>last 6 months</i>: '.money_format('%n', $expenseTotal)."<br />";
-echo 'AVERAGE monthly expenses for the <i>last 1 month</i>: '.money_format('%n', $averageExpenses)."<br /><br />";
+echo 'AVERAGE monthly expenses for the <i>last '.$numMos4Expenses.' month(s)</i>: '.money_format('%n', $averageExpenses)."<br /><br />";
 echo "------------------------<strong>";
 if ($profit < 0) echo "LOSS FOR THIS MONTH: <red>".money_format('%n', $profit)."</red>";
 else echo "PROFIT FOR THIS MONTH: ".money_format('%n', $profit);
