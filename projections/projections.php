@@ -171,7 +171,7 @@ if (!$thismonth) {
 		
 		foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
 			//$weeksInMo = 4;
-			//print_r($inv);
+			print_r($inv);
 			$nextSched = strtotime($inv->Schedule->NextScheduledDate);
 			$endSched = strtotime($inv->Schedule->EndDate);
 			$endMo = strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59");
@@ -201,7 +201,7 @@ if (!$thismonth) {
 				} while ($schedTest < $endMo);
 				//echo "Next Date: ".$inv->Schedule->NextScheduledDate;
 				
-				echo "ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
+				//echo "ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
 			//} else {
 				//echo "NOT ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
 			}
