@@ -169,46 +169,47 @@ if (!$thismonth) {
 		$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 		//echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " weekly invoices: </br>";
 		
-		echo "num accounts: ".count($accounts->RepeatingInvoices)."<br/>";
-		foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
-			//$weeksInMo = 4;
-			//print_r($inv);
-			$nextSched = strtotime($inv->Schedule->NextScheduledDate);
-			$endSched = strtotime($inv->Schedule->EndDate);
-			$endMo = strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59");
-			$startMo = strtotime($month_array[floatval($mo)]." 1, ".$yr." 00:00:00");
-			$aweek = 604800;
-			$interval = floatval($inv->Schedule->Period);
-			//echo "interval: ".$interval."</br>";
-			//echo "NextStr: ".strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59")."</br>";
-			if ($nextSched < $endMo) {
-				$schedTest = $nextSched;
-				$foundIt = false;
-				do {
-					if ($schedTest > $startMo && $schedTest < $endSched) {
-						if (in_array(strval($inv->RepeatingInvoiceID), $recur_array)) {
-							if ($foundIt) {
+		//echo "num accounts: ".count($accounts->RepeatingInvoices)."<br/>";
+		if (count($accounts->RepeatingInvoices) > 0) {
+			foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
+				//$weeksInMo = 4;
+				//print_r($inv);
+				$nextSched = strtotime($inv->Schedule->NextScheduledDate);
+				$endSched = strtotime($inv->Schedule->EndDate);
+				$endMo = strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59");
+				$startMo = strtotime($month_array[floatval($mo)]." 1, ".$yr." 00:00:00");
+				$aweek = 604800;
+				$interval = floatval($inv->Schedule->Period);
+				//echo "interval: ".$interval."</br>";
+				//echo "NextStr: ".strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59")."</br>";
+				if ($nextSched < $endMo) {
+					$schedTest = $nextSched;
+					$foundIt = false;
+					do {
+						if ($schedTest > $startMo && $schedTest < $endSched) {
+							if (in_array(strval($inv->RepeatingInvoiceID), $recur_array)) {
+								if ($foundIt) {
+									$weeklyTotal += floatval($inv->Total);
+									$weeklyCount ++;
+								}
+								$foundIt = true;
+							} else {
 								$weeklyTotal += floatval($inv->Total);
 								$weeklyCount ++;
 							}
-							$foundIt = true;
-						} else {
-							$weeklyTotal += floatval($inv->Total);
-							$weeklyCount ++;
+							
 						}
-						
-					}
-					$schedTest += $aweek*$interval;
-				} while ($schedTest < $endMo);
-				//echo "Next Date: ".$inv->Schedule->NextScheduledDate;
+						$schedTest += $aweek*$interval;
+					} while ($schedTest < $endMo);
+					//echo "Next Date: ".$inv->Schedule->NextScheduledDate;
+					
+					//echo "ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
+				//} else {
+					//echo "NOT ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
+				}
 				
-				//echo "ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
-			//} else {
-				//echo "NOT ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
 			}
-			
 		}
-		
 		//pr($accounts->RepeatingInvoices[0]->RepeatingInvoice[0]);
 	} else {
 		outputError($XeroOAuth);
