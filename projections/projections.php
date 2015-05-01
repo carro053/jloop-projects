@@ -201,7 +201,7 @@ if (!$thismonth) {
 				} while ($schedTest < $endMo);
 				//echo "Next Date: ".$inv->Schedule->NextScheduledDate;
 				
-				///echo "ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
+				echo "ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
 			//} else {
 				//echo "NOT ADDED: ".$inv->Contact->Name.": ".$inv->Total."<br />";
 			}
