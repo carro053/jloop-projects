@@ -169,7 +169,7 @@ if (!$thismonth) {
 		$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 		//echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " weekly invoices: </br>";
 		
-		
+		echo "num accounts: ".count($accounts)."<br/>";
 		foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
 			//$weeksInMo = 4;
 			//print_r($inv);
