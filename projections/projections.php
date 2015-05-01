@@ -125,6 +125,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " recurring invoices currently scheduled. </br>";
 	
 	foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
+		print_r($inv);
 		//echo $inv->Contact->Name.": ".$inv->Total."<br />";
 		$recurOtherTotal += floatval($inv->Total);
 		array_push($recur_array, strval($inv->RepeatingInvoiceID));
@@ -145,7 +146,7 @@ if (!$thismonth) {
 		
 		
 		foreach($accounts->RepeatingInvoices[0]->RepeatingInvoice as $inv) {
-			print_r($inv);
+			//print_r($inv);
 			if (!in_array(strval($inv->RepeatingInvoiceID), $recur_array)) {
 				$recurTotal += floatval($inv->Total);
 				$recurCount ++;
@@ -163,7 +164,7 @@ if (!$thismonth) {
 }
 
 //echo 'RECURRING invoices scheduled:<br />Weekly invoices:<br />';
-	$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.Unit=="WEEKLY" && Type=="ACCREC" && Status=="ACTIVE"'));
+	$response = $XeroOAuth->request('GET', $XeroOAuth->url('RepeatingInvoices', 'core'), array('Where' => 'Schedule.Unit=="WEEKLY" && Type=="ACCREC"'));
 	if ($XeroOAuth->response['code'] == 200) {
 		$accounts = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 		//echo "There are " . count($accounts->RepeatingInvoices[0]->RepeatingInvoice). " weekly invoices: </br>";
