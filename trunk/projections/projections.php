@@ -240,6 +240,8 @@ echo '------------------------EXPENSES:<br />';
 
 
 //////SIX MONTH VERSION
+
+$yr = date('Y'); /// gotta make sure we are calculating off this year.
 if ($curmo <= $numMos4Expenses) {
 	$startyr = intval($yr) -1;
 	$startmo = $curmo +12 - $numMos4Expenses;
