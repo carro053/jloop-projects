@@ -221,6 +221,63 @@ if (!$thismonth) {
 	echo "Total recurring scheduled: ".money_format('%n', $recurOtherTotal)."<br />";
 	echo "Total monthly not-yet-scheduled: ".money_format('%n', $recurTotal)."<br />";
 	echo "There are " . $weeklyCount ." weekly not-yet-scheduled: ".money_format('%n', $weeklyTotal)."<br /><br />";
+
+
+
+echo "------------------------";
+echo 'CHARGIFY invoices:<br />';
+require_once('Chargify-PHP-Client/lib/Chargify.php');
+$test = FALSE;
+
+$sub = new ChargifySubscription(NULL, $test);
+$subs = $sub->getAll();
+
+$chargifyTotal = 0;
+
+foreach($subs as $s) {
+	
+	$price = floatval($s->product->price_in_cents)/100;
+	$nextSched = strtotime($s->next_assessment_at);
+	if ($nextSched < $endMo) $thisMonth = "true";
+	else $thisMonth = "false";
+				
+	if ($thisMonth == "true" && $s->state == "active") {
+		$chargifyTotal += $price;
+		echo '* '.$s->customer->email.': '.$price.'<br>';
+	}
+	
+	
+	//echo 'name: '.$s->customer->email.'<br>';
+	//echo 'price: '.$price.'<br>';
+	//echo 'next: '.$s->next_assessment_at.'<br>';
+	//echo 'this month: '.$thisMonth.'<br>';
+	//echo 'status: '.$s->state.'<br>';
+	//echo '<br>';
+}
+
+echo "Chargify Total: ".$chargifyTotal;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 } // end if past
 
 /*
