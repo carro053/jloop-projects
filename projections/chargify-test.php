@@ -18,7 +18,11 @@ print_r($customer_x);
 
 $sub = new ChargifySubscription(NULL, $test);
 $subs = $sub->getAll();
-echo '<h2>Array of 50 customer objects</h2>';
-print_r($subs);
+echo '<h2>Array of Subscriptions</h2>';
+//print_r($subs);
+
+foreach($subs as $s) {
+	echo 'name: '.$s->customer->email.'<br>';
+}
 
 ?>
