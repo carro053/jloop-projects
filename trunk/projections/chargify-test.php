@@ -67,6 +67,7 @@ echo '<h2>Array of Subscriptions</h2>';
 //print_r($subs);
 
 $endMo = strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59");
+$chargifyTotal = 0;
 
 foreach($subs as $s) {
 	
@@ -75,7 +76,9 @@ foreach($subs as $s) {
 	if ($nextSched < $endMo) $thisMonth = "true";
 	else $thisMonth = "false";
 				
-	
+	if ($thisMonth == "true" && $s->state == "active") {
+		$chargifyTotal += $price;
+	}
 	
 	
 	echo 'name: '.$s->customer->email.'<br>';
@@ -86,4 +89,5 @@ foreach($subs as $s) {
 	echo '<br>';
 }
 
+echo "Chargify Total: ".$chargifyTotal;
 ?>
