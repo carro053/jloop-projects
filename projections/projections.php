@@ -229,12 +229,11 @@ echo 'CHARGIFY invoices:<br />';
 require_once('Chargify-PHP-Client/lib/Chargify.php');
 $test = FALSE;
 
-$sub = new ChargifySubscription(NULL, $test);
-$sub->setActiveDomain("realatomic", "OPoM2KVP7almaPyrAgpJ");
-$subs = $sub->getAll();
-
 $chargifyTotal = 0;
 $endMo = strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59");
+////JLOOP account
+$sub = new ChargifySubscription(NULL, $test);
+$subs = $sub->getAll();
 
 foreach($subs as $s) {
 	
@@ -247,14 +246,23 @@ foreach($subs as $s) {
 		$chargifyTotal += $price;
 		echo '* '.$s->customer->email.': '.money_format('%n', $price).'<br>';
 	}
+}
+/////// REAL ATOMIC account
+$test = true; //hacking the library to set the RA api as the "test" integration
+$sub = new ChargifySubscription(NULL, $test);
+$subs = $sub->getAll();
+
+foreach($subs as $s) {
 	
-	
-	//echo 'name: '.$s->customer->email.'<br>';
-	//echo 'price: '.$price.'<br>';
-	//echo 'next: '.$s->next_assessment_at.'<br>';
-	//echo 'this month: '.$thisMonth.'<br>';
-	//echo 'status: '.$s->state.'<br>';
-	//echo '<br>';
+	$price = floatval($s->product->price_in_cents)/100;
+	$nextSched = strtotime($s->next_assessment_at);
+	if ($nextSched < $endMo) $thisMonth = "true";
+	else $thisMonth = "false";
+				
+	if ($thisMonth == "true" && $s->state == "active") {
+		$chargifyTotal += $price;
+		echo '* '.$s->customer->email.': '.money_format('%n', $price).'<br>';
+	}
 }
 
 //$sub->setActiveDomain("realatomic", "OPoM2KVP7almaPyrAgpJ");
