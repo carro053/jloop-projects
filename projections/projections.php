@@ -244,7 +244,7 @@ foreach($subs as $s) {
 				
 	if ($thisMonth == "true" && $s->state == "active") {
 		$chargifyTotal += $price;
-		echo '* '.$s->customer->email.': '.$price.'<br>';
+		echo '* '.$s->customer->email.': '.money_format('%n', $price).'<br>';
 	}
 	
 	
@@ -256,7 +256,7 @@ foreach($subs as $s) {
 	//echo '<br>';
 }
 
-echo "Chargify Total: ".$chargifyTotal."<br><br>";
+echo "Chargify Total: ".money_format('%n',$chargifyTotal)."<br><br>";
 
 
 
