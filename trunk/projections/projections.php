@@ -233,6 +233,7 @@ $sub = new ChargifySubscription(NULL, $test);
 $subs = $sub->getAll();
 
 $chargifyTotal = 0;
+$endMo = strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59");
 
 foreach($subs as $s) {
 	
