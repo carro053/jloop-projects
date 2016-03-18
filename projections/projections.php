@@ -256,24 +256,7 @@ foreach($subs as $s) {
 	//echo '<br>';
 }
 
-echo "Chargify Total: ".$chargifyTotal;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+echo "Chargify Total: ".$chargifyTotal."<br><br>";
 
 
 
@@ -289,7 +272,7 @@ echo "Estimated Hourly Total based on last few months (manually entered by Jay):
 
 echo "------------------------";
 
-$projectedTotal = $invoicedTotal + $projectTotal + $recurOtherTotal + $recurTotal + $weeklyTotal;
+$projectedTotal = $invoicedTotal + $projectTotal + $recurOtherTotal + $recurTotal + $weeklyTotal + $chargifyTotal;
 echo '<strong>PROJECTED TOTAL FOR MONTH: '.money_format('%n', $projectedTotal)."</strong>";
 
 echo "<br /><br />";
