@@ -10,9 +10,9 @@ Reference Documentation: http://support.chargify.com/faqs/api/api-authentication
 class ChargifyConnector
 {
 	private $api_key = 'OPoM2KVP7almaPyrAgpJ';
-	private $test_api_key = 'YOUR TEST API KEY HERE';
+	private $test_api_key = 'OPoM2KVP7almaPyrAgpJ';
 	private $domain = 'jloop'; //your chargify domain, e.g. if you have [your-domain].chargify.com, then enter "your-domain" only.
-	private $test_domain = 'YOUR TEST DOMAIN';
+	private $test_domain = 'realatomic';
 	
 	private $active_api_key;
 	private $active_domain;

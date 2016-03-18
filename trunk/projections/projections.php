@@ -230,6 +230,7 @@ require_once('Chargify-PHP-Client/lib/Chargify.php');
 $test = FALSE;
 
 $sub = new ChargifySubscription(NULL, $test);
+$sub->setActiveDomain("realatomic", "OPoM2KVP7almaPyrAgpJ");
 $subs = $sub->getAll();
 
 $chargifyTotal = 0;
@@ -255,6 +256,8 @@ foreach($subs as $s) {
 	//echo 'status: '.$s->state.'<br>';
 	//echo '<br>';
 }
+
+//$sub->setActiveDomain("realatomic", "OPoM2KVP7almaPyrAgpJ");
 
 echo "Chargify Total: ".money_format('%n',$chargifyTotal)."<br><br>";
 

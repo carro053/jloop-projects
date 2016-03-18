@@ -63,9 +63,8 @@ $customer_x = $customer0->getByID();
 echo '<h2>Single customer object by ID</h2>';
 print_r($customer_x);
 */
-
+$test = true;
 $sub = new ChargifySubscription(NULL, $test);
-$sub->setActiveDomain("realatomic", "OPoM2KVP7almaPyrAgpJ");
 $subs = $sub->getAll();
 echo '<h2>Array of Subscriptions</h2>';
 //print_r($subs);
