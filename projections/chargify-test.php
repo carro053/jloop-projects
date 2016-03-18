@@ -62,6 +62,7 @@ print_r($customer_x);
 */
 
 $sub = new ChargifySubscription(NULL, $test);
+$sub->setActiveDomain("realatomic", "OPoM2KVP7almaPyrAgpJ");
 $subs = $sub->getAll();
 echo '<h2>Array of Subscriptions</h2>';
 //print_r($subs);
