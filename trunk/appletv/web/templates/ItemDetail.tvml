@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<document data-view="ItemDetail" data-media-id="${this.item.externalID}" data-related-playlist="${this.related.id}">
+  <head>
+    <style>
+      .showTextOnHighlight {
+        tv-text-highlight-style: show-on-highlight;
+      }
+      .whiteBadge {
+        tv-tint-color: rgb(255, 255, 255);
+      }
+      .shelfLayout {
+        padding: 20 90 50;
+      }
+      .darkBackgroundColor {
+        background-color: #212c4b;
+      }
+      .playBtn {
+        padding: 5px 20px;
+      }
+      .playlist-title {
+        color: rgba(255,255,255,.75);
+        margin: 0 0 50px;
+      }
+      .item-image {
+        width: 360px;
+        height: 202px;
+      }
+
+    </style>
+  </head>
+  <productTemplate class="darkBackgroundColor" theme="dark">
+
+    <banner>
+      <heroImg src="${this.item.artworkImageURL}" style="width:640px" />
+      <stack style="width:720px; margin:100px 100px 0px 200px">
+        <!--
+          Use "he" (HTML Entity) encoder to handle html-unsafe characters, such as "&"
+          This addresses the Apple TV aversion to rendering CDATA blocks, without
+          which the built-in DOM parser barfs on those characters.
+        -->
+        <title>${he.encode(this.item.title)}</title>
+        <description allowsZooming="true">${he.encode(this.item.description)}</description>
+        <row>
+          <buttonLockup class="playBtn" id="play-button">
+            <text>Play Video</text>
+          </buttonLockup>
+        </row>
+      </stack>
+    </banner>
+    <shelf id="related-section">
+      <header>
+        <title class="playlist-title">${he.encode(this.related.title)}</title>
+      </header>
+      <section id="related-items"></section>
+    </shelf>
+
+  </productTemplate>
+</document>

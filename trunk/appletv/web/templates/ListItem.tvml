@@ -1,0 +1,9 @@
+<lockup
+  data-href="templates/ItemDetail.tvml"
+  data-media-id="${this.externalID}"
+  data-related-playlist="${this.related}"
+  data-parent-view="${this.parentView}"
+  data-view="ListItem">
+  <img class="item-image" src="${this.artworkImageURL}" />
+  <title class="scrollTextOnHighlight">${he.encode(this.title)}</title>
+</lockup>
