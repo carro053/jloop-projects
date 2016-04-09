@@ -1,0 +1,8 @@
+<lockup
+  data-href="templates/ItemDetail.tvml"
+  data-media-id="${this.externalID}"
+  data-related-playlist="${this.related}"
+  data-view="ListItem">
+  <img class="item-image-featured" src="${this.artworkImageURL}" />
+  <title class="featured-title">${he.encode(this.title)}</title>
+</lockup>

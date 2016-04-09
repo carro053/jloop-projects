@@ -1,0 +1,14 @@
+{
+  "playlists": [
+    "lrn93170",
+    "dHKxUJFR",
+    "rz1RQYdQ"
+  ],
+  "featuredPlaylist": "nn7pm87k",
+  "splashScreen": "images/jw-main.png",
+  "bannerImage": "images/jw-header.png",
+  "backgroundColor": "#7e0023",
+  "autoAdvance": true,
+  "autoAdvanceWarningOffset": 10,
+  "autoAdvanceMessage": "The next video will start in ${offset} seconds."
+}
