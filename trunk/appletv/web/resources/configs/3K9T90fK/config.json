@@ -5,7 +5,7 @@
   "featuredPlaylist": "wsHCIytP",
   "splashScreen": "images/jw-main.png",
   "bannerImage": "images/jw-header.png",
-  "backgroundColor": "#FFFFFF",
+  "backgroundColor": "#2399a6",
   "autoAdvance": true,
   "autoAdvanceWarningOffset": 10,
   "autoAdvanceMessage": "The next video will start in ${offset} seconds."
