@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "e75b8f88-3201-0010-8c6c-15735ff18bc4++2844",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "e75b8f88-3201-0010-8c6c-15735ff18bc4++2844" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "e75b8f88-3201-0010-8c6c-15735ff18bc4++2844" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "31764AEE-9BB2-40A2-AE52-E3EF244912F4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "e75b8f88-3201-0010-8c6c-15735ff18bc4++2844" : "appletv-trunk\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "jwplayer-for-tv",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "app\/jwplayer-appletv-tvos-app\/jwplayer-for-tv.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/jay%40jloop.com@jloop.slsapp.com\/source\/jloopprojects",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "e75b8f88-3201-0010-8c6c-15735ff18bc4++2844"
+    }
+  ]
+}
