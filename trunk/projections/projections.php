@@ -48,6 +48,7 @@ $recurCount = 0;
 $recurOtherTotal =0;
 $weeklyCount = 0;
 $weeklyTotal = 0;
+$chargifyTotal = 0;
 ////
 
 echo '<h1>'.$month_array[floatval($mo)].', '.$yr.'</h1>';
@@ -229,7 +230,7 @@ echo 'CHARGIFY invoices:<br />';
 require_once('Chargify-PHP-Client/lib/Chargify.php');
 $test = FALSE;
 
-$chargifyTotal = 0;
+
 $endMo = strtotime($month_array[floatval($mo)]." ".$days.", ".$yr." 23:59:59");
 ////JLOOP account
 $sub = new ChargifySubscription(NULL, $test);
