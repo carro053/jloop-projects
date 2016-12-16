@@ -1609,8 +1609,9 @@ Still need at least '.$event['Event']['need'].'!';
 		print($data);
 		exit();
 	}
-	function group_email_list($gid)
+	function group_email_list($gid,$secret)
 	{
+		if ($secret != "jloopify") echo "nope"; exit();
 		$this->layout = 'dowehaveenough_main';
 		$this->GroupsUser->bindModel(array('belongsTo'=>array('User' =>array('className'=>'User','foreignKey'=>'user_id','conditions'=>'','order'=> '','limit'=> ''))));
 		$users = $this->GroupsUser->findAll('GroupsUser.group_id = '.$gid.' AND GroupsUser.unsubscribed = 0');
