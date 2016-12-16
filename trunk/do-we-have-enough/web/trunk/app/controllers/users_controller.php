@@ -1614,7 +1614,8 @@ Still need at least '.$event['Event']['need'].'!';
 		$this->layout = 'dowehaveenough_main';
 		$this->GroupsUser->bindModel(array('belongsTo'=>array('User' =>array('className'=>'User','foreignKey'=>'user_id','conditions'=>'','order'=> '','limit'=> ''))));
 		$users = $this->GroupsUser->findAll('GroupsUser.group_id = '.$gid.' AND GroupsUser.unsubscribed = 0');
-		
+		print_r($users);
+		exit();
 		
 		$this->set('data',$users);
 	}
