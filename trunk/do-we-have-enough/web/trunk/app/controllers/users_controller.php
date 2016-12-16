@@ -1615,9 +1615,10 @@ Still need at least '.$event['Event']['need'].'!';
 		$this->GroupsUser->bindModel(array('belongsTo'=>array('User' =>array('className'=>'User','foreignKey'=>'user_id','conditions'=>'','order'=> '','limit'=> ''))));
 		$users = $this->GroupsUser->findAll('GroupsUser.group_id = '.$gid.' AND GroupsUser.unsubscribed = 0');
 		foreach ($users as $u) {
+			
 			echo $u['email'].",";
 		}
-		//print_r($users);
+		print_r($users);
 		exit();
 		
 		//$this->set('data',$users);
