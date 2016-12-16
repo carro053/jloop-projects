@@ -1616,9 +1616,9 @@ Still need at least '.$event['Event']['need'].'!';
 		$users = $this->GroupsUser->findAll('GroupsUser.group_id = '.$gid.' AND GroupsUser.unsubscribed = 0');
 		foreach ($users as $u) {
 			
-			echo $u['email'].",";
+			echo $u['User']['email'].",";
 		}
-		print_r($users);
+		//print_r($users);
 		exit();
 		
 		//$this->set('data',$users);
