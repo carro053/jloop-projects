@@ -67,6 +67,6 @@
 	Router::connect('/unsubscribe_from_group/*', array('controller' => 'users', 'action' => 'unsubscribe_from_group'));
 	Router::connect('/help', array('controller' => 'users', 'action' => 'help'));
 	Router::connect('/event_list', array('controller' => 'users', 'action' => 'event_list'));
-	Router::connect('/group_email_list',array('controller' => 'users', 'action' => 'group_email_list'));
+	Router::connect('/group_email_list/*', array('controller' => 'users', 'action' => 'group_email_list'));
 	Router::parseExtensions('rss', 'xml');
 ?>
