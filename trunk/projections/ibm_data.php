@@ -7,8 +7,9 @@ setlocale(LC_MONETARY, 'en_US');
 include("projections_stuff.php");
 
 // Contact.ContactID = Guid("e6cc6256-4e28-4196-87b7-b7a6d5006570")
+// ?where=Contact.ContactID+%3d+Guid(%22e6cc6256-4e28-4196-87b7-b7a6d5006570%22)
 
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices?where=Contact.ContactID+%3d+Guid(%22e6cc6256-4e28-4196-87b7-b7a6d5006570%22)', 'core'), array());
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('where' => 'Contact.ContactID+%3d+Guid(%22e6cc6256-4e28-4196-87b7-b7a6d5006570%22)'));
 if ($XeroOAuth->response['code'] == 200) {
 	$inv = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	pr($inv);
