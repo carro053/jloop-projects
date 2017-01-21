@@ -9,7 +9,7 @@ include("projections_stuff.php");
 // Contact.ContactID = Guid("e6cc6256-4e28-4196-87b7-b7a6d5006570")
 // ?where=Contact.ContactID+%3d+Guid(%22e6cc6256-4e28-4196-87b7-b7a6d5006570%22)
 
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('Contact.ContactID' => 'Guid(%22e6cc6256-4e28-4196-87b7-b7a6d5006570%22)'));
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('Contact.ContactID' => 'Guid(%22e6cc6256-4e28-4196-87b7-b7a6d5006570%22)','fromDate' => '2016-09-1','toDate' => '2016-12-31'));
 if ($XeroOAuth->response['code'] == 200) {
 	$inv = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	pr($inv);
