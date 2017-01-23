@@ -9,7 +9,7 @@
 	//$xml_data = "<request> <notes>qwer</notes> <hours>0.25</hours> <project_id>75406</project_id> <task_id>93182</task_id> <spent_at>Fri, 08 Feb 2008</spent_at> </request>";
 	//$url = "https://jloop.harvestapp.com/projects?updated_since=2014-".$mo."-01+18%3A30";
 	//$url = "https://jloop.harvestapp.com/projects/4380968/entries?from=20140609&to=20140615";
-	$url = "https://jloop.harvestapp.com/projects/12019335";
+	$url = "https://jloop.harvestapp.com/projects?client=3381986";
 	
 	$headers = array(
 		"Content-type: application/xml",
@@ -34,6 +34,7 @@
 	if (curl_errno($ch)) {
 		print "Error: " . curl_error($ch);
 	} else {
-		print_r($data);
+		$clients = simplexml_load_string ( $data );
+		print_r($clients);
 	}
 ?>
