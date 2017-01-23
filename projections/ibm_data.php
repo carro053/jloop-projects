@@ -23,7 +23,7 @@ echo $enddate;
 $where = 'Contact.ContactID=Guid("e6cc6256-4e28-4196-87b7-b7a6d5006570") && Date>=DateTime('.$myyear.', 01, 01) && Date<=DateTime('.$enddate.') && Reference.Contains("WO") && Status != "DELETED" && Status != "VOIDED"';
 echo $where;
 
-/*
+
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('where' => $where));
 
 
@@ -61,23 +61,6 @@ if ($XeroOAuth->response['code'] == 200) {
 		echo "\n";
 		
 		
-		///
-		if ($row->RowType == "Section") {
-			if ($row->Title == "Less Cost of Sales") break;
-			echo "<strong>".$row->Title."</strong>";
-			if (count($row->Rows) > 0) {
-				foreach ($row->Rows->Row as $sectionrow) {
-					echo "<br />";
-					echo " * ";
-					echo $sectionrow->Cells->Cell[0]->Value." = ".$sectionrow->Cells->Cell[1]->Value;
-					$invoicedTotal = floatval($sectionrow->Cells->Cell[1]->Value);
-					if ($sectionrow->Cells->Cell[0]->Value == "Total Revenue") $endofrevenue = true;
-				}
-			}
-		}
-		echo "<br />";
-		if ($endofrevenue) break;
-		//
 	}
 	//pr($accounts->Reports);
 	//echo "Grand total: ".$grandtotal;
@@ -86,7 +69,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	outputError($XeroOAuth);
 }
 
-*/
+
 
 
 
