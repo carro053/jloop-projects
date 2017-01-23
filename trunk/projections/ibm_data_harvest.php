@@ -64,7 +64,7 @@
 			echo $projectHours.",";
 			echo $project->active;
 			echo "\n";
-			echo "<br>";
+			//echo "<br>";
 			//echo "******************************<br><br><br>";
 		}
 	}
