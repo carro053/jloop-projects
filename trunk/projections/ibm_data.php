@@ -15,9 +15,10 @@ if ($XeroOAuth->response['code'] == 200) {
 	//pr($inv);
 	
 	foreach($inv->Invoices[0] as $invoice) {
-		pr($invoice);
+		//pr($invoice);
+		
+		echo $invoice->Reference;
 		/*
-		echo $invoice->RowType;
 		if ($row->RowType == "Section") {
 			if ($row->Title == "Less Cost of Sales") break;
 			echo "<strong>".$row->Title."</strong>";
