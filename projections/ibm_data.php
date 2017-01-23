@@ -9,13 +9,14 @@ include("projections_stuff.php");
 // Contact.ContactID = Guid("e6cc6256-4e28-4196-87b7-b7a6d5006570")
 // ?where=Contact.ContactID+%3d+Guid(%22e6cc6256-4e28-4196-87b7-b7a6d5006570%22)
 
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('where' => 'Contact.ContactID=Guid("e6cc6256-4e28-4196-87b7-b7a6d5006570") && Date>=DateTime(2016, 01, 01) && Reference.Contains("WO") && Status != "DELETED" && Status != "VOIDED"'));
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('where' => 'Contact.ContactID=Guid("e6cc6256-4e28-4196-87b7-b7a6d5006570") && Date>=DateTime(2016, 08, 01) && Reference.Contains("WO") && Status != "DELETED" && Status != "VOIDED"'));
 if ($XeroOAuth->response['code'] == 200) {
 	$inv = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	//pr($inv);
 	$grandtotal = 0;
 	foreach($inv->Invoices[0] as $invoice) {
 		//pr($invoice);
+		$numHours = 0;
 		
 		echo $invoice->Total;
 		echo "<br>";
@@ -25,10 +26,13 @@ if ($XeroOAuth->response['code'] == 200) {
 		if ($XeroOAuth->response['code'] == 200) {
 			$invdetails = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 			foreach($invdetails->Invoices->Invoice->LineItems->LineItem as $lineitem) {
-				echo $lineitem->Description." - ".$lineitem->Quantity."<br>";
+				//echo $lineitem->Description." - ".$lineitem->Quantity."<br>";
+				$numHours += floatval($lineitem->Quantity);
 			}
 		}
-		
+		echo "Total Hours: ".$numHours."<br>";
+		$rate = $invoice->Total/$numHours;
+		echo "Rate: ".$rate."<br";
 		
 		
 		
