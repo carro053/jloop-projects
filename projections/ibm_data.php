@@ -17,9 +17,10 @@ if ($XeroOAuth->response['code'] == 200) {
 	foreach($inv->Invoices[0] as $invoice) {
 		//pr($invoice);
 		$numHours = 0;
-		
-		echo $invoice->Total;
-		echo "<br>";
+		echo $invoice->InvoiceNumber.",";
+		echo $invoice->Reference.",";
+		//echo $invoice->Total;
+		//echo "<br>";
 		$grandtotal += floatval($invoice->Total);
 		
 		$invresponse = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices/'.$invoice->InvoiceID, 'core'), array());
@@ -30,10 +31,13 @@ if ($XeroOAuth->response['code'] == 200) {
 				$numHours += floatval($lineitem->Quantity);
 			}
 		}
-		echo "Total Hours: ".$numHours."<br>";
-		$rate = $invoice->Total/$numHours;
-		echo "Rate: ".$rate."<br>";
+		//echo "Total Hours: ".$numHours."<br>";
+		//$rate = $invoice->Total/$numHours;
+		//echo "Rate: ".$rate."<br>";
+		echo $numHours.",";
+		echo $invoice->Total;
 		
+		echo "<br>";
 		
 		
 		/*
