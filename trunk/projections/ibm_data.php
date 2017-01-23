@@ -24,7 +24,9 @@ if ($XeroOAuth->response['code'] == 200) {
 		$invresponse = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices/'.$invoice->InvoiceID, 'core'), array());
 		if ($XeroOAuth->response['code'] == 200) {
 			$invdetails = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
-			pr($invdetails);
+			foreach($invdetails->Invoices->Invoice->LineItems->LineItem as $lineitem) {
+				echo $lineitem->Description." - ".$lineitem->Quantity."<br>";
+			}
 		}
 		
 		
