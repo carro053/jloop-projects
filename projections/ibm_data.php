@@ -13,11 +13,13 @@ $response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), arra
 if ($XeroOAuth->response['code'] == 200) {
 	$inv = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	//pr($inv);
-	
+	$grandtotal = 0;
 	foreach($inv->Invoices[0] as $invoice) {
 		//pr($invoice);
 		
-		echo $invoice->Reference;
+		echo $invoice->Total;
+		echo "<br>";
+		$grandtotal += floatval($invoice->Total->Value);
 		/*
 		if ($row->RowType == "Section") {
 			if ($row->Title == "Less Cost of Sales") break;
@@ -37,6 +39,7 @@ if ($XeroOAuth->response['code'] == 200) {
 		*/
 	}
 	//pr($accounts->Reports);
+	echo "Grand total: ".$grandtotal;
 	
 } else {
 	outputError($XeroOAuth);
