@@ -41,15 +41,16 @@
 		foreach ($clients->project as $project) {
 			echo $project->name." - ".$project->budget."<br>";
 			$new_url = "https://jloop.harvestapp.com/projects/".$project->id."/entries?from=".$year."0101&to=20170123";
-			/*curl_setopt($ch, CURLOPT_URL, $new_url);
+			curl_setopt($ch, CURLOPT_URL, $new_url);
 			$data2 = curl_exec($ch);
 	
 			if (curl_errno($ch)) {
 				print "Error: " . curl_error($ch);
 			} else {
 				$time = simplexml_load_string($data2);
-			}*/
-			echo $new_url."<br>";
+				print_r($time);
+			}
+			echo "******************************<br><br><br>";
 		}
 	}
 ?>
