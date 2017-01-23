@@ -32,7 +32,7 @@ if ($XeroOAuth->response['code'] == 200) {
 		}
 		echo "Total Hours: ".$numHours."<br>";
 		$rate = $invoice->Total/$numHours;
-		echo "Rate: ".$rate."<br";
+		echo "Rate: ".$rate."<br>";
 		
 		
 		
