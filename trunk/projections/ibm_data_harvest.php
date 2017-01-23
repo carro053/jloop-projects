@@ -1,8 +1,9 @@
 <?php
 	
 	
-ini_set('display_errors',1); 
-error_reporting(E_ALL);
+	ini_set('display_errors',1); 
+	error_reporting(E_ALL);
+	
 	$credentials = "jay@jloop.com:a4d6s5";
 	// just a sample below naturally you need to replace this with the right project and taks ids, as you cannot access these.
 	//$xml_data = "<request> <notes>qwer</notes> <hours>0.25</hours> <project_id>75406</project_id> <task_id>93182</task_id> <spent_at>Fri, 08 Feb 2008</spent_at> </request>";
@@ -33,6 +34,6 @@ error_reporting(E_ALL);
 	if (curl_errno($ch)) {
 		print "Error: " . curl_error($ch);
 	} else {
-		pr($data);
+		print_r($data);
 	}
 ?>
