@@ -49,7 +49,7 @@
 			} else {
 				$time = simplexml_load_string($data2);
 				//print_r($time);
-				foreach($time['day-entry'] as $dayentry) {
+				foreach($time->{'day-entry'} as $dayentry) {
 					$projectHours += floatval($dayentry->hours);
 				}
 				
