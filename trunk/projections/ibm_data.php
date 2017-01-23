@@ -19,7 +19,7 @@ if ($XeroOAuth->response['code'] == 200) {
 		
 		echo $invoice->Total;
 		echo "<br>";
-		$grandtotal += floatval($invoice->Total->Value);
+		$grandtotal += floatval($invoice->Total);
 		/*
 		if ($row->RowType == "Section") {
 			if ($row->Title == "Less Cost of Sales") break;
