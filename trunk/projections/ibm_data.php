@@ -12,18 +12,21 @@ if(isset($_GET['year'])) {
 	$myyear = "2017";
 }
 
-if(isset($_GET['end']) && ($_GET['end'] != "Today")) {
+if(isset($_GET['end']) && ($_GET['end'] != "Today") && ($_GET['end'] != "")) {
 	$enddate = $_GET['end'].', 01, 01';
 } else {
 	$enddate = date("Y, m, d");
 }
 echo $enddate;
+
+
+$where = 'Contact.ContactID=Guid("e6cc6256-4e28-4196-87b7-b7a6d5006570") && Date>=DateTime('.$myyear.', 01, 01) && Date<=DateTime('.$enddate.') && Reference.Contains("WO") && Status != "DELETED" && Status != "VOIDED"';
+echo $where;
+
 /*
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('where' => $where));
 
-// Contact.ContactID = Guid("e6cc6256-4e28-4196-87b7-b7a6d5006570")
-// ?where=Contact.ContactID+%3d+Guid(%22e6cc6256-4e28-4196-87b7-b7a6d5006570%22)
 
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('where' => 'Contact.ContactID=Guid("e6cc6256-4e28-4196-87b7-b7a6d5006570") && Date>=DateTime('.$myyear.', 01, 01) && Date<=DateTime('.$enddate.') && Reference.Contains("WO") && Status != "DELETED" && Status != "VOIDED"'));
 if ($XeroOAuth->response['code'] == 200) {
 	$inv = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	//pr($inv);
