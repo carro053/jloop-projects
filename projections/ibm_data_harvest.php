@@ -39,7 +39,7 @@
 		
 		
 		foreach ($clients->project as $project) {
-			echo $project['name']." - ".$project['budget']."<br>";
+			echo $project->name." - ".$project->budget."<br>";
 		}
 	}
 ?>
