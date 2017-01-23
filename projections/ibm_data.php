@@ -26,6 +26,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	foreach($inv->Invoices[0] as $invoice) {
 		//pr($invoice);
 		$numHours = 0;
+		echo $invoice->Date.",";
 		echo $invoice->InvoiceNumber.",";
 		echo $invoice->Reference.",";
 		//echo $invoice->Total;
