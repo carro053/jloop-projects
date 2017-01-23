@@ -9,7 +9,7 @@
 	//$xml_data = "<request> <notes>qwer</notes> <hours>0.25</hours> <project_id>75406</project_id> <task_id>93182</task_id> <spent_at>Fri, 08 Feb 2008</spent_at> </request>";
 	//$url = "https://jloop.harvestapp.com/projects?updated_since=2014-".$mo."-01+18%3A30";
 	//$url = "https://jloop.harvestapp.com/projects/4380968/entries?from=20140609&to=20140615";
-	$url = "https://jloop.harvestapp.com/projects?client=3381986";
+	$url = "https://jloop.harvestapp.com/projects?client=3381986&updated_since=2016-01-01";
 	
 	$headers = array(
 		"Content-type: application/xml",
