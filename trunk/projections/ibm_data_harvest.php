@@ -36,9 +36,10 @@
 	} else {
 		$clients = simplexml_load_string ( $data );
 		//print_r($clients);
-		$projectHours = 0;
+		
 		
 		foreach ($clients->project as $project) {
+			$projectHours = 0;
 			echo $project->name." - ".$project->budget."<br>";
 			$new_url = "https://jloop.harvestapp.com/projects/".$project->id."/entries?from=".$year."1101&to=20170123";
 			curl_setopt($ch, CURLOPT_URL, $new_url);
