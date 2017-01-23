@@ -37,7 +37,7 @@ if ($XeroOAuth->response['code'] == 200) {
 		echo $numHours.",";
 		echo $invoice->Total;
 		
-		echo "<br>";
+		echo "\n";
 		
 		
 		/*
