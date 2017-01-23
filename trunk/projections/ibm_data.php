@@ -17,11 +17,11 @@ if(isset($_GET['end']) && ($_GET['end'] != "Today") && ($_GET['end'] != "")) {
 } else {
 	$enddate = date("Y, m, d");
 }
-echo $enddate;
+//echo $enddate;
 
 
 $where = 'Contact.ContactID=Guid("e6cc6256-4e28-4196-87b7-b7a6d5006570") && Date>=DateTime('.$myyear.', 01, 01) && Date<=DateTime('.$enddate.') && Reference.Contains("WO") && Status != "DELETED" && Status != "VOIDED"';
-echo $where;
+//echo $where;
 
 
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('where' => $where));
