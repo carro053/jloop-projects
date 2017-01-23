@@ -40,7 +40,7 @@
 		
 		foreach ($clients->project as $project) {
 			echo $project->name." - ".$project->budget."<br>";
-			$new_url = "https://jloop.harvestapp.com/projects/".$project->id."/entries?from=".$year."0101&to=20170123";
+			$new_url = "https://jloop.harvestapp.com/projects/".$project->id."/entries?from=".$year."1101&to=20170123";
 			curl_setopt($ch, CURLOPT_URL, $new_url);
 			$data2 = curl_exec($ch);
 	
