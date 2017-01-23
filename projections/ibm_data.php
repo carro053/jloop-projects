@@ -17,6 +17,8 @@ if(isset($_GET['end']) && ($_GET['end'] != "Today")) {
 } else {
 	$enddate = date("Y, m, d");
 }
+echo $enddate;
+/*
 
 // Contact.ContactID = Guid("e6cc6256-4e28-4196-87b7-b7a6d5006570")
 // ?where=Contact.ContactID+%3d+Guid(%22e6cc6256-4e28-4196-87b7-b7a6d5006570%22)
@@ -56,7 +58,7 @@ if ($XeroOAuth->response['code'] == 200) {
 		echo "\n";
 		
 		
-		/*
+		///
 		if ($row->RowType == "Section") {
 			if ($row->Title == "Less Cost of Sales") break;
 			echo "<strong>".$row->Title."</strong>";
@@ -72,7 +74,7 @@ if ($XeroOAuth->response['code'] == 200) {
 		}
 		echo "<br />";
 		if ($endofrevenue) break;
-		*/
+		//
 	}
 	//pr($accounts->Reports);
 	//echo "Grand total: ".$grandtotal;
@@ -81,7 +83,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	outputError($XeroOAuth);
 }
 
-
+*/
 
 
 
