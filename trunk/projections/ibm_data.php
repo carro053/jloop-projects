@@ -14,7 +14,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	$inv = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	//pr($inv);
 	
-	foreach($inv->Invoices[0]->Invoice[0] as $invoice) {
+	foreach($inv->Invoices[0] as $invoice) {
 		pr($invoice);
 		/*
 		echo $invoice->RowType;
