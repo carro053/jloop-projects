@@ -35,6 +35,11 @@
 		print "Error: " . curl_error($ch);
 	} else {
 		$clients = simplexml_load_string ( $data );
-		print_r($clients);
+		//print_r($clients);
+		
+		
+		foreach ($clients->project as $project) {
+			echo $project['name']." - ".$project['budget']."<br>";
+		}
 	}
 ?>
