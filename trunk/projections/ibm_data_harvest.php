@@ -36,7 +36,7 @@
 	} else {
 		$clients = simplexml_load_string ( $data );
 		//print_r($clients);
-		
+		$projectHours = 0;
 		
 		foreach ($clients->project as $project) {
 			echo $project->name." - ".$project->budget."<br>";
@@ -48,8 +48,13 @@
 				print "Error: " . curl_error($ch);
 			} else {
 				$time = simplexml_load_string($data2);
-				print_r($time);
+				//print_r($time);
+				foreach($time->day-entry as $dayentry) {
+					$projectHours += floatval($dayentry->hours);
+				}
+				
 			}
+			echo "used: ".$projectHours."<br>";
 			echo "******************************<br><br><br>";
 		}
 	}
