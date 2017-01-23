@@ -12,10 +12,12 @@ include("projections_stuff.php");
 $response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('where' => 'Contact.ContactID=Guid("e6cc6256-4e28-4196-87b7-b7a6d5006570") && Date>=DateTime(2016, 01, 01) && Reference.Contains("WO") && Status != "DELETED" && Status != "VOIDED"'));
 if ($XeroOAuth->response['code'] == 200) {
 	$inv = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
-	pr($inv);
-	/*
-	foreach($accounts->Reports[0]->Report[0]->Rows[0]->Row as $row) {
-		//echo $row->RowType;
+	//pr($inv);
+	
+	foreach($inv->Invoices[0]->Invoice[0] as $invoice) {
+		pr($invoice);
+		/*
+		echo $invoice->RowType;
 		if ($row->RowType == "Section") {
 			if ($row->Title == "Less Cost of Sales") break;
 			echo "<strong>".$row->Title."</strong>";
@@ -31,9 +33,10 @@ if ($XeroOAuth->response['code'] == 200) {
 		}
 		echo "<br />";
 		if ($endofrevenue) break;
+		*/
 	}
 	//pr($accounts->Reports);
-	*/
+	
 } else {
 	outputError($XeroOAuth);
 }
