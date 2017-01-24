@@ -67,7 +67,7 @@ if (curl_errno($ch)) {
 		}
 		if ($projectHours == 0 && floatval($project->budget) == 0) {
 			// do nothing
-		} else if ($projectHours == 0 && !$project->active) {
+		} else if ($projectHours == 0 && $project->active == "false") {
 			// also do nothing
 		} else {
 			echo $project->name.",";
