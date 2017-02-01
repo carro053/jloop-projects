@@ -2,7 +2,7 @@
 SetEnvIf Request_URI ^/projections.php require_auth=true
 
 # Auth stuff
-AuthUserFile /var/www/htpasswd
+AuthUserFile /var/www/vhosts/jloop.com/subdomains/projections/httpdocs/.htpasswd
 AuthName "Password Protected"
 AuthType Basic
 
