@@ -32,7 +32,7 @@
                 <label for="cannot_bring"><span>Users cannot bring guests</span></label>
             </div>
             <div class="optionrow">
-                <label style="margin-right: 10px;" for="cancel_event"><span>Set a max capacity of &nbsp;</span></label>
+                <label style="margin-right: 0px; margin-left:35px;" for="cancel_event"><span>Set a max capacity of &nbsp;</span></label>
                 <input class="small" name="data[Event][max]" id="EventMax" type="text" onfocus="javascript:the_tooltip(this,'Leave blank or at 0 for no maximum.','cancel');" />
                 <span> for this event.</span>
             </div>
