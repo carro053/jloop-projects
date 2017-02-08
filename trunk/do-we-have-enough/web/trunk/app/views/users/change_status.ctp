@@ -72,10 +72,14 @@ endforeach;
 	</div><!-- end .left -->
 	<div class="right">
 		<?php 
-	    if($event['Event']['max'] != 0 && $in >= $event['Event']['max']) echo '<h2 style="margin-bottom:2px;"><span>Event at Capacity</span></h2>';
-	    if($event['Event']['max'] != 0 && $event['Event']['max'] - $in == 1) echo '<h2 style="margin-bottom:2px;"><span>Only 1 Spot Left</span></h2>';
+		if(!empty($over_maximum)) {
+			echo '<h2 style="margin-bottom:2px;"><span>Could not add you to the event. The event is currently at the maximum.</span></h2>';
+		}else if($event['Event']['max'] != 0 && $in >= $event['Event']['max']) {
+			echo '<h2 style="margin-bottom:2px;"><span>Event at Capacity</span></h2>';
+		}elseif($event['Event']['max'] != 0 && $event['Event']['max'] - $in == 1) {
+			echo '<h2 style="margin-bottom:2px;"><span>Only 1 Spot Left</span></h2>';
+		}
 		if($the_user['EventsUser']['status'] != 0) echo '<h2 style="margin-bottom:2px;">Your Status</h2>';
-		if(!empty($over_maximum)) echo '<h3 style="color:red;">The even is currently at the maximum.</h3>';
 		if($the_user['EventsUser']['status'] == 1)
 		{
 			echo "<span class=\"yes-im-in-selected\"></span>";
