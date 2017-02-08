@@ -488,7 +488,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 						)
 					)
 				));
-				$event = $this->Event->find('Event.id = '.$_POST['event_id']);
+				$event = $this->Event->find('Event.id = '.$events_user['EventsUser']['event_id']);
 				if($event['Event']['max'] != 0) {
 					//count how many are currently in
 					$in = 0;
