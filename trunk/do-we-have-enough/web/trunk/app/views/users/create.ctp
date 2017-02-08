@@ -32,6 +32,11 @@
                 <label for="cannot_bring"><span>Users cannot bring guests</span></label>
             </div>
             <div class="optionrow">
+                <label style="margin-right: 10px;" for="cancel_event"><span>Set a max capacity of &nbsp;</span></label>
+                <input class="small" name="data[Event][max]" id="EventMax" type="text" onfocus="javascript:the_tooltip(this,'Leave blank or at 0 for no maximum.','cancel');" />
+                <span> for this event.</span>
+            </div>
+            <div class="optionrow">
                 <?php echo $form->checkbox('Event.cancel_email'); ?>
                 <label style="margin-right: 10px;" for="cancel_event"><span>Cancel this event&nbsp;</span></label>
                 <?php echo $form->select('Event.cancel_email_date',array('Today','Tomorrow','Another Date'),null,array('class'=>'select_date','onchange'=>'javascript:cancel_change(this.value);'),null); ?>
