@@ -764,13 +764,55 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 	{
 		$this->User->bindModel(array('hasOne'=>array('UserMobileDevice'=>array('foreignKey'=>false,'conditions'=> array('User.id = UserMobileDevice.user_id')),'EventsUser' =>array('className'=>'EventsUser','foreignKey'=>'user_id','conditions'=>'EventsUser.event_id = '.$_POST['event_id'],'order'=> '','limit'=> ''))));
 		$user = $this->User->find('User.email = "'.$_POST['email_address'].'" AND UserMobileDevice.device_id = "'.$_POST['device_id'].'"');
-		if(isset($user['UserMobileDevice']['id']) && $user['EventsUser']['status'] != $_POST['status'])
+		if(isset($user['UserMobileDevice']['id']) && ($user['EventsUser']['status'] != $_POST['status'] || $user['EventsUser']['guests'] != $_POST['guests']))
 		{
-			$user['EventsUser']['status'] = $_POST['status'];
-			$user['EventsUser']['guests'] = $_POST['guests'];
-			$user['EventsUser']['status_changed'] = date('Y-m-d H:i:s'); 
-			$this->EventsUser->save($user['EventsUser']);
-			$this->set('result','true');	
+			$over_maximum = false;
+			//check if more people are being saved as IN
+			if(($_POST['status'] == 1 && $user['EventsUser']['status'] != 1) || ($_POST['status'] == 1 && $_POST['guests'] > $user['EventsUser']['guests'])) {
+				//check to see if the event has a max and how many are in
+				$this->Event->bindModel(array(
+					'hasAndBelongsToMany'=>array(
+						'User' =>array(
+							'className'=>'User',
+							'joinTable'=>'events_users',
+							'foreignKey'=>'event_id',
+							'associationForeignKey'=>'user_id',
+							'conditions'=>'',
+							'order'=> '',
+							'limit'=> '',
+							'unique'=>true,
+							'finderQuery'=>'',
+							'deleteQuery'=>''
+						)
+					)
+				));
+				$event = $this->Event->find('Event.id = '.$_POST['event_id']);
+				if($event['Event']['max'] != 0) {
+					//count how many are currently in
+					$in = 0;
+					foreach($event['User'] as $event_user):
+						if($event_user['EventsUser']['status'] == 1) $in = $in + 1 + $event_user['EventsUser']['guests'];
+					endforeach;
+					$adding_how_many = 0;
+					if($user['EventsUser']['status'] != 1) {
+						$adding_how_many = 1 + $_POST['guests'];
+					}else{
+						$adding_how_many = $_POST['guests'] - $user['EventsUser']['guests'];
+					}
+					if($in + $adding_how_many > $event['Event']['max']) {
+						$over_maximum = true;
+					}
+				}
+			}
+			if($over_maximum) {
+				$this->set('result','false');
+			}else{
+				$user['EventsUser']['status'] = $_POST['status'];
+				$user['EventsUser']['guests'] = $_POST['guests'];
+				$user['EventsUser']['status_changed'] = date('Y-m-d H:i:s'); 
+				$this->EventsUser->save($user['EventsUser']);
+				$this->set('result','true');	
+			}
 		}else{
 			$this->set('result','false');
 		}
