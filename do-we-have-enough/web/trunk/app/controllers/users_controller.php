@@ -115,6 +115,7 @@ class UsersController extends AppController
 	{
 		$this->params['data']['Event']['date'] = date('Y-m-d', strtotime($this->params['data']['Event']['date']));
 		$i=0;
+		if(empty($this->params['data']['Event']['max']) || !is_numeric($this->params['data']['Event']['max'])) $this->params['data']['Event']['max'] = 0;
 		$current_url = '/event/'.strtolower(str_replace(array('/',' ','"',"'"),array('-','-','',''),$this->params['data']['Event']['name'])).'/'.strtolower(str_replace(array('/',' ','"',"'"),array('-','-','',''),$this->params['data']['Event']['when']));
 		while($i<1)
 		{
