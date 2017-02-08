@@ -355,14 +355,63 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 		{
 			if($status && $status != $events_user['EventsUser']['status'])
 			{
-				$events_user['EventsUser']['status'] = $status;
-				if($status == 4)
-				{
-					$events_user['EventsUser']['status'] = 1;
-					$events_user['EventsUser']['guests'] = 1;
+				$guests = 0;
+				if($status == 4) {
+					$status = 1;
+					$guests = 1;
 				}
-				$events_user['EventsUser']['status_changed'] = date('Y-m-d H:i:s'); 
-				$this->EventsUser->save($events_user);
+				$over_maximum = false;
+				//check if more people are being saved as IN
+				if($status == 1 && $events_user['EventsUser']['status'] != 1) {
+					//check to see if the event has a max and how many are in
+					$this->Event->bindModel(array(
+						'hasAndBelongsToMany'=>array(
+							'User' =>array(
+								'className'=>'User',
+								'joinTable'=>'events_users',
+								'foreignKey'=>'event_id',
+								'associationForeignKey'=>'user_id',
+								'conditions'=>'',
+								'order'=> '',
+								'limit'=> '',
+								'unique'=>true,
+								'finderQuery'=>'',
+								'deleteQuery'=>''
+							)
+						)
+					));
+					$event = $this->Event->find('Event.id = '.$events_user['Event']['id']);
+					if($event['Event']['max'] != 0) {
+						//count how many are currently in
+						$in = 0;
+						$currently_in_for_this_user = 0;
+						foreach($event['User'] as $user):
+							if($user['EventsUser']['status'] == 1) {
+								$in = $in + 1 + $user['EventsUser']['guests'];
+								if($user['id'] == $events_user['User']['id']) {
+									$currently_in_for_this_user = 1 + $user['EventsUser']['guests'];
+								}
+							}
+						endforeach;
+						$adding_how_many = 0;
+						if($events_user['EventsUser']['status'] != 1) {
+							$adding_how_many = 1 + $guests;
+						}else{
+							$adding_how_many = 1 + $guests - $currently_in_for_this_user;
+						}
+						if($in + $adding_how_many > $event['Event']['max']) {
+							$over_maximum = true;
+						}
+					}
+				}
+				if($over_maximum) {
+					$this->set('over_maximum',true);
+				}else{
+					$events_user['EventsUser']['status'] = $status;
+					$events_user['EventsUser']['guests'] = $guests;
+					$events_user['EventsUser']['status_changed'] = date('Y-m-d H:i:s'); 
+					$this->EventsUser->save($events_user);
+				}
 			}
 			$this->uAuth->set($events_user['Event']['id'],$events_user['User']['id']);
 			$this->uCookie->write(strtolower(str_replace(' ','-',$events_user['Event']['name'])).'-'.$events_user['Event']['id'],array('user_id'=>$events_user['User']['id']),'+7 Day');
