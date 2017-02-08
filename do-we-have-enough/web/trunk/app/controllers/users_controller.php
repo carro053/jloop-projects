@@ -543,36 +543,33 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 		if($increase == 1)
 		{
 			$over_maximum = false;
-			//check if more people are being saved as IN
-			if($status == 1 && $events_user['EventsUser']['status'] != 1) {
-				//check to see if the event has a max and how many are in
-				$this->Event->bindModel(array(
-					'hasAndBelongsToMany'=>array(
-						'User' =>array(
-							'className'=>'User',
-							'joinTable'=>'events_users',
-							'foreignKey'=>'event_id',
-							'associationForeignKey'=>'user_id',
-							'conditions'=>'',
-							'order'=> '',
-							'limit'=> '',
-							'unique'=>true,
-							'finderQuery'=>'',
-							'deleteQuery'=>''
-						)
+			//check to see if the event has a max and how many are in
+			$this->Event->bindModel(array(
+				'hasAndBelongsToMany'=>array(
+					'User' =>array(
+						'className'=>'User',
+						'joinTable'=>'events_users',
+						'foreignKey'=>'event_id',
+						'associationForeignKey'=>'user_id',
+						'conditions'=>'',
+						'order'=> '',
+						'limit'=> '',
+						'unique'=>true,
+						'finderQuery'=>'',
+						'deleteQuery'=>''
 					)
-				));
-				$event = $this->Event->find('Event.id = '.$events_user['EventsUser']['event_id']);
-				if($event['Event']['max'] != 0) {
-					//count how many are currently in
-					$in = 0;
-					foreach($event['User'] as $user):
-						if($user['EventsUser']['status'] == 1) $in = $in + 1 + $user['EventsUser']['guests'];
-					endforeach;
-					$adding_how_many = 1;
-					if($in + $adding_how_many > $event['Event']['max']) {
-						$over_maximum = true;
-					}
+				)
+			));
+			$event = $this->Event->find('Event.id = '.$events_user['EventsUser']['event_id']);
+			if($event['Event']['max'] != 0) {
+				//count how many are currently in
+				$in = 0;
+				foreach($event['User'] as $user):
+					if($user['EventsUser']['status'] == 1) $in = $in + 1 + $user['EventsUser']['guests'];
+				endforeach;
+				$adding_how_many = 1;
+				if($in + $adding_how_many > $event['Event']['max']) {
+					$over_maximum = true;
 				}
 			}
 			if($over_maximum) {
