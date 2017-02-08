@@ -265,9 +265,17 @@ body#home #header h1 a {
 .event #options input.small {
 	width: 47px;
 	color: #0D5270;
-	height: 27px;
+	height: 29px;
 	margin-right: 3px;
-	padding: 8px 8px 0;
+	padding: 0px 8px 0;
+	background: url(../img/bg_input_small.gif) no-repeat top left;
+	}
+.event #options input.small-digits {
+	width: 20px;
+	color: #0D5270;
+	height: 29px;
+	margin-right: 3px;
+	padding: 0px 20px 0;
 	background: url(../img/bg_input_small.gif) no-repeat top left;
 	}
 input.tiny {
