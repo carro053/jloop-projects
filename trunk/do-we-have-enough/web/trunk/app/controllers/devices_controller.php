@@ -806,6 +806,11 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 			}
 			if($over_maximum) {
 				$this->set('result','false');
+				
+				foreach($user['UserMobileDevice'] as $device):
+					$this->Notification->save_notification($user['User']['id'],$device['device_token'],'We were unable to add you to the event, '.$event['Event']['name'].', as it has reached max capacity.',$event['Event']['id'],3);
+				endforeach;
+				
 			}else{
 				$user['EventsUser']['status'] = $_POST['status'];
 				$user['EventsUser']['guests'] = $_POST['guests'];
