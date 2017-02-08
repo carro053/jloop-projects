@@ -418,16 +418,53 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 		$events_user = $this->EventsUser->find('EventsUser.event_id = '.$this->uAuth->event_id.' AND EventsUser.user_id = '.$this->uAuth->user_id);
 		if($events_user['EventsUser']['status'] != $status)
 		{
-			$events_user['EventsUser']['status'] = $status;
-			$events_user['EventsUser']['status_changed'] = date('Y-m-d H:i:s'); 
-			if($status == 4)
-			{
-				$events_user['EventsUser']['status'] = 1;
-				$events_user['EventsUser']['guests'] = 1;
-			}else{
-				$events_user['EventsUser']['guests'] = 0;
+			$over_maximum = false;
+			//check if more people are being saved as IN
+			if($status == 1 && $events_user['EventsUser']['status'] != 1) {
+				//check to see if the event has a max and how many are in
+				$this->Event->bindModel(array(
+					'hasAndBelongsToMany'=>array(
+						'User' =>array(
+							'className'=>'User',
+							'joinTable'=>'events_users',
+							'foreignKey'=>'event_id',
+							'associationForeignKey'=>'user_id',
+							'conditions'=>'',
+							'order'=> '',
+							'limit'=> '',
+							'unique'=>true,
+							'finderQuery'=>'',
+							'deleteQuery'=>''
+						)
+					)
+				));
+				$event = $this->Event->find('Event.id = '.$_POST['event_id']);
+				if($event['Event']['max'] != 0) {
+					//count how many are currently in
+					$in = 0;
+					foreach($event['User'] as $user):
+						if($user['EventsUser']['status'] == 1) $in = $in + 1 + $user['EventsUser']['guests'];
+					endforeach;
+					$adding_how_many = 1 + $events_user['EventsUser']['guests'];
+					if($in + $adding_how_many > $event['Event']['max']) {
+						$over_maximum = true;
+					}
+				}
 			}
-			$this->EventsUser->save($events_user);
+			if($over_maximum) {
+				$this->set('over_maximum',true);
+			}else{
+				$events_user['EventsUser']['status'] = $status;
+				$events_user['EventsUser']['status_changed'] = date('Y-m-d H:i:s'); 
+				if($status == 4)
+				{
+					$events_user['EventsUser']['status'] = 1;
+					$events_user['EventsUser']['guests'] = 1;
+				}else{
+					$events_user['EventsUser']['guests'] = 0;
+				}
+				$this->EventsUser->save($events_user);
+			}
 		}
 		$this->Event->bindModel(array('hasAndBelongsToMany'=>array('User' =>array('className'=>'User','joinTable'=>'events_users','foreignKey'=>'event_id','associationForeignKey'=>'user_id','conditions'=>'','order'=> '','limit'=> '','unique'=>true,'finderQuery'=>'','deleteQuery'=>''))));
 		$event = $this->Event->find('Event.url = "'.$events_user['Event']['url'].'" AND Event.validated = 1');
