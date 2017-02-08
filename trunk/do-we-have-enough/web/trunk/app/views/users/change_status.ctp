@@ -73,7 +73,7 @@ endforeach;
 	<div class="right">
 		<?php 
 		if(!empty($over_maximum)) {
-			echo '<h2 style="margin-bottom:2px;"><span>Could not add you to the event. The event is currently at the maximum.</span></h2>';
+			echo '<h2 style="margin-bottom:2px;"><span>Could not add another to the event. The event is currently at the maximum.</span></h2>';
 		}else if($event['Event']['max'] != 0 && $in >= $event['Event']['max']) {
 			echo '<h2 style="margin-bottom:2px;"><span>Event at Capacity</span></h2>';
 		}elseif($event['Event']['max'] != 0 && $event['Event']['max'] - $in == 1) {
