@@ -74,6 +74,7 @@
         <div class="right">
             <?php 
 	        if($event['Event']['max'] != 0 && $in >= $event['Event']['max']) echo '<h2 style="margin-bottom:2px;"><span>Event at Capacity</span></h2>';
+	        if($event['Event']['max'] != 0 && $in - $event['Event']['max'] == 1) echo '<h2 style="margin-bottom:2px;"><span>Only 1 Spot Left</span></h2>';
             if($the_user['EventsUser']['status'] != 0) echo '<h2 style="margin-bottom:2px;">Your Status</h2>';
 			if($the_user['EventsUser']['status'] == 1)
 			{
