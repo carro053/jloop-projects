@@ -69,7 +69,7 @@
             </ul>
             <?php } ?>
             
-			<?php if($event['Event']['max'] > 0) echo '<h2>This event has a max capacity of '.$event['Event']['max'].' set.</h2>'; ?>
+			<?php if($event['Event']['max'] > 0) echo '<br><h2>This event has a max capacity of '.$event['Event']['max'].' set.</h2>'; ?>
         </div><!-- end .left -->
         <div class="right">
             <?php 
