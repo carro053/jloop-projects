@@ -73,6 +73,7 @@ endforeach;
 	</div><!-- end .left -->
 	<div class="right">
 		<?php 
+	    if($event['Event']['max'] != 0 && $in >= $event['Event']['max']) echo '<h2 style="margin-bottom:2px;color:red;">Event at Capacity</h2>';
 		if($the_user['EventsUser']['status'] != 0) echo '<h2 style="margin-bottom:2px;">Your Status</h2>';
 		if(!empty($over_maximum)) echo '<h3 style="color:red;">The even is currently at the maximum.</h3>';
 		if($the_user['EventsUser']['status'] == 1)
@@ -84,7 +85,7 @@ endforeach;
 			}
 			if($event['Event']['cannot_bring_guests'] == 0)
 			{	
-				if($event['Event']['max'] > 0 && $in < $event['Event']['max']) {
+				if($event['Event']['max'] == 0 || $in < $event['Event']['max']) {
 					echo $ajax->link("", '/change_guests/1', array('update'=>'main','class'=>'button add-guest'));
 				}
 				echo $ajax->link("", '/change_guests/0', array('update'=>'main','class'=>'button lose-guest'));
@@ -95,7 +96,7 @@ endforeach;
 			
 		if($the_user['EventsUser']['status'] == 0)
 		{
-			if($event['Event']['max'] > 0 && $in < $event['Event']['max']) {
+			if($event['Event']['max'] == 0 || $in < $event['Event']['max']) {
 				echo $ajax->link("Yes! I'm in!", '/change_status/1', array('update'=>'main','class'=>'button yes-im-in'));
 			}else{
 				//at capacity!
@@ -106,7 +107,7 @@ endforeach;
 			echo $ajax->link("I'm 50/50.", '/change_status/3', array('update'=>'main','class'=>'button im-50'));
 		}else{
 		if($the_user['EventsUser']['status'] != 1) {
-			if($event['Event']['max'] > 0 && $in < $event['Event']['max']) {
+			if($event['Event']['max'] == 0 || $in < $event['Event']['max']) {
 				echo $ajax->link('', '/change_status/1', array('update'=>'main','class'=>'button actually-im-in'));
 			}else{
 				//at capacity!
