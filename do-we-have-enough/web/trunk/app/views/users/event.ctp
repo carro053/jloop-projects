@@ -88,7 +88,9 @@
 					if($event['Event']['max'] == 0 || $in < $event['Event']['max']) {
 						echo $ajax->link("", '/change_guests/1', array('update'=>'main','class'=>'button add-guest'));
 					}
-					echo $ajax->link("", '/change_guests/0', array('update'=>'main','class'=>'button lose-guest'));
+					if($the_user['EventsUser']['guests'] > 0) {
+						echo $ajax->link("", '/change_guests/0', array('update'=>'main','class'=>'button lose-guest'));
+					}
 				}
 			}
 			if($the_user['EventsUser']['status'] == 2) echo "<span class=\"nope-im-out-selected\"></span>";
