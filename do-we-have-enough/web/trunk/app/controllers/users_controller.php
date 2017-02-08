@@ -495,7 +495,11 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 					foreach($event['User'] as $user):
 						if($user['EventsUser']['status'] == 1) $in = $in + 1 + $user['EventsUser']['guests'];
 					endforeach;
+					echo '<br>In: '.$in;
 					$adding_how_many = 1 + $events_user['EventsUser']['guests'];
+					echo '<br>Adding: '.$adding_how_many;
+					echo '<br>Max: '.$event['Event']['max'];
+					exit;
 					if($in + $adding_how_many > $event['Event']['max']) {
 						$over_maximum = true;
 					}
