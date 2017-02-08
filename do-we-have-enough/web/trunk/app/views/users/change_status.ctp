@@ -27,7 +27,6 @@ endforeach;
 		<?php if($in > 0) { ?>
 		<h2>Who we got so far!<br />
 		<span><?php echo $in; ?> of <?php echo $event['Event']['need']; ?> needed.</span>
-			<?php if($event['Event']['max'] > 0) echo '<br /><span>Event Capacity: '.$event['Event']['max'].'</span>'; ?>
 		</h2>
 		<ul class="in">
 			<?php foreach($event['User'] as $user):
@@ -48,7 +47,6 @@ endforeach;
 		<?php }else{ ?>
 		<h2>No one is IN yet.<br />
 		<span>We need at least <?php echo $event['Event']['need']; ?>.</span>
-			<?php if($event['Event']['max'] > 0) echo '<br /><span>Event Capacity: '.$event['Event']['max'].'</span>'; ?>
 		</h2>
 		<?php } ?>
 		<?php if($fifty > 0) { ?>
@@ -69,6 +67,7 @@ endforeach;
 			}
 			endforeach; ?>
 		</ul>
+		<?php if($event['Event']['max'] > 0) echo '<h2>This event has a max capacity of '.$event['Event']['max'].' set.</h2>'; ?>
 		<?php } ?>
 	</div><!-- end .left -->
 	<div class="right">
