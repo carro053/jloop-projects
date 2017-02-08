@@ -495,11 +495,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 					foreach($event['User'] as $user):
 						if($user['EventsUser']['status'] == 1) $in = $in + 1 + $user['EventsUser']['guests'];
 					endforeach;
-					//echo '<br>In: '.$in;
 					$adding_how_many = 1 + $events_user['EventsUser']['guests'];
-					//echo '<br>Adding: '.$adding_how_many;
-					//echo '<br>Max: '.$event['Event']['max'];
-					//exit;
 					if($in + $adding_how_many > $event['Event']['max']) {
 						$over_maximum = true;
 					}
@@ -546,7 +542,44 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 		$events_user = $this->EventsUser->find('EventsUser.event_id = '.$this->uAuth->event_id.' AND EventsUser.user_id = '.$this->uAuth->user_id);
 		if($increase == 1)
 		{
-			$events_user['EventsUser']['guests'] = $events_user['EventsUser']['guests'] + 1;
+			$over_maximum = false;
+			//check if more people are being saved as IN
+			if($status == 1 && $events_user['EventsUser']['status'] != 1) {
+				//check to see if the event has a max and how many are in
+				$this->Event->bindModel(array(
+					'hasAndBelongsToMany'=>array(
+						'User' =>array(
+							'className'=>'User',
+							'joinTable'=>'events_users',
+							'foreignKey'=>'event_id',
+							'associationForeignKey'=>'user_id',
+							'conditions'=>'',
+							'order'=> '',
+							'limit'=> '',
+							'unique'=>true,
+							'finderQuery'=>'',
+							'deleteQuery'=>''
+						)
+					)
+				));
+				$event = $this->Event->find('Event.id = '.$events_user['EventsUser']['event_id']);
+				if($event['Event']['max'] != 0) {
+					//count how many are currently in
+					$in = 0;
+					foreach($event['User'] as $user):
+						if($user['EventsUser']['status'] == 1) $in = $in + 1 + $user['EventsUser']['guests'];
+					endforeach;
+					$adding_how_many = 1;
+					if($in + $adding_how_many > $event['Event']['max']) {
+						$over_maximum = true;
+					}
+				}
+			}
+			if($over_maximum) {
+				$this->set('over_maximum',true);
+			}else{
+				$events_user['EventsUser']['guests'] = $events_user['EventsUser']['guests'] + 1;
+			}
 		}else{
 			$events_user['EventsUser']['guests'] = $events_user['EventsUser']['guests'] - 1;
 		}
