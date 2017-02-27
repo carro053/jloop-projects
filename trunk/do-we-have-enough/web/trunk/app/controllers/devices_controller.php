@@ -762,7 +762,25 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 	}
 	function set_my_event_status()
 	{
-		$this->User->bindModel(array('hasOne'=>array('UserMobileDevice'=>array('foreignKey'=>false,'conditions'=> array('User.id = UserMobileDevice.user_id')),'EventsUser' =>array('className'=>'EventsUser','foreignKey'=>'user_id','conditions'=>'EventsUser.event_id = '.$_POST['event_id'],'order'=> '','limit'=> ''))));
+		$this->User->bindModel(array(
+			'hasMany'=>array(
+				'UserMobileDevice'=>array(
+					'foreignKey'=>false,
+					'conditions'=> array(
+						'User.id = UserMobileDevice.user_id'
+					)
+				)
+			),
+			'hasOne' => array(
+				'EventsUser' =>array(
+					'className'=>'EventsUser',
+					'foreignKey'=>'user_id',
+					'conditions'=>'EventsUser.event_id = '.$_POST['event_id'],
+					'order'=> '',
+					'limit'=> ''
+				)
+			)
+		));
 		$user = $this->User->find('User.email = "'.$_POST['email_address'].'" AND UserMobileDevice.device_id = "'.$_POST['device_id'].'"');
 		if(isset($user['UserMobileDevice']['id']) && ($user['EventsUser']['status'] != $_POST['status'] || $user['EventsUser']['guests'] != $_POST['guests']))
 		{
@@ -805,10 +823,10 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 				}
 			}
 			if($over_maximum) {
-				$this->set('result','false');
+				$this->set('result','true');
 				
 				foreach($user['UserMobileDevice'] as $device):
-					$this->Notification->save_notification($user['User']['id'],$device['device_token'],'We were unable to add you to the event, '.$event['Event']['name'].', as it has reached max capacity.',$event['Event']['id'],3);
+					$this->manual_push_notification($user['User']['id'],$device['device_token'],'We were unable to add you to the event, '.$event['Event']['name'].', as it has reached max capacity.',$event['Event']['id']);
 				endforeach;
 				
 			}else{
@@ -823,6 +841,54 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 		}
 		$this->render('result');
 	}
+	
+	function manual_push_notification($user_id,$device_token,$alert,$event_id) {
+		$notification['Notification']['id'] = NULL;
+    	$notification['Notification']['user_id'] = $user_id;
+    	$notification['Notification']['device_token'] = $device_token;
+    	$notification['Notification']['alert'] = $alert;
+    	$notification['Notification']['event_id'] = $event_id;
+    	$notification['Notification']['level'] = 0;
+		$notification['Notification']['sent'] = 1;
+		$this->Notification->save($notification);
+		
+		
+		$notifications = $this->Notification->findAll('Notification.sent = 0',null,'Notification.device_token ASC, Notification.level DESC',10);
+		if ($this->environment == "dev") {
+			$apnsHost = 'gateway.sandbox.push.apple.com';
+			$apnsPort = 2195;
+			$apnsCert = '/var/www/vhosts/dowehaveenough.com/subdomains/dev/httpdocs/app/webroot/dev-cert.pem';
+		} else {
+			$apnsHost = 'gateway.push.apple.com';
+			$apnsPort = 2195;
+			$apnsCert = '/var/www/vhosts/dowehaveenough.com/httpdocs/app/webroot/prod-cert.pem';
+		}
+
+		$streamContext = stream_context_create();
+		stream_context_set_option($streamContext, 'ssl', 'local_cert', $apnsCert);
+		$apns = stream_socket_client('ssl://' . $apnsHost . ':' . $apnsPort, $error, $errorString, 2, STREAM_CLIENT_CONNECT,$streamContext);
+		if (!$apns)
+		{
+			print "Failed to connect".$error." ".$errorString;
+		}else{
+			$current_token = '';
+			if($current_token != $notification['Notification']['device_token'])
+			{
+				$payload = '';
+				$current_token = $notification['Notification']['device_token'];
+				$payload['aps'] = array('alert' => $notification['Notification']['alert'], 'sound' => 'default');
+				$payload['push_data'] = array('event_id' => ''.$notification['Notification']['event_id'].'');
+				//mail("jay@jloop.com", "payload", print_r($payload, true)."-----
+				//token: ".$current_token);
+				$payload = json_encode($payload);
+				$apnsMessage = chr(0).chr(0).chr(32).pack('H*',str_replace(' ', '',$notification['Notification']['device_token'])).chr(0).chr(strlen($payload)).$payload;
+				 if(!fwrite($apns, $apnsMessage)) mail("jay@jloop.com", "payload failed", "something wrong with token: ".$current_token);
+			}
+		}
+		fclose($apns);
+		return true;
+	}
+	
 	function push_notifications()
 	{
 		$notifications = $this->Notification->findAll('Notification.sent = 0',null,'Notification.device_token ASC, Notification.level DESC',10);
