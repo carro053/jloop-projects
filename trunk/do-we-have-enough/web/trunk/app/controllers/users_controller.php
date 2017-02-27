@@ -1741,7 +1741,7 @@ Still need at least '.$event['Event']['need'].'!';
 			$users = $this->GroupsUser->findAll('GroupsUser.group_id = '.$gid.' AND GroupsUser.unsubscribed = 0');
 			foreach ($users as $u) {
 				if ($format == 'comma') echo $u['User']['email'].",";
-				else if ($format == 'newline') echo $u['User']['email']."\n";
+				else if ($format == 'newline') echo $u['User']['email']."<br />";
 			}
 			//print_r($users);
 			exit();
