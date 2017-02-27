@@ -763,15 +763,13 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 	function set_my_event_status()
 	{
 		$this->User->bindModel(array(
-			'hasMany'=>array(
+			'hasOne'=>array(
 				'UserMobileDevice'=>array(
 					'foreignKey'=>false,
 					'conditions'=> array(
 						'User.id = UserMobileDevice.user_id'
 					)
-				)
-			),
-			'hasOne' => array(
+				),
 				'EventsUser' =>array(
 					'className'=>'EventsUser',
 					'foreignKey'=>'user_id',
@@ -825,9 +823,9 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 			if($over_maximum) {
 				$this->set('result','true');
 				
-				foreach($user['UserMobileDevice'] as $device):
-					$this->manual_push_notification($user['User']['id'],$device['device_token'],'We were unable to add you to the event, '.$event['Event']['name'].', as it has reached max capacity.',$event['Event']['id']);
-				endforeach;
+				if(!empty($user['UserMobileDevice']['device_token'])) {
+					$this->manual_push_notification($user['User']['id'],$user['UserMobileDevice']['device_token'],'We were unable to add you to the event, '.$event['Event']['name'].', as it has reached max capacity.',$event['Event']['id']);
+				}
 				
 			}else{
 				$user['EventsUser']['status'] = $_POST['status'];
