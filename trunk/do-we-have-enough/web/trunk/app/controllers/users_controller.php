@@ -1730,7 +1730,7 @@ Still need at least '.$event['Event']['need'].'!';
 		print($data);
 		exit();
 	}
-	function group_email_list($gid,$secret)
+	function group_email_list($gid,$secret,$format='comma')
 	{
 		if ($secret != "jloopify") {
 			echo "nope"; 
@@ -1740,8 +1740,8 @@ Still need at least '.$event['Event']['need'].'!';
 			$this->GroupsUser->bindModel(array('belongsTo'=>array('User' =>array('className'=>'User','foreignKey'=>'user_id','conditions'=>'','order'=> '','limit'=> ''))));
 			$users = $this->GroupsUser->findAll('GroupsUser.group_id = '.$gid.' AND GroupsUser.unsubscribed = 0');
 			foreach ($users as $u) {
-				
-				echo $u['User']['email'].",";
+				if ($format == 'comma') echo $u['User']['email'].",";
+				else if ($format == 'newline') echo $u['User']['email']."\n";
 			}
 			//print_r($users);
 			exit();
