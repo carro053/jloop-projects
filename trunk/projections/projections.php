@@ -224,7 +224,7 @@ if (!$thismonth) {
 	echo "There are " . $weeklyCount ." weekly not-yet-scheduled: ".money_format('%n', $weeklyTotal)."<br /><br />";
 
 
-
+/* ////////////////////////REMOVE CHARGIFY
 echo "------------------------";
 echo 'CHARGIFY invoices:<br />';
 require_once('Chargify-PHP-Client/lib/Chargify.php');
@@ -270,7 +270,7 @@ foreach($subs as $s) {
 
 echo "Chargify Total: ".money_format('%n',$chargifyTotal)."<br><br>";
 
-
+*/////////////////
 
 
 
