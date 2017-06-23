@@ -35,7 +35,7 @@ if ($XeroOAuth->response['code'] == 200) {
 		exit();
 	}
 	foreach($inv->Invoices[0] as $invoice) {
-		pr($invoice);
+		//pr($invoice);
 		$numHours = 0;
 		echo date('m/d/Y', strtotime($invoice->Date)).",";
 		echo $invoice->InvoiceNumber.",";
@@ -56,7 +56,8 @@ if ($XeroOAuth->response['code'] == 200) {
 		//$rate = $invoice->Total/$numHours;
 		//echo "Rate: ".$rate."<br>";
 		echo $numHours.",";
-		echo $invoice->Total;
+		echo $invoice->Total.",";
+		echo $invoice->AmountDue;
 		
 		echo "\n";
 		
