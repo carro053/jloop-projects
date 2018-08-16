@@ -45,14 +45,14 @@ if ($XeroOAuth->response['code'] == 200) {
 	}
 	
 	usort($inv_array, "cmp");
-	pr($inv_array);
+	//pr($inv_array);
 	
 	//pr($inv);
 	$grandtotal = 0;
 	if (count($inv->Invoices[0]) == 0) {
 		exit();
 	}
-	foreach($inv->Invoices[0] as $invoice) {
+	foreach($inv_array as $invoice) {
 		//pr($invoice);
 		$numHours = 0;
 		echo date('m/d/Y', strtotime($invoice->Date)).",";
