@@ -33,7 +33,7 @@ if ($XeroOAuth->response['code'] == 200) {
 	///reorder based on date
 	$inv_array = array();
 	foreach($inv->Invoices[0] as $invoice) {
-		$inv_array = $invoice;
+		$inv_array[] = $invoice;
 	}
 	function cmp($a, $b)
 	{
