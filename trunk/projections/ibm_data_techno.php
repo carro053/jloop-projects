@@ -30,7 +30,7 @@ $response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), arra
 
 if ($XeroOAuth->response['code'] == 200) {
 	$inv = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
-	//pr($inv);
+	pr($inv);
 	$grandtotal = 0;
 	if (count($inv->Invoices[0]) == 0) {
 		exit();
