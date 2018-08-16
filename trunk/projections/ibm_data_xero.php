@@ -37,8 +37,8 @@ if ($XeroOAuth->response['code'] == 200) {
 	}
 	function cmp($a, $b)
 	{
-	    if($a->Date < $b->Date) {
-		    return 0;
+	    if(strtotime($a->Date) < strtotime($b->Date)) {
+		    return -1;
 	    } else {
 		    return 1;
 	    }
