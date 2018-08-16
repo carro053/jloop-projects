@@ -29,8 +29,9 @@ $response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), arra
 
 
 if ($XeroOAuth->response['code'] == 200) {
-	$inv = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
+	$inv1 = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	///reorder based on date
+	$inv = $inv1->getValues();
 	function cmp($a, $b)
 	{
 	    if($a->Date < $b->Date) {
