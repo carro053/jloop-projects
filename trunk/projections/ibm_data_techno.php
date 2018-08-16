@@ -25,7 +25,7 @@ $where = '(Contact.ContactID=Guid("38625e33-6eaf-4e7c-a04d-311d32becfb2") || Con
 //echo $where;
 
 
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('where' => $where, 'order' => 'Date'));
+$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('where' => $where, 'order' => 'Total DESC'));
 
 
 if ($XeroOAuth->response['code'] == 200) {
