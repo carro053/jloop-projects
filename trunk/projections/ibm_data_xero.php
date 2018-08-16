@@ -29,9 +29,12 @@ $response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), arra
 
 
 if ($XeroOAuth->response['code'] == 200) {
-	$inv1 = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
+	$inv = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
 	///reorder based on date
-	$inv = $inv1->getValues();
+	$inv_array = array();
+	foreach($inv->Invoices[0] as $invoice) {
+		$inv_array = $invoice;
+	}
 	function cmp($a, $b)
 	{
 	    if($a->Date < $b->Date) {
@@ -41,8 +44,8 @@ if ($XeroOAuth->response['code'] == 200) {
 	    }
 	}
 	
-	usort($inv, "cmp");
-	
+	usort($inv_array, "cmp");
+	pr($inv_array);
 	
 	//pr($inv);
 	$grandtotal = 0;
