@@ -13,7 +13,7 @@ if(isset($_GET['year'])) {
 }
 
 if(isset($_GET['end']) && ($_GET['end'] != "Today") && ($_GET['end'] != "")) {
-	$enddate = date($_GET['end'].', 12, 31';
+	$enddate = date($_GET['end'].', 12, 31');
 } else {
 	$enddate = date("Y, m, d");
 }
