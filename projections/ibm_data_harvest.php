@@ -1,4 +1,6 @@
 <?php
+	
+	echo("hi");
 if(isset($_GET['year'])) {
 	$myyear = $_GET['year'];
 } else {
