@@ -174,11 +174,11 @@ class XeroComponent {
 			$config
 		);
 	}
-	function getInvoices() {
+	function getInvoices($where=null) {
 		$this->initAPIs();
 
 		try {
-			$apiResponse = $this->accountingAPI->getInvoice($this->getTenantID());
+			$apiResponse = $this->accountingAPI->getInvoices($this->getTenantID(), null, $where);
 			return $apiResponse->getInvoices();
 		} catch (Exception $e) {
 			echo 'Exception when calling AccountingApi->getInvoice: ', $e->getMessage(), PHP_EOL;

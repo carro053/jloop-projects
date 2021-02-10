@@ -6,8 +6,6 @@ setlocale(LC_MONETARY, 'en_US');
 
 include("load_xero.php");
 $xeroComponent = new XeroComponent();
-$xeroComponent->setRefreshToken('fbcb29d5bf634dba22d9b8538d3d920c12b82cb470b13ce4def8f0992c9613b7');
-exit;
 if(isset($_GET['year'])) {
 	$myyear = $_GET['year'];
 } else {
@@ -27,8 +25,12 @@ $where = '(Contact.ContactID=Guid("38625e33-6eaf-4e7c-a04d-311d32becfb2") || Con
 //echo $where;
 
 
-$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('where' => $where));
-
+//$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('where' => $where));
+$response = $xeroComponent->getInvoices($where);
+echo '<pre>';
+print_r($response);
+echo '</pre>';
+exit;
 
 if ($XeroOAuth->response['code'] == 200) {
 	$inv = $XeroOAuth->parseResponse($XeroOAuth->response['response'], $XeroOAuth->response['format']);
