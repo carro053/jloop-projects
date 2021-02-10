@@ -52,7 +52,7 @@ if(!empty($invoices)) {
 		
 		
 	}
-	echo "Grand total: ".$grandtotal;
+	//echo "Grand total: ".$grandtotal;
 }
 function convertXeroDate($date) {
 	preg_match('/(\d{10})(\d{3})([\+\-]\d{4})/', $date, $matches);
