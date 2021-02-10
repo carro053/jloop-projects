@@ -39,13 +39,11 @@ class XeroComponent {
 	}
 
 	function getAccessToken($fresh=false) {
-		Cache::set(array('duration' => '+29 minutes'));
 		$cache = $this->readCache();
 		$access_token = $cache['xero_access_token'];
 		if(!empty($access_token) && !$fresh) {
 			return $access_token;
 		}
-		Cache::set(array('duration' => '+300 days'));
 		$refresh_token =$cache['xero_refresh_token'];
 		if(!empty($refresh_token)) {
 			$url = 'https://identity.xero.com/connect/token';
