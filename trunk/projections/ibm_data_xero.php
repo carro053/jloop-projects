@@ -24,7 +24,7 @@ if(isset($_GET['end']) && ($_GET['end'] != "Today") && ($_GET['end'] != "")) {
 $where = '(Contact.ContactID=Guid("38625e33-6eaf-4e7c-a04d-311d32becfb2") || Contact.ContactID=Guid("8a802a3a-7074-492e-bde5-281d646b395d")) && Date>=DateTime('.$myyear.', 01, 01) && Date<=DateTime('.$enddate.') && Reference.Contains("WO") && Status != "DELETED" && Status != "VOIDED"';
 //echo $where;
 
-
+echo $where.'<br>';
 //$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('where' => $where));
 $response = $xeroComponent->getInvoices($where);
 echo '<pre>';
