@@ -1,17 +1,34 @@
 <?php 
-
-loadPackage(__DIR__."/lib/xero-php-oauth2");
-
+include(__DIR__."/vendor/autoload.php");
 	
+class XeroComponent {
+	var $accountingAPI;
+	function readCache() {
+		$cache = json_decode(file_get_contents("xero_cache.json") , true);
+		if(strtotime($cache['xero_access_created']) < strtotime('-29 minutes')) {
+			$cache['xero_access_token'] = false;
+		}
+		return $cache;
+	}
+	function writeCache($xero_refresh_token = null, $xero_access_token = null, $xero_tenant_id = null) {
+		$cache = json_decode(file_get_contents("xero_cache.json") , true);
+		if($xero_refresh_token !== null) {
+			$cache['xero_refresh_token'] = $xero_refresh_token;
+		}
+		if($xero_access_token !== null) {
+			$cache['xero_access_token'] = $xero_access_token;
+			$cache['xero_access_created'] = date('Y-m-d H:i:s');
+		}
+		if($xero_tenant_id !== null) {
+			$cache['xero_tenant_id'] = $xero_tenant_id;
+		}
+		return file_put_contents("xero_cache.json" , json_encode($cache));
+	}
 
-var $accountingAPI;
-
-
-function setRefreshToken($refresh_token='') {
-		Cache::set(array('duration' => '+300 days'));
-		Cache::write('xero_refresh_token', $refresh_token);
-		Cache::set(array('duration' => '+300 days'));
-		$refresh_token = Cache::read('xero_refresh_token');
+	function setRefreshToken($refresh_token='') {
+		$this->writeCache($refresh_token);
+		$cache = $this->readCache();
+		$refresh_token = $cache['xero_refresh_token'];
 		echo $refresh_token;
 		echo '<hr>';
 		$fresh_access_token = $this->getAccessToken(true);
@@ -21,14 +38,15 @@ function setRefreshToken($refresh_token='') {
 		echo $fresh_tenant_id;
 	}
 
-	public function getAccessToken($fresh=false) {
+	function getAccessToken($fresh=false) {
 		Cache::set(array('duration' => '+29 minutes'));
-		$access_token = Cache::read('xero_access_token');
+		$cache = $this->readCache();
+		$access_token = $cache['xero_access_token'];
 		if(!empty($access_token) && !$fresh) {
 			return $access_token;
 		}
 		Cache::set(array('duration' => '+300 days'));
-		$refresh_token = Cache::read('xero_refresh_token');
+		$refresh_token =$cache['xero_refresh_token'];
 		if(!empty($refresh_token)) {
 			$url = 'https://identity.xero.com/connect/token';
 
@@ -51,7 +69,7 @@ function setRefreshToken($refresh_token='') {
 
 			$header = [];
 			$header[] = 'Content-type: application/x-www-form-urlencoded';
-			$header[] = 'Authorization: Basic MDgwNUIwOTAyQkM1NDY4MzhBQUE5MjQwQTRDQTJGMTM6OGNqVGJEYzBQTnBOU1JPLXAzMVpSaEwxR2ZLaF9jRTA5dVQzUXJWdWlsMjl3WFRz';
+			$header[] = 'Authorization: Basic ODMyMTY3M0Y0RDdGNDgxRDhDQTc4RjUwNzU4NTIxQzk6OUgyMFFieFpfTzFfdmhCaU5MNkVYeW04c3JmblRqNmJsbzdLVDJRZDBtREl6X0Q1';
 			curl_setopt($ch,CURLOPT_HTTPHEADER, $header);
 
 			//So that curl_exec returns the contents of the cURL; rather than echoing it
@@ -61,21 +79,19 @@ function setRefreshToken($refresh_token='') {
 			$result = curl_exec($ch);
 			$decoded = json_decode($result, true);
 			if(!empty($decoded['refresh_token'])) {
-				Cache::set(array('duration' => '+300 days'));
-				Cache::write('xero_refresh_token', $decoded['refresh_token']);
+				$this->writeCache($decoded['refresh_token']);
 			}
 			if(!empty($decoded['access_token'])) {
-				Cache::set(array('duration' => '+29 minutes'));
-				Cache::write('xero_access_token', $decoded['access_token']);
+				$this->writeCache(null,$decoded['access_token']);
 				return $decoded['access_token']; 
 			}
 		}
 		return '';
 	}
 
-	public function revokeRefreshToken() {
-		Cache::set(array('duration' => '+300 days'));
-		$refresh_token = Cache::read('xero_refresh_token');
+	function revokeRefreshToken() {
+		$cache = $this->readCache();
+		$refresh_token = $cache['xero_refresh_token'];
 		if(!empty($refresh_token)) {
 
 			$url = 'https://identity.xero.com/connect/revocation';
@@ -98,7 +114,7 @@ function setRefreshToken($refresh_token='') {
 
 			$header = [];
 			$header[] = 'Content-type: application/x-www-form-urlencoded';
-			$header[] = 'Authorization: Basic MDgwNUIwOTAyQkM1NDY4MzhBQUE5MjQwQTRDQTJGMTM6VG5vSWxlVGtGRlFpTXl5Q25VUE5ZRmlMWDUwS1Q2SnJTbDEyeUphWGhFeUZnZUJR';
+			$header[] = 'Authorization: Basic ODMyMTY3M0Y0RDdGNDgxRDhDQTc4RjUwNzU4NTIxQzk6OUgyMFFieFpfTzFfdmhCaU5MNkVYeW04c3JmblRqNmJsbzdLVDJRZDBtREl6X0Q1';
 			curl_setopt($ch,CURLOPT_HTTPHEADER, $header);
 
 			//So that curl_exec returns the contents of the cURL; rather than echoing it
@@ -111,9 +127,9 @@ function setRefreshToken($refresh_token='') {
 		exit;
 	}
 
-	public function getTenantID($fresh=false) {
-		Cache::set(array('duration' => '+29 minutes'));
-		$tenant_id = Cache::read('xero_tenant_id');
+	function getTenantID($fresh=false) {
+		$cache = $this->readCache();
+		$tenant_id = $cache['xero_tenant_id'];
 		if(!empty($tenant_id) && !$fresh) {
 			return $tenant_id;
 		}
@@ -139,32 +155,28 @@ function setRefreshToken($refresh_token='') {
 		$decoded = json_decode($result, true);
 		$tenantID = '';
 		foreach($decoded as $tenant) {
-			if(ENVIRONMENT == 'Production' && $tenant['tenantName'] == 'Odeum, LLC') {
+			if($tenant['tenantName'] == 'JLOOP') {
 				$tenantID = $tenant['tenantId'];
 				break;
-			} else if(ENVIRONMENT != 'Production' && $tenant['tenantName'] == 'Demo Company (US)') {
-				$tenantID = $tenant['tenantId'];
-				break;
-			} 
+			}
 		}
 		if(!empty($tenantID)) {
-			Cache::set(array('duration' => '+29 minutes'));
-			Cache::write('xero_tenant_id', $tenantID);
+			$this->writeCache(null,null,$tenantID);
 			return $tenantID;
 		}
 		return '';
 	}
 
-	public function initAPIs() {
+	function initAPIs() {
 		$access_token = $this->getAccessToken();
 		$config = XeroAPI\XeroPHP\Configuration::getDefaultConfiguration()->setAccessToken( (string)$access_token );	
-  
+
 		$this->accountingAPI = new XeroAPI\XeroPHP\Api\AccountingApi(
 			new GuzzleHttp\Client(),
 			$config
 		);
-    }
-    public function getInvoices() {
+	}
+	function getInvoices() {
 		$this->initAPIs();
 
 		try {
@@ -176,3 +188,5 @@ function setRefreshToken($refresh_token='') {
 		
 		exit;
 	}
+
+}
