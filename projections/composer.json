@@ -1,0 +1,6 @@
+{
+	"require": {
+		"php": ">=5.3.0",
+		"xeroapi/xero-php-oauth2": "^2.4"
+	}
+}
