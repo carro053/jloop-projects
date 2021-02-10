@@ -4,8 +4,10 @@ ini_set('display_errors',1);
 error_reporting(E_ALL);
 setlocale(LC_MONETARY, 'en_US');
 
-include("projections_stuff.php");
-
+include("load_xero.php");
+$xeroComponent = new XeroComponent();
+$xeroComponent->setRefreshToken('fbcb29d5bf634dba22d9b8538d3d920c12b82cb470b13ce4def8f0992c9613b7');
+exit;
 if(isset($_GET['year'])) {
 	$myyear = $_GET['year'];
 } else {
