@@ -39,6 +39,7 @@ if(!empty($invoices)) {
 
 			foreach($invoice->getLineItems() as $lineitem) {
 				//echo $lineitem->Description." - ".$lineitem->Quantity."<br>";
+				echo "quantity line: ".$lineitem->getQuantity()."<br>";
 				$numHours += floatval($lineitem->getQuantity());
 			}
 		//echo "Total Hours: ".$numHours."<br>";
