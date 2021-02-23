@@ -36,7 +36,7 @@ if(!empty($invoices)) {
 		//echo $invoice->Total;
 		//echo "<br>";
 		$grandtotal += floatval($invoice->getTotal());
-
+		echo "JAY---------------------HERE";
 			foreach($invoice->getLineItems() as $lineitem) {
 				//echo $lineitem->Description." - ".$lineitem->Quantity."<br>";
 				echo "quantity line: ".$lineitem->getQuantity()."<br>";
