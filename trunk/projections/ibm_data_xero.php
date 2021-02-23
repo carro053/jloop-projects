@@ -27,10 +27,12 @@ $contact_ids = '38625e33-6eaf-4e7c-a04d-311d32becfb2,8a802a3a-7074-492e-bde5-281
 $statuses = 'AUTHORISED,DRAFT,SUBMITTED';
 //$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('where' => $where));
 $invoices = $xeroComponent->getInvoices($where, $contact_ids,$statuses);
-echo '<pre>';
-print_r($invoices);
-echo '</pre>';
-echo '<br>';
+if(!empty($_GET['debug'])) {
+    echo '<pre>';
+    print_r($invoices);
+    echo '</pre>';
+    echo '<br>';
+}
 if(!empty($invoices)) {
 	$grandtotal = 0;
 	foreach($invoices as $invoice) {
