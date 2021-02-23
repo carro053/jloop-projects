@@ -28,9 +28,6 @@ $invoices = $xeroComponent->getInvoices($where);
 if(!empty($invoices)) {
 	$grandtotal = 0;
 	foreach($invoices as $invoice) {
-	    echo '<pre>';
-		print_r($invoice);
-	    echo '</pre>';
 		$numHours = 0;
 		echo date('m/d/Y', strtotime(convertXeroDate($invoice->getDate()))).",";
 		echo $invoice->GetInvoiceNumber().",";
