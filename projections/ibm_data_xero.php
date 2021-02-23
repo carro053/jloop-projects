@@ -21,10 +21,16 @@ if(isset($_GET['end']) && (strtolower($_GET['end']) != "today") && ($_GET['end']
 //techno = 8a802a3a-7074-492e-bde5-281d646b395d
 //ibm = 38625e33-6eaf-4e7c-a04d-311d32becfb2
 
-$where = '(Contact.ContactID=Guid("38625e33-6eaf-4e7c-a04d-311d32becfb2") || Contact.ContactID=Guid("8a802a3a-7074-492e-bde5-281d646b395d")) && Date>=DateTime('.$myyear.', 01, 01) && Date<=DateTime('.$enddate.') && Reference.Contains("WO") && Status != "DELETED" && Status != "VOIDED"';
+$where = 'Date>=DateTime('.$myyear.', 01, 01) && Date<=DateTime('.$enddate.') && Reference.Contains("WO")';
 //echo $where;
+$contact_ids = '38625e33-6eaf-4e7c-a04d-311d32becfb2,8a802a3a-7074-492e-bde5-281d646b395d';
+$statuses = 'AUTHORISED,DRAFT,SUBMITTED';
 //$response = $XeroOAuth->request('GET', $XeroOAuth->url('Invoices', 'core'), array('where' => $where));
-$invoices = $xeroComponent->getInvoices($where);
+$invoices = $xeroComponent->getInvoices($where, $contact_ids,$statuses);
+echo '<pre>';
+print_r($invoices);
+echo '</pre>';
+echo '<br>';
 if(!empty($invoices)) {
 	$grandtotal = 0;
 	foreach($invoices as $invoice) {
