@@ -603,7 +603,7 @@ If you wish to unsubscribe from dowehaveenough.com - http://".$this->environment
 	function current_events()
 	{
 		$this->set('page_title','My Events');
-		$this->set('meta_description','Do You Have Enough? Do We Have Enough? Need to find out if you have enough players for a ball gameÉ Enough seats to fill a poker tableÉ Enough participants to hold today\'s meeting?');
+		$this->set('meta_description','Do You Have Enough? Do We Have Enough? Need to find out if you have enough players for a ball gameÉ Enough seats to fill a poker tableÉ Enough participants to hold today\'s meeting?');
 		if(isset($this->params['data']['User']['email']))
 		{
 			$this->User->bindModel(array('hasAndBelongsToMany'=>array('Event' =>array('className'=>'Event','joinTable'=>'events_users','foreignKey'=>'user_id','associationForeignKey'=>'event_id','conditions'=>'Event.validated = 1','order'=> 'Event.created DESC','limit'=> '','unique'=>true,'finderQuery'=>'','deleteQuery'=>''))));
@@ -858,7 +858,7 @@ Reply with IAMIN, IAMOUT, IAM50, or ENOUGH? to find out the status of the event.
 		$this->User->bindModel(array('hasMany'=>array('UserMobileDevice' =>array('className'=>'UserMobileDevice','foreignKey'=>'user_id','conditions'=>'UserMobileDevice.device_token != "" AND UserMobileDevice.notify_push = 1 AND UserMobileDevice.validator = ""','order'=> '','limit'=> ''))));
 		$this->Event->bindModel(array('hasAndBelongsToMany'=>array('User' =>array('className'=>'User','joinTable'=>'events_users','foreignKey'=>'event_id','associationForeignKey'=>'user_id','conditions'=>'','order'=> '','limit'=> '','unique'=>true,'finderQuery'=>'','deleteQuery'=>''))));
 		//$events = $this->Event->findAll('Event.validated = 1 AND Event.active > 0 AND Event.created > (NOW() - INTERVAL 3 MONTH)',null,null,null,null,4);
-		$events = $this->Event->findAll('Event.validated = 1 AND Event.active > 0 AND Event.date >= CURDATE()',null,null,null,null,4);
+		$events = $this->Event->findAll('Event.validated = 1 AND Event.active > 0 AND Event.date >= CURDATE() AND Event.created > (NOW() - INTERVAL 1 MONTH)',null,null,null,null,4);
 		foreach($events as $event):
 			$in = 0;
 			$out = 0;
