@@ -52,6 +52,10 @@
                 <input class="small" name="data[Event][status_email_time]" id="EventStatusEmailTime" type="text" onfocus="javascript:the_tooltip(this,'Simple like 12pm<br />or 9:30am','status');" />
                 <span> if we haven't reached enough</span>
             </div>
+            <div class="optionrow">
+                <?php echo $form->checkbox('Event.limited_visibility'); ?>
+                <label style="margin-right: 10px;" for="limited_visibility"><span>Limited visibility for invitees</span></label>
+            </div>
             <div style="display:none;" id="cancel_date"><input class="w8em format-d-m-y divider-dash highlight-days-67 no-fade" id="dp-normal-1" name="dp-normal-1" type="hidden" /></div>
             <div style="display:none;" id="status_date"><input class="w8em format-d-m-y divider-dash highlight-days-67 no-fade" id="dp-normal-2" name="dp-normal-2" type="hidden" /></div>
              <div style="display:none;" id="event_date"><input class="w8em format-d-m-y divider-dash highlight-days-67 no-fade" id="dp-normal-3" name="dp-normal-3" type="hidden" /></div>
