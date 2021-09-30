@@ -7,8 +7,8 @@
 <?php }else{ ?>
 <meta name="robots" content="index, follow">
 <?php } ?>
-<meta name="description" content="<?php if(isset($meta_description)) { echo $meta_description; }else{ echo 'Do We Have Enough? Need to find out if you have enough players for a ball game... Enough seats to fill a poker table... Enough participants to hold today\'s meeting?'; } ?>">
-<meta name="keywords" content="Do we have enough, DWHE, Event Application, Event planner, invite friends to your event, Plan a poker game, coordinate a basketball game, event, planner">
+<meta name="description" content="<?php if(isset($meta_description)) { echo $meta_description; }else{ echo 'Do We Have Enough? Need to find out if you have enough players for a ball game... Enough seats to fill game night... Enough participants to hold today\'s meeting?'; } ?>">
+<meta name="keywords" content="Do we have enough, DWHE, Event Application, Event planner, invite friends to your event, Plan a game night, coordinate a basketball game, event, planner">
 <title>Do We Have Enough?<?php if($page_title != '') echo ' :: '.$page_title; ?></title>
 
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
@@ -56,7 +56,7 @@
 <?php if($page == 'home') {
 		echo '<div class="bubbles">';
         echo '<p><span>Need to find out if you have enough players for a ball game&hellip;</span></p>';
-		echo '<p><span>Enough seats filled at the poker table&hellip;</span></p>';
+		echo '<p><span>Enough seats filled for game night&hellip;</span></p>';
 		echo '<p><span>Enough participants to hold today\'s meeting?</span></p>';
         echo '</div><!-- end .bubbles -->';
 } ?>
