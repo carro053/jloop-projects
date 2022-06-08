@@ -6,6 +6,11 @@ setlocale(LC_MONETARY, 'en_US');
 
 include("load_xero.php");
 $xeroComponent = new XeroComponent();
+
+if(!empty($_GET['refresh_token'])) {
+    $xeroComponent->setRefreshToken($_GET['refresh_token']);
+}
+
 if(isset($_GET['year'])) {
 	$myyear = $_GET['year'];
 } else {
