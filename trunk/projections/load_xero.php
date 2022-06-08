@@ -67,7 +67,7 @@ class XeroComponent {
 
 			$header = [];
 			$header[] = 'Content-type: application/x-www-form-urlencoded';
-			$header[] = 'Authorization: Basic ODMyMTY3M0Y0RDdGNDgxRDhDQTc4RjUwNzU4NTIxQzk6OUgyMFFieFpfTzFfdmhCaU5MNkVYeW04c3JmblRqNmJsbzdLVDJRZDBtREl6X0Q1';
+			$header[] = 'Authorization: Basic ODMyMTY3M0Y0RDdGNDgxRDhDQTc4RjUwNzU4NTIxQzk6NUQtdW1JTFEyeGZDUm10c1dMU3JPVUQ1bUhjcFppdTBpWFBueXdsbFRfSUNCdTMx';
 			curl_setopt($ch,CURLOPT_HTTPHEADER, $header);
 
 			//So that curl_exec returns the contents of the cURL; rather than echoing it
@@ -112,7 +112,7 @@ class XeroComponent {
 
 			$header = [];
 			$header[] = 'Content-type: application/x-www-form-urlencoded';
-			$header[] = 'Authorization: Basic ODMyMTY3M0Y0RDdGNDgxRDhDQTc4RjUwNzU4NTIxQzk6OUgyMFFieFpfTzFfdmhCaU5MNkVYeW04c3JmblRqNmJsbzdLVDJRZDBtREl6X0Q1';
+			$header[] = 'Authorization: Basic ODMyMTY3M0Y0RDdGNDgxRDhDQTc4RjUwNzU4NTIxQzk6NUQtdW1JTFEyeGZDUm10c1dMU3JPVUQ1bUhjcFppdTBpWFBueXdsbFRfSUNCdTMx';
 			curl_setopt($ch,CURLOPT_HTTPHEADER, $header);
 
 			//So that curl_exec returns the contents of the cURL; rather than echoing it
