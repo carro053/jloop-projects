@@ -45,7 +45,7 @@ class XeroComponent {
 			return $access_token;
 		}
 		$refresh_token =$cache['xero_refresh_token'];
-		//if(!empty($refresh_token)) {
+		if(!empty($refresh_token)) {
 			$url = 'https://identity.xero.com/connect/token';
 
 			//The data you want to send via POST
@@ -83,7 +83,7 @@ class XeroComponent {
 				$this->writeCache(null,$decoded['access_token']);
 				return $decoded['access_token']; 
 			}
-		//}
+		}
 		return '';
 	}
 
