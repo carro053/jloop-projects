@@ -41,7 +41,15 @@ class XeroComponent {
 	function getAccessToken($fresh=false) {
 		$cache = $this->readCache();
 		$access_token = $cache['xero_access_token'];
-		if(!empty($access_token) && !$fresh) {
+		$last_access_request = $cache['xero_access_created'];
+		if(!empty($_GET['debug'])) {
+			echo time() - strtotime($last_access_request).'<br>';
+		}
+		if(!empty($access_token) && ($fresh || empty($last_access_request) || time() - strtotime($last_access_request) < 60 * 30) && !$fresh) {
+			if(!empty($_GET['debug'])) {
+				echo 'NOT FRESH<br>';
+				echo $access_token.'<br>';
+			}
 			return $access_token;
 		}
 		$refresh_token =$cache['xero_refresh_token'];
@@ -81,6 +89,10 @@ class XeroComponent {
 			}
 			if(!empty($decoded['access_token'])) {
 				$this->writeCache(null,$decoded['access_token']);
+				if(!empty($_GET['debug'])) {
+					echo 'FRESH<br>';
+					echo $decoded['access_token'].'<br>';
+				}
 				return $decoded['access_token']; 
 			}
 		}
