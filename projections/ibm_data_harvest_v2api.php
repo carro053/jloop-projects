@@ -9,7 +9,7 @@
   curl_setopt($handle, CURLOPT_URL, $url);
   curl_setopt($handle, CURLOPT_RETURNTRANSFER, 1);
   curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
-  curl_setopt($handle, CURLOPT_USERAGENT, "Projections");
+  curl_setopt($handle, CURLOPT_USERAGENT, "Projections (jay@jloop.com)");
   /*
   curl -i \
 	-H 'Harvest-Account-ID: 127791'\
@@ -18,7 +18,7 @@
 	"https://api.harvestapp.com/api/v2/users/me.json"
 */
   $response = curl_exec($handle);
-  print "jay2";
+  print "jay3";
 
   if (curl_errno($handle)) {
 	print "Error: " . curl_error($handle);
