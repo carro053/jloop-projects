@@ -15,6 +15,7 @@
 
   if (curl_errno($handle)) {
 	print "Error: " . curl_error($handle);
+	print "jay";
   } else {
 	print json_encode(json_decode($response), JSON_PRETTY_PRINT);
 	curl_close($handle);
