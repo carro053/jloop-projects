@@ -40,7 +40,42 @@ error_reporting(E_ALL);
   if (curl_errno($handle)) {
 	print "Error: " . curl_error($handle);
   } else {
-	print json_encode(json_decode($response), JSON_PRETTY_PRINT);
-	curl_close($handle);
-  }
+	//print json_encode(json_decode($response), JSON_PRETTY_PRINT);
+	//curl_close($handle);
+	$clients = simplexml_load_string ( $response );
+	//print_r($clients);
+	
+	
+	foreach ($clients->project as $project) {
+		$projectHours = 0;
+		
+		$new_url = "https://api.harvestapp.com/v2/reports/time/projects/".$project->id."?from=".$myyear."0101&to=".$enddate;
+		curl_setopt($ch, CURLOPT_URL, $new_url);
+		$data2 = curl_exec($ch);
+	
+		if (curl_errno($ch)) {
+			print "Error: " . curl_error($ch);
+		} else {
+			$time = simplexml_load_string($data2);
+			print_r($time);
+			//foreach($time->{'day-entry'} as $dayentry) {
+			//	$projectHours += floatval($dayentry->hours);
+			//}
+			
+		}
+		if ($projectHours == 0 && floatval($project->budget) == 0) {
+			// do nothing
+		} else if ($projectHours == 0 && $project->active == "false") {
+			// also do nothing
+		} else {
+			echo $project->name.",";
+			echo $project->budget.",";
+			echo $projectHours.",";
+			echo $project->active;
+			echo "\n";
+		}
+		
+		//echo "<br>";
+		//echo "******************************<br><br><br>";
+	}
 ?>
