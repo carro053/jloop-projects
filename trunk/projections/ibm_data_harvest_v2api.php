@@ -46,7 +46,7 @@ error_reporting(E_ALL);
 	//print_r($clients);
 	
 	
-	foreach ($clients as $project) {
+	foreach ($clients[] as $project) {
 		print_r($project);
 		/*$projectHours = 0;
 		
