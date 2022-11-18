@@ -42,16 +42,16 @@ error_reporting(E_ALL);
   } else {
 	//print json_encode(json_decode($response), JSON_PRETTY_PRINT);
 	//curl_close($handle);
-	$clients = simplexml_load_string ( $response );
-	//print_r($clients);
+	$clients = json_decode($response);
+	print_r($clients);
 	
-	
+	/*
 	foreach ($clients->project as $project) {
 		$projectHours = 0;
 		
 		$new_url = "https://api.harvestapp.com/v2/reports/time/projects/".$project->id."?from=".$myyear."0101&to=".$enddate;
-		curl_setopt($ch, CURLOPT_URL, $new_url);
-		$data2 = curl_exec($ch);
+		curl_setopt($handle, CURLOPT_URL, $new_url);
+		$data2 = curl_exec($handle);
 	
 		if (curl_errno($ch)) {
 			print "Error: " . curl_error($ch);
@@ -78,4 +78,6 @@ error_reporting(E_ALL);
 		//echo "<br>";
 		//echo "******************************<br><br><br>";
 	}
+	*/
+}
 ?>
