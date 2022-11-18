@@ -1,8 +1,8 @@
 <?php
   $url = "https://api.harvestapp.com/v2/users/me";
   $headers = array(
-	"Authorization: Bearer " . getenv("5217.pt.oGfeU_rAjoaG90v3LRthn4IDkynOPZy_dc3PCB190Srf4fqMrWfIAY9g3Vl57ivNp6VjXbKtky5lqKm6Y1FKkA"),
-	"Harvest-Account-ID: "   . getenv("127791")
+	"Authorization: Bearer 5217.pt.oGfeU_rAjoaG90v3LRthn4IDkynOPZy_dc3PCB190Srf4fqMrWfIAY9g3Vl57ivNp6VjXbKtky5lqKm6Y1FKkA",
+	"Harvest-Account-ID: 127791"
   );
 
   $handle = curl_init();
