@@ -43,9 +43,9 @@ error_reporting(E_ALL);
 	//print json_encode(json_decode($response), JSON_PRETTY_PRINT);
 	//curl_close($handle);
 	$clients = json_decode($response);
-	print_r($clients);
+	//print_r($clients);
 	
-	/*
+	
 	foreach ($clients->project as $project) {
 		$projectHours = 0;
 		
@@ -78,6 +78,6 @@ error_reporting(E_ALL);
 		//echo "<br>";
 		//echo "******************************<br><br><br>";
 	}
-	*/
+	
 }
 ?>
