@@ -1,7 +1,7 @@
 <?php
   $url = "https://api.harvestapp.com/v2/users/me";
   $headers = array(
-	"Authorization: Bearer " . getenv("5217.pt.vGw4NIAeouQI2rqzC7FG6q4ymr6ss3aZAYNAjNtxUwXcqsquNr8XG7zFZCItEV-dwWi0z4fp47wackA-XNmWkQ"),
+	"Authorization: Bearer " . getenv("5217.pt.oGfeU_rAjoaG90v3LRthn4IDkynOPZy_dc3PCB190Srf4fqMrWfIAY9g3Vl57ivNp6VjXbKtky5lqKm6Y1FKkA"),
 	"Harvest-Account-ID: "   . getenv("127791")
   );
 
@@ -9,7 +9,7 @@
   curl_setopt($handle, CURLOPT_URL, $url);
   curl_setopt($handle, CURLOPT_RETURNTRANSFER, 1);
   curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
-  curl_setopt($handle, CURLOPT_USERAGENT, "Projections (jay@jloop.com)");
+  curl_setopt($handle, CURLOPT_USERAGENT, "jloop1");
   /*
   curl -i \
 	-H 'Harvest-Account-ID: 127791'\
