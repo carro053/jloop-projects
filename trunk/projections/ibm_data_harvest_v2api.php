@@ -1,5 +1,5 @@
 <?php
-  $url = "https://api.harvestapp.com/api/v2/users/me.json";
+  $url = "https://api.harvestapp.com/v2/users/me";
   $headers = array(
 	"Authorization: Bearer " . getenv("5217.pt.vGw4NIAeouQI2rqzC7FG6q4ymr6ss3aZAYNAjNtxUwXcqsquNr8XG7zFZCItEV-dwWi0z4fp47wackA-XNmWkQ"),
 	"Harvest-Account-ID: "   . getenv("127791")
