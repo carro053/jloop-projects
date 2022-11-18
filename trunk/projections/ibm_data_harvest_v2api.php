@@ -9,7 +9,7 @@
   curl_setopt($handle, CURLOPT_URL, $url);
   curl_setopt($handle, CURLOPT_RETURNTRANSFER, 1);
   curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
-  curl_setopt($handle, CURLOPT_USERAGENT, "JLOOP Projections");
+  curl_setopt($handle, CURLOPT_USERAGENT, "Projections");
   /*
   curl -i \
 	-H 'Harvest-Account-ID: 127791'\
