@@ -3,7 +3,7 @@
 if(isset($_GET['year'])) {
 	$myyear = $_GET['year'];
 } else {
-	$myyear = "2017";
+	$myyear = "2022";
 }
 
 if(isset($_GET['end']) && ($_GET['end'] != "Today") && ($_GET['end'] != "")) {
