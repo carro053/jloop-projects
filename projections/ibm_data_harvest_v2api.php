@@ -1,5 +1,23 @@
 <?php
-  $url = "https://api.harvestapp.com/v2/users/me";
+//setup
+if(isset($_GET['year'])) {
+	$myyear = $_GET['year'];
+} else {
+	$myyear = "2017";
+}
+
+if(isset($_GET['end']) && ($_GET['end'] != "Today") && ($_GET['end'] != "")) {
+	$enddate = date($_GET['end'].'1231');
+} else {
+	$enddate = date("Ymd");
+}
+	
+ini_set('display_errors',1); 
+error_reporting(E_ALL);
+
+/// make the calls
+
+  $url = "https://api.harvestapp.com/v2/projects?client_id=3381986&updated_since=".$myyear."-01-01";
   $headers = array(
 	"Authorization: Bearer 5217.pt.oGfeU_rAjoaG90v3LRthn4IDkynOPZy_dc3PCB190Srf4fqMrWfIAY9g3Vl57ivNp6VjXbKtky5lqKm6Y1FKkA",
 	"Harvest-Account-ID: 127791"
@@ -18,7 +36,6 @@
 	"https://api.harvestapp.com/api/v2/users/me.json"
 */
   $response = curl_exec($handle);
-  print "jay3";
 
   if (curl_errno($handle)) {
 	print "Error: " . curl_error($handle);
