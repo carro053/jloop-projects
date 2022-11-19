@@ -47,15 +47,15 @@ error_reporting(E_ALL);
 	
 	//////now get all the time spent for this client for the time period
 	
-	$new_url = "https://api.harvestapp.com/v2/reports/time/projects?client_id=3381986&from=".$myyear."0101&to=".$enddate;
+	$new_url = "https://api.harvestapp.com/v2/reports/time/projects?from=".$myyear."0101&to=".$enddate;
 	curl_setopt($handle, CURLOPT_URL, $new_url);
 	$data2 = curl_exec($handle);
 	
 	if (curl_errno($handle)) {
 		print "Error: " . curl_error($handle);
 	} else {
-		$time = json_decode($data2);
-		print_r($time);
+		$project_time = json_decode($data2_true);
+		print_r($project_time);
 		//foreach($time->{'day-entry'} as $dayentry) {
 		//	$projectHours += floatval($dayentry->hours);
 		//}
