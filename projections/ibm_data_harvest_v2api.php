@@ -54,7 +54,7 @@ error_reporting(E_ALL);
 	if (curl_errno($handle)) {
 		print "Error: " . curl_error($handle);
 	} else {
-		$project_time = json_decode($data2_true);
+		$project_time = json_decode($data2, true);
 		print_r($project_time);
 		//foreach($time->{'day-entry'} as $dayentry) {
 		//	$projectHours += floatval($dayentry->hours);
