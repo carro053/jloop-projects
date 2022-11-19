@@ -42,7 +42,7 @@ error_reporting(E_ALL);
   } else {
 	//print json_encode(json_decode($response), JSON_PRETTY_PRINT);
 	//curl_close($handle);
-	$clients = json_decode($response);
+	$clients = json_decode($response, true);
 	print_r($clients);
 	
 	/*
