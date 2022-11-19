@@ -47,7 +47,20 @@ error_reporting(E_ALL);
 	
 	//////now get all the time spent for this client for the time period
 	
-	//$clients_url = "https://api.harvestapp.com/v2/reports/time/clients/"
+	$new_url = "https://api.harvestapp.com/v2/reports/time/projects?client_id=3381986&from=".$myyear."0101&to=".$enddate;
+	curl_setopt($handle, CURLOPT_URL, $new_url);
+	$data2 = curl_exec($handle);
+	
+	if (curl_errno($handle)) {
+		print "Error: " . curl_error($handle);
+	} else {
+		$time = json_decode($data2);
+		print_r($time);
+		//foreach($time->{'day-entry'} as $dayentry) {
+		//	$projectHours += floatval($dayentry->hours);
+		//}
+		
+	}
 	
 	///// now loop through all the projects and output
 	foreach ($clients['projects'] as $project) {
@@ -55,20 +68,6 @@ error_reporting(E_ALL);
 		//print "------------";
 		$projectHours = 0;
 		
-		$new_url = "https://api.harvestapp.com/v2/reports/time/projects?project_id=".$project['id']."&from=".$myyear."0101&to=".$enddate;
-		curl_setopt($handle, CURLOPT_URL, $new_url);
-		$data2 = curl_exec($handle);
-	
-		if (curl_errno($handle)) {
-			print "Error: " . curl_error($handle);
-		} else {
-			$time = json_decode($data2);
-			print_r($time);
-			//foreach($time->{'day-entry'} as $dayentry) {
-			//	$projectHours += floatval($dayentry->hours);
-			//}
-			
-		}
 		if ($projectHours == 0 && floatval($project['budget']) == 0) {
 			// do nothing
 		} else if ($projectHours == 0 && $project['is_active'] == "false") {
