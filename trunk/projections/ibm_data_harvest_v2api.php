@@ -47,11 +47,11 @@ error_reporting(E_ALL);
 	
 	
 	foreach ($clients['projects'] as $project) {
-		print_r($project);
-		print "------------";
-		/*$projectHours = 0;
+		//print_r($project);
+		//print "------------";
+		$projectHours = 0;
 		
-		$new_url = "https://api.harvestapp.com/v2/reports/time/projects/".$project->id."?from=".$myyear."0101&to=".$enddate;
+		$new_url = "https://api.harvestapp.com/v2/reports/time/projects/".$project['id']."?from=".$myyear."0101&to=".$enddate;
 		curl_setopt($handle, CURLOPT_URL, $new_url);
 		$data2 = curl_exec($handle);
 	
@@ -65,18 +65,18 @@ error_reporting(E_ALL);
 			//}
 			
 		}
-		if ($projectHours == 0 && floatval($project->budget) == 0) {
+		if ($projectHours == 0 && floatval($project['budget']) == 0) {
 			// do nothing
-		} else if ($projectHours == 0 && $project->active == "false") {
+		} else if ($projectHours == 0 && $project['active'] == "false") {
 			// also do nothing
 		} else {
-			echo $project->name.",";
-			echo $project->budget.",";
+			echo $project['name'].",";
+			echo $project['budget'].",";
 			echo $projectHours.",";
-			echo $project->active;
+			echo $project['active'];
 			echo "\n";
 		}
-		*/
+		
 		//echo "<br>";
 		//echo "******************************<br><br><br>";
 	}
