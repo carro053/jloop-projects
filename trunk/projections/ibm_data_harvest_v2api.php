@@ -55,8 +55,8 @@ error_reporting(E_ALL);
 		curl_setopt($handle, CURLOPT_URL, $new_url);
 		$data2 = curl_exec($handle);
 	
-		if (curl_errno($ch)) {
-			print "Error: " . curl_error($ch);
+		if (curl_errno($handle)) {
+			print "Error: " . curl_error($handle);
 		} else {
 			$time = simplexml_load_string($data2);
 			print_r($time);
