@@ -45,13 +45,17 @@ error_reporting(E_ALL);
 	$clients = json_decode($response, true);
 	//print_r($clients);
 	
+	//////now get all the time spent for this client for the time period
 	
+	//$clients_url = "https://api.harvestapp.com/v2/reports/time/clients/"
+	
+	///// now loop through all the projects and output
 	foreach ($clients['projects'] as $project) {
 		//print_r($project);
 		//print "------------";
 		$projectHours = 0;
 		
-		$new_url = "https://api.harvestapp.com/v2/reports/time/projects/".$project['id']."?from=".$myyear."0101&to=".$enddate;
+		$new_url = "https://api.harvestapp.com/v2/reports/time/projects?project_id=".$project['id']."&from=".$myyear."0101&to=".$enddate;
 		curl_setopt($handle, CURLOPT_URL, $new_url);
 		$data2 = curl_exec($handle);
 	
