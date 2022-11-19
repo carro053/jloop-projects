@@ -55,7 +55,7 @@ error_reporting(E_ALL);
 		print "Error: " . curl_error($handle);
 	} else {
 		$project_time = json_decode($data2, true);
-		print_r($project_time);
+		//print_r($project_time);
 		//foreach($time->{'day-entry'} as $dayentry) {
 		//	$projectHours += floatval($dayentry->hours);
 		//}
@@ -67,6 +67,11 @@ error_reporting(E_ALL);
 		//print_r($project);
 		//print "------------";
 		$projectHours = 0;
+		foreach($project_time['results'] as $p_time) {
+			if ($p_time['project_id'] == $project['id']) {
+				$projectHours = $p_time['total_hours'];
+			}
+		}
 		
 		if ($projectHours == 0 && floatval($project['budget']) == 0) {
 			// do nothing
