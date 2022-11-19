@@ -75,13 +75,14 @@ error_reporting(E_ALL);
 		
 		if ($projectHours == 0 && floatval($project['budget']) == 0) {
 			// do nothing
-		} else if ($projectHours == 0 && $project['is_active'] == "false") {
+		} else if ($projectHours == 0 && $project['is_active'] == false) {
 			// also do nothing
 		} else {
 			echo $project['name'].",";
 			echo $project['budget'].",";
 			echo $projectHours.",";
-			echo $project['is_active'];
+			if ($project['is_active']) echo "1"; else echo "0";
+			//echo $project['is_active'];
 			echo "\n";
 		}
 		
