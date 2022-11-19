@@ -47,8 +47,8 @@ error_reporting(E_ALL);
 	
 	
 	foreach ($clients as $project) {
-		//print_r($project);
-		print "yes";
+		print_r($project);
+		print "------------";
 		/*$projectHours = 0;
 		
 		$new_url = "https://api.harvestapp.com/v2/reports/time/projects/".$project->id."?from=".$myyear."0101&to=".$enddate;
