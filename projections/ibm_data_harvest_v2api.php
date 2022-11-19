@@ -42,13 +42,13 @@ error_reporting(E_ALL);
   } else {
 	//print json_encode(json_decode($response), JSON_PRETTY_PRINT);
 	//curl_close($handle);
-	$clients = json_decode($response, true);
+	$clients = json_decode($response);
 	print_r($clients);
 	
 	/*
 	foreach ($clients[] as $project) {
 		//print_r($project);
-		/*$projectHours = 0;
+		$projectHours = 0;
 		
 		$new_url = "https://api.harvestapp.com/v2/reports/time/projects/".$project->id."?from=".$myyear."0101&to=".$enddate;
 		curl_setopt($handle, CURLOPT_URL, $new_url);
@@ -75,7 +75,7 @@ error_reporting(E_ALL);
 			echo $project->active;
 			echo "\n";
 		}
-		*/
+		
 		//echo "<br>";
 		//echo "******************************<br><br><br>";
 	}
